@@ -6,3 +6,7 @@ temporary screenshots/
 .puppeteerrc.cjs
 # local-only trial audio (not licensed for publishing)
 ASSETS/audio/home-theme.*
+# confidential client document and unused raw footage
+ASSETS/*.pdf
+ASSETS/11276522-uhd_4096_1720_25fps.mp4
+ASSETS/7492690-hd_1920_1080_24fps.mp4

@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>صعيد مصر — تراث حي</title>
+<title>التجربة — صعيد مصر</title>
 <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
@@ -728,7 +728,312 @@
   html[lang="ar"] p,html[lang="ar"] li{line-height:max(1.7em,var(--lh-body))}
   /* reduced motion: stop transforms on hover too */
   @media (prefers-reduced-motion:reduce){*,*::before,*::after{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important}.card:hover,.gem:hover,.ss-card:hover,.xa-card:hover{transform:none}}
-.footer-credit{position:relative;z-index:1;margin:0;padding:0 var(--s-3) var(--s-3);text-align:center;font-size:12.5px;line-height:1.6!important;color:var(--muted)}
+
+  /* ===== LUXOR PAGE ===== */
+  .xh,.xc{--paper:#fbf7ef;--cream:#f6ead8}
+
+  html{background:#fbf7ef}
+  body{background:#fbf7ef;overflow-x:hidden}
+
+  body.is-locked{overflow:hidden;overscroll-behavior:none;touch-action:none}
+
+
+  /* ---------- HERO ---------- */
+
+/* ===== LUXOR SECTIONS ===== */
+  .xc{width:100%;background:var(--paper);padding:0;opacity:0;transform:translateY(40px);pointer-events:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
+  .xc.is-in{opacity:1;transform:none;pointer-events:auto}
+  .xc{--paper:#fbf7ef}
+  .lx-sec{padding-block:var(--s-5)}
+  .lx-sec:first-child{padding-top:var(--s-7)}
+  .lx-sec--last{padding-bottom:var(--s-8)}
+  @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
+  .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
+  .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
+  .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
+  .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
+  html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg{transform:scaleX(-1)}
+  html[dir="ltr"] .lx-all:hover svg{transform:scaleX(-1) translateX(-3px)}
+
+  /* split sections */
+  .lx-split-in{display:grid;gap:var(--s-4);align-items:center}
+  .lx-copy p{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.8;color:var(--muted);max-width:52ch}
+  .lx-art{position:relative;border-radius:var(--radius-card);overflow:hidden;aspect-ratio:16/7}
+  .lx-art img{width:100%;height:100%;object-fit:cover}
+  .lx-btn{display:inline-flex;align-items:center;justify-content:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;justify-self:start;white-space:nowrap;
+    box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .lx-btn:hover{transform:translateY(-1px);background:var(--rust-deep)} .lx-btn:active{transform:scale(.98)}
+  @media (min-width:1024px){
+    .lx-split-in{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s-5)}
+    .lx-split--3 .lx-split-in{grid-template-columns:minmax(0,5fr) minmax(0,6fr) auto}
+    .lx-art{border-radius:0;aspect-ratio:auto;height:230px}
+    .lx-art--wide{height:260px;border-radius:var(--radius-card)}
+    html[dir="rtl"] .lx-art--wide{-webkit-mask-image:linear-gradient(to left,transparent 0,#000 26%);mask-image:linear-gradient(to left,transparent 0,#000 26%)}
+    html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 26%);mask-image:linear-gradient(to right,transparent 0,#000 26%)}
+    .lx-art--both{-webkit-mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%);mask-image:linear-gradient(to right,transparent 0,#000 22%,#000 78%,transparent 100%)}
+    .lx-btn{justify-self:end}
+  }
+
+  /* card rows */
+  .lx-row{display:grid;grid-auto-flow:column;grid-auto-columns:min(72vw,300px);gap:var(--s-3);margin:0;padding:0 0 var(--s-2);list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;margin-inline:calc(var(--s-3) * -1);padding-inline:var(--s-3);scroll-padding-inline:var(--s-3)}
+  .lx-row::-webkit-scrollbar{display:none}
+  .lx-row li{scroll-snap-align:start;min-width:0}
+  @media (min-width:640px){.lx-row{margin-inline:calc(var(--s-4) * -1);padding-inline:var(--s-4);scroll-padding-inline:var(--s-4)}}
+  @media (min-width:1024px){.lx-row{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(var(--n),minmax(0,1fr));overflow:visible;margin-inline:0;padding-inline:0;padding-bottom:0}}
+  .lx-card{position:relative;display:block;aspect-ratio:4/3;border-radius:var(--radius-card);overflow:hidden;background:#dcc9a8;color:#fff;isolation:isolate;
+    box-shadow:0 1px 2px rgba(43,29,14,.06),0 10px 24px -14px rgba(43,29,14,.35);transition:transform .5s cubic-bezier(.2,.8,.2,1),box-shadow .5s cubic-bezier(.2,.8,.2,1)}
+  @media (min-width:1024px){.lx-card{aspect-ratio:5/3}.lx-row--trips .lx-card{aspect-ratio:5/2}.lx-row[style*="--n:4"] .lx-card{aspect-ratio:9/4}}
+  .lx-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform .8s cubic-bezier(.2,.8,.2,1)}
+  .lx-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.28) 45%,rgba(11,9,6,0) 70%)}
+  .lx-card:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 34px -16px rgba(43,29,14,.45)}
+  .lx-card:hover img{transform:scale(1.05)}
+  .lx-card:active{transform:translateY(-1px) scale(.99)}
+  .lx-card:focus-visible{outline:3px solid rgba(165,62,26,.55);outline-offset:3px}
+  .lx-card-txt{position:absolute;inset-inline:var(--s-3) 56px;bottom:var(--s-3);display:flex;flex-direction:column;gap:2px;text-align:start}
+  .lx-card-t{font-size:clamp(16px,1.35vw,19px);font-weight:700;line-height:1.35}
+  .lx-card-s{font-size:13px;line-height:1.5;color:rgba(255,255,255,.88)}
+  .lx-go{position:absolute;inset-inline-end:var(--s-2);bottom:var(--s-2);width:32px;height:32px;border-radius:999px;background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;transition:background-color .3s ease,color .3s ease}
+  .lx-card:hover .lx-go{background:var(--rust);color:#fff}
+  .lx-badge{position:absolute;top:var(--s-2);inset-inline-start:var(--s-2);height:30px;padding-inline:12px;border-radius:999px;background:#fff;color:var(--ink);font-size:13.5px;font-weight:700;display:inline-flex;align-items:center}
+  .lx-temp{position:absolute;top:var(--s-2);inset-inline-end:var(--s-2);height:26px;padding-inline:10px;border-radius:999px;background:rgba(11,34,48,.72);color:#fff;font-size:12px;font-weight:600;display:inline-flex;align-items:center}
+  @media (prefers-reduced-motion:reduce){.lx-card:hover,.lx-card:hover img{transform:none}}
+
+/* places coverflow */
+  .cf{overflow:hidden;overflow:clip}
+  .cf-head{text-align:center;margin-bottom:var(--s-5)}
+  .cf-accent{color:var(--rust)}
+  .cf-sub{margin-top:var(--s-2);font-size:var(--fs-body);line-height:1.7;color:var(--muted)}
+  .cf-stage{position:relative;height:calc(var(--ch) + 40px);--cw:256px;--ch:320px;--x1:140px;--x2:232px;perspective:1400px;touch-action:pan-y}
+  @media (min-width:640px){.cf-stage{--cw:330px;--ch:380px;--x1:236px;--x2:410px}}
+  @media (min-width:1024px){.cf-stage{--cw:390px;--ch:430px;--x1:306px;--x2:548px}}
+  .cf-track{position:absolute;inset:0;margin:0;padding:0;list-style:none;transform-style:preserve-3d}
+  .cf-item{position:absolute;top:50%;left:50%;width:var(--cw);height:var(--ch);margin:calc(var(--ch) / -2) 0 0 calc(var(--cw) / -2);
+    transform:translate3d(calc(var(--d) * 1px),0,calc(var(--z) * 1px)) rotateY(calc(var(--r) * 1deg)) scale(var(--s));opacity:var(--o);
+    transition:transform 1s cubic-bezier(.22,1,.36,1),opacity 1s cubic-bezier(.22,1,.36,1);will-change:transform,opacity;--d:0;--z:0;--r:0;--s:1;--o:1}
+  .cf-card{position:relative;display:block;width:100%;height:100%;border-radius:22px;overflow:hidden;background:#dcc9a8;color:#fff;text-align:start;cursor:pointer;isolation:isolate;
+    box-shadow:0 2px 4px rgba(43,29,14,.08),0 24px 44px -22px rgba(43,29,14,.5);transition:box-shadow .6s cubic-bezier(.22,1,.36,1)}
+  .cf-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.22,1,.36,1)}
+  .cf-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.8) 0%,rgba(11,9,6,.25) 42%,rgba(11,9,6,0) 66%)}
+  .cf-item.is-on .cf-card{box-shadow:0 2px 4px rgba(43,29,14,.08),0 34px 60px -24px rgba(43,29,14,.6)}
+  .cf-item.is-on .cf-card:hover img{transform:scale(1.04)}
+  .cf-card:active{filter:brightness(.96)}
+  .cf-card:focus-visible{outline:3px solid rgba(165,62,26,.6);outline-offset:4px}
+  .cf-cap{position:absolute;inset-inline:var(--s-3);bottom:var(--s-3);display:flex;flex-direction:column;gap:4px}
+  .cf-name{font-size:clamp(17px,1.5vw,21px);font-weight:700;line-height:1.35}
+  .cf-more{font-size:13px;line-height:1.4;color:rgba(255,255,255,.8)}
+  .cf-nav{position:absolute;top:50%;z-index:20;width:48px;height:48px;margin-top:-24px;border-radius:999px;background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 2px rgba(43,29,14,.08),0 10px 24px -12px rgba(43,29,14,.45);transition:background-color .3s ease,color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .cf-nav:hover{background:var(--rust);color:#fff} .cf-nav:active{transform:scale(.92)}
+  .cf-nav:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:3px}
+  .cf-prev{inset-inline-start:var(--s-3)} .cf-next{inset-inline-end:var(--s-3)}
+  html[dir="ltr"] .cf-nav svg{transform:scaleX(-1)}
+  @media (min-width:1280px){.cf-prev{inset-inline-start:calc(50% - 600px)}.cf-next{inset-inline-end:calc(50% - 600px)}}
+  .cf-desc{max-width:56ch;min-height:3.6em;margin:var(--s-4) auto 0;text-align:center;font-size:var(--fs-body-lg);line-height:1.8;color:var(--body);transition:opacity .35s ease}
+  @media (max-width:639px){.cf-desc{min-height:5.4em}}
+  .cf-desc.is-out{opacity:0}
+  .cf-dots{display:flex;justify-content:center;align-items:center;gap:2px;margin-top:var(--s-2)}
+  .cf-dots button{position:relative;width:24px;height:44px;display:inline-flex;align-items:center;justify-content:center}
+  .cf-dots button::before{content:"";width:8px;height:8px;border-radius:999px;background:rgba(43,29,14,.25);transition:width .5s cubic-bezier(.22,1,.36,1),background-color .3s ease}
+  .cf-dots button:hover::before{background:rgba(165,62,26,.6)}
+  .cf-dots button[aria-selected="true"]{width:36px}
+  .cf-dots button[aria-selected="true"]::before{width:24px;background:var(--rust)}
+  .cf-dots button:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:-6px}
+  @media (prefers-reduced-motion:reduce){.cf-item,.cf-card img,.cf-desc{transition-duration:.01ms}}
+
+/* activities */
+  .ac-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-3);margin-bottom:var(--s-4)}
+  .ac-h{font-size:var(--fs-h2);line-height:1.2;color:var(--ink);font-weight:700}
+  html.lang-latin .ac-h{line-height:1.08}
+  @media (min-width:768px){.ac-head{flex-direction:row;align-items:flex-end;justify-content:space-between;margin-bottom:var(--s-5)}}
+  .ac-all{display:inline-flex;align-items:stretch;gap:6px;height:var(--btn-h);font-size:var(--fs-btn);font-weight:700;color:#fff;border-radius:var(--radius-btn)}
+  .ac-all-t,.ac-all-i{display:inline-flex;align-items:center;justify-content:center;background:var(--rust);border-radius:var(--radius-btn);transition:background-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1);
+    box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45)}
+  .ac-all-t{padding-inline:var(--s-4);white-space:nowrap}
+  .ac-all-i{width:var(--btn-h)}
+  .ac-all:hover .ac-all-t,.ac-all:hover .ac-all-i{background:var(--rust-deep)}
+  .ac-all:hover .ac-all-i{transform:translate(-2px,-2px)}
+  .ac-all:active .ac-all-t,.ac-all:active .ac-all-i{transform:scale(.97)}
+  .ac-all:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+  html[dir="ltr"] .ac-all-i svg,html[dir="ltr"] .ac-go svg{transform:scaleX(-1)}
+  html[dir="ltr"] .ac-all:hover .ac-all-i{transform:translate(2px,-2px)}
+  .ac-row{display:grid;grid-auto-flow:column;grid-auto-columns:min(70vw,270px);gap:10px;margin:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
+    margin-inline:calc(var(--s-3) * -1);padding:0 var(--s-3) var(--s-2);scroll-padding-inline:var(--s-3)}
+  .ac-row::-webkit-scrollbar{display:none}
+  .ac-row li{scroll-snap-align:start;min-width:0}
+  @media (min-width:640px){.ac-row{margin-inline:calc(var(--s-4) * -1);padding-inline:var(--s-4);scroll-padding-inline:var(--s-4)}}
+  @media (min-width:1024px){.ac-row{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(5,minmax(0,1fr));overflow:visible;margin-inline:0;padding:0}}
+  .ac-card{position:relative;display:block;aspect-ratio:3/4.1;border-radius:var(--radius-card-lg);overflow:hidden;background:#dcc9a8;color:#fff;isolation:isolate;
+    transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s cubic-bezier(.2,.8,.2,1)}
+  .ac-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+  .ac-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.8) 0%,rgba(11,9,6,.3) 38%,rgba(11,9,6,0) 62%)}
+  .ac-card:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 22px 38px -20px rgba(43,29,14,.5)}
+  .ac-card:hover img{transform:scale(1.06)}
+  .ac-card:active{transform:translateY(-1px) scale(.99)}
+  .ac-card:focus-visible{outline:3px solid rgba(165,62,26,.55);outline-offset:3px}
+  .ac-go{position:absolute;top:var(--s-2);inset-inline-end:var(--s-2);width:40px;height:40px;border-radius:999px;background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    transition:background-color .3s ease,color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .ac-card:hover .ac-go{background:var(--rust);color:#fff;transform:rotate(-8deg) scale(1.05)}
+  .ac-card .lx-temp{inset-inline-end:auto;inset-inline-start:var(--s-2)}
+  .ac-txt{position:absolute;inset-inline:var(--s-3);bottom:var(--s-3);display:flex;flex-direction:column;gap:4px;text-align:start}
+  .ac-t{font-size:clamp(17px,1.45vw,20px);font-weight:700;line-height:1.35}
+  .ac-d{font-size:13.5px;line-height:1.55;color:rgba(255,255,255,.86)}
+  @media (prefers-reduced-motion:reduce){.ac-card:hover,.ac-card:hover img,.ac-card:hover .ac-go{transform:none}}
+
+/* section tabs */
+  .tb{position:relative;z-index:1;background:var(--paper);--paper:#fbf7ef}
+  .tb::before{content:"";position:absolute;inset-inline:0;bottom:100%;height:140px;background:var(--paper);opacity:0;pointer-events:none;transition:opacity .25s ease}
+
+
+  .tb-in{position:relative}
+  .tb-list{display:flex;align-items:stretch;gap:var(--s-1);margin:0;padding:0;list-style:none;overflow-x:auto;scrollbar-width:none;overscroll-behavior-x:contain;border-bottom:1px solid rgba(43,29,14,.18)}
+  .tb-list::-webkit-scrollbar{display:none}
+  .tb-link{position:relative;display:inline-flex;align-items:center;min-height:60px;padding-inline:var(--s-3);font-size:16px;font-weight:500;color:var(--muted);white-space:nowrap;border-radius:6px;transition:color .25s ease}
+  @media (min-width:1024px){.tb-link{min-height:68px;padding-inline:var(--s-4);font-size:17px}}
+  .tb-link::after{content:"";position:absolute;inset-inline:0;bottom:-1px;height:2.5px;background:var(--rust);transform:scaleX(0);transition:transform .45s cubic-bezier(.22,1,.36,1)}
+  .tb-link:hover{color:var(--ink)}
+  .tb-link:active{color:var(--rust-deep)}
+  .tb-link[aria-current="true"]{color:var(--rust);font-weight:700}
+  .tb-link[aria-current="true"]::after{transform:scaleX(1)}
+  .tb-link:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:-4px}
+  .tb-more{position:absolute;inset-inline-end:0;top:0;bottom:1px;width:72px;display:flex;align-items:center;justify-content:flex-end;padding-inline-end:var(--s-3);color:var(--ink);transition:color .2s ease}
+  .tb-more[hidden]{display:none}
+  html[dir="rtl"] .tb-more{background:linear-gradient(to left,rgba(251,247,239,0),#fbf7ef 58%)}
+  html[dir="ltr"] .tb-more{background:linear-gradient(to right,rgba(251,247,239,0),#fbf7ef 58%)}
+  html[dir="ltr"] .tb-more svg{transform:scaleX(-1)}
+  .tb-more:hover{color:var(--rust)}
+  .tb-more:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:-4px}
+  .xc [id^="lx-"]{scroll-margin-top:calc(var(--tb-top,100px) + 32px)}
+  .xc .lx-sec:first-of-type{padding-top:var(--s-6)}
+
+/* activities: expanding cards (same motion as the home experiences) */
+  .xl{display:flex;gap:var(--s-2);margin:0;padding:0;list-style:none;height:460px}
+  @media (min-width:1024px){.xl{gap:var(--s-3);height:500px}}
+  @media (max-width:767px){.xl{flex-direction:column;height:720px;gap:var(--s-2)}}
+  .xl-card{position:relative;flex:1 1 0;min-width:0;min-height:0;border-radius:44px;overflow:hidden;isolation:isolate;background:#cdb48a;color:#fff;
+    box-shadow:0 1px 2px rgba(43,29,14,.1),0 18px 40px -24px rgba(43,29,14,.5);will-change:flex-grow}
+  @media (max-width:767px){.xl-card{border-radius:30px}}
+  .xl-img{position:absolute;inset:0;width:100%;height:100%;max-width:none;object-fit:cover;transform:scale(1.04);transition:transform 1.2s cubic-bezier(.2,.8,.2,1);z-index:-2}
+  .xl-card[data-open="true"] .xl-img{transform:scale(1)}
+  .xl-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.78) 0%,rgba(18,11,6,.3) 34%,rgba(18,11,6,0) 62%);opacity:.6;transition:opacity .6s ease}
+  .xl-card[data-open="true"] .xl-shade{opacity:1}
+  .xl-hit{position:absolute;inset:0;z-index:3;background:transparent;border:0;cursor:pointer;color:transparent;font-size:0}
+  .xl-hit:focus-visible{outline:3px solid #fff;outline-offset:-6px;border-radius:44px}
+  .xl-ic{position:absolute;z-index:2;bottom:var(--s-4);inset-inline-start:var(--ic-x,24px);width:48px;height:48px;border-radius:999px;background:#fff;color:var(--rust);display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 6px 16px -8px rgba(11,9,6,.6);transition:background-color .4s ease,color .4s ease}
+  .xl-card[data-open="true"] .xl-ic{background:var(--rust);color:#fff}
+  .xl-copy{position:absolute;z-index:2;bottom:var(--s-4);inset-inline-start:calc(var(--ic-x,24px) + 48px + var(--s-3));width:min(420px,60vw);min-height:48px;display:flex;flex-direction:column;justify-content:center;text-align:start;pointer-events:none}
+  .xl-t{font-size:var(--fs-h3);font-weight:700;line-height:1.3;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.4)}
+  .xl-d{margin-top:2px;font-size:var(--fs-body);line-height:1.6;color:rgba(255,255,255,.9);white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.45)}
+  html[lang="ar"] .xl-d{line-height:1.6}
+  .xl-mini{position:absolute;inset:0 0 calc(var(--s-4) + 48px + var(--s-3)) 0;z-index:2;display:grid;place-items:center;pointer-events:none;padding:var(--s-3) 0;
+    writing-mode:vertical-rl;transform:rotate(180deg);font-size:clamp(17px,1.5vw,21px);font-weight:700;white-space:nowrap;text-shadow:0 1px 3px rgba(0,0,0,.55),0 1px 10px rgba(0,0,0,.4)}
+  html.lang-latin .xl-mini{letter-spacing:.04em;text-transform:uppercase;font-size:clamp(13px,1.05vw,15px)}
+  .xl-card:not([data-open="true"]) .xl-shade{opacity:.85;background:linear-gradient(to top,rgba(18,11,6,.75) 0%,rgba(18,11,6,.4) 50%,rgba(18,11,6,.25) 100%)}
+  .xl-card .lx-temp{top:var(--s-3);inset-inline-end:auto;inset-inline-start:50%;transform:translateX(50%);white-space:nowrap;opacity:0;transition:opacity .4s ease}
+  html[dir="ltr"] .xl-card .lx-temp{transform:translateX(-50%)}
+  .xl-card[data-open="true"] .lx-temp{opacity:1}
+  @media (max-width:767px){
+    .xl-ic{bottom:50%;margin-bottom:-22px;width:44px;height:44px;inset-inline-start:var(--s-3)}
+    .xl-card[data-open="true"] .xl-ic{bottom:var(--s-3);margin-bottom:0}
+    .xl-copy{bottom:var(--s-3);inset-inline-start:calc(var(--s-3) + 44px + var(--s-2));width:auto;inset-inline-end:var(--s-3);min-height:44px}
+    .xl-d{white-space:normal}
+    .xl-mini{display:flex;align-items:center;inset:0;inset-inline-start:calc(var(--s-3) + 44px + var(--s-2));padding:0;writing-mode:horizontal-tb;transform:none;font-size:17px;letter-spacing:0;text-transform:none}
+  }
+
+/* stays slider */
+  .sy{position:relative}
+  .sy-rail{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,300px);gap:var(--s-4);margin:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
+    margin-inline:calc(var(--s-3) * -1);padding:0 var(--s-3) var(--s-2);scroll-padding-inline:var(--s-3)}
+  .sy-rail::-webkit-scrollbar{display:none}
+  @media (min-width:640px){.sy-rail{grid-auto-columns:340px;margin-inline:calc(var(--s-4) * -1);padding-inline:var(--s-4);scroll-padding-inline:var(--s-4)}}
+  @media (min-width:1024px){.sy-rail{grid-auto-columns:calc((100% - var(--s-5) * 2) / 3.25);gap:var(--s-5);margin-inline:0;padding-inline:0;scroll-padding-inline:0}}
+  .sy-card{scroll-snap-align:start;min-width:0;display:flex;flex-direction:column}
+  .sy-img{position:relative;aspect-ratio:1/1;border-radius:var(--radius-card-lg);overflow:hidden;background:#dcc9a8}
+  .sy-img img{width:100%;height:100%;object-fit:cover;transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  .sy-card:hover .sy-img img{transform:scale(1.05)}
+  .sy-meta{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);margin-top:var(--s-3);padding-inline:var(--s-1);font-size:var(--fs-small);line-height:1.5!important;color:var(--ink)}
+  .sy-loc{display:inline-flex;align-items:center;gap:8px;font-weight:700}
+  html.lang-latin .sy-loc{text-transform:uppercase;letter-spacing:.02em}
+  .sy-kind{font-weight:600;color:var(--muted)}
+  .sy-row{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-3);padding-inline:var(--s-1)}
+  .sy-t{font-size:clamp(17px,1.4vw,19px);font-weight:700;line-height:1.6;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:3.2em}
+  .sy-btn{flex:none;display:inline-flex;align-items:center;justify-content:center;height:var(--btn-h-sm);padding-inline:var(--s-3);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;
+    box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .sy-btn:hover{transform:translateY(-1px);background:var(--rust-deep)} .sy-btn:active{transform:scale(.98)}
+  .sy-btn:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+  .sy-nav{position:absolute;z-index:3;top:0;margin-top:calc((min(78vw,300px) - 56px) / 2);width:56px;height:56px;border-radius:var(--radius-full);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 2px rgba(43,29,14,.1),0 14px 30px -12px rgba(43,29,14,.5);transition:background-color .3s ease,color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1),opacity .3s ease}
+  @media (min-width:640px){.sy-nav{margin-top:142px}}
+  @media (min-width:1024px){.sy-nav{margin-top:calc(((100% - var(--s-5) * 2) / 3.25 - 56px) / 2)}}
+  .sy-nav[hidden]{display:none}
+  .sy-nav:hover{background:var(--rust);color:#fff} .sy-nav:active{transform:scale(.93)}
+  .sy-nav:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:3px}
+  .sy-next{inset-inline-end:var(--s-2)} .sy-prev{inset-inline-start:var(--s-2)}
+  .sy-prev svg{transform:scaleX(-1)}
+  html[dir="ltr"] .sy-next svg{transform:scaleX(-1)} html[dir="ltr"] .sy-prev svg{transform:none}
+  @media (prefers-reduced-motion:reduce){.sy-card:hover .sy-img img{transform:none}}
+
+  @media (min-width:640px){#lxTrips .cf-stage{--cw:380px;--x1:270px}}
+  @media (min-width:1024px){#lxTrips .cf-stage{--cw:440px;--x1:344px}}
+  /* practical info */
+  .lx-faq{border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);background:#fff;overflow:hidden}
+  .lx-q + .lx-q{border-top:1px solid rgba(43,29,14,.1)}
+  .lx-q summary{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:56px;padding:var(--s-2) var(--s-4);font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;transition:background-color .2s ease,color .2s ease}
+  .lx-q summary::-webkit-details-marker{display:none}
+  .lx-q summary:hover{background:rgba(165,62,26,.05);color:var(--rust)}
+  .lx-q summary:active{background:rgba(165,62,26,.1)}
+  .lx-q summary:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:-3px}
+  .lx-q summary i{display:inline-flex;flex:none;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .lx-q[open] summary i{transform:rotate(45deg)}
+  .lx-q p{margin:0;padding:0 var(--s-4) var(--s-4);font-size:var(--fs-body);line-height:1.8;color:var(--muted);max-width:80ch}
+
+  /* map */
+  .lx-map{position:relative;height:clamp(380px,52vw,560px);border-radius:var(--radius-card);overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate}
+  .lx-map:fullscreen{border-radius:0}
+  #lxMap{position:absolute;inset:0;z-index:0}
+  #lxMap .leaflet-control-attribution{font-size:10px}
+  .lx-filter{position:absolute;z-index:2;top:var(--s-3);inset-inline-end:var(--s-3);margin:0;padding:var(--s-3);min-width:210px;border:0;border-radius:14px;background:#fff;
+    box-shadow:0 1px 2px rgba(43,29,14,.08),0 14px 34px -14px rgba(43,29,14,.4)}
+  .lx-filter legend{float:inline-start;width:100%;padding:0;margin-bottom:var(--s-1);font-size:17px;font-weight:700;color:var(--ink)}
+  .lx-filter label{clear:both;display:flex;align-items:center;gap:10px;min-height:36px;font-size:13.5px;font-weight:500;color:var(--body);cursor:pointer}
+  .lx-filter input{width:18px;height:18px;accent-color:var(--rust);flex:none;cursor:pointer}
+  .lx-filter i{width:14px;height:14px;border-radius:999px;background:var(--c);flex:none}
+  .lx-mapctl{position:absolute;z-index:2;top:var(--s-3);inset-inline-start:var(--s-3);display:flex;flex-direction:column;gap:8px}
+  .lx-mapctl button{width:44px;height:44px;border-radius:10px;background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;
+    box-shadow:0 1px 2px rgba(43,29,14,.08),0 8px 20px -10px rgba(43,29,14,.4);transition:background-color .2s ease,color .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .lx-mapctl button:hover{background:var(--rust);color:#fff} .lx-mapctl button:active{transform:scale(.94)}
+  .lx-mapctl button:focus-visible,.lx-filter input:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:2px}
+  @media (max-width:639px){.lx-filter{top:auto;bottom:var(--s-3);inset-inline:var(--s-3);min-width:0;padding:var(--s-2) var(--s-3);display:grid;grid-template-columns:1fr 1fr;column-gap:var(--s-2)}.lx-filter legend{grid-column:1/-1;font-size:15px;margin-bottom:0}.lx-filter label{font-size:12.5px;min-height:34px;gap:8px}.lx-map{height:560px}}
+  .lx-pin{filter:drop-shadow(0 3px 4px rgba(11,9,6,.35))}
+  .leaflet-popup-content{font-family:inherit;font-size:14px;font-weight:600;color:#0b2230;margin:10px 14px}
+/* fronds behind the intro sections */
+  .lx-leaf{position:relative;overflow:hidden;isolation:isolate}
+  .lx-leaf .paths-fronds{z-index:-1;opacity:.5}
+  .lx-leaf + .lx-leaf .paths-fronds{transform:scaleX(-1)}
+  /* food cards */
+  .fd-row{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,320px);gap:var(--s-4);margin:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
+    margin-inline:calc(var(--s-3) * -1);padding:12px var(--s-3) var(--s-3);scroll-padding-inline:var(--s-3)}
+  .fd-row::-webkit-scrollbar{display:none}
+  .fd-row > li{scroll-snap-align:start;min-width:0}
+  @media (min-width:640px){.fd-row{margin-inline:calc(var(--s-4) * -1);padding-inline:var(--s-4);scroll-padding-inline:var(--s-4)}}
+  @media (min-width:1024px){.fd-row{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;margin-inline:0;padding:0}}
+  .fd-row .gem-title{font-size:var(--fs-h3)}
+  /* credits */
+  .lx-credits{background:#fbf7ef;padding-block:0 var(--s-4);font-size:12.5px;color:var(--muted)}
+  .lx-credits summary{display:inline-flex;align-items:center;min-height:var(--tap);cursor:pointer;font-weight:600;border-radius:var(--radius-xs)}
+  .lx-credits summary:hover{color:var(--rust)} .lx-credits summary:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:2px}
+  .lx-credits p{margin:0 0 var(--s-2);line-height:1.7!important;text-align:left}
+  .lx-stories{padding-block:var(--s-7) var(--s-6)}
+  @media (min-width:1024px){
+    .lx-stories .st-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+    .lx-stories .st-side{display:block;grid-column:auto}
+    .lx-stories .st-feature{grid-column:auto}
+    .lx-stories .st-card{height:100%;grid-template-columns:minmax(0,1fr);grid-template-rows:minmax(0,1fr) auto;border-radius:var(--radius-card-lg);padding:var(--s-3)}
+    .lx-stories .st-card figure{min-height:300px;border-radius:var(--radius-card)}
+    .lx-stories .st-card .st-body{padding:var(--s-3) var(--s-2) var(--s-2)}
+    .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
+  }
   /* ambient sound */
   .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:12px;height:56px;padding-inline:var(--s-4);border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:16px;font-weight:700;white-space:nowrap;
     border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
@@ -747,6 +1052,179 @@
   @keyframes snd{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
   @media (max-width:639px){.snd-t{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}.snd{width:56px;padding:0;justify-content:center;bottom:var(--s-3);inset-inline-start:var(--s-3)}.snd-bars{display:none}}
   @media (prefers-reduced-motion:reduce){.snd[aria-pressed="true"] .snd-bars i{animation:none;transform:scaleY(.7)}}
+  /* ===== places: full-bleed showcase ===== */
+  .pv{position:relative;isolation:isolate;overflow:hidden;background:#1a130c;color:#fff;margin-block:var(--s-5) 0;min-height:min(100vh,760px);display:flex;--cw:150px;--ch:210px;--gap:12px}
+  @media (min-width:768px){.pv{--cw:180px;--ch:250px;--gap:16px;min-height:680px}}
+  @media (min-width:1200px){.pv{--cw:210px;--ch:300px;--gap:20px;min-height:min(100vh,780px)}}
+  .pv-bgs,.pv-bg,.pv-shade{position:absolute;inset:0}
+  .pv-bg{opacity:0;transform:scale(1.08);transition:opacity 1.2s cubic-bezier(.22,1,.36,1),transform 1.8s cubic-bezier(.22,1,.36,1);will-change:opacity,transform}
+  .pv-bg.is-on{opacity:1;transform:none}
+  .pv-bg img{width:100%;height:100%;object-fit:cover}
+  .pv-bg--ph,.pv-card--ph{background:linear-gradient(160deg,#c9ae82,#8b6a44 70%,#5d4429)}
+  .pv-shade{z-index:1;background:linear-gradient(to top,rgba(18,11,6,.82) 0%,rgba(18,11,6,.25) 45%,rgba(18,11,6,.35) 100%),linear-gradient(to left,rgba(18,11,6,.7) 0%,rgba(18,11,6,.15) 60%)}
+  html[dir="ltr"] .pv-shade{background:linear-gradient(to top,rgba(18,11,6,.82) 0%,rgba(18,11,6,.25) 45%,rgba(18,11,6,.35) 100%),linear-gradient(to right,rgba(18,11,6,.7) 0%,rgba(18,11,6,.15) 60%)}
+  .pv-in{position:relative;z-index:2;display:grid;gap:var(--s-5);align-content:end;padding-block:var(--s-7) var(--s-5)}
+  @media (min-width:1024px){.pv-in{grid-template-columns:minmax(0,5fr) minmax(0,7fr);align-items:end;gap:var(--s-6);padding-block:var(--s-8) var(--s-6)}}
+  .pv-copy{display:flex;flex-direction:column;align-items:flex-start;text-align:start;min-width:0}
+  .pv-kicker{font-size:var(--fs-eyebrow);font-weight:700;line-height:1.5;color:#f3c9a8;margin-bottom:var(--s-4)}
+  html.lang-latin .pv-kicker{font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+  .pv-text{transition:opacity .45s ease,transform .6s cubic-bezier(.22,1,.36,1)}
+  .pv-text.is-out{opacity:0;transform:translateY(14px)}
+  .pv-text p{margin:0}
+  .pv-loc{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-body);font-weight:600;line-height:1.5!important;color:rgba(255,255,255,.9)}
+  .pv-loc::before{content:"";width:28px;height:2px;background:#fff;opacity:.7}
+  .pv-title{margin-top:var(--s-2);font-size:clamp(40px,5.6vw,84px);font-weight:700;line-height:1.2;color:#fff;text-shadow:0 2px 18px rgba(0,0,0,.35)}
+  html.lang-latin .pv-title{line-height:1.02;font-size:clamp(36px,4.8vw,72px)}
+  .pv-desc{margin-top:var(--s-3)!important;max-width:44ch;min-height:5.4em;font-size:var(--fs-body-lg);line-height:1.8!important;color:rgba(255,255,255,.92);text-shadow:0 1px 8px rgba(0,0,0,.45)}
+  .pv-temp{margin-top:var(--s-2)!important} .pv-temp[hidden]{display:none} .pv-temp .lx-temp{position:static}
+  .pv-cta{display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);margin-top:var(--s-4);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;
+    box-shadow:0 1px 2px rgba(0,0,0,.2),0 10px 24px -8px rgba(0,0,0,.6);transition:background-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .pv-cta svg{width:16px;height:16px;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .pv-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .pv-cta:hover svg{transform:translateX(-4px)} .pv-cta:active{transform:scale(.98)}
+  html[dir="ltr"] .pv-cta svg{transform:scaleX(-1)} html[dir="ltr"] .pv-cta:hover svg{transform:scaleX(-1) translateX(-4px)}
+  .pv :is(.pv-cta,.pv-card,.pv-nav):focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .pv-side{min-width:0;--dirx:-1}
+  html[dir="ltr"] .pv-side{--dirx:1}
+  .pv-rail{position:relative;height:var(--ch);margin:0;padding:0;list-style:none}
+  .pv-item{position:absolute;top:0;inset-inline-start:0;width:var(--cw);height:var(--ch);--k:0;
+    transform:translate3d(calc(var(--k) * (var(--cw) + var(--gap)) * var(--dirx)),0,0);opacity:1;
+    transition:transform 1s cubic-bezier(.22,1,.36,1),opacity .7s ease;will-change:transform,opacity}
+  .pv-item.is-active{opacity:0;pointer-events:none;transform:translate3d(calc(-1 * (var(--cw) + var(--gap)) * var(--dirx)),0,0) scale(1.25)}
+  .pv-item.no-anim{transition:none}
+  .pv-card{position:relative;display:block;width:100%;height:100%;border-radius:var(--radius-card);overflow:hidden;color:#fff;text-align:start;cursor:pointer;isolation:isolate;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,.75);transition:transform .6s cubic-bezier(.2,.8,.2,1),box-shadow .6s ease}
+  .pv-card img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transition:transform 1s cubic-bezier(.2,.8,.2,1)}
+  .pv-card::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.85) 0%,rgba(18,11,6,.2) 50%,rgba(18,11,6,0) 70%)}
+  .pv-card:hover{transform:translateY(-8px);box-shadow:0 30px 50px -20px rgba(0,0,0,.85)}
+  .pv-card:hover img{transform:scale(1.06)}
+  .pv-card:active{transform:translateY(-3px) scale(.99)}
+  .pv-card-txt{position:absolute;inset-inline:var(--s-2);bottom:var(--s-3);display:flex;flex-direction:column;gap:2px}
+  .pv-card-loc{font-size:12px;line-height:1.4;color:rgba(255,255,255,.82)}
+  .pv-card-t{font-size:clamp(15px,1.3vw,18px);font-weight:700;line-height:1.35}
+  .pv-foot{display:flex;align-items:center;gap:var(--s-4);margin-top:var(--s-4)}
+  .pv-arrows{display:flex;gap:var(--s-2);flex:none}
+  .pv-nav{width:48px;height:48px;border-radius:var(--radius-full);border:1.5px solid rgba(255,255,255,.55);color:#fff;display:inline-flex;align-items:center;justify-content:center;transition:background-color .3s ease,color .3s ease,border-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
+  .pv-nav:hover{background:#fff;border-color:#fff;color:var(--ink)} .pv-nav:active{transform:scale(.92)}
+  html[dir="ltr"] .pv-nav svg{transform:scaleX(-1)}
+  .pv-bar{flex:1;height:2px;background:rgba(255,255,255,.28);border-radius:2px;overflow:hidden}
+  .pv-bar i{display:block;height:100%;width:100%;background:#fff;transform-origin:right center;transform:scaleX(.2);transition:transform 1s cubic-bezier(.22,1,.36,1)}
+  html[dir="ltr"] .pv-bar i{transform-origin:left center}
+  .pv-num{flex:none;margin:0;font-size:clamp(32px,3.4vw,52px);font-weight:700;line-height:1!important;color:#fff;direction:ltr;font-family:"IBM Plex Serif",Georgia,serif}
+  @media (prefers-reduced-motion:reduce){.pv-bg,.pv-item,.pv-text,.pv-bar i{transition-duration:.01ms}.pv-card:hover,.pv-card:hover img{transform:none}}
+  /* ===== city map ===== */
+  .mp-head{margin-bottom:var(--s-4)}
+  .mp-sub{margin-top:var(--s-2);font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted);max-width:60ch}
+  .mp-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2)}
+  .mp-search{position:relative;flex:1 1 280px;min-width:0;display:flex;align-items:center;height:var(--btn-h);padding-inline:var(--s-3);gap:var(--s-2);background:#fff;border:1px solid rgba(43,29,14,.16);border-radius:var(--radius-sm);color:var(--muted);transition:border-color .2s ease,box-shadow .2s ease}
+  .mp-search:focus-within{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.22)}
+  .mp-search input{flex:1;min-width:0;height:100%;border:0;background:transparent;font:inherit;font-size:var(--fs-body);color:var(--ink);outline:0}
+  .mp-search input::placeholder{color:rgba(36,49,47,.6)}
+  .mp-adv-btn{order:2} .mp-cats{order:3;flex:1 1 100%}
+  .mp-cats{display:flex;gap:var(--s-1);overflow-x:auto;scrollbar-width:none;max-width:100%;padding-block:3px}
+  .mp-cats::-webkit-scrollbar{display:none}
+  .mp-chip,.mp-adv-btn{flex:none;display:inline-flex;align-items:center;gap:8px;height:var(--btn-h-sm);padding-inline:var(--s-3);border-radius:var(--radius-sm);background:#fff;border:1px solid rgba(43,29,14,.16);color:var(--ink);font-size:14px;font-weight:600;white-space:nowrap;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .mp-chip svg{color:var(--rust);transition:color .25s ease}
+  .mp-chip:hover,.mp-adv-btn:hover{border-color:var(--rust)}
+  .mp-chip:active,.mp-adv-btn:active{transform:scale(.97)}
+  .mp-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .mp-chip[aria-pressed="true"] svg{color:#fff}
+  .mp-adv-btn[aria-expanded="true"]{border-color:var(--rust);color:var(--rust)}
+  .mp-adv-btn b{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:22px;padding-inline:6px;border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:12px}
+  .mp-adv-btn b[hidden]{display:none}
+  .mp :is(.mp-chip,.mp-adv-btn,.mp-clear,.mp-close,.mp-open,.mp-name,.mp-more,.mp-ctl button):focus-visible,.mp-adv input:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:2px}
+  .mp-adv{display:grid;gap:var(--s-3);margin-top:var(--s-2);padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-md)}
+  .mp-adv{position:relative;overflow:hidden;padding-block:var(--s-3) calc(var(--s-3) + 14px)}
+  .mp-adv::after{content:"";position:absolute;inset-inline:0;height:14px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none}
+  .mp-adv::after{bottom:0}
+  .mp-adv[hidden],.mp-adv fieldset[hidden],.mp-adv-btn[hidden]{display:none}
+  .mp-adv{grid-template-columns:repeat(auto-fit,minmax(200px,1fr))}
+  @media (min-width:768px){.mp-adv{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .mp-adv fieldset{margin:0;padding:0;border:0;min-width:0;display:flex;flex-wrap:wrap;gap:0 var(--s-4)}
+  .mp-adv legend{float:inline-start;width:100%}
+  .mp-adv legend{padding:0;margin-bottom:var(--s-1);font-size:var(--fs-small);font-weight:700;color:var(--ink)}
+  .mp-adv label[hidden]{display:none}
+  .mp-adv label{display:flex;align-items:center;gap:10px;min-height:40px;font-size:14px;color:var(--body);cursor:pointer}
+  .mp-adv input{width:18px;height:18px;flex:none;accent-color:var(--rust);cursor:pointer}
+  .mp-body{display:grid;gap:var(--s-3);margin-top:var(--s-3)}
+  @media (min-width:768px){
+    .mp-body{grid-template-columns:320px minmax(0,1fr);height:620px}
+    html[dir="rtl"] .mp-body{grid-template-columns:minmax(0,1fr) 320px}
+    html[dir="rtl"] .mp-map{order:1} html[dir="rtl"] .mp-list{order:2}
+  }
+  @media (min-width:1100px){.mp-body{grid-template-columns:420px minmax(0,1fr);height:680px}html[dir="rtl"] .mp-body{grid-template-columns:minmax(0,1fr) 420px}}
+  .mp-list{display:flex;flex-direction:column;min-height:0;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);overflow:hidden}
+  .mp-list-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-2);padding:var(--s-2) var(--s-3);min-height:56px;border-bottom:1px solid rgba(43,29,14,.1)}
+  .mp-count{margin:0;font-size:var(--fs-body);font-weight:700;color:var(--ink);line-height:1.5!important}
+  .mp-close{display:none;width:var(--tap);height:var(--tap);border-radius:var(--radius-full);align-items:center;justify-content:center;color:var(--ink);transition:background-color .2s ease}
+  .mp-close:hover{background:rgba(43,29,14,.07)}
+  .mp-items{flex:1;min-height:0;margin:0;padding:var(--s-1);list-style:none;overflow-y:auto;overscroll-behavior:contain}
+  .mp-item{display:grid;grid-template-columns:104px minmax(0,1fr);gap:var(--s-3);position:relative;padding:var(--s-2);border-radius:var(--radius-md);cursor:pointer;line-height:1.5!important;transition:background-color .45s cubic-bezier(.22,1,.36,1)}
+  .mp-item + .mp-item{margin-top:var(--s-1)}
+  .mp-item + .mp-item::before{content:"";position:absolute;inset-inline:var(--s-2);top:calc(var(--s-1) / -2);height:1px;background:rgba(43,29,14,.08)}
+  .mp-item:hover{background:rgba(165,62,26,.04)}
+  @media (min-width:1100px){.mp-item{grid-template-columns:132px minmax(0,1fr)}}
+  .mp-thumb{position:relative;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#e6d8bd;color:rgba(43,29,14,.45);display:flex;align-items:center;justify-content:center}
+  .mp-thumb img{width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .mp-item:hover .mp-thumb img{transform:scale(1.03)}
+  .mp-info{display:flex;flex-direction:column;align-items:flex-start;gap:4px;min-width:0;text-align:start}
+  .mp-tag{display:inline-flex;align-items:center;gap:6px;height:26px;padding-inline:10px;border-radius:var(--radius-full);font-size:12px;font-weight:700;color:var(--c);background:color-mix(in srgb,var(--c) 12%,#fff)}
+  .mp-name{font-size:17px;font-weight:700;line-height:1.4;color:var(--ink);text-align:start;border-radius:var(--radius-xs);transition:color .4s ease}
+  .mp-item.is-on .mp-name{color:var(--rust)}
+  .mp-sum{margin:0;font-size:13.5px;line-height:1.65!important;color:var(--muted);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .mp-meta{display:flex;flex-wrap:wrap;gap:4px 10px;font-size:12px;color:var(--muted)}
+  .mp-meta span{display:inline-flex;align-items:center;gap:4px}
+  .mp-more{display:inline-flex;align-items:center;gap:6px;min-height:44px;margin-top:auto;font-size:13.5px;font-weight:700;color:var(--rust);border-radius:var(--radius-xs);transition:color .2s ease}
+  .mp-more:hover{color:var(--rust-deep)} .mp-more:active{opacity:.8}
+  .mp-more svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+  .mp-more:hover svg{transform:translateX(-3px)}
+  html[dir="ltr"] .mp-more svg{transform:scaleX(-1)} html[dir="ltr"] .mp-more:hover svg{transform:scaleX(-1) translateX(-3px)}
+  .mp-item.is-on{background:rgba(165,62,26,.07)}
+  .mp-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:var(--s-3);padding:var(--s-6) var(--s-4);text-align:center;color:var(--muted)}
+  .mp-empty[hidden]{display:none}
+  .mp-clear{height:var(--btn-h-sm);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;transition:background-color .3s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .mp-clear:hover{background:var(--rust-deep)} .mp-clear:active{transform:scale(.97)}
+  .mp-map{position:relative;min-height:0;border-radius:var(--radius-card);overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate}
+  #mpMap{position:absolute;inset:0;z-index:0}
+  #mpMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)}
+  #mpMap .leaflet-control-attribution{font-size:10px}
+  .mp-ctl{position:absolute;z-index:2;inset-inline-end:var(--s-3);bottom:var(--s-5);display:flex;flex-direction:column;gap:8px}
+  .mp-ctl button{width:var(--tap);height:var(--tap);border-radius:var(--radius-sm);background:#fff;color:var(--ink);display:inline-flex;align-items:center;justify-content:center;box-shadow:0 1px 2px rgba(43,29,14,.08),0 8px 20px -10px rgba(43,29,14,.4);transition:background-color .2s ease,color .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .mp-ctl button:hover{background:var(--rust);color:#fff} .mp-ctl button:active{transform:scale(.94)}
+  .mp-open{display:none}
+  .mp-pin{background:none;border:0}
+  .mp-pin span{display:flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:var(--radius-full);background:var(--c);color:#fff;border:2.5px solid #fff;box-shadow:0 4px 10px -2px rgba(11,9,6,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .mp-pin.is-hot span,.mp-pin:hover span,.mp-pin:focus-visible span{transform:scale(1.22);box-shadow:0 0 0 4px color-mix(in srgb,var(--c) 30%,transparent),0 6px 14px -2px rgba(11,9,6,.55)}
+  .mp-pin:focus-visible{outline:0}
+  .mp-cluster{background:none;border:0}
+  .mp-cluster span{display:flex;align-items:center;justify-content:center;width:44px;height:44px;border-radius:var(--radius-full);background:var(--ink);color:#fff;border:3px solid #fff;font:700 15px/1 inherit;box-shadow:0 4px 12px -2px rgba(11,9,6,.5)}
+  .mp-pop .leaflet-popup-content-wrapper{border-radius:var(--radius-md);padding:0;box-shadow:0 1px 2px rgba(43,29,14,.1),0 18px 40px -14px rgba(43,29,14,.5)}
+  .mp-pop .leaflet-popup-content{margin:0;width:300px!important;font-family:inherit;line-height:1.5}
+  .mp-pop a.leaflet-popup-close-button{top:6px;inset-inline-end:6px;right:auto;width:32px;height:32px;font-size:22px;line-height:30px;color:var(--ink);border-radius:var(--radius-full)}
+  html[dir="ltr"] .mp-pop a.leaflet-popup-close-button{right:6px}
+  html[dir="rtl"] .mp-pop a.leaflet-popup-close-button{left:6px}
+  .mp-card{display:grid;grid-template-columns:96px minmax(0,1fr);gap:var(--s-2);padding:var(--s-2);padding-inline-end:36px;text-align:start}
+  .mp-card .mp-thumb{border-radius:var(--radius-sm)}
+  .mp-card .mp-name{font-size:15.5px;display:block}
+  .mp-card .mp-sum{font-size:12.5px}
+  .mp-pop .leaflet-popup-content p{margin:0}
+  .mp-pop .leaflet-popup-content a.mp-more{color:var(--rust)}
+  .mp-pop .leaflet-popup-content a.mp-more:hover{color:var(--rust-deep)}
+  @media (max-width:767px){
+    .mp-body{display:block}
+    .mp-map{height:70vh;min-height:440px;max-height:620px}
+    .mp-open{position:absolute;z-index:2;bottom:var(--s-3);inset-inline-start:50%;transform:translateX(50%);display:inline-flex;align-items:center;gap:8px;height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--ink);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;box-shadow:0 10px 24px -8px rgba(11,9,6,.6)}
+    html[dir="ltr"] .mp-open{transform:translateX(-50%)}
+    .mp-ctl{bottom:calc(var(--s-3) + var(--btn-h) + var(--s-2))}
+    .mp-list{position:fixed;z-index:70;inset-inline:0;bottom:0;height:min(78vh,640px);border-radius:var(--radius-card-lg) var(--radius-card-lg) 0 0;border-bottom:0;transform:translateY(102%);visibility:hidden;transition:transform .5s cubic-bezier(.22,1,.36,1),visibility 0s linear .5s;box-shadow:0 -18px 50px -18px rgba(11,9,6,.5)}
+    .mp-list.is-open{transform:none;visibility:visible;transition:transform .5s cubic-bezier(.22,1,.36,1)}
+    .mp-close{display:inline-flex}
+    .mp-back{position:fixed;inset:0;z-index:69;background:rgba(11,9,6,.45)}
+    .mp-back[hidden]{display:none}
+    .mp-pop .leaflet-popup-content{width:260px!important}
+    .mp-card{grid-template-columns:76px minmax(0,1fr)}
+  }
+  @media (prefers-reduced-motion:reduce){.mp-list,.mp-pin span,.mp-thumb img{transition:none}}
+
   /* ===== RADIUS SYSTEM (single scale, applied last) =====
      xs 6 focus rings and text links · sm 8 buttons, inputs, small controls · md 12 menus, panels, thumbnails
      card 18 cards and media · card-lg 22 featured surfaces · full pills and circles */
@@ -757,27 +1235,164 @@
   .xa-card,.xl-card,.cf-card,.sy-img,.mobile-menu{border-radius:var(--radius-card-lg)}
   .xa-hit:focus-visible,.xl-hit:focus-visible{border-radius:var(--radius-card-lg)}
   @media (min-width:1024px){.lx-art:not(.lx-art--wide){border-radius:0}}
-</style>
-</head>
-<body class="min-h-screen">
 
-<div id="page">
+  /* ===== experiences listing + detail ===== */
+  body{background:#fbf7ef}
+  /* ===== listing hero: the Luxor hero in its settled state, without the scroll expansion ===== */
+  .xh{--paper:#fbf7ef;--xh-top:220px;--xh-w:min(1550px,95vw);--xh-h:720px;--xh-x:calc((100% - var(--xh-w)) / 2 + 4px);
+    position:relative;width:100%;padding-top:var(--xh-top);background:var(--paper);isolation:isolate}
+  .xh-crumb{position:absolute;top:calc(var(--xh-top) - 58px);inset-inline-start:var(--xh-x);z-index:4}
+  .xh-media{background:#b0703c;position:relative;z-index:2;width:var(--xh-w);height:var(--xh-h);margin-inline:auto;
+    border-radius:var(--radius-card);overflow:hidden;box-shadow:0 30px 100px rgba(43,29,14,.3)}
+  .xh-media img{width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none}
+  .xh-shade{position:absolute;inset:0;background:#000;opacity:.22;pointer-events:none}
+  .xh-band{position:absolute;inset-inline:0;bottom:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none;z-index:2}
+  @media (min-width:768px){.xh-band{height:20px}}
+  .xh-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:start;
+    padding:24px 24px 44px;color:#fff;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%)}
+  @media (min-width:768px){.xh-cap{padding:48px 56px 68px}}
+  .xh-cap p,.xh-cap h1{margin:0}
+  .xh-cap .xh-cap-title{font-weight:700;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}
+  html.lang-latin .xh-cap .xh-cap-title{line-height:1.02}
+  .xh-cap .xh-cap-sub{margin-top:10px;max-width:60ch;font-size:clamp(17px,1.7vw,26px);font-weight:700;line-height:1.5}
+  .xh-cap .xh-cap-loc{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.4}
+  @media (max-width:767px){.xh-cap .xh-cap-loc{margin-top:18px}}
+  .xh-cap-loc svg{flex:none}
+  .xh-cap .dx-tags{margin-top:28px}
+  @media (max-width:767px){.xh-cap .dx-tags{margin-top:18px}}
+  .ex{padding-top:var(--s-7);padding-bottom:var(--s-8);--paper:#fbf7ef}
+  .ex-crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
+  .ex-crumb li{display:inline-flex;align-items:center;gap:8px}
+  .ex-crumb li + li::before{content:"";width:6px;height:6px;border-block-start:1.5px solid currentColor;border-inline-end:1.5px solid currentColor;transform:rotate(-45deg);opacity:.7}
+  html[dir="ltr"] .ex-crumb li + li::before{transform:rotate(45deg)}
+  .ex-crumb a{display:inline-flex;align-items:center;min-height:44px;border-radius:var(--radius-xs);transition:color .2s ease}
+  .ex-crumb a:hover{color:var(--rust)} .ex-crumb a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .ex-crumb [aria-current]{color:var(--ink);font-weight:600}
+  .ex-h{margin-top:var(--s-2);font-size:var(--fs-h2);line-height:1.2;color:var(--ink);font-weight:700}
+  .ex-sub{margin-top:var(--s-2);max-width:60ch;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
+  .ex-bar{margin-top:var(--s-5)}
+  .ex-count{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-4);font-size:var(--fs-body);font-weight:700;color:var(--ink)}
+  .ex-body{display:grid;gap:var(--s-4);margin-top:var(--s-3);align-items:start}
+  @media (min-width:1024px){.ex-body{grid-template-columns:minmax(0,1fr) 380px}html[dir="rtl"] .ex-body{grid-template-columns:380px minmax(0,1fr)}html[dir="rtl"] .ex-map{order:1}html[dir="rtl"] .ex-body > div{order:2}}
+  @media (min-width:1280px){.ex-body{grid-template-columns:minmax(0,1fr) 440px}html[dir="rtl"] .ex-body{grid-template-columns:440px minmax(0,1fr)}}
+  .ex-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+  .ex-grid .gem{transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
+  .ex-grid .gem.is-on{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.18)}
+  .gem-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:var(--s-3);font-size:var(--fs-small);color:var(--muted)}
+  .gem-meta span{display:inline-flex;align-items:center;gap:6px}
+  .gem-pil{font-size:var(--fs-label);color:var(--muted);margin-top:-2px}
+  .ex-map{position:sticky;top:calc(var(--tb-top,100px) + 16px)}
+  .ex-map .mp-map{height:min(72vh,720px)}
+  #exMap,#dxMap{position:absolute;inset:0;z-index:0}
+  #exMap .leaflet-tile-pane,#dxMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)}
+  @media (max-width:1023px){.ex-map{position:relative;top:auto}.ex-map .mp-map{height:420px}.ex-map .mp-open{display:none}}
+  .mp-empty{padding:var(--s-6) var(--s-4);text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:var(--s-3)}
+  /* detail */
+  .dx-title{font-size:clamp(34px,4.6vw,64px);line-height:1.15;font-weight:700;text-shadow:0 2px 16px rgba(0,0,0,.35)}
+  .dx-tags{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2);margin-top:var(--s-3)}
+  .dx-tag{display:inline-flex;align-items:center;gap:6px;height:32px;padding-inline:12px;border-radius:var(--radius-full);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:600;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .dx-sum{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.7;color:rgba(255,255,255,.92)}
+  .dx-gal{display:flex;gap:var(--s-2);margin:var(--s-4) 0 0;padding:0 0 var(--s-1);list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .dx-gal::-webkit-scrollbar{display:none}
+  .dx-gal li{flex:0 0 min(70vw,300px);scroll-snap-align:start}
+  .dx-gal button{display:block;width:100%;aspect-ratio:4/3;border-radius:var(--radius-card);overflow:hidden;background:#dcc9a8;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .dx-gal button:hover{transform:translateY(-3px)} .dx-gal button:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:3px}
+  .dx-gal button[aria-pressed="true"]{outline:3px solid var(--rust);outline-offset:3px}
+  .dx-gal img{width:100%;height:100%;object-fit:cover}
+  /* two columns after the hero: the story on the start side, the information card on the end side */
+  .dxl{display:grid;gap:var(--s-5);align-items:start}
+  @media (min-width:1024px){.dxl{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}}
+  @media (min-width:1280px){.dxl{grid-template-columns:minmax(0,1fr) 420px}}
+  .dxa-top{display:grid;gap:var(--s-3);align-items:end}
+  @media (min-width:768px){.dxa-top{grid-template-columns:auto minmax(0,1fr);gap:var(--s-5)}html.lang-latin .dxa-top{grid-template-columns:1fr}}
+  .dxa-title{margin:0;max-width:8ch;font-size:clamp(52px,5.6vw,100px);line-height:1;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  html.lang-latin .dxa-title{max-width:none;font-size:clamp(40px,2.9vw,56px);line-height:.95;letter-spacing:-.04em}
+  .dxa-tag{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--ink)}
+  .dxa-sum{margin:var(--s-2) 0 0;max-width:40ch;font-size:var(--fs-body);line-height:1.7;color:var(--body)}
+  .dxa-sum b{color:var(--ink);font-weight:700}
+  .dxa-main,.dxa-small{margin:0;overflow:hidden;background:#dcc9a8}
+  .dxa-main{margin-top:var(--s-5);border-radius:clamp(28px,3vw,52px);aspect-ratio:753/370}
+  .dxa-small{border-radius:clamp(20px,2vw,36px);aspect-ratio:3/2}
+  .dxa-main img,.dxa-small img{display:block;width:100%;height:100%;object-fit:cover}
+  .dxa-row{display:grid;gap:var(--s-4);margin-top:var(--s-5);align-items:start}
+  @media (min-width:768px){.dxa-row{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--s-5)}}
+  .dxa-h{margin:0;font-size:clamp(26px,2.4vw,40px);line-height:1.15;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .dxa-side .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body);line-height:1.75;max-width:none}
+  .dxl-main .dx-ent{margin-top:var(--s-5)}
+  /* information card */
+  .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
+  @media (max-width:1023px){.dxi{position:relative;top:auto}}
+  .dxi-band{height:52px;background:#f6ead8 url("ASSETS/motifs/strip.png") center/auto 100% repeat-x}
+  .dxi-body{padding:var(--s-4) var(--s-4) var(--s-3)}
+  .dxi-h{margin:0;font-size:var(--fs-small);font-weight:800;line-height:1.3;color:var(--ink)}
+  html.lang-latin .dxi-h{letter-spacing:.06em;text-transform:uppercase}
+  .dxi-facts{margin:var(--s-2) 0 0}
+  .dxi-facts div{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:44px}
+  .dxi-facts dt{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-body);color:var(--body)} .dxi-facts dt svg{color:var(--rust);flex:none}
+  .dxi-facts dd{margin:0;font-size:var(--fs-body);font-weight:700;color:var(--ink);text-align:end}
+  .dxi-group{margin-top:var(--s-4)}
+  .dxi-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-2)}
+  .dxi-chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:13px;font-weight:700;line-height:1.3}
+  .dxi-chip svg{flex:none}
+  .dxi-map{border-top:1px solid rgba(43,29,14,.1)}
+  .dxi-map .mp-map{height:220px;border:0;border-radius:0}
+  .dxi-actions{display:grid;gap:var(--s-2);padding:var(--s-4);border-top:1px solid rgba(43,29,14,.1)}
+  .dxi-actions .dx-cta{margin-top:0}
+  .dxi-actions .dx-cta--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+  .dxi-actions .dx-cta--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
+  .dxi-note{margin:var(--s-1) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
+  /* gallery: a dark full-bleed strip; pictures glide sideways on a gentle curve, edge to edge */
+  .dxg{--pw:clamp(200px,22vw,360px);--ph:clamp(300px,34vw,540px);--gap:clamp(16px,1.6vw,28px);--n:8;position:relative;isolation:isolate;overflow:hidden;width:100vw;margin-inline-start:calc(50% - 50vw);margin-top:var(--s-7);padding:var(--s-7) 0 var(--s-7);background:#0a0c10;color:#fff}
+  .dxg::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 0%,rgba(165,62,26,.22),transparent 70%),radial-gradient(40% 40% at 10% 100%,rgba(47,111,94,.14),transparent 70%)}
+  .dxg::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .dxg-in{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--s-3)}
+  .dxg-eyebrow{margin:0;text-align:center;font-size:13px;font-weight:600;color:rgba(255,255,255,.55)}
+  html.lang-latin .dxg-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+  .dxg-h{margin:var(--s-2) auto 0;max-width:22ch;text-align:center;font-size:clamp(28px,3.4vw,52px);line-height:1.2;font-weight:700;color:#fff}
+  .dxg-sub{margin:var(--s-2) auto 0;max-width:60ch;text-align:center;font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.6)}
+  .dxg-stage{position:relative;height:calc(var(--ph) * .96);margin-top:var(--s-4);perspective:1500px;perspective-origin:50% 55%;direction:ltr;overflow:hidden}
+  .dxg-track{position:absolute;inset:0;transform-style:preserve-3d}
+  .dxg-slice{position:absolute;top:calc(var(--ph) * .16);left:0;width:calc(var(--pw) / var(--n) + 1.2px);height:var(--ph);overflow:hidden;background:#1a1d22;backface-visibility:hidden;will-change:transform}
+  .dxg-slice img{position:absolute;top:0;left:calc(-1 * var(--i) * var(--pw) / var(--n));width:var(--pw);height:100%;max-width:none;object-fit:cover;pointer-events:none;user-select:none}
+  .dxg-slice--first{border-start-start-radius:6px;border-end-start-radius:6px} .dxg-slice--last{border-start-end-radius:6px;border-end-end-radius:6px}
+  .dx-h{display:flex;align-items:center;gap:var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
+  .dx-h::after{content:"";flex:0 0 40px;height:2px;background:var(--rust);opacity:.8}
+  .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.85;color:var(--body);max-width:70ch}
+  .dx-side{display:grid;gap:var(--s-4)}
+  .dx-cta{display:flex;align-items:center;justify-content:center;gap:var(--s-2);height:var(--btn-h);margin-top:var(--s-3);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .dx-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .dx-cta:active{transform:scale(.98)} .dx-cta:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:0;padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  @media (max-width:639px){.dx-ent{grid-template-columns:1fr}}
+  .dx-ent figure{margin:0;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#dcc9a8} .dx-ent img{width:100%;height:100%;object-fit:cover}
+  .dx-ent .st-name{font-size:var(--fs-h3);font-weight:700;color:var(--ink);line-height:1.3} .dx-ent .st-biz{font-size:var(--fs-small);font-weight:700;color:var(--rust);margin-top:2px}
+  .dx-ent p{margin-top:var(--s-2);font-size:var(--fs-body);line-height:1.7;color:var(--muted)}
+  .dx-ent .st-link{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s-2);font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:var(--radius-xs)}
+  .dx-rel{margin-top:var(--s-7)}
+  .dx-rel .lx-head{margin-bottom:var(--s-4)}
+  .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .dx-empty{padding:var(--s-8) 0;text-align:center;color:var(--muted)}
+</style>
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body>
+
 <header class="nav">
   <nav class="nav-bar" aria-label="التنقل الرئيسي">
 
     <!-- Brand (inline-start = right in RTL) -->
-    <a href="#top" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
+    <a href="index.html" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
       <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
       <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" decoding="async">
     </a>
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
-      <li><a class="nav-link" href="#top" aria-current="page">الرئيسية</a></li>
-      <li><a class="nav-link" href="#tours">الجولات</a></li>
-      <li><a class="nav-link" href="#destinations">الوجهات</a></li>
-      <li><a class="nav-link" href="#experiences">التجارب</a></li>
-      <li><a class="nav-link" href="#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="index.html">الرئيسية</a></li>
+      <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
+      <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
+      <li><a class="nav-link" href="index.html#experiences">التجارب</a></li>
+      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -817,11 +1432,11 @@
 
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden" role="dialog" aria-label="قائمة التنقل">
-    <a href="#top" aria-current="page">الرئيسية</a>
-    <a href="#tours">الجولات</a>
-    <a href="#destinations">الوجهات</a>
-    <a href="#experiences">التجارب</a>
-    <a href="#contact">تواصل معنا</a>
+    <a href="index.html">الرئيسية</a>
+    <a href="index.html#tours">الجولات</a>
+    <a href="index.html#destinations" aria-current="page">الوجهات</a>
+    <a href="index.html#experiences">التجارب</a>
+    <a href="index.html#contact">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -833,409 +1448,75 @@
   </div>
 </header>
 
-<button class="snd" id="lxSound" type="button" aria-pressed="false" aria-label="تشغيل الموسيقى">
-  <svg class="snd-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg>
-  <span class="snd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <span class="snd-t" id="lxSoundT">تشغيل الموسيقى</span>
-</button>
-<!-- Music: "Ibn Al-Noor" by Kevin MacLeod (incompetech.com), CC BY 4.0 -->
-<audio id="lxAudio" loop preload="none" data-try="ASSETS/audio/home-theme.mp3" data-fallback="ASSETS/audio/home-ambient.mp3"></audio>
-<script>(() => { const a = document.getElementById('lxAudio'); a.src = a.dataset.fallback; fetch(a.dataset.try, { method: 'HEAD' }).then(r => { if (r.ok) a.src = a.dataset.try; }).catch(() => {}); })();</script>
-
-<main id="top">
-<section class="hero" aria-label="اكتشف صعيد مصر">
-  <img class="hero-art" src="ASSETS/hero-bg.webp" alt="كولاج لصعيد مصر: سيدة نوبية مبتسمة، حرفي يشكّل الفخار، معابد وأشرعة على النيل" width="1440" height="923" fetchpriority="high">
-  <div class="copy px-5 sm:px-8 pt-6 pb-12 md:pb-16 max-w-xl">
-    <p class="eyebrow sec-eyebrow" data-readable>حكايات من قلب الصعيد</p>
-    <h1 class="display headline font-bold mt-3 text-[48px] sm:text-[60px] leading-[1.05]" style="letter-spacing:-0.01em" data-readable>
-      <span class="block" style="color:var(--ink)">اكتـــــــشف</span>
-      <span class="block" style="color:var(--rust)">صعيـد مصـر</span>
-    </h1>
-    <p class="lede mt-5 text-[17px] leading-[1.7]" style="color:var(--ink)" data-readable>من الأقصر إلى أسوان، اكتشف أماكن وتجارب وحرفاً تحكي قصة الجنوب كما يعيشها أهله.</p>
-    <a href="#paths" class="cta mt-6 h-12 px-7 text-[16px] rounded-md">ابدأ الاستكشاف</a>
-  </div>
-</section>
-
-<!-- ===== Paths: اختر ما يناسب مسارك ===== -->
-<section id="paths" class="paths" aria-labelledby="paths-title">
-  <img class="paths-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-
-  <div class="wrap">
-    <header class="paths-head">
-      <span class="paths-sub sec-eyebrow">اكتشف ما يناسبك في صعيد مصر</span>
-      <h2 id="paths-title" class="display sec-title paths-title"><span class="rule" aria-hidden="true"></span><span>اختــر ما يناســب مســارك</span><span class="rule" aria-hidden="true"></span></h2>
-    </header>
-
-    <ul class="paths-grid" role="list">
-      <li>
-        <article class="card">
-          <img class="card-img" src="ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e 1.webp" alt="رجلان صعيديان يتشاركان الشاي والتمر على ضفاف النيل" width="401" height="562" loading="lazy">
-          <span class="card-tint" aria-hidden="true"></span>
-          <span class="card-shade" aria-hidden="true"></span>
-          <div class="card-body">
-            <h3 class="card-title">للسياح والزوار</h3>
-            <p class="card-desc">عش تجربة أصيلة بين النيل والتاريخ والضيافة الصعيدية</p>
-            <a class="card-cta" href="#visitors"><span>استكشف المزيد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="card">
-          <img class="card-img" src="ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e 1 (1).webp" alt="سيدة مبتسمة تحمل منسوجات يدوية ملوّنة" width="401" height="562" loading="lazy">
-          <span class="card-tint" aria-hidden="true"></span>
-          <span class="card-shade" aria-hidden="true"></span>
-          <div class="card-body">
-            <h3 class="card-title">لرواد الأعمال</h3>
-            <p class="card-desc">تعرّف على الفرص الاستثمارية في الحرف والصناعات التراثية</p>
-            <a class="card-cta" href="#business"><span>استكشف المزيد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="card">
-          <img class="card-img" src="ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e 1 (2).webp" alt="تماثيل وأعمدة معبد الأقصر عند الغروب" width="401" height="562" loading="lazy">
-          <span class="card-tint" aria-hidden="true"></span>
-          <span class="card-shade" aria-hidden="true"></span>
-          <div class="card-body">
-            <h3 class="card-title">للجهات السياحية</h3>
-            <p class="card-desc">شراكات وفرص للمؤسسات والجهات السياحية لتطوير الوجهة معًا</p>
-            <a class="card-cta" href="#partners"><span>استكشف المزيد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-    </ul>
-  </div>
-</section>
-
-<!-- ===== Experiences: تجارب مختارة لك (expanding cards) ===== -->
-<section id="experiences" class="exp" aria-labelledby="exp-title">
-  <div class="wrap">
-    <header class="exp-head">
-      <span class="exp-eyebrow sec-eyebrow">لحظات تبقى معك</span>
-      <h2 id="exp-title" class="display sec-title exp-title"><span class="rule" aria-hidden="true"></span><span>تجارب مختـــــارة <em>لك</em></span><span class="rule" aria-hidden="true"></span></h2>
-    </header>
-
-    <div class="xa" id="xa" role="list">
-      <article class="xa-card" role="listitem" data-open="true">
-        <img class="xa-img" src="ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e-1448.webp" srcset="ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e-480.webp 480w, ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e-960.webp 960w, ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e-1440.webp 1440w, ASSETS/92b6be28-d5b4-4551-b96f-76959b0a217e-1448.webp 1448w" sizes="(max-width:767px) 100vw, 60vw" style="object-position:60% 50%" alt="فلوكة تعبر النيل عند الغروب بين الجبال والنخيل" loading="lazy">
-        <span class="xa-tint" aria-hidden="true"></span><span class="xa-shade" aria-hidden="true"></span>
-        <button class="xa-hit" type="button" aria-label="افتح: رحلة فلوكة عند الغروب">رحلة فلوكة عند الغروب</button>
-        <div class="xa-mini" aria-hidden="true"><span>رحلة فلوكة عند الغروب</span></div>
-        <div class="xa-full">
-          <div class="xa-copy">
-            <h3 class="xa-h">رحلة فلوكة عند الغروب</h3>
-            <p class="xa-p">استمتع بجمال النيل في رحلة هادئة بين أسوان وجزرها الساحرة، حيث يلتقي التاريخ بالطبيعة في أجمل صورة.</p>
-            <p class="xa-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>ساعتان تقريباً</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>أسوان</span></p>
-          </div>
-          <div class="xa-foot"><a class="xa-cta" href="#exp-felucca"><span>اكتشف التجربة</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="xa-card" role="listitem" data-open="false">
-        <img class="xa-img" src="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1448.webp" srcset="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-480.webp 480w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-960.webp 960w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1440.webp 1440w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1448.webp 1448w" sizes="(max-width:767px) 100vw, 60vw" alt="رجلان صعيديان يتشاركان الشاي والتمر على ضفاف النيل" loading="lazy">
-        <span class="xa-tint" aria-hidden="true"></span><span class="xa-shade" aria-hidden="true"></span>
-        <button class="xa-hit" type="button" aria-label="افتح: مذاقات صعيدية أصيلة">مذاقات صعيدية أصيلة</button>
-        <div class="xa-mini" aria-hidden="true"><span>مذاقات صعيدية أصيلة</span></div>
-        <div class="xa-full">
-          <div class="xa-copy">
-            <h3 class="xa-h">مذاقات صعيدية أصيلة</h3>
-            <p class="xa-p">رحلة في عالم النكهات المحلية والأطباق التقليدية التي تحكي قصة المكان، من خبز الفرن البلدي إلى شاي الغروب على النيل.</p>
-            <p class="xa-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>٢-٣ ساعات</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>أسوان</span></p>
-          </div>
-          <div class="xa-foot"><a class="xa-cta" href="#exp-food"><span>اكتشف التجربة</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="xa-card" role="listitem" data-open="false">
-        <img class="xa-img" src="ASSETS/image 66-1134.webp" srcset="ASSETS/image 66-480.webp 480w, ASSETS/image 66-960.webp 960w, ASSETS/image 66-1134.webp 1134w" sizes="(max-width:767px) 100vw, 60vw" alt="سيدة مبتسمة تحمل منسوجات يدوية ملوّنة" loading="lazy">
-        <span class="xa-tint" aria-hidden="true"></span><span class="xa-shade" aria-hidden="true"></span>
-        <button class="xa-hit" type="button" aria-label="افتح: حرف تمتد عبر الأجيال">حرف تمتد عبر الأجيال</button>
-        <div class="xa-mini" aria-hidden="true"><span>حرف تمتد عبر الأجيال</span></div>
-        <div class="xa-full">
-          <div class="xa-copy">
-            <h3 class="xa-h">حرف تمتد عبر الأجيال</h3>
-            <p class="xa-p">تعرف على الحرف اليدوية التقليدية وقابل الحرفيين المحليين في قرى الصعيد، وجرّب بنفسك النسيج والخزف والخوص.</p>
-            <p class="xa-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>ساعة ونصف</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>أسوان</span></p>
-          </div>
-          <div class="xa-foot"><a class="xa-cta" href="#exp-crafts"><span>اكتشف التجربة</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
-        </div>
-      </article>
-
-      <article class="xa-card" role="listitem" data-open="false">
-        <img class="xa-img" src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-1448.webp" srcset="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp 480w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-960.webp 960w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-1440.webp 1440w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-1448.webp 1448w" sizes="(max-width:767px) 100vw, 60vw" alt="تماثيل وأعمدة معبد الأقصر عند الغروب" loading="lazy">
-        <span class="xa-tint" aria-hidden="true"></span><span class="xa-shade" aria-hidden="true"></span>
-        <button class="xa-hit" type="button" aria-label="افتح: معابد تحكي التاريخ">معابد تحكي التاريخ</button>
-        <div class="xa-mini" aria-hidden="true"><span>معابد تحكي التاريخ</span></div>
-        <div class="xa-full">
-          <div class="xa-copy">
-            <h3 class="xa-h">معابد تحكي التاريخ</h3>
-            <p class="xa-p">اكتشف عظمة الحضارة المصرية القديمة في معابد الأقصر المهيبة، مع مرشد يروي حكايات الملوك والآلهة بين الأعمدة.</p>
-            <p class="xa-meta"><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg>٣-٤ ساعات</span><span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg>الأقصر</span></p>
-          </div>
-          <div class="xa-foot"><a class="xa-cta" href="#exp-temples"><span>اكتشف التجربة</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-<!-- ===== Journey: من الأقصر إلى أسوان ===== -->
-<section id="destinations" class="journey" aria-labelledby="journey-title">
-  <img class="journey-lotus journey-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.webp" alt="" aria-hidden="true" loading="lazy">
-  <img class="journey-lotus journey-lotus--end" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 3.webp" alt="" aria-hidden="true" loading="lazy">
-    <header class="journey-head">
-      <span class="journey-sub sec-eyebrow">رحلة بين مدينتين</span>
-      <h2 id="journey-title" class="display sec-title journey-title"><span class="rule" aria-hidden="true"></span><span>مـن الأقصر إلى أسـوان</span><span class="rule" aria-hidden="true"></span></h2>
-    </header>
-    <img class="journey-art" src="ASSETS/الاقصر وساوان.webp" alt="كولاج يصل بين بيوت النوبة الزرقاء في أسوان ومعابد الأقصر عبر النيل" width="1436" height="1006" loading="lazy">
-    <div class="journey-ctas">
-      <a class="journey-btn" href="luxor.html"><span>استكشف الأقصر</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-      <a class="journey-btn" href="aswan.html"><span>استكشف أسوان</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-    </div>
-</section>
-
-<!-- ===== Gems: ما وراء المألوف ===== -->
-<section id="gems" class="gems" aria-labelledby="gems-title">
-  <img class="gems-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-  <div class="wrap">
-    <header class="gems-head">
-      <span class="gems-eyebrow">وجهات وكنوز مخفية</span>
-      <h2 id="gems-title" class="display sec-title gems-title"><span class="rule" aria-hidden="true"></span><span>ما وراء المألـوف</span><span class="rule" aria-hidden="true"></span></h2>
-      <p class="gems-sub">استكشف أماكن فريدة وتجارب أصيلة وكنوزًا أقل شهرة في الأقصر وأسوان، بعيدًا عن المسارات السياحية المعتادة.</p>
-    </header>
-    <div class="gems-rail">
-      <button class="gems-nav gems-nav--prev" id="gems-prev" type="button" aria-label="الوجهة السابقة"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-      <ul class="gems-track" id="gems-track" role="list">
-      <li>
-        <article class="gem">
-          <div class="gem-media">
-            <img class="gem-img" src="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-1122.webp" srcset="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-480.webp 480w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.webp 960w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-1122.webp 1122w" sizes="(max-width:639px) 88vw, (max-width:1023px) 78vw, 33vw" alt="حرفية نوبية تعرض أعمالها اليدوية أمام النيل في أسوان" loading="lazy">
-            <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-            <span class="gem-loc "><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-            <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-          </div>
-          <div class="gem-body">
-            <span class="gem-cat">تجارب حرفية</span>
-            <h3 class="gem-title">ورشة الفضة النوبية</h3>
-            <p class="gem-desc">قابل الحرفيين المحليين في أسوان واصنع خاتمك الفضي الخاص باسمك بالخط النوبي.</p>
-            <a class="gem-cta" href="#gem-silver"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="gem">
-          <div class="gem-media">
-            <img class="gem-img" src="ASSETS/image 71-1062.webp" srcset="ASSETS/image 71-480.webp 480w, ASSETS/image 71-960.webp 960w, ASSETS/image 71-1062.webp 1062w" sizes="(max-width:639px) 88vw, (max-width:1023px) 78vw, 33vw" alt="يدا خزّاف تزخرفان إناءً فخاريًا بنقوش تقليدية" loading="lazy">
-            <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-            <span class="gem-loc gem-loc--olive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-            <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-          </div>
-          <div class="gem-body">
-            <span class="gem-cat">حرف محلية وتراث</span>
-            <h3 class="gem-title">قرية القرنة للفخار</h3>
-            <p class="gem-desc">زر قرية هادئة عند سفح جبال طيبة واكتشف تقنيات الفخار التقليدية المستوحاة من التصميم المصري القديم.</p>
-            <a class="gem-cta" href="#gem-qurna"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-      <li>
-        <article class="gem">
-          <div class="gem-media">
-            <img class="gem-img" src="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp" srcset="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-480.webp 480w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-960.webp 960w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1440.webp 1440w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp 1448w" sizes="(max-width:639px) 88vw, (max-width:1023px) 78vw, 33vw" alt="سيدة نوبية تنسج سلة من الخوص بين منتجاتها اليدوية" loading="lazy">
-            <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-            <span class="gem-loc gem-loc--ink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-            <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-          </div>
-          <div class="gem-body">
-            <span class="gem-cat">طبيعة وحرف يدوية</span>
-            <h3 class="gem-title">حرف جزيرة إلفنتين</h3>
-            <p class="gem-desc">استكشف الأركان الهادئة في جزيرة إلفنتين وتعلّم حرف الخوص والألياف الطبيعية من الحرفيات المحليات.</p>
-            <a class="gem-cta" href="#gem-elephantine"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </li>
-      </ul>
-      <button class="gems-nav gems-nav--next" id="gems-next" type="button" aria-label="الوجهة التالية"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-    </div>
-    <div class="gems-dots" id="gems-dots" role="tablist" aria-label="الوجهات"></div>
-    <div class="gems-foot"><a class="gems-cta" href="#all-destinations"><span>استكشف كل الوجهات</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></div>
-  </div>
-</section>
-
-<!-- ===== Stories: رواد يصنعون الأثر ===== -->
-<section id="business" class="stories" aria-labelledby="stories-title">
-  <img class="st-scene" src="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-2172.webp" alt="" aria-hidden="true" width="2172" height="724" loading="lazy">
-  <div class="wrap">
-    <header class="st-head">
-      <div>
-        <span class="st-eyebrow">قصص ملهمة من الصعيد</span>
-        <h2 id="stories-title" class="display st-title">رواد يصنعون الأثر</h2>
-        <p class="st-sub">تعرّف على سيدات وشباب من الأقصر وأسوان حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.</p>
+<main>
+  <section class="xh" id="dxHero" aria-labelledby="dx-title">
+    <div class="xh-crumb" id="dxCrumb"></div>
+    <div class="xh-media" id="xhMedia">
+      <div class="xh-shade"></div>
+      <div class="xh-cap">
+        <h1 class="xh-cap-title display" id="dx-title"></h1>
+        <p class="xh-cap-sub" id="dxSum"></p>
+        <div class="dx-tags" id="dxTags"></div>
       </div>
-      <a class="st-cta" href="#all-entrepreneurs"><span>استكشف جميع الرواد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-    </header>
-
-    <div class="st-grid">
-      <article class="st-feature" data-slot="0">
-        <img class="st-feature-img" src="ASSETS/Fatma Boghdady-1448.webp" srcset="ASSETS/Fatma Boghdady-480.webp 480w, ASSETS/Fatma Boghdady-960.webp 960w, ASSETS/Fatma Boghdady-1440.webp 1440w, ASSETS/Fatma Boghdady-1448.webp 1448w" sizes="(max-width:1023px) 100vw, 58vw" alt="فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها" loading="lazy" decoding="async" style="object-position:62% 35%">
-        <span class="st-tint" aria-hidden="true"></span>
-        <span class="st-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10V4.5a1.5 1.5 0 0 1 3 0V11M13 10.5V6a1.5 1.5 0 0 1 3 0v6.5M16 12v-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.8-2.4L4 15.5a1.4 1.4 0 0 1 2.2-1.7L7 15"/></svg><span>حرف يدوية</span></span>
-        <div class="st-panel">
-          <h3 class="st-name">فاطمة البغدادي</h3>
-          <p class="st-biz">الحرفجية</p>
-          <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-          <p class="st-desc">تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.</p>
-          <a class="st-link" href="#story-fatma"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-      </article>
-      <div class="st-side">
-        <article class="st-card" data-slot="1">
-          <figure><img class="" src="ASSETS/Zainab Gamal-1461.webp" srcset="ASSETS/Zainab Gamal-480.webp 480w, ASSETS/Zainab Gamal-960.webp 960w, ASSETS/Zainab Gamal-1440.webp 1440w, ASSETS/Zainab Gamal-1461.webp 1461w" sizes="(max-width:1023px) 50vw, 20vw" alt="زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها" loading="lazy" decoding="async" style="object-position:18% 45%"><span class="st-tag st-tag--olive"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9.5 8.5L12 4l2.5 4.5"/></svg><span>إكسسوارات</span></span></figure>
-          <div class="st-body">
-            <h3 class="st-name">زينب جمال</h3>
-            <p class="st-biz">زينب للإكسسوارات</p>
-            <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-            <p class="st-desc">تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.</p>
-            <a class="st-link" href="#story-zainab"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-        <article class="st-card" data-slot="2">
-          <figure><img class="" src="ASSETS/Manal Awaga-1448.webp" srcset="ASSETS/Manal Awaga-480.webp 480w, ASSETS/Manal Awaga-960.webp 960w, ASSETS/Manal Awaga-1440.webp 1440w, ASSETS/Manal Awaga-1448.webp 1448w" sizes="(max-width:1023px) 50vw, 20vw" alt="منال عوض الله في البيت النوبي تعرض أقمشة مطرزة أمام جدارية نوبية" loading="lazy" decoding="async" style="object-position:64% 45%"><span class="st-tag st-tag--ink"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 12l3-3 3 3 4-4"/></svg><span>مهارات وتدريب</span></span></figure>
-          <div class="st-body">
-            <h3 class="st-name">منال عوض الله</h3>
-            <p class="st-biz">البيت النوبي</p>
-            <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-            <p class="st-desc">تعمل منال على تدريب السيدات في المجتمع النوبي والحفاظ على الحرف اليدوية النوبية، من خلال منتجات تعبر عن الهوية والثقافة وتخلق فرصاً جديدة للنساء في أسوان.</p>
-            <a class="st-link" href="#story-manal"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </article>
-      </div>
+      <div class="xh-band" aria-hidden="true"></div>
     </div>
-  </div>
-</section>
-
-<!-- ===== Success stories: أفكار متجذّرة في الناس والمكان (editorial slider) ===== -->
-<section id="success" class="rv" aria-labelledby="rv-title">
+  </section>
   <div class="wrap">
-    <header class="rv-head">
-      <div>
-        <span class="rv-eyebrow">قصص نجاح</span>
-        <h2 id="rv-title" class="display rv-title">أفكار متجذّرة في الناس والمكان</h2>
-        <p class="rv-sub">اكتشف كيف يحافظ رواد الأعمال المحليون والنساء والشباب على التراث، ويخلقون الفرص، ويضعون صعيد مصر على الخريطة.</p>
+    <article class="ex dx" id="dx">
+      <div class="dxl">
+        <div class="dxl-main">
+          <section class="dxa" aria-labelledby="dxaH">
+            <div class="dxa-top">
+              <h2 class="dxa-title display" id="dxaH">عن التجربة</h2>
+              <div class="dxa-lead">
+                <p class="dxa-tag" id="dxaTag"></p>
+                <p class="dxa-sum"><b id="dxaLabel"></b> <span id="dxaSum"></span></p>
+              </div>
+            </div>
+            <figure class="dxa-main" id="dxaMain"></figure>
+            <div class="dxa-row">
+              <figure class="dxa-small" id="dxaSmall"></figure>
+              <div class="dxa-side">
+                <h3 class="dxa-h" id="dxaH2"></h3>
+                <p class="dx-desc" id="dxDesc"></p>
+              </div>
+            </div>
+          </section>
+          <section class="dx-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
+        </div>
+        <aside class="dxi" aria-labelledby="dxiH">
+          <div class="dxi-band" aria-hidden="true"></div>
+          <div class="dxi-body">
+            <h2 class="dxi-h" id="dxiH">المعلومات</h2>
+            <dl class="dxi-facts" id="dxFacts"></dl>
+            <div class="dxi-group"><h3 class="dxi-h">محور المحتوى</h3><div class="dxi-chips" id="dxiPillar"></div></div>
+            <div class="dxi-group" id="dxiAcc" hidden><h3 class="dxi-h">إمكانية الوصول</h3><div class="dxi-chips" id="dxiAccChips"></div></div>
+          </div>
+          <div class="dxi-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
+          <div class="dxi-actions">
+            <a class="dx-cta" id="dxContact" href="index.html#contact"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>تواصل مع مقدّم التجربة</span></a>
+            <a class="dx-cta dx-cta--ghost" id="dxDirections" href="#" target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span>احصل على الاتجاهات</span></a>
+            <p class="dxi-note">الحجز والدفع يتمان مباشرة مع مقدّم التجربة. المنصة تعرّفك به ولا تتقاضى أي رسوم.</p>
+          </div>
+        </aside>
       </div>
-      <a class="rv-cta" href="#all-stories"><span>عرض كل القصص</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-    </header>
-    <div class="rv-stage">
-      <div class="ss-grid">
-      <article class="ss-card ss-card--clay ss-card--tex">
-        <img class="ss-img" src="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp" srcset="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-480.webp 480w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-960.webp 960w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1440.webp 1440w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp 1448w" sizes="(max-width:899px) 100vw, 33vw" alt="حرفية نوبية تنسج سلة من الخوص أمام النيل في أسوان" loading="lazy" style="object-position:50% 25%">
-        <span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span>
-        <span class="ss-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-        <div class="ss-media" aria-hidden="true"></div>
-        <div class="ss-panel">
-          <div class="ss-body">
-            <span class="ss-cat">حرف يدوية وتراث</span>
-            <h3 class="ss-name display">روح نوبية</h3>
-            <p class="ss-desc">نحافظ على التراث النوبي حيًا من خلال الحرف اليدوية.</p>
-            <a class="ss-more" href="#story-ruh-nubia"><span>اقرأ القصة كاملة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
+      <section class="dxg" id="dxGal" aria-labelledby="dxgH" hidden>
+        <div class="dxg-in">
+          <p class="dxg-eyebrow">معرض الصور</p>
+          <h2 class="dxg-h display" id="dxgH"></h2>
+          <p class="dxg-sub" id="dxgSub"></p>
         </div>
-      </article>
-      <article class="ss-card ss-card--olive ss-card--tex">
-        <img class="ss-img" src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp" srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-480.webp 480w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1440.webp 1440w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w" sizes="(max-width:899px) 100vw, 33vw" alt="مرشد محلي يعرّف الزوار بمعبد الأقصر عند الغروب" loading="lazy" style="object-position:40% 35%">
-        <span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span>
-        <span class="ss-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-        <div class="ss-media" aria-hidden="true"></div>
-        <div class="ss-panel">
-          <div class="ss-body">
-            <span class="ss-cat">سياحة وتكنولوجيا</span>
-            <h3 class="ss-name display">تطبيق فسحة تريب</h3>
-            <p class="ss-desc">منصة سفر رقمية تربط الزوار بتجارب محلية أصيلة في أسوان.</p>
-            <a class="ss-more" href="#story-fusha-trip"><span>اقرأ القصة كاملة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </div>
-      </article>
-      <article class="ss-card ss-card--ink ss-card--tex">
-        <img class="ss-img" src="ASSETS/image 71-1062.webp" srcset="ASSETS/image 71-480.webp 480w, ASSETS/image 71-960.webp 960w, ASSETS/image 71-1062.webp 1062w" sizes="(max-width:899px) 100vw, 33vw" alt="يدا حرفي تزخرفان إناء فخاري بنقوش تقليدية" loading="lazy" style="object-position:50% 40%">
-        <span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span>
-        <span class="ss-loc"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-        <div class="ss-media" aria-hidden="true"></div>
-        <div class="ss-panel">
-          <div class="ss-body">
-            <span class="ss-cat">منتجات إبداعية</span>
-            <h3 class="ss-name display">كورنا</h3>
-            <p class="ss-desc">نمزج الإلهام القديم بالتصميم الحديث لنصنع منتجات فريدة صُنعت في الأقصر.</p>
-            <a class="ss-more" href="#story-korna"><span>اقرأ القصة كاملة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          </div>
-        </div>
-      </article>
-      </div>
-    </div>
+        <div class="dxg-stage" id="dxgStage" aria-label="صور التجربة"><div class="dxg-track" id="dxgTrack"></div></div>
+      </section>
+      <section class="dx-rel" id="dxRel" aria-labelledby="dxRelH" hidden>
+        <header class="lx-head"><h2 class="display lx-h" id="dxRelH">تجارب مشابهة</h2><a class="lx-all" id="dxRelAll" href="#"><span>عرض المزيد من التجارب</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a></header>
+        <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
+      </section>
+      <p class="dx-empty" id="dxEmpty" hidden>هذه التجربة غير موجودة. <a href="experiences.html" style="color:var(--rust);font-weight:700">العودة إلى الأنشطة والتجارب</a></p>
+    </article>
   </div>
-</section>
-
-<!-- ===== Events: فعاليات قادمة ===== -->
-<section id="tours" class="events" aria-labelledby="events-title">
-  <img class="events-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-  <div class="wrap">
-    <header class="events-head">
-      <span class="events-eyebrow sec-eyebrow">لا تفوّت ما يحدث</span>
-      <h2 id="events-title" class="display sec-title events-title"><span class="rule" aria-hidden="true"></span><span>فعـاليـــــات <em>قـادمـة</em></span><span class="rule" aria-hidden="true"></span></h2>
-    </header>
-
-    <div class="ev" id="ev">
-      <div class="ev-stage" aria-live="polite">
-        <div class="ev-info">
-          <span class="ev-cat" id="ev-cat"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18V6l10-2v12"/><circle cx="6.5" cy="18" r="2.5"/><circle cx="16.5" cy="16" r="2.5"/></svg><span>موسيقى</span></span>
-          <h3 class="ev-title" id="ev-title">أمسية نيلية<br>على ضفاف أسوان</h3>
-          <p class="ev-desc" id="ev-desc">استمتع بأجواء موسيقية ساحرة وسط جمال النيل وتحت النجوم.</p>
-          <p class="ev-meta">
-            <span class="ev-chip" id="ev-time"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></svg><span>6:00 مساءً</span></span>
-            <span class="ev-chip" id="ev-loc"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>أسوان</span></span>
-          </p>
-          <a class="ev-cta" id="ev-cta" href="#event-1"><span>اكتشف الفعالية</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-        <div class="ev-media">
-          <img class="ev-img" id="ev-img" src="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1448.webp" srcset="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-480.webp 480w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-960.webp 960w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1440.webp 1440w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1448.webp 1448w" sizes="(max-width:899px) 100vw, 60vw" style="object-position:50% 45%" alt="أمسية نيلية على ضفاف أسوان">
-          <span class="ev-shade" aria-hidden="true"></span>
-          <p class="ev-place" id="ev-place" aria-hidden="true"><b>ASWAN</b><span>A different kind of peace</span></p>
-          <button class="ev-nav ev-nav--prev" id="ev-prev" type="button" aria-label="الفعالية السابقة"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-          <button class="ev-nav ev-nav--next" id="ev-next" type="button" aria-label="الفعالية التالية"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-        </div>
-      </div>
-
-      <div class="ev-foot">
-        <div class="ev-thumbs" role="tablist" aria-label="الفعاليات القادمة">
-          <button class="ev-thumb" role="tab" aria-selected="true" type="button" data-i="0" aria-label="28 أكتوبر — أمسية نيلية على ضفاف أسوان"><img src="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1448.webp" srcset="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-480.webp 480w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-960.webp 960w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1440.webp 1440w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1448.webp 1448w" sizes="(max-width:767px) 100vw, 50vw" alt="" loading="lazy" decoding="async"><b>28<small>OCT</small></b></button>
-          <button class="ev-thumb" role="tab" aria-selected="false" type="button" data-i="1" aria-label="2 نوفمبر — سباق الفلايك السنوي"><img src="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1448.webp" srcset="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-480.webp 480w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-960.webp 960w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1440.webp 1440w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1448.webp 1448w" sizes="(max-width:767px) 100vw, 50vw" alt="" loading="lazy" decoding="async"><b>02<small>NOV</small></b></button>
-          <button class="ev-thumb" role="tab" aria-selected="false" type="button" data-i="2" aria-label="15 نوفمبر — مهرجان المائدة الصعيدية"><img src="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1448.webp" srcset="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-480.webp 480w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-960.webp 960w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1440.webp 1440w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1448.webp 1448w" sizes="(max-width:767px) 100vw, 50vw" alt="" loading="lazy" decoding="async"><b>15<small>NOV</small></b></button>
-          <button class="ev-thumb" role="tab" aria-selected="false" type="button" data-i="3" aria-label="22 نوفمبر — أسبوع الحرف اليدوية"><img src="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp" srcset="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-480.webp 480w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-960.webp 960w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1440.webp 1440w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp 1448w" sizes="(max-width:767px) 100vw, 50vw" alt="" loading="lazy" decoding="async"><b>22<small>NOV</small></b></button>
-        </div>
-        <a class="ev-all" href="#all-events"><span>عرض كل الفعاليات</span><i><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></i></a>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
-<!-- ===== Newsletter ===== -->
-<section id="contact" class="news" aria-labelledby="news-title">
-  <img class="news-bg" src="ASSETS/news letter.webp" alt="" aria-hidden="true" loading="lazy">
-  <div class="news-inner">
-    <h2 id="news-title" class="display sec-title news-title"><span class="rule" aria-hidden="true"></span><span>ابـقَ على تواصـل</span><span class="rule" aria-hidden="true"></span></h2>
-    <p class="news-sub">أحدث القصص، الفعاليات والفرص مباشرة إلى بريدك.</p>
-    <form class="news-form" id="news-form" novalidate>
-      <label class="news-field">
-        <span class="sr-only">بريدك الإلكتروني</span>
-        <input type="email" name="email" id="news-email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3 7l9 6 9-6"/></svg>
-      </label>
-      <button class="news-btn" type="submit"><span>اشترك الآن</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-    </form>
-    <p class="news-msg" id="news-msg" role="status" aria-live="polite"></p>
-  </div>
-</section>
-
-<!-- ===== Footer ===== -->
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
   <img class="footer-lotus footer-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.webp" alt="" aria-hidden="true" loading="lazy" width="383" height="383">
@@ -1243,17 +1524,17 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
-        <a class="footer-brand" href="#top" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
+        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
         <p class="footer-support">بدعم من</p>
         <div class="partner-logos"><img src="brand_assets/aecid.png" alt="AECID — Spanish Agency for International Development Cooperation" width="720" height="320" loading="lazy"><img class="tall" src="brand_assets/cideal.png" alt="Cideal" width="544" height="757" loading="lazy"></div>
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="#luxor">الأقصر</a><a href="aswan.html">أسوان</a><a href="#destinations">الوجهات</a><a href="#experiences">التجارب والمنتجات</a><a href="#tours">أفكار السفر</a><a href="#business">رواد الأعمال</a><a href="#map">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="index.html#destinations">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="index.html#business">رواد الأعمال</a><a href="index.html#map">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="#visitors">للسياح</a><a href="#business">لرواد الأعمال</a><a href="#partners">للجهات السياحية</a><a href="#about">عن المشروع</a><a href="#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="index.html#visitors">للسياح</a><a href="index.html#business">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1271,9 +1552,6 @@
   <img class="footer-strip" src="ASSETS/Group 23.webp" alt="" aria-hidden="true" width="1440" height="79" loading="lazy">
 </footer>
 
-</div><!-- /page -->
-
-<!-- ===== Accessibility drawer ===== -->
 <div id="a11yLayer" class="layer" hidden>
 <div id="backdrop" class="backdrop"></div>
 <aside id="a11yDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="a11yTitle" aria-hidden="true">
@@ -1360,7 +1638,6 @@
 <div id="a11yTip" role="tooltip"></div>
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="i18n.js"></script>
-
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -1516,370 +1793,107 @@
   applyAll();
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 <script>
-/* ===== Experiences: expanding cards (GSAP) ===== */
-(() => {
-  if (!window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger);
-  const root = document.getElementById('xa'); if (!root) return;
-  const cards = gsap.utils.toArray('.xa-card', root);
-  const GROW = 4.5;
-  let active = cards.findIndex(c => c.dataset.open === 'true'); if (active < 0) active = 0;
-  let tl = null, reduced = false;
-
-  // Initial state: the open card shows its content, the others show the vertical label
-  cards.forEach((c, i) => {
-    const open = i === active;
-    gsap.set(c, { flexGrow: open ? GROW : 1 });
-    gsap.set(c.querySelectorAll('.xa-copy > *, .xa-foot'), { autoAlpha: open ? 1 : 0, y: open ? 0 : 24 });
-    gsap.set(c.querySelector('.xa-mini'), { autoAlpha: open ? 0 : 1 });
-    c.dataset.open = String(open);
-  });
-
-  function expand(i) {
-    if (i === active || i < 0) return;
-    const prev = cards[active], next = cards[i]; active = i;
-    cards.forEach((c, k) => c.dataset.open = String(k === i));
-    if (tl) tl.kill();
-    const d = reduced ? 0 : 1;
-    tl = gsap.timeline({ defaults: { ease: 'expo.inOut', duration: 0.95 * d, overwrite: 'auto' } });
-    tl.to(cards, { flexGrow: (k) => (k === i ? GROW : 1) }, 0)                                   // widths re-balance together
-      .to(prev.querySelectorAll('.xa-copy > *, .xa-foot'), { autoAlpha: 0, y: 14, duration: 0.25 * d, stagger: 0.02 * d, ease: 'power2.in' }, 0)
-      .to(prev.querySelector('.xa-mini'), { autoAlpha: 1, duration: 0.35 * d, ease: 'power2.out' }, 0.35 * d)
-      .to(next.querySelector('.xa-mini'), { autoAlpha: 0, duration: 0.2 * d, ease: 'power2.out' }, 0)
-      .fromTo(next.querySelectorAll('.xa-copy > *, .xa-foot'), { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.8 * d, stagger: 0.08 * d, ease: 'power3.out' }, 0.4 * d);
-  }
-
-  // Interaction: hover on fine pointers, click / tap, keyboard focus, arrow keys
-  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
-  cards.forEach((c, i) => {
-    const hit = c.querySelector('.xa-hit');
-    hit.addEventListener('click', () => expand(i));
-    hit.addEventListener('focus', () => expand(i));
-    if (fine) c.addEventListener('pointerenter', () => expand(i));
-  });
-  root.addEventListener('keydown', (e) => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-    const dir = (e.key === 'ArrowLeft') === (document.documentElement.dir === 'rtl') ? 1 : -1;   // forward = left in RTL, right in LTR
-    const n = (active + dir + cards.length) % cards.length;
-    expand(n); cards[n].querySelector('.xa-hit').focus({ preventScroll: true }); e.preventDefault();
-  });
-
-  // Entrance on scroll, and reduced-motion handling via matchMedia
-  const mm = gsap.matchMedia();
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    reduced = false;
-    const intro = gsap.timeline({ scrollTrigger: { trigger: '#experiences', start: 'top 72%', once: true }, defaults: { ease: 'power3.out' } });
-    (window.__intros ||= []).push({ el: document.querySelector('#experiences'), tl: intro });
-    intro.from('#experiences .exp-head > *', { y: 28, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-         .from(cards, { y: 48, autoAlpha: 0, duration: 0.9, stagger: 0.08 }, 0.2);
-    return () => { if (intro.scrollTrigger) intro.scrollTrigger.kill(); intro.kill(); };
-  });
-  mm.add('(prefers-reduced-motion: reduce)', () => { reduced = true; });
-})();
+document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="experiences.js"></script>
+<script src="listing-shared.js"></script>
 <script>
-/* ===== Events carousel (GSAP) ===== */
 (() => {
-  if (!window.gsap) return;
-  const EVENTS = [
-    { cat: 'موسيقى', title: 'أمسية نيلية<br>على ضفاف أسوان', desc: 'استمتع بأجواء موسيقية ساحرة وسط جمال النيل وتحت النجوم.', time: '6:00 مساءً', loc: 'أسوان', place: ['ASWAN', 'A different kind of peace'], img: 'ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-1448.webp', pos: '50% 45%', href: '#event-1' },
-    { cat: 'رياضة ونيل', title: 'سباق الفلايك<br>السنوي', desc: 'عشرات المراكب الشراعية تتسابق على صفحة النيل في مشهد لا يُنسى.', time: '4:30 عصراً', loc: 'أسوان', place: ['ASWAN', 'Where the Nile sails'], img: 'ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1448.webp', pos: '50% 50%', href: '#event-2' },
-    { cat: 'طعام', title: 'مهرجان المائدة<br>الصعيدية', desc: 'تذوّق أطباق الصعيد الأصيلة من أيادي أمهات القرى وطهاتها.', time: '1:00 ظهراً', loc: 'الأقصر', place: ['LUXOR', 'Flavours of the south'], img: 'ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-1448.webp', pos: '50% 55%', href: '#event-3' },
-    { cat: 'حرف يدوية', title: 'أسبوع الحرف<br>اليدوية', desc: 'ورش مفتوحة مع الحرفيين: نسيج، خزف، وخوص من قلب القرى.', time: '10:00 صباحاً', loc: 'أسوان', place: ['NUBIA', 'Woven by hand'], img: 'ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp', pos: '50% 40%', href: '#event-4' },
-  ];
-  const $ = (s) => document.querySelector(s);
-  const info = $('#ev .ev-info'), img = $('#ev-img'), place = $('#ev-place'), thumbs = [...document.querySelectorAll('.ev-thumb')];
-  let cur = 0, busy = false, reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  const evData = () => { const L = I18N.events(); return L ? EVENTS.map((e, i) => Object.assign({}, e, L[i])) : EVENTS; };
-  function fill(e) {
-    $('#ev-cat span').textContent = e.cat; $('#ev-title').innerHTML = e.title; $('#ev-desc').textContent = e.desc;
-    $('#ev-time span').textContent = e.time; $('#ev-loc span').textContent = e.loc; $('#ev-cta').href = e.href;
-    place.innerHTML = `<b>${e.place[0]}</b><span>${e.place[1]}</span>`;
-    img.alt = e.title.replace('<br>', ' ');
-  }
-  function go(i) {
-    i = (i + EVENTS.length) % EVENTS.length; if (i === cur || busy) return;
-    const e = evData()[i]; cur = i; busy = true;
-    thumbs.forEach((t, k) => t.setAttribute('aria-selected', String(k === i)));
-    if (reduced) { fill(e); img.src = e.img; img.style.objectPosition = e.pos; busy = false; return; }
-    const items = info.children;
-    const tl = gsap.timeline({ defaults: { ease: 'power3.out' }, onComplete: () => { busy = false; } });
-    tl.to(items, { autoAlpha: 0, y: -12, duration: 0.25, stagger: 0.03, ease: 'power2.in' }, 0)
-      .to(img, { autoAlpha: 0, scale: 1.06, duration: 0.35, ease: 'power2.in' }, 0)
-      .to(place, { autoAlpha: 0, y: 8, duration: 0.2 }, 0)
-      .add(() => { fill(e); img.src = e.img; img.style.objectPosition = e.pos; })
-      .fromTo(img, { autoAlpha: 0, scale: 1.08 }, { autoAlpha: 1, scale: 1, duration: 1.1, ease: 'power2.out' })
-      .fromTo(items, { autoAlpha: 0, y: 18 }, { autoAlpha: 1, y: 0, duration: 0.55, stagger: 0.07 }, '<0.1')
-      .fromTo(place, { autoAlpha: 0, y: 8 }, { autoAlpha: 1, y: 0, duration: 0.4 }, '<0.2');
-  }
-  document.addEventListener('i18n:change', () => fill(evData()[cur]));
-  thumbs.forEach(t => t.addEventListener('click', () => go(+t.dataset.i)));
-  $('#ev-next').addEventListener('click', () => go(cur + 1));
-  $('#ev-prev').addEventListener('click', () => go(cur - 1));
-  $('#ev').addEventListener('keydown', (e) => { const fwd = document.documentElement.dir === 'rtl' ? 'ArrowLeft' : 'ArrowRight', back = fwd === 'ArrowLeft' ? 'ArrowRight' : 'ArrowLeft'; if (e.key === fwd) { go(cur + 1); e.preventDefault(); } if (e.key === back) { go(cur - 1); e.preventDefault(); } });
-
-  /* ---------- Gems rail: arrows, dots, favourites ---------- */
+  const { CATS, P, PR, AC, q, city, t, cityName, esc, svg, all, card, icon, crumb, pic, href, listHref } = EX;
+  const $ = id => document.getElementById(id);
+  const e = all().find(x => x.slug === q.get('slug'));
+  if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; $('dxEmpty').querySelector('a').href = listHref(city); return; }
+  const CAL = svg('<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>', 16), TAG = svg('<path d="M20 13l-7 7-9-9V4h7l9 9z"/><circle cx="7.5" cy="7.5" r="1.2"/>', 16), COIN = svg('<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v10c0 1.7 3.1 3 7 3s7-1.3 7-3V7M5 12c0 1.7 3.1 3 7 3s7-1.3 7-3"/>', 16), ACC = svg('<circle cx="12" cy="4.5" r="1.8"/><path d="M8 9h8M12 9v5l3.5 6M12 14l-3.5 6"/>', 16), MAIL = svg('<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/>', 16);
+  let map = null, active = 0;
   (() => {
-    const track = $('#gems-track'); if (!track) return;
-    const items = [...track.children], dots = $('#gems-dots');
-    const rtl = () => document.documentElement.dir === 'rtl';
-    const step = () => items[0].getBoundingClientRect().width + parseFloat(getComputedStyle(track).columnGap || 0);
-    const index = () => Math.round(Math.abs(track.scrollLeft) / step());
-    items.forEach((_, i) => { const b = document.createElement('button'); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-label', String(i + 1)); b.addEventListener('click', () => goTo(i)); dots.appendChild(b); });
-    const goTo = (i) => { i = Math.max(0, Math.min(items.length - 1, i)); track.scrollTo({ left: (rtl() ? -1 : 1) * i * step(), behavior: 'smooth' }); };
-    const sync = () => { const i = index(); [...dots.children].forEach((d, k) => d.setAttribute('aria-current', String(k === i))); $('#gems-prev').disabled = i === 0; $('#gems-next').disabled = i >= items.length - 1; };
-    $('#gems-next').addEventListener('click', () => goTo(index() + 1));
-    $('#gems-prev').addEventListener('click', () => goTo(index() - 1));
-    track.addEventListener('scroll', () => requestAnimationFrame(sync), { passive: true });
-    addEventListener('resize', sync); sync();
-    document.querySelectorAll('.gem-fav').forEach(b => b.addEventListener('click', () => { const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', on ? (window.I18N ? I18N.t('إزالة من المفضلة') : 'إزالة من المفضلة') : (window.I18N ? I18N.t('أضف إلى المفضلة') : 'أضف إلى المفضلة')); }));
-  })();
-
-  /* ---------- Stories rotation: the featured entrepreneur rotates every few seconds ---------- */
-  (() => {
-    const section = $('#business'); if (!section) return;
-    const feature = section.querySelector('.st-feature'), cards = [...section.querySelectorAll('.st-card')];
-    const t = (k) => (window.I18N ? I18N.t(k) : k);
-    const rm = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const ICO = {
-      hand: '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10V4.5a1.5 1.5 0 0 1 3 0V11M13 10.5V6a1.5 1.5 0 0 1 3 0v6.5M16 12v-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.8-2.4L4 15.5a1.4 1.4 0 0 1 2.2-1.7L7 15"/></svg>',
-      ring: '<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9.5 8.5L12 4l2.5 4.5"/></svg>',
-      train: '<svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3M7 12l3-3 3 3 4-4"/></svg>'
+    const xh = $('dxHero'), nav = document.querySelector('.nav-bar');
+    const size = () => {
+      const mobile = innerWidth < 768, vh = innerHeight;
+      const navB = nav ? nav.getBoundingClientRect().bottom : 0;
+      const w = Math.min(mobile ? 950 : 1550, innerWidth * 0.95);
+      const h = Math.min(mobile ? 600 : 800, vh * 0.85, vh - navB - 100);
+      const top = Math.max((vh - h) / 2, navB + 80);
+      xh.style.setProperty('--xh-w', w + 'px'); xh.style.setProperty('--xh-h', h + 'px'); xh.style.setProperty('--xh-top', top + 'px');
     };
-    const srcset = (b, max) => `ASSETS/${b}-480.webp 480w, ASSETS/${b}-960.webp 960w, ASSETS/${b}-1440.webp 1440w, ASSETS/${b}-${max}.webp ${max}w`;
-    const DATA = [
-      { b: 'Fatma Boghdady', max: 1448, posBig: '62% 35%', posSmall: '58% 40%', tag: 'حرف يدوية', tagCls: 'st-tag--clay', ico: 'hand', alt: 'فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها', name: 'فاطمة البغدادي', biz: 'الحرفجية', loc: 'الأقصر', href: '#story-fatma',
-        desc: 'تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.' },
-      { b: 'Zainab Gamal', max: 1461, posBig: '25% 40%', posSmall: '18% 45%', tag: 'إكسسوارات', tagCls: 'st-tag--olive', ico: 'ring', alt: 'زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها', name: 'زينب جمال', biz: 'زينب للإكسسوارات', loc: 'الأقصر', href: '#story-zainab',
-        desc: 'تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.' },
-      { b: 'Manal Awaga', max: 1448, posBig: '62% 40%', posSmall: '64% 45%', tag: 'مهارات وتدريب', tagCls: 'st-tag--ink', ico: 'train', alt: 'منال عوض الله في البيت النوبي تعرض أقمشة مطرزة أمام جدارية نوبية', name: 'منال عوض الله', biz: 'البيت النوبي', loc: 'أسوان', href: '#story-manal',
-        desc: 'تعمل منال على تدريب السيدات في المجتمع النوبي والحفاظ على الحرف اليدوية النوبية، من خلال منتجات تعبر عن الهوية والثقافة وتخلق فرصاً جديدة للنساء في أسوان.' }
-    ];
-    let order = [0, 1, 2], busy = false, visible = false, hold = false;
-    function fillTag(el, d) { el.className = 'st-tag ' + d.tagCls; el.innerHTML = ICO[d.ico] + '<span>' + t(d.tag) + '</span>'; }
-    function fillCopy(root, d, link) {
-      root.querySelector('.st-name').textContent = t(d.name); root.querySelector('.st-biz').textContent = t(d.biz);
-      root.querySelector('.st-loc span').textContent = t(d.loc); root.querySelector('.st-desc').textContent = t(d.desc);
-      const a = root.querySelector(link); a.href = d.href; a.querySelector('span').textContent = t('عرض القصة');
-    }
-    function paint() {
-      const f = DATA[order[0]], img = feature.querySelector('.st-feature-img');
-      img.src = `ASSETS/${f.b}-${f.max}.webp`; img.srcset = srcset(f.b, f.max); img.style.objectPosition = f.posBig; img.alt = t(f.alt);
-      fillTag(feature.querySelector('.st-tag'), f); fillCopy(feature.querySelector('.st-panel'), f, '.st-link');
-      cards.forEach((c, k) => { const d = DATA[order[k + 1]], im = c.querySelector('figure img');
-        im.src = `ASSETS/${d.b}-${d.max}.webp`; im.srcset = srcset(d.b, d.max); im.style.objectPosition = d.posSmall; im.alt = t(d.alt);
-        fillTag(c.querySelector('.st-tag'), d); fillCopy(c.querySelector('.st-body'), d, '.st-link'); });
-    }
-    function rotate() {
-      if (busy) return; busy = true;
-      order = [order[1], order[2], order[0]];
-      if (rm) { paint(); busy = false; return; }
-      // Switcher: each card glides to the slot it is moving into (feature -> card 2, card 1 -> feature, card 2 -> card 1),
-      // then the DOM is repainted underneath and the transforms are cleared. Cards never disappear.
-      // Layout morph: a clone of each card travels to the slot it is moving into (feature -> card 2,
-      // card 1 -> feature, card 2 -> card 1) by animating its real box, so the content reflows instead
-      // of stretching. Underneath, the grid is repainted, then the clones are removed.
-      const grid = section.querySelector('.st-grid'), g = grid.getBoundingClientRect();
-      const els = [feature, cards[0], cards[1]];
-      const from = els.map(e => e.getBoundingClientRect());
-      const dest = [cards[1], feature, cards[0]].map(e => e.getBoundingClientRect());
-      const clones = els.map((el, k) => {
-        const c = el.cloneNode(true); c.removeAttribute('data-slot');
-        Object.assign(c.style, { position: 'absolute', margin: 0, minHeight: 0, pointerEvents: 'none', zIndex: k === 1 ? 6 : 5,
-          left: (from[k].left - g.left) + 'px', top: (from[k].top - g.top) + 'px', width: from[k].width + 'px', height: from[k].height + 'px' });
-        grid.appendChild(c); return c;
-      });
-      els.forEach(e => { e.style.visibility = 'hidden'; });
-      const D = 1.15;
-      const tl = gsap.timeline({ onComplete: () => { clones.forEach(c => c.remove()); els.forEach(e => { e.style.visibility = ''; }); busy = false; } });
-      clones.forEach((c, k) => {
-        const d = dest[k];
-        tl.to(c, { left: d.left - g.left, top: d.top - g.top, width: d.width, height: d.height, duration: D, ease: 'power2.inOut' }, 0);
-      });
-      tl.add(paint, D * 0.9);
-    }
-    new IntersectionObserver((en) => { visible = en[0].isIntersecting; }, { threshold: 0.35 }).observe(section);
-    section.addEventListener('pointerenter', () => { hold = true; }); section.addEventListener('pointerleave', () => { hold = false; });
-    section.addEventListener('focusin', () => { hold = true; }); section.addEventListener('focusout', () => { hold = section.contains(document.activeElement); });
-    if (!rm) setInterval(() => { if (visible && !hold && !document.hidden) rotate(); }, 8000);
-    document.addEventListener('i18n:change', paint);
-    window.__stRotate = rotate;
+    size(); addEventListener('resize', size); addEventListener('load', size);
   })();
-
-  /* Section entrances on scroll */
-  const mm = gsap.matchMedia();
-  mm.add('(prefers-reduced-motion: no-preference)', () => {
-    const tls = [];
-    const reg = (tl, sel) => { (window.__intros ||= []).push({ el: document.querySelector(sel), tl }); return tl; };
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#destinations', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#destinations .journey-head > *', { y: 26, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#destinations .journey-art', { y: 40, autoAlpha: 0, scale: 0.98, duration: 1.1 }, 0.15)
-      .from('#destinations .journey-btn', { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.1 }, 0.5), '#destinations'));
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#gems', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#gems .gems-head > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#gems .gem', { y: 36, autoAlpha: 0, duration: 0.8, stagger: 0.14, clearProps: 'transform' }, 0.25), '#gems'));
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#business', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#business .st-head > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#business .st-feature', { y: 40, autoAlpha: 0, duration: 0.9 }, 0.2)
-      .from('#business .st-card', { y: 30, autoAlpha: 0, duration: 0.7, stagger: 0.12 }, 0.4), '#business'));
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#success', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#success .rv-head > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#success .ss-card', { y: 36, autoAlpha: 0, duration: 0.8, stagger: 0.14 }, 0.3), '#success'));
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#tours', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#tours .events-head > *', { y: 26, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#tours .ev-stage', { y: 40, autoAlpha: 0, duration: 0.9 }, 0.2)
-      .from('#tours .ev-thumb', { y: 18, autoAlpha: 0, duration: 0.5, stagger: 0.06 }, 0.5)
-      .from('#tours .ev-all', { autoAlpha: 0, duration: 0.5 }, 0.7), '#tours'));
-    tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#contact', start: 'top 75%', once: true }, defaults: { ease: 'power3.out' } })
-      .from('#contact .news-inner > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 }), '#contact'));
-    return () => tls.forEach(t => { if (t.scrollTrigger) t.scrollTrigger.kill(); t.kill(); });
-  });
-
-  /* Newsletter form */
-  const form = $('#news-form'), email = $('#news-email'), msg = $('#news-msg');
-  form.addEventListener('submit', (e) => {
-    e.preventDefault(); const v = email.value.trim();
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = I18N.t('من فضلك أدخل بريداً إلكترونياً صحيحاً.'); email.focus(); gsap.fromTo(email, { x: -6 }, { x: 0, duration: 0.4, ease: 'elastic.out(1,0.3)' }); return; }
-    msg.textContent = I18N.t('تم الاشتراك! سنرسل لك أحدث القصص والفعاليات.'); form.reset();
-    gsap.fromTo(msg, { autoAlpha: 0, y: 6 }, { autoAlpha: 1, y: 0, duration: 0.5 });
-  });
-})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
-<script>
-/* ===== Motion polish (GSAP): language crossfade, card tilt, eased anchor scrolling, parallax, hero intro ===== */
-(() => {
-  if (!window.gsap) return;
-  gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
-  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
-  const EASE = 'power3.out';
-
-  /* Mirror the hero collage in LTR (GSAP owns this transform, so intro/parallax keep it) */
-  const flipArt = () => gsap.set('.hero-art', { scaleX: document.documentElement.dir === 'ltr' ? -1 : 1 });
-  flipArt(); document.addEventListener('i18n:change', flipArt);
-
-  /* 1. Language switch: soft crossfade instead of a hard swap */
-  let switching = false;
-  window.switchLang = (l) => {
-    if (switching || l === I18N.lang) { if (!switching) I18N.set(l); return; }
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { I18N.set(l); return; }
-    switching = true;
-    const page = document.getElementById('page');
-    gsap.timeline({ onComplete: () => { switching = false; } })
-      .to(page, { autoAlpha: 0, y: 10, duration: 0.28, ease: 'power2.in' })
-      .add(() => { I18N.set(l); ScrollTrigger.refresh(); })
-      .to(page, { autoAlpha: 1, y: 0, duration: 0.55, ease: EASE });
-  };
-
-  /* 2. Eased anchor scrolling (nav, buttons, footer) */
-  document.addEventListener('click', (e) => {
-    const a = e.target.closest('a[href^="#"]'); if (!a) return;
-    const id = a.getAttribute('href'); if (id.length < 2) return;
-    const target = document.querySelector(id); if (!target) return;
-    e.preventDefault();
-    if (matchMedia('(prefers-reduced-motion: reduce)').matches) { target.scrollIntoView(); return; }
-    const dist = Math.abs(target.getBoundingClientRect().top);
-    gsap.to(window, { scrollTo: { y: target, offsetY: id === '#top' ? 0 : 24, autoKill: true }, duration: gsap.utils.clamp(0.6, 1.4, dist / 1400), ease: 'power3.inOut' });
-    history.replaceState(null, '', id);
-  });
-
-  gsap.matchMedia().add('(prefers-reduced-motion: no-preference)', () => {
-    const kills = [];
-
-    /* 3. Hero intro on load */
-    const heroCopy = document.querySelector('.hero .copy');
-    if (heroCopy) {
-      const intro = gsap.timeline({ defaults: { ease: EASE } })
-        .from('.hero-art', { yPercent: -3, autoAlpha: 0, duration: 1.4, ease: 'power2.out' }, 0)
-        .from('.hero .eyebrow', { y: 18, autoAlpha: 0, duration: 0.7 }, 0.25)
-        .from('.hero .headline > span', { y: 34, autoAlpha: 0, duration: 0.9, stagger: 0.12 }, 0.35)
-        .from('.hero .lede', { y: 18, autoAlpha: 0, duration: 0.7 }, 0.7)
-        .from('.hero .cta', { y: 14, autoAlpha: 0, duration: 0.6 }, 0.85)
-        .from('.nav-bar', { y: -16, autoAlpha: 0, duration: 0.8 }, 0.1);
-      kills.push(intro);
+  /* gallery: the experience's own pictures only; shown when there are at least three */
+  const GAL = e.gal || e.imgs;
+  let galOn = false;
+  function gallery() {
+    const box = $('dxGal'); if (GAL.length < 3) { box.hidden = true; return; } box.hidden = false;
+    $('dxgH').textContent = t('لقطات من') + ' ' + t(e.n); $('dxgSub').textContent = t(e.s);
+    const track = $('dxgTrack'), N = 8;
+    if (!track.children.length) {
+      /* two copies so the strip never shows its seam; each picture is cut into vertical slices that bend on the cylinder */
+      const slice = (im, i, k) => '<div class="dxg-slice' + (i === 0 ? ' dxg-slice--first' : i === N - 1 ? ' dxg-slice--last' : '') + '" style="--i:' + i + '" data-p="' + k + '" data-i="' + i + '">' + pic(im, '360px') + '</div>';
+      let k = 0; track.innerHTML = [0, 1].map(c => GAL.map(im => { const h = Array.from({ length: N }, (_, i) => slice(im, i, k)).join(''); k++; return h; }).join('')).join('');
+      track.querySelectorAll('img').forEach((im, j) => { if (j >= N * GAL.length || j % N) im.setAttribute('aria-hidden', 'true'); });
+      glide(track, N);
     }
-
-    /* 4. Paths section reveal (was static) */
-    const paths = gsap.timeline({ scrollTrigger: { trigger: '#paths', start: 'top 72%', once: true }, defaults: { ease: EASE } })
-      .from('#paths .paths-head > *', { y: 26, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#paths .card', { y: 46, autoAlpha: 0, duration: 0.9, stagger: 0.1 }, 0.2);
-    (window.__intros ||= []).push({ el: document.querySelector('#paths'), tl: paths }); kills.push(paths);
-
-    /* 5. Gentle parallax on artwork layers */
-    const par = (sel, y, extra = {}) => { const el = document.querySelector(sel); if (!el) return;
-      kills.push(gsap.to(el, { yPercent: y, ease: 'none', ...extra, scrollTrigger: { trigger: el.closest('section') || el, start: 'top bottom', end: 'bottom top', scrub: 0.6 } })); };
-    par('.paths-fronds', -8); par('.events-fronds', -6); par('.journey-lotus--start', -14); par('.journey-lotus--end', -14);
-    kills.push(gsap.to('.hero-art', { yPercent: 10, ease: 'none', scrollTrigger: { trigger: '.hero', start: 'top top', end: 'bottom top', scrub: 0.6 } }));
-
-    /* 6. Pointer-following tilt + lift on cards (fine pointers only) */
-    if (fine) {
-      const tilt = (sel, maxDeg, lift) => document.querySelectorAll(sel).forEach(card => {
-        card.classList.add('js-tilt');
-        const rx = gsap.quickTo(card, 'rotationX', { duration: 0.7, ease: EASE }), ry = gsap.quickTo(card, 'rotationY', { duration: 0.7, ease: EASE });
-        const yy = gsap.quickTo(card, 'y', { duration: 0.6, ease: EASE }), sc = gsap.quickTo(card, 'scale', { duration: 0.6, ease: EASE });
-        gsap.set(card, { transformPerspective: 1000, transformOrigin: '50% 50%' });
-        card.addEventListener('pointerenter', () => { yy(-lift); sc(1.012); });
-        card.addEventListener('pointermove', (e) => { const r = card.getBoundingClientRect(); const px = (e.clientX - r.left) / r.width - 0.5, py = (e.clientY - r.top) / r.height - 0.5; ry(px * maxDeg); rx(-py * maxDeg); });
-        card.addEventListener('pointerleave', () => { rx(0); ry(0); yy(0); sc(1); });
-      });
-      tilt('#paths .card', 5, 8); tilt('.ev-thumb', 8, 3); tilt('.ev-stage', 1.6, 0);
-      // magnetic buttons: drift a few px toward the pointer
-      document.querySelectorAll('.cta,.card-cta,.xa-cta,.ev-cta,.journey-btn,.news-btn,.reset').forEach(btn => {
-        const mx = gsap.quickTo(btn, 'x', { duration: 0.5, ease: EASE }), my = gsap.quickTo(btn, 'y', { duration: 0.5, ease: EASE });
-        btn.addEventListener('pointermove', (e) => { const r = btn.getBoundingClientRect(); mx(((e.clientX - r.left) / r.width - 0.5) * 8); my(((e.clientY - r.top) / r.height - 0.5) * 6); });
-        btn.addEventListener('pointerleave', () => { mx(0); my(0); });
-      });
-    }
-
-    return () => kills.forEach(t => { if (t.scrollTrigger) t.scrollTrigger.kill(); t.kill(); });
-  });
-})();
-</script>
-<script>
-/* Fail-safe: never leave a section hidden if its scroll reveal did not fire */
-(() => {
-  if (!window.gsap || !window.ScrollTrigger) return;
-  const refresh = () => ScrollTrigger.refresh();
-  window.addEventListener('load', refresh);
-  document.querySelectorAll('img[loading="lazy"]').forEach(i => i.complete || i.addEventListener('load', refresh, { once: true }));
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(en => {
-      if (!en.isIntersecting) return;
-      const item = (window.__intros || []).find(x => x.el === en.target);
-      setTimeout(() => { if (item && item.tl.progress() === 0 && !item.tl.isActive()) item.tl.play(0); }, 900);
-      io.unobserve(en.target);
-    });
-  }, { threshold: 0.15 });
-  const arm = () => (window.__intros || []).forEach(x => x.el && io.observe(x.el));
-  arm(); window.addEventListener('load', arm);
-  // absolute last resort: 8s after load, reveal anything still at progress 0
-  window.addEventListener('load', () => setTimeout(() => (window.__intros || []).forEach(x => { if (x.tl.progress() === 0) x.tl.progress(1); }), 8000));
-})();
-</script>
-<script>document.querySelectorAll('svg').forEach(s => { const p = s.querySelector('path'); if (p && /^M19 12H5M11 6l-6 6 6 6$/.test(p.getAttribute('d') || '')) s.classList.add('fwd'); });</script>
-<script>
-/* Ambient music: starts on the visitor's first interaction (browsers block sound before that), fades in, and remembers a mute */
-(() => {
-  const a = document.getElementById('lxAudio'), b = document.getElementById('lxSound'), tx = document.getElementById('lxSoundT'); if (!a || !b) return;
-  const KEY = 'se-sound', MAX = 0.35; let fade = 0, on = false;
-  const muted = () => { try { return localStorage.getItem(KEY) === 'off'; } catch { return false; } };
-  const save = v => { try { localStorage.setItem(KEY, v); } catch {} };
-  function ui() { b.setAttribute('aria-pressed', String(on)); const l = I18N.t(on ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى'); b.setAttribute('aria-label', l); tx.textContent = l; }
-  function ramp(to, done) { cancelAnimationFrame(fade); const from = a.volume, t0 = performance.now(); const step = t => { const k = Math.max(0, Math.min(1, (t - t0) / 1400)); a.volume = Math.max(0, Math.min(1, from + (to - from) * k)); if (k < 1) fade = requestAnimationFrame(step); else if (done) done(); }; fade = requestAnimationFrame(step); }
-  function play() { a.volume = 0; return a.play().then(() => { on = true; ui(); ramp(MAX); }).catch(() => { on = false; ui(); }); }
-  function stop() { on = false; ui(); ramp(0, () => a.pause()); }
-  b.addEventListener('click', e => { e.stopPropagation(); if (on) { save('off'); stop(); } else { save('on'); play(); } });
-  const first = e => { if (e.target.closest && e.target.closest('#lxSound')) return; off(); if (!muted() && !on) play(); };
-  const evs = ['pointerdown', 'keydown', 'wheel', 'touchstart'], off = () => evs.forEach(n => removeEventListener(n, first, true));
-  evs.forEach(n => addEventListener(n, first, { capture: true, passive: true }));
-  document.addEventListener('i18n:change', ui); ui();
-  /* try to start right away; if the browser refuses sound before a gesture, the first interaction starts it */
-  if (!muted()) play().then(() => { if (on) off(); });
-  window.__snd = { get on() { return on; }, get vol() { return a.volume; }, get paused() { return a.paused; } };
+    track.querySelectorAll('img').forEach((im, j) => { im.alt = j % N ? '' : t(GAL[Math.floor(j / N) % GAL.length].alt); });
+  }
+  function glide(track, N) {
+    const stage = $('dxgStage'), slices = [...track.children], n = GAL.length;
+    const still = matchMedia('(prefers-reduced-motion:reduce)');
+    let x = 0, last = 0, paused = false, pw = 0, gap = 0, pitch = 0, setW = 0, sw = 0, R = 0, raf = 0;
+    const probe = document.createElement('div'); probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;width:var(--pw);height:var(--gap)'; stage.appendChild(probe);
+    const measure = () => {
+      pw = probe.offsetWidth; gap = probe.offsetHeight;
+      pitch = pw + gap; setW = pitch * n; sw = stage.clientWidth; R = sw * 0.85;
+    };
+    const place = () => {
+      const cx = sw / 2, w = pw / N;
+      for (let j = 0; j < slices.length; j++) {
+        const el = slices[j], p = +el.dataset.p, i = +el.dataset.i;
+        const mid = x + p * pitch + (i + .5) * w;            /* slice centre in stage coordinates */
+        if (mid < -w || mid > sw + w) { el.style.transform = 'translate3d(-9999px,0,0)'; continue; }
+        const th = (mid - cx) / R;                             /* angle on the cylinder */
+        const tx = cx + R * Math.sin(th) - w / 2, tz = R * (1 - Math.cos(th));
+        el.style.transform = 'translate3d(' + tx + 'px,0,' + tz + 'px) rotateY(' + (-th) + 'rad)';
+      }
+    };
+    const tick = now => {
+      raf = requestAnimationFrame(tick);
+      const dt = last ? Math.min(48, now - last) : 0; last = now;
+      if (!paused && !still.matches) { x -= dt * 0.34; if (x <= -setW) x += setW; }
+      place();
+    };
+    measure(); x = sw / 2 - pw / 2 - setW; if (x <= -setW) x += setW;
+    addEventListener('resize', () => { measure(); if (x <= -setW) x += setW; place(); });
+    stage.addEventListener('pointerenter', () => { paused = true; }); stage.addEventListener('pointerleave', () => { paused = false; });
+    new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) { if (!raf) { last = 0; raf = requestAnimationFrame(tick); } } else if (raf) { cancelAnimationFrame(raf); raf = 0; } }); }, { threshold: 0 }).observe(stage);
+    place();
+    galOn = true;
+  }
+  function render() {
+    const cn = cityName();
+    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], [EX.CITIES[city].ar, city + '.html'], ['الأنشطة والتجارب', listHref(city)], [e.n]]);
+    $('dx-title').textContent = t(e.n); document.title = t(e.n) + ' — ' + cn + ' — ' + t('صعيد مصر');
+    $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + svg(CATS[e.c].p, 14) + esc(t(CATS[e.c].n)) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
+    $('dxSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
+    $('dxaTag').textContent = t(CATS[e.c].n) + ' · ' + (e.dur ? t(e.dur) : cn);
+    $('dxaLabel').textContent = t('باختصار:'); $('dxaSum').textContent = t(e.s);
+    $('dxaH2').textContent = t(e.n);
+    $('dxaMain').innerHTML = pic(e.imgs[0], '(min-width:1024px) 55vw, 95vw');
+    $('dxaSmall').innerHTML = pic(e.imgs[1] || e.imgs[0], '(min-width:1024px) 30vw, 95vw');
+    gallery();
+    const hero = $('xhMedia').querySelector('img'); const im = e.imgs[active];
+    if (hero) hero.remove(); $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="95vw" alt="' + esc(t(im.alt)) + '" fetchpriority="high" decoding="async">');
+    const facts = [[EX.PIN, 'الموقع', cn], [svg(CATS[e.c].p, 16), 'الفئة', t(CATS[e.c].n)], e.dur && [CAL, 'المدة', t(e.dur)], e.pr && [COIN, 'السعر', PR[e.pr]]].filter(Boolean);
+    $('dxFacts').innerHTML = facts.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
+    $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
+    $('dxiAcc').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('dxiAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + ACC + esc(t(AC[k])) + '</span>').join('');
+    const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1];
+    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض القصة')) + '</span>' + EX.ARW + '</a></div>'; }
+    const rel = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p)).slice(0, 4);
+    if (rel.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = listHref(city, e.c); }
+    if (e.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: e.ll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(e.ll, { icon: icon(e.c), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
+  }
+  document.addEventListener('i18n:change', render); render();
+  window.__dx = { slug: e.slug, city };
 })();
 </script>
 </body>
