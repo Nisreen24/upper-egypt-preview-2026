@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>الأنشطة والتجارب — صعيد مصر</title>
+<title>الوجهة — صعيد مصر</title>
 <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
@@ -1238,7 +1238,6 @@
 
   /* ===== experiences listing + detail ===== */
   body{background:#fbf7ef}
-
   /* ===== listing hero: the Luxor hero in its settled state, without the scroll expansion ===== */
   .xh{--paper:#fbf7ef;--xh-top:220px;--xh-w:min(1550px,95vw);--xh-h:720px;--xh-x:calc((100% - var(--xh-w)) / 2 + 4px);
     position:relative;width:100%;padding-top:var(--xh-top);background:var(--paper);isolation:isolate}
@@ -1259,10 +1258,9 @@
   .xh-cap .xh-cap-loc{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.4}
   @media (max-width:767px){.xh-cap .xh-cap-loc{margin-top:18px}}
   .xh-cap-loc svg{flex:none}
+  .xh-cap .dx-tags{margin-top:28px}
+  @media (max-width:767px){.xh-cap .dx-tags{margin-top:18px}}
   .ex{padding-top:var(--s-7);padding-bottom:var(--s-8);--paper:#fbf7ef}
-  .ls-switch{margin-bottom:var(--s-4)}
-  .ls-switch .mp-chip{text-decoration:none}
-
   .ex-crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
   .ex-crumb li{display:inline-flex;align-items:center;gap:8px}
   .ex-crumb li + li::before{content:"";width:6px;height:6px;border-block-start:1.5px solid currentColor;border-inline-end:1.5px solid currentColor;transform:rotate(-45deg);opacity:.7}
@@ -1275,24 +1273,21 @@
   .ex-bar{margin-top:var(--s-5)}
   .ex-count{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-4);font-size:var(--fs-body);font-weight:700;color:var(--ink)}
   .ex-body{display:grid;gap:var(--s-4);margin-top:var(--s-3);align-items:start}
-  .ex-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
-  @media (min-width:1024px){.ex .ex-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  @media (min-width:1024px){.ex-body{grid-template-columns:minmax(0,1fr) 380px}html[dir="rtl"] .ex-body{grid-template-columns:380px minmax(0,1fr)}html[dir="rtl"] .ex-map{order:1}html[dir="rtl"] .ex-body > div{order:2}}
+  @media (min-width:1280px){.ex-body{grid-template-columns:minmax(0,1fr) 440px}html[dir="rtl"] .ex-body{grid-template-columns:440px minmax(0,1fr)}}
+  .ex-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
   .ex-grid .gem{transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
   .ex-grid .gem.is-on{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.18)}
   .gem-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:var(--s-3);font-size:var(--fs-small);color:var(--muted)}
   .gem-meta span{display:inline-flex;align-items:center;gap:6px}
   .gem-pil{font-size:var(--fs-label);color:var(--muted);margin-top:-2px}
+  .ex-map{position:sticky;top:calc(var(--tb-top,100px) + 16px)}
+  .ex-map .mp-map{height:min(72vh,720px)}
   #exMap,#dxMap{position:absolute;inset:0;z-index:0}
   #exMap .leaflet-tile-pane,#dxMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)}
+  @media (max-width:1023px){.ex-map{position:relative;top:auto}.ex-map .mp-map{height:420px}.ex-map .mp-open{display:none}}
   .mp-empty{padding:var(--s-6) var(--s-4);text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:var(--s-3)}
   /* detail */
-  .dx-hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(62vh,560px);display:flex;align-items:flex-end;background:#1a130c;color:#fff;margin-top:calc(var(--s-8) + 40px);border-radius:var(--radius-card-lg)}
-  .dx-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
-  .dx-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.85) 0%,rgba(18,11,6,.35) 50%,rgba(18,11,6,.25) 100%)}
-  .dx-hero .ex-crumb{position:absolute;top:var(--s-3);inset-inline:var(--s-4)}
-  .dx-hero .ex-crumb ol{color:rgba(255,255,255,.85)} .dx-hero .ex-crumb [aria-current]{color:#fff} .dx-hero .ex-crumb a:hover{color:#f3c9a8}
-  .dx-hero-in{position:relative;padding:var(--s-8) var(--s-4) var(--s-5);max-width:60ch}
-  @media (min-width:768px){.dx-hero-in{padding-inline:var(--s-6)}}
   .dx-title{font-size:clamp(34px,4.6vw,64px);line-height:1.15;font-weight:700;text-shadow:0 2px 16px rgba(0,0,0,.35)}
   .dx-tags{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2);margin-top:var(--s-3)}
   .dx-tag{display:inline-flex;align-items:center;gap:6px;height:32px;padding-inline:12px;border-radius:var(--radius-full);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:600;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
@@ -1304,22 +1299,87 @@
   .dx-gal button:hover{transform:translateY(-3px)} .dx-gal button:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:3px}
   .dx-gal button[aria-pressed="true"]{outline:3px solid var(--rust);outline-offset:3px}
   .dx-gal img{width:100%;height:100%;object-fit:cover}
-  .dx-body{display:grid;gap:var(--s-5);margin-top:var(--s-6);align-items:start}
-  @media (min-width:1024px){.dx-body{grid-template-columns:minmax(0,1fr) 360px;gap:var(--s-6)}}
+  /* two columns after the hero: the story on the start side, the information card on the end side */
+  .dxl{display:grid;gap:var(--s-5);align-items:start}
+  @media (min-width:1024px){.dxl{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}}
+  @media (min-width:1280px){.dxl{grid-template-columns:minmax(0,1fr) 420px}}
+  .dxa-top{display:grid;gap:var(--s-3);align-items:end}
+  @media (min-width:768px){.dxa-top{grid-template-columns:auto minmax(0,1fr);gap:var(--s-5)}html.lang-latin .dxa-top{grid-template-columns:1fr}}
+  .dxa-title{margin:0;max-width:8ch;font-size:clamp(52px,5.6vw,100px);line-height:1;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  html.lang-latin .dxa-title{max-width:none;font-size:clamp(40px,2.9vw,56px);line-height:.95;letter-spacing:-.04em}
+  .dxa-tag{margin:0;font-size:var(--fs-small);line-height:1.5;color:var(--ink)}
+  .dxa-sum{margin:var(--s-2) 0 0;max-width:40ch;font-size:var(--fs-body);line-height:1.7;color:var(--body)}
+  .dxa-sum b{color:var(--ink);font-weight:700}
+  .dxa-main,.dxa-small{margin:0;overflow:hidden;background:#dcc9a8}
+  .dxa-main{margin-top:var(--s-5);border-radius:clamp(28px,3vw,52px);aspect-ratio:753/370}
+  .dxa-small{border-radius:clamp(20px,2vw,36px);aspect-ratio:3/2}
+  .dxa-main img,.dxa-small img{display:block;width:100%;height:100%;object-fit:cover}
+  .dxa-row{display:grid;gap:var(--s-4);margin-top:var(--s-5);align-items:start}
+  @media (min-width:768px){.dxa-row{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--s-5)}}
+  .dxa-h{margin:0;font-size:clamp(26px,2.4vw,40px);line-height:1.15;font-weight:700;color:var(--ink);letter-spacing:-.02em}
+  .dxa-side .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body);line-height:1.75;max-width:none}
+  .dxa-lead{margin:var(--s-3) 0 0;max-width:70ch;font-size:var(--fs-body-lg);line-height:1.7;font-weight:700;color:var(--ink)}
+  .dxa-text{margin:var(--s-2) 0 0;max-width:70ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)}
+  .dxa-text.is-clamped{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+  .dxa-more{display:inline-flex;align-items:center;min-height:44px;margin-top:var(--s-1);font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:var(--radius-xs)}
+  .dxa-more:hover{color:var(--rust-deep)} .dxa-more:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .dxa-chips{margin-top:var(--s-4)}
+  .dxa-chips .dxi-chip{min-height:40px;padding:8px 14px;font-size:var(--fs-small)}
+  .dxa-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:150px;gap:var(--s-2);margin-top:var(--s-5)}
+  @media (min-width:1024px){.dxa-bento{grid-auto-rows:170px;gap:var(--s-3)}}
+  .dxa-bento figure{margin:0;overflow:hidden;border-radius:var(--radius-card);background:#dcc9a8;position:relative;isolation:isolate}
+  .dxa-bento figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(43,29,14,.28),transparent 55%);pointer-events:none}
+  .dxa-bento img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .dxa-bento figure:hover img{transform:scale(1.04)}
+  .dxa-bento figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .dxa-bento figure:nth-child(4){grid-column:span 2}
+  @media (max-width:639px){.dxa-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:130px}.dxa-bento figure:nth-child(1){grid-column:span 2;grid-row:span 1}.dxa-bento figure:nth-child(4){grid-column:span 1}}
+  .dxl-main .dx-ent{margin-top:var(--s-5)}
+  .dx-rel + .dx-rel{margin-top:var(--s-6)}
+  .gem-biz{margin:2px 0 0;font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  /* information card */
+  .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
+  @media (max-width:1023px){.dxi{position:relative;top:auto}}
+  .dxi-band{height:52px;background:#f6ead8 url("ASSETS/motifs/strip.png") center/auto 100% repeat-x}
+  .dxi-body{padding:var(--s-4) var(--s-4) var(--s-3)}
+  .dxi-h{margin:0;font-size:var(--fs-small);font-weight:800;line-height:1.3;color:var(--ink)}
+  html.lang-latin .dxi-h{letter-spacing:.06em;text-transform:uppercase}
+  .dxi-facts{margin:var(--s-2) 0 0}
+  .dxi-facts div{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:44px}
+  .dxi-facts dt{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-body);color:var(--body)} .dxi-facts dt svg{color:var(--rust);flex:none}
+  .dxi-facts dd{margin:0;font-size:var(--fs-body);font-weight:700;color:var(--ink);text-align:end}
+  .dxi-group{margin-top:var(--s-4)}
+  .dxi-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:var(--s-2)}
+  .dxi-chip{display:inline-flex;align-items:center;gap:6px;min-height:36px;padding:6px 12px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:13px;font-weight:700;line-height:1.3}
+  .dxi-chip svg{flex:none}
+  .dxi-map{border-top:1px solid rgba(43,29,14,.1)}
+  .dxi-map .mp-map{height:220px;border:0;border-radius:0}
+  .dxi-actions{display:grid;gap:var(--s-2);padding:var(--s-4);border-top:1px solid rgba(43,29,14,.1)}
+  .dxi-actions .dx-cta{margin-top:0}
+  .dxi-actions .dx-cta--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+  .dxi-actions .dx-cta--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
+  .dxi-note{margin:var(--s-1) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
+  /* gallery: a dark full-bleed strip; pictures glide sideways on a gentle curve, edge to edge */
+  .dxg{--pw:clamp(200px,22vw,360px);--ph:clamp(300px,34vw,540px);--gap:clamp(16px,1.6vw,28px);--n:8;position:relative;isolation:isolate;overflow:hidden;width:100vw;margin-inline-start:calc(50% - 50vw);margin-top:var(--s-7);padding:var(--s-7) 0 var(--s-7);background:#0a0c10;color:#fff}
+  .dxg::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 0%,rgba(165,62,26,.22),transparent 70%),radial-gradient(40% 40% at 10% 100%,rgba(47,111,94,.14),transparent 70%)}
+  .dxg::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+  .dxg-in{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--s-3)}
+  .dxg-eyebrow{margin:0;text-align:center;font-size:13px;font-weight:600;color:rgba(255,255,255,.55)}
+  html.lang-latin .dxg-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase}
+  .dxg-h{margin:var(--s-2) auto 0;max-width:22ch;text-align:center;font-size:clamp(28px,3.4vw,52px);line-height:1.2;font-weight:700;color:#fff}
+  .dxg-sub{margin:var(--s-2) auto 0;max-width:60ch;text-align:center;font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.6)}
+  .dxg-stage{position:relative;height:calc(var(--ph) * .96);margin-top:var(--s-4);perspective:1500px;perspective-origin:50% 55%;direction:ltr;overflow:hidden}
+  .dxg-track{position:absolute;inset:0;transform-style:preserve-3d}
+  .dxg-slice{position:absolute;top:calc(var(--ph) * .16);left:0;width:calc(var(--pw) / var(--n) + 1.2px);height:var(--ph);overflow:hidden;background:#1a1d22;backface-visibility:hidden;will-change:transform}
+  .dxg-slice img{position:absolute;top:0;left:calc(-1 * var(--i) * var(--pw) / var(--n));width:var(--pw);height:100%;max-width:none;object-fit:cover;pointer-events:none;user-select:none}
+  .dxg-slice--first{border-start-start-radius:6px;border-end-start-radius:6px} .dxg-slice--last{border-start-end-radius:6px;border-end-end-radius:6px}
   .dx-h{display:flex;align-items:center;gap:var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
   .dx-h::after{content:"";flex:0 0 40px;height:2px;background:var(--rust);opacity:.8}
   .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.85;color:var(--body);max-width:70ch}
   .dx-side{display:grid;gap:var(--s-4)}
-  .dx-facts{margin:0;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
-  .dx-facts div{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:52px;border-bottom:1px solid rgba(43,29,14,.1)}
-  .dx-facts div:last-of-type{border-bottom:0}
-  .dx-facts dt{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-small);color:var(--muted)} .dx-facts dt svg{color:var(--rust)}
-  .dx-facts dd{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--ink);text-align:end}
   .dx-cta{display:flex;align-items:center;justify-content:center;gap:var(--s-2);height:var(--btn-h);margin-top:var(--s-3);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
   .dx-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .dx-cta:active{transform:scale(.98)} .dx-cta:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
-  .dx-mapbox{background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);padding:var(--s-3) var(--s-4) var(--s-4)}
-  .dx-mapbox .mp-map{height:280px;margin-top:var(--s-3)}
-  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:var(--s-6);padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:0;padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}}
   .dx-ent figure{margin:0;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#dcc9a8} .dx-ent img{width:100%;height:100%;object-fit:cover}
   .dx-ent .st-name{font-size:var(--fs-h3);font-weight:700;color:var(--ink);line-height:1.3} .dx-ent .st-biz{font-size:var(--fs-small);font-weight:700;color:var(--rust);margin-top:2px}
@@ -1331,6 +1391,7 @@
   .dx-empty{padding:var(--s-8) 0;text-align:center;color:var(--muted)}
 </style>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
 
@@ -1408,52 +1469,72 @@
 </header>
 
 <main>
-  <section class="xh" id="xh" aria-labelledby="ex-h">
-    <div class="xh-crumb" id="exCrumb"></div>
+  <section class="xh" id="dxHero" aria-labelledby="dx-title">
+    <div class="xh-crumb" id="dxCrumb"></div>
     <div class="xh-media" id="xhMedia">
-      <img id="xhImg" src="" alt="" fetchpriority="high" decoding="async">
       <div class="xh-shade"></div>
       <div class="xh-cap">
-        <h1 class="xh-cap-title display ex-h" id="ex-h"></h1>
-        <p class="xh-cap-sub" id="exSub"></p>
-        <p class="xh-cap-loc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="exLoc"></span></p>
+        <h1 class="xh-cap-title display" id="dx-title"></h1>
+        <p class="xh-cap-sub" id="dxSum"></p>
+        <div class="dx-tags" id="dxTags"></div>
       </div>
       <div class="xh-band" aria-hidden="true"></div>
     </div>
   </section>
-  <section class="ex" id="exList" aria-labelledby="ex-h">
-    <div class="wrap">
-      <nav class="mp-cats ls-switch" aria-label="نوع القائمة">
-        <a class="mp-chip" href="destinations.html" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12"/></svg><span>أماكن تزورها</span></a>
-        <a class="mp-chip" href="experiences.html" aria-current="page" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg><span>تجارب ومنتجات</span></a>
-        <a class="mp-chip" href="entrepreneurs.html" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a7 7 0 0 1-7-7V9a2 2 0 0 1 4 0v3M9 11V5a2 2 0 0 1 4 0v6M13 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7z"/></svg><span>رواد أعمال</span></a>
-      </nav>
-      <div class="mp-bar ex-bar">
-        <div class="mp-search"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg><input id="exQ" type="search" placeholder="ابحث عن تجربة، نشاط أو منتج..." aria-label="ابحث في الأنشطة والتجارب" autocomplete="off"></div>
-        <button type="button" class="mp-adv-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>تصفية</span><b id="exAdvN" hidden></b></button>
-        <div class="mp-cats" role="group" aria-label="الفئات">
-          <button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg><span>كل الفئات</span></button>
-          <button type="button" class="mp-chip" data-cat="tour" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg><span>جولة إرشادية</span></button>
-          <button type="button" class="mp-chip" data-cat="workshop" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21a7 7 0 0 1-7-7V9a2 2 0 0 1 4 0v3M9 11V5a2 2 0 0 1 4 0v6M13 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7z"/></svg><span>ورشة</span></button>
-          <button type="button" class="mp-chip" data-cat="food" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v4.5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2 1.5-3 4-3 7h3m0-7v18"/></svg><span>طعام وشراب</span></button>
-          <button type="button" class="mp-chip" data-cat="stay" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M7 9V6.5h10V9"/></svg><span>إقامة</span></button>
-          <button type="button" class="mp-chip" data-cat="product" aria-pressed="false"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5l1.5-5h13l1.5 5M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5.5 12v8h13v-8M10 20v-4.5h4V20"/></svg><span>منتج محلي</span></button>
+  <div class="wrap">
+    <article class="ex dx" id="dx">
+      <div class="dxl">
+        <div class="dxl-main">
+          <section class="dxa" aria-labelledby="dxaH">
+            <h2 class="display lx-h" id="dxaH">عن المكان</h2>
+            <p class="dxa-lead" id="dxaSum"></p>
+            <p class="dx-desc dxa-text" id="dxDesc"></p>
+            <button type="button" class="dxa-more" id="dxaMore" aria-expanded="false" hidden>اقرأ المزيد</button>
+            <div class="dxi-chips dxa-chips" id="dxaChips"></div>
+            <div class="dxa-bento" id="dxaBento" aria-label="صور"></div>
+          </section>
         </div>
+        <aside class="dxi" aria-labelledby="dxiH">
+          <div class="dxi-band" aria-hidden="true"></div>
+          <div class="dxi-body">
+            <h2 class="dxi-h" id="dxiH">الموقع</h2>
+            <dl class="dxi-facts" id="dxFacts"></dl>
+            <div class="dxi-group"><h3 class="dxi-h">محور المحتوى</h3><div class="dxi-chips" id="dxiPillar"></div></div>
+          </div>
+          <div class="dxi-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع المكان"></div></div></div>
+          <div class="dxi-actions">
+            <a class="dx-cta dx-cta--ghost" id="dxDirections" href="#" target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span>احصل على الاتجاهات</span></a>
+            <a class="dx-cta dx-cta--ghost" id="dxCityInfo" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><span id="dxCityInfoT"></span></a>
+            <a class="dx-cta dx-cta--ghost" id="dxCityMap" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 3.5v17M3.5 12h17"/></svg><span>عرض على خريطة المدينة</span></a>
+          </div>
+        </aside>
       </div>
-      <div class="mp-adv" id="exAdv" hidden>
-        <fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset>
-        <fieldset data-g="pr"><legend>فئة السعر</legend><label><input type="checkbox" data-f="pr" value="1"><span>$</span></label><label><input type="checkbox" data-f="pr" value="2"><span>$$</span></label><label><input type="checkbox" data-f="pr" value="3"><span>$$$</span></label><label><input type="checkbox" data-f="pr" value="4"><span>$$$$</span></label></fieldset>
-        <fieldset data-g="a"><legend>إمكانية الوصول</legend><label><input type="checkbox" data-f="a" value="step"><span>دخول بلا درجات</span></label><label><input type="checkbox" data-f="a" value="wc"><span>دورة مياه مهيأة</span></label><label><input type="checkbox" data-f="a" value="seat"><span>أماكن جلوس</span></label><label><input type="checkbox" data-f="a" value="av"><span>دعم سمعي أو بصري</span></label></fieldset>
-      </div>
-      <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
-      <div class="ex-body">
-        <div>
-          <ul class="ex-grid" id="exGrid" role="list"></ul>
-          <div class="mp-empty" id="exEmpty" hidden><p>لا توجد نتائج مطابقة. جرّب فئة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
+      <section class="dxg" id="dxGal" aria-labelledby="dxgH" hidden>
+        <div class="dxg-in">
+          <p class="dxg-eyebrow">معرض الصور</p>
+          <h2 class="dxg-h display" id="dxgH"></h2>
+          <p class="dxg-sub" id="dxgSub"></p>
         </div>
-      </div>
-    </div>
-  </section>
+        <div class="dxg-stage" id="dxgStage" aria-label="صور المكان"><div class="dxg-track" id="dxgTrack"></div></div>
+      </section>
+      <section class="dx-rel" id="dxRel" aria-labelledby="dxRelH" hidden>
+        <header class="lx-head"><div><span class="sec-eyebrow">ماذا تفعل هنا؟</span><h2 class="display lx-h" id="dxRelH">تجارب حول المكان</h2></div><a class="lx-all" id="dxRelAll" href="experiences.html"><span>عرض كل التجارب</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></header>
+        <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
+      </section>
+      <section class="dx-rel" id="dxEnt" aria-labelledby="dxEntH" hidden>
+        <header class="lx-head"><h2 class="display lx-h" id="dxEntH">رواد أعمال حول المكان</h2><a class="lx-all" href="entrepreneurs.html"><span>كل رواد الأعمال</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></header>
+        <ul class="ex-grid" id="dxEntGrid" role="list"></ul>
+      </section>
+      <section class="dx-rel" id="dxCity" aria-labelledby="dxCityH">
+        <header class="lx-head"><div><span class="sec-eyebrow">جزء من</span><h2 class="display lx-h" id="dxCityH"></h2></div><a class="lx-all" id="dxCityAll" href="#"><span id="dxCityAllT"></span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></header>
+      </section>
+      <section class="dx-rel" id="dxNear" aria-labelledby="dxNearH" hidden>
+        <header class="lx-head"><h2 class="display lx-h" id="dxNearH">أماكن أخرى في المدينة</h2></header>
+        <ul class="ex-grid" id="dxNearGrid" role="list"></ul>
+      </section>
+      <p class="dx-empty" id="dxEmpty" hidden>هذه الوجهة غير موجودة. <a href="index.html#destinations" style="color:var(--rust);font-weight:700">العودة إلى الوجهات</a></p>
+    </article>
+  </div>
 </main>
 
 <footer class="footer" aria-label="تذييل الصفحة">
@@ -1735,23 +1816,23 @@
 <script>
 document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
 </script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="experiences.js"></script>
+<script src="entrepreneurs.js"></script>
+<script src="destinations.js"></script>
 <script src="listing-shared.js"></script>
 <script>
 (() => {
-  const { CATS, P, PR, AC, q, city, t, cityName, esc, all, card, icon, pop, crumb } = EX;
+  const { P, CITIES, q, t, esc, svg, card, icon, crumb, pic, ARW } = EX, { CAT, bySlug, href, related, owners, list } = DESTINATIONS;
   const $ = id => document.getElementById(id);
-  const F = { q: q.get('q') || '', cat: CATS[q.get('category')] ? q.get('category') : 'all', p: new Set((q.get('p') || '').split(',').filter(Boolean)), pr: new Set((q.get('pr') || '').split(',').filter(Boolean)), a: new Set((q.get('a') || '').split(',').filter(Boolean)) };
-  const rm = matchMedia('(prefers-reduced-motion:reduce)');
-  const DATA = all();
-  /* hero: same picture family as each city page; same settled geometry as the Luxor hero */
-  const HERO = {
-    luxor: { src: 'ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp', srcset: 'ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w', alt: 'أعمدة ونقوش في معبد بالأقصر' },
-    aswan: { src: 'ASSETS/asw-nile1-1280.webp', srcset: 'ASSETS/asw-nile1-960.webp 960w, ASSETS/asw-nile1-1280.webp 1280w', alt: 'النيل وصخوره وجزره في أسوان' }
-  };
-  (() => { const im = $('xhImg'); im.src = HERO[city].src; im.srcset = HERO[city].srcset; im.sizes = '95vw'; })();
+  const e = bySlug(q.get('slug'));
+  if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; return; }
+  const city = e.city, rel = related(e), ents = owners(e), near = list.filter(x => x.city === city && x.slug !== e.slug).slice(0, 4);
+  const TAG = svg('<path d="M20 13l-7 7-9-9V4h7l9 9z"/><circle cx="7.5" cy="7.5" r="1.2"/>', 16), LAND = svg('<path d="M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12"/>', 16), CRAFT = svg('<path d="M12 21a7 7 0 0 1-7-7V9a2 2 0 0 1 4 0v3M9 11V5a2 2 0 0 1 4 0v6M13 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7z"/>', 14);
+  const cityName = () => CITIES[city][EX.lang()] || CITIES[city].ar;
+  let map = null;
   (() => {
-    const xh = $('xh'), nav = document.querySelector('.nav-bar');
+    const xh = $('dxHero'), nav = document.querySelector('.nav-bar');
     const size = () => {
       const mobile = innerWidth < 768, vh = innerHeight;
       const navB = nav ? nav.getBoundingClientRect().bottom : 0;
@@ -1762,42 +1843,83 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     };
     size(); addEventListener('resize', size); addEventListener('load', size);
   })();
-  const hay = e => [e.n, e.s, CATS[e.c].n, P[e.p], t(e.n), t(e.s), t(CATS[e.c].n)].join(' ').toLowerCase();
-  const match = e => (F.cat === 'all' || e.c === F.cat) && (!F.q || hay(e).includes(F.q.toLowerCase())) && (!F.p.size || F.p.has(e.p)) && (!F.pr.size || (e.pr && F.pr.has(String(e.pr)))) && (!F.a.size || [...F.a].every(k => (e.a || []).includes(k)));
-  const countText = n => { const c = cityName(), l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' experience in ' : ' experiences in ') + c : l === 'es' ? n + (n === 1 ? ' experiencia en ' : ' experiencias en ') + c : n + ' تجربة في ' + c; };
-  function url() { const u = new URLSearchParams(); u.set('city', city); if (F.cat !== 'all') u.set('category', F.cat); if (F.q) u.set('q', F.q); if (F.p.size) u.set('p', [...F.p].join(',')); if (F.pr.size) u.set('pr', [...F.pr].join(',')); if (F.a.size) u.set('a', [...F.a].join(',')); history.replaceState(null, '', '?' + u.toString()); }
-  let shown = [];
-  function head() {
-    $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], [EX.CITIES[city].ar, city + '.html'], ['الأنشطة والتجارب']]);
-    $('ex-h').textContent = t('الأنشطة والتجارب');
-    $('exSub').textContent = t('جولات وورش ومذاقات وإقامات ومنتجات يقدّمها أهل المدينة ورواد أعمالها، فتصل زيارتك مباشرة إلى من يصنعون التجربة في') + ' ' + cityName();
-    $('exLoc').textContent = t(city === 'aswan' ? 'أسوان، صعيد مصر' : 'الأقصر، صعيد مصر');
-    $('xhImg').alt = t(HERO[city].alt);
-    document.title = t('الأنشطة والتجارب في') + ' ' + cityName() + ' — ' + t('صعيد مصر');
+  /* gallery: the experience's own pictures only; shown when there are at least three */
+  const GAL = e.imgs.concat(rel.flatMap(x => x.imgs)).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i);
+  let galOn = false;
+  function gallery() {
+    const box = $('dxGal'); if (GAL.length < 3) { box.hidden = true; return; } box.hidden = false;
+    $('dxgH').textContent = t('لقطات من') + ' ' + t(e.n); $('dxgSub').textContent = t(e.s);
+    const track = $('dxgTrack'), N = 8;
+    if (!track.children.length) {
+      /* two copies so the strip never shows its seam; each picture is cut into vertical slices that bend on the cylinder */
+      const slice = (im, i, k) => '<div class="dxg-slice' + (i === 0 ? ' dxg-slice--first' : i === N - 1 ? ' dxg-slice--last' : '') + '" style="--i:' + i + '" data-p="' + k + '" data-i="' + i + '">' + pic(im, '360px') + '</div>';
+      let k = 0; track.innerHTML = [0, 1].map(c => GAL.map(im => { const h = Array.from({ length: N }, (_, i) => slice(im, i, k)).join(''); k++; return h; }).join('')).join('');
+      track.querySelectorAll('img').forEach((im, j) => { if (j >= N * GAL.length || j % N) im.setAttribute('aria-hidden', 'true'); });
+      glide(track, N);
+    }
+    track.querySelectorAll('img').forEach((im, j) => { im.alt = j % N ? '' : t(GAL[Math.floor(j / N) % GAL.length].alt); });
   }
+  function glide(track, N) {
+    const stage = $('dxgStage'), slices = [...track.children], n = GAL.length;
+    const still = matchMedia('(prefers-reduced-motion:reduce)');
+    let x = 0, last = 0, paused = false, pw = 0, gap = 0, pitch = 0, setW = 0, sw = 0, R = 0, raf = 0;
+    const probe = document.createElement('div'); probe.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;width:var(--pw);height:var(--gap)'; stage.appendChild(probe);
+    const measure = () => {
+      pw = probe.offsetWidth; gap = probe.offsetHeight;
+      pitch = pw + gap; setW = pitch * n; sw = stage.clientWidth; R = sw * 0.85;
+    };
+    const place = () => {
+      const cx = sw / 2, w = pw / N;
+      for (let j = 0; j < slices.length; j++) {
+        const el = slices[j], p = +el.dataset.p, i = +el.dataset.i;
+        const mid = x + p * pitch + (i + .5) * w;            /* slice centre in stage coordinates */
+        if (mid < -w || mid > sw + w) { el.style.transform = 'translate3d(-9999px,0,0)'; continue; }
+        const th = (mid - cx) / R;                             /* angle on the cylinder */
+        const tx = cx + R * Math.sin(th) - w / 2, tz = R * (1 - Math.cos(th));
+        el.style.transform = 'translate3d(' + tx + 'px,0,' + tz + 'px) rotateY(' + (-th) + 'rad)';
+      }
+    };
+    const tick = now => {
+      raf = requestAnimationFrame(tick);
+      const dt = last ? Math.min(48, now - last) : 0; last = now;
+      if (!paused && !still.matches) { x -= dt * 0.045; if (x <= -setW) x += setW; }
+      place();
+    };
+    measure(); x = sw / 2 - pw / 2 - setW; if (x <= -setW) x += setW;
+    addEventListener('resize', () => { measure(); if (x <= -setW) x += setW; place(); });
+    stage.addEventListener('pointerenter', () => { paused = true; }); stage.addEventListener('pointerleave', () => { paused = false; });
+    new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) { if (!raf) { last = 0; raf = requestAnimationFrame(tick); } } else if (raf) { cancelAnimationFrame(raf); raf = 0; } }); }, { threshold: 0 }).observe(stage);
+    place();
+    galOn = true;
+  }
+  const entCard = x => '<li><article class="gem" data-slug="' + x.slug + '"><div class="gem-media">' + pic(x.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + CRAFT + '<span>' + esc(t(ENTREPRENEURS.ACT[x.act])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(t(P[x.p])) + '</span><h3 class="gem-title">' + esc(t(x.name)) + '</h3><p class="gem-biz">' + esc(t(x.biz)) + '</p><p class="gem-desc">' + esc(t(x.sum)) + '</p><a class="gem-cta" href="' + ENTREPRENEURS.href(x) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div></article></li>';
+  const destCard = x => '<li><article class="gem" data-slug="' + x.slug + '"><div class="gem-media">' + pic(x.imgs[0], '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + LAND + '<span>' + esc(t(CAT[x.c])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(t(x.area)) + '</span><h3 class="gem-title">' + esc(t(x.n)) + '</h3><p class="gem-desc">' + esc(t(x.s)) + '</p><a class="gem-cta" href="' + href(x) + '"><span>' + esc(t('اكتشف المكان')) + '</span>' + ARW + '</a></div></article></li>';
   function render() {
-    shown = DATA.filter(match);
-    $('exGrid').innerHTML = shown.map(e => card(e)).join('');
-    $('exCount').textContent = countText(shown.length);
-    $('exEmpty').hidden = shown.length > 0;
-    const n = F.p.size + F.pr.size + F.a.size; $('exAdvN').hidden = !n; $('exAdvN').textContent = n;
-    url();
+    const cn = cityName();
+    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الوجهات', 'destinations.html'], [CITIES[city].ar, city + '.html'], [e.n]]);
+    $('dx-title').textContent = t(e.n); document.title = t(e.n) + ' — ' + cn + ' — ' + t('صعيد مصر');
+    $('dxSum').textContent = t(e.s);
+    $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + LAND + esc(t(CAT[e.c])) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
+    const hero = $('xhMedia').querySelector('img'); if (hero) hero.remove(); const im = e.imgs[0];
+    $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="95vw" alt="' + esc(t(im.alt)) + '" style="object-position:' + (e.pos || '50% 50%') + '" fetchpriority="high" decoding="async">');
+    $('dxaSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
+    $('dxaChips').innerHTML = '<span class="dxi-chip">' + EX.PIN + esc(cn + ' · ' + t(e.area)) + '</span><span class="dxi-chip">' + LAND + esc(t(CAT[e.c])) + '</span><span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
+    (() => { const d = $('dxDesc'), b = $('dxaMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
+    $('dxaBento').innerHTML = GAL.slice(0, 5).map((im, i) => '<figure>' + pic(im, i === 0 ? '(min-width:1024px) 40vw, 95vw' : '(min-width:1024px) 20vw, 45vw') + '</figure>').join('');
+    gallery();
+    $('dxFacts').innerHTML = [[EX.PIN, 'المدينة', cn], [LAND, 'المنطقة', t(e.area)], [LAND, 'الفئة', t(CAT[e.c])]].map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
+    $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
+    const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1];
+    $('dxCityMap').href = city + '.html#lxMapSec';
+    $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfoT').textContent = t('معلومات عملية عن') + ' ' + cn;
+    $('dxRel').hidden = !rel.length; if (rel.length) { $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = 'experiences.html?city=' + city; }
+    $('dxEnt').hidden = !ents.length; if (ents.length) $('dxEntGrid').innerHTML = ents.map(entCard).join('');
+    $('dxCityH').textContent = cn; $('dxCityAll').href = city + '.html'; $('dxCityAllT').textContent = t('استكشف') + ' ' + cn;
+    $('dxNear').hidden = !near.length; if (near.length) $('dxNearGrid').innerHTML = near.map(destCard).join('');
+    if (e.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: e.ll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(e.ll, { icon: icon('tour'), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
   }
-  /* filters */
-  const chips = [...document.querySelectorAll('.mp-chip')];
-  const syncChips = () => chips.forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cat === F.cat)));
-  chips.forEach(c => c.addEventListener('click', () => { F.cat = c.dataset.cat; syncChips(); render(); }));
-  $('exQ').value = F.q; let qt = 0; $('exQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { F.q = e.target.value.trim(); render(); }, 160); });
-  document.querySelectorAll('#exAdv input').forEach(i => { i.checked = F[i.dataset.f].has(i.value); i.addEventListener('change', () => { const s = F[i.dataset.f]; i.checked ? s.add(i.value) : s.delete(i.value); render(); }); });
-  $('exAdvBtn').addEventListener('click', () => { const open = $('exAdv').hidden; $('exAdv').hidden = !open; $('exAdvBtn').setAttribute('aria-expanded', String(open)); });
-  $('exClear').addEventListener('click', () => { F.q = ''; F.cat = 'all'; F.p.clear(); F.pr.clear(); F.a.clear(); $('exQ').value = ''; document.querySelectorAll('#exAdv input').forEach(i => i.checked = false); syncChips(); render(); });
-  /* hide filter groups whose data does not exist yet (BRD: optional fields) */
-  const has = { p: DATA.some(d => d.p), pr: DATA.some(d => d.pr), a: DATA.some(d => d.a && d.a.length) };
-  document.querySelectorAll('#exAdv fieldset').forEach(f => { f.hidden = !has[f.dataset.g]; f.querySelectorAll('label').forEach(l => { if (f.dataset.g === 'p') l.hidden = !DATA.some(d => d.p === l.querySelector('input').value); }); });
-  if (F.p.size || F.pr.size || F.a.size) { $('exAdv').hidden = false; $('exAdvBtn').setAttribute('aria-expanded', 'true'); }
-  document.addEventListener('i18n:change', () => { head(); render(); });
-  syncChips(); head(); render();
-  window.__ex = { get shown() { return shown.length; }, F, total: DATA.length, city };
+  document.addEventListener('i18n:change', render); render();
+  window.__dest = { slug: e.slug, city };
 })();
 </script>
 </body>

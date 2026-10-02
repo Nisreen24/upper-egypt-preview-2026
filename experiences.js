@@ -7,9 +7,9 @@ window.EXPERIENCES = (() => {
   const asw = (n, alt) => img('asw-' + n, [480, 960, 1280], alt);
   const CAT = { tour: 'جولة إرشادية', workshop: 'ورشة', food: 'طعام وشراب', stay: 'إقامة', product: 'منتج محلي' };
   const PIL = { gems: 'كنوز مخفية', culture: 'ثقافة وطقوس', food: 'مذاقات', crafts: 'حرف يدوية', folk: 'فلكلور وروحانيات', products: 'منتجات رواد الأعمال' };
-  const FATMA = { name: 'فاطمة البغدادي', biz: 'الحرفجية', sum: 'تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم.', img: std('Fatma Boghdady', 1448, 'فاطمة البغدادي في ورشتها بالأقصر'), href: 'index.html#story-fatma', pos: '62% 35%' };
-  const ZAINAB = { name: 'زينب جمال', biz: 'زينب للإكسسوارات', sum: 'تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي.', img: std('Zainab Gamal', 1461, 'زينب جمال تعرض إكسسواراتها اليدوية'), href: 'index.html#story-zainab', pos: '25% 40%' };
-  const MANAL = { name: 'منال عوض الله', biz: 'البيت النوبي', sum: 'تعمل منال على تدريب السيدات في المجتمع النوبي والحفاظ على الحرف اليدوية النوبية.', img: std('Manal Awaga', 1448, 'منال عوض الله في البيت النوبي'), href: 'index.html#story-manal', pos: '62% 40%' };
+  const FATMA = { name: 'فاطمة البغدادي', biz: 'الحرفجية', sum: 'تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم.', img: std('Fatma Boghdady', 1448, 'فاطمة البغدادي في ورشتها بالأقصر'), href: 'entrepreneur.html?slug=fatma-boghdady', pos: '62% 35%' };
+  const ZAINAB = { name: 'زينب جمال', biz: 'زينب للإكسسوارات', sum: 'تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي.', img: std('Zainab Gamal', 1461, 'زينب جمال تعرض إكسسواراتها اليدوية'), href: 'entrepreneur.html?slug=zainab-gamal', pos: '25% 40%' };
+  const MANAL = { name: 'منال عوض الله', biz: 'البيت النوبي', sum: 'تعمل منال على تدريب السيدات في المجتمع النوبي والحفاظ على الحرف اليدوية النوبية.', img: std('Manal Awaga', 1448, 'منال عوض الله في البيت النوبي'), href: 'entrepreneur.html?slug=manal-awadallah', pos: '62% 40%' };
   const felucca = std('38ee86c3-b80b-4c1b-abcd-37e619a2827f', 1448, 'فلوكة تعبر النيل عند الغروب');
   const evening = std('60ceeb86-ec92-4c29-a148-e06a51d46fd7', 1448, 'أمسية على ضفاف النيل مع موسيقى وشاي');
   const tea = std('11e105f9-71d4-4a46-a890-aa48443d4a92', 1448, 'رجلان صعيديان يتشاركان الشاي والتمر على ضفاف النيل');

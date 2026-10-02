@@ -797,14 +797,19 @@
   .xc{--paper:#fbf7ef}
   .lx-sec{padding-block:var(--s-5)}
   .lx-sec:first-child{padding-top:var(--s-7)}
-  .lx-sec--last{padding-bottom:var(--s-8)}
+  .lx-sec--last{padding-bottom:var(--s-5)}
+  .lx-keep{padding-top:0;padding-bottom:var(--s-8)}
+  .lx-keep-row{display:flex;flex-wrap:wrap;gap:var(--s-3)}
+
   @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
   .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
   .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
   .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
   .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
-  html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg{transform:scaleX(-1)}
+  html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg,html[dir="ltr"] .lx-keep .lx-btn svg{transform:scaleX(-1)}
+  .lx-keep .lx-btn.lx-btn--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
+  .lx-keep .lx-btn.lx-btn--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
   html[dir="ltr"] .lx-all:hover svg{transform:scaleX(-1) translateX(-3px)}
 
   /* split sections */
@@ -1304,7 +1309,8 @@
       <li><a class="nav-link" href="index.html">الرئيسية</a></li>
       <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
       <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="index.html#experiences">التجارب</a></li>
+      <li><a class="nav-link" href="index.html#experiences">التجارب</a>
+        <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
       <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
     </ul>
 
@@ -1349,6 +1355,7 @@
     <a href="index.html#tours">الجولات</a>
     <a href="index.html#destinations" aria-current="page">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
+    <a href="resources.html">لرواد الأعمال</a>
     <a href="index.html#contact">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
@@ -1395,7 +1402,7 @@
     <nav class="xh-crumb" id="xhCrumb" aria-label="مسار التنقل">
       <ol>
         <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="index.html#destinations">الوجهات</a></li>
+        <li><a href="destinations.html">الوجهات</a></li>
         <li aria-current="page">الأقصر</li>
       </ol>
     </nav>
@@ -1434,7 +1441,7 @@
           <p>نعمل مع المجتمع المحلي للحفاظ على تراث الأقصر الثقافي والطبيعي، ودعم السياحة المسؤولة التي تساهم في تنمية المنطقة وتوفير الفرص للأجيال القادمة.</p>
         </div>
         <div class="lx-art lx-art--both"><img src="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp" srcset="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-480.webp 480w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp 960w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-1440.webp 1440w" sizes="(min-width:1024px) 560px, 100vw" alt="معبد الأقصر مطلًّا على النيل عند الغروب" loading="lazy" decoding="async"></div>
-        <a class="lx-btn" href="#" data-soon><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>اكتشف المزيد</span></a>
+        <a class="lx-btn" href="experiences.html?city=luxor"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>اكتشف المزيد</span></a>
       </div>
     </section>
 
@@ -1555,27 +1562,27 @@
             <p class="pv-desc" id="pvDesc">أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر.</p>
             <p class="pv-temp" id="pvTemp" hidden><span class="lx-temp">صورة مؤقتة</span></p>
           </div>
-          <a class="pv-cta" href="#" data-soon><span>اكتشف المكان</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="pv-cta" id="pvCta" href="#"><span>اكتشف المكان</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
         </div>
         <div class="pv-side">
           <ul class="pv-rail" role="list">
-            <li class="pv-item" data-i="0" data-title="معبد الكرنــــك" data-loc="البر الشرقي" data-desc="أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر."><button class="pv-card" type="button" aria-label="معبد الكرنك">
+            <li class="pv-item" data-i="0" data-href="destination.html?city=luxor&slug=karnak-temple" data-title="معبد الكرنــــك" data-loc="البر الشرقي" data-desc="أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر."><button class="pv-card" type="button" aria-label="معبد الكرنك">
               <img src="ASSETS/place-karnak-480.webp" alt="" style="object-position:50% 60%" loading="lazy" decoding="async">
               <span class="pv-card-txt"><span class="pv-card-loc">البر الشرقي</span><span class="pv-card-t">معبد الكرنك</span></span>
             </button></li>
-            <li class="pv-item" data-i="1" data-title="معبد الأقصــــر" data-loc="البر الشرقي" data-desc="معبد على كورنيش النيل في قلب المدينة، يتألق عند الغروب وتضيئه الأنوار ليلًا."><button class="pv-card" type="button" aria-label="معبد الأقصر">
+            <li class="pv-item" data-i="1" data-href="destination.html?city=luxor&slug=luxor-temple" data-title="معبد الأقصــــر" data-loc="البر الشرقي" data-desc="معبد على كورنيش النيل في قلب المدينة، يتألق عند الغروب وتضيئه الأنوار ليلًا."><button class="pv-card" type="button" aria-label="معبد الأقصر">
               <img src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp" alt="" style="object-position:50% 50%" loading="lazy" decoding="async">
               <span class="pv-card-txt"><span class="pv-card-loc">البر الشرقي</span><span class="pv-card-t">معبد الأقصر</span></span>
             </button></li>
-            <li class="pv-item" data-i="2" data-title="وادي الملــــوك" data-loc="البر الغربي" data-desc="مقابر ملوك الدولة الحديثة المنحوتة في الجبل، ومنها مقبرة توت عنخ آمون بنقوشها الملوّنة."><button class="pv-card" type="button" aria-label="وادي الملوك">
+            <li class="pv-item" data-i="2" data-href="destination.html?city=luxor&slug=valley-of-the-kings" data-title="وادي الملــــوك" data-loc="البر الغربي" data-desc="مقابر ملوك الدولة الحديثة المنحوتة في الجبل، ومنها مقبرة توت عنخ آمون بنقوشها الملوّنة."><button class="pv-card" type="button" aria-label="وادي الملوك">
               <img src="ASSETS/place-valley-kings-480.webp" alt="" style="object-position:50% 45%" loading="lazy" decoding="async">
               <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">وادي الملوك</span></span>
             </button></li>
-            <li class="pv-item" data-i="3" data-title="معبد حتشبســــوت" data-loc="البر الغربي" data-desc="معبد جنائزي بمدرّجاته الثلاثة في حضن جبل الدير البحري، من أجمل ما شُيّد في عهد الملكة حتشبسوت."><button class="pv-card" type="button" aria-label="معبد حتشبسوت">
+            <li class="pv-item" data-i="3" data-href="destination.html?city=luxor&slug=hatshepsut-temple" data-title="معبد حتشبســــوت" data-loc="البر الغربي" data-desc="معبد جنائزي بمدرّجاته الثلاثة في حضن جبل الدير البحري، من أجمل ما شُيّد في عهد الملكة حتشبسوت."><button class="pv-card" type="button" aria-label="معبد حتشبسوت">
               <img src="ASSETS/place-hatshepsut-480.webp" alt="" style="object-position:50% 62%" loading="lazy" decoding="async">
               <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">معبد حتشبسوت</span></span>
             </button></li>
-            <li class="pv-item" data-i="4" data-title="تمثالا ممنــــون" data-loc="البر الغربي" data-desc="تمثالان عملاقان لأمنحتب الثالث يستقبلان الزائرين عند مدخل البر الغربي منذ أكثر من ثلاثة آلاف عام."><button class="pv-card" type="button" aria-label="تمثالا ممنون">
+            <li class="pv-item" data-i="4" data-href="destination.html?city=luxor&slug=colossi-of-memnon" data-title="تمثالا ممنــــون" data-loc="البر الغربي" data-desc="تمثالان عملاقان لأمنحتب الثالث يستقبلان الزائرين عند مدخل البر الغربي منذ أكثر من ثلاثة آلاف عام."><button class="pv-card" type="button" aria-label="تمثالا ممنون">
               <img src="ASSETS/place-memnon-480.webp" alt="" style="object-position:40% 50%" loading="lazy" decoding="async">
               <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">تمثالا ممنون</span></span>
             </button></li>
@@ -1601,7 +1608,7 @@
         <h2 id="lx-people" class="display st-title">تعرف على رواد الأعمال المحلــــيين</h2>
         <p class="st-sub">تعرّف على سيدات وشباب من الأقصر حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.</p>
       </div>
-      <a class="st-cta" href="index.html#all-entrepreneurs"><span>استكشف جميع الرواد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+      <a class="st-cta" href="entrepreneurs.html"><span>استكشف جميع الرواد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
     </header>
 
     <div class="st-grid">
@@ -1614,7 +1621,7 @@
           <p class="st-biz">الحرفجية</p>
           <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
           <p class="st-desc">تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.</p>
-          <a class="st-link" href="index.html#story-fatma"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="st-link" href="entrepreneur.html?slug=fatma-boghdady"><span>عرض الملف الشخصي</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
         </div>
       </article>
       <article class="st-feature" data-slot="1">
@@ -1626,7 +1633,7 @@
           <p class="st-biz">زينب للإكسسوارات</p>
           <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
           <p class="st-desc">تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.</p>
-          <a class="st-link" href="index.html#story-zainab"><span>عرض القصة</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="st-link" href="entrepreneur.html?slug=zainab-gamal"><span>عرض الملف الشخصي</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
         </div>
       </article>
     </div>
@@ -1805,6 +1812,16 @@
       </div>
       <div class="mp-back" id="mpBack" hidden></div>
     </section>
+    <section class="lx-sec lx-keep" id="lxKeep" aria-labelledby="lx-keep-h">
+      <div class="wrap">
+        <header class="lx-head"><div><span class="sec-eyebrow">إلى أين بعد ذلك؟</span><h2 class="display lx-h" id="lx-keep-h">تابع الاستكشاف</h2></div></header>
+        <div class="lx-keep-row">
+          <a class="lx-btn" href="aswan.html"><span>استكشف أسوان</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="lx-btn lx-btn--ghost" href="destinations.html?city=luxor"><span>كل الأماكن في الأقصر</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+          <a class="lx-btn lx-btn--ghost" href="experiences.html?city=luxor"><span>كل التجارب والمنتجات</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
   </div>
 </main>
 
@@ -1824,11 +1841,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="index.html#destinations">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="index.html#business">رواد الأعمال</a><a href="index.html#map">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="index.html#visitors">للسياح</a><a href="index.html#business">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -2359,6 +2376,8 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script src="experiences.js"></script>
+<script src="entrepreneurs.js"></script>
+<script src="destinations.js"></script>
 <script>
 /* City map: the city comes from the page (data-city); list and markers always share one filtered result set */
 (() => {
@@ -2383,7 +2402,7 @@
     iconCreateFunction: c => L.divIcon({ className: 'mp-cluster', iconSize: [44, 44], html: '<span>' + c.getChildCount() + '</span>' }) }).addTo(map);
   const thumb = d => '<div class="mp-thumb">' + (d.img ? '<img src="' + d.img + '" alt="" loading="lazy" decoding="async">' : svg(CATS[d.c].p, 30)) + '</div>';
   const tag = d => '<span class="mp-tag" style="--c:' + CATS[d.c].c + '">' + svg(CATS[d.c].p, 14) + '<span>' + esc(t(CATS[d.c].n)) + '</span></span>';
-  const exHrefFor = d => { const x = (window.EXPERIENCES ? EXPERIENCES.list : []).find(e => e.city === CITY && (e.n === d.n || (d.c === 'biz' && e.ent && e.ent.name === d.n))); return x ? 'experience.html?city=' + x.city + '&slug=' + x.slug : ''; };
+  const exHrefFor = d => { if (d.c === 'land' && window.DESTINATIONS) { const p = DESTINATIONS.byName(CITY, d.n); if (p) return DESTINATIONS.href(p); } if (d.c === 'biz' && window.ENTREPRENEURS) { const en = ENTREPRENEURS.published().find(x => x.name === d.n); if (en) return ENTREPRENEURS.href(en); } const x = (window.EXPERIENCES ? EXPERIENCES.list : []).find(e => e.city === CITY && (e.n === d.n || (d.c === 'biz' && e.ent && e.ent.name === d.n))); return x ? 'experience.html?city=' + x.city + '&slug=' + x.slug : ''; };
   const card = d => '<div class="mp-card">' + thumb(d) + '<div class="mp-info">' + tag(d) + '<strong class="mp-name">' + esc(t(d.n)) + '</strong><p class="mp-sum">' + esc(t(d.s)) + '</p><a class="mp-more" href="#" data-id="' + d.id + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>';
   const marks = new Map();
   DATA.forEach(d => {
@@ -2471,7 +2490,7 @@
     $('pvBar').style.transform = 'scaleX(' + ((active + 1) / n) + ')';
     $('pvNum').textContent = String(active + 1).padStart(2, '0');
   }
-  function copy() { const d = items[active].dataset; $('pvTitle').textContent = I18N.t(d.title); $('pvLoc').textContent = I18N.t(d.loc); $('pvDesc').textContent = I18N.t(d.desc); $('pvTemp').hidden = !d.ph; }
+  function copy() { const d = items[active].dataset; const cta = $('pvCta'); if (cta && d.href) cta.href = d.href; $('pvTitle').textContent = I18N.t(d.title); $('pvLoc').textContent = I18N.t(d.loc); $('pvDesc').textContent = I18N.t(d.desc); $('pvTemp').hidden = !d.ph; }
   function go(i, dir) {
     i = ((i % n) + n) % n; if (i === active) return;
     if (dir == null) dir = 1; active = i; place(dir);

@@ -1318,6 +1318,22 @@
   @media (min-width:768px){.dxa-row{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:var(--s-5)}}
   .dxa-h{margin:0;font-size:clamp(26px,2.4vw,40px);line-height:1.15;font-weight:700;color:var(--ink);letter-spacing:-.02em}
   .dxa-side .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body);line-height:1.75;max-width:none}
+  .dxa-lead{margin:var(--s-3) 0 0;max-width:70ch;font-size:var(--fs-body-lg);line-height:1.7;font-weight:700;color:var(--ink)}
+  .dxa-text{margin:var(--s-2) 0 0;max-width:70ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)}
+  .dxa-text.is-clamped{display:-webkit-box;-webkit-line-clamp:5;-webkit-box-orient:vertical;overflow:hidden}
+  .dxa-more{display:inline-flex;align-items:center;min-height:44px;margin-top:var(--s-1);font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:var(--radius-xs)}
+  .dxa-more:hover{color:var(--rust-deep)} .dxa-more:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .dxa-chips{margin-top:var(--s-4)}
+  .dxa-chips .dxi-chip{min-height:40px;padding:8px 14px;font-size:var(--fs-small)}
+  .dxa-bento{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:150px;gap:var(--s-2);margin-top:var(--s-5)}
+  @media (min-width:1024px){.dxa-bento{grid-auto-rows:170px;gap:var(--s-3)}}
+  .dxa-bento figure{margin:0;overflow:hidden;border-radius:var(--radius-card);background:#dcc9a8;position:relative;isolation:isolate}
+  .dxa-bento figure::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(43,29,14,.28),transparent 55%);pointer-events:none}
+  .dxa-bento img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .dxa-bento figure:hover img{transform:scale(1.04)}
+  .dxa-bento figure:nth-child(1){grid-column:span 2;grid-row:span 2}
+  .dxa-bento figure:nth-child(4){grid-column:span 2}
+  @media (max-width:639px){.dxa-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:130px}.dxa-bento figure:nth-child(1){grid-column:span 2;grid-row:span 1}.dxa-bento figure:nth-child(4){grid-column:span 1}}
   .dxl-main .dx-ent{margin-top:var(--s-5)}
   /* information card */
   .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
@@ -1391,7 +1407,8 @@
       <li><a class="nav-link" href="index.html">الرئيسية</a></li>
       <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
       <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="index.html#experiences">التجارب</a></li>
+      <li><a class="nav-link" href="index.html#experiences">التجارب</a>
+        <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
       <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
     </ul>
 
@@ -1436,6 +1453,7 @@
     <a href="index.html#tours">الجولات</a>
     <a href="index.html#destinations" aria-current="page">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
+    <a href="resources.html">لرواد الأعمال</a>
     <a href="index.html#contact">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
@@ -1466,21 +1484,12 @@
       <div class="dxl">
         <div class="dxl-main">
           <section class="dxa" aria-labelledby="dxaH">
-            <div class="dxa-top">
-              <h2 class="dxa-title display" id="dxaH">عن التجربة</h2>
-              <div class="dxa-lead">
-                <p class="dxa-tag" id="dxaTag"></p>
-                <p class="dxa-sum"><b id="dxaLabel"></b> <span id="dxaSum"></span></p>
-              </div>
-            </div>
-            <figure class="dxa-main" id="dxaMain"></figure>
-            <div class="dxa-row">
-              <figure class="dxa-small" id="dxaSmall"></figure>
-              <div class="dxa-side">
-                <h3 class="dxa-h" id="dxaH2"></h3>
-                <p class="dx-desc" id="dxDesc"></p>
-              </div>
-            </div>
+            <h2 class="display lx-h" id="dxaH">عن التجربة</h2>
+            <p class="dxa-lead" id="dxaSum"></p>
+            <p class="dx-desc dxa-text" id="dxDesc"></p>
+            <button type="button" class="dxa-more" id="dxaMore" aria-expanded="false" hidden>اقرأ المزيد</button>
+            <div class="dxi-chips dxa-chips" id="dxaChips"></div>
+            <div class="dxa-bento" id="dxaBento" aria-label="صور"></div>
           </section>
           <section class="dx-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
         </div>
@@ -1495,6 +1504,7 @@
           <div class="dxi-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
           <div class="dxi-actions">
             <a class="dx-cta" id="dxContact" href="index.html#contact"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>تواصل مع مقدّم التجربة</span></a>
+            <a class="dx-cta dx-cta--ghost" id="dxCityInfo" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M12 11v5M12 8h.01"/></svg><span id="dxCityInfoT"></span></a>
             <a class="dx-cta dx-cta--ghost" id="dxDirections" href="#" target="_blank" rel="noopener" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z"/><path d="M9 4v14M15 6v14"/></svg><span>احصل على الاتجاهات</span></a>
             <p class="dxi-note">الحجز والدفع يتمان مباشرة مع مقدّم التجربة. المنصة تعرّفك به ولا تتقاضى أي رسوم.</p>
           </div>
@@ -1530,11 +1540,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="index.html#destinations">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="index.html#business">رواد الأعمال</a><a href="index.html#map">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="index.html#visitors">للسياح</a><a href="index.html#business">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1820,7 +1830,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     size(); addEventListener('resize', size); addEventListener('load', size);
   })();
   /* gallery: the experience's own pictures only; shown when there are at least three */
-  const GAL = e.gal || e.imgs;
+  const REL = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p));
+  const GAL = (e.gal || e.imgs.concat(REL.flatMap(x => x.imgs))).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i).slice(0, 8);
   let galOn = false;
   function gallery() {
     const box = $('dxGal'); if (GAL.length < 3) { box.hidden = true; return; } box.hidden = false;
@@ -1858,7 +1869,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const tick = now => {
       raf = requestAnimationFrame(tick);
       const dt = last ? Math.min(48, now - last) : 0; last = now;
-      if (!paused && !still.matches) { x -= dt * 0.34; if (x <= -setW) x += setW; }
+      if (!paused && !still.matches) { x -= dt * 0.045; if (x <= -setW) x += setW; }
       place();
     };
     measure(); x = sw / 2 - pw / 2 - setW; if (x <= -setW) x += setW;
@@ -1874,11 +1885,10 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('dx-title').textContent = t(e.n); document.title = t(e.n) + ' — ' + cn + ' — ' + t('صعيد مصر');
     $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + svg(CATS[e.c].p, 14) + esc(t(CATS[e.c].n)) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
     $('dxSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
-    $('dxaTag').textContent = t(CATS[e.c].n) + ' · ' + (e.dur ? t(e.dur) : cn);
-    $('dxaLabel').textContent = t('باختصار:'); $('dxaSum').textContent = t(e.s);
-    $('dxaH2').textContent = t(e.n);
-    $('dxaMain').innerHTML = pic(e.imgs[0], '(min-width:1024px) 55vw, 95vw');
-    $('dxaSmall').innerHTML = pic(e.imgs[1] || e.imgs[0], '(min-width:1024px) 30vw, 95vw');
+    $('dxaSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
+    $('dxaChips').innerHTML = '<span class="dxi-chip">' + EX.PIN + esc(cn) + '</span><span class="dxi-chip">' + svg(CATS[e.c].p, 14) + esc(t(CATS[e.c].n)) + '</span><span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>' + (e.dur ? '<span class="dxi-chip">' + CAL + esc(t(e.dur)) + '</span>' : '');
+    (() => { const d = $('dxDesc'), b = $('dxaMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
+    $('dxaBento').innerHTML = GAL.slice(0, 5).map((im, i) => '<figure>' + pic(im, i === 0 ? '(min-width:1024px) 40vw, 95vw' : '(min-width:1024px) 20vw, 45vw') + '</figure>').join('');
     gallery();
     const hero = $('xhMedia').querySelector('img'); const im = e.imgs[active];
     if (hero) hero.remove(); $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="95vw" alt="' + esc(t(im.alt)) + '" fetchpriority="high" decoding="async">');
@@ -1886,8 +1896,9 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('dxFacts').innerHTML = facts.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
     $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
     $('dxiAcc').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('dxiAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + ACC + esc(t(AC[k])) + '</span>').join('');
+    $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfoT').textContent = t('معلومات عملية عن') + ' ' + cn;
     const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1];
-    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض القصة')) + '</span>' + EX.ARW + '</a></div>'; }
+    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + EX.ARW + '</a></div>'; }
     const rel = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p)).slice(0, 4);
     if (rel.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = listHref(city, e.c); }
     if (e.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: e.ll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(e.ll, { icon: icon(e.c), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
