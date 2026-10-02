@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>قائمة الطلبات — لوحة التحرير</title>
+<link rel="icon" href="brand_assets/favicon-64.png">
+<style>@font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+  :root{--ink:#0b2230;--rust:#a53e1a;--rust-deep:#8a3213;--muted:#5b6a68;--line:#e4e0da;--paper:#f6f4ef}
+  *{box-sizing:border-box} body{margin:0;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--paper);color:#24312f;font-size:14.5px;line-height:1.5}
+  html.lang-latin body{font-family:"IBM Plex Sans",system-ui,sans-serif}
+  .ad{display:grid;min-height:100vh;grid-template-columns:240px minmax(0,1fr)} @media (max-width:900px){.ad{grid-template-columns:1fr}.ad-side{position:static}}
+  .ad-side{background:#161616;color:#fff;padding:20px 16px;position:sticky;top:0;height:100vh} .ad-side .brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:24px} .ad-side .brand img{width:34px;height:34px}
+  .ad-side a{display:block;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.8);text-decoration:none;font-weight:600} .ad-side a[aria-current]{background:rgba(255,255,255,.12);color:#fff}
+  .ad-side .who{margin-top:auto;padding-top:24px;font-size:12.5px;color:rgba(255,255,255,.6)}
+  .ad-main{padding:24px} .ad-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px} .ad-head h1{margin:0;font-size:22px;color:var(--ink)}
+  .ad-tools{display:flex;flex-wrap:wrap;gap:8px} .ad-tools select,.ad-tools input,.ad-btn{height:38px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;color:var(--ink)}
+  .ad-btn{cursor:pointer;font-weight:700} .ad-btn--primary{background:var(--rust);border-color:var(--rust);color:#fff} .ad-btn--primary:hover{background:var(--rust-deep)} .ad-btn:focus-visible,.ad-tools select:focus-visible,.ad-tools input:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .ad-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  table{width:100%;border-collapse:collapse} th,td{padding:10px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top} th{font-size:12.5px;color:var(--muted);font-weight:700;background:#faf8f4} tr[data-id]{cursor:pointer} tr[data-id]:hover{background:#fbf7ef} tr.is-on{background:#fdf1ea}
+  .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700;background:#eee;color:#333} .pill.new{background:#e4eef8;color:#1d4a7a} .pill.in_review{background:#fbe9c9;color:#7a4a05} .pill.approved{background:#dbeee5;color:#1f5c45} .pill.rejected{background:#f8dcd7;color:#7a1f12} .pill.closed{background:#e9e6e0;color:#555}
+  .overdue{color:#a52a1a;font-weight:800} .overdue::before{content:"⚠ "}
+  .ad-split{display:grid;gap:16px} @media (min-width:1100px){.ad-split{grid-template-columns:minmax(0,1fr) 420px}}
+  .ad-detail{padding:16px} .ad-detail h2{margin:0 0 4px;font-size:18px;color:var(--ink)} .ad-detail dl{margin:12px 0;display:grid;grid-template-columns:140px 1fr;gap:6px 12px;font-size:13.5px} .ad-detail dt{color:var(--muted)} .ad-detail dd{margin:0;word-break:break-word}
+  .ad-detail label{display:block;font-weight:700;font-size:13px;margin:12px 0 4px} .ad-detail textarea,.ad-detail select,.ad-detail input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit} .ad-detail textarea{min-height:80px}
+  .ad-note{font-size:12px;color:var(--muted)} .ad-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .ad-empty{padding:40px;text-align:center;color:var(--muted)}
+  .lang-cols{display:grid;gap:12px} @media (min-width:900px){.lang-cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .lang-col{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff} .lang-col h3{margin:0 0 8px;font-size:14px;display:flex;justify-content:space-between;align-items:center} .lang-col .pill.missing{background:#f8dcd7;color:#7a1f12} .lang-col .pill.ok{background:#dbeee5;color:#1f5c45}
+  .lang-col label{display:block;font-size:12.5px;color:var(--muted);margin:8px 0 3px} .lang-col input,.lang-col textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit} .lang-col textarea{min-height:90px} .lang-col [dir=ltr]{direction:ltr;text-align:left}
+  .shared{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:16px} .shared label{font-size:12.5px;color:var(--muted)} .shared input,.shared select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit}
+  .ad-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+  .ad-banner{padding:10px 14px;border-radius:8px;background:#fbe9c9;color:#7a4a05;font-size:13px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="ad">
+  <aside class="ad-side"><div class="brand"><img src="brand_assets/favicon-64.png" alt=""><span>اكتشف صعيد مصر<br><small style="font-weight:500;opacity:.7">لوحة التحرير</small></span></div>
+    <nav aria-label="أقسام اللوحة"><a href="admin-queue.html" aria-current="page">قائمة الطلبات</a><a href="admin-entry.html">تحرير مدخل</a><a href="index.html">الموقع العام ↗</a></nav>
+    <p class="who">مسجّل الدخول: منسّق (نموذج)<br>الدور: coordinator</p>
+  </aside>
+  <main class="ad-main">
+    <p class="ad-banner">نموذج تجريبي للشاشات الداخلية: البيانات محفوظة في متصفحك فقط، ولا يوجد خادم أو بريد حقيقي.</p>
+    <div class="ad-head"><h1>قائمة الطلبات</h1><div class="ad-tools"><select id="fType" aria-label="نوع الطلب"><option value="">كل الأنواع</option><option value="general">استفسار عام</option><option value="directory">طلب دليل التواصل</option><option value="registration">تسجيل جهة</option><option value="update">تحديث ملف</option></select><select id="fStatus" aria-label="الحالة"><option value="">كل الحالات</option><option value="new">جديد</option><option value="in_review">قيد المراجعة</option><option value="approved">مقبول</option><option value="rejected">مرفوض</option><option value="closed">مغلق بلا إجراء</option></select><label style="display:inline-flex;align-items:center;gap:6px"><input type="checkbox" id="fOverdue"> متأخرة فقط</label><button class="ad-btn" id="btnCsv" type="button">تصدير CSV</button><button class="ad-btn" id="btnSeed" type="button">إضافة طلبات تجريبية</button></div></div>
+    <div class="ad-split">
+      <div class="ad-card"><table><thead><tr><th>النوع</th><th>المرسل</th><th>تاريخ الإنشاء</th><th>موعد الرد</th><th>المكلّف</th><th>الحالة</th></tr></thead><tbody id="rows"></tbody></table><div class="ad-empty" id="empty" hidden>لا توجد طلبات مطابقة.</div></div>
+      <div class="ad-card ad-detail" id="detail"><p class="ad-empty">اختر طلبًا لعرضه.</p></div>
+    </div>
+  </main>
+</div>
+<script src="experiences.js"></script>
+<script src="entrepreneurs.js"></script>
+<script src="destinations.js"></script>
+<script src="resources.js"></script>
+<script src="content.js"></script>
+<script src="forms.js"></script>
+<script src="listing-shared.js"></script>
+
+<script src="i18n.js"></script>
+<script>
+(() => {
+  const TITLE = "قائمة الطلبات — لوحة التحرير"; document.title = TITLE; document.addEventListener("i18n:change", () => { document.title = TITLE; });
+
+  const $ = id => document.getElementById(id); const esc = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const TYPE = { general: 'استفسار عام', directory: 'طلب دليل التواصل', registration: 'تسجيل جهة', update: 'تحديث ملف' }; const STATUS = { new: 'جديد', in_review: 'قيد المراجعة', approved: 'مقبول', rejected: 'مرفوض', closed: 'مغلق بلا إجراء' };
+  const fmt = iso => new Date(iso).toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' });
+  const overdue = q => ['new', 'in_review'].includes(q.status) && new Date(q.due) < new Date();
+  let sel = null;
+  function list() { const f = { type: $('fType').value, status: $('fStatus').value, od: $('fOverdue').checked }; return FORMS.queue.all().filter(q => (!f.type || q.type === f.type) && (!f.status || q.status === f.status) && (!f.od || overdue(q))); }
+  function renderRows() { const rows = list(); $('rows').innerHTML = rows.map(q => '<tr data-id="' + q.id + '"' + (sel === q.id ? ' class="is-on"' : '') + '><td>' + esc(TYPE[q.type]) + '</td><td>' + esc(q.payload.email || q.payload.name || '') + '</td><td>' + fmt(q.created) + '</td><td' + (overdue(q) ? ' class="overdue"' : '') + '>' + fmt(q.due) + '</td><td>' + esc(q.assignee || '—') + '</td><td><span class="pill ' + q.status + '">' + esc(STATUS[q.status]) + '</span></td></tr>').join(''); $('empty').hidden = rows.length > 0; }
+  function actions(q) {
+    const A = []; const b = (l, s, cls) => '<button class="ad-btn ' + (cls || '') + '" type="button" data-act="' + s + '">' + l + '</button>';
+    if (q.status === 'new') A.push(b('بدء المراجعة', 'in_review'));
+    if (q.type === 'general') A.push(b('إرسال الرد وإغلاق', 'approved', 'ad-btn--primary'), b('إغلاق بلا إجراء', 'closed'));
+    if (q.type === 'directory') A.push(b('موافقة: إرسال الدليل PDF', 'approved', 'ad-btn--primary'), b('رفض (لا يُرسل شيء)', 'rejected'));
+    if (q.type === 'registration') A.push(b('موافقة: إنشاء مسودة وإبلاغ المحررين', 'approved', 'ad-btn--primary'), b('رفض مع رد', 'rejected'));
+    if (q.type === 'update') A.push(b('قبول التغييرات المحددة ونشرها', 'approved', 'ad-btn--primary'), b('رفض مع رد', 'rejected'));
+    return A.join('');
+  }
+  function renderDetail() {
+    const q = FORMS.queue.all().find(x => x.id === sel); if (!q) { $('detail').innerHTML = '<p class="ad-empty">اختر طلبًا لعرضه.</p>'; return; }
+    const payload = Object.entries(q.payload).filter(([k]) => !/^c_/.test(k));
+    const changes = q.type === 'update' && q.payload.changes ? '<label>التغييرات المقترحة (حقل بحقل)</label>' + Object.entries(q.payload.changes).filter(([k]) => !/^c_/.test(k)).map(([k, v]) => '<label class="ad-note" style="display:flex;gap:8px;align-items:flex-start;font-weight:500"><input type="checkbox" data-field="' + esc(k) + '" checked style="width:auto"> <span><b>' + esc(k) + ':</b> ' + esc(v) + '</span></label>').join('') : '';
+    const dirLog = q.type === 'directory' && q.status === 'approved' && q.delivery ? '<dl><dt>أُرسل إلى</dt><dd>' + esc(q.delivery.to) + '</dd><dt>في</dt><dd>' + fmt(q.delivery.at) + '</dd><dt>الغرض</dt><dd>' + esc(q.delivery.purpose) + '</dd></dl>' : '';
+    $('detail').innerHTML = '<h2>' + esc(TYPE[q.type]) + ' <span class="pill ' + q.status + '">' + esc(STATUS[q.status]) + '</span></h2><p class="ad-note">' + q.id + ' · أُنشئ ' + fmt(q.created) + ' · موعد الرد <span' + (overdue(q) ? ' class="overdue"' : '') + '>' + fmt(q.due) + '</span> · اللغة ' + q.lang + '</p>'
+      + '<dl>' + payload.map(([k, v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</dd>').join('') + '</dl>' + changes + dirLog
+      + '<label>سجل الموافقة</label><p class="ad-note">' + (q.consent && q.consent.text.length ? q.consent.text.map(esc).join('<br>') : '—') + ' <br>' + (q.consent ? fmt(q.consent.at) : '') + '</p>'
+      + '<label for="asg">المكلّف</label><input id="asg" value="' + esc(q.assignee || '') + '" placeholder="اسم المنسّق">'
+      + '<label for="note">ملاحظة داخلية <span class="ad-note">(لا تُرسل للزائر أبدًا)</span></label><textarea id="note">' + esc(q.note || '') + '</textarea>'
+      + '<label for="reply">الرد على الزائر <span class="ad-note">(يُرسل بالبريد بلغة الطلب)</span></label><textarea id="reply">' + esc(q.reply || '') + '</textarea>'
+      + '<div class="ad-actions"><button class="ad-btn" type="button" data-act="save">حفظ الملاحظة والمكلّف</button>' + actions(q) + '</div>'
+      + '<p class="ad-note" style="margin-top:12px">السجل: ' + (q.history || []).map(h => esc(STATUS[h.to]) + ' (' + fmt(h.at) + ')').join(' ← ') + '</p>';
+    $('detail').querySelectorAll('[data-act]').forEach(b => b.addEventListener('click', () => act(q, b.dataset.act)));
+  }
+  function act(q, a) {
+    const patch = { assignee: $('asg').value.trim(), note: $('note').value, reply: $('reply').value };
+    if (a === 'save') { FORMS.queue.update(q.id, patch); } else {
+      if ((a === 'rejected' || (a === 'approved' && q.type === 'general')) && !patch.reply.trim() && q.type !== 'directory') { alert('اكتب الرد على الزائر أولًا.'); return; }
+      if (a === 'approved' && q.type === 'directory') patch.delivery = { to: q.payload.email, at: new Date().toISOString(), purpose: q.payload.purpose };
+      if (a === 'approved' && q.type === 'update' && q.payload.changes) patch.accepted = [...$('detail').querySelectorAll('[data-field]')].filter(c => c.checked).map(c => c.dataset.field);
+      if (a === 'approved' && q.type === 'registration') patch.draftCreated = true;
+      patch.status = a; FORMS.queue.update(q.id, patch);
+    }
+    renderRows(); renderDetail();
+  }
+  $('rows').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (!tr) return; sel = tr.dataset.id; renderRows(); renderDetail(); });
+  ['fType', 'fStatus', 'fOverdue'].forEach(id => $(id).addEventListener('change', renderRows));
+  $('btnCsv').addEventListener('click', () => { const rows = list(); const head = ['id', 'type', 'status', 'created', 'due', 'assignee', 'email', 'name']; const csv = [head.join(',')].concat(rows.map(q => [q.id, q.type, q.status, q.created, q.due, q.assignee, q.payload.email || '', q.payload.name || ''].map(v => '"' + String(v || '').replace(/"/g, '""') + '"').join(','))).join('\n'); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv' })); a.download = 'submissions.csv'; a.click(); });
+  $('btnSeed').addEventListener('click', () => { const old = new Date(); old.setDate(old.getDate() - 12); const items = [['general', { name: 'سارة محمود', email: 'sara@example.com', subject: 'correction', message: 'عنوان ورشة الفضة غير دقيق على الخريطة.' }], ['directory', { name: 'أحمد علي', email: 'ahmed@tourco.example', org: 'شركة رحلات النيل', purpose: 'التواصل مع مشغّلي الإقامة في أسوان لبرنامج شتوي.' }], ['registration', { name: 'منى حسن', email: 'mona@ngo.example', org: 'جمعية تنمية القرنة', type: 'ngo', city: 'luxor', desc: 'جمعية أهلية تدعم حرفيي الفخار في القرنة.', public_contact: 'https://example.org' }]]; items.forEach(([tp, p]) => FORMS.queue.add(tp, p, { text: ['موافقة تجريبية'], at: new Date().toISOString() })); const q = FORMS.queue.all(); if (q[2]) FORMS.queue.update(q[2].id, { created: old.toISOString(), due: new Date(old.getTime() + 5 * 864e5).toISOString() }); renderRows(); });
+  renderRows();
+})();
+</script>
+</body>
+</html>

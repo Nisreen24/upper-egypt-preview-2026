@@ -18,9 +18,9 @@ window.RESOURCES = (() => {
     { slug: 'sustainable-tourism-principles', fmt: 'link', topic: 'tourism', p: 'culture', n: 'مبادئ السياحة المستدامة', s: 'المرجع الدولي لمبادئ السياحة المستدامة من منظمة السياحة العالمية.', href: 'https://www.unwto.org/sustainable-development' },
   ];
   const paths = [
-    { slug: 'how-to-start-a-business', n: 'كيف تبدأ مشروعك', s: 'من الفكرة إلى التسجيل وأول ميزانية.', p: 'products', img: img('Fatma Boghdady', [480, 960, 1448], 'فاطمة البغدادي في ورشتها بالأقصر'), pos: '62% 35%', steps: ['youth-toolkit', 'business-plan-template', 'registration-guide', 'budget-sheet'] },
-    { slug: 'young-entrepreneurship-toolkit', n: 'حقيبة أدوات ريادة الأعمال للشباب', s: 'اختبر فكرتك، سعّر منتجك، وسوّقه.', p: 'gems', img: img('Zainab Gamal', [480, 960, 1461], 'زينب جمال تعرض إكسسواراتها اليدوية'), pos: '25% 40%', steps: ['youth-toolkit', 'pricing-handicrafts', 'social-media-basics', 'visitor-experience-design'] },
-    { slug: 'female-leadership', n: 'القيادة النسائية', s: 'قيادة فريق ومشروع يخلق فرصًا للسيدات.', p: 'crafts', img: img('Manal Awaga', [480, 960, 1448], 'منال عوض الله في البيت النوبي'), pos: '62% 40%', steps: ['helmak-stories', 'female-leadership-guide', 'social-media-basics'] },
+    { slug: 'how-to-start-a-business', aud: 'entrepreneurs', n: 'كيف تبدأ مشروعك', s: 'من الفكرة إلى التسجيل وأول ميزانية.', p: 'products', img: img('Fatma Boghdady', [480, 960, 1448], 'فاطمة البغدادي في ورشتها بالأقصر'), pos: '62% 35%', steps: ['youth-toolkit', 'business-plan-template', 'registration-guide', 'budget-sheet'] },
+    { slug: 'young-entrepreneurship-toolkit', aud: 'entrepreneurs', n: 'حقيبة أدوات ريادة الأعمال للشباب', s: 'اختبر فكرتك، سعّر منتجك، وسوّقه.', p: 'gems', img: img('Zainab Gamal', [480, 960, 1461], 'زينب جمال تعرض إكسسواراتها اليدوية'), pos: '25% 40%', steps: ['youth-toolkit', 'pricing-handicrafts', 'social-media-basics', 'visitor-experience-design'] },
+    { slug: 'female-leadership', aud: 'both', n: 'القيادة النسائية', s: 'قيادة فريق ومشروع يخلق فرصًا للسيدات.', p: 'crafts', img: img('Manal Awaga', [480, 960, 1448], 'منال عوض الله في البيت النوبي'), pos: '62% 40%', steps: ['helmak-stories', 'female-leadership-guide', 'social-media-basics'] },
   ];
   /* entrepreneur events: trainings, forums and gatherings (BRD 2.1). Dates are ISO so they sort and localise. */
   const events = [

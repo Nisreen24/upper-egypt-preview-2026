@@ -1400,7 +1400,7 @@
       <li><a class="nav-link" href="index.html#destinations">الوجهات</a></li>
       <li><a class="nav-link" href="index.html#experiences">التجارب</a>
         <a class="nav-link" href="resources.html" aria-current="page">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1445,7 +1445,7 @@
     <a href="destinations.html">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
     <a href="resources.html" aria-current="page">لرواد الأعمال</a>
-    <a href="index.html#contact">تواصل معنا</a>
+    <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -1499,7 +1499,7 @@
         <div class="mp-empty" id="exEmpty" hidden><p>لا توجد موارد مطابقة. جرّب صيغة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
       </section>
       <section class="rs-sec" id="events" aria-labelledby="evH" hidden>
-        <header class="lx-head"><div><span class="sec-eyebrow">لا تفوّت ما يحدث</span><h2 class="display lx-h" id="evH">فعاليات قادمة</h2></div><a class="lx-all" href="index.html#tours"><span>كل الفعاليات</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></header>
+        <header class="lx-head"><div><span class="sec-eyebrow">لا تفوّت ما يحدث</span><h2 class="display lx-h" id="evH">فعاليات قادمة</h2></div><a class="lx-all" href="events.html"><span>كل الفعاليات</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a></header>
         <ul class="evl" id="evList" role="list"></ul>
       </section>
     </div>
@@ -1537,11 +1537,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1644,6 +1644,7 @@
 <div id="readingGuide" aria-hidden="true"></div>
 <div id="a11yTip" role="tooltip"></div>
 <div id="toast" role="status" aria-live="polite"></div>
+<script src="forms.js"></script>
 <script src="i18n.js"></script>
 <script>
 (() => {
@@ -1875,7 +1876,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   form.addEventListener('submit', (e) => {
     e.preventDefault(); const v = email.value.trim();
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = I18N.t('من فضلك أدخل بريداً إلكترونياً صحيحاً.'); email.focus(); return; }
-    msg.textContent = I18N.t('تم الاشتراك! سنرسل لك أحدث القصص والفعاليات.'); form.reset();
+    const s = FORMS.newsletter.subscribe(v); msg.innerHTML = I18N.t('تم استلام طلبك. أرسلنا رسالة تأكيد إلى بريدك، ولن يبدأ الاشتراك قبل تأكيده.') + ' <a href="newsletter-confirm.html?token=' + s.confirm + '" style="color:#fff;text-decoration:underline">' + I18N.t('(نموذج: افتح رابط التأكيد)') + '</a>'; form.reset();
   });
 })();
 </script>

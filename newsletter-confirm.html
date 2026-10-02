@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>استكشف الأقصر — صعيد مصر</title>
+<title>تأكيد الاشتراك — صعيد مصر</title>
 <link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
@@ -739,57 +739,6 @@
 
 
   /* ---------- HERO ---------- */
-  .xh{position:relative;min-height:100vh;min-height:100dvh;width:100%;overflow:hidden;background:var(--paper);isolation:isolate}
-  .xh-bg{position:absolute;inset:0;z-index:0;will-change:opacity,transform}
-  .xh-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
-  .xh-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.38)}
-
-  .xh-media{background:#b0703c;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
-    width:300px;height:400px;max-width:95vw;max-height:85vh;border-radius:16px;overflow:hidden;
-    box-shadow:0 30px 100px rgba(43,29,14,.3);will-change:width,height}
-  .xh-media img,.xh-media video{width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none}
-  .xh-shade{position:absolute;inset:0;background:#000;opacity:.5;pointer-events:none}
-  .xh-band{position:absolute;inset-inline:0;bottom:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none;z-index:2}
-  @media (min-width:768px){.xh-band{height:20px}}
-  .xh-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:start;
-    padding:24px 24px 44px;color:#fff;opacity:0;pointer-events:none;will-change:opacity,transform;
-    background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%)}
-  @media (min-width:768px){.xh-cap{padding:48px 56px 68px}}
-  .xh-cap p{margin:0}
-  .xh-cap .xh-cap-title{font-weight:700;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}
-  html.lang-latin .xh-cap .xh-cap-title{line-height:1.02}
-  .xh-cap .xh-cap-sub{margin-top:10px;font-size:clamp(17px,1.7vw,26px);font-weight:700;line-height:1.5}
-  .xh-cap .xh-cap-loc{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.4}
-  @media (max-width:767px){.xh-cap .xh-cap-loc{margin-top:18px}}
-  .xh-cap-loc svg{flex:none}
-  .xh-crumb{position:absolute;z-index:4;opacity:0;pointer-events:none;will-change:opacity}
-  .xh-crumb.is-on{pointer-events:auto}
-  .xh-crumb ol{display:flex;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
-  .xh-crumb li{display:inline-flex;align-items:center;gap:8px}
-  .xh-crumb li + li::before{content:"";width:6px;height:6px;border-block-start:1.5px solid currentColor;border-inline-end:1.5px solid currentColor;transform:rotate(-45deg);opacity:.7}
-  html[dir="ltr"] .xh-crumb li + li::before{transform:rotate(45deg)}
-  .xh-crumb a{display:inline-flex;align-items:center;min-height:44px;color:var(--muted);border-radius:6px;transition:color .2s ease}
-  .xh-crumb a:hover{color:var(--rust)}
-  .xh-crumb a:active{color:var(--rust-deep)}
-  .xh-crumb a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
-  .xh-crumb [aria-current]{color:var(--ink);font-weight:600}
-
-  .xh-title{position:absolute;top:50%;left:0;width:100%;transform:translateY(-50%);z-index:3;margin:0;
-    display:flex;flex-direction:column;align-items:center;gap:8px;padding-inline:16px;text-align:center;pointer-events:none}
-  .xh-line{display:block;font-family:"Thmanyah Serif Display",serif;font-weight:700;color:var(--cream);
-    font-size:clamp(2.75rem,6.4vw,6.5rem);line-height:1.12;white-space:nowrap;will-change:transform}
-  html.lang-latin .xh-line{font-family:"IBM Plex Serif",Georgia,serif;font-size:clamp(2.5rem,6vw,6rem);line-height:.95;letter-spacing:-.04em}
-
-  .xh-scroll{position:absolute;left:50%;z-index:4;pointer-events:none;color:#fff;
-    display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;
-    transform:translateX(-50%);opacity:1;transition:opacity .25s ease-out,transform .25s ease-out}
-  .xh-scroll.is-hidden{opacity:0;transform:translateX(-50%) translateY(12px)}
-  .xh-scroll span{font-size:12px;font-weight:600;line-height:1;text-align:center}
-  html.lang-latin .xh-scroll span{font-size:11px;letter-spacing:.32em;text-transform:uppercase;margin-inline-end:-.32em}
-  .xh-mouse{width:28px;height:44px;border:1px solid rgba(255,255,255,.5);border-radius:999px;padding:6px;display:flex;justify-content:center}
-  .xh-mouse i{width:6px;height:6px;border-radius:999px;background:#fff;animation:xh-dot 1.8s ease-in-out infinite}
-  @keyframes xh-dot{0%,100%{transform:translateY(0);opacity:.35}50%{transform:translateY(20px);opacity:1}}
-  @media (prefers-reduced-motion:reduce){.xh-mouse i{animation:none;opacity:1}}
 
 /* ===== LUXOR SECTIONS ===== */
   .xc{width:100%;background:var(--paper);padding:0;opacity:0;transform:translateY(40px);pointer-events:none;transition:opacity .7s cubic-bezier(.22,1,.36,1),transform .7s cubic-bezier(.22,1,.36,1)}
@@ -797,19 +746,14 @@
   .xc{--paper:#fbf7ef}
   .lx-sec{padding-block:var(--s-5)}
   .lx-sec:first-child{padding-top:var(--s-7)}
-  .lx-sec--last{padding-bottom:var(--s-5)}
-  .lx-keep{padding-top:0;padding-bottom:var(--s-8)}
-  .lx-keep-row{display:flex;flex-wrap:wrap;gap:var(--s-3)}
-
+  .lx-sec--last{padding-bottom:var(--s-8)}
   @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
   .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
   .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
   .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
   .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
   .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
-  html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg,html[dir="ltr"] .lx-keep .lx-btn svg{transform:scaleX(-1)}
-  .lx-keep .lx-btn.lx-btn--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
-  .lx-keep .lx-btn.lx-btn--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
+  html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg{transform:scaleX(-1)}
   html[dir="ltr"] .lx-all:hover svg{transform:scaleX(-1) translateX(-3px)}
 
   /* split sections */
@@ -1291,9 +1235,195 @@
   .xa-card,.xl-card,.cf-card,.sy-img,.mobile-menu{border-radius:var(--radius-card-lg)}
   .xa-hit:focus-visible,.xl-hit:focus-visible{border-radius:var(--radius-card-lg)}
   @media (min-width:1024px){.lx-art:not(.lx-art--wide){border-radius:0}}
+
+  /* ===== experiences listing + detail ===== */
+  body{background:#fbf7ef}
+
+  /* ===== listing hero: the Luxor hero in its settled state, without the scroll expansion ===== */
+  .xh{--paper:#fbf7ef;--xh-top:220px;--xh-w:min(1550px,95vw);--xh-h:720px;--xh-x:calc((100% - var(--xh-w)) / 2 + 4px);
+    position:relative;width:100%;padding-top:var(--xh-top);background:var(--paper);isolation:isolate}
+  .xh-crumb{position:absolute;top:calc(var(--xh-top) - 58px);inset-inline-start:var(--xh-x);z-index:4}
+  .xh-media{background:#b0703c;position:relative;z-index:2;width:var(--xh-w);height:var(--xh-h);margin-inline:auto;
+    border-radius:var(--radius-card);overflow:hidden;box-shadow:0 30px 100px rgba(43,29,14,.3)}
+  .xh-media img{width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none}
+  .xh-shade{position:absolute;inset:0;background:#000;opacity:.22;pointer-events:none}
+  .xh-band{position:absolute;inset-inline:0;bottom:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none;z-index:2}
+  @media (min-width:768px){.xh-band{height:20px}}
+  .xh-cap{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-start;text-align:start;
+    padding:24px 24px 44px;color:#fff;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%)}
+  @media (min-width:768px){.xh-cap{padding:48px 56px 68px}}
+  .xh-cap p,.xh-cap h1{margin:0}
+  .xh-cap .xh-cap-title{font-weight:700;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}
+  html.lang-latin .xh-cap .xh-cap-title{line-height:1.02}
+  .xh-cap .xh-cap-sub{margin-top:10px;max-width:60ch;font-size:clamp(17px,1.7vw,26px);font-weight:700;line-height:1.5}
+  .xh-cap .xh-cap-loc{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.4}
+  @media (max-width:767px){.xh-cap .xh-cap-loc{margin-top:18px}}
+  .xh-cap-loc svg{flex:none}
+  .ex{padding-top:var(--s-7);padding-bottom:var(--s-8);--paper:#fbf7ef}
+
+  /* ===== forms (BRD 5.4) ===== */
+  .f-form{display:grid;gap:var(--s-4);max-width:720px}
+  .f-form fieldset{margin:0;padding:var(--s-4);border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);background:#fff;display:grid;gap:var(--s-3)}
+  .f-form legend{padding-inline:6px;font-size:var(--fs-small);font-weight:800;color:var(--ink)}
+  .f-field{display:grid;gap:6px}
+  .f-field label,.f-label{font-size:var(--fs-body);font-weight:700;color:var(--ink)}
+  .f-field .f-hint{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
+  .f-field input:not([type=checkbox]),.f-field select,.f-field textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid rgba(43,29,14,.2);border-radius:var(--radius-btn);background:#fff;font:inherit;font-size:var(--fs-body);color:var(--ink)}
+  .f-field textarea{min-height:140px;resize:vertical;line-height:1.6}
+  .f-field input:focus-visible,.f-field select:focus-visible,.f-field textarea:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px;border-color:var(--rust)}
+  .f-field.is-invalid input,.f-field.is-invalid select,.f-field.is-invalid textarea{border-color:#a52a1a}
+  .f-err{margin:0;font-size:13px;font-weight:700;color:#a52a1a}
+  .f-check{display:flex;align-items:flex-start;gap:10px;font-size:var(--fs-small);line-height:1.6;color:var(--body)}
+  .f-check input{width:18px;height:18px;flex:none;margin-top:3px;accent-color:var(--rust)}
+  .f-turnstile{display:flex;align-items:center;gap:var(--s-3);padding:12px 14px;border:1.5px dashed rgba(43,29,14,.25);border-radius:var(--radius-btn);background:#fbf7ef}
+  .f-turnstile.is-ok{border-style:solid;border-color:#2f6f5e}
+  .f-turnstile small{font-size:12px;color:var(--muted)}
+  .f-turnstile button{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding-inline:14px;border-radius:var(--radius-btn);background:#fff;border:1.5px solid var(--rust);color:var(--rust);font-weight:700;font-size:var(--fs-small)}
+  .f-turnstile.is-ok button{border-color:#2f6f5e;color:#2f6f5e}
+  .f-actions{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-3)}
+  .f-status{margin:0;padding:0;font-size:var(--fs-body);line-height:1.7}
+  .f-status.is-error{padding:12px 16px;border-radius:var(--radius-btn);background:rgba(165,42,26,.08);color:#7a1f12;font-weight:700}
+  .f-status.is-ok{padding:var(--s-4);border-radius:var(--radius-card);background:rgba(47,111,94,.08);color:#1f4a3f}
+  .f-status.is-ok b{display:block;font-size:var(--fs-h3);color:var(--ink);margin-bottom:6px}
+  .f-status:focus{outline:0}
+  .f-note{display:flex;gap:10px;padding:14px 16px;border-radius:var(--radius-card);background:rgba(165,62,26,.06);font-size:var(--fs-small);line-height:1.6;color:var(--body)}
+  .f-note svg{flex:none;color:var(--rust);margin-top:2px}
+  /* ===== prose / utility pages ===== */
+  .pg{padding-top:calc(var(--tb-top,100px) + var(--s-5));padding-bottom:var(--s-8)}
+  .pg-head{max-width:70ch;margin-bottom:var(--s-5)}
+  .pg-title{margin:var(--s-2) 0 0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
+  .pg-lede{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
+  .pg-grid{display:grid;gap:var(--s-5);align-items:start}
+  @media (min-width:1024px){.pg-grid{grid-template-columns:minmax(0,1fr) 360px}}
+  .prose{max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)}
+  .prose h2{margin:var(--s-6) 0 var(--s-2);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
+  .prose h2:first-child{margin-top:0}
+  .prose p{margin:0 0 var(--s-3)} .prose ul{margin:0 0 var(--s-3);padding-inline-start:1.3em} .prose li{margin-bottom:6px}
+  .pg-card{padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  .pg-card h2{margin:0 0 var(--s-2);font-size:var(--fs-small);font-weight:800;color:var(--ink)}
+  .pg-card dl{margin:0} .pg-card dt{font-size:13px;color:var(--muted)} .pg-card dd{margin:0 0 var(--s-2);font-weight:700;color:var(--ink)}
+  .ab-blocks{counter-reset:ab;display:grid;gap:var(--s-5)}
+  .ab-block{display:grid;gap:var(--s-3);padding:var(--s-5) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  @media (min-width:1024px){.ab-block{grid-template-columns:220px minmax(0,1fr);padding:var(--s-6)}}
+  .ab-num{counter-increment:ab;display:grid;align-content:start;gap:6px} .ab-num::before{content:"0" counter(ab);font-family:"Thmanyah Serif Display",serif;font-size:clamp(40px,4vw,64px);line-height:1;color:var(--rust)}
+  html.lang-latin .ab-num::before{font-family:"IBM Plex Serif",Georgia,serif}
+  .ab-num h2{margin:0;font-size:var(--fs-h3-lg);line-height:1.25;color:var(--ink);font-weight:700}
+  .ab-partners{display:flex;flex-wrap:wrap;gap:var(--s-2);margin:var(--s-2) 0 0;padding:0;list-style:none}
+  .ab-partners li{display:inline-flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:var(--radius-md);background:rgba(165,62,26,.06)} .ab-partners b{color:var(--ink)} .ab-partners small{font-size:12px;color:var(--muted)}
+  .ab-quote{margin:0;padding:var(--s-4);border-inline-start:3px solid var(--rust);background:rgba(165,62,26,.05);border-radius:var(--radius-md)} .ab-quote p{margin:0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--ink)} .ab-quote footer{margin-top:8px;font-size:var(--fs-small);color:var(--muted)}
+  /* ===== stories lead ===== */
+  .st-lead{position:relative;display:grid;min-height:420px;overflow:hidden;border-radius:var(--radius-card-lg);background:#1a130c;color:#fff;isolation:isolate;margin-bottom:var(--s-5)}
+  .st-lead img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .st-lead::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.9),rgba(18,11,6,.35) 55%,rgba(18,11,6,.1))}
+  .st-lead-body{align-self:end;padding:var(--s-5) var(--s-4);max-width:62ch} @media (min-width:1024px){.st-lead-body{padding:var(--s-6)}}
+  .st-lead-eyebrow{display:inline-flex;align-items:center;gap:6px;height:30px;padding-inline:12px;border-radius:var(--radius-full);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:12.5px;font-weight:700}
+  .st-lead h2{margin:var(--s-3) 0 0;font-size:clamp(28px,3.2vw,46px);line-height:1.2;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.35)}
+  .st-lead p{margin:var(--s-2) 0 0;font-size:var(--fs-body-lg);line-height:1.6;color:rgba(255,255,255,.9)}
+  .st-lead .gem-cta{display:inline-flex;width:auto;margin-top:var(--s-4);padding-inline:20px}
+  /* ===== stakeholder split: list beside map, same result set ===== */
+  .sk-split{display:grid;gap:var(--s-4);align-items:start}
+  @media (min-width:1024px){.sk-split{grid-template-columns:minmax(0,1fr) 420px}html[dir="rtl"] .sk-split{grid-template-columns:420px minmax(0,1fr)}html[dir="rtl"] .sk-map{order:1}html[dir="rtl"] .sk-list{order:2}}
+  .sk-map{position:sticky;top:calc(var(--tb-top,100px) + 16px)} .sk-map .mp-map{height:min(72vh,680px)}
+  @media (max-width:1023px){.sk-map{position:relative;top:auto}.sk-map .mp-map{height:380px}}
+  .sk-ctas{display:flex;flex-wrap:wrap;gap:var(--s-3);margin:var(--s-4) 0 0}
+  .org-row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:var(--s-3);padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .org-row:hover,.org-row.is-on{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)} .org-row.is-on{border-color:var(--rust)}
+  .org-ico{display:grid;place-items:center;width:48px;height:48px;border-radius:var(--radius-md);background:rgba(52,92,112,.1);color:#345c70}
+  .org-t{margin:0;font-size:var(--fs-body-lg);font-weight:700;line-height:1.35;color:var(--ink)} .org-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .org-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px} .org-tag{display:inline-flex;align-items:center;min-height:26px;padding:2px 10px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:12px;font-weight:700}
+  .org-row .gem-cta{margin-top:var(--s-2);display:inline-flex;width:auto;padding-inline:16px;height:40px}
+  /* ===== event rows reuse ===== */
+  .evl{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
+  .evl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  @media (min-width:768px){.evl-row{grid-template-columns:72px minmax(0,1fr) auto}}
+  .evl-date{display:grid;place-items:center;width:72px;height:72px;border-radius:var(--radius-md);background:var(--rust);color:#fff;line-height:1} .evl-date b{font-size:26px;font-weight:800} .evl-date small{font-size:12px;font-weight:700;margin-top:4px}
+  .evl-kind{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--rust)} .evl-t{margin:4px 0 0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)} .evl-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .rs-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:13px;color:var(--muted)} .rs-meta span{display:inline-flex;align-items:center;gap:5px}
+  @media (max-width:767px){.evl-row .ev-cta{grid-column:1/-1;justify-content:center}}
+  .gem-biz{margin:2px 0 0;font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .ls-switch{margin-bottom:var(--s-4)} .ls-switch .mp-chip{text-decoration:none}
+  .stops{counter-reset:stop;display:grid;gap:0;margin:0;padding:0;list-style:none}
+  .stop{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s-3);padding:var(--s-4) 0} .stop + .stop{border-top:1px solid rgba(43,29,14,.1)}
+  .stop-num{counter-increment:stop;display:grid;place-items:center;width:44px;height:44px;border-radius:999px;background:var(--rust);color:#fff;font-weight:800} .stop-num::before{content:counter(stop)}
+  .stop .gem{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-3);align-items:center} .stop .gem-media{aspect-ratio:1;border-radius:var(--radius-md);overflow:hidden} .stop .gem-body{padding:0}
+  @media (max-width:639px){.stop .gem{grid-template-columns:1fr}}
+
+  .ls-switch{margin-bottom:var(--s-4)}
+  .ls-switch .mp-chip{text-decoration:none}
+
+  .ex-intro{margin:0 0 var(--s-5);max-width:70ch;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
+  .gem-biz{margin:2px 0 0;font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .gem[data-href]{cursor:pointer}
+  .ex-crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
+  .ex-crumb li{display:inline-flex;align-items:center;gap:8px}
+  .ex-crumb li + li::before{content:"";width:6px;height:6px;border-block-start:1.5px solid currentColor;border-inline-end:1.5px solid currentColor;transform:rotate(-45deg);opacity:.7}
+  html[dir="ltr"] .ex-crumb li + li::before{transform:rotate(45deg)}
+  .ex-crumb a{display:inline-flex;align-items:center;min-height:44px;border-radius:var(--radius-xs);transition:color .2s ease}
+  .ex-crumb a:hover{color:var(--rust)} .ex-crumb a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .ex-crumb [aria-current]{color:var(--ink);font-weight:600}
+  .ex-h{margin-top:var(--s-2);font-size:var(--fs-h2);line-height:1.2;color:var(--ink);font-weight:700}
+  .ex-sub{margin-top:var(--s-2);max-width:60ch;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
+  .ex-bar{margin-top:var(--s-5)}
+  .ex-count{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-4);font-size:var(--fs-body);font-weight:700;color:var(--ink)}
+  .ex-body{display:grid;gap:var(--s-4);margin-top:var(--s-3);align-items:start}
+  .ex-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  @media (min-width:1024px){.ex .ex-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .ex-grid .gem{transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
+  .ex-grid .gem.is-on{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.18)}
+  .gem-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:var(--s-3);font-size:var(--fs-small);color:var(--muted)}
+  .gem-meta span{display:inline-flex;align-items:center;gap:6px}
+  .gem-pil{font-size:var(--fs-label);color:var(--muted);margin-top:-2px}
+  #exMap,#dxMap{position:absolute;inset:0;z-index:0}
+  #exMap .leaflet-tile-pane,#dxMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)}
+  .mp-empty{padding:var(--s-6) var(--s-4);text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:var(--s-3)}
+  /* detail */
+  .dx-hero{position:relative;isolation:isolate;overflow:hidden;min-height:min(62vh,560px);display:flex;align-items:flex-end;background:#1a130c;color:#fff;margin-top:calc(var(--s-8) + 40px);border-radius:var(--radius-card-lg)}
+  .dx-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
+  .dx-hero::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.85) 0%,rgba(18,11,6,.35) 50%,rgba(18,11,6,.25) 100%)}
+  .dx-hero .ex-crumb{position:absolute;top:var(--s-3);inset-inline:var(--s-4)}
+  .dx-hero .ex-crumb ol{color:rgba(255,255,255,.85)} .dx-hero .ex-crumb [aria-current]{color:#fff} .dx-hero .ex-crumb a:hover{color:#f3c9a8}
+  .dx-hero-in{position:relative;padding:var(--s-8) var(--s-4) var(--s-5);max-width:60ch}
+  @media (min-width:768px){.dx-hero-in{padding-inline:var(--s-6)}}
+  .dx-title{font-size:clamp(34px,4.6vw,64px);line-height:1.15;font-weight:700;text-shadow:0 2px 16px rgba(0,0,0,.35)}
+  .dx-tags{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2);margin-top:var(--s-3)}
+  .dx-tag{display:inline-flex;align-items:center;gap:6px;height:32px;padding-inline:12px;border-radius:var(--radius-full);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:13px;font-weight:600;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+  .dx-sum{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.7;color:rgba(255,255,255,.92)}
+  .dx-gal{display:flex;gap:var(--s-2);margin:var(--s-4) 0 0;padding:0 0 var(--s-1);list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .dx-gal::-webkit-scrollbar{display:none}
+  .dx-gal li{flex:0 0 min(70vw,300px);scroll-snap-align:start}
+  .dx-gal button{display:block;width:100%;aspect-ratio:4/3;border-radius:var(--radius-card);overflow:hidden;background:#dcc9a8;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
+  .dx-gal button:hover{transform:translateY(-3px)} .dx-gal button:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:3px}
+  .dx-gal button[aria-pressed="true"]{outline:3px solid var(--rust);outline-offset:3px}
+  .dx-gal img{width:100%;height:100%;object-fit:cover}
+  .dx-body{display:grid;gap:var(--s-5);margin-top:var(--s-6);align-items:start}
+  @media (min-width:1024px){.dx-body{grid-template-columns:minmax(0,1fr) 360px;gap:var(--s-6)}}
+  .dx-h{display:flex;align-items:center;gap:var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
+  .dx-h::after{content:"";flex:0 0 40px;height:2px;background:var(--rust);opacity:.8}
+  .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.85;color:var(--body);max-width:70ch}
+  .dx-side{display:grid;gap:var(--s-4)}
+  .dx-facts{margin:0;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  .dx-facts div{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:52px;border-bottom:1px solid rgba(43,29,14,.1)}
+  .dx-facts div:last-of-type{border-bottom:0}
+  .dx-facts dt{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-small);color:var(--muted)} .dx-facts dt svg{color:var(--rust)}
+  .dx-facts dd{margin:0;font-size:var(--fs-body);font-weight:600;color:var(--ink);text-align:end}
+  .dx-cta{display:flex;align-items:center;justify-content:center;gap:var(--s-2);height:var(--btn-h);margin-top:var(--s-3);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .dx-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .dx-cta:active{transform:scale(.98)} .dx-cta:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+  .dx-mapbox{background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);padding:var(--s-3) var(--s-4) var(--s-4)}
+  .dx-mapbox .mp-map{height:280px;margin-top:var(--s-3)}
+  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:var(--s-6);padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  @media (max-width:639px){.dx-ent{grid-template-columns:1fr}}
+  .dx-ent figure{margin:0;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#dcc9a8} .dx-ent img{width:100%;height:100%;object-fit:cover}
+  .dx-ent .st-name{font-size:var(--fs-h3);font-weight:700;color:var(--ink);line-height:1.3} .dx-ent .st-biz{font-size:var(--fs-small);font-weight:700;color:var(--rust);margin-top:2px}
+  .dx-ent p{margin-top:var(--s-2);font-size:var(--fs-body);line-height:1.7;color:var(--muted)}
+  .dx-ent .st-link{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s-2);font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:var(--radius-xs)}
+  .dx-rel{margin-top:var(--s-7)}
+  .dx-rel .lx-head{margin-bottom:var(--s-4)}
+  .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .dx-empty{padding:var(--s-8) 0;text-align:center;color:var(--muted)}
 </style>
+
 </head>
-<body class="is-locked">
+<body>
 
 <header class="nav">
   <nav class="nav-bar" aria-label="التنقل الرئيسي">
@@ -1368,465 +1498,14 @@
   </div>
 </header>
 
-<button class="snd" id="lxSound" type="button" aria-pressed="false" aria-label="تشغيل الموسيقى">
-  <svg class="snd-ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5v5h3.5L12 18V6L7.5 9.5H4z"/><path d="M15.5 9a4.2 4.2 0 0 1 0 6M18 6.5a7.8 7.8 0 0 1 0 11"/></svg>
-  <span class="snd-bars" aria-hidden="true"><i></i><i></i><i></i><i></i></span>
-  <span class="snd-t" id="lxSoundT">تشغيل الموسيقى</span>
-</button>
-<audio id="lxAudio" src="ASSETS/audio/luxor-ambient.mp3" loop preload="none"></audio>
-
 <main>
-  <section class="xh" id="xh" aria-labelledby="xh-title">
-    <div class="xh-bg" id="xhBg">
-      <img src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp"
-           srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w"
-           sizes="100vw" alt="" fetchpriority="high" decoding="async">
-    </div>
-
-    <div class="xh-media" id="xhMedia">
-      <video id="xhVideo" src="ASSETS/video/luxor-habu.mp4" poster="ASSETS/video/luxor-habu-poster.jpg" autoplay muted loop playsinline preload="auto" disablepictureinpicture disableremoteplayback aria-label="أعمدة ونقوش ملوّنة في معبد مدينة هابو بالأقصر"></video>
-      <div class="xh-shade" id="xhShade"></div>
-      <div class="xh-cap" id="xhCap">
-        <p class="xh-cap-title display">الأقصــــر</p>
-        <p class="xh-cap-sub">مدينة المعابد على ضفاف النيل</p>
-        <p class="xh-cap-loc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span>الأقصر، صعيد مصر</span></p>
-      </div>
-      <div class="xh-band" aria-hidden="true"></div>
-    </div>
-
-    <h1 class="xh-title" id="xh-title">
-      <span class="xh-line" id="xhL1">استكــــشف</span>
-      <span class="xh-line" id="xhL2">الأقصــــــــر</span>
-    </h1>
-
-    <nav class="xh-crumb" id="xhCrumb" aria-label="مسار التنقل">
-      <ol>
-        <li><a href="index.html">الرئيسية</a></li>
-        <li><a href="destinations.html">الوجهات</a></li>
-        <li aria-current="page">الأقصر</li>
-      </ol>
-    </nav>
-
-    <div class="xh-scroll" id="xhScroll" aria-hidden="true">
-      <span>مرّر للأسفل</span>
-      <div class="xh-mouse"><i></i></div>
+  <section class="ex pg" aria-label="تأكيد الاشتراك">
+    <div class="wrap">
+      <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
+      <div id="nlState"></div>
     </div>
   </section>
-
-  <div class="xc" id="xc">
-
-    <nav class="tb" id="lxTabs" aria-label="أقسام الصفحة">
-      <div class="wrap tb-in">
-        <ul class="tb-list" role="list">
-          <li><a class="tb-link" href="#lx-sus" aria-current="true">السياحة المستدامة</a></li>
-          <li><a class="tb-link" href="#lx-about">عن الأقصر</a></li>
-          <li><a class="tb-link" href="#lx-act">أهم الأنشطة</a></li>
-          <li><a class="tb-link" href="#lx-trips">أفكار للرحلات</a></li>
-          <li><a class="tb-link" href="#lx-places">أماكن تستحق الزيارة</a></li>
-          <li><a class="tb-link" href="#lx-people">رواد الأعمال المحليين</a></li>
-          <li><a class="tb-link" href="#lx-food">أماكن تناول الطعام</a></li>
-          <li><a class="tb-link" href="#lx-stay">أماكن الإقامة</a></li>
-          <li><a class="tb-link" href="#lx-info">معلومات عملية</a></li>
-          <li><a class="tb-link" href="#lx-map-h">خريطة الأقصر</a></li>
-        </ul>
-        <button class="tb-more" type="button" aria-label="المزيد من الأقسام" hidden><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></button>
-      </div>
-    </nav>
-
-    <section class="lx-sec lx-split lx-split--3 lx-leaf" aria-labelledby="lx-sus">
-      <img class="paths-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-      <div class="wrap lx-split-in">
-        <div class="lx-copy">
-          <h2 class="display lx-h" id="lx-sus">السياحة المستدامــــة في الأقصر</h2>
-          <p>نعمل مع المجتمع المحلي للحفاظ على تراث الأقصر الثقافي والطبيعي، ودعم السياحة المسؤولة التي تساهم في تنمية المنطقة وتوفير الفرص للأجيال القادمة.</p>
-        </div>
-        <div class="lx-art lx-art--both"><img src="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp" srcset="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-480.webp 480w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp 960w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-1440.webp 1440w" sizes="(min-width:1024px) 560px, 100vw" alt="معبد الأقصر مطلًّا على النيل عند الغروب" loading="lazy" decoding="async"></div>
-        <a class="lx-btn" href="experiences.html?city=luxor"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg><span>اكتشف المزيد</span></a>
-      </div>
-    </section>
-
-    <section class="lx-sec lx-split lx-leaf" aria-labelledby="lx-about">
-      <img class="paths-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-      <div class="wrap lx-split-in">
-        <div class="lx-copy">
-          <h2 class="display lx-h" id="lx-about">عن الأقصــــر</h2>
-          <p>تقع الأقصر في قلب صعيد مصر على ضفاف نهر النيل، وتُعد أكبر متحف مفتوح في العالم. تجمع بين روعة المعابد والمقابر الملكية في البرّين الشرقي والغربي، وتتميز بتاريخ عريق وثقافة نابضة بالحياة.</p>
-        </div>
-        <div class="lx-art lx-art--wide"><img src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-960.webp" srcset="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp 480w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-960.webp 960w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-1440.webp 1440w" sizes="(min-width:1024px) 700px, 100vw" alt="تماثيل وأعمدة معبد الأقصر" loading="lazy" decoding="async"></div>
-      </div>
-    </section>
-
-    <section class="lx-sec ac" aria-labelledby="lx-act">
-      <div class="wrap">
-        <header class="ac-head">
-          <div>
-            <span class="sec-eyebrow">أنشطة وتجارب</span>
-            <h2 class="display ac-h" id="lx-act">أهم الأنشــــطة<br>في الأقصــــر</h2>
-          </div>
-          <a class="ac-all" href="experiences.html?city=luxor&category=tour"><span class="ac-all-t">عرض كل الأنشطة</span></a>
-        </header>
-        <ul class="xl" id="xlAct" role="list">
-          <li class="xl-card" data-href="experience.html?city=luxor&slug=hot-air-balloon" data-open="false">
-            <img class="xl-img" src="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.webp" srcset="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-480.webp 480w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.webp 960w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-1440.webp 1440w" sizes="(max-width:767px) 100vw, 60vw" alt="مناطيد ملوّنة تحلّق فوق النيل ومعابد الأقصر عند الشروق" style="object-position:78% 50%" loading="lazy" decoding="async">
-            <span class="xl-shade" aria-hidden="true"></span>
-            <button class="xl-hit" type="button" aria-label="رحلات المناطيد" aria-expanded="false">رحلات المناطيد</button>
-            <span class="xl-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6.5 6.5 0 0 1 6.5 6.5c0 3.4-3 6-4.6 7.5h-3.8C8.5 15.5 5.5 12.9 5.5 9.5A6.5 6.5 0 0 1 12 3z"/><path d="M10 17l.5 2.5h3L14 17M12 3v14M9 4.5c-1 3.5-.5 8.5 1.2 12.5M15 4.5c1 3.5.5 8.5-1.2 12.5"/></svg></span>
-            <span class="xl-mini" aria-hidden="true">رحلات المناطيد</span>
-            <div class="xl-copy"><h3 class="xl-t">رحلات المناطيد</h3><p class="xl-d">تحليق فوق البر الغربي عند الشروق</p></div>
-          </li>
-          <li class="xl-card" data-href="experience.html?city=luxor&slug=cultural-experiences" data-open="false">
-            <img class="xl-img" src="ASSETS/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-960.webp" srcset="ASSETS/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-480.webp 480w, ASSETS/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-960.webp 960w, ASSETS/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-1440.webp 1440w" sizes="(max-width:767px) 100vw, 60vw" alt="رجل صعيدي يصبّ الشاي لزائرة في جلسة تطل على النيل" loading="lazy" decoding="async">
-            <span class="xl-shade" aria-hidden="true"></span>
-            <button class="xl-hit" type="button" aria-label="التجارب الثقافية" aria-expanded="false">التجارب الثقافية</button>
-            <span class="xl-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 9h11v5a5 5 0 0 1-5 5h-1a5 5 0 0 1-5-5V9z"/><path d="M16 10.5h1.5a2.5 2.5 0 0 1 0 5H16M8 3.5c-.8 1 .8 1.6 0 2.8M12 3.5c-.8 1 .8 1.6 0 2.8"/></svg></span>
-            <span class="xl-mini" aria-hidden="true">التجارب الثقافية</span>
-            <div class="xl-copy"><h3 class="xl-t">التجارب الثقافية</h3><p class="xl-d">شاي وحكايات مع أهل الأقصر</p></div>
-          </li>
-          <li class="xl-card" data-href="experience.html?city=luxor&slug=west-bank-exploring" data-open="false">
-            <img class="xl-img" src="ASSETS/%D8%A7%D9%84%D8%A8%D8%B1%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A-960.webp" srcset="ASSETS/%D8%A7%D9%84%D8%A8%D8%B1%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A-480.webp 480w, ASSETS/%D8%A7%D9%84%D8%A8%D8%B1%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A-960.webp 960w, ASSETS/%D8%A7%D9%84%D8%A8%D8%B1%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A-1440.webp 1440w" sizes="(max-width:767px) 100vw, 60vw" alt="البر الغربي للأقصر: حقول ونخيل عند سفح الجبل ومعبد حتشبسوت وقت الغروب" style="object-position:70% 50%" loading="lazy" decoding="async">
-            <span class="xl-shade" aria-hidden="true"></span>
-            <button class="xl-hit" type="button" aria-label="استكشاف البر الغربي" aria-expanded="false">استكشاف البر الغربي</button>
-            <span class="xl-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 19l6-10 3.5 5.5L15 11l6 8H3z"/><circle cx="17.5" cy="6" r="1.8"/></svg></span>
-            <span class="xl-mini" aria-hidden="true">استكشاف البر الغربي</span>
-            <div class="xl-copy"><h3 class="xl-t">استكشاف البر الغربي</h3><p class="xl-d">مقابر ومعابد بين الجبل والحقول</p></div>
-          </li>
-          <li class="xl-card" data-href="experience.html?city=luxor&slug=temple-visits" data-open="false">
-            <img class="xl-img" src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp" srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-480.webp 480w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w" sizes="(max-width:767px) 100vw, 60vw" alt="مرشد محلي يعرّف الزوار بمعبد الأقصر عند الغروب" loading="lazy" decoding="async">
-            <span class="xl-shade" aria-hidden="true"></span>
-            <button class="xl-hit" type="button" aria-label="زيارة المعابد" aria-expanded="false">زيارة المعابد</button>
-            <span class="xl-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12"/></svg></span>
-            <span class="xl-mini" aria-hidden="true">زيارة المعابد</span>
-            <div class="xl-copy"><h3 class="xl-t">زيارة المعابد</h3><p class="xl-d">جولات مع مرشدين محليين</p></div>
-          </li>
-          <li class="xl-card" data-href="experience.html?city=luxor&slug=nile-felucca" data-open="true">
-            <img class="xl-img" src="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-960.webp" srcset="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-480.webp 480w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-960.webp 960w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1448.webp 1448w" sizes="(max-width:767px) 100vw, 60vw" alt="فلوكة تعبر النيل عند الغروب" loading="lazy" decoding="async">
-            <span class="xl-shade" aria-hidden="true"></span>
-            <button class="xl-hit" type="button" aria-label="رحلات نيلية" aria-expanded="true">رحلات نيلية</button>
-            <span class="xl-ic" aria-hidden="true"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v13M12 4c4 2.5 6 6.5 6.5 11H12M12 7c-2.5 2-4 5-4.5 8H12M3.5 18.5h17l-2 2.5h-13l-2-2.5z"/></svg></span>
-            <span class="xl-mini" aria-hidden="true">رحلات نيلية</span>
-            <div class="xl-copy"><h3 class="xl-t">رحلات نيلية</h3><p class="xl-d">فلوكة على النيل وقت الغروب</p></div>
-          </li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="lx-sec cf" id="lxTrips" aria-labelledby="lx-trips" aria-roledescription="carousel">
-      <div class="wrap">
-        <header class="cf-head">
-          <h2 class="display lx-h cf-h" id="lx-trips"><span>أفكار</span> <span class="cf-accent">للرحــــلات</span></h2>
-          <p class="cf-sub">اختر المدة التي تناسب زيارتك</p>
-        </header>
-      </div>
-      <div class="cf-stage">
-        <button class="cf-nav cf-prev" type="button" aria-label="الرحلة السابقة"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-        <ul class="cf-track" role="list">
-          <li class="cf-item" data-i="0"><button class="cf-card" type="button" data-desc="المعابد والمقابر وتجارب ثقافية متكاملة">
-            <img src="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp" srcset="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-480.webp 480w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp 960w" sizes="390px" alt="معبد الأقصر مطلًّا على النيل عند الغروب" loading="lazy" decoding="async">
-            <span class="lx-badge">7 أيام</span>
-            <span class="cf-cap"><span class="cf-name">الأقصر وما حولها</span><span class="cf-more">اضغط لمعرفة المزيد</span></span>
-          </button></li>
-          <li class="cf-item" data-i="1"><button class="cf-card" type="button" data-desc="أبرز معالم البر الشرقي والبر الغربي">
-            <img src="ASSETS/place-karnak-736.webp" srcset="ASSETS/place-karnak-480.webp 480w, ASSETS/place-karnak-736.webp 736w" sizes="390px" alt="أعمدة صالة الأعمدة الكبرى في معبد الكرنك والشمس بينها" loading="lazy" decoding="async">
-            <span class="lx-badge">5 أيام</span>
-            <span class="cf-cap"><span class="cf-name">التراث والآثار</span><span class="cf-more">اضغط لمعرفة المزيد</span></span>
-          </button></li>
-          <li class="cf-item" data-i="2"><button class="cf-card" type="button" data-desc="معابد رئيسية وتجربة نيلية">
-            <img src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-960.webp" srcset="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp 480w, ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-960.webp 960w" sizes="390px" alt="تماثيل وأعمدة معبد الأقصر" loading="lazy" decoding="async">
-            <span class="lx-badge">3 أيام</span>
-            <span class="cf-cap"><span class="cf-name">رحلة سريعة إلى الأقصر</span><span class="cf-more">اضغط لمعرفة المزيد</span></span>
-          </button></li>
-        </ul>
-        <button class="cf-nav cf-next" type="button" aria-label="الرحلة التالية"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-      </div>
-      <div class="wrap">
-        <p class="cf-desc" aria-live="polite">أبرز معالم البر الشرقي والبر الغربي</p>
-        <div class="cf-dots" role="tablist" aria-label="أفكار للرحلات"><button type="button" role="tab" aria-label="الأقصر وما حولها" data-i="0"></button><button type="button" role="tab" aria-label="التراث والآثار" data-i="1"></button><button type="button" role="tab" aria-label="رحلة سريعة إلى الأقصر" data-i="2"></button></div>
-      </div>
-    </section>
-
-    <section class="pv" id="lxPlaces" aria-labelledby="lx-places" aria-roledescription="carousel">
-      <div class="pv-bgs" aria-hidden="true">
-        <div class="pv-bg is-on"><img src="ASSETS/place-karnak-736.webp" alt="" style="object-position:50% 60%" decoding="async"></div>
-        <div class="pv-bg"><img src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-1448.webp" alt="" style="object-position:50% 50%" loading="lazy" decoding="async"></div>
-        <div class="pv-bg"><img src="ASSETS/place-valley-kings-1280.webp" alt="" style="object-position:50% 45%" loading="lazy" decoding="async"></div>
-        <div class="pv-bg"><img src="ASSETS/place-hatshepsut-717.webp" alt="" style="object-position:50% 62%" loading="lazy" decoding="async"></div>
-        <div class="pv-bg"><img src="ASSETS/place-memnon-960.webp" alt="" style="object-position:40% 50%" loading="lazy" decoding="async"></div>
-      </div>
-      <div class="pv-shade" aria-hidden="true"></div>
-      <div class="wrap pv-in">
-        <div class="pv-copy">
-          <h2 class="pv-kicker" id="lx-places">أماكن تستحــــق الزيارة</h2>
-          <div class="pv-text" id="pvText" aria-live="polite">
-            <p class="pv-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-7-5.6-7-11a7 7 0 0 1 14 0c0 5.4-7 11-7 11z"/><circle cx="12" cy="10" r="2.5"/></svg><span id="pvLoc">البر الشرقي</span></p>
-            <h3 class="display pv-title" id="pvTitle">معبد الكرنــــك</h3>
-            <p class="pv-desc" id="pvDesc">أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر.</p>
-            <p class="pv-temp" id="pvTemp" hidden><span class="lx-temp">صورة مؤقتة</span></p>
-          </div>
-          <a class="pv-cta" id="pvCta" href="#"><span>اكتشف المكان</span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-        <div class="pv-side">
-          <ul class="pv-rail" role="list">
-            <li class="pv-item" data-i="0" data-href="destination.html?city=luxor&slug=karnak-temple" data-title="معبد الكرنــــك" data-loc="البر الشرقي" data-desc="أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر."><button class="pv-card" type="button" aria-label="معبد الكرنك">
-              <img src="ASSETS/place-karnak-480.webp" alt="" style="object-position:50% 60%" loading="lazy" decoding="async">
-              <span class="pv-card-txt"><span class="pv-card-loc">البر الشرقي</span><span class="pv-card-t">معبد الكرنك</span></span>
-            </button></li>
-            <li class="pv-item" data-i="1" data-href="destination.html?city=luxor&slug=luxor-temple" data-title="معبد الأقصــــر" data-loc="البر الشرقي" data-desc="معبد على كورنيش النيل في قلب المدينة، يتألق عند الغروب وتضيئه الأنوار ليلًا."><button class="pv-card" type="button" aria-label="معبد الأقصر">
-              <img src="ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp" alt="" style="object-position:50% 50%" loading="lazy" decoding="async">
-              <span class="pv-card-txt"><span class="pv-card-loc">البر الشرقي</span><span class="pv-card-t">معبد الأقصر</span></span>
-            </button></li>
-            <li class="pv-item" data-i="2" data-href="destination.html?city=luxor&slug=valley-of-the-kings" data-title="وادي الملــــوك" data-loc="البر الغربي" data-desc="مقابر ملوك الدولة الحديثة المنحوتة في الجبل، ومنها مقبرة توت عنخ آمون بنقوشها الملوّنة."><button class="pv-card" type="button" aria-label="وادي الملوك">
-              <img src="ASSETS/place-valley-kings-480.webp" alt="" style="object-position:50% 45%" loading="lazy" decoding="async">
-              <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">وادي الملوك</span></span>
-            </button></li>
-            <li class="pv-item" data-i="3" data-href="destination.html?city=luxor&slug=hatshepsut-temple" data-title="معبد حتشبســــوت" data-loc="البر الغربي" data-desc="معبد جنائزي بمدرّجاته الثلاثة في حضن جبل الدير البحري، من أجمل ما شُيّد في عهد الملكة حتشبسوت."><button class="pv-card" type="button" aria-label="معبد حتشبسوت">
-              <img src="ASSETS/place-hatshepsut-480.webp" alt="" style="object-position:50% 62%" loading="lazy" decoding="async">
-              <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">معبد حتشبسوت</span></span>
-            </button></li>
-            <li class="pv-item" data-i="4" data-href="destination.html?city=luxor&slug=colossi-of-memnon" data-title="تمثالا ممنــــون" data-loc="البر الغربي" data-desc="تمثالان عملاقان لأمنحتب الثالث يستقبلان الزائرين عند مدخل البر الغربي منذ أكثر من ثلاثة آلاف عام."><button class="pv-card" type="button" aria-label="تمثالا ممنون">
-              <img src="ASSETS/place-memnon-480.webp" alt="" style="object-position:40% 50%" loading="lazy" decoding="async">
-              <span class="pv-card-txt"><span class="pv-card-loc">البر الغربي</span><span class="pv-card-t">تمثالا ممنون</span></span>
-            </button></li>
-          </ul>
-          <div class="pv-foot">
-            <div class="pv-arrows">
-              <button class="pv-nav pv-prev" type="button" aria-label="المكان السابق"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></button>
-              <button class="pv-nav pv-next" type="button" aria-label="المكان التالي"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-            </div>
-            <div class="pv-bar" aria-hidden="true"><i id="pvBar"></i></div>
-            <p class="pv-num display" aria-hidden="true"><b id="pvNum">01</b></p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="business" class="stories lx-stories" aria-labelledby="lx-people">
-  <img class="st-scene" src="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-2172.webp" alt="" aria-hidden="true" width="2172" height="724" loading="lazy">
-  <div class="wrap">
-    <header class="st-head">
-      <div>
-        <span class="st-eyebrow">قصص ملهمة من الصعيد</span>
-        <h2 id="lx-people" class="display st-title">تعرف على رواد الأعمال المحلــــيين</h2>
-        <p class="st-sub">تعرّف على سيدات وشباب من الأقصر حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.</p>
-      </div>
-      <a class="st-cta" href="entrepreneurs.html"><span>استكشف جميع الرواد</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-    </header>
-
-    <div class="st-grid">
-      <article class="st-feature" data-slot="0">
-        <img class="st-feature-img" src="ASSETS/Fatma Boghdady-1448.webp" srcset="ASSETS/Fatma Boghdady-480.webp 480w, ASSETS/Fatma Boghdady-960.webp 960w, ASSETS/Fatma Boghdady-1440.webp 1440w, ASSETS/Fatma Boghdady-1448.webp 1448w" sizes="(max-width:1023px) 100vw, 58vw" alt="فاطمة البغدادي في ورشتها بالأقصر وأمامها حقائب جلدية وإكسسوارات من صنعها" loading="lazy" decoding="async" style="object-position:62% 35%">
-        <span class="st-tint" aria-hidden="true"></span>
-        <span class="st-tag"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 11V6.5a1.5 1.5 0 0 1 3 0V11M10 10V4.5a1.5 1.5 0 0 1 3 0V11M13 10.5V6a1.5 1.5 0 0 1 3 0v6.5M16 12v-1a1.5 1.5 0 0 1 3 0v4a6 6 0 0 1-6 6h-1.5a6 6 0 0 1-4.8-2.4L4 15.5a1.4 1.4 0 0 1 2.2-1.7L7 15"/></svg><span>حرف يدوية</span></span>
-        <div class="st-panel">
-          <h3 class="st-name">فاطمة البغدادي</h3>
-          <p class="st-biz">الحرفجية</p>
-          <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-          <p class="st-desc">تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.</p>
-          <a class="st-link" href="entrepreneur.html?slug=fatma-boghdady"><span>عرض الملف الشخصي</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-      </article>
-      <article class="st-feature" data-slot="1">
-        <img class="st-feature-img" src="ASSETS/Zainab Gamal-1461.webp" srcset="ASSETS/Zainab Gamal-480.webp 480w, ASSETS/Zainab Gamal-960.webp 960w, ASSETS/Zainab Gamal-1440.webp 1440w, ASSETS/Zainab Gamal-1461.webp 1461w" sizes="(max-width:1023px) 100vw, 50vw" alt="زينب جمال تعرض مجموعة من العقود والإكسسوارات اليدوية من صنعها" style="object-position:25% 40%" loading="lazy" decoding="async">
-        <span class="st-tint" aria-hidden="true"></span>
-        <span class="st-tag st-tag--olive"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="14" r="6"/><path d="M9.5 8.5L12 4l2.5 4.5"/></svg><span>إكسسوارات</span></span>
-        <div class="st-panel">
-          <h3 class="st-name">زينب جمال</h3>
-          <p class="st-biz">زينب للإكسسوارات</p>
-          <span class="st-loc"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-          <p class="st-desc">تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.</p>
-          <a class="st-link" href="entrepreneur.html?slug=zainab-gamal"><span>عرض الملف الشخصي</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-    <section class="lx-sec" aria-labelledby="lx-food">
-      <div class="wrap">
-        <header class="lx-head">
-          <h2 class="display lx-h" id="lx-food">أماكن تناول الطعــــام</h2>
-          <a class="lx-all" href="experiences.html?city=luxor&category=food"><span>عرض الكل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
-        </header>
-        <ul class="fd-row" role="list">
-          <li><article class="gem">
-            <div class="gem-media">
-              <img class="gem-img" src="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-960.webp" srcset="ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-480.webp 480w, ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-960.webp 960w" sizes="(min-width:1024px) 290px, 78vw" alt="مائدة أطباق مصرية تطل على النيل" loading="lazy" decoding="async">
-              <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-              <span class="gem-loc "><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>كورنيش النيل</span></span>
-              <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-            </div>
-            <div class="gem-body">
-              <span class="gem-cat">إطلالة نيلية</span>
-              <h3 class="gem-title">مطاعم على ضفاف النيل</h3>
-              <p class="gem-desc">أطباق مصرية بإطلالة مباشرة على النهر.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=nile-restaurants"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-            </div>
-          </article></li>
-          <li><article class="gem">
-            <div class="gem-media">
-              <img class="gem-img" src="ASSETS/food-local-restaurant-960.webp" srcset="ASSETS/food-local-restaurant-480.webp 480w, ASSETS/food-local-restaurant-960.webp 960w" sizes="(min-width:1024px) 290px, 78vw" alt="مطعم محلي صغير في الأقصر بطاولات خشبية وسقف من الجريد" loading="lazy" decoding="async">
-              <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-              <span class="gem-loc gem-loc--olive"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-              <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-            </div>
-            <div class="gem-body">
-              <span class="gem-cat">مطبخ صعيدي</span>
-              <h3 class="gem-title">مطاعم محلية</h3>
-              <p class="gem-desc">مأكولات صعيدية تقليدية في مطاعم يديرها أهل المكان.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=local-restaurants"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-            </div>
-          </article></li>
-          <li><article class="gem">
-            <div class="gem-media">
-              <img class="gem-img" src="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-960.webp" srcset="ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-480.webp 480w, ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-960.webp 960w" sizes="(min-width:1024px) 290px, 78vw" alt="أمسية على ضفاف النيل مع موسيقى وشاي" loading="lazy" decoding="async">
-              <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-              <span class="gem-loc gem-loc--ink"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>كورنيش النيل</span></span>
-              <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-            </div>
-            <div class="gem-body">
-              <span class="gem-cat">مقاهٍ وجلسات</span>
-              <h3 class="gem-title">مقاهي الكورنيش</h3>
-              <p class="gem-desc">جلسات هادئة وموسيقى وشاي على كورنيش النيل.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=corniche-cafes"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-            </div>
-          </article></li>
-          <li><article class="gem">
-            <div class="gem-media">
-              <img class="gem-img" src="ASSETS/food-koshari-960.webp" srcset="ASSETS/food-koshari-480.webp 480w, ASSETS/food-koshari-960.webp 960w" sizes="(min-width:1024px) 290px, 78vw" alt="طبق كشري مصري بالصلصة والحمص" loading="lazy" decoding="async">
-              <span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>
-              <span class="gem-loc "><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span>
-              <button class="gem-fav" type="button" aria-pressed="false" aria-label="أضف إلى المفضلة"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.5s-7.5-4.6-7.5-10A4.2 4.2 0 0 1 12 8a4.2 4.2 0 0 1 7.5 2.5c0 5.4-7.5 10-7.5 10z"/></svg></button>
-            </div>
-            <div class="gem-body">
-              <span class="gem-cat">أكلات شعبية</span>
-              <h3 class="gem-title">مأكولات تقليدية</h3>
-              <p class="gem-desc">كشري وفول وطعمية وخبز شمسي من قلب المطبخ المصري.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=traditional-food"><span>عرض التفاصيل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-            </div>
-          </article></li>
-        </ul>
-      </div>
-    </section>
-
-    <section class="lx-sec" aria-labelledby="lx-stay">
-      <div class="wrap">
-        <header class="lx-head">
-          <h2 class="display lx-h" id="lx-stay">أماكن الإقــــامة</h2>
-          <a class="lx-all" href="experiences.html?city=luxor&category=stay"><span>عرض الكل</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 6l-6 6 6 6"/></svg></a>
-        </header>
-        <div class="sy" id="lxStay">
-          <ul class="sy-rail" role="list">
-            <li class="sy-card">
-              <div class="sy-img"><img src="ASSETS/stay-winter-palace-960.webp" srcset="ASSETS/stay-winter-palace-480.webp 480w, ASSETS/stay-winter-palace-960.webp 960w" sizes="(min-width:1024px) 350px, 78vw" alt="واجهة فندق ونتر بالاس التاريخي في الأقصر" loading="lazy" decoding="async"></div>
-              <p class="sy-meta"><span class="sy-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>كورنيش النيل</span></span><span class="sy-kind">فندق تراثي</span></p>
-              <div class="sy-row"><h3 class="sy-t">فندق ونتر بالاس</h3><a class="sy-btn" href="experience.html?city=luxor&slug=winter-palace">عرض التفاصيل</a></div>
-            </li>
-            <li class="sy-card">
-              <div class="sy-img"><img src="ASSETS/stay-steigenberger-960.webp" srcset="ASSETS/stay-steigenberger-480.webp 480w, ASSETS/stay-steigenberger-960.webp 960w" sizes="(min-width:1024px) 350px, 78vw" alt="فندق شتايجنبرجر نايل بالاس ومراكب شراعية أمامه على النيل" loading="lazy" decoding="async"></div>
-              <p class="sy-meta"><span class="sy-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>كورنيش النيل</span></span><span class="sy-kind">فندق على النيل</span></p>
-              <div class="sy-row"><h3 class="sy-t">شتايجنبرجر نايل بالاس</h3><a class="sy-btn" href="experience.html?city=luxor&slug=steigenberger-nile-palace">عرض التفاصيل</a></div>
-            </li>
-            <li class="sy-card">
-              <div class="sy-img"><img src="ASSETS/stay-jolie-ville-960.webp" srcset="ASSETS/stay-jolie-ville-480.webp 480w, ASSETS/stay-jolie-ville-960.webp 960w" sizes="(min-width:1024px) 350px, 78vw" alt="مسبح منتجع جولي فيل المطل على النيل بين النخيل" loading="lazy" decoding="async"></div>
-              <p class="sy-meta"><span class="sy-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>جزيرة الملوك</span></span><span class="sy-kind">منتجع</span></p>
-              <div class="sy-row"><h3 class="sy-t">جولي فيل كينجز آيلاند</h3><a class="sy-btn" href="experience.html?city=luxor&slug=jolie-ville-kings-island">عرض التفاصيل</a></div>
-            </li>
-            <li class="sy-card">
-              <div class="sy-img"><img src="ASSETS/stay-sonesta-960.webp" srcset="ASSETS/stay-sonesta-480.webp 480w, ASSETS/stay-sonesta-960.webp 960w" sizes="(min-width:1024px) 350px, 78vw" alt="مبنى فندق سونستا سان جورج في الأقصر" loading="lazy" decoding="async"></div>
-              <p class="sy-meta"><span class="sy-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>كورنيش النيل</span></span><span class="sy-kind">فندق على النيل</span></p>
-              <div class="sy-row"><h3 class="sy-t">سونستا سان جورج</h3><a class="sy-btn" href="experience.html?city=luxor&slug=sonesta-st-george">عرض التفاصيل</a></div>
-            </li>
-            <li class="sy-card">
-              <div class="sy-img"><img src="ASSETS/stay-villa-nile-960.webp" srcset="ASSETS/stay-villa-nile-480.webp 480w, ASSETS/stay-villa-nile-960.webp 960w" sizes="(min-width:1024px) 350px, 78vw" alt="إطلالة من فيلا نايل على الأسطح والقباب والنيل" loading="lazy" decoding="async"></div>
-              <p class="sy-meta"><span class="sy-loc"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 21s-6-5.3-6-11a6 6 0 0 1 12 0c0 5.7-6 11-6 11z"/><circle cx="12" cy="10" r="2.2"/></svg><span>الأقصر</span></span><span class="sy-kind">بيت ضيافة</span></p>
-              <div class="sy-row"><h3 class="sy-t">فيلا نايل</h3><a class="sy-btn" href="experience.html?city=luxor&slug=villa-nile">عرض التفاصيل</a></div>
-            </li>
-          </ul>
-          <button class="sy-nav sy-prev" type="button" aria-label="السابق" hidden><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-          <button class="sy-nav sy-next" type="button" aria-label="التالي"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></button>
-        </div>
-      </div>
-    </section>
-
-    
-
-    <section class="lx-sec" aria-labelledby="lx-info">
-      <div class="wrap">
-        <header class="lx-head"><h2 class="display lx-h" id="lx-info">معلومات عمــــلية</h2></header>
-        <div class="lx-faq">
-          <details class="lx-q"><summary><span>كيفية الوصول إلى الأقصر</span><i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>تصل إلى الأقصر جوًا عبر مطار الأقصر الدولي، وتستغرق الرحلة من القاهرة نحو ساعة. كما تربطها بالقاهرة وأسوان قطارات يومية، منها قطارات النوم، إضافة إلى الحافلات والرحلات النيلية القادمة من أسوان.</p></details>
-          <details class="lx-q"><summary><span>أفضل وقت للزيارة</span><i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>الفترة من أكتوبر إلى أبريل هي الأنسب، حيث يكون الطقس معتدلًا نهارًا ولطيفًا ليلًا. في الصيف ترتفع الحرارة كثيرًا، فيُفضَّل زيارة المواقع الأثرية في الصباح الباكر أو قبل الغروب.</p></details>
-          <details class="lx-q"><summary><span>المواصلات داخل المدينة</span><i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>يمكنك التنقل بسيارات الأجرة أو الحنطور داخل البر الشرقي، وعبور النيل بالمعدية العامة أو اللنشات الصغيرة إلى البر الغربي. وتتوفر الدراجات للإيجار لمن يفضّل استكشاف القرى والمواقع بهدوء.</p></details>
-          <details class="lx-q"><summary><span>نصائح مهمة</span><i aria-hidden="true"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></i></summary><p>ابدأ جولاتك مبكرًا واحمل ماءً كافيًا وغطاءً للرأس وواقيًا من الشمس. ارتدِ ملابس مريحة ومحتشمة وحذاءً مناسبًا للمشي، واحرص على شراء التذاكر من المنافذ الرسمية ودعم الحرفيين المحليين عند التسوق.</p></details>
-        </div>
-      </div>
-    </section>
-
-    <section class="lx-sec lx-sec--last mp" id="lxMapSec" data-city="luxor" aria-labelledby="lx-map-h">
-      <div class="wrap">
-        <header class="mp-head">
-          <h2 class="display lx-h" id="lx-map-h">خريطة الأقصــــر</h2>
-          <p class="mp-sub">استكشف المعالم والتجارب وأماكن الطعام والإقامة ورواد الأعمال في الأقصر.</p>
-        </header>
-        <div class="mp-bar">
-          <div class="mp-search">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="6.5"/><path d="M20 20l-4-4"/></svg>
-            <input id="mpQ" type="search" placeholder="ابحث عن أماكن أو تجارب أو منتجات أو رواد أعمال" aria-label="ابحث في خريطة الأقصر" autocomplete="off">
-          </div>
-          <div class="mp-cats" role="group" aria-label="التصنيفات">
-            <button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="4" width="6.5" height="6.5" rx="1.5"/><rect x="4" y="13.5" width="6.5" height="6.5" rx="1.5"/><rect x="13.5" y="13.5" width="6.5" height="6.5" rx="1.5"/></svg><span>الكل</span></button>
-            <button type="button" class="mp-chip" data-cat="land" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12"/></svg><span>المعالم</span></button>
-            <button type="button" class="mp-chip" data-cat="exp" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg><span>التجارب</span></button>
-            <button type="button" class="mp-chip" data-cat="eat" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 3v8M4.5 3v4.5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2 1.5-3 4-3 7h3m0-7v18"/></svg><span>الطعام</span></button>
-            <button type="button" class="mp-chip" data-cat="stay" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M7 9V6.5h10V9"/></svg><span>الإقامة</span></button>
-            <button type="button" class="mp-chip" data-cat="biz" aria-pressed="false"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9.5l1.5-5h13l1.5 5M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5.5 12v8h13v-8M10 20v-4.5h4V20"/></svg><span>رواد الأعمال</span></button>
-          </div>
-          <button type="button" class="mp-adv-btn" id="mpAdvBtn" aria-expanded="false" aria-controls="mpAdv"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h2M10 17h10"/><circle cx="16" cy="7" r="2"/><circle cx="8" cy="17" r="2"/></svg><span>تصفية</span><b id="mpAdvN" hidden></b></button>
-        </div>
-        <div class="mp-adv" id="mpAdv" hidden>
-          <fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset>
-          <fieldset data-g="pr"><legend>فئة السعر</legend><label><input type="checkbox" data-f="pr" value="1"><span>$</span></label><label><input type="checkbox" data-f="pr" value="2"><span>$$</span></label><label><input type="checkbox" data-f="pr" value="3"><span>$$$</span></label><label><input type="checkbox" data-f="pr" value="4"><span>$$$$</span></label></fieldset>
-          <fieldset data-g="a"><legend>إمكانية الوصول</legend><label><input type="checkbox" data-f="a" value="step"><span>دخول بلا درجات</span></label><label><input type="checkbox" data-f="a" value="wc"><span>دورة مياه مهيأة</span></label><label><input type="checkbox" data-f="a" value="seat"><span>أماكن جلوس</span></label><label><input type="checkbox" data-f="a" value="av"><span>دعم سمعي أو بصري</span></label></fieldset>
-        </div>
-        <div class="mp-body">
-          <div class="mp-list" id="mpList" aria-labelledby="mpCount">
-            <div class="mp-list-head">
-              <p class="mp-count" id="mpCount" role="status" aria-live="polite"></p>
-              <button type="button" class="mp-close" id="mpClose" aria-label="إغلاق النتائج"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>
-            </div>
-            <ul class="mp-items" id="mpItems" role="list"></ul>
-            <div class="mp-empty" id="mpEmpty" hidden>
-              <p>لا توجد نتائج مطابقة.</p>
-              <button type="button" class="mp-clear" id="mpClear">مسح الفلاتر</button>
-            </div>
-          </div>
-          <div class="mp-map">
-            <div id="mpMap" role="region" aria-label="خريطة الأقصر"></div>
-            <div class="mp-ctl">
-              <button type="button" id="mpHome" aria-label="إعادة توسيط الخريطة"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M12 3v3M12 18v3M3 12h3M18 12h3"/><circle cx="12" cy="12" r="7"/></svg></button>
-              <button type="button" id="mpIn" aria-label="تكبير"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
-              <button type="button" id="mpOut" aria-label="تصغير"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14"/></svg></button>
-            </div>
-            <button type="button" class="mp-open" id="mpOpen"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span id="mpOpenT">عرض النتائج</span></button>
-          </div>
-        </div>
-      </div>
-      <div class="mp-back" id="mpBack" hidden></div>
-    </section>
-    <section class="lx-sec lx-keep" id="lxKeep" aria-labelledby="lx-keep-h">
-      <div class="wrap">
-        <header class="lx-head"><div><span class="sec-eyebrow">إلى أين بعد ذلك؟</span><h2 class="display lx-h" id="lx-keep-h">تابع الاستكشاف</h2></div></header>
-        <div class="lx-keep-row">
-          <a class="lx-btn" href="aswan.html"><span>استكشف أسوان</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          <a class="lx-btn lx-btn--ghost" href="destinations.html?city=luxor"><span>كل الأماكن في الأقصر</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-          <a class="lx-btn lx-btn--ghost" href="experiences.html?city=luxor"><span>كل التجارب والمنتجات</span><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
-        </div>
-      </div>
-    </section>
-  </div>
 </main>
-
-<aside class="lx-credits" aria-label="حقوق الصور"><div class="wrap"><details><summary>حقوق الصور</summary>
-      <p dir="ltr" lang="en">Wikimedia Commons: Winter Palace, Sonesta St George, Jolie Ville infinity pool, Valley of the Kings — Marc Ryckaert (CC BY-SA 4.0) · Steigenberger — Olaf Tausch (CC BY 3.0) · Hôtel Villa Nile — Chabe01 (CC BY-SA 4.0) · Egyptian Koshari — Basma (CC BY-SA 4.0) · Small restaurant in Luxor — anagh (CC BY-SA 3.0). Music: “Desert City” by Kevin MacLeod, incompetech.com (CC BY 4.0).</p></details></div></aside>
 
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
@@ -2105,433 +1784,25 @@
 })();
 </script>
 <script>
-(() => {
-  const $ = id => document.getElementById(id);
-  const bg = $('xhBg'), media = $('xhMedia'), shade = $('xhShade'),
-        l1 = $('xhL1'), l2 = $('xhL2'), ind = $('xhScroll'), content = $('xc');
-  const nav = document.querySelector('.nav-bar'), cap = $('xhCap'), crumb = $('xhCrumb');
-  const clamp = v => Math.min(Math.max(v, 0), 1);
-  let p = 0, t = 0, expanded = false, shown = false, touchY = null, raf = 0;
-
-  function paint() {
-    raf = 0;
-    const gap = t - p;
-    if (Math.abs(gap) < 0.0008) p = t; else { p += gap * 0.16; raf = requestAnimationFrame(paint); }
-    if (p >= 1) { expanded = true; shown = true; } else { expanded = false; if (p < 0.75) shown = false; }
-    const mobile = innerWidth < 768, vh = innerHeight;
-    const w = 300 + p * (mobile ? 650 : 1250);
-    const h = 400 + p * (mobile ? 200 : 400);
-    media.style.width = w + 'px';
-    media.style.height = h + 'px';
-    bg.style.opacity = 1 - p;
-    bg.style.transform = 'scale(' + (1 + p * 0.05) + ')';
-    shade.style.opacity = 0.5 - p * 0.28;
-    const x = p * (mobile ? 180 : 150);
-    l1.style.transform = 'translateX(' + (-x) + 'vw)';
-    l2.style.transform = 'translateX(' + x + 'vw)';
-    const navB = nav ? nav.getBoundingClientRect().bottom : 0;
-    const maxH = Math.min(vh * 0.85, vh - navB - 100);
-    const shownH = Math.min(h, maxH);
-    const shift = Math.max(0, navB + 80 - (vh - shownH) / 2);
-    media.style.maxHeight = maxH + 'px';
-    media.style.top = 'calc(50% + ' + shift + 'px)';
-    const k = clamp((p - 0.7) / 0.3);
-    cap.style.opacity = k;
-    cap.style.transform = 'translateY(' + ((1 - k) * 18) + 'px)';
-    crumb.style.opacity = k;
-    crumb.classList.toggle('is-on', k > 0.6);
-    crumb.style.top = ((vh - shownH) / 2 + shift - 58) + 'px';
-    crumb.style.insetInlineStart = ((innerWidth - Math.min(w, innerWidth * 0.95)) / 2 + 4) + 'px';
-    ind.style.top = (vh / 2 + shift + shownH / 2 + 34) + 'px';
-    ind.classList.toggle('is-hidden', p > 0.16);
-    content.classList.toggle('is-in', shown);
-    document.body.classList.toggle('is-locked', !expanded);
-  }
-  const queue = () => { if (!raf) raf = requestAnimationFrame(paint); };
-
-  function setP(v) { t = clamp(v); queue(); }
-
-  const inUI = e => e.target.closest && e.target.closest('.nav, #a11yDrawer, #a11yLayer, input, textarea, select, button, a');
-  addEventListener('wheel', e => {
-    if (inUI(e)) return;
-    if (expanded && e.deltaY < 0 && scrollY <= 5) { e.preventDefault(); setP(t + e.deltaY * 0.0024); }
-    else if (!expanded) { e.preventDefault(); setP(t + e.deltaY * 0.0024); }
-  }, { passive: false });
-
-  addEventListener('touchstart', e => { touchY = e.touches[0].clientY; }, { passive: true });
-  addEventListener('touchmove', e => {
-    if (touchY == null) return;
-    const y = e.touches[0].clientY, d = touchY - y;
-    if (expanded && d < -20 && scrollY <= 5) { e.preventDefault(); setP(t + d * 0.009); touchY = y; }
-    else if (!expanded) { e.preventDefault(); setP(t + d * (d < 0 ? 0.009 : 0.007)); touchY = y; }
-  }, { passive: false });
-  addEventListener('touchend', () => { touchY = null; });
-
-  /* keyboard: the same control without a wheel */
-  addEventListener('keydown', e => {
-    if (inUI(e)) return;
-    const down = ['ArrowDown', 'PageDown', ' ', 'Spacebar'].includes(e.key), up = ['ArrowUp', 'PageUp'].includes(e.key);
-    if (!expanded && (down || up)) { e.preventDefault(); setP(t + (down ? 0.34 : -0.34)); }
-    else if (expanded && up && scrollY <= 5) { e.preventDefault(); setP(t - 0.34); }
-  });
-
-  addEventListener('scroll', () => {
-    if (!expanded && scrollY !== 0) scrollTo(0, 0);
-  }, { passive: true });
-  addEventListener('resize', queue);
-
-  /* keep this page's own title when the language changes */
-  const TITLES = { ar: 'استكشف الأقصر — صعيد مصر', en: 'Explore Luxor — Upper Egypt', es: 'Explorar Luxor — Alto Egipto' };
-  const fixTitle = () => { document.title = TITLES[document.documentElement.lang] || TITLES.ar; };
-  document.addEventListener('i18n:change', fixTitle);
-  addEventListener('DOMContentLoaded', fixTitle);
-
-  const vid = $('xhVideo');
-  if (vid) {
-    vid.muted = true;
-    if (matchMedia('(prefers-reduced-motion:reduce)').matches) { vid.removeAttribute('autoplay'); vid.pause(); }
-    else { const go = () => vid.play().catch(() => {}); go(); addEventListener('touchstart', go, { once: true, passive: true }); }
-  }
-
-  if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
-  scrollTo(0, 0);
-  window.__xh = { set: setP, get p() { return p; }, get expanded() { return expanded; } };
-  paint();
-})();
+document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
 </script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script>
-(() => {
-  /* cards without a detail page yet */
-  const toast = m => { const t = document.getElementById('toast'); if (!t) return; t.textContent = m; t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200); };
-  document.addEventListener('click', e => { const a = e.target.closest('[data-soon]'); if (!a) return; e.preventDefault(); toast(I18N.t('هذه الصفحة قيد الإعداد')); });
-
-  /* only one practical-info item open at a time */
-  const qs = [...document.querySelectorAll('.lx-q')];
-  qs.forEach(q => q.addEventListener('toggle', () => { if (q.open) qs.forEach(o => { if (o !== q) o.open = false; }); }));
-
-
-})();
-</script>
-<script>
-(() => {
-  document.querySelectorAll('.cf').forEach(root => {
-  const stage = root.querySelector('.cf-stage'), items = [...root.querySelectorAll('.cf-item')], dots = [...root.querySelectorAll('.cf-dots button')], desc = root.querySelector('.cf-desc');
-  const n = items.length; let active = 1, swapT = 0;
-  const px = k => parseFloat(getComputedStyle(stage).getPropertyValue(k)) || 0;
-  function layout() {
-    const rtl = document.documentElement.dir === 'rtl', x1 = px('--x1'), x2 = px('--x2');
-    items.forEach((it, i) => {
-      let d = i - active; if (d > n / 2) d -= n; if (d < -n / 2) d += n;       // shortest way round
-      const a = Math.abs(d), side = (rtl ? -1 : 1) * Math.sign(d);
-      it.style.setProperty('--d', side * (a === 0 ? 0 : a === 1 ? x1 : x2));
-      it.style.setProperty('--z', a === 0 ? 0 : a === 1 ? -120 : -260);
-      it.style.setProperty('--r', -side * (a === 0 ? 0 : a === 1 ? 26 : 38));
-      it.style.setProperty('--s', a === 0 ? 1 : a === 1 ? 0.84 : 0.7);
-      it.style.setProperty('--o', a === 0 ? 1 : a === 1 ? 0.96 : 0.72);
-      it.style.zIndex = 10 - a;
-      it.classList.toggle('is-on', a === 0);
-      const b = it.querySelector('.cf-card'); b.setAttribute('aria-current', a === 0 ? 'true' : 'false');
-    });
-    dots.forEach((d, i) => { d.setAttribute('aria-selected', String(i === active)); d.tabIndex = i === active ? 0 : -1; });
-  }
-  function text() { desc.textContent = I18N.t(items[active].querySelector('.cf-card').dataset.desc); }
-  function go(i) {
-    i = ((i % n) + n) % n; if (i === active) return; active = i; layout();
-    desc.classList.add('is-out'); clearTimeout(swapT); swapT = setTimeout(() => { text(); desc.classList.remove('is-out'); }, 320);
-  }
-  items.forEach((it, i) => it.querySelector('.cf-card').addEventListener('click', () => {
-    if (i === active) { const t = document.getElementById('toast'); if (t) { t.textContent = I18N.t('هذه الصفحة قيد الإعداد'); t.classList.add('show'); clearTimeout(t._h); t._h = setTimeout(() => t.classList.remove('show'), 2200); } }
-    else go(i);
-  }));
-  dots.forEach((d, i) => d.addEventListener('click', () => go(i)));
-  root.querySelector('.cf-prev').addEventListener('click', () => go(active - 1));
-  root.querySelector('.cf-next').addEventListener('click', () => go(active + 1));
-  root.addEventListener('keydown', e => {
-    const rtl = document.documentElement.dir === 'rtl';
-    if (e.key === 'ArrowLeft') { e.preventDefault(); e.stopPropagation(); go(active + (rtl ? 1 : -1)); }
-    if (e.key === 'ArrowRight') { e.preventDefault(); e.stopPropagation(); go(active + (rtl ? -1 : 1)); }
-  });
-  /* swipe */
-  let sx = null, sy = 0;
-  stage.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-  stage.addEventListener('touchend', e => {
-    if (sx == null) return; const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null;
-    if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    const rtl = document.documentElement.dir === 'rtl'; go(active + ((dx < 0) === rtl ? -1 : 1));
-  }, { passive: true });
-  document.addEventListener('i18n:change', () => { layout(); text(); });
-  addEventListener('resize', layout);
-  layout(); text();
-  if (root.id === 'lxPlaces') window.__cf = { go, get active() { return active; } };
-  if (root.id === 'lxTrips') window.__cfTrips = { go, get active() { return active; } };
-  });
-})();
-</script>
-<script>
-(() => {
-  const bar = document.getElementById('lxTabs'); if (!bar) return;
-  const list = bar.querySelector('.tb-list'), more = bar.querySelector('.tb-more'), links = [...bar.querySelectorAll('.tb-link')];
-  const heads = links.map(a => document.getElementById(a.getAttribute('href').slice(1)));
-  const navBar = document.querySelector('.nav-bar'), rm = matchMedia('(prefers-reduced-motion:reduce)');
-  const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
-  let lockUntil = 0;
-  function metrics() { const b = navBar ? navBar.getBoundingClientRect().bottom : 0; bar.style.setProperty('--tb-top', b + 'px'); document.documentElement.style.setProperty('--tb-top', b + 'px'); return b; }
-  function setActive(i) {
-    links.forEach((a, k) => { if (k === i) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current'); });
-    const a = links[i], l = list.getBoundingClientRect(), r = a.getBoundingClientRect();
-    if (r.left < l.left + 40 || r.right > l.right - 80) list.scrollBy({ left: r.left - l.left - (l.width - r.width) / 2, behavior: rm.matches ? 'auto' : 'smooth' });
-  }
-  function overflow() { const left = list.scrollWidth - list.clientWidth - Math.abs(list.scrollLeft); more.hidden = left < 6; }
-  function onScroll() {
-    const top = metrics() + 8, r = bar.getBoundingClientRect();
-    
-    if (performance.now() < lockUntil) return;
-    const line = top + 90; let cur = 0;
-    heads.forEach((h, i) => { if (h.getBoundingClientRect().top <= line) cur = i; });
-    if (links[cur].getAttribute('aria-current') !== 'true') setActive(cur);
-  }
-  links.forEach((a, i) => a.addEventListener('click', e => {
-    e.preventDefault(); const h = heads[i]; setActive(i); lockUntil = performance.now() + 1200;
-    const y = h.getBoundingClientRect().top + scrollY - (metrics() + 32);
-    scrollTo({ top: y, behavior: rm.matches ? 'auto' : 'smooth' });
-    history.replaceState(null, '', a.getAttribute('href'));
-  }));
-  more.addEventListener('click', () => list.scrollBy({ left: dir() * list.clientWidth * 0.7, behavior: rm.matches ? 'auto' : 'smooth' }));
-  list.addEventListener('scroll', overflow, { passive: true });
-  addEventListener('scroll', onScroll, { passive: true });
-  addEventListener('resize', () => { overflow(); onScroll(); });
-  document.addEventListener('i18n:change', () => setTimeout(() => { overflow(); onScroll(); }, 60));
-  document.fonts && document.fonts.ready.then(overflow);
-  overflow(); onScroll();
-})();
-</script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script>
-/* Activities: expanding cards, same timeline as the home experiences section */
-(() => {
-  if (!window.gsap) return;
-  const root = document.getElementById('xlAct'); if (!root) return;
-  const cards = gsap.utils.toArray('.xl-card', root);
-  const mobile = matchMedia('(max-width:767px)');
-  const GROW = () => mobile.matches ? 4.2 : 8;
-  let active = cards.findIndex(c => c.dataset.open === 'true'); if (active < 0) active = 0;
-  let tl = null;
-  const reduced = matchMedia('(prefers-reduced-motion:reduce)');
-  const state = (c, open) => { c.dataset.open = String(open); c.querySelector('.xl-hit').setAttribute('aria-expanded', String(open)); };
-  function reset() {
-    cards.forEach((c, i) => { const open = i === active; gsap.set(c, { flexGrow: open ? GROW() : 1 });
-      gsap.set(c.querySelectorAll('.xl-copy > *'), { autoAlpha: open ? 1 : 0, y: open ? 0 : 24 }); gsap.set(c.querySelector('.xl-mini'), { autoAlpha: open ? 0 : 1 }); state(c, open); });
-  }
-  reset();
-  function expand(i) {
-    if (i === active || i < 0) return;
-    const prev = cards[active], next = cards[i]; active = i;
-    cards.forEach((c, k) => state(c, k === i));
-    if (tl) tl.kill();
-    const d = reduced.matches ? 0 : 1;
-    tl = gsap.timeline({ defaults: { ease: 'expo.inOut', duration: 0.95 * d, overwrite: 'auto' } });
-    tl.to(cards, { flexGrow: k => (k === i ? GROW() : 1) }, 0)
-      .to(prev.querySelectorAll('.xl-copy > *'), { autoAlpha: 0, y: 14, duration: 0.25 * d, stagger: 0.02 * d, ease: 'power2.in' }, 0)
-      .to(prev.querySelector('.xl-mini'), { autoAlpha: 1, duration: 0.35 * d, ease: 'power2.out' }, 0.35 * d)
-      .to(next.querySelector('.xl-mini'), { autoAlpha: 0, duration: 0.2 * d, ease: 'power2.out' }, 0)
-      .fromTo(next.querySelectorAll('.xl-copy > *'), { autoAlpha: 0, y: 26 }, { autoAlpha: 1, y: 0, duration: 0.8 * d, stagger: 0.08 * d, ease: 'power3.out' }, 0.4 * d);
-  }
-  const fine = matchMedia('(hover:hover) and (pointer:fine)').matches;
-  cards.forEach((c, i) => {
-    const hit = c.querySelector('.xl-hit');
-    hit.addEventListener('click', () => { if (c.dataset.open === 'true' && c.dataset.href) { location.href = c.dataset.href; return; } expand(i); });
-    hit.addEventListener('focus', () => expand(i));
-    if (fine) c.addEventListener('pointerenter', () => expand(i));
-  });
-  root.addEventListener('keydown', e => {
-    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
-    const dir = (e.key === 'ArrowLeft') === (document.documentElement.dir === 'rtl') ? 1 : -1;
-    const n = (active + dir + cards.length) % cards.length;
-    expand(n); cards[n].querySelector('.xl-hit').focus({ preventScroll: true }); e.preventDefault(); e.stopPropagation();
-  });
-  /* keep the icon centred in a collapsed card */
-  function iconX() { if (mobile.matches) { root.style.removeProperty('--ic-x'); return; } const total = root.clientWidth, gap = parseFloat(getComputedStyle(root).columnGap) || 0;
-    const w = (total - gap * (cards.length - 1)) / (GROW() + cards.length - 1); root.style.setProperty('--ic-x', Math.max(8, (w - 48) / 2) + 'px'); }
-  iconX(); addEventListener('resize', () => { iconX(); if (tl) tl.kill(); reset(); });
-  window.__xl = { expand, get active() { return active; } };
-})();
-</script>
-<script>
-(() => {
-  const root = document.getElementById('lxStay'); if (!root) return;
-  const rail = root.querySelector('.sy-rail'), prev = root.querySelector('.sy-prev'), next = root.querySelector('.sy-next');
-  const rm = matchMedia('(prefers-reduced-motion:reduce)');
-  const step = () => { const c = rail.querySelector('.sy-card'); return c.getBoundingClientRect().width + (parseFloat(getComputedStyle(rail).columnGap) || 0); };
-  const sign = () => document.documentElement.dir === 'rtl' ? -1 : 1;
-  function sync() { const pos = Math.abs(rail.scrollLeft), max = rail.scrollWidth - rail.clientWidth; prev.hidden = pos < 8; next.hidden = pos > max - 8; }
-  prev.addEventListener('click', () => rail.scrollBy({ left: -sign() * step(), behavior: rm.matches ? 'auto' : 'smooth' }));
-  next.addEventListener('click', () => rail.scrollBy({ left: sign() * step(), behavior: rm.matches ? 'auto' : 'smooth' }));
-  rail.addEventListener('scroll', sync, { passive: true }); addEventListener('resize', sync);
-  document.addEventListener('i18n:change', () => setTimeout(() => { rail.scrollLeft = 0; sync(); }, 60));
-  sync();
-})();
-</script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
 <script src="experiences.js"></script>
 <script src="entrepreneurs.js"></script>
 <script src="destinations.js"></script>
+<script src="resources.js"></script>
+<script src="content.js"></script>
+<script src="forms.js"></script>
+<script src="listing-shared.js"></script>
+<script src="listing-engine.js"></script>
+<script src="entry-engine.js"></script>
 <script>
-/* City map: the city comes from the page (data-city); list and markers always share one filtered result set */
 (() => {
-  const sec = document.getElementById('lxMapSec'); if (!sec || !window.L) return;
-  const CITY = sec.dataset.city;
-  const CITIES = { luxor: { center: [25.714, 32.628], zoom: 13, name: { ar: 'الأقصر', en: 'Luxor', es: 'Luxor' } }, aswan: { center: [24.0889, 32.8998], zoom: 13, name: { ar: 'أسوان', en: 'Aswan', es: 'Asuán' } } };
-  const CATS = {"land":{"n":"المعالم","c":"#a53e1a","p":"<path d=\"M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12\"/>"},"exp":{"n":"الأنشطة والتجارب","c":"#2f6f5e","p":"<circle cx=\"12\" cy=\"12\" r=\"8.5\"/><path d=\"M15.5 8.5l-2 5-5 2 2-5 5-2z\"/>"},"eat":{"n":"أماكن الطعام","c":"#b8741a","p":"<path d=\"M7 3v8M4.5 3v4.5a2.5 2.5 0 0 0 5 0V3M7 11v10M17 3c-2 1.5-3 4-3 7h3m0-7v18\"/>"},"stay":{"n":"أماكن الإقامة","c":"#345c70","p":"<path d=\"M3 18v-7a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v7M3 15h18M3 18v2M21 18v2M7 9V6.5h10V9\"/>"},"biz":{"n":"رواد الأعمال المحليين","c":"#6b4a2f","p":"<path d=\"M4 9.5l1.5-5h13l1.5 5M4 9.5a2.7 2.7 0 0 0 5.3 0 2.7 2.7 0 0 0 5.4 0 2.7 2.7 0 0 0 5.3 0M5.5 12v8h13v-8M10 20v-4.5h4V20\"/>"}};
-  const P = {"gems":"كنوز مخفية","culture":"ثقافة وطقوس","food":"مذاقات","crafts":"حرف يدوية","folk":"فلكلور وروحانيات","products":"منتجات رواد الأعمال"}, PR = {"1":"$","2":"$","3":"$$","4":"$$"}, AC = {"step":"دخول بلا درجات","wc":"دورة مياه مهيأة","seat":"أماكن جلوس","av":"دعم سمعي أو بصري"};
-  const DATA = [{"id":0,"city":"luxor","c":"land","n":"معبد الكرنك","s":"أكبر مجمّع معابد في مصر القديمة بصالة أعمدته الشاهقة وبحيرته المقدسة.","p":"culture","ll":[25.7188,32.6573],"img":"ASSETS/place-karnak-480.webp"},{"id":1,"city":"luxor","c":"land","n":"معبد الأقصر","s":"معبد على كورنيش النيل في قلب المدينة، يتألق عند الغروب.","p":"culture","ll":[25.6995,32.6391],"img":"ASSETS/7f49851b-f977-41e4-a9f4-053337fbd944-480.webp"},{"id":2,"city":"luxor","c":"land","n":"وادي الملوك","s":"مقابر ملوك الدولة الحديثة المنحوتة في الجبل بنقوشها الملوّنة.","p":"culture","ll":[25.7402,32.6014],"img":"ASSETS/place-valley-kings-480.webp"},{"id":3,"city":"luxor","c":"land","n":"معبد حتشبسوت","s":"معبد جنائزي بمدرّجاته الثلاثة في حضن جبل الدير البحري.","p":"culture","ll":[25.7382,32.6065],"img":"ASSETS/place-hatshepsut-480.webp"},{"id":4,"city":"luxor","c":"land","n":"تمثالا ممنون","s":"تمثالان عملاقان لأمنحتب الثالث عند مدخل البر الغربي.","p":"culture","ll":[25.7206,32.6104],"img":"ASSETS/place-memnon-480.webp"},{"id":5,"city":"luxor","c":"exp","n":"رحلات المناطيد","s":"تحليق فوق البر الغربي والنيل مع أول ضوء للشروق.","p":"gems","ll":[25.7135,32.6185],"img":"ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-480.webp"},{"id":6,"city":"luxor","c":"exp","n":"رحلات نيلية","s":"جولة بالفلوكة على النيل وقت الغروب.","p":"gems","ll":[25.7012,32.6368],"img":"ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-480.webp"},{"id":7,"city":"luxor","c":"exp","n":"استكشاف البر الغربي","s":"مسار بين الحقول والقرى والمعابد عند سفح الجبل.","p":"gems","ll":[25.7265,32.615],"img":"ASSETS/%D8%A7%D9%84%D8%A8%D8%B1%20%D8%A7%D9%84%D8%BA%D8%B1%D8%A8%D9%8A-480.webp"},{"id":8,"city":"luxor","c":"exp","n":"التجارب الثقافية","s":"شاي وحكايات في جلسة مع أهل الأقصر.","p":"crafts","ll":[25.7085,32.6295],"img":"ASSETS/%D8%A7%D9%84%D8%AA%D8%AC%D8%A7%D8%B1%D8%A8%20%D8%A7%D9%84%D8%AB%D9%82%D8%A7%D9%81%D9%8A%D8%A9-480.webp"},{"id":9,"city":"luxor","c":"eat","n":"مطاعم على ضفاف النيل","s":"أطباق مصرية بإطلالة مباشرة على النهر.","p":"food","ll":[25.6965,32.6378],"img":"ASSETS/11e105f9-71d4-4a46-a890-aa48443d4a92-480.webp"},{"id":10,"city":"luxor","c":"eat","n":"مطاعم محلية","s":"مأكولات صعيدية تقليدية في مطاعم يديرها أهل المكان.","p":"food","ll":[25.7045,32.6262],"img":"ASSETS/food-local-restaurant-480.webp"},{"id":11,"city":"luxor","c":"eat","n":"مقاهي الكورنيش","s":"جلسات هادئة وموسيقى وشاي على كورنيش النيل.","p":"food","ll":[25.6938,32.6362],"img":"ASSETS/60ceeb86-ec92-4c29-a148-e06a51d46fd7-480.webp"},{"id":12,"city":"luxor","c":"stay","n":"فندق ونتر بالاس","s":"فندق تراثي على كورنيش النيل بحدائقه وواجهته التاريخية.","p":"culture","ll":[25.6967,32.6369],"img":"ASSETS/stay-winter-palace-480.webp"},{"id":13,"city":"luxor","c":"stay","n":"شتايجنبرجر نايل بالاس","s":"فندق على النيل بإطلالة مباشرة على النهر والبر الغربي.","p":"gems","ll":[25.6889,32.6322],"img":"ASSETS/stay-steigenberger-480.webp"},{"id":14,"city":"luxor","c":"biz","n":"فاطمة البغدادي","s":"الحرفجية: حقائب جلدية وإكسسوارات مصنوعة يدويًا.","p":"products","ll":[25.7032,32.6425],"img":"ASSETS/Fatma%20Boghdady-480.webp"},{"id":15,"city":"luxor","c":"biz","n":"زينب جمال","s":"عقود وإكسسوارات يدوية بتصاميم مستوحاة من التراث.","p":"products","ll":[25.7,32.6452],"img":"ASSETS/Zainab%20Gamal-480.webp"},{"id":16,"city":"luxor","c":"stay","n":"جولي فيل كينجز آيلاند","s":"منتجع على جزيرة في النيل بين الحدائق والنخيل.","p":"gems","ll":[25.6592,32.6178],"img":"ASSETS/stay-jolie-ville-480.webp"}].filter(d => d.city === CITY && Array.isArray(d.ll));
-  const $ = id => document.getElementById(id), t = k => I18N.t(k), lang = () => document.documentElement.lang || 'ar';
-  const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const svg = (p, z) => '<svg width="' + (z || 16) + '" height="' + (z || 16) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
-  const ARW = svg('<path d="M19 12H5M11 6l-6 6 6 6"/>', 14);
-  const toast = m => { const e = $('toast'); if (!e) return; e.textContent = m; e.classList.add('show'); clearTimeout(e._h); e._h = setTimeout(() => e.classList.remove('show'), 2200); };
-  const rm = matchMedia('(prefers-reduced-motion:reduce)'), mobile = matchMedia('(max-width:767px)');
-  const F = { q: '', cat: 'all', p: new Set(), pr: new Set(), a: new Set() };
-  const city = CITIES[CITY];
 
-  const map = L.map('mpMap', { center: city.center, zoom: city.zoom, zoomControl: false, scrollWheelZoom: false });
-  L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map);
-  const group = L.markerClusterGroup({ showCoverageOnHover: false, maxClusterRadius: 46, spiderfyOnMaxZoom: true,
-    iconCreateFunction: c => L.divIcon({ className: 'mp-cluster', iconSize: [44, 44], html: '<span>' + c.getChildCount() + '</span>' }) }).addTo(map);
-  const thumb = d => '<div class="mp-thumb">' + (d.img ? '<img src="' + d.img + '" alt="" loading="lazy" decoding="async">' : svg(CATS[d.c].p, 30)) + '</div>';
-  const tag = d => '<span class="mp-tag" style="--c:' + CATS[d.c].c + '">' + svg(CATS[d.c].p, 14) + '<span>' + esc(t(CATS[d.c].n)) + '</span></span>';
-  const exHrefFor = d => { if (d.c === 'land' && window.DESTINATIONS) { const p = DESTINATIONS.byName(CITY, d.n); if (p) return DESTINATIONS.href(p); } if (d.c === 'biz' && window.ENTREPRENEURS) { const en = ENTREPRENEURS.published().find(x => x.name === d.n); if (en) return ENTREPRENEURS.href(en); } const x = (window.EXPERIENCES ? EXPERIENCES.list : []).find(e => e.city === CITY && (e.n === d.n || (d.c === 'biz' && e.ent && e.ent.name === d.n))); return x ? 'experience.html?city=' + x.city + '&slug=' + x.slug : ''; };
-  const card = d => '<div class="mp-card">' + thumb(d) + '<div class="mp-info">' + tag(d) + '<strong class="mp-name">' + esc(t(d.n)) + '</strong><p class="mp-sum">' + esc(t(d.s)) + '</p><a class="mp-more" href="#" data-id="' + d.id + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>';
-  const marks = new Map();
-  DATA.forEach(d => {
-    const m = L.marker(d.ll, { keyboard: true, title: t(d.n), alt: t(CATS[d.c].n) + ': ' + t(d.n),
-      icon: L.divIcon({ className: 'mp-pin', iconSize: [38, 38], iconAnchor: [19, 19], popupAnchor: [0, -20], html: '<span style="--c:' + CATS[d.c].c + '">' + svg(CATS[d.c].p, 20) + '</span>' }) });
-    m.bindPopup(() => card(d), { className: 'mp-pop', closeButton: true, autoPanPadding: [24, 90] });
-    m.on('popupopen', e => { mark(d.id, true); const a = e.popup.getElement().querySelector('.mp-more'); if (a && a.getAttribute('href') === '#') a.addEventListener('click', ev => { ev.preventDefault(); toast(t('هذه الصفحة قيد الإعداد')); }); });
-    m.on('popupclose', () => mark(d.id, false));
-    marks.set(d.id, m);
-  });
-
-  const hay = d => [d.n, d.s, CATS[d.c].n, t(d.n), t(d.s), t(CATS[d.c].n)].join(' ').toLowerCase();
-  const match = d => (F.cat === 'all' || d.c === F.cat) && (!F.q || hay(d).includes(F.q)) && (!F.p.size || F.p.has(d.p)) && (!F.pr.size || (d.pr && F.pr.has(String(d.pr)))) && (!F.a.size || [...F.a].every(k => (d.a || []).includes(k)));
-  let shown = [];
-  function countText(n) { const c = city.name[lang()] || city.name.ar; return lang() === 'en' ? n + (n === 1 ? ' place in ' : ' places in ') + c : lang() === 'es' ? n + (n === 1 ? ' lugar en ' : ' lugares en ') + c : n + ' نتيجة في ' + c; }
-  function mark(id, on) { const li = $('mpItems').querySelector('[data-id="' + id + '"]'); if (li) { li.classList.toggle('is-on', on); if (on && !mobile.matches) li.scrollIntoView({ block: 'nearest', behavior: rm.matches ? 'auto' : 'smooth' }); } }
-  function hot(id, on) { const e = marks.get(id).getElement(); if (e) e.classList.toggle('is-hot', on); }
-  function render() {
-    shown = DATA.filter(match);
-    group.clearLayers(); group.addLayers(shown.map(d => marks.get(d.id)));
-    $('mpCount').textContent = countText(shown.length);
-    $('mpOpenT').textContent = t('عرض النتائج') + ' (' + shown.length + ')';
-    $('mpEmpty').hidden = shown.length > 0; $('mpItems').hidden = shown.length === 0;
-    $('mpItems').innerHTML = shown.map(d => '<li class="mp-item" data-id="' + d.id + '">' + thumb(d) + '<div class="mp-info">' + tag(d) +
-      '<button type="button" class="mp-name">' + esc(t(d.n)) + '</button><p class="mp-sum">' + esc(t(d.s)) + '</p>' +
-      ((d.pr || (d.a && d.a.length)) ? '<p class="mp-meta">' + (d.pr ? '<span>' + esc(t(PR[d.pr])) + '</span>' : '') + (d.a || []).map(k => '<span>' + svg('<path d="M5 12.5l4.5 4.5L19 7.5"/>', 12) + esc(t(AC[k])) + '</span>').join('') + '</p>' : '') +
-      '<a class="mp-more" href="' + (exHrefFor(d) || '#') + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></li>').join('');
-    const n = F.p.size + F.pr.size + F.a.size; $('mpAdvN').hidden = !n; $('mpAdvN').textContent = n;
-    marks.forEach((m, id) => { const d = DATA[id] || DATA.find(x => x.id === id); m.options.title = t(d.n); m.options.alt = t(CATS[d.c].n) + ': ' + t(d.n); });
-  }
-  function fit() { if (!shown.length) { map.setView(city.center, city.zoom); return; } map.fitBounds(L.latLngBounds(shown.map(d => d.ll)).pad(0.18), { maxZoom: 15, animate: !rm.matches }); }
-  function select(id) { const m = marks.get(id); sheet(false); map.closePopup(); group.zoomToShowLayer(m, () => { map.panTo(m.getLatLng(), { animate: !rm.matches }); m.openPopup(); }); }
-
-  $('mpItems').addEventListener('click', e => { const li = e.target.closest('.mp-item'); if (!li) return; const id = +li.dataset.id;
-    if (e.target.closest('.mp-more')) { if (e.target.closest('.mp-more').getAttribute('href') === '#') { e.preventDefault(); toast(t('هذه الصفحة قيد الإعداد')); } e.stopPropagation(); return; } select(id); });
-  $('mpItems').addEventListener('pointerover', e => { const li = e.target.closest('.mp-item'); if (li) hot(+li.dataset.id, true); });
-  $('mpItems').addEventListener('pointerout', e => { const li = e.target.closest('.mp-item'); if (li && !li.contains(e.relatedTarget)) hot(+li.dataset.id, false); });
-  $('mpItems').addEventListener('focusin', e => { const li = e.target.closest('.mp-item'); if (li) hot(+li.dataset.id, true); });
-  $('mpItems').addEventListener('focusout', e => { const li = e.target.closest('.mp-item'); if (li) hot(+li.dataset.id, false); });
-
-  const chips = [...sec.querySelectorAll('.mp-chip')];
-  chips.forEach(c => c.addEventListener('click', () => { F.cat = c.dataset.cat; chips.forEach(x => x.setAttribute('aria-pressed', String(x === c))); map.closePopup(); render(); fit(); }));
-  let qt = 0; $('mpQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { F.q = e.target.value.trim().toLowerCase(); map.closePopup(); render(); fit(); }, 160); });
-  sec.querySelectorAll('.mp-adv input').forEach(i => i.addEventListener('change', () => { const set = F[i.dataset.f]; i.checked ? set.add(i.value) : set.delete(i.value); map.closePopup(); render(); fit(); }));
-  $('mpAdvBtn').addEventListener('click', () => { const open = $('mpAdv').hidden; $('mpAdv').hidden = !open; $('mpAdvBtn').setAttribute('aria-expanded', String(open)); });
-  $('mpClear').addEventListener('click', () => { F.q = ''; F.cat = 'all'; F.p.clear(); F.pr.clear(); F.a.clear(); $('mpQ').value = ''; sec.querySelectorAll('.mp-adv input').forEach(i => i.checked = false);
-    chips.forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cat === 'all'))); render(); fit(); $('mpQ').focus({ preventScroll: true }); });
-  $('mpIn').addEventListener('click', () => map.zoomIn()); $('mpOut').addEventListener('click', () => map.zoomOut());
-  $('mpHome').addEventListener('click', () => { map.closePopup(); map.setView(city.center, city.zoom, { animate: !rm.matches }); });
-
-  /* mobile: results open as a bottom sheet */
-  function sheet(open) { if (!mobile.matches) return; $('mpList').classList.toggle('is-open', open); $('mpBack').hidden = !open; if (open) $('mpClose').focus({ preventScroll: true }); }
-  $('mpOpen').addEventListener('click', () => sheet(true)); $('mpClose').addEventListener('click', () => { sheet(false); $('mpOpen').focus({ preventScroll: true }); }); $('mpBack').addEventListener('click', () => sheet(false));
-  sec.addEventListener('keydown', e => { if (e.key === 'Escape' && $('mpList').classList.contains('is-open')) { sheet(false); $('mpOpen').focus({ preventScroll: true }); } });
-  mobile.addEventListener('change', () => { $('mpList').classList.remove('is-open'); $('mpBack').hidden = true; setTimeout(() => map.invalidateSize(), 100); });
-
-  document.addEventListener('i18n:change', () => { map.closePopup(); render(); });
-  new ResizeObserver(() => map.invalidateSize()).observe($('mpMap'));
-  /* a filter group only shows when the entries carry that data (BRD: the filter hides when unpopulated) */
-  const has = { p: DATA.some(d => d.p), pr: DATA.some(d => d.pr), a: DATA.some(d => d.a && d.a.length) };
-  sec.querySelectorAll('.mp-adv fieldset').forEach(f => { f.hidden = !has[f.dataset.g]; f.querySelectorAll('label').forEach(l => { const i = l.querySelector('input'); if (f.dataset.g === 'p') l.hidden = !DATA.some(d => d.p === i.value); }); });
-  $('mpAdvBtn').hidden = !(has.p || has.pr || has.a);
-  render();
-  window.__mp = { map, F, get shown() { return shown.length; }, get onMap() { let n = 0; group.eachLayer(() => n++); return n; }, select, total: DATA.length };
-})();
-</script>
-<script>
-/* Places showcase: the chosen place fills the section, the rest wait in the rail */
-(() => {
-  const root = document.getElementById('lxPlaces'); if (!root || !root.classList.contains('pv')) return;
-  const $ = id => document.getElementById(id), items = [...root.querySelectorAll('.pv-item')], bgs = [...root.querySelectorAll('.pv-bg')], text = $('pvText');
-  const n = items.length; let active = 0, swapT = 0;
-  const kOf = (i, a) => i === a ? -1 : (i - a - 1 + n) % n;
-  function place(dir, instant) {
-    items.forEach((it, i) => {
-      const old = +it.dataset.k, k = kOf(i, active), on = i === active;
-      const jump = !instant && !isNaN(old) && (dir > 0 ? k > old : k < old) && !on && old !== -1 ? true : (!instant && !isNaN(old) && old === -1 && !on && dir < 0 ? false : false);
-      const wrap = !instant && !isNaN(old) && !on && ((dir > 0 && k > old) || (dir < 0 && k < old));
-      if (wrap || instant) { it.classList.add('no-anim'); it.style.opacity = instant ? '' : '0'; }
-      it.style.setProperty('--k', k); it.dataset.k = k; it.classList.toggle('is-active', on);
-      it.querySelector('.pv-card').tabIndex = on ? -1 : 0;
-      if (wrap || instant) { void it.offsetWidth; it.classList.remove('no-anim'); it.style.opacity = ''; }
-    });
-    bgs.forEach((b, i) => b.classList.toggle('is-on', i === active));
-    $('pvBar').style.transform = 'scaleX(' + ((active + 1) / n) + ')';
-    $('pvNum').textContent = String(active + 1).padStart(2, '0');
-  }
-  function copy() { const d = items[active].dataset; const cta = $('pvCta'); if (cta && d.href) cta.href = d.href; $('pvTitle').textContent = I18N.t(d.title); $('pvLoc').textContent = I18N.t(d.loc); $('pvDesc').textContent = I18N.t(d.desc); $('pvTemp').hidden = !d.ph; }
-  function go(i, dir) {
-    i = ((i % n) + n) % n; if (i === active) return;
-    if (dir == null) dir = 1; active = i; place(dir);
-    text.classList.add('is-out'); clearTimeout(swapT); swapT = setTimeout(() => { copy(); text.classList.remove('is-out'); }, 380);
-  }
-  items.forEach((it, i) => it.querySelector('.pv-card').addEventListener('click', () => go(i, 1)));
-  root.querySelector('.pv-next').addEventListener('click', () => go(active + 1, 1));
-  root.querySelector('.pv-prev').addEventListener('click', () => go(active - 1, -1));
-  root.addEventListener('keydown', e => { if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return; const rtl = document.documentElement.dir === 'rtl';
-    const f = (e.key === 'ArrowLeft') === rtl; e.preventDefault(); e.stopPropagation(); go(active + (f ? 1 : -1), f ? 1 : -1); });
-  let sx = null, sy = 0; const side = root.querySelector('.pv-side');
-  side.addEventListener('touchstart', e => { sx = e.touches[0].clientX; sy = e.touches[0].clientY; }, { passive: true });
-  side.addEventListener('touchend', e => { if (sx == null) return; const dx = e.changedTouches[0].clientX - sx, dy = e.changedTouches[0].clientY - sy; sx = null; if (Math.abs(dx) < 40 || Math.abs(dx) < Math.abs(dy)) return;
-    const rtl = document.documentElement.dir === 'rtl', f = (dx > 0) === rtl; go(active + (f ? 1 : -1), f ? 1 : -1); }, { passive: true });
-  document.addEventListener('i18n:change', () => { place(1, true); copy(); });
-  place(1, true); copy();
-  window.__pv = { go, get active() { return active; } };
-})();
-</script>
-<script>
-document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); });
-</script>
-<script>
-/* Ambient music: starts on the visitor's first interaction (browsers block sound before that), fades in, and remembers a mute */
-(() => {
-  const a = document.getElementById('lxAudio'), b = document.getElementById('lxSound'), tx = document.getElementById('lxSoundT'); if (!a || !b) return;
-  const KEY = 'se-sound', MAX = 0.35; let fade = 0, on = false;
-  const muted = () => { try { return localStorage.getItem(KEY) === 'off'; } catch { return false; } };
-  const save = v => { try { localStorage.setItem(KEY, v); } catch {} };
-  function ui() { b.setAttribute('aria-pressed', String(on)); const l = I18N.t(on ? 'إيقاف الموسيقى' : 'تشغيل الموسيقى'); b.setAttribute('aria-label', l); tx.textContent = l; }
-  function ramp(to, done) { cancelAnimationFrame(fade); const from = a.volume, t0 = performance.now(); const step = t => { const k = Math.max(0, Math.min(1, (t - t0) / 1400)); a.volume = Math.max(0, Math.min(1, from + (to - from) * k)); if (k < 1) fade = requestAnimationFrame(step); else if (done) done(); }; fade = requestAnimationFrame(step); }
-  function play() { a.volume = 0; return a.play().then(() => { on = true; ui(); ramp(MAX); }).catch(() => { on = false; ui(); }); }
-  function stop() { on = false; ui(); ramp(0, () => a.pause()); }
-  b.addEventListener('click', e => { e.stopPropagation(); if (on) { save('off'); stop(); } else { save('on'); play(); } });
-  const first = e => { if (e.target.closest && e.target.closest('#lxSound')) return; off(); if (!muted() && !on) play(); };
-  const evs = ['pointerdown', 'keydown', 'wheel', 'touchstart'], off = () => evs.forEach(n => removeEventListener(n, first, true));
-  evs.forEach(n => addEventListener(n, first, { capture: true, passive: true }));
-  document.addEventListener('i18n:change', ui); ui();
-  /* try to start right away; if the browser refuses sound before a gesture, the first interaction starts it */
-  if (!muted()) play().then(() => { if (on) off(); });
-  window.__snd = { get on() { return on; }, get vol() { return a.volume; }, get paused() { return a.paused; } };
+  const { t, esc, crumb } = EX; const $ = id => document.getElementById(id);
+  const head = (items, title) => { $('exCrumb').innerHTML = crumb(items).replace(/^<nav[^>]*>|<\/nav>$/g, ''); document.title = t(title) + ' — ' + t('صعيد مصر'); };
+  const q = new URLSearchParams(location.search); const s = FORMS.newsletter.confirm(q.get('token'));
+  function render() { head([['الرئيسية', 'index.html'], ['تأكيد الاشتراك']], 'تأكيد الاشتراك'); $('nlState').innerHTML = s ? '<header class="pg-head"><span class="sec-eyebrow">' + esc(t('النشرة البريدية')) + '</span><h1 class="pg-title display">' + esc(t('تم تأكيد اشتراكك')) + '</h1><p class="pg-lede">' + esc(t('ستصلك أحدث القصص والفعاليات والفرص على')) + ' ' + esc(s.email) + '. ' + esc(t('يمكنك إلغاء الاشتراك في أي وقت من رابط في أسفل كل رسالة.')) + '</p></header><a class="dx-cta" style="display:inline-flex;width:auto;padding-inline:24px" href="index.html"><span>' + esc(t('العودة إلى الرئيسية')) + '</span></a>' : '<header class="pg-head"><span class="sec-eyebrow">' + esc(t('النشرة البريدية')) + '</span><h1 class="pg-title display">' + esc(t('رابط التأكيد غير صالح')) + '</h1><p class="pg-lede">' + esc(t('ربما استُخدم الرابط من قبل أو نُسخ ناقصًا. يمكنك الاشتراك مجددًا من أسفل أي صفحة.')) + '</p></header><a class="dx-cta" style="display:inline-flex;width:auto;padding-inline:24px" href="index.html#contact"><span>' + esc(t('الاشتراك مجددًا')) + '</span></a>'; }
+  document.addEventListener('i18n:change', render); render();
 })();
 </script>
 </body>

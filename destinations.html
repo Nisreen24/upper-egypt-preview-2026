@@ -1353,7 +1353,7 @@
       <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
       <li><a class="nav-link" href="index.html#experiences">التجارب</a>
         <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1398,7 +1398,7 @@
     <a href="index.html#destinations" aria-current="page">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
     <a href="resources.html">لرواد الأعمال</a>
-    <a href="index.html#contact">تواصل معنا</a>
+    <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -1443,6 +1443,7 @@
       <div class="mp-adv" id="exAdv" hidden>
         <fieldset data-g="c"><legend>الفئة</legend><label><input type="checkbox" data-f="c" value="heritage"><span>موقع تراثي</span></label><label><input type="checkbox" data-f="c" value="museum"><span>متحف</span></label><label><input type="checkbox" data-f="c" value="nature"><span>طبيعة</span></label><label><input type="checkbox" data-f="c" value="viewpoint"><span>إطلالة</span></label><label><input type="checkbox" data-f="c" value="market"><span>سوق</span></label></fieldset>
         <fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset>
+        <fieldset data-g="a"><legend>إمكانية الوصول</legend><label><input type="checkbox" data-f="a" value="step"><span>دخول بلا درجات</span></label><label><input type="checkbox" data-f="a" value="wc"><span>دورة مياه مهيأة</span></label><label><input type="checkbox" data-f="a" value="seat"><span>أماكن جلوس</span></label><label><input type="checkbox" data-f="a" value="av"><span>دعم سمعي أو بصري</span></label></fieldset>
       </div>
       <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
       <div class="ex-body">
@@ -1469,11 +1470,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1743,7 +1744,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
 (() => {
   const { P, CITIES, q, t, esc, svg, PIN, ARW, pic, crumb } = EX, { CAT, list, href, related } = DESTINATIONS;
   const $ = id => document.getElementById(id);
-  const F = { q: q.get('q') || '', city: CITIES[q.get('city')] ? q.get('city') : 'all', c: new Set((q.get('category') || '').split(',').filter(Boolean)), p: new Set((q.get('pillar') || '').split(',').filter(Boolean)) };
+  const F = { q: q.get('q') || '', city: CITIES[q.get('city')] ? q.get('city') : 'all', c: new Set((q.get('category') || '').split(',').filter(Boolean)), p: new Set((q.get('pillar') || '').split(',').filter(Boolean)), a: new Set((q.get('a') || '').split(',').filter(Boolean)) };
   const cityName = c => CITIES[c][EX.lang()] || CITIES[c].ar;
   (() => {
     const xh = $('xh'), nav = document.querySelector('.nav-bar');
@@ -1760,16 +1761,16 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const LAND = svg('<path d="M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12"/>', 14);
   const card = x => { const n = related(x).length; return '<li><article class="gem" data-slug="' + x.slug + '" data-href="' + href(x) + '"><div class="gem-media">' + pic(x.imgs[0], '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + LAND + '<span>' + esc(t(CAT[x.c])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(t(P[x.p])) + '</span><h3 class="gem-title">' + esc(t(x.n)) + '</h3><p class="gem-desc">' + esc(t(x.s)) + '</p><p class="gem-meta"><span>' + PIN + esc(cityName(x.city) + ' · ' + t(x.area)) + '</span>' + (n ? '<span>' + esc(n + ' ' + t(n === 1 ? 'تجربة حولها' : 'تجارب حولها')) + '</span>' : '') + '</p><a class="gem-cta" href="' + href(x) + '"><span>' + esc(t('اكتشف المكان')) + '</span>' + ARW + '</a></div></article></li>'; };
   const hay = x => [x.n, x.s, x.area, CAT[x.c], P[x.p], t(x.n), t(x.s), t(x.area), t(CAT[x.c])].join(' ').toLowerCase();
-  const match = x => (F.city === 'all' || x.city === F.city) && (!F.q || hay(x).includes(F.q.toLowerCase())) && (!F.c.size || F.c.has(x.c)) && (!F.p.size || F.p.has(x.p));
+  const match = x => (F.city === 'all' || x.city === F.city) && (!F.q || hay(x).includes(F.q.toLowerCase())) && (!F.c.size || F.c.has(x.c)) && (!F.p.size || F.p.has(x.p)) && (!F.a.size || [...F.a].every(k => (x.a || []).includes(k)));
   const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' place' : ' places') : l === 'es' ? n + (n === 1 ? ' lugar' : ' lugares') : n + ' ' + (n === 1 ? 'مكان' : n === 2 ? 'مكانان' : n <= 10 ? 'أماكن' : 'مكانًا'); };
-  function url() { const u = new URLSearchParams(); if (F.city !== 'all') u.set('city', F.city); if (F.q) u.set('q', F.q); if (F.c.size) u.set('category', [...F.c].join(',')); if (F.p.size) u.set('pillar', [...F.p].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
+  function url() { const u = new URLSearchParams(); if (F.city !== 'all') u.set('city', F.city); if (F.q) u.set('q', F.q); if (F.c.size) u.set('category', [...F.c].join(',')); if (F.p.size) u.set('pillar', [...F.p].join(',')); if (F.a.size) u.set('a', [...F.a].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الوجهات']]); document.title = t('الوجهات') + ' — ' + t('صعيد مصر'); }
   function render() {
     const shown = list.filter(match);
     $('exGrid').innerHTML = shown.map(card).join('');
     $('exCount').textContent = countText(shown.length);
     $('exEmpty').hidden = shown.length > 0;
-    const n = F.c.size + F.p.size; $('exAdvN').hidden = !n; $('exAdvN').textContent = n;
+    const n = F.c.size + F.p.size + F.a.size; $('exAdvN').hidden = !n; $('exAdvN').textContent = n;
     url();
   }
   $('exGrid').addEventListener('click', e => { const c = e.target.closest('.gem'); if (!c || e.target.closest('a,button')) return; location.href = c.dataset.href; });
@@ -1779,8 +1780,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   $('exQ').value = F.q; let qt = 0; $('exQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { F.q = e.target.value.trim(); render(); }, 160); });
   document.querySelectorAll('#exAdv input').forEach(i => { i.checked = F[i.dataset.f].has(i.value); i.addEventListener('change', () => { const s = F[i.dataset.f]; i.checked ? s.add(i.value) : s.delete(i.value); render(); }); });
   $('exAdvBtn').addEventListener('click', () => { const open = $('exAdv').hidden; $('exAdv').hidden = !open; $('exAdvBtn').setAttribute('aria-expanded', String(open)); });
-  $('exClear').addEventListener('click', () => { F.q = ''; F.city = 'all'; F.c.clear(); F.p.clear(); $('exQ').value = ''; document.querySelectorAll('#exAdv input').forEach(i => i.checked = false); syncChips(); render(); });
-  document.querySelectorAll('#exAdv fieldset').forEach(f => { f.querySelectorAll('label').forEach(l => { const v = l.querySelector('input').value; l.hidden = !list.some(d => d[f.dataset.g] === v); }); });
+  $('exClear').addEventListener('click', () => { F.q = ''; F.city = 'all'; F.c.clear(); F.p.clear(); F.a.clear(); $('exQ').value = ''; document.querySelectorAll('#exAdv input').forEach(i => i.checked = false); syncChips(); render(); });
+  document.querySelectorAll('#exAdv fieldset').forEach(f => { let any = false; f.querySelectorAll('label').forEach(l => { const v = l.querySelector('input').value; const has = list.some(d => f.dataset.g === 'a' ? (d.a || []).includes(v) : d[f.dataset.g] === v); l.hidden = !has; any = any || has; }); f.hidden = !any; });
   if (F.c.size || F.p.size) { $('exAdv').hidden = false; $('exAdvBtn').setAttribute('aria-expanded', 'true'); }
   document.addEventListener('i18n:change', () => { head(); render(); });
   syncChips(); head(); render();

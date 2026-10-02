@@ -1411,7 +1411,7 @@
       <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
       <li><a class="nav-link" href="index.html#experiences">التجارب</a>
         <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1456,7 +1456,7 @@
     <a href="index.html#destinations" aria-current="page">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
     <a href="resources.html">لرواد الأعمال</a>
-    <a href="index.html#contact">تواصل معنا</a>
+    <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -1550,11 +1550,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1909,6 +1909,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     gallery();
     $('dxFacts').innerHTML = [[EX.PIN, 'المدينة', cn], [LAND, 'المنطقة', t(e.area)], [LAND, 'الفئة', t(CAT[e.c])]].map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
     $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
+    if (e.a && e.a.length) $('dxFacts').insertAdjacentHTML('beforeend', '<div><dt>' + LAND + esc(t('إمكانية الوصول')) + '</dt><dd>' + esc(e.a.map(k => t(EX.AC[k])).join('، ')) + '</dd></div>');
     const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1];
     $('dxCityMap').href = city + '.html#lxMapSec';
     $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfoT').textContent = t('معلومات عملية عن') + ' ' + cn;

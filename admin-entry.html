@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>تحرير مدخل — لوحة التحرير</title>
+<link rel="icon" href="brand_assets/favicon-64.png">
+<style>@font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+@font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+  :root{--ink:#0b2230;--rust:#a53e1a;--rust-deep:#8a3213;--muted:#5b6a68;--line:#e4e0da;--paper:#f6f4ef}
+  *{box-sizing:border-box} body{margin:0;font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;background:var(--paper);color:#24312f;font-size:14.5px;line-height:1.5}
+  html.lang-latin body{font-family:"IBM Plex Sans",system-ui,sans-serif}
+  .ad{display:grid;min-height:100vh;grid-template-columns:240px minmax(0,1fr)} @media (max-width:900px){.ad{grid-template-columns:1fr}.ad-side{position:static}}
+  .ad-side{background:#161616;color:#fff;padding:20px 16px;position:sticky;top:0;height:100vh} .ad-side .brand{display:flex;align-items:center;gap:10px;font-weight:800;margin-bottom:24px} .ad-side .brand img{width:34px;height:34px}
+  .ad-side a{display:block;padding:9px 12px;border-radius:8px;color:rgba(255,255,255,.8);text-decoration:none;font-weight:600} .ad-side a[aria-current]{background:rgba(255,255,255,.12);color:#fff}
+  .ad-side .who{margin-top:auto;padding-top:24px;font-size:12.5px;color:rgba(255,255,255,.6)}
+  .ad-main{padding:24px} .ad-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:12px;margin-bottom:16px} .ad-head h1{margin:0;font-size:22px;color:var(--ink)}
+  .ad-tools{display:flex;flex-wrap:wrap;gap:8px} .ad-tools select,.ad-tools input,.ad-btn{height:38px;padding:0 12px;border:1px solid var(--line);border-radius:8px;background:#fff;font:inherit;color:var(--ink)}
+  .ad-btn{cursor:pointer;font-weight:700} .ad-btn--primary{background:var(--rust);border-color:var(--rust);color:#fff} .ad-btn--primary:hover{background:var(--rust-deep)} .ad-btn:focus-visible,.ad-tools select:focus-visible,.ad-tools input:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .ad-card{background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  table{width:100%;border-collapse:collapse} th,td{padding:10px 12px;text-align:start;border-bottom:1px solid var(--line);vertical-align:top} th{font-size:12.5px;color:var(--muted);font-weight:700;background:#faf8f4} tr[data-id]{cursor:pointer} tr[data-id]:hover{background:#fbf7ef} tr.is-on{background:#fdf1ea}
+  .pill{display:inline-flex;align-items:center;height:24px;padding:0 10px;border-radius:999px;font-size:12px;font-weight:700;background:#eee;color:#333} .pill.new{background:#e4eef8;color:#1d4a7a} .pill.in_review{background:#fbe9c9;color:#7a4a05} .pill.approved{background:#dbeee5;color:#1f5c45} .pill.rejected{background:#f8dcd7;color:#7a1f12} .pill.closed{background:#e9e6e0;color:#555}
+  .overdue{color:#a52a1a;font-weight:800} .overdue::before{content:"⚠ "}
+  .ad-split{display:grid;gap:16px} @media (min-width:1100px){.ad-split{grid-template-columns:minmax(0,1fr) 420px}}
+  .ad-detail{padding:16px} .ad-detail h2{margin:0 0 4px;font-size:18px;color:var(--ink)} .ad-detail dl{margin:12px 0;display:grid;grid-template-columns:140px 1fr;gap:6px 12px;font-size:13.5px} .ad-detail dt{color:var(--muted)} .ad-detail dd{margin:0;word-break:break-word}
+  .ad-detail label{display:block;font-weight:700;font-size:13px;margin:12px 0 4px} .ad-detail textarea,.ad-detail select,.ad-detail input{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit} .ad-detail textarea{min-height:80px}
+  .ad-note{font-size:12px;color:var(--muted)} .ad-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+  .ad-empty{padding:40px;text-align:center;color:var(--muted)}
+  .lang-cols{display:grid;gap:12px} @media (min-width:900px){.lang-cols{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .lang-col{border:1px solid var(--line);border-radius:10px;padding:12px;background:#fff} .lang-col h3{margin:0 0 8px;font-size:14px;display:flex;justify-content:space-between;align-items:center} .lang-col .pill.missing{background:#f8dcd7;color:#7a1f12} .lang-col .pill.ok{background:#dbeee5;color:#1f5c45}
+  .lang-col label{display:block;font-size:12.5px;color:var(--muted);margin:8px 0 3px} .lang-col input,.lang-col textarea{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit} .lang-col textarea{min-height:90px} .lang-col [dir=ltr]{direction:ltr;text-align:left}
+  .shared{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));margin-top:16px} .shared label{font-size:12.5px;color:var(--muted)} .shared input,.shared select{width:100%;padding:8px 10px;border:1px solid var(--line);border-radius:8px;font:inherit}
+  .ad-foot{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px;padding-top:16px;border-top:1px solid var(--line)}
+  .ad-banner{padding:10px 14px;border-radius:8px;background:#fbe9c9;color:#7a4a05;font-size:13px;margin-bottom:16px}
+</style>
+</head>
+<body>
+<div class="ad">
+  <aside class="ad-side"><div class="brand"><img src="brand_assets/favicon-64.png" alt=""><span>اكتشف صعيد مصر<br><small style="font-weight:500;opacity:.7">لوحة التحرير</small></span></div>
+    <nav aria-label="أقسام اللوحة"><a href="admin-queue.html">قائمة الطلبات</a><a href="admin-entry.html" aria-current="page">تحرير مدخل</a><a href="index.html">الموقع العام ↗</a></nav>
+    <p class="who">مسجّل الدخول: منسّق (نموذج)<br>الدور: coordinator</p>
+  </aside>
+  <main class="ad-main">
+    <p class="ad-banner">نموذج تجريبي للشاشات الداخلية: البيانات محفوظة في متصفحك فقط، ولا يوجد خادم أو بريد حقيقي.</p>
+    <div class="ad-head"><h1>تحرير مدخل: تجربة</h1><div class="ad-tools"><select id="entrySel" aria-label="المدخل"></select><span class="pill" id="entryStatus">منشور</span></div></div>
+    <div class="ad-card" style="padding:16px">
+      <div class="lang-cols" id="langCols"></div>
+      <div class="shared" id="shared"></div>
+      <div class="ad-foot"><label style="display:inline-flex;align-items:center;gap:6px">الحالة <select id="statusSel"><option value="draft">مسودة</option><option value="review">قيد المراجعة</option><option value="published" selected>منشور</option></select></label><button class="ad-btn" type="button">حفظ المسودة</button><button class="ad-btn ad-btn--primary" type="button" id="btnPublish">نشر</button><span class="ad-note" id="pagesOn"></span></div>
+    </div>
+  </main>
+</div>
+<script src="experiences.js"></script>
+<script src="entrepreneurs.js"></script>
+<script src="destinations.js"></script>
+<script src="resources.js"></script>
+<script src="content.js"></script>
+<script src="forms.js"></script>
+<script src="listing-shared.js"></script>
+
+<script src="i18n.js"></script>
+<script>
+(() => {
+  const TITLE = "تحرير مدخل — لوحة التحرير"; document.title = TITLE; document.addEventListener("i18n:change", () => { document.title = TITLE; });
+
+  const $ = id => document.getElementById(id); const esc = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
+  const L = EXPERIENCES.list; $('entrySel').innerHTML = L.map(e => '<option value="' + e.slug + '">' + esc(e.n) + ' (' + e.city + ')</option>').join('');
+  const LANGS = [['ar', 'العربية', 'rtl'], ['en', 'English', 'ltr'], ['es', 'Español', 'ltr']];
+  function render() {
+    const e = L.find(x => x.slug === $('entrySel').value); const has = (k, l) => l === 'ar' ? true : I18N.lookup(k, l) != null;
+    $('langCols').innerHTML = LANGS.map(([l, name, dir]) => { const complete = has(e.n, l) && has(e.s, l) && has(e.d, l); const val = k => l === 'ar' ? k : (I18N.lookup(k, l) || ''); return '<section class="lang-col"><h3>' + name + ' <span class="pill ' + (complete ? 'ok' : 'missing') + '">' + (complete ? 'مكتملة' : 'ناقصة') + '</span></h3><label>الاسم</label><input dir="' + dir + '" value="' + esc(val(e.n)) + '"><label>الملخص</label><textarea dir="' + dir + '">' + esc(val(e.s)) + '</textarea><label>الوصف</label><textarea dir="' + dir + '">' + esc(val(e.d)) + '</textarea><label>الرابط (slug)</label><input dir="ltr" value="' + esc(e.slug) + '"></section>'; }).join('');
+    $('shared').innerHTML = '<div><label>المدينة</label><select><option' + (e.city === 'luxor' ? ' selected' : '') + '>الأقصر</option><option' + (e.city === 'aswan' ? ' selected' : '') + '>أسوان</option></select></div><div><label>النوع</label><select><option' + (e.c !== 'product' ? ' selected' : '') + '>تجربة</option><option' + (e.c === 'product' ? ' selected' : '') + '>منتج</option></select></div><div><label>الفئة</label><input value="' + esc(EX.CATS[e.c].n) + '"></div><div><label>المحور</label><input value="' + esc(EX.P[e.p]) + '"></div><div><label>فئة السعر</label><input value="' + esc(e.pr ? '$'.repeat(e.pr) : '') + '"></div><div><label>المدة</label><input value="' + esc(e.dur || '') + '"></div><div><label>الإحداثيات</label><input dir="ltr" value="' + esc(e.ll ? e.ll.join(', ') : '') + '"></div><div><label>رائد الأعمال</label><input value="' + esc(e.ent ? e.ent.name : '') + '"></div>';
+    const pages = ['experiences.html?city=' + e.city, 'experience.html?city=' + e.city + '&slug=' + e.slug, e.city + '.html'].concat(DESTINATIONS.list.filter(d => (d.rel || []).includes(e.slug)).map(d => 'destination.html?slug=' + d.slug)).concat(CONTENT.travelIdeas.filter(i => i.stops.some(s => s[1] === e.slug)).map(i => 'travel-idea.html?slug=' + i.slug));
+    $('pagesOn').innerHTML = 'يظهر على ' + pages.length + ' صفحات: ' + pages.map(p => '<a href="' + p + '" target="_blank" rel="noopener">' + esc(p.split('?')[0]) + '</a>').join('، ');
+  }
+  $('entrySel').addEventListener('change', render); $('btnPublish').addEventListener('click', () => { $('entryStatus').textContent = 'منشور · تُعاد الصفحات خلال 5 دقائق'; }); render();
+})();
+</script>
+</body>
+</html>

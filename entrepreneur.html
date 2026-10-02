@@ -1412,7 +1412,7 @@
       <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
       <li><a class="nav-link" href="index.html#experiences">التجارب</a>
         <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1457,7 +1457,7 @@
     <a href="index.html#destinations" aria-current="page">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
     <a href="resources.html">لرواد الأعمال</a>
-    <a href="index.html#contact">تواصل معنا</a>
+    <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -1501,6 +1501,7 @@
             <div class="ep-id-actions" id="epContact" hidden>
               <a class="dx-cta" id="dxContact" href="#"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>تواصل مع رائد الأعمال</span></a>
               <p class="dxi-note">التواصل يتم مباشرة مع رائد الأعمال عبر قناة التواصل المعلنة في ملفه.</p>
+              <a class="dx-cta dx-cta--ghost" id="epUpdate" href="#" style="margin-top:var(--s-2)"><span>هل هذا ملفك؟ اطلب رابط التحديث</span></a>
             </div>
           </div>
         </aside>
@@ -1527,11 +1528,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1796,6 +1797,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="experiences.js"></script>
 <script src="entrepreneurs.js"></script>
+<script src="content.js"></script>
 <script src="listing-shared.js"></script>
 <script>
 (() => {
@@ -1803,7 +1805,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const $ = id => document.getElementById(id);
   const e = bySlug(q.get('slug'));
   if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; return; }
-  const products = productsOf(e);
+  const products = productsOf(e); const story = (window.CONTENT ? CONTENT.stories : []).find(x => x.ent === e.slug); if (story) e.story = { img: story.img, cat: story.cat, title: story.n, sum: story.s, href: CONTENT.storyHref(story) };
   const TAG = svg('<path d="M20 13l-7 7-9-9V4h7l9 9z"/><circle cx="7.5" cy="7.5" r="1.2"/>', 16), CRAFT = svg('<path d="M12 21a7 7 0 0 1-7-7V9a2 2 0 0 1 4 0v3M9 11V5a2 2 0 0 1 4 0v6M13 10V6a2 2 0 0 1 4 0v8a7 7 0 0 1-7 7z"/>', 16);
   const cityName = () => CITIES[e.city][EX.lang()] || CITIES[e.city].ar;
   (() => {
@@ -1836,7 +1838,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     if (products.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = products.map(x => card(x)).join(''); $('dxRelAll').href = 'experiences.html?city=' + e.city; } else $('dxRel').hidden = true;
     if (e.story) { $('dxStoryGrid').hidden = false; $('dxStoryGrid').innerHTML = '<article class="ss-card ss-card--clay ss-card--tex">' + pic(e.story.img, '(max-width:899px) 100vw, 60vw', 'ss-img') + '<span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span><span class="ss-loc"><span>' + esc(cn) + '</span></span><div class="ss-media" aria-hidden="true"></div><div class="ss-panel"><div class="ss-body"><span class="ss-cat">' + esc(t(e.story.cat)) + '</span><h3 class="ss-name display">' + esc(t(e.story.title)) + '</h3><p class="ss-desc">' + esc(t(e.story.sum)) + '</p><a class="ss-more" href="' + e.story.href + '"><span>' + esc(t('اقرأ القصة كاملة')) + '</span>' + EX.ARW + '</a></div></div></article>'; } else $('dxStoryGrid').hidden = true;
     /* contact: only the public route on the entry; the block disappears when there is none */
-    $('epContact').hidden = !e.contact; if (e.contact) $('dxContact').href = e.contact;
+    $('epUpdate').href = 'update-request.html?kind=entrepreneur&slug=' + e.slug;
+    $('epContact').hidden = false; $('dxContact').hidden = !e.contact; if (e.contact) $('dxContact').href = e.contact;
   }
   document.addEventListener('i18n:change', render); render();
   window.__ent = { slug: e.slug, city: e.city };

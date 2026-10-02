@@ -1400,7 +1400,7 @@
       <li><a class="nav-link" href="index.html#destinations">الوجهات</a></li>
       <li><a class="nav-link" href="index.html#experiences">التجارب</a>
         <a class="nav-link" href="resources.html" aria-current="page">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="index.html#contact">تواصل معنا</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1445,7 +1445,7 @@
     <a href="destinations.html">الوجهات</a>
     <a href="index.html#experiences">التجارب</a>
     <a href="resources.html" aria-current="page">لرواد الأعمال</a>
-    <a href="index.html#contact">تواصل معنا</a>
+    <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -1516,11 +1516,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h3 class="footer-h" id="f-explore">استكشـف</h3>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="index.html#experiences">التجارب والمنتجات</a><a href="index.html#tours">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="luxor.html#lxMapSec">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h3 class="footer-h" id="f-platform">المنصـة</h3>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="index.html#partners">للجهات السياحية</a><a href="index.html#about">عن المشروع</a><a href="index.html#contact">تواصل معنا</a></div>
+        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h3 class="footer-h">تابعنـا</h3>
@@ -1822,7 +1822,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const steps = pathSteps(p);
     $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'resources.html'], ['مسارات التعلم', 'resources.html#paths'], [p.n]]);
     $('ex-h').textContent = t(p.n); $('exSub').textContent = t(p.s); document.title = t(p.n) + ' — ' + t('مسارات التعلم') + ' — ' + t('صعيد مصر');
-    $('exMeta').innerHTML = svg('<path d="M4 6h16M4 12h16M4 18h10"/>', 18) + '<span>' + esc(steps.length + ' ' + t(steps.length === 1 ? 'مورد' : steps.length === 2 ? 'موردان' : 'موارد') + ' · ' + t(P[p.p])) + '</span>';
+    $('exMeta').innerHTML = svg('<path d="M4 6h16M4 12h16M4 18h10"/>', 18) + '<span>' + esc(steps.length + ' ' + t(steps.length === 1 ? 'مورد' : steps.length === 2 ? 'موردان' : 'موارد') + ' · ' + t(P[p.p]) + ' · ' + t({ entrepreneurs: 'لرواد الأعمال', organisations: 'للجهات السياحية', both: 'لرواد الأعمال والجهات السياحية' }[p.aud || 'entrepreneurs'])) + '</span>';
     const hero = $('xhMedia').querySelector('img'); if (hero) hero.remove();
     $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + p.img.src + '" srcset="' + p.img.srcset + '" sizes="95vw" alt="' + esc(t(p.img.alt)) + '" style="object-position:' + (p.pos || '50% 50%') + '" fetchpriority="high" decoding="async">');
     $('lpdSteps').innerHTML = steps.map(r => '<li class="lpd-step"><span class="lpd-num" aria-hidden="true"></span>' + resRow(r) + '</li>').join('');
