@@ -1514,6 +1514,7 @@
   .tg-hero-cap .ds-hero-title{position:static}
   .tg-badge{display:inline-flex;align-items:center;height:34px;padding-inline:14px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink);font-size:14px;font-weight:700}
   @media (max-width:767px){.tg-hero-cap{inset-inline-start:20px;bottom:44px}}
+  .tg-main,.tg-side{min-width:0}
   .tg-grid{display:grid;gap:var(--s-6);align-items:start;margin-top:96px}
   @media (min-width:1024px){.tg-grid{grid-template-columns:minmax(0,1fr) 330px;gap:72px}}
   @media (max-width:1023px){.tg-grid{margin-top:56px}}
@@ -1561,7 +1562,7 @@
   .tg-move h3{margin:0;font-size:16px;font-weight:800;color:var(--ink)} .tg-move p{margin:6px 0 0;font-size:14px;line-height:1.7;color:var(--body)}
   /* map */
   #dxMap.tg-map{position:relative;inset:auto;width:auto}
-  .tg-map{height:460px;margin-top:40px;border-radius:20px;overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate;z-index:0}
+  .tg-map{contain:paint;height:460px;margin-top:40px;border-radius:20px;overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate;z-index:0}
   #dxMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)} #dxMap .leaflet-control-attribution{font-size:10px}
   .tg-pin{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:var(--rust);color:#fff;font-size:14px;font-weight:800;border:3px solid #fff;box-shadow:0 2px 10px rgba(43,29,14,.35)}
   .tg-pop .leaflet-popup-content{margin:12px 16px;font-family:inherit;text-align:start} .tg-pop b{display:block;font-size:15px;color:var(--ink)} .tg-pop span{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)} .tg-pop a{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--rust)}
@@ -1612,6 +1613,16 @@
   .tg-local-txt .tg-h{color:#fff;font-size:clamp(26px,2.6vw,38px)} .tg-local-txt p{margin:14px 0 0;max-width:46ch;font-size:var(--fs-body-lg);line-height:1.8;color:rgba(255,255,255,.85)} .tg-local-cta{display:inline-flex;height:48px;padding-inline:22px;margin-top:22px}
   .tg-local-pics{display:flex;justify-content:flex-end;gap:-20px} .tg-local-pics a{display:block;width:150px;aspect-ratio:3/4;border-radius:999px;overflow:hidden;border:4px solid #2b1d0e;margin-inline-start:-28px;background:#dcc9a8;transition:transform .5s cubic-bezier(.2,.8,.2,1)} .tg-local-pics a:first-child{margin-inline-start:0} .tg-local-pics a:hover{transform:translateY(-8px)} .tg-local-pics img{width:100%;height:100%;object-fit:cover;display:block}
   @media (max-width:767px){.tg-local{grid-template-columns:1fr;padding:24px}.tg-local-pics{justify-content:flex-start}.tg-local-pics a{width:110px}}
+  /* day stops: compact tiles in a swipe strip */
+  .tg-stops{gap:16px;margin-top:var(--s-3)}
+  .tg-stops.ex-strip>li{flex-basis:calc((100% - 32px) / 3)}
+  @media (max-width:1023px){.tg-stops.ex-strip>li{flex-basis:calc((100% - 16px) / 2)}} @media (max-width:639px){.tg-stops.ex-strip>li{flex-basis:78%}}
+  .tg-stop{display:flex;flex-direction:column;height:100%;border-radius:16px;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.1);color:var(--ink);transition:transform .45s cubic-bezier(.2,.8,.2,1),border-color .25s ease} .tg-stop:hover{transform:translateY(-3px);border-color:rgba(165,62,26,.35)} .tg-stop:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  .tg-stop-media{position:relative;display:block;aspect-ratio:4/3;overflow:hidden;background:#dcc9a8} .tg-stop-media img{width:100%;height:100%;object-fit:cover;display:block}
+  .tg-stop-media b{position:absolute;top:10px;inset-inline-start:10px;display:grid;place-items:center;width:30px;height:30px;border-radius:999px;background:var(--rust);color:#fff;font-size:13px;font-weight:800;border:2px solid #fff}
+  .tg-stop-body{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px} .tg-stop-body small{font-size:12px;font-weight:700;color:var(--rust)} .tg-stop-body strong{font-size:16px;line-height:1.35;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .tg-stop-go{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--muted)} .tg-stop:hover .tg-stop-go{color:var(--rust)}
+  .tg-day .ex-strip-nav{margin-top:var(--s-3)}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -2059,7 +2070,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   if (!e) { ['dxHero', 'dx', 'g-more'].forEach(id => { $(id).hidden = true; }); $('dxEmpty').hidden = false; return; }
   const CI = window.CITY_INFO && CITY_INFO[e.city];
   const stopOf = ([k, slug]) => { if (k === 'd') { const d = DESTINATIONS.bySlug(slug); return d ? { kind: t('مكان'), href: DESTINATIONS.href(d), img: d.imgs[0], pos: d.pos, title: t(d.n), desc: t(d.s), cat: t(DESTINATIONS.CAT[d.c]), ll: d.ll } : null; } const x = EXPERIENCES.list.find(y => y.slug === slug); return x ? { kind: t('تجربة'), href: EX.href(x), img: x.imgs[0], title: t(x.n), desc: t(x.s), cat: t(EX.CATS[x.c].n), ll: x.ll } : null; };
-  const stopRow = (s, n) => '<li class="stop"><span class="stop-num" aria-hidden="true"></span><article class="gem" data-href="' + s.href + '"><div class="gem-media">' + pic(s.img, '120px', 'gem-img') + '</div><div class="gem-body"><span class="gem-cat">' + esc(s.kind + ' · ' + s.cat) + '</span><h3 class="gem-title">' + esc(s.title) + '</h3><p class="gem-desc">' + esc(s.desc) + '</p><a class="gem-cta" href="' + s.href + '" style="display:inline-flex;width:auto;padding-inline:16px;height:40px"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></article></li>';
+  const stopTile = (s, n) => '<li><a class="tg-stop" href="' + s.href + '"><span class="tg-stop-media">' + pic(s.img, '(min-width:1024px) 300px, 70vw') + '<b>' + n + '</b></span><span class="tg-stop-body"><small>' + esc(s.kind + ' · ' + s.cat) + '</small><strong>' + esc(s.title) + '</strong><span class="tg-stop-go">' + esc(t('عرض التفاصيل')) + ARW + '</span></span></a></li>';
   const gemCard = o => '<li><article class="gem" data-href="' + o.href + '"><div class="gem-media">' + pic(o.img, '(min-width:1024px) 440px, 90vw', 'gem-img') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span></div><div class="gem-body"><span class="gem-cat">' + esc(o.cat) + '</span><h3 class="gem-title">' + esc(o.title) + '</h3><p class="gem-desc">' + esc(o.desc) + '</p><p class="gem-meta">' + o.meta + '</p><a class="gem-cta" href="' + o.href + '"><span>' + esc(t('عرض المسار')) + '</span>' + ARW + '</a></div></article></li>';
   let map = null, markers = [];
   function render() {
@@ -2074,7 +2085,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const parts = []; days.forEach((cnt2, di) => { parts.push(stops.slice(k, k + cnt2)); k += cnt2; });
     const dayLabel = di => t(DAYS[di] || (t('اليوم') + ' ' + (di + 1)));
     const kinds = part => { const dd = part.filter(x => x.ll && x.kind === t('مكان')).length, ee = part.length - dd; return [dd ? dd + ' ' + t('أماكن') : '', ee ? ee + ' ' + t('تجارب') : ''].filter(Boolean).join(' · '); };
-    $('tgPlan').innerHTML = parts.map((part, di) => '<div class="tg-day" id="day-' + (di + 1) + '">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (di + 1) + '</span>' + esc(dayLabel(di)) + '</h3><div class="tg-daystrip">' + (part[0] ? pic(part[0].img, '(min-width:1024px) 900px, 92vw') : '') + '<div><h3>' + esc(dayLabel(di)) + '<small>' + esc(part.length + ' ' + t('محطات') + ' · ' + kinds(part)) + '</small></h3><p>' + esc(part.map(x => x.title).join(' ← ')) + '</p></div><b>' + String(di + 1).padStart(2, '0') + '</b></div>' : '') + '<ol class="stops">' + part.map(stopRow).join('') + '</ol></div>').join('');
+    $('tgPlan').innerHTML = parts.map((part, di) => '<div class="tg-day" id="day-' + (di + 1) + '">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (di + 1) + '</span>' + esc(dayLabel(di)) + '</h3><div class="tg-daystrip">' + (part[0] ? pic(part[0].img, '(min-width:1024px) 900px, 92vw') : '') + '<div><h3>' + esc(dayLabel(di)) + '<small>' + esc(part.length + ' ' + t('محطات') + ' · ' + kinds(part)) + '</small></h3><p>' + esc(part.map(x => x.title).join(' ← ')) + '</p></div><b>' + String(di + 1).padStart(2, '0') + '</b></div>' : '') + '<ul class="ex-grid tg-stops" data-strip-min="1" role="list">' + part.map((s, j) => stopTile(s, stops.indexOf(s) + 1)).join('') + '</ul></div>').join('');
+    document.querySelectorAll('.tg-stops').forEach(ul => EX.strip(ul));
     /* day overview rows (only when there is more than one day) */
     $('tgOverview').hidden = parts.length < 2;
     $('tgOverview').innerHTML = parts.length < 2 ? '' : parts.map((part, di) => '<li data-day="day-' + (di + 1) + '"><b>' + esc(dayLabel(di)) + '</b><div class="tags">' + [...new Set(part.map(x => '#' + x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</div><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></li>').join('');

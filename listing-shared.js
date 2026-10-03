@@ -40,7 +40,7 @@ window.EX = (() => {
     const ARW_R = '<svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>';
     const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
     const apply = ul => {
-      const n = ul.children.length, on = n > 3;
+      const n = ul.children.length, on = n > (ul.dataset.stripMin ? +ul.dataset.stripMin : 3);
       ul.classList.toggle('ex-strip', on);
       let nav = ul.nextElementSibling && ul.nextElementSibling.classList.contains('ex-strip-nav') ? ul.nextElementSibling : null;
       if (!on) { if (nav) nav.remove(); return; }
