@@ -25,5 +25,38 @@ window.EX = (() => {
   const pop = e => '<div class="mp-card"><div class="mp-thumb">' + pic(e.imgs[0], '96px') + '</div><div class="mp-info"><span class="mp-tag" style="--c:#a53e1a">' + ICON(CATS[e.c].p, 14) + '<span>' + esc(t(CATS[e.c].n)) + '</span></span><strong class="mp-name">' + esc(t(e.n)) + '</strong><p class="mp-sum">' + esc(t(e.s)) + '</p><a class="mp-more" href="' + href(e) + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>';
   const crumb = (items) => '<nav class="ex-crumb" aria-label="' + esc(t('مسار التنقل')) + '"><ol>' + items.map(([n, h]) => h ? '<li><a href="' + h + '">' + esc(t(n)) + '</a></li>' : '<li aria-current="page">' + esc(t(n)) + '</li>').join('') + '</ol></nav>';
   document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.footer-links a[href="index.html#luxor"],.footer-links a[href="luxor.html"]').forEach(a => a.href = 'luxor.html'); });
-  return { CITIES, CATS, P, PR, AC, q, city, t, lang, cityName, esc, svg, ARW, CLOCK, PIN, all, href, listHref, pic, card, icon, pop, crumb };
+  /* related-card strips: more than three cards → horizontal swipe with arrows and page dots (three per view on desktop) */
+  const strip = (() => {
+    const ARW_R = '<svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>';
+    const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
+    const apply = ul => {
+      const n = ul.children.length, on = n > 3;
+      ul.classList.toggle('ex-strip', on);
+      let nav = ul.nextElementSibling && ul.nextElementSibling.classList.contains('ex-strip-nav') ? ul.nextElementSibling : null;
+      if (!on) { if (nav) nav.remove(); return; }
+      if (!nav) {
+        nav = document.createElement('div'); nav.className = 'ex-strip-nav';
+        nav.innerHTML = '<button type="button" class="ex-strip-btn ex-strip-prev" aria-label="' + esc(t('السابق')) + '">' + ARW_R + '</button><div class="ex-strip-dots" role="tablist"></div><button type="button" class="ex-strip-btn ex-strip-next" aria-label="' + esc(t('التالي')) + '">' + ARW_R + '</button>';
+        ul.after(nav);
+        nav.querySelector('.ex-strip-prev').addEventListener('click', () => ul.scrollBy({ left: -dir() * ul.clientWidth, behavior: 'smooth' }));
+        nav.querySelector('.ex-strip-next').addEventListener('click', () => ul.scrollBy({ left: dir() * ul.clientWidth, behavior: 'smooth' }));
+        ul.addEventListener('scroll', () => sync(ul, nav), { passive: true }); addEventListener('resize', () => sync(ul, nav));
+        ul.setAttribute('tabindex', '0'); ul.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); ul.scrollBy({ left: (e.key === 'ArrowRight' ? 1 : -1) * ul.clientWidth, behavior: 'smooth' }); } });
+      }
+      sync(ul, nav);
+    };
+    const sync = (ul, nav) => {
+      const li = ul.firstElementChild; if (!li) return;
+      const per = Math.max(1, Math.round(ul.clientWidth / li.getBoundingClientRect().width)), pages = Math.ceil(ul.children.length / per), max = ul.scrollWidth - ul.clientWidth, x = Math.abs(ul.scrollLeft), cur = max > 0 ? Math.min(pages - 1, Math.round(x / max * (pages - 1))) : 0;
+      const dots = nav.querySelector('.ex-strip-dots');
+      if (dots.children.length !== pages) dots.innerHTML = Array.from({ length: pages }, (_, i) => '<button type="button" class="ex-strip-dot" role="tab" aria-label="' + esc(t('صفحة')) + ' ' + (i + 1) + '"></button>').join('');
+      [...dots.children].forEach((d, i) => { d.setAttribute('aria-selected', String(i === cur)); d.onclick = () => ul.scrollTo({ left: dir() * (i * max / Math.max(1, pages - 1)), behavior: 'smooth' }); });
+      nav.querySelector('.ex-strip-prev').disabled = cur === 0; nav.querySelector('.ex-strip-next').disabled = cur >= pages - 1;
+      nav.hidden = pages < 2;
+    };
+    const watch = () => document.querySelectorAll('ul.ex-grid').forEach(ul => { if (ul.closest('#exList') || ul.dataset.strip) return; ul.dataset.strip = '1'; apply(ul); new MutationObserver(() => apply(ul)).observe(ul, { childList: true }); });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
+    return apply;
+  })();
+  return { CITIES, CATS, P, PR, AC, q, city, t, lang, cityName, esc, svg, ARW, CLOCK, PIN, all, href, listHref, pic, card, icon, pop, crumb, strip };
 })();

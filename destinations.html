@@ -1363,6 +1363,23 @@
   .ds-note{margin:56px 0 0;font-size:12.5px;color:var(--muted)}
   @media (max-width:1023px){.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}.ds-head{margin-bottom:28px}}
   @media (max-width:639px){.ds-grid{grid-template-columns:1fr;gap:28px}.ds-card-meta{margin-top:16px}.ds-card-t{font-size:18px}}
+  /* related-card strip (more than three cards): one row, swipe/snap, arrows + dots */
+  .ex-grid.ex-strip{display:flex;flex-wrap:nowrap;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;padding:4px 2px 8px;margin:-4px -2px -8px;outline:none}
+  .ex-grid.ex-strip::-webkit-scrollbar{display:none}
+  .ex-grid.ex-strip:focus-visible{box-shadow:0 0 0 3px rgba(165,62,26,.35);border-radius:var(--radius-card)}
+  .ex-grid.ex-strip>li{flex:0 0 calc((100% - 2 * var(--s-4)) / 3);scroll-snap-align:start;min-width:0}
+  @media (max-width:1023px){.ex-grid.ex-strip>li{flex-basis:calc((100% - var(--s-4)) / 2)}}
+  @media (max-width:639px){.ex-grid.ex-strip>li{flex-basis:calc(100% - 24px)}}
+  .ex-strip-nav{display:flex;align-items:center;justify-content:center;gap:var(--s-3);margin-top:var(--s-4)}
+  .ex-strip-nav[hidden]{display:none}
+  .ex-strip-btn{display:grid;place-items:center;width:44px;height:44px;border-radius:999px;background:#fff;color:var(--ink);border:1px solid rgba(43,29,14,.14);box-shadow:0 1px 2px rgba(43,29,14,.08);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease,opacity .25s ease}
+  .ex-strip-btn:hover{background:var(--rust);color:#fff;border-color:var(--rust)} .ex-strip-btn:active{transform:scale(.94)} .ex-strip-btn:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .ex-strip-btn:disabled{opacity:.35;pointer-events:none}
+  html[dir="rtl"] .ex-strip-btn svg{transform:scaleX(-1)} .ex-strip-prev svg{transform:scaleX(-1)} html[dir="rtl"] .ex-strip-prev svg{transform:none}
+  .ex-strip-dots{display:flex;gap:8px}
+  .ex-strip-dot{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(43,29,14,.22);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease}
+  .ex-strip-dot[aria-selected="true"]{background:var(--rust);transform:scale(1.35)}
+  .ex-strip-dot:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
 </style>
 
 </head>
