@@ -1152,6 +1152,45 @@
   .ci-season--winter .ci-bar i{background:linear-gradient(90deg,#8fb6cf,#2b6a8f 60%,#3fae9a)} .ci-season--spring .ci-bar i{background:linear-gradient(90deg,#e0a25a,#e0623c)} .ci-season--summer .ci-bar i{background:linear-gradient(90deg,#f0a35a,#c2410c)} .ci-season--autumn .ci-bar i{background:linear-gradient(90deg,#8fb6cf,#b8741a)}
   .ci-months{display:none}
   .ci-note{margin-top:var(--s-3)}
+
+  /* ===== CityInfoSection v2.1: spacing and hierarchy ===== */
+  .ci-weather{align-items:stretch}
+  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,5fr) minmax(0,9fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,9fr) minmax(0,5fr)}}
+  .ci-now{display:grid;grid-template-rows:auto auto 1fr auto;gap:2px;align-content:start}
+  .ci-now .ci-h{font-size:var(--fs-h3);line-height:1.2}
+  .ci-now .ci-sub{line-height:1.5}
+  .ci-now-main{grid-row:3;align-self:center;margin-top:0;padding-top:var(--s-3);padding-bottom:var(--s-2);display:flex;align-items:center;gap:var(--s-2)}
+  .ci-now-ico{width:56px;height:56px;color:#d98a2b} .ci-now-ico svg{width:46px;height:46px}
+  .ci-temp{font-size:clamp(40px,3.2vw,52px)}
+  .ci-now .ci-sub:last-child{grid-row:4;font-size:var(--fs-small);color:var(--body);font-weight:600;margin:0}
+  .ci-seasons{display:grid;grid-template-rows:auto 1fr auto}
+  .ci-season-grid{margin-top:var(--s-3);gap:var(--s-3) var(--s-5);align-content:space-around}
+  .ci-season{gap:10px}
+  .ci-season-head{gap:10px;font-size:var(--fs-body)} .ci-season-head svg{width:20px;height:20px}
+  .ci-range{grid-template-columns:3.2em minmax(0,1fr) 3.2em;gap:10px;font-size:var(--fs-small);font-weight:600}
+  .ci-range>span:first-child{text-align:right} .ci-range>span:last-child{text-align:left}
+  .ci-bar{height:6px}
+  .ci-bar u{width:13px;height:13px;margin-left:-6.5px;border-width:2.5px}
+  .ci-note{margin-top:var(--s-3);padding-top:var(--s-3);border-top:1px solid rgba(43,29,14,.08);font-size:12px}
+  .ci-card{padding:var(--s-4)} @media (min-width:768px){.ci-card{padding:var(--s-4) var(--s-5)}}
+  .ci-tabs{padding:0 0 var(--s-2)} .ci-tab{min-height:88px;gap:6px} .ci-tab svg{width:26px;height:26px}
+  .ci-pane{padding-top:var(--s-2)}
+
+  /* v2.2: balance between the two halves, text aligned to the panel top, tabs spread across the panel */
+  @media (min-width:900px){.ci-in{grid-template-columns:minmax(0,11fr) minmax(0,13fr);gap:var(--s-6);align-items:start}}
+  @media (min-width:1200px){.ci-in{gap:var(--s-7)}}
+  .ci-copy{padding-top:6px}
+  .ci-crumb ol{font-size:13px}
+  .ci-title{margin-top:var(--s-2);font-size:clamp(32px,3.2vw,46px)}
+  .ci-desc{margin-top:var(--s-3);max-width:none;font-size:var(--fs-body-lg);line-height:1.8}
+  .ci-tabs{padding:0 0 var(--s-2);gap:var(--s-2)} .ci-tab{flex:1 1 0;min-width:0;min-height:84px}
+  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s-3)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}}
+  .ci-temp{font-size:clamp(38px,2.8vw,48px)}
+
+  /* v2.3: room for the live reading */
+  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,5fr) minmax(0,8fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,8fr) minmax(0,5fr)}}
+  .ci-now-main{gap:6px} .ci-temp{font-size:clamp(34px,2.4vw,42px);white-space:nowrap} .ci-now-ico{width:46px;height:46px;flex:none} .ci-now-ico svg{width:40px;height:40px}
+  .ci-now .ci-sub{font-size:12.5px}
   .lx-leaf{position:relative;overflow:hidden;isolation:isolate}
   .lx-leaf .paths-fronds{z-index:-1;opacity:.5}
   .lx-leaf + .lx-leaf .paths-fronds{transform:scaleX(-1)}
