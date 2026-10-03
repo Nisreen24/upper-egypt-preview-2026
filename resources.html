@@ -1401,6 +1401,31 @@
   .evc-t a{color:inherit} .evc-t a:hover{color:var(--rust)} .evc-t a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:4px}
   .evc .ev-cta{flex:none;height:40px;padding-inline:16px;align-self:auto;font-size:13.5px}
   .evc .ev-cta svg{display:none}
+  /* upcoming events carousel: What's On geometry with our tokens */
+  .evcar-sec{--evc-gap:40px;--evc-n:3.3;container-type:inline-size}
+  .evcar-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-6)}
+  .evcar-h{margin:0;font-size:clamp(32px,3.3vw,48px);line-height:1.2;font-weight:700;color:var(--ink)}
+  .evcar-all{display:inline-flex;align-items:center;min-height:44px;font-size:14.5px;font-weight:700;color:var(--rust);border-radius:6px;white-space:nowrap} .evcar-all:hover{color:var(--rust-deep);text-decoration:underline;text-underline-offset:4px} .evcar-all:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  .evcar-wrap{position:relative;margin-inline-end:calc(50% - 50vw)}
+  .evcar{display:flex;gap:var(--evc-gap);margin:0;padding-block:0 6px;padding-inline:0 calc(50vw - 50% + var(--s-3));list-style:none;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none}
+  .evcar::-webkit-scrollbar{display:none}
+  .evcar:focus-visible{box-shadow:0 0 0 3px rgba(165,62,26,.35);border-radius:8px}
+  .evcar>li{flex:0 0 calc((100cqw - (var(--evc-n) - 1) * var(--evc-gap)) / var(--evc-n));scroll-snap-align:start;min-width:0}
+  .evcar .evc-media{border-radius:22px}
+  .evcar .evc-date{min-width:70px;padding:10px 14px 12px;border-end-end-radius:12px}
+  .evcar .evc-date b{font-size:28px} .evcar .evc-date small{font-size:14px}
+  .evcar .evc-meta{margin-top:22px;font-size:14px}
+  .evcar .evc-foot{margin-top:18px}
+  .evcar .evc-t{font-size:clamp(17px,1.35vw,20px);line-height:1.5}
+  .evcar-nav{position:absolute;top:var(--evcar-mid,150px);inset-inline-end:24px;z-index:3;width:56px;height:56px;border-radius:999px;display:grid;place-items:center;transform:translateY(-50%);background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(43,29,14,.12),0 10px 24px -8px rgba(43,29,14,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .evcar-nav--prev{inset-inline-end:auto;inset-inline-start:-28px}
+  .evcar-nav svg{transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  html[dir="rtl"] .evcar-nav svg{transform:scaleX(-1)}
+  .evcar-nav--prev svg{transform:scaleX(-1)} html[dir="rtl"] .evcar-nav--prev svg{transform:none}
+  .evcar-nav:hover{background:#fff;transform:translateY(-50%) scale(1.06)} .evcar-nav:active{transform:translateY(-50%) scale(.95)} .evcar-nav:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  .evcar-nav[hidden]{display:none}
+  @media (max-width:1023px){.evcar-sec{--evc-gap:24px;--evc-n:2.25}.evcar-nav{width:48px;height:48px;inset-inline-end:16px}.evcar-nav--prev{inset-inline-start:-12px}}
+  @media (max-width:639px){.evcar-sec{--evc-gap:16px;--evc-n:1.08}.evcar-head{margin-bottom:var(--s-4)}.evcar .evc-media{border-radius:18px}.evcar-nav{display:none}}
 </style>
 
 </head>
@@ -1520,9 +1545,13 @@
         <div class="rs-list" id="rsList"></div>
         <div class="mp-empty" id="exEmpty" hidden><p>لا توجد موارد مطابقة. جرّب صيغة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
       </section>
-      <section class="rs-sec" id="events" aria-labelledby="evH" hidden>
-        <header class="lx-head"><div><span class="sec-eyebrow">لا تفوّت ما يحدث</span><h2 class="display lx-h" id="evH">فعاليات قادمة</h2></div><a class="lx-all" href="events.html"><span>كل الفعاليات</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
-        <ul class="evl" id="evList" role="list"></ul>
+      <section class="rs-sec evcar-sec" id="events" aria-labelledby="evH" hidden>
+        <header class="evcar-head"><h2 class="display evcar-h" id="evH">الفعاليات القادمة</h2><a class="evcar-all" href="events.html">عرض الكل</a></header>
+        <div class="evcar-wrap">
+          <ul class="evcar" id="evList" role="list" tabindex="0" aria-label="الفعاليات القادمة"></ul>
+          <button class="evcar-nav evcar-nav--prev" id="evPrev" type="button" aria-label="الفعاليات السابقة" hidden><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+          <button class="evcar-nav evcar-nav--next" id="evNext" type="button" aria-label="الفعاليات التالية" hidden><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+        </div>
       </section>
     </div>
   </section>
@@ -1867,7 +1896,25 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' resource' : ' resources') : l === 'es' ? n + (n === 1 ? ' recurso' : ' recursos') : n + ' ' + (n === 1 ? 'مورد' : n === 2 ? 'موردان' : n <= 10 ? 'موارد' : 'موردًا'); };
   function url() { const u = new URLSearchParams(); if (F.fmt !== 'all') u.set('format', F.fmt); if (F.q) u.set('q', F.q); if (F.topic.size) u.set('topic', [...F.topic].join(',')); if (F.p.size) u.set('pillar', [...F.p].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
   const MONTHS = { ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] };
-  const evRow = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug, im = e.img; return '<li><article class="evc" data-href="' + href + '"><a class="evc-media" href="' + href + '" aria-label="' + esc(t(e.n)) + '">' + (im ? '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="(min-width:1024px) 300px, 90vw" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '') + '<span class="evc-date"><b>' + d.getDate() + '</b><small>' + m + '</small><small>' + d.getFullYear() + '</small></span></a><p class="evc-meta"><span>' + EX.PIN + esc(t(e.loc)) + '</span><i>|</i><span>' + esc(t(e.kind)) + '</span><span class="evc-time">' + CLK + esc(t(e.time)) + '</span></p><div class="evc-foot"><h3 class="evc-t"><a href="' + href + '">' + esc(t(e.n)) + '</a></h3><a class="ev-cta" href="' + href + '"><span>' + esc(t('سجّل الآن')) + '</span></a></div></article></li>'; };
+  const evRow = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug, im = e.img; return '<li><article class="evc" data-href="' + href + '"><a class="evc-media" href="' + href + '" aria-label="' + esc(t(e.n)) + '">' + (im ? '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="(min-width:1024px) 320px, (min-width:640px) 45vw, 90vw" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '') + '<span class="evc-date"><b>' + d.getDate() + '</b><small>' + m + '</small><small>' + d.getFullYear() + '</small></span></a><p class="evc-meta"><span>' + EX.PIN + esc(t(e.loc)) + '</span><i>|</i><span>' + esc(t(e.kind)) + '</span>' + (e.time ? '<span class="evc-time">' + CLK + esc(t(e.time)) + '</span>' : '') + '</p><div class="evc-foot"><h3 class="evc-t"><a href="' + href + '">' + esc(t(e.n)) + '</a></h3>' + (e.reg ? '<a class="ev-cta" href="' + e.reg + '"><span>' + esc(t('سجّل الآن')) + '</span></a>' : '<a class="ev-cta" href="' + href + '"><span>' + esc(t('عرض التفاصيل')) + '</span></a>') + '</div></article></li>'; };
+  /* carousel: arrows step one card, keyboard arrows on the focused list, arrow sits mid-image, prev/next hide at the ends */
+  const carousel = (() => {
+    const list = $('evList'), prev = $('evPrev'), next = $('evNext'), sec = $('events');
+    const gap = () => parseFloat(getComputedStyle(list).gap) || 0;
+    const step = () => { const li = list.firstElementChild; return li ? li.getBoundingClientRect().width + gap() : 320; };
+    const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
+    const update = () => { const max = list.scrollWidth - list.clientWidth, x = Math.abs(list.scrollLeft); prev.hidden = x < 4 || max < 4; next.hidden = max < 4 || x > max - 4; const im = list.querySelector('.evc-media'); if (im) sec.style.setProperty('--evcar-mid', (im.offsetHeight / 2) + 'px'); };
+    const go = n => list.scrollBy({ left: dir() * n * step(), behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' });
+    next.addEventListener('click', () => go(1)); prev.addEventListener('click', () => go(-1));
+    list.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update);
+    list.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go((e.key === 'ArrowRight' ? 1 : -1) * dir()); } });
+    /* pointer drag on desktop */
+    let drag = null; list.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; drag = { x: e.clientX, s: list.scrollLeft, moved: false }; });
+    list.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) { drag.moved = true; list.scrollLeft = drag.s - dx; } });
+    const end = () => { drag = null; }; list.addEventListener('pointerup', end); list.addEventListener('pointercancel', end); list.addEventListener('pointerleave', end);
+    list.addEventListener('click', e => { if (drag && drag.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    return { update };
+  })();
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'resources.html'], ['الموارد ومسارات التعلم']]); document.title = t('الموارد ومسارات التعلم') + ' — ' + t('صعيد مصر'); }
   function render() {
     $('lpGrid').innerHTML = paths.map(pathCard).join('');
@@ -1876,7 +1923,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('exCount').textContent = countText(shown.length);
     $('exEmpty').hidden = shown.length > 0;
     const n = F.topic.size + F.p.size; $('exAdvN').hidden = !n; $('exAdvN').textContent = n;
-    const ev = upcoming(); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evRow).join('');
+    const ev = upcoming(); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evRow).join(''); carousel.update();
     url();
   }
   const chips = [...document.querySelectorAll('.mp-chip')];

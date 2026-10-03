@@ -1246,6 +1246,8 @@ window.I18N = (() => {
     'إقامة في': { en: "A stay in", es: "Alojamiento en" },
     'تجربة في': { en: "An experience in", es: "Una experiencia en" },
     'نظرة عامة': { en: "Overview", es: "Resumen" },
+    'الفعاليات التالية': { en: "Next events", es: "Siguientes eventos" },
+    'الفعاليات السابقة': { en: "Previous events", es: "Eventos anteriores" },
     'الصور': { en: "Photos", es: "Fotos" },
     'الوصف الكامل': { en: "Full description", es: "Descripción completa" },
     'برنامج التجربة': { en: "Itinerary", es: "Itinerario" },

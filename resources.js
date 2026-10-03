@@ -27,6 +27,7 @@ window.RESOURCES = (() => {
     { slug: 'helmak-cohort-3-open-day', n: 'يوم مفتوح: الدفعة الثالثة من برنامج حلمك', s: 'تعرّف على مسار الحضانة وشروط التقديم والتقِ بخريجي الدفعات السابقة.', date: '2026-10-22', time: '11:00 صباحًا', loc: 'الأقصر', kind: 'لقاء', reg: 'index.html#contact', img: img('ev/helmak-cohort-3-open-day', [480, 960, 1280], 'قاعة تدريب مع مشاركين في ورشة') },
     { slug: 'pricing-workshop-aswan', n: 'ورشة تسعير المنتجات اليدوية', s: 'ورشة عملية ليوم واحد مع حرفيي أسوان عن التكلفة والسعر وهامش الربح.', date: '2026-11-05', time: '10:00 صباحًا', loc: 'أسوان', kind: 'تدريب', reg: 'index.html#contact', img: img('ev/pricing-workshop-aswan', [480, 960, 1280], 'أطباق وسلال مصنوعة يدويًا في سوق') },
     { slug: 'upper-egypt-tourism-forum', n: 'منتدى السياحة المستدامة في صعيد مصر', s: 'رواد أعمال وجهات سياحية وشركاء في يوم للتشبيك وعرض التجارب.', date: '2026-11-26', time: '9:30 صباحًا', loc: 'الأقصر', kind: 'منتدى', reg: 'index.html#contact', img: img('ev/upper-egypt-tourism-forum', [480, 960, 1280], 'جمهور في قاعة مؤتمرات') },
+    { slug: 'digital-marketing-webinar', n: 'ويبينار: عرض تجربتك للزوار على الإنترنت', s: 'جلسة عبر الإنترنت عن الصور والنصوص التي تجعل الزائر يحجز.', date: '2026-12-03', time: '6:00 مساءً', loc: 'عبر الإنترنت', kind: 'تدريب', reg: 'contact.html?subject=general', img: img('ev/digital-marketing-webinar', [480, 960, 1280], 'سيدة تتابع جلسة عبر الإنترنت على حاسوبها') },
   ];
   const bySlug = s => list.find(r => r.slug === s);
   const pathBySlug = s => paths.find(p => p.slug === s);
