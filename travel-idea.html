@@ -1732,7 +1732,6 @@
           <p class="tg-lede" id="dxSum"></p>
           <div class="tg-body" id="dxDesc"></div>
           <div class="dx-tags tg-tags" id="dxTags"></div>
-          <ul class="tg-glance" id="tgGlance" role="list"></ul>
         </section>
         <section class="tg-sec" id="g-plan" aria-labelledby="tgPlanH">
           <h2 class="display tg-h" id="tgPlanH">برنامج المسار</h2><p class="tg-sub">محطة بعد محطة</p>
@@ -2104,9 +2103,6 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('tgPlan').innerHTML = parts.length < 2 ? '<div class="tg-day" id="day-1">' + tiles(parts[0]) + '</div>'
       : '<div class="tg-accs">' + parts.map((part, di) => { const id = 'day-' + (di + 1), on = openDays.has(id); return '<section class="tg-acc tg-day" id="' + id + '"' + (on ? ' open' : '') + '><h3 class="tg-acc-h"><button type="button" class="tg-acc-btn" aria-expanded="' + on + '" aria-controls="' + id + '-panel"><b>' + esc(dayLabel(di)) + '</b><span class="tags">' + [...new Set(part.map(x => x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</span><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></button></h3><div class="tg-acc-panel" id="' + id + '-panel"' + (on ? '' : ' hidden') + '>' + strip(part, di) + tiles(part) + '</div></section>'; }).join('') + '</div>';
     document.querySelectorAll('.tg-stops').forEach(ul => EX.strip(ul));
-    /* at a glance */
-    const cc = cnt(e);
-    $('tgGlance').innerHTML = [[CALI, 'الأيام', days.length, ''], [ROUTEI, 'المحطات', stops.length, ''], [BANK, 'أماكن', cc.d, ''], [COMP, 'تجارب', cc.e, ''], [CLKI, 'المدة', t(e.dur), '']].map(([ic, h, v]) => '<li><h3>' + esc(t(h)) + '</h3><div><b>' + esc(String(v)) + '</b></div><i>' + ic + '</i></li>').join('');
     /* side sketch + local entrepreneurs on this route */
     $('tgSketch').innerHTML = EX.route(ptsOf(e), 280, 150);
     const ents = ENTREPRENEURS.list.filter(x => x.city === e.city).slice(0, 3);
