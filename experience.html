@@ -1335,6 +1335,40 @@
   .dxa-bento figure:nth-child(4){grid-column:span 2}
   @media (max-width:639px){.dxa-bento{grid-template-columns:repeat(2,minmax(0,1fr));grid-auto-rows:130px}.dxa-bento figure:nth-child(1){grid-column:span 2;grid-row:span 1}.dxa-bento figure:nth-child(4){grid-column:span 1}}
   .dxl-main .dx-ent{margin-top:var(--s-5)}
+  /* ===== experience / accommodation detail: gallery-first, sticky action card ===== */
+  .xp{padding-top:calc(var(--tb-top,100px) + var(--s-4))}
+  .xp-crumb{margin-bottom:var(--s-4)}
+  .xp-head{max-width:68ch;margin-bottom:var(--s-5)}
+  .xp-title{margin:0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
+  .xp-by{margin:var(--s-2) 0 0;font-size:var(--fs-body-lg);color:var(--muted)} .xp-by a{color:var(--ink);font-weight:700} .xp-by a:hover{color:var(--rust)}
+  .xp-grid{display:grid;gap:var(--s-5);align-items:start}
+  @media (min-width:1024px){.xp-grid{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}}
+  @media (min-width:1280px){.xp-grid{grid-template-columns:minmax(0,1fr) 400px}}
+  .xp-lead{position:relative;margin:0;aspect-ratio:16/10;overflow:hidden;border-radius:var(--radius-card-lg);background:#dcc9a8}
+  .xp-lead img{display:block;width:100%;height:100%;object-fit:cover}
+  .xp-count{position:absolute;top:var(--s-3);inset-inline-end:var(--s-3);display:inline-flex;align-items:center;gap:6px;height:34px;padding-inline:12px;border-radius:var(--radius-full);background:rgba(11,9,6,.55);color:#fff;font-size:13px;font-weight:700;backdrop-filter:blur(6px)}
+  .xp-thumbs{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:10px}
+  .xp-thumb{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:var(--radius-md);background:#dcc9a8;border:0;padding:0;cursor:pointer;opacity:.75;transition:opacity .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .xp-thumb img{display:block;width:100%;height:100%;object-fit:cover} .xp-thumb:hover{opacity:1} .xp-thumb[aria-current="true"]{opacity:1;outline:3px solid var(--rust);outline-offset:2px} .xp-thumb:focus-visible{outline:3px solid rgba(165,62,26,.5);outline-offset:2px}
+  .xp-nav{display:flex;gap:4px;margin-top:var(--s-5);padding-bottom:4px;border-bottom:1px solid rgba(43,29,14,.12);overflow-x:auto;scrollbar-width:none} .xp-nav::-webkit-scrollbar{display:none}
+  .xp-nav a{flex:none;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;border-radius:var(--radius-btn) var(--radius-btn) 0 0;font-size:var(--fs-small);font-weight:700;color:var(--muted);border-bottom:3px solid transparent;margin-bottom:-5px}
+  .xp-nav a:hover{color:var(--ink)} .xp-nav a.is-on{color:var(--rust);border-bottom-color:var(--rust)} .xp-nav a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:-3px}
+  .xp-sec{padding:var(--s-5) 0;border-bottom:1px solid rgba(43,29,14,.1);scroll-margin-top:calc(var(--tb-top,100px) + 24px)} .xp-sec:last-child{border-bottom:0}
+  .xp-h{margin:0 0 var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;font-weight:700;color:var(--ink)}
+  .xp-sum{margin:0;max-width:70ch;font-size:var(--fs-body-lg);line-height:1.8;color:var(--body)}
+  .xp-tags{margin-top:var(--s-3)} .xp-tags .dx-tag{background:rgba(43,29,14,.06);border-color:rgba(43,29,14,.12);color:var(--ink)}
+  .xp-info{display:grid;gap:12px;margin:0} .xp-info div{display:grid;grid-template-columns:auto minmax(0,1fr);align-items:center;gap:10px;font-size:var(--fs-body)} .xp-info dt{display:inline-flex;align-items:center;gap:8px;color:var(--muted)} .xp-info dt svg{color:var(--rust)} .xp-info dd{margin:0;color:var(--ink);font-weight:700} .xp-info dd a{color:var(--rust)}
+  .xp-info .dxi-chips{display:inline-flex}
+  .xp-map{margin-top:var(--s-4)} .xp-map .mp-map{height:300px}
+  .xp-list{margin:0;padding-inline-start:1.3em;display:grid;gap:8px;font-size:var(--fs-body-lg);line-height:1.7;color:var(--body)} .xp-list li::marker{color:var(--rust)}
+  .xp-desc{max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)} .xp-desc p{margin:0 0 var(--s-3)} .xp-desc p:last-child{margin:0}
+  .xp-ent{margin-top:0}
+  .xp-side{position:sticky;top:calc(var(--tb-top,100px) + 16px);display:grid;gap:var(--s-3)}
+  @media (max-width:1023px){.xp-side{position:static}}
+  .xp-card .dxi-actions .dx-cta{margin-top:0} .xp-card .dxi-actions{display:grid;gap:var(--s-2)}
+  .xp-help{padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)} .xp-help p{margin:8px 0 var(--s-3);font-size:var(--fs-small);line-height:1.6;color:var(--muted)} .xp-help .dx-cta{margin:0}
+  .xp .dxg{margin-top:var(--s-7)} .xp .dx-rel{margin-top:var(--s-7)}
+  @media (max-width:639px){.xp-thumbs{grid-template-columns:repeat(4,minmax(0,1fr))}.xp-thumb:nth-child(n+5){display:none}}
   /* information card */
   .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
   @media (max-width:1023px){.dxi{position:relative;top:auto}}
@@ -1471,46 +1505,64 @@
 </header>
 
 <main>
-  <section class="xh" id="dxHero" aria-labelledby="dx-title">
-    <div class="xh-crumb" id="dxCrumb"></div>
-    <div class="xh-media" id="xhMedia">
-      <div class="xh-shade"></div>
-      <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="dx-title"></h1>
-        <p class="xh-cap-sub" id="dxSum"></p>
-        <div class="dx-tags" id="dxTags"></div>
-      </div>
-      <div class="xh-band" aria-hidden="true"></div>
-    </div>
-  </section>
   <div class="wrap">
-    <article class="ex dx" id="dx">
-      <div class="dxl">
-        <div class="dxl-main">
-          <section class="dxa" aria-labelledby="dxaH">
-            <h2 class="display lx-h" id="dxaH">عن التجربة</h2>
-            <p class="dxa-lead" id="dxaSum"></p>
-            <p class="dx-desc dxa-text" id="dxDesc"></p>
-            <button type="button" class="dxa-more" id="dxaMore" aria-expanded="false" hidden>اقرأ المزيد</button>
-            <div class="dxi-chips dxa-chips" id="dxaChips"></div>
-            <div class="dxa-bento" id="dxaBento" aria-label="صور"></div>
+    <article class="ex dx xp" id="dx">
+      <nav class="ex-crumb xp-crumb" id="dxCrumb" aria-label="مسار التنقل"></nav>
+      <header class="xp-head" id="dxHero">
+        <h1 class="display xp-title" id="dx-title"></h1>
+        <p class="xp-by" id="xpBy"></p>
+      </header>
+      <div class="xp-grid">
+        <div class="xp-main">
+          <section class="xp-gallery" aria-label="الصور">
+            <figure class="xp-lead" id="xpLead"></figure>
+            <div class="xp-thumbs" id="xpThumbs" role="list"></div>
           </section>
-          <section class="dx-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
+          <nav class="xp-nav" aria-label="أقسام الصفحة" id="xpNav"></nav>
+          <section class="xp-sec" id="sec-overview" aria-labelledby="h-overview">
+            <h2 class="xp-h" id="h-overview">نظرة عامة</h2>
+            <p class="xp-sum" id="dxSum"></p>
+            <div class="dx-tags xp-tags" id="dxTags"></div>
+          </section>
+          <section class="xp-sec" id="sec-info" aria-labelledby="h-info">
+            <h2 class="xp-h" id="h-info">معلومات التجربة</h2>
+            <dl class="xp-info" id="xpInfo"></dl>
+            <div class="xp-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
+          </section>
+          <section class="xp-sec" id="sec-highlights" aria-labelledby="h-highlights" hidden>
+            <h2 class="xp-h" id="h-highlights">أبرز الملامح</h2>
+            <ul class="xp-list" id="xpHl"></ul>
+          </section>
+          <section class="xp-sec" id="sec-desc" aria-labelledby="h-desc">
+            <h2 class="xp-h" id="h-desc">الوصف</h2>
+            <div class="xp-desc" id="dxDesc"></div>
+          </section>
+          <section class="xp-sec" id="sec-included" aria-labelledby="h-included" hidden>
+            <h2 class="xp-h" id="h-included">ما الذي تشمله التجربة</h2>
+            <ul class="xp-list" id="xpInc"></ul>
+          </section>
+          <section class="xp-sec dx-ent xp-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
         </div>
-        <aside class="dxi" aria-labelledby="dxiH">
-          <div class="dxi-band" aria-hidden="true"></div>
-          <div class="dxi-body">
-            <h2 class="dxi-h" id="dxiH">المعلومات</h2>
-            <dl class="dxi-facts" id="dxFacts"></dl>
-            <div class="dxi-group"><h3 class="dxi-h">محور المحتوى</h3><div class="dxi-chips" id="dxiPillar"></div></div>
-            <div class="dxi-group" id="dxiAcc" hidden><h3 class="dxi-h">إمكانية الوصول</h3><div class="dxi-chips" id="dxiAccChips"></div></div>
+        <aside class="xp-side">
+          <div class="dxi xp-card" aria-labelledby="dxiH">
+            <div class="dxi-band" aria-hidden="true"></div>
+            <div class="dxi-body">
+              <h2 class="dxi-h" id="dxiH">المعلومات</h2>
+              <dl class="dxi-facts" id="dxFacts"></dl>
+              <div class="dxi-group" id="dxiAcc" hidden><h3 class="dxi-h">إمكانية الوصول</h3><div class="dxi-chips" id="dxiAccChips"></div></div>
+              <div class="dxi-group"><h3 class="dxi-h">محور المحتوى</h3><div class="dxi-chips" id="dxiPillar"></div></div>
+            </div>
+            <div class="dxi-actions">
+              <a class="dx-cta" id="dxBook" href="#" hidden></a>
+              <p class="dxi-note" id="dxBookNote" hidden></p>
+              <a class="dx-cta dx-cta--ghost" id="dxDirections" href="#" target="_blank" rel="noopener" hidden></a>
+              <a class="dx-cta dx-cta--ghost" id="dxCityInfo" href="#"><span id="dxCityInfoT"></span></a>
+            </div>
           </div>
-          <div class="dxi-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
-          <div class="dxi-actions">
-            <a class="dx-cta" id="dxContact" href="index.html#contact"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg><span>تواصل مع مقدّم التجربة</span></a>
-            <a class="dx-cta dx-cta--ghost" id="dxCityInfo" href="#"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg><span id="dxCityInfoT"></span></a>
-            <a class="dx-cta dx-cta--ghost" id="dxDirections" href="#" target="_blank" rel="noopener" hidden><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M228.92,49.69a8,8,0,0,0-6.86-1.45L160.93,63.52,99.58,32.84a8,8,0,0,0-5.52-.6l-64,16A8,8,0,0,0,24,56V200a8,8,0,0,0,9.94,7.76l61.13-15.28,61.35,30.68A8.15,8.15,0,0,0,160,224a8,8,0,0,0,1.94-.24l64-16A8,8,0,0,0,232,200V56A8,8,0,0,0,228.92,49.69ZM104,52.94l48,24V203.06l-48-24ZM40,62.25l48-12v127.5l-48,12Zm176,131.5-48,12V78.25l48-12Z"/></svg><span>احصل على الاتجاهات</span></a>
-            <p class="dxi-note">الحجز والدفع يتمان مباشرة مع مقدّم التجربة. المنصة تعرّفك به ولا تتقاضى أي رسوم.</p>
+          <div class="xp-help">
+            <h3 class="dxi-h">هل تحتاج مساعدة؟</h3>
+            <p>لديك سؤال عن هذه التجربة أو تريد تصحيح معلومة؟ فريق التنسيق يرد خلال خمسة أيام عمل.</p>
+            <a class="dx-cta dx-cta--ghost" href="contact.html?subject=general"><span>تواصل معنا</span></a>
           </div>
         </aside>
       </div>
@@ -1523,7 +1575,7 @@
         <div class="dxg-stage" id="dxgStage" aria-label="صور التجربة"><div class="dxg-track" id="dxgTrack"></div></div>
       </section>
       <section class="dx-rel" id="dxRel" aria-labelledby="dxRelH" hidden>
-        <header class="lx-head"><h2 class="display lx-h" id="dxRelH">تجارب مشابهة</h2><a class="lx-all" id="dxRelAll" href="#"><span>عرض المزيد من التجارب</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M165.66,202.34a8,8,0,0,1-11.32,11.32l-80-80a8,8,0,0,1,0-11.32l80-80a8,8,0,0,1,11.32,11.32L91.31,128Z"/></svg></a></header>
+        <header class="lx-head"><h2 class="display lx-h" id="dxRelH">تجارب مشابهة</h2><a class="lx-all" id="dxRelAll" href="#"><span>عرض المزيد من التجارب</span></a></header>
         <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
       </section>
       <p class="dx-empty" id="dxEmpty" hidden>هذه التجربة غير موجودة. <a href="experiences.html" style="color:var(--rust);font-weight:700">العودة إلى الأنشطة والتجارب</a></p>
@@ -1816,24 +1868,12 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
 <script src="listing-shared.js"></script>
 <script>
 (() => {
-  const { CATS, P, PR, AC, q, city, t, cityName, esc, svg, all, card, icon, crumb, pic, href, listHref } = EX;
+  const { CATS, P, PR, AC, CITIES, q, city, t, cityName, esc, svg, all, card, icon, crumb, pic, href, listHref } = EX;
   const $ = id => document.getElementById(id);
   const e = all().find(x => x.slug === q.get('slug'));
   if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; $('dxEmpty').querySelector('a').href = listHref(city); return; }
   const CAL = ICON('calendar-blank', 16), TAG = ICON('tag', 16), COIN = ICON('coins', 16), ACC = ICON('person-arms-spread', 16), MAIL = ICON('envelope-simple', 16);
   let map = null, active = 0;
-  (() => {
-    const xh = $('dxHero'), nav = document.querySelector('.nav-bar');
-    const size = () => {
-      const mobile = innerWidth < 768, vh = innerHeight;
-      const navB = nav ? nav.getBoundingClientRect().bottom : 0;
-      const w = Math.min(mobile ? 950 : 1550, innerWidth * 0.95);
-      const h = Math.min(mobile ? 600 : 800, vh * 0.85, vh - navB - 100);
-      const top = Math.max((vh - h) / 2, navB + 80);
-      xh.style.setProperty('--xh-w', w + 'px'); xh.style.setProperty('--xh-h', h + 'px'); xh.style.setProperty('--xh-top', top + 'px');
-    };
-    size(); addEventListener('resize', size); addEventListener('load', size);
-  })();
   /* gallery: the experience's own pictures only; shown when there are at least three */
   const REL = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p));
   const GAL = (e.gal || e.imgs.concat(REL.flatMap(x => x.imgs))).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i).slice(0, 8);
@@ -1884,31 +1924,54 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     place();
     galOn = true;
   }
+  const STAY = { 'winter-palace': 'فندق تراثي', 'steigenberger-nile-palace': 'فندق', 'jolie-ville-kings-island': 'منتجع', 'sonesta-st-george': 'فندق', 'villa-nile': 'بيت ضيافة', 'nubian-hotels': 'فنادق صغيرة', 'nubian-guesthouses': 'بيت ضيافة', 'nile-view-stays': 'فنادق', 'island-stays': 'إقامة على جزيرة' };
+  const isStay = e.c === 'stay'; let lead = 0;
+  const WHEEL = svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7v.01M12 11v5"/>', 16), BED = ICON('bed', 16), PINI = ICON('map-pin', 16), CLK = ICON('clock', 16), COINI = ICON('coins', 16), TAGI = ICON('tag', 16), EXTI = ICON('arrow-square-out', 18), MAILI = ICON('envelope-simple', 18), MAPI = ICON('map-trifold', 18), INFOI = ICON('info', 18), CATI = () => ICON(CATS[e.c].p, 16);
+  function paintLead() { const im = e.imgs[lead]; $('xpLead').innerHTML = pic(im, '(min-width:1024px) 60vw, 95vw') + (e.imgs.length > 1 ? '<span class="xp-count">' + ICON('images', 16) + (lead + 1) + ' / ' + e.imgs.length + '</span>' : ''); [...$('xpThumbs').children].forEach((b, i) => b.setAttribute('aria-current', String(i === lead))); }
   function render() {
     const cn = cityName();
-    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], [EX.CITIES[city].ar, city + '.html'], ['الأنشطة والتجارب', listHref(city)], [e.n]]);
+    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الأنشطة والتجارب', listHref(city)], [CITIES[city].ar, city + '.html'], [e.n]]).replace(/^<nav[^>]*>|<\/nav>$/g, '');
     $('dx-title').textContent = t(e.n); document.title = t(e.n) + ' — ' + cn + ' — ' + t('صعيد مصر');
-    $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + ICON(CATS[e.c].p, 14) + esc(t(CATS[e.c].n)) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
-    $('dxSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
-    $('dxaSum').textContent = t(e.s); $('dxDesc').textContent = t(e.d);
-    $('dxaChips').innerHTML = '<span class="dxi-chip">' + EX.PIN + esc(cn) + '</span><span class="dxi-chip">' + ICON(CATS[e.c].p, 14) + esc(t(CATS[e.c].n)) + '</span><span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>' + (e.dur ? '<span class="dxi-chip">' + CAL + esc(t(e.dur)) + '</span>' : '');
-    (() => { const d = $('dxDesc'), b = $('dxaMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
-    $('dxaBento').innerHTML = GAL.slice(0, 5).map((im, i) => '<figure>' + pic(im, i === 0 ? '(min-width:1024px) 40vw, 95vw' : '(min-width:1024px) 20vw, 45vw') + '</figure>').join('');
-    gallery();
-    const hero = $('xhMedia').querySelector('img'); const im = e.imgs[active];
-    if (hero) hero.remove(); $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="95vw" alt="' + esc(t(im.alt)) + '" fetchpriority="high" decoding="async">');
-    const facts = [[EX.PIN, 'الموقع', cn], [ICON(CATS[e.c].p, 16), 'الفئة', t(CATS[e.c].n)], e.dur && [CAL, 'المدة', t(e.dur)], e.pr && [COIN, 'السعر', PR[e.pr]]].filter(Boolean);
+    $('xpBy').innerHTML = e.ent ? esc(t('يقدّمها')) + ': <a href="' + e.ent.href + '">' + esc(t(e.ent.name)) + ' · ' + esc(t(e.ent.biz)) + '</a>' : esc(t(isStay ? 'إقامة في' : 'تجربة في')) + ' ' + esc(cn);
+    $('xpThumbs').innerHTML = e.imgs.map((im, i) => '<button type="button" class="xp-thumb" role="listitem" aria-label="' + esc(t('عرض الصورة')) + ' ' + (i + 1) + '">' + pic(im, '160px') + '</button>').join(''); paintLead();
+    $('dxSum').textContent = t(e.s);
+    $('dxTags').innerHTML = '<span class="dx-tag">' + PINI + esc(cn) + '</span><span class="dx-tag">' + CATI() + esc(t(CATS[e.c].n)) + '</span><span class="dx-tag">' + TAGI + esc(t(P[e.p])) + '</span>';
+    /* product information: ordered for stays vs tours */
+    const info = isStay
+      ? [[BED, 'نوع الإقامة', t(STAY[e.slug] || 'إقامة')], [PINI, 'الموقع', cn], [TAGI, 'محور المحتوى', t(P[e.p])]].concat(e.a && e.a.length ? [[WHEEL, 'إمكانية الوصول', e.a.map(k => t(AC[k])).join('، ')]] : [])
+      : [[CATI(), 'الفئة', t(CATS[e.c].n)], [PINI, 'المدينة', cn]].concat(e.dur ? [[CLK, 'المدة', t(e.dur)]] : []).concat([[TAGI, 'محور المحتوى', t(P[e.p])]]).concat(e.a && e.a.length ? [[WHEEL, 'إمكانية الوصول', e.a.map(k => t(AC[k])).join('، ')]] : []);
+    if (e.ll) info.push([MAPI, 'الموقع على الخريطة', '<a href="https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1] + '" target="_blank" rel="noopener">' + esc(t('احصل على الاتجاهات')) + '</a>']);
+    $('xpInfo').innerHTML = info.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + (/^<a /.test(v) ? v : esc(v)) + '</dd></div>').join('');
+    $('sec-highlights').hidden = !(e.hl && e.hl.length); if (e.hl) $('xpHl').innerHTML = e.hl.map(x => '<li>' + esc(t(x)) + '</li>').join('');
+    $('dxDesc').innerHTML = '<p>' + esc(t(e.d)) + '</p>';
+    $('sec-included').hidden = !(e.inc && e.inc.length); if (e.inc) $('xpInc').innerHTML = e.inc.map(x => '<li>' + esc(t(x)) + '</li>').join('');
+    /* facts card (sticky): the practical numbers only */
+    const facts = (isStay ? [[BED, 'نوع الإقامة', t(STAY[e.slug] || 'إقامة')], [PINI, 'الموقع', cn]] : [[CATI(), 'الفئة', t(CATS[e.c].n)]].concat(e.dur ? [[CLK, 'المدة', t(e.dur)]] : []).concat([[PINI, 'الموقع', cn]])).concat(e.pr ? [[COINI, 'فئة السعر', PR[e.pr]]] : []);
     $('dxFacts').innerHTML = facts.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
-    $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAG + esc(t(P[e.p])) + '</span>';
-    $('dxiAcc').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('dxiAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + ACC + esc(t(AC[k])) + '</span>').join('');
-    $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfoT').textContent = t('معلومات عملية عن') + ' ' + cn;
-    const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1];
-    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + EX.ARW + '</a></div>'; }
+    $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAGI + esc(t(P[e.p])) + '</span>';
+    $('dxiAcc').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('dxiAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + WHEEL + esc(t(AC[k])) + '</span>').join('');
+    /* CTA: external booking URL → احجز الآن; contact route → تواصل للحجز; neither → hidden. Never an internal checkout. */
+    const b = $('dxBook'), note = $('dxBookNote');
+    if (e.book) { b.hidden = false; b.href = e.book; b.target = '_blank'; b.rel = 'noopener'; b.innerHTML = EXTI + '<span>' + esc(t('احجز الآن')) + '</span>'; note.hidden = false; note.textContent = t('يفتح موقع الحجز الخاص بمقدّم التجربة. المنصة لا تتقاضى أي رسوم.'); }
+    else if (e.contact || true) { const route = e.contact || 'contact.html?subject=general'; b.hidden = false; b.href = route; b.removeAttribute('target'); b.innerHTML = MAILI + '<span>' + esc(t('تواصل للحجز')) + '</span>'; note.hidden = false; note.textContent = t('الحجز والدفع يتمان مباشرة مع مقدّم التجربة. المنصة تعرّفك به ولا تتقاضى أي رسوم.'); }
+    else { b.hidden = true; note.hidden = true; }
+    const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) { dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1]; dir.innerHTML = MAPI + '<span>' + esc(t('احصل على الاتجاهات')) + '</span>'; }
+    $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfo').innerHTML = INFOI + '<span>' + esc(t('معلومات عملية عن') + ' ' + cn) + '</span>';
+    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>'; }
+    /* section nav: only the sections that exist */
+    const navItems = [['sec-overview', 'نظرة عامة'], ['sec-info', 'المعلومات'], ['sec-highlights', 'أبرز الملامح'], ['sec-desc', 'الوصف'], ['sec-included', 'ما تشمله'], ['dxEnt', 'مقدّم التجربة'], ['dxGal', 'المعرض'], ['dxRel', 'تجارب مشابهة']].filter(([id]) => !$(id).hidden);
+    $('xpNav').innerHTML = navItems.map(([id, l], i) => '<a href="#' + id + '"' + (i === 0 ? ' class="is-on"' : '') + '>' + esc(t(l)) + '</a>').join('');
+    gallery();
     const rel = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p)).slice(0, 4);
-    if (rel.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = listHref(city, e.c); }
+    if (rel.length) { $('dxRel').hidden = false; $('dxRelH').textContent = t(isStay ? 'إقامات أخرى' : 'تجارب مشابهة'); $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = listHref(city, e.c); }
     if (e.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: e.ll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(e.ll, { icon: icon(e.c), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
   }
+  $('xpThumbs').addEventListener('click', ev => { const b = ev.target.closest('.xp-thumb'); if (!b) return; lead = [...$('xpThumbs').children].indexOf(b); paintLead(); });
+  /* section nav: smooth jump and current-section highlight */
+  $('xpNav').addEventListener('click', ev => { const a = ev.target.closest('a'); if (!a) return; ev.preventDefault(); const el = $(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
+  const io = new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) { const id = en.target.id; $('xpNav').querySelectorAll('a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + id)); } }); }, { rootMargin: '-40% 0px -55% 0px' });
   document.addEventListener('i18n:change', render); render();
+  document.querySelectorAll('.xp-sec, #dxGal, #dxRel').forEach(sec => io.observe(sec));
   window.__dx = { slug: e.slug, city };
 })();
 </script>
