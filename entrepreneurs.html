@@ -1278,7 +1278,8 @@
   .ex-bar{margin-top:var(--s-5)}
   .ex-count{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:var(--s-4);font-size:var(--fs-body);font-weight:700;color:var(--ink)}
   .ex-body{display:grid;gap:var(--s-4);margin-top:var(--s-3);align-items:start}
-  .ex-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(260px,1fr))}
+  .ex-grid{display:grid;gap:var(--s-5) var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
+  #exList .wrap{max-width:1400px}
   @media (min-width:1024px){.ex .ex-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .ex-grid .gem{transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s ease,box-shadow .3s ease}
   .ex-grid .gem.is-on{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.18)}
@@ -1330,7 +1331,7 @@
   .dx-ent .st-link{display:inline-flex;align-items:center;gap:8px;margin-top:var(--s-2);font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:var(--radius-xs)}
   .dx-rel{margin-top:var(--s-7)}
   .dx-rel .lx-head{margin-bottom:var(--s-4)}
-  .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+  .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(320px,1fr))}
   .dx-empty{padding:var(--s-8) 0;text-align:center;color:var(--muted)}
   /* icon system */
   svg.ic{fill:currentColor!important;stroke:none!important;flex:none}
