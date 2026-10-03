@@ -1623,6 +1623,20 @@
   .tg-stop-body{display:flex;flex-direction:column;gap:4px;padding:12px 14px 14px} .tg-stop-body small{font-size:12px;font-weight:700;color:var(--rust)} .tg-stop-body strong{font-size:16px;line-height:1.35;font-weight:800;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
   .tg-stop-go{display:inline-flex;align-items:center;gap:6px;margin-top:6px;font-size:13px;font-weight:700;color:var(--muted)} .tg-stop:hover .tg-stop-go{color:var(--rust)}
   .tg-day .ex-strip-nav{margin-top:var(--s-3)}
+  /* day accordion */
+  .tg-accs{margin-top:32px;border-top:1px solid rgba(43,29,14,.14)}
+  .tg-acc{border-bottom:1px solid rgba(43,29,14,.14)}
+  .tg-acc-h{margin:0}
+  .tg-acc-btn{display:grid;grid-template-columns:150px minmax(0,1.2fr) 120px minmax(0,1.6fr) 48px;align-items:center;gap:var(--s-4);width:100%;padding:18px 6px;background:transparent;color:inherit;text-align:start;font:inherit;cursor:pointer;transition:background-color .25s ease} .tg-acc-btn:hover{background:rgba(255,255,255,.6)} .tg-acc-btn:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:-3px;border-radius:8px}
+  .tg-acc-btn b{font-size:clamp(22px,2vw,30px);font-weight:800;color:var(--ink);line-height:1.1}
+  .tg-acc-btn .tags{display:flex;flex-wrap:wrap;gap:6px} .tg-acc-btn .tags span{font-size:12.5px;font-weight:700;color:var(--rust)}
+  .tg-acc-btn .pill{width:120px;height:56px;border-radius:999px;overflow:hidden;background:#dcc9a8} .tg-acc-btn .pill img{width:100%;height:100%;object-fit:cover;display:block}
+  .tg-acc-btn p{margin:0;font-size:14px;line-height:1.6;color:var(--body)}
+  .tg-acc-btn .go{display:grid;place-items:center;width:48px;height:48px;border-radius:999px;border:1px solid rgba(43,29,14,.18);background:#fff;color:var(--ink);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .25s ease,color .25s ease} .tg-acc-btn:hover .go{background:var(--rust);border-color:var(--rust);color:#fff}
+  .tg-acc[open] .tg-acc-btn .go{transform:rotate(180deg)} .tg-acc[open] .tg-acc-btn:hover .go{transform:rotate(180deg)}
+  .tg-acc-panel{padding:0 6px 28px} .tg-acc-panel .tg-daystrip{margin-top:4px}
+  .tg-acc .tg-day-h{display:none}
+  @media (max-width:767px){.tg-acc-btn{grid-template-columns:minmax(0,1fr) 90px 44px;gap:var(--s-3)}.tg-acc-btn .tags,.tg-acc-btn p{display:none}.tg-acc-btn .pill{width:90px;height:44px}.tg-acc-btn .go{width:44px;height:44px}.tg-acc-panel{padding-bottom:20px}}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -2085,11 +2099,13 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const parts = []; days.forEach((cnt2, di) => { parts.push(stops.slice(k, k + cnt2)); k += cnt2; });
     const dayLabel = di => t(DAYS[di] || (t('اليوم') + ' ' + (di + 1)));
     const kinds = part => { const dd = part.filter(x => x.ll && x.kind === t('مكان')).length, ee = part.length - dd; return [dd ? dd + ' ' + t('أماكن') : '', ee ? ee + ' ' + t('تجارب') : ''].filter(Boolean).join(' · '); };
-    $('tgPlan').innerHTML = parts.map((part, di) => '<div class="tg-day" id="day-' + (di + 1) + '">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (di + 1) + '</span>' + esc(dayLabel(di)) + '</h3><div class="tg-daystrip">' + (part[0] ? pic(part[0].img, '(min-width:1024px) 900px, 92vw') : '') + '<div><h3>' + esc(dayLabel(di)) + '<small>' + esc(part.length + ' ' + t('محطات') + ' · ' + kinds(part)) + '</small></h3><p>' + esc(part.map(x => x.title).join(' ← ')) + '</p></div><b>' + String(di + 1).padStart(2, '0') + '</b></div>' : '') + '<ul class="ex-grid tg-stops" data-strip-min="1" role="list">' + part.map((s, j) => stopTile(s, stops.indexOf(s) + 1)).join('') + '</ul></div>').join('');
+    const tiles = part => '<ul class="ex-grid tg-stops" data-strip-min="1" role="list">' + part.map(s => stopTile(s, stops.indexOf(s) + 1)).join('') + '</ul>';
+    const strip = (part, di) => '<div class="tg-daystrip">' + (part[0] ? pic(part[0].img, '(min-width:1024px) 900px, 92vw') : '') + '<div><h3>' + esc(dayLabel(di)) + '<small>' + esc(part.length + ' ' + t('محطات') + ' · ' + kinds(part)) + '</small></h3><p>' + esc(part.map(x => x.title).join(' ← ')) + '</p></div><b>' + String(di + 1).padStart(2, '0') + '</b></div>';
+    const openDays = new Set([...document.querySelectorAll('.tg-acc[open]')].map(x => x.id)); if (!openDays.size) openDays.add('day-1');
+    $('tgOverview').hidden = true; $('tgOverview').innerHTML = '';
+    $('tgPlan').innerHTML = parts.length < 2 ? '<div class="tg-day" id="day-1">' + tiles(parts[0]) + '</div>'
+      : '<div class="tg-accs">' + parts.map((part, di) => { const id = 'day-' + (di + 1), on = openDays.has(id); return '<section class="tg-acc tg-day" id="' + id + '"' + (on ? ' open' : '') + '><h3 class="tg-acc-h"><button type="button" class="tg-acc-btn" aria-expanded="' + on + '" aria-controls="' + id + '-panel"><b>' + esc(dayLabel(di)) + '</b><span class="tags">' + [...new Set(part.map(x => '#' + x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</span><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></button></h3><div class="tg-acc-panel" id="' + id + '-panel"' + (on ? '' : ' hidden') + '>' + strip(part, di) + tiles(part) + '</div></section>'; }).join('') + '</div>';
     document.querySelectorAll('.tg-stops').forEach(ul => EX.strip(ul));
-    /* day overview rows (only when there is more than one day) */
-    $('tgOverview').hidden = parts.length < 2;
-    $('tgOverview').innerHTML = parts.length < 2 ? '' : parts.map((part, di) => '<li data-day="day-' + (di + 1) + '"><b>' + esc(dayLabel(di)) + '</b><div class="tags">' + [...new Set(part.map(x => '#' + x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</div><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></li>').join('');
     /* at a glance */
     const cc = cnt(e);
     $('tgGlance').innerHTML = [[CALI, 'الأيام', days.length, ''], [ROUTEI, 'المحطات', stops.length, ''], [BANK, 'أماكن', cc.d, ''], [COMP, 'تجارب', cc.e, ''], [CLKI, 'المدة', t(e.dur), '']].map(([ic, h, v]) => '<li><h3>' + esc(t(h)) + '</h3><div><b>' + esc(String(v)) + '</b></div><i>' + ic + '</i></li>').join('');
@@ -2125,7 +2141,9 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   /* TOC highlight + smooth jumps */
   document.addEventListener('click', ev => { const a = ev.target.closest('.tg-toc a, .tg-toc-m a'); if (!a) return; ev.preventDefault(); const el = $(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
   new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe && document.querySelectorAll('.tg-sec').forEach(sec => new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe(sec));
-  $('tgOverview').addEventListener('click', ev => { const li = ev.target.closest('li[data-day]'); if (!li) return; const el = $(li.dataset.day); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
+  $('tgPlan').addEventListener('click', ev => { const btn = ev.target.closest('.tg-acc-btn'); if (!btn) return; const acc = btn.closest('.tg-acc'), panel = acc.querySelector('.tg-acc-panel'), open = !acc.hasAttribute('open');
+    acc.toggleAttribute('open', open); btn.setAttribute('aria-expanded', String(open)); panel.hidden = !open;
+    if (open) { panel.querySelectorAll('.tg-stops').forEach(ul => EX.strip(ul)); dispatchEvent(new Event('resize')); } });
   document.addEventListener('click', ev => { const c = ev.target.closest('.gem[data-href]'); if (!c || ev.target.closest('a,button')) return; location.href = c.dataset.href; });
   $('tgShare').addEventListener('click', async () => { const data = { title: document.title, url: location.href }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(location.href); const tt = $('toast'); if (tt) { tt.textContent = t('تم نسخ الرابط'); tt.classList.add('show'); clearTimeout(tt._h); tt._h = setTimeout(() => tt.classList.remove('show'), 2200); } } } catch {} });
   document.addEventListener('i18n:change', render); render();
