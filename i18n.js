@@ -1246,6 +1246,7 @@ window.I18N = (() => {
     'إقامة في': { en: "A stay in", es: "Alojamiento en" },
     'تجربة في': { en: "An experience in", es: "Una experiencia en" },
     'نظرة عامة': { en: "Overview", es: "Resumen" },
+    'الصور': { en: "Photos", es: "Fotos" },
     'الوصف الكامل': { en: "Full description", es: "Descripción completa" },
     'برنامج التجربة': { en: "Itinerary", es: "Itinerario" },
     'ما لا تشمله التجربة': { en: "What is not included", es: "Qué no incluye" },

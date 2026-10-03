@@ -1383,6 +1383,24 @@
   svg.ic{fill:currentColor!important;stroke:none!important;flex:none}
   svg.ic.ic--stroke{fill:none!important;stroke:currentColor!important;stroke-width:16!important}
   .gem-fav[aria-pressed="true"] svg.ic{transform:scale(1.1)}
+  /* upcoming events: image cards with a date badge (What's On pattern) */
+  .evl{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s-5) var(--s-4)}
+  @media (min-width:1024px){.evl{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .evc{display:flex;flex-direction:column;height:100%;min-width:0}
+  .evc-media{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:var(--radius-card);background:#2b1d0e;isolation:isolate}
+  .evc-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .evc:hover .evc-media img{transform:scale(1.04)}
+  .evc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.35),rgba(18,11,6,0) 40%);pointer-events:none}
+  .evc-date{position:absolute;top:0;inset-inline-start:0;z-index:2;display:grid;gap:2px;min-width:68px;padding:10px 12px 10px;border-end-end-radius:14px;background:rgba(43,29,14,.82);color:#fff;text-align:center;line-height:1;backdrop-filter:blur(4px)}
+  .evc-date b{font-size:26px;font-weight:800} .evc-date small{font-size:12px;font-weight:700}
+  .evc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:var(--s-3) 0 0;font-size:12.5px;font-weight:700;color:var(--ink)}
+  .evc-meta span{display:inline-flex;align-items:center;gap:5px} .evc-meta svg{color:var(--rust)} .evc-meta i{font-style:normal;color:rgba(43,29,14,.3)}
+  .evc-meta .evc-time{margin-inline-start:auto;color:var(--muted);font-weight:600}
+  .evc-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-3);margin-top:10px}
+  .evc-t{margin:0;font-size:17px;line-height:1.45;font-weight:700;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .evc-t a{color:inherit} .evc-t a:hover{color:var(--rust)} .evc-t a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:4px}
+  .evc .ev-cta{flex:none;height:40px;padding-inline:16px;align-self:auto;font-size:13.5px}
+  .evc .ev-cta svg{display:none}
 </style>
 
 </head>
@@ -1849,7 +1867,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' resource' : ' resources') : l === 'es' ? n + (n === 1 ? ' recurso' : ' recursos') : n + ' ' + (n === 1 ? 'مورد' : n === 2 ? 'موردان' : n <= 10 ? 'موارد' : 'موردًا'); };
   function url() { const u = new URLSearchParams(); if (F.fmt !== 'all') u.set('format', F.fmt); if (F.q) u.set('q', F.q); if (F.topic.size) u.set('topic', [...F.topic].join(',')); if (F.p.size) u.set('pillar', [...F.p].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
   const MONTHS = { ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] };
-  const evRow = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; return '<li><article class="evl-row"><span class="evl-date"><b>' + d.getDate() + '</b><small>' + m + '</small></span><div><span class="evl-kind">' + ICON('calendar-blank', 16) + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta"><span>' + CLK + esc(t(e.time)) + '</span><span>' + EX.PIN + esc(t(e.loc)) + '</span></p></div><a class="ev-cta" href="' + e.reg + '"><span>' + esc(t('سجّل الآن')) + '</span>' + ARW + '</a></article></li>'; };
+  const evRow = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug, im = e.img; return '<li><article class="evc" data-href="' + href + '"><a class="evc-media" href="' + href + '" aria-label="' + esc(t(e.n)) + '">' + (im ? '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="(min-width:1024px) 300px, 90vw" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '') + '<span class="evc-date"><b>' + d.getDate() + '</b><small>' + m + '</small><small>' + d.getFullYear() + '</small></span></a><p class="evc-meta"><span>' + EX.PIN + esc(t(e.loc)) + '</span><i>|</i><span>' + esc(t(e.kind)) + '</span><span class="evc-time">' + CLK + esc(t(e.time)) + '</span></p><div class="evc-foot"><h3 class="evc-t"><a href="' + href + '">' + esc(t(e.n)) + '</a></h3><a class="ev-cta" href="' + href + '"><span>' + esc(t('سجّل الآن')) + '</span></a></div></article></li>'; };
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'resources.html'], ['الموارد ومسارات التعلم']]); document.title = t('الموارد ومسارات التعلم') + ' — ' + t('صعيد مصر'); }
   function render() {
     $('lpGrid').innerHTML = paths.map(pathCard).join('');

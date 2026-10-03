@@ -1427,6 +1427,24 @@
   svg.ic{fill:currentColor!important;stroke:none!important;flex:none}
   svg.ic.ic--stroke{fill:none!important;stroke:currentColor!important;stroke-width:16!important}
   .gem-fav[aria-pressed="true"] svg.ic{transform:scale(1.1)}
+  /* upcoming events: image cards with a date badge (What's On pattern) */
+  .evl{grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:var(--s-5) var(--s-4)}
+  @media (min-width:1024px){.evl{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .evc{display:flex;flex-direction:column;height:100%;min-width:0}
+  .evc-media{position:relative;display:block;aspect-ratio:1/1;overflow:hidden;border-radius:var(--radius-card);background:#2b1d0e;isolation:isolate}
+  .evc-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .evc:hover .evc-media img{transform:scale(1.04)}
+  .evc-media::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.35),rgba(18,11,6,0) 40%);pointer-events:none}
+  .evc-date{position:absolute;top:0;inset-inline-start:0;z-index:2;display:grid;gap:2px;min-width:68px;padding:10px 12px 10px;border-end-end-radius:14px;background:rgba(43,29,14,.82);color:#fff;text-align:center;line-height:1;backdrop-filter:blur(4px)}
+  .evc-date b{font-size:26px;font-weight:800} .evc-date small{font-size:12px;font-weight:700}
+  .evc-meta{display:flex;flex-wrap:wrap;align-items:center;gap:6px 10px;margin:var(--s-3) 0 0;font-size:12.5px;font-weight:700;color:var(--ink)}
+  .evc-meta span{display:inline-flex;align-items:center;gap:5px} .evc-meta svg{color:var(--rust)} .evc-meta i{font-style:normal;color:rgba(43,29,14,.3)}
+  .evc-meta .evc-time{margin-inline-start:auto;color:var(--muted);font-weight:600}
+  .evc-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-3);margin-top:10px}
+  .evc-t{margin:0;font-size:17px;line-height:1.45;font-weight:700;color:var(--ink);display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+  .evc-t a{color:inherit} .evc-t a:hover{color:var(--rust)} .evc-t a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:4px}
+  .evc .ev-cta{flex:none;height:40px;padding-inline:16px;align-self:auto;font-size:13.5px}
+  .evc .ev-cta svg{display:none}
 </style>
 
 </head>
@@ -1837,7 +1855,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const AUD = { entrepreneurs: 'رواد الأعمال', organisations: 'الجهات السياحية', both: 'رواد الأعمال والجهات السياحية' };
   const gemCard = (o) => '<li><article class="gem" data-href="' + o.href + '"><div class="gem-media">' + pic(o.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (o.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>' + (o.badge ? '<span class="gem-loc">' + o.badge + '</span>' : '') + '</div><div class="gem-body">' + (o.cat ? '<span class="gem-cat">' + esc(o.cat) + '</span>' : '') + '<h3 class="gem-title">' + esc(o.title) + '</h3>' + (o.biz ? '<p class="gem-biz">' + esc(o.biz) + '</p>' : '') + '<p class="gem-desc">' + esc(o.desc) + '</p>' + (o.meta ? '<p class="gem-meta">' + o.meta + '</p>' : '') + '<a class="gem-cta" href="' + o.href + '"><span>' + esc(o.cta) + '</span>' + ARW + '</a></div></article></li>';
   const stopCard = (kind, slug) => { if (kind === 'd') { const d = DESTINATIONS.bySlug(slug); return d ? { kind: t('مكان'), href: DESTINATIONS.href(d), img: d.imgs[0], pos: d.pos, title: t(d.n), desc: t(d.s), cat: t(DESTINATIONS.CAT[d.c]) } : null; } const e = EXPERIENCES.list.find(x => x.slug === slug); return e ? { kind: t('تجربة'), href: EX.href(e), img: e.imgs[0], title: t(e.n), desc: t(e.s), cat: t(EX.CATS[e.c].n) } : null; };
-  const evRow = e => { const p = dateParts(e.start); return '<li><article class="evl-row" data-href="' + CONTENT.eventHref(e) + '"><span class="evl-date"><b>' + p.day + '</b><small>' + p.mon + '</small></span><div><span class="evl-kind">' + CAL + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta"><span>' + CLOCK + p.time + '</span><span>' + PIN + esc(e.online ? t('عبر الإنترنت') : cityName(e.city)) + '</span><span>' + USERS + esc(t(AUD[e.aud])) + '</span>' + (e.p ? '<span>' + TAG + esc(t(P[e.p])) + '</span>' : '') + '</p></div><a class="ev-cta" href="' + CONTENT.eventHref(e) + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></article></li>'; };
+  const evRow = e => { const p = dateParts(e.start), href = CONTENT.eventHref(e), im = e.img; return '<li><article class="evc" data-href="' + href + '"><a class="evc-media" href="' + href + '" aria-label="' + esc(t(e.n)) + '">' + (im ? '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="(min-width:1024px) 300px, 90vw" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '') + '<span class="evc-date"><b>' + p.day + '</b><small>' + p.mon + '</small><small>' + p.year + '</small></span></a><p class="evc-meta"><span>' + PIN + esc(e.online ? t('عبر الإنترنت') : cityName(e.city)) + '</span><i>|</i><span>' + esc(t(e.kind)) + '</span><span class="evc-time">' + CLOCK + p.time + '</span></p><div class="evc-foot"><h3 class="evc-t"><a href="' + href + '">' + esc(t(e.n)) + '</a></h3><a class="ev-cta" href="' + (e.reg || href) + '"><span>' + esc(t('سجّل الآن')) + '</span></a></div></article></li>'; };
   const entBlock = en => en ? '<figure><img src="' + en.img.src + '" srcset="' + en.img.srcset + '" sizes="120px" alt="' + esc(t(en.img.alt)) + '" style="object-position:' + (en.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('رائد الأعمال وراء القصة')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(en.name)) + '</p><p class="st-biz">' + esc(t(en.biz)) + '</p><p>' + esc(t(en.sum)) + '</p><a class="st-link" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>' : '';
 
   const upcoming = () => CONTENT.events.filter(e => e.end >= new Date().toISOString().slice(0, 16)).sort((a, b) => a.start.localeCompare(b.start));

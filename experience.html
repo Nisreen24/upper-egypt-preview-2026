@@ -1427,6 +1427,7 @@
   html.lang-latin .dxg-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase}
   .dxg-h{margin:var(--s-2) auto 0;max-width:22ch;text-align:center;font-size:clamp(28px,3.4vw,52px);line-height:1.2;font-weight:700;color:#fff}
   .dxg-sub{margin:var(--s-2) auto 0;max-width:60ch;text-align:center;font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.6)}
+  .dxg-credit{margin:var(--s-3) auto 0;max-width:1200px;padding-inline:var(--s-3);text-align:center;font-size:12px;line-height:1.6;color:rgba(255,255,255,.45)} .dxg-credit:empty{display:none}
   .dxg-stage{position:relative;height:calc(var(--ph) * .96);margin-top:var(--s-4);perspective:1500px;perspective-origin:50% 55%;direction:ltr;overflow:hidden}
   .dxg-track{position:absolute;inset:0;transform-style:preserve-3d}
   .dxg-slice{position:absolute;top:calc(var(--ph) * .16);left:0;width:calc(var(--pw) / var(--n) + 1.2px);height:var(--ph);overflow:hidden;background:#1a1d22;backface-visibility:hidden;will-change:transform}
@@ -1624,6 +1625,7 @@
           <p class="dxg-sub" id="dxgSub"></p>
         </div>
         <div class="dxg-stage" id="dxgStage" aria-label="صور التجربة"><div class="dxg-track" id="dxgTrack"></div></div>
+        <p class="dxg-credit" id="dxgCredit"></p>
       </section>
       <section class="dx-rel" id="dxRel" aria-labelledby="dxRelH" hidden>
         <header class="lx-head"><h2 class="display lx-h" id="dxRelH">تجارب مشابهة</h2><a class="lx-all" id="dxRelAll" href="#"><span>عرض المزيد من التجارب</span></a></header>
@@ -1932,7 +1934,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   let galOn = false;
   function gallery() {
     const box = $('dxGal'); if (GAL.length < 3) { box.hidden = true; return; } box.hidden = false;
-    $('dxgH').textContent = t('لقطات من') + ' ' + t(e.n); $('dxgSub').textContent = t(e.s);
+    $('dxgH').textContent = t('لقطات من') + ' ' + t(e.n); $('dxgSub').textContent = t(e.s); $('dxgCredit').textContent = e.galcr ? t('الصور') + ': Wikimedia Commons · ' + e.galcr : '';
     const track = $('dxgTrack'), N = 8;
     if (!track.children.length) {
       /* two copies so the strip never shows its seam; each picture is cut into vertical slices that bend on the cylinder */
