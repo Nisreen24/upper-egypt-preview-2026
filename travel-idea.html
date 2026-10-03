@@ -1500,6 +1500,94 @@
   .ex-strip-dot{width:8px;height:8px;padding:0;border:0;border-radius:999px;background:rgba(43,29,14,.22);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease}
   .ex-strip-dot[aria-selected="true"]{background:var(--rust);transform:scale(1.35)}
   .ex-strip-dot:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  /* trip plan: travel-guide structure (framed hero → intro + sticky TOC → day plan → seasons → transport → map → city banner → FAQ) */
+  .ds{padding-top:calc(var(--tb-top,100px) + 24px);padding-bottom:var(--s-8);background:var(--paper)}
+  .ds-wrap{width:min(1400px,100% - 2 * var(--s-3));margin-inline:auto}
+  .ds-crumb{margin-bottom:22px;font-size:14px;color:var(--muted)} .ds-crumb a{color:var(--muted)} .ds-crumb a:hover{color:var(--ink)} .ds-crumb .ex-crumb{margin:0}
+  .ds-hero{position:relative;overflow:hidden;border-radius:20px;aspect-ratio:1400/540;min-height:320px;max-height:540px;background:#b0703c;isolation:isolate}
+  .ds-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .ds-hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.55),rgba(18,11,6,0) 55%);pointer-events:none}
+  .ds-hero-title{position:absolute;inset-inline-start:48px;bottom:80px;margin:0;font-size:clamp(40px,5vw,80px);line-height:1.1;font-weight:700;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+  .ds-band{height:18px}
+  @media (max-width:767px){.ds-hero{aspect-ratio:4/3;min-height:0}.ds-hero-title{inset-inline-start:20px;bottom:44px}.ds-band{height:14px}}
+  .tg-hero-cap{position:absolute;inset-inline-start:48px;bottom:80px;display:grid;gap:14px;justify-items:start}
+  .tg-hero-cap .ds-hero-title{position:static}
+  .tg-badge{display:inline-flex;align-items:center;height:34px;padding-inline:14px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--ink);font-size:14px;font-weight:700}
+  @media (max-width:767px){.tg-hero-cap{inset-inline-start:20px;bottom:44px}}
+  .tg-grid{display:grid;gap:var(--s-6);align-items:start;margin-top:96px}
+  @media (min-width:1024px){.tg-grid{grid-template-columns:minmax(0,1fr) 330px;gap:72px}}
+  @media (max-width:1023px){.tg-grid{margin-top:56px}}
+  .tg-sec{margin-top:96px;scroll-margin-top:calc(var(--tb-top,100px) + 24px)} .tg-main>.tg-sec:first-child{margin-top:0} .tg-sec[hidden]{display:none}
+  @media (max-width:1023px){.tg-sec{margin-top:64px}}
+  .tg-h{margin:0;font-size:clamp(30px,3.3vw,48px);line-height:1.25;font-weight:700;color:var(--ink)}
+  .tg-sub{margin:10px 0 0;font-size:var(--fs-body-lg);font-weight:600;color:var(--ink)}
+  .tg-intro-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3)}
+  .tg-share{display:grid;place-items:center;width:44px;height:44px;border-radius:999px;color:var(--rust);background:transparent;transition:background-color .25s ease,transform .35s cubic-bezier(.2,.8,.2,1)} .tg-share:hover{background:rgba(165,62,26,.08)} .tg-share:active{transform:scale(.92)} .tg-share:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
+  .tg-lede{margin:28px 0 0;max-width:72ch;font-size:var(--fs-body-lg);line-height:1.8;font-weight:700;color:var(--ink)}
+  .tg-body{margin-top:14px;max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)} .tg-body p{margin:0 0 var(--s-3)} .tg-body p:last-child{margin:0}
+  .tg-tags{margin-top:var(--s-4)}
+  /* TOC: numbered card on the side (desktop), chip row under the intro (mobile) */
+  .tg-side{position:sticky;top:calc(var(--tb-top,100px) + 16px);display:grid;gap:var(--s-4)}
+  @media (max-width:1023px){.tg-side{position:static}}
+  .tg-toc{padding:24px 24px 18px;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:16px}
+  .tg-toc-h{margin:0 0 14px;font-size:14px;font-weight:800;color:var(--ink)}
+  .tg-toc ol{margin:0;padding:0;list-style:none;display:grid}
+  .tg-toc a{display:flex;align-items:center;gap:12px;min-height:40px;font-size:15px;font-weight:700;color:var(--ink);transition:color .2s ease} .tg-toc a:hover,.tg-toc a.is-on{color:var(--rust)} .tg-toc a:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px;border-radius:6px}
+  .tg-toc a i{font-style:normal;font-size:13px;font-weight:700;color:var(--rust);min-width:22px}
+  @media (max-width:1023px){.tg-toc{display:none}}
+  .tg-toc-m{display:none}
+  @media (max-width:1023px){.tg-toc-m{display:flex;gap:8px;margin-top:var(--s-5);overflow-x:auto;scrollbar-width:none;padding-bottom:4px} .tg-toc-m::-webkit-scrollbar{display:none} .tg-toc-m a{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding-inline:14px;border-radius:999px;background:#fff;border:1px solid rgba(43,29,14,.12);font-size:13.5px;font-weight:700;color:var(--ink)} .tg-toc-m a i{font-style:normal;color:var(--rust);font-size:12px}}
+  .tg-side .dxi{position:static;top:auto}
+  /* day plan */
+  .tg-day{margin-top:var(--s-5)} .tg-day:first-child{margin-top:var(--s-4)}
+  .tg-day-h{display:flex;align-items:center;gap:14px;margin:0 0 var(--s-2);font-size:19px;font-weight:800;color:var(--ink)} .tg-day-h::after{content:"";flex:1;height:1px;background:rgba(43,29,14,.12)}
+  .tg-day-h span{display:inline-grid;place-items:center;min-width:40px;height:40px;padding-inline:12px;border-radius:999px;background:var(--rust);color:#fff;font-size:14px}
+  .tg-day .stop + .stop{border-top:1px solid rgba(43,29,14,.1)}
+  /* seasons: four cards, title at the top-end, icon, text, link */
+  .tg-seasons{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:40px 0 0;padding:0;list-style:none}
+  @media (max-width:1023px){.tg-seasons{grid-template-columns:repeat(2,minmax(0,1fr))}} @media (max-width:639px){.tg-seasons{grid-template-columns:1fr}}
+  .tg-season{display:flex;flex-direction:column;gap:14px;padding:28px 24px 22px;background:#fff;border:1px solid rgba(43,29,14,.08);border-radius:18px}
+  .tg-season h3{margin:0;font-size:16px;font-weight:800;color:var(--ink)} .tg-season h3 small{display:block;margin-top:4px;font-size:12.5px;font-weight:600;color:var(--muted)}
+  .tg-season .ic{color:var(--rust)}
+  .tg-season p{margin:0;font-size:14px;line-height:1.75;color:var(--body);flex:1}
+  .tg-season b{font-size:14px;color:var(--ink)}
+  .tg-season a{font-size:13.5px;font-weight:700;color:var(--rust)} .tg-season a:hover{text-decoration:underline;text-underline-offset:4px}
+  .tg-season.is-rec{border-color:rgba(165,62,26,.35)} .tg-season .tg-rec{align-self:flex-start;font-size:11.5px;font-weight:800;color:var(--rust);background:rgba(165,62,26,.08);border-radius:999px;padding:3px 10px}
+  /* transport */
+  .tg-move{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px;margin:40px 0 0;padding:0;list-style:none}
+  @media (max-width:1023px){.tg-move{grid-template-columns:repeat(2,minmax(0,1fr))}} @media (max-width:639px){.tg-move{grid-template-columns:1fr}}
+  .tg-move li{display:grid;grid-template-columns:48px minmax(0,1fr);gap:16px;align-items:start;padding:22px;background:#fff;border:1px solid rgba(43,29,14,.08);border-radius:18px}
+  .tg-move li i{display:grid;place-items:center;width:48px;height:48px;border-radius:14px;background:rgba(165,62,26,.08);color:var(--rust)}
+  .tg-move h3{margin:0;font-size:16px;font-weight:800;color:var(--ink)} .tg-move p{margin:6px 0 0;font-size:14px;line-height:1.7;color:var(--body)}
+  /* map */
+  #dxMap.tg-map{position:relative;inset:auto;width:auto}
+  .tg-map{height:460px;margin-top:40px;border-radius:20px;overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate;z-index:0}
+  #dxMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)} #dxMap .leaflet-control-attribution{font-size:10px}
+  .tg-pin{display:grid;place-items:center;width:34px;height:34px;border-radius:999px;background:var(--rust);color:#fff;font-size:14px;font-weight:800;border:3px solid #fff;box-shadow:0 2px 10px rgba(43,29,14,.35)}
+  .tg-pop .leaflet-popup-content{margin:12px 16px;font-family:inherit;text-align:start} .tg-pop b{display:block;font-size:15px;color:var(--ink)} .tg-pop span{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)} .tg-pop a{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--rust)}
+  @media (max-width:639px){.tg-map{height:340px}}
+  /* city banner */
+  .tg-banner{position:relative;display:block;min-height:420px;border-radius:20px;overflow:hidden;background:#241a12;color:#fff;isolation:isolate}
+  .tg-banner img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.2s cubic-bezier(.2,.8,.2,1)} .tg-banner:hover img{transform:scale(1.03)}
+  .tg-banner-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.78),rgba(18,11,6,.25) 60%,rgba(18,11,6,.1))}
+  .tg-banner-txt{position:relative;display:grid;justify-items:start;gap:14px;max-width:62ch;padding:48px 48px 44px;min-height:420px;align-content:end}
+  .tg-banner-txt strong{font-size:clamp(28px,3vw,44px);line-height:1.2;font-weight:700} .tg-banner-txt>span:not(.dx-cta){font-size:var(--fs-body-lg);line-height:1.8;color:rgba(255,255,255,.9);font-weight:600}
+  .tg-banner-cta{display:inline-flex;height:48px;padding-inline:22px;margin-top:6px}
+  @media (max-width:639px){.tg-banner,.tg-banner-txt{min-height:360px} .tg-banner-txt{padding:24px 20px}}
+  /* faq */
+  .lx-faq{border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);background:#fff;overflow:hidden}
+  .lx-q + .lx-q{border-top:1px solid rgba(43,29,14,.1)}
+  .lx-q summary{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);min-height:56px;padding:var(--s-2) var(--s-4);font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;list-style:none;transition:background-color .2s ease,color .2s ease}
+  .lx-q summary::-webkit-details-marker{display:none}
+  .lx-q summary:hover{background:rgba(165,62,26,.05);color:var(--rust)}
+  .lx-q summary:active{background:rgba(165,62,26,.1)}
+  .lx-q summary:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:-3px}
+  .lx-q summary i{display:inline-flex;flex:none;transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+  .lx-q[open] summary i{transform:rotate(45deg)}
+  .lx-q p{margin:0;padding:0 var(--s-4) var(--s-4);font-size:var(--fs-body);line-height:1.8;color:var(--muted);max-width:80ch}
+
+  .tg-sec .lx-faq{margin-top:32px}
+  .tg-more{margin-top:120px} @media (max-width:1023px){.tg-more{margin-top:72px}}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -1579,46 +1667,62 @@
   </div>
 </header>
 
-<main>
-  <section class="xh" id="dxHero" aria-labelledby="dx-title">
-    <div class="xh-crumb" id="dxCrumb"></div>
-    <div class="xh-media" id="xhMedia">
-      <div class="xh-shade"></div>
-      <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="dx-title"></h1>
-        <p class="xh-cap-sub" id="dxSum"></p>
-        <div class="dx-tags" id="dxTags"></div>
+<main class="ds tg">
+  <div class="ds-wrap">
+    <div class="ds-crumb" id="dxCrumb"></div>
+    <section class="ds-hero tg-hero" id="dxHero" aria-labelledby="dx-title">
+      <img id="tgImg" alt="" fetchpriority="high" decoding="async">
+      <div class="ds-hero-shade" aria-hidden="true"></div>
+      <div class="tg-hero-cap"><span class="tg-badge" id="tgDur"></span><h1 class="ds-hero-title display" id="dx-title"></h1></div>
+      <div class="xh-band ds-band" aria-hidden="true"></div>
+    </section>
+    <div class="tg-grid" id="dx">
+      <div class="tg-main">
+        <section class="tg-sec tg-intro" id="g-about" aria-labelledby="tgAboutH">
+          <div class="tg-intro-head"><h2 class="display tg-h" id="tgAboutH">عن المسار</h2><button type="button" class="tg-share" id="tgShare" aria-label="شارك المسار"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M176,160a39.89,39.89,0,0,0-28.62,12.09l-46.1-29.63a39.8,39.8,0,0,0,0-28.92l46.1-29.63a40,40,0,1,0-8.66-13.45l-46.1,29.63a40,40,0,1,0,0,55.82l46.1,29.63A40,40,0,1,0,176,160Zm0-128a24,24,0,1,1-24,24A24,24,0,0,1,176,32ZM64,152a24,24,0,1,1,24-24A24,24,0,0,1,64,152Zm112,72a24,24,0,1,1,24-24A24,24,0,0,1,176,224Z"/></svg></button></div>
+          <p class="tg-lede" id="dxSum"></p>
+          <div class="tg-body" id="dxDesc"></div>
+          <div class="dx-tags tg-tags" id="dxTags"></div>
+        </section>
+        <nav class="tg-toc-m" id="tgTocM" aria-label="الانتقال إلى"></nav>
+        <section class="tg-sec" id="g-plan" aria-labelledby="tgPlanH">
+          <h2 class="display tg-h" id="tgPlanH">برنامج المسار</h2><p class="tg-sub">محطة بعد محطة</p>
+          <div id="tgPlan"></div>
+        </section>
+        <section class="tg-sec" id="g-season" aria-labelledby="tgSeasonH">
+          <h2 class="display tg-h" id="tgSeasonH">أفضل وقت للزيارة</h2><p class="tg-sub" id="tgSeasonSub"></p>
+          <ul class="tg-seasons" id="tgSeasons" role="list"></ul>
+        </section>
+        <section class="tg-sec" id="g-move" aria-labelledby="tgMoveH">
+          <h2 class="display tg-h" id="tgMoveH">كيف تتنقل</h2>
+          <ul class="tg-move" id="tgMove" role="list"></ul>
+        </section>
+        <section class="tg-sec" id="g-map" aria-labelledby="tgMapH">
+          <h2 class="display tg-h" id="tgMapH">المحطات على الخريطة</h2>
+          <div class="tg-map" id="dxMap" role="region" aria-label="المحطات على الخريطة"></div>
+        </section>
+        <section class="tg-sec" id="g-city">
+          <a class="tg-banner" id="tgBanner" href="#"><img id="tgBannerImg" alt="" loading="lazy" decoding="async"><span class="tg-banner-shade" aria-hidden="true"></span><span class="tg-banner-txt"><strong class="display" id="tgBannerH"></strong><span id="tgBannerP"></span><span class="dx-cta tg-banner-cta" id="tgBannerCta"></span></span></a>
+        </section>
+        <section class="tg-sec" id="g-faq" aria-labelledby="tgFaqH" hidden>
+          <h2 class="display tg-h" id="tgFaqH">الأسئلة الشائعة</h2>
+          <div class="lx-faq" id="tgFaq"></div>
+        </section>
       </div>
-      <div class="xh-band" aria-hidden="true"></div>
-    </div>
-  </section>
-  <div class="wrap">
-    <article class="ex dx" id="dx">
-      <div class="dxl">
-        <div class="dxl-main">
-          <section class="dxa" aria-labelledby="dxaH">
-            <h2 class="display lx-h" id="dxaH">عن المسار</h2>
-            <p class="dxa-lead" id="dxaSum"></p>
-            <div class="dx-desc dxa-text dxa-body" id="dxDesc"></div>
-            <div class="dxi-chips dxa-chips" id="dxaChips"></div>
-            <div class="dxa-bento" id="dxaBento" aria-label="صور" hidden></div>
-          </section>
-          <section class="dx-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
-        </div>
-        <aside class="dxi" aria-labelledby="dxiH">
+      <aside class="tg-side">
+        <nav class="tg-toc" aria-labelledby="tgTocH"><h2 class="tg-toc-h" id="tgTocH">الانتقال إلى</h2><ol id="tgToc"></ol></nav>
+        <div class="dxi tg-facts" aria-labelledby="dxiH">
           <div class="dxi-band" aria-hidden="true"></div>
-          <div class="dxi-body">
-            <h2 class="dxi-h" id="dxiH">المعلومات</h2>
-            <dl class="dxi-facts" id="dxFacts"></dl>
-            <div class="dxi-group" id="dxiPillarBox"><h3 class="dxi-h">محور المحتوى</h3><div class="dxi-chips" id="dxiPillar"></div></div>
-          </div>
-          <div class="dxi-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="الموقع"></div></div></div>
+          <div class="dxi-body"><h2 class="dxi-h" id="dxiH">المعلومات</h2><dl class="dxi-facts" id="dxFacts"></dl></div>
           <div class="dxi-actions" id="dxiActions"></div>
-        </aside>
-      </div>
-      <div id="dxSections"></div>
-      <p class="dx-empty" id="dxEmpty" hidden>هذا المسار غير موجود. <a href="travel-ideas.html" style="color:var(--rust);font-weight:700">العودة إلى أفكار السفر</a></p>
-    </article>
+        </div>
+      </aside>
+    </div>
+    <section class="tg-sec tg-more" id="g-more" aria-labelledby="tgMoreH">
+      <header class="lx-head"><h2 class="display lx-h" id="tgMoreH">أفكار أخرى</h2><a class="lx-all" href="travel-ideas.html"><span>كل أفكار السفر</span></a></header>
+      <ul class="ex-grid" id="tgMore" role="list"></ul>
+    </section>
+    <p class="dx-empty" id="dxEmpty" hidden>هذا المسار غير موجود. <a href="travel-ideas.html" style="color:var(--rust);font-weight:700">العودة إلى أفكار السفر</a></p>
   </div>
 </main>
 
@@ -1912,30 +2016,63 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
 <script src="listing-shared.js"></script>
 <script src="listing-engine.js"></script>
 <script src="entry-engine.js"></script>
+<script src="city-info.js"></script>
 <script>
 (() => {
-
-  const { t, esc, svg, pic, crumb, P, CITIES, PIN, CLOCK, ARW } = EX; const $ = id => document.getElementById(id);
-  const cityName = c => c ? (CITIES[c][EX.lang()] || CITIES[c].ar) : t('عبر الإنترنت');
-  const MONTHS = { ar: ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'], en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], es: ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'] };
-  const dateParts = iso => { const d = new Date(iso); return { day: d.getDate(), mon: (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()], year: d.getFullYear(), time: d.toTimeString().slice(0, 5) }; };
-  const dateText = iso => { const p = dateParts(iso); return p.day + ' ' + p.mon + ' ' + p.year; };
-  const CAL = ICON('calendar-blank', 16), TAG = ICON('tag', 16), USERS = ICON('users', 16), ORG = ICON('buildings', 16), EXT = ICON('arrow-square-out', 16), MAIL = ICON('envelope-simple', 20), ROUTE = ICON('path', 16);
-  const AUD = { entrepreneurs: 'رواد الأعمال', organisations: 'الجهات السياحية', both: 'رواد الأعمال والجهات السياحية' };
-  const gemCard = (o) => '<li><article class="gem" data-href="' + o.href + '"><div class="gem-media">' + pic(o.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (o.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>' + (o.badge ? '<span class="gem-loc">' + o.badge + '</span>' : '') + '</div><div class="gem-body">' + (o.cat ? '<span class="gem-cat">' + esc(o.cat) + '</span>' : '') + '<h3 class="gem-title">' + esc(o.title) + '</h3>' + (o.biz ? '<p class="gem-biz">' + esc(o.biz) + '</p>' : '') + '<p class="gem-desc">' + esc(o.desc) + '</p>' + (o.meta ? '<p class="gem-meta">' + o.meta + '</p>' : '') + '<a class="gem-cta" href="' + o.href + '"><span>' + esc(o.cta) + '</span>' + ARW + '</a></div></article></li>';
-  const stopCard = (kind, slug) => { if (kind === 'd') { const d = DESTINATIONS.bySlug(slug); return d ? { kind: t('مكان'), href: DESTINATIONS.href(d), img: d.imgs[0], pos: d.pos, title: t(d.n), desc: t(d.s), cat: t(DESTINATIONS.CAT[d.c]) } : null; } const e = EXPERIENCES.list.find(x => x.slug === slug); return e ? { kind: t('تجربة'), href: EX.href(e), img: e.imgs[0], title: t(e.n), desc: t(e.s), cat: t(EX.CATS[e.c].n) } : null; };
-  const evRow = e => { const p = dateParts(e.start); return '<li><article class="evl-row" data-href="' + CONTENT.eventHref(e) + '"><span class="evl-date"><b>' + p.day + '</b><small>' + p.mon + '</small></span><div><span class="evl-kind">' + CAL + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta"><span>' + CLOCK + p.time + '</span><span>' + PIN + esc(e.online ? t('عبر الإنترنت') : cityName(e.city)) + '</span><span>' + USERS + esc(t(AUD[e.aud])) + '</span>' + (e.p ? '<span>' + TAG + esc(t(P[e.p])) + '</span>' : '') + '</p></div><a class="ev-cta" href="' + CONTENT.eventHref(e) + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></article></li>'; };
-  const entBlock = en => en ? '<figure><img src="' + en.img.src + '" srcset="' + en.img.srcset + '" sizes="120px" alt="' + esc(t(en.img.alt)) + '" style="object-position:' + (en.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('رائد الأعمال وراء القصة')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(en.name)) + '</p><p class="st-biz">' + esc(t(en.biz)) + '</p><p>' + esc(t(en.sum)) + '</p><a class="st-link" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>' : '';
-
-  const q = new URLSearchParams(location.search); const i = CONTENT.travelIdeas.find(x => x.slug === q.get('slug'));
-  ENTRY.init({ entry: i, view: e => { const stops = e.stops.map(([k, s]) => stopCard(k, s)).filter(Boolean); const cn = cityName(e.city); return {
-    crumb: [['الرئيسية', 'index.html'], ['أفكار السفر', 'travel-ideas.html'], [e.n]], title: t(e.n), sub: t(e.s), img: e.img, pos: e.pos,
-    tags: [PIN + esc(cn), CLOCK + esc(t(e.dur)), TAG + esc(t(P[e.p]))], aboutH: t('عن المسار'), summary: t(e.s), body: [t(e.d)],
-    chips: [PIN + esc(cn), CLOCK + esc(t(e.dur)), ROUTE + esc(stops.length + ' ' + t('محطات'))], pictures: stops.map(s => s.img),
-    factsH: t('المعلومات'), facts: [[PIN, t('المدينة'), esc(cn)], [CLOCK, t('المدة'), esc(t(e.dur))], [ROUTE, t('المحطات'), stops.length]], pillar: TAG + esc(t(P[e.p])),
-    actions: [{ href: e.city + '.html', label: t('استكشف') + ' ' + cn, ghost: true }, { href: e.city + '.html#lx-info', label: t('معلومات عملية عن') + ' ' + cn, ghost: true }],
-    sections: [{ eyebrow: t('بالترتيب'), title: t('محطات المسار'), html: '<ol class="stops">' + stops.map(s => '<li class="stop"><span class="stop-num" aria-hidden="true"></span><article class="gem" data-href="' + s.href + '"><div class="gem-media">' + pic(s.img, '120px', 'gem-img') + '</div><div class="gem-body"><span class="gem-cat">' + esc(s.kind + ' · ' + s.cat) + '</span><h3 class="gem-title">' + esc(s.title) + '</h3><p class="gem-desc">' + esc(s.desc) + '</p><a class="gem-cta" href="' + s.href + '" style="display:inline-flex;width:auto;padding-inline:16px;height:40px"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></article></li>').join('') + '</ol>' },
-      { title: t('أفكار أخرى'), all: { href: 'travel-ideas.html', label: t('كل أفكار السفر') }, html: '<ul class="ex-grid" role="list">' + CONTENT.travelIdeas.filter(x => x.slug !== e.slug).slice(0, 4).map(x => gemCard({ href: CONTENT.ideaHref(x), img: x.img, cat: t(P[x.p]), title: t(x.n), desc: t(x.s), meta: '<span>' + PIN + esc(cityName(x.city)) + '</span><span>' + CLOCK + esc(t(x.dur)) + '</span>', cta: t('عرض المسار') })).join('') + '</ul>' }] }; } });
+  const { t, esc, pic, crumb, P, CITIES, PIN, CLOCK, ARW } = EX; const $ = id => document.getElementById(id);
+  const cityName = c => CITIES[c][EX.lang()] || CITIES[c].ar;
+  const TAG = ICON('tag', 16), ROUTE = ICON('path', 16), CAL = ICON('calendar-blank', 16), INFOI = ICON('info', 18);
+  const SICO = { spring: 'plant', summer: 'sun', autumn: 'leaf', winter: 'snowflake' }, MICO = { plane: 'airplane-tilt', train: 'train', bus: 'bus', boat: 'boat', taxi: 'taxi', ferry: 'ferry', bike: 'bicycle' };
+  const DAYS = ['اليوم الأول', 'اليوم الثاني', 'اليوم الثالث', 'اليوم الرابع', 'اليوم الخامس'];
+  const q = new URLSearchParams(location.search); const e = CONTENT.travelIdeas.find(x => x.slug === q.get('slug'));
+  if (!e) { ['dxHero', 'dx', 'g-more'].forEach(id => { $(id).hidden = true; }); $('dxEmpty').hidden = false; return; }
+  const CI = window.CITY_INFO && CITY_INFO[e.city];
+  const stopOf = ([k, slug]) => { if (k === 'd') { const d = DESTINATIONS.bySlug(slug); return d ? { kind: t('مكان'), href: DESTINATIONS.href(d), img: d.imgs[0], pos: d.pos, title: t(d.n), desc: t(d.s), cat: t(DESTINATIONS.CAT[d.c]), ll: d.ll } : null; } const x = EXPERIENCES.list.find(y => y.slug === slug); return x ? { kind: t('تجربة'), href: EX.href(x), img: x.imgs[0], title: t(x.n), desc: t(x.s), cat: t(EX.CATS[x.c].n), ll: x.ll } : null; };
+  const stopRow = (s, n) => '<li class="stop"><span class="stop-num" aria-hidden="true"></span><article class="gem" data-href="' + s.href + '"><div class="gem-media">' + pic(s.img, '120px', 'gem-img') + '</div><div class="gem-body"><span class="gem-cat">' + esc(s.kind + ' · ' + s.cat) + '</span><h3 class="gem-title">' + esc(s.title) + '</h3><p class="gem-desc">' + esc(s.desc) + '</p><a class="gem-cta" href="' + s.href + '" style="display:inline-flex;width:auto;padding-inline:16px;height:40px"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></article></li>';
+  const gemCard = o => '<li><article class="gem" data-href="' + o.href + '"><div class="gem-media">' + pic(o.img, '(min-width:1024px) 440px, 90vw', 'gem-img') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span></div><div class="gem-body"><span class="gem-cat">' + esc(o.cat) + '</span><h3 class="gem-title">' + esc(o.title) + '</h3><p class="gem-desc">' + esc(o.desc) + '</p><p class="gem-meta">' + o.meta + '</p><a class="gem-cta" href="' + o.href + '"><span>' + esc(t('عرض المسار')) + '</span>' + ARW + '</a></div></article></li>';
+  let map = null, markers = [];
+  function render() {
+    const cn = cityName(e.city), stops = e.stops.map(stopOf).filter(Boolean);
+    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['أفكار السفر', 'travel-ideas.html'], [e.n]]);
+    $('dx-title').textContent = t(e.n); document.title = t(e.n) + ' — ' + t('صعيد مصر'); $('tgDur').textContent = t(e.dur);
+    const im = $('tgImg'); im.src = e.img.src; im.srcset = e.img.srcset; im.sizes = '(min-width:1440px) 1400px, 92vw'; im.alt = t(e.img.alt); im.style.objectPosition = e.pos || '50% 50%';
+    $('dxSum').textContent = t(e.s); $('dxDesc').innerHTML = '<p>' + esc(t(e.d)) + '</p>';
+    $('dxTags').innerHTML = '<span class="dx-tag">' + PIN + esc(cn) + '</span><span class="dx-tag">' + CLOCK + esc(t(e.dur)) + '</span><span class="dx-tag">' + ROUTE + esc(stops.length + ' ' + t('محطات')) + '</span><span class="dx-tag">' + TAG + esc(t(P[e.p])) + '</span>';
+    /* day plan: days[] when the CMS gives it, otherwise one ordered list */
+    let k = 0; const days = e.days && e.days.length ? e.days : [stops.length];
+    $('tgPlan').innerHTML = days.map((cnt, d) => { const part = stops.slice(k, k + cnt); k += cnt; return '<div class="tg-day">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (d + 1) + '</span>' + esc(t(DAYS[d] || (t('اليوم') + ' ' + (d + 1)))) + '</h3>' : '') + '<ol class="stops">' + part.map(stopRow).join('') + '</ol></div>'; }).join('');
+    /* seasons + transport from the city's practical information */
+    $('g-season').hidden = !(CI && CI.seasons); $('g-move').hidden = !(CI && CI.transport);
+    if (CI && CI.seasons) { $('tgSeasonSub').textContent = t(CI.bestNote || ''); $('tgSeasons').innerHTML = CI.seasons.map(x => '<li class="tg-season' + (x.rec ? ' is-rec' : '') + '"><h3>' + esc(t(x.n)) + '<small>' + esc(t(x.months)) + '</small></h3>' + ICON(SICO[x.k] || 'sun', 36) + '<b>' + x.min + '° – ' + x.max + '°</b><p>' + esc(t(x.note)) + '</p>' + (x.rec ? '<span class="tg-rec">' + esc(t('موصى به')) + '</span>' : '') + '<a href="' + e.city + '.html#lx-info">' + esc(t('اعرف أكثر')) + '</a></li>').join(''); }
+    if (CI && CI.transport) $('tgMove').innerHTML = CI.transport.map(x => '<li><i>' + ICON(MICO[x.k] || 'car', 24) + '</i><div><h3>' + esc(t(x.n)) + '</h3><p>' + esc(t(x.s)) + '</p></div></li>').join('');
+    /* city banner */
+    $('tgBanner').href = e.city + '.html'; $('tgBannerH').textContent = t('استكشف') + ' ' + cn; $('tgBannerP').textContent = CI ? t(CI.desc).split('.')[0] + '.' : ''; $('tgBannerCta').textContent = t('اعرف أكثر');
+    const bi = $('tgBannerImg'); const hero = (DESTINATIONS.list.find(d => d.city === e.city && d.imgs[0].src !== e.img.src) || {}).imgs; if (hero) { bi.src = hero[0].src; bi.srcset = hero[0].srcset; bi.sizes = '(min-width:1024px) 900px, 92vw'; }
+    /* faq: only when the entry carries it */
+    $('g-faq').hidden = !(e.faq && e.faq.length); if (e.faq && e.faq.length) $('tgFaq').innerHTML = e.faq.map(f => '<details class="lx-q"><summary>' + esc(t(f.q)) + '<i>' + ICON('plus', 18) + '</i></summary><p>' + esc(t(f.a)) + '</p></details>').join('');
+    /* side: TOC (existing sections only) + facts */
+    const secs = [['g-about', 'عن المسار'], ['g-plan', 'برنامج المسار'], ['g-season', 'أفضل وقت للزيارة'], ['g-move', 'كيف تتنقل'], ['g-map', 'المحطات على الخريطة'], ['g-city', t('استكشف') + ' ' + cn], ['g-faq', 'الأسئلة الشائعة'], ['g-more', 'أفكار أخرى']].filter(([id]) => !$(id).hidden);
+    const toc = (cls) => secs.map(([id, l], i) => '<a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a>').join('');
+    $('tgToc').innerHTML = secs.map(([id, l], i) => '<li><a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a></li>').join(''); $('tgTocM').innerHTML = toc();
+    $('dxFacts').innerHTML = [[PIN, 'المدينة', cn], [CLOCK, 'المدة', t(e.dur)], [ROUTE, 'المحطات', String(stops.length)], [CAL, 'الأيام', String(days.length)], [TAG, 'محور المحتوى', t(P[e.p])]].map(([i, k2, v]) => '<div><dt>' + i + esc(t(k2)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
+    $('dxiActions').innerHTML = '<a class="dx-cta" href="' + e.city + '.html">' + '<span>' + esc(t('استكشف') + ' ' + cn) + '</span></a><a class="dx-cta dx-cta--ghost" href="' + e.city + '.html#lx-info">' + INFOI + '<span>' + esc(t('معلومات عملية عن') + ' ' + cn) + '</span></a>';
+    /* more ideas */
+    $('tgMore').innerHTML = CONTENT.travelIdeas.filter(x => x.slug !== e.slug).slice(0, 4).map(x => gemCard({ href: CONTENT.ideaHref(x), img: x.img, cat: t(P[x.p]), title: t(x.n), desc: t(x.s), meta: '<span>' + PIN + esc(cityName(x.city)) + '</span><span>' + CLOCK + esc(t(x.dur)) + '</span>' })).join('');
+    /* map: numbered pins in route order */
+    const pts = stops.filter(x => x.ll);
+    if (pts.length && typeof L !== 'undefined') {
+      if (!map) { map = L.map('dxMap', { scrollWheelZoom: false, zoomControl: true }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); }
+      markers.forEach(m => m.remove()); markers = pts.map((x, i) => L.marker(x.ll, { icon: L.divIcon({ className: 'tg-pin-wrap', iconSize: [34, 34], iconAnchor: [17, 17], popupAnchor: [0, -20], html: '<span class="tg-pin">' + (stops.indexOf(x) + 1) + '</span>' }), title: x.title }).addTo(map).bindPopup('<b>' + esc(x.title) + '</b><span>' + esc(x.kind + ' · ' + x.cat) + '</span><a href="' + x.href + '">' + esc(t('عرض التفاصيل')) + '</a>', { className: 'tg-pop', closeButton: false }));
+      map.fitBounds(L.latLngBounds(pts.map(x => x.ll)).pad(0.25)); setTimeout(() => map.invalidateSize(), 200);
+    } else $('g-map').hidden = true;
+  }
+  /* TOC highlight + smooth jumps */
+  document.addEventListener('click', ev => { const a = ev.target.closest('.tg-toc a, .tg-toc-m a'); if (!a) return; ev.preventDefault(); const el = $(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
+  new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe && document.querySelectorAll('.tg-sec').forEach(sec => new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe(sec));
+  document.addEventListener('click', ev => { const c = ev.target.closest('.gem[data-href]'); if (!c || ev.target.closest('a,button')) return; location.href = c.dataset.href; });
+  $('tgShare').addEventListener('click', async () => { const data = { title: document.title, url: location.href }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(location.href); const tt = $('toast'); if (tt) { tt.textContent = t('تم نسخ الرابط'); tt.classList.add('show'); clearTimeout(tt._h); tt._h = setTimeout(() => tt.classList.remove('show'), 2200); } } } catch {} });
+  document.addEventListener('i18n:change', render); render();
+  window.__idea = { slug: e.slug };
 })();
 </script>
 </body>
