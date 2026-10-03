@@ -1246,6 +1246,8 @@ window.I18N = (() => {
     'إقامة في': { en: "A stay in", es: "Alojamiento en" },
     'تجربة في': { en: "An experience in", es: "Una experiencia en" },
     'نظرة عامة': { en: "Overview", es: "Resumen" },
+    'ابدأ التخطيط': { en: "Start planning", es: "Empezar a planificar" },
+    'إغلاق المساعد': { en: "Close the assistant", es: "Cerrar el asistente" },
     'يومين': { en: "Two days", es: "Dos días" },
     'مساعد التخطيط': { en: "Planning assistant", es: "Asistente de planificación" },
     'خطِّط رحلتك معنا': { en: "Plan your trip with us", es: "Planifica tu viaje con nosotros" },
