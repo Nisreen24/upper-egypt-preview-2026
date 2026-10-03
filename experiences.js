@@ -1,5 +1,10 @@
 /* Experiences & products: one dataset, scoped by city. Fields follow the BRD entry model.
-   Optional fields (duration, price, access, entrepreneur, video) are simply absent when unknown. */
+   Optional fields are simply absent when unknown and the detail page hides their section:
+     dur   duration text            pr    price band 1–4            a     accessibility keys (see listing-shared AC)
+     hl    [] highlights            inc   [] what's included        exc   [] what's not included
+     it    [{t, d}] itinerary steps imp   [] important information  meet  {t, ll?} meeting point text (+ own coordinates)
+     lang  [] language codes        acc   accessibility note        ent   provider card      ll  [lat, lng]
+     book  external booking URL     contact contact route (defaults to contact.html) — the platform never checks out or charges. */
 window.EXPERIENCES = (() => {
   const A = f => 'ASSETS/' + encodeURI(f);
   const img = (base, ws, alt) => ({ src: A(base + '-' + ws[Math.min(1, ws.length - 1)] + '.webp'), srcset: ws.map(w => A(base + '-' + w + '.webp') + ' ' + w + 'w').join(', '), alt });

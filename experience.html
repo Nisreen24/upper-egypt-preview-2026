@@ -1363,6 +1363,33 @@
   .xp-list{margin:0;padding-inline-start:1.3em;display:grid;gap:8px;font-size:var(--fs-body-lg);line-height:1.7;color:var(--body)} .xp-list li::marker{color:var(--rust)}
   .xp-desc{max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)} .xp-desc p{margin:0 0 var(--s-3)} .xp-desc p:last-child{margin:0}
   .xp-ent{margin-top:0}
+  .xp-info{margin-top:var(--s-4);padding-top:var(--s-4);border-top:1px dashed rgba(43,29,14,.14)}
+  .xp-list--yes,.xp-list--no,.xp-list--info{list-style:none;padding-inline-start:0}
+  .xp-list--yes li,.xp-list--no li,.xp-list--info li{position:relative;padding-inline-start:30px}
+  .xp-list--yes li::before,.xp-list--no li::before,.xp-list--info li::before{content:"";position:absolute;inset-inline-start:0;top:.3em;width:20px;height:20px;background:var(--rust);-webkit-mask:url("icons/phosphor/check.svg") center/contain no-repeat;mask:url("icons/phosphor/check.svg") center/contain no-repeat}
+  .xp-list--no li::before{background:var(--muted);-webkit-mask-image:url("icons/phosphor/x.svg");mask-image:url("icons/phosphor/x.svg")}
+  .xp-list--info li::before{background:var(--rust);-webkit-mask-image:url("icons/phosphor/info.svg");mask-image:url("icons/phosphor/info.svg")}
+  .xp-steps{margin:0;padding:0;list-style:none;display:grid;gap:0;counter-reset:step}
+  .xp-steps li{position:relative;display:grid;grid-template-columns:40px minmax(0,1fr);gap:var(--s-3);padding-bottom:var(--s-4);counter-increment:step}
+  .xp-steps li::before{content:counter(step);display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:var(--rust);color:#fff;font-weight:800;font-size:var(--fs-small);z-index:1}
+  .xp-steps li:not(:last-child)::after{content:"";position:absolute;top:40px;bottom:0;inset-inline-start:19px;width:2px;background:rgba(165,62,26,.25)}
+  .xp-steps h3{margin:8px 0 4px;font-size:var(--fs-body-lg);font-weight:700;color:var(--ink);line-height:1.4}
+  .xp-steps p{margin:0;max-width:68ch;font-size:var(--fs-body);line-height:1.75;color:var(--body)}
+  .xp-meet{margin:0 0 var(--s-3);max-width:70ch;font-size:var(--fs-body-lg);line-height:1.8;color:var(--body)}
+  .xp-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;margin-top:var(--s-3);color:var(--rust);font-weight:700} .xp-link:hover{color:var(--rust-deep)} .xp-link:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:6px}
+  .xp-chips{margin-top:0} .xp-chips .dxi-chip{min-height:40px;padding:8px 14px;font-size:var(--fs-small)}
+  .xp-mslot{display:none}
+  .xp-bar{display:none}
+  @media (max-width:1023px){
+    .xp-mslot{display:block;margin-top:var(--s-4)} .xp-mslot:empty{display:none}
+    .xp-mslot .dxi{position:relative;top:auto}
+    .xp-bar{position:fixed;z-index:75;inset-inline:0;bottom:0;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s-3);padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid rgba(43,29,14,.12);box-shadow:0 -8px 30px -12px rgba(43,29,14,.3);transform:translateY(110%);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+    .xp-bar[hidden]{display:none}
+    .xp-bar.is-on{transform:none}
+    .xp-bar-txt{display:grid;min-width:0} .xp-bar-txt strong{font-size:var(--fs-small);color:var(--ink);white-space:nowrap;overflow:hidden;text-overflow:ellipsis} .xp-bar-txt span{font-size:13px;color:var(--muted)}
+    .xp-bar .dx-cta{margin:0;height:48px;padding-inline:18px}
+    body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
+  }
   .xp-side{position:sticky;top:calc(var(--tb-top,100px) + 16px);display:grid;gap:var(--s-3)}
   @media (max-width:1023px){.xp-side{position:static}}
   .xp-card .dxi-actions .dx-cta{margin-top:0} .xp-card .dxi-actions{display:grid;gap:var(--s-2)}
@@ -1518,33 +1545,57 @@
             <figure class="xp-lead" id="xpLead"></figure>
             <div class="xp-thumbs" id="xpThumbs" role="list"></div>
           </section>
+          <div class="xp-mslot" id="xpMslot"></div>
           <nav class="xp-nav" aria-label="أقسام الصفحة" id="xpNav"></nav>
           <section class="xp-sec" id="sec-overview" aria-labelledby="h-overview">
             <h2 class="xp-h" id="h-overview">نظرة عامة</h2>
             <p class="xp-sum" id="dxSum"></p>
             <div class="dx-tags xp-tags" id="dxTags"></div>
-          </section>
-          <section class="xp-sec" id="sec-info" aria-labelledby="h-info">
-            <h2 class="xp-h" id="h-info">معلومات التجربة</h2>
             <dl class="xp-info" id="xpInfo"></dl>
-            <div class="xp-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
           </section>
           <section class="xp-sec" id="sec-highlights" aria-labelledby="h-highlights" hidden>
             <h2 class="xp-h" id="h-highlights">أبرز الملامح</h2>
-            <ul class="xp-list" id="xpHl"></ul>
+            <ul class="xp-list xp-list--yes" id="xpHl"></ul>
           </section>
           <section class="xp-sec" id="sec-desc" aria-labelledby="h-desc">
-            <h2 class="xp-h" id="h-desc">الوصف</h2>
+            <h2 class="xp-h" id="h-desc">الوصف الكامل</h2>
             <div class="xp-desc" id="dxDesc"></div>
+          </section>
+          <section class="xp-sec" id="sec-itinerary" aria-labelledby="h-itinerary" hidden>
+            <h2 class="xp-h" id="h-itinerary">برنامج التجربة</h2>
+            <ol class="xp-steps" id="xpIt"></ol>
           </section>
           <section class="xp-sec" id="sec-included" aria-labelledby="h-included" hidden>
             <h2 class="xp-h" id="h-included">ما الذي تشمله التجربة</h2>
-            <ul class="xp-list" id="xpInc"></ul>
+            <ul class="xp-list xp-list--yes" id="xpInc"></ul>
+          </section>
+          <section class="xp-sec" id="sec-excluded" aria-labelledby="h-excluded" hidden>
+            <h2 class="xp-h" id="h-excluded">ما لا تشمله التجربة</h2>
+            <ul class="xp-list xp-list--no" id="xpExc"></ul>
+          </section>
+          <section class="xp-sec" id="sec-important" aria-labelledby="h-important" hidden>
+            <h2 class="xp-h" id="h-important">معلومات مهمة</h2>
+            <ul class="xp-list xp-list--info" id="xpImp"></ul>
+          </section>
+          <section class="xp-sec" id="sec-meeting" aria-labelledby="h-meeting" hidden>
+            <h2 class="xp-h" id="h-meeting">نقطة اللقاء والموقع</h2>
+            <p class="xp-meet" id="xpMeet" hidden></p>
+            <div class="xp-map" id="dxMapBox" hidden><div class="mp-map"><div id="dxMap" role="region" aria-label="موقع التجربة"></div></div></div>
+            <a class="xp-link" id="xpMeetDir" href="#" target="_blank" rel="noopener" hidden></a>
+          </section>
+          <section class="xp-sec" id="sec-languages" aria-labelledby="h-languages" hidden>
+            <h2 class="xp-h" id="h-languages">اللغات</h2>
+            <div class="dxi-chips xp-chips" id="xpLang"></div>
+          </section>
+          <section class="xp-sec" id="sec-access" aria-labelledby="h-access" hidden>
+            <h2 class="xp-h" id="h-access">إمكانية الوصول</h2>
+            <div class="dxi-chips xp-chips" id="xpAccChips" hidden></div>
+            <p class="xp-meet" id="xpAccNote" hidden></p>
           </section>
           <section class="xp-sec dx-ent xp-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
         </div>
-        <aside class="xp-side">
-          <div class="dxi xp-card" aria-labelledby="dxiH">
+        <aside class="xp-side" id="xpSide">
+          <div class="dxi xp-card" id="xpCard" aria-labelledby="dxiH">
             <div class="dxi-band" aria-hidden="true"></div>
             <div class="dxi-body">
               <h2 class="dxi-h" id="dxiH">المعلومات</h2>
@@ -1578,6 +1629,7 @@
         <header class="lx-head"><h2 class="display lx-h" id="dxRelH">تجارب مشابهة</h2><a class="lx-all" id="dxRelAll" href="#"><span>عرض المزيد من التجارب</span></a></header>
         <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
       </section>
+      <div class="xp-bar" id="xpBar" hidden><div class="xp-bar-txt"><strong id="xpBarT"></strong><span id="xpBarS"></span></div><a class="dx-cta" id="xpBarCta" href="#"></a></div>
       <p class="dx-empty" id="dxEmpty" hidden>هذه التجربة غير موجودة. <a href="experiences.html" style="color:var(--rust);font-weight:700">العودة إلى الأنشطة والتجارب</a></p>
     </article>
   </div>
@@ -1868,7 +1920,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
 <script src="listing-shared.js"></script>
 <script>
 (() => {
-  const { CATS, P, PR, AC, CITIES, q, city, t, cityName, esc, svg, all, card, icon, crumb, pic, href, listHref } = EX;
+  const { CATS, P, PR, AC, CITIES, q, city, t, cityName, esc, svg, all, card, icon, crumb, pic, href, listHref, ARW } = EX;
   const $ = id => document.getElementById(id);
   const e = all().find(x => x.slug === q.get('slug'));
   if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; $('dxEmpty').querySelector('a').href = listHref(city); return; }
@@ -1924,9 +1976,10 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     place();
     galOn = true;
   }
+  const LANGN = { ar: 'العربية', en: 'الإنجليزية', es: 'الإسبانية', fr: 'الفرنسية', de: 'الألمانية', it: 'الإيطالية', nub: 'النوبية' };
   const STAY = { 'winter-palace': 'فندق تراثي', 'steigenberger-nile-palace': 'فندق', 'jolie-ville-kings-island': 'منتجع', 'sonesta-st-george': 'فندق', 'villa-nile': 'بيت ضيافة', 'nubian-hotels': 'فنادق صغيرة', 'nubian-guesthouses': 'بيت ضيافة', 'nile-view-stays': 'فنادق', 'island-stays': 'إقامة على جزيرة' };
   const isStay = e.c === 'stay'; let lead = 0;
-  const WHEEL = svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7v.01M12 11v5"/>', 16), BED = ICON('bed', 16), PINI = ICON('map-pin', 16), CLK = ICON('clock', 16), COINI = ICON('coins', 16), TAGI = ICON('tag', 16), EXTI = ICON('arrow-square-out', 18), MAILI = ICON('envelope-simple', 18), MAPI = ICON('map-trifold', 18), INFOI = ICON('info', 18), CATI = () => ICON(CATS[e.c].p, 16);
+  const WHEEL = svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7v.01M12 11v5"/>', 16), BED = ICON('bed', 16), PINI = ICON('map-pin', 16), CLK = ICON('clock', 16), COINI = ICON('coins', 16), TAGI = ICON('tag', 16), EXTI = ICON('arrow-square-out', 18), TRI = ICON('translate', 16), CHK = ICON('check', 16), MAILI = ICON('envelope-simple', 18), MAPI = ICON('map-trifold', 18), INFOI = ICON('info', 18), CATI = () => ICON(CATS[e.c].p, 16);
   function paintLead() { const im = e.imgs[lead]; $('xpLead').innerHTML = pic(im, '(min-width:1024px) 60vw, 95vw') + (e.imgs.length > 1 ? '<span class="xp-count">' + ICON('images', 16) + (lead + 1) + ' / ' + e.imgs.length + '</span>' : ''); [...$('xpThumbs').children].forEach((b, i) => b.setAttribute('aria-current', String(i === lead))); }
   function render() {
     const cn = cityName();
@@ -1940,13 +1993,27 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const info = isStay
       ? [[BED, 'نوع الإقامة', t(STAY[e.slug] || 'إقامة')], [PINI, 'الموقع', cn], [TAGI, 'محور المحتوى', t(P[e.p])]].concat(e.a && e.a.length ? [[WHEEL, 'إمكانية الوصول', e.a.map(k => t(AC[k])).join('، ')]] : [])
       : [[CATI(), 'الفئة', t(CATS[e.c].n)], [PINI, 'المدينة', cn]].concat(e.dur ? [[CLK, 'المدة', t(e.dur)]] : []).concat([[TAGI, 'محور المحتوى', t(P[e.p])]]).concat(e.a && e.a.length ? [[WHEEL, 'إمكانية الوصول', e.a.map(k => t(AC[k])).join('، ')]] : []);
-    if (e.ll) info.push([MAPI, 'الموقع على الخريطة', '<a href="https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1] + '" target="_blank" rel="noopener">' + esc(t('احصل على الاتجاهات')) + '</a>']);
+    if (e.lang && e.lang.length) info.push([TRI, 'اللغات', e.lang.map(k => t(LANGN[k] || k)).join('، ')]);
     $('xpInfo').innerHTML = info.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + (/^<a /.test(v) ? v : esc(v)) + '</dd></div>').join('');
     $('sec-highlights').hidden = !(e.hl && e.hl.length); if (e.hl) $('xpHl').innerHTML = e.hl.map(x => '<li>' + esc(t(x)) + '</li>').join('');
     $('dxDesc').innerHTML = '<p>' + esc(t(e.d)) + '</p>';
     $('sec-included').hidden = !(e.inc && e.inc.length); if (e.inc) $('xpInc').innerHTML = e.inc.map(x => '<li>' + esc(t(x)) + '</li>').join('');
+    /* long-form sections: each one exists only when the CMS entry carries the field */
+    const li = a => a.map(x => '<li>' + esc(t(x)) + '</li>').join('');
+    $('sec-itinerary').hidden = !(e.it && e.it.length); if (e.it) $('xpIt').innerHTML = e.it.map(st => '<li><div><h3>' + esc(t(st.t)) + '</h3>' + (st.d ? '<p>' + esc(t(st.d)) + '</p>' : '') + '</div></li>').join('');
+    $('sec-excluded').hidden = !(e.exc && e.exc.length); if (e.exc) $('xpExc').innerHTML = li(e.exc);
+    $('sec-important').hidden = !(e.imp && e.imp.length); if (e.imp) $('xpImp').innerHTML = li(e.imp);
+    const mll = (e.meet && e.meet.ll) || e.ll;
+    $('sec-meeting').hidden = !(e.meet || e.ll);
+    $('xpMeet').hidden = !(e.meet && e.meet.t); if (e.meet && e.meet.t) $('xpMeet').textContent = t(e.meet.t);
+    $('xpMeetDir').hidden = !mll; if (mll) { $('xpMeetDir').href = 'https://www.google.com/maps/dir/?api=1&destination=' + mll[0] + ',' + mll[1]; $('xpMeetDir').innerHTML = MAPI + '<span>' + esc(t('احصل على الاتجاهات')) + '</span>' + EXTI; }
+    $('sec-languages').hidden = !(e.lang && e.lang.length); if (e.lang) $('xpLang').innerHTML = e.lang.map(k => '<span class="dxi-chip">' + TRI + esc(t(LANGN[k] || k)) + '</span>').join('');
+    const hasAcc = (e.a && e.a.length) || e.acc;
+    $('sec-access').hidden = !hasAcc;
+    $('xpAccChips').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('xpAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + WHEEL + esc(t(AC[k])) + '</span>').join('');
+    $('xpAccNote').hidden = !e.acc; if (e.acc) $('xpAccNote').textContent = t(e.acc);
     /* facts card (sticky): the practical numbers only */
-    const facts = (isStay ? [[BED, 'نوع الإقامة', t(STAY[e.slug] || 'إقامة')], [PINI, 'الموقع', cn]] : [[CATI(), 'الفئة', t(CATS[e.c].n)]].concat(e.dur ? [[CLK, 'المدة', t(e.dur)]] : []).concat([[PINI, 'الموقع', cn]])).concat(e.pr ? [[COINI, 'فئة السعر', PR[e.pr]]] : []);
+    const facts = (isStay ? [[BED, 'نوع الإقامة', t(STAY[e.slug] || 'إقامة')], [PINI, 'الموقع', cn]] : [[CATI(), 'الفئة', t(CATS[e.c].n)]].concat(e.dur ? [[CLK, 'المدة', t(e.dur)]] : []).concat([[PINI, 'الموقع', cn]])).concat(e.pr ? [[COINI, 'فئة السعر', PR[e.pr]]] : []).concat(e.lang && e.lang.length ? [[TRI, 'اللغات', e.lang.map(k => t(LANGN[k] || k)).join('، ')]] : []);
     $('dxFacts').innerHTML = facts.map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
     $('dxiPillar').innerHTML = '<span class="dxi-chip">' + TAGI + esc(t(P[e.p])) + '</span>';
     $('dxiAcc').hidden = !(e.a && e.a.length); if (e.a && e.a.length) $('dxiAccChips').innerHTML = e.a.map(k => '<span class="dxi-chip">' + WHEEL + esc(t(AC[k])) + '</span>').join('');
@@ -1955,16 +2022,17 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     if (e.book) { b.hidden = false; b.href = e.book; b.target = '_blank'; b.rel = 'noopener'; b.innerHTML = EXTI + '<span>' + esc(t('احجز الآن')) + '</span>'; note.hidden = false; note.textContent = t('يفتح موقع الحجز الخاص بمقدّم التجربة. المنصة لا تتقاضى أي رسوم.'); }
     else if (e.contact || true) { const route = e.contact || 'contact.html?subject=general'; b.hidden = false; b.href = route; b.removeAttribute('target'); b.innerHTML = MAILI + '<span>' + esc(t('تواصل للحجز')) + '</span>'; note.hidden = false; note.textContent = t('الحجز والدفع يتمان مباشرة مع مقدّم التجربة. المنصة تعرّفك به ولا تتقاضى أي رسوم.'); }
     else { b.hidden = true; note.hidden = true; }
+    const bar = $('xpBar'); bar.hidden = b.hidden; if (!b.hidden) { const c = $('xpBarCta'); c.href = b.href; if (b.target) { c.target = '_blank'; c.rel = 'noopener'; } else { c.removeAttribute('target'); c.removeAttribute('rel'); } c.innerHTML = b.innerHTML; $('xpBarT').textContent = t(e.n); $('xpBarS').textContent = [e.dur ? t(e.dur) : '', e.pr ? PR[e.pr] : ''].filter(Boolean).join(' · '); }
     const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) { dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1]; dir.innerHTML = MAPI + '<span>' + esc(t('احصل على الاتجاهات')) + '</span>'; }
     $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfo').innerHTML = INFOI + '<span>' + esc(t('معلومات عملية عن') + ' ' + cn) + '</span>';
     if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>'; }
     /* section nav: only the sections that exist */
-    const navItems = [['sec-overview', 'نظرة عامة'], ['sec-info', 'المعلومات'], ['sec-highlights', 'أبرز الملامح'], ['sec-desc', 'الوصف'], ['sec-included', 'ما تشمله'], ['dxEnt', 'مقدّم التجربة'], ['dxGal', 'المعرض'], ['dxRel', 'تجارب مشابهة']].filter(([id]) => !$(id).hidden);
+    const navItems = [['sec-overview', 'نظرة عامة'], ['sec-highlights', 'أبرز الملامح'], ['sec-desc', 'الوصف'], ['sec-itinerary', 'البرنامج'], ['sec-included', 'ما تشمله'], ['sec-excluded', 'ما لا تشمله'], ['sec-important', 'معلومات مهمة'], ['sec-meeting', 'نقطة اللقاء'], ['sec-languages', 'اللغات'], ['sec-access', 'الوصول'], ['dxEnt', 'مقدّم التجربة'], ['dxGal', 'المعرض'], ['dxRel', 'تجارب مشابهة']].filter(([id]) => !$(id).hidden);
     $('xpNav').innerHTML = navItems.map(([id, l], i) => '<a href="#' + id + '"' + (i === 0 ? ' class="is-on"' : '') + '>' + esc(t(l)) + '</a>').join('');
     gallery();
     const rel = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p)).slice(0, 4);
     if (rel.length) { $('dxRel').hidden = false; $('dxRelH').textContent = t(isStay ? 'إقامات أخرى' : 'تجارب مشابهة'); $('dxRelGrid').innerHTML = rel.map(x => card(x)).join(''); $('dxRelAll').href = listHref(city, e.c); }
-    if (e.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: e.ll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(e.ll, { icon: icon(e.c), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
+    if (mll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: mll, zoom: 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(mll, { icon: icon(e.c), title: t(e.n) }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } }
   }
   $('xpThumbs').addEventListener('click', ev => { const b = ev.target.closest('.xp-thumb'); if (!b) return; lead = [...$('xpThumbs').children].indexOf(b); paintLead(); });
   /* section nav: smooth jump and current-section highlight */
@@ -1972,6 +2040,11 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const io = new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) { const id = en.target.id; $('xpNav').querySelectorAll('a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + id)); } }); }, { rootMargin: '-40% 0px -55% 0px' });
   document.addEventListener('i18n:change', render); render();
   document.querySelectorAll('.xp-sec, #dxGal, #dxRel').forEach(sec => io.observe(sec));
+  /* mobile: the facts/booking card sits under the gallery; the bottom bar appears once it scrolls out of view */
+  const mq = matchMedia('(max-width:1023px)');
+  function placeCard() { const card = $('xpCard'); if (mq.matches) { if (card.parentElement !== $('xpMslot')) $('xpMslot').appendChild(card); } else if (card.parentElement !== $('xpSide')) { $('xpSide').prepend(card); $('xpBar').classList.remove('is-on'); document.body.classList.remove('has-xpbar'); } if (map) setTimeout(() => map.invalidateSize(), 50); }
+  placeCard(); mq.addEventListener('change', placeCard);
+  new IntersectionObserver(es => { es.forEach(en => { if (!mq.matches) return; const on = !en.isIntersecting && en.boundingClientRect.bottom < 0; $('xpBar').classList.toggle('is-on', on); document.body.classList.toggle('has-xpbar', on); }); }, { threshold: 0 }).observe($('xpCard'));
   window.__dx = { slug: e.slug, city };
 })();
 </script>
