@@ -1291,6 +1291,18 @@
   /* ===== prose / utility pages ===== */
   .pg{padding-top:calc(var(--tb-top,100px) + var(--s-5));padding-bottom:var(--s-8)}
   .pg-head{max-width:70ch;margin-bottom:var(--s-5)}
+  /* framed intro card: white surface with a pharaonic band on the start edge */
+  .pg-frame{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);max-width:none;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:var(--radius-card-lg);box-shadow:0 1px 2px rgba(43,29,14,.04),0 24px 60px -40px rgba(43,29,14,.35)}
+  .pg-frame-edge{position:relative;overflow:hidden}
+  .pg-frame-edge::before{content:"";position:absolute;top:50%;left:50%;width:1600px;height:28px;transform:translate(-50%,-50%) rotate(90deg);background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x}
+  html[dir="ltr"] .pg-frame-edge::before{transform:translate(-50%,-50%) rotate(-90deg)}
+  .pg-frame-body{padding:var(--s-5) var(--s-5) var(--s-5) var(--s-5)}
+  @media (min-width:768px){.pg-frame-body{padding:var(--s-5) var(--s-6)}}
+  .pg-frame-row{display:flex;align-items:center;gap:var(--s-4)}
+  .pg-frame-ico{display:grid;place-items:center;flex:none;width:64px;height:64px;border-radius:var(--radius-md);background:rgba(165,62,26,.08);color:var(--rust)}
+  .pg-frame .pg-title{margin-top:4px;font-size:clamp(28px,3vw,42px)}
+  .pg-frame .pg-lede{max-width:70ch;margin-top:var(--s-3)}
+  @media (max-width:639px){.pg-frame{grid-template-columns:18px minmax(0,1fr)}.pg-frame-edge::before{height:18px}.pg-frame-body{padding:var(--s-4)}.pg-frame-ico{width:52px;height:52px}.pg-frame-ico svg{width:26px;height:26px}}
   .pg-title{margin:var(--s-2) 0 0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
   .pg-lede{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
   .pg-grid{display:grid;gap:var(--s-5);align-items:start}
@@ -1506,7 +1518,7 @@
   <section class="ex pg" aria-label="تواصل معنا">
     <div class="wrap">
       <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
-      <header class="pg-head"><span class="sec-eyebrow">تواصل</span><h1 class="pg-title display">تواصل معنا</h1><p class="pg-lede">للأسئلة والتصحيحات وطلبات الإدراج والشراكات. يصل طلبك إلى فريق التنسيق ويُرد عليك بالبريد.</p></header>
+      <header class="pg-head pg-frame"><div class="pg-frame-edge" aria-hidden="true"></div><div class="pg-frame-body"><div class="pg-frame-row"><span class="pg-frame-ico" aria-hidden="true"><svg class="ic" width="32" height="32" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg></span><div><span class="sec-eyebrow">تواصل</span><h1 class="pg-title display">تواصل معنا</h1></div></div><p class="pg-lede">للأسئلة والتصحيحات وطلبات الإدراج والشراكات. يصل طلبك إلى فريق التنسيق ويُرد عليك بالبريد.</p></div></header>
       <div class="pg-grid">
         <form class="f-form" id="frm" novalidate>
           <fieldset><legend>رسالتك</legend>
