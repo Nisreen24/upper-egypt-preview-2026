@@ -1344,6 +1344,9 @@
   .f-field .f-hint{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
   .f-field input:not([type=checkbox]),.f-field select,.f-field textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid rgba(43,29,14,.2);border-radius:var(--radius-btn);background:#fff;font:inherit;font-size:var(--fs-body);color:var(--ink)}
   .f-field textarea{min-height:140px;resize:vertical;line-height:1.6}
+  .f-field select{appearance:none;-webkit-appearance:none;padding-inline-end:44px;background-color:#fff;background-image:none;cursor:pointer}
+  .f-field .f-select{position:relative}
+  .f-field .f-select::after{content:"";position:absolute;top:50%;inset-inline-end:16px;width:18px;height:18px;transform:translateY(-50%);pointer-events:none;background:var(--ink);-webkit-mask:url("icons/ui/caret-down.svg") center/contain no-repeat;mask:url("icons/ui/caret-down.svg") center/contain no-repeat}
   .f-field input:focus-visible,.f-field select:focus-visible,.f-field textarea:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px;border-color:var(--rust)}
   .f-field.is-invalid input,.f-field.is-invalid select,.f-field.is-invalid textarea{border-color:#a52a1a}
   .f-err{margin:0;font-size:13px;font-weight:700;color:#a52a1a}
