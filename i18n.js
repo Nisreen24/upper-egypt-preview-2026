@@ -1239,6 +1239,9 @@ window.I18N = (() => {
     'سنويًا': { en: "Yearly", es: "Anual" },
     'متوسط درجات الحرارة': { en: "Average temperatures", es: "Temperaturas medias" },
     'القراءة الحالية': { en: "Current reading", es: "Lectura actual" },
+    'الوصول إلى المدينة': { en: "Getting there", es: "Cómo llegar" },
+    'التنقل داخل المدينة': { en: "Local transport", es: "Transporte local" },
+    'النقل النهري': { en: "River transport", es: "Transporte fluvial" },
   };
 
   /* Localised event data (mirrors the EVENTS array in index.html) */

@@ -1124,73 +1124,83 @@
   html[dir="ltr"] .ci-more svg{transform:scaleX(-1)}
   @media (prefers-reduced-motion:reduce){.ci-cta svg,.ci-tab{transition:none}}
 
-  /* ===== CityInfoSection v2: floating tabs and separate cards (Visit Saudi structure, our palette) ===== */
-  .ci-panel{background:transparent;border:0;border-radius:0;box-shadow:none;overflow:visible}
-  .ci-tabs{border-bottom:0;gap:4px;padding:0 4px 4px;overflow:visible}
-  .ci-tab{flex:1 1 0;min-width:140px;min-height:96px;border:0;border-radius:var(--radius-card);color:var(--muted);background:transparent;padding:var(--s-3) var(--s-2)}
-  .ci-tab + .ci-tab{border-inline-start:0}
-  .ci-tab svg{width:30px;height:30px;stroke-width:1.5}
-  .ci-tab:hover{background:rgba(255,255,255,.6);color:var(--ink)}
-  .ci-tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(43,29,14,.05),0 16px 36px -26px rgba(43,29,14,.45);border-bottom:0}
+
+  /* ===== CityInfoSection v3: reference geometry (1767x591), our tokens ===== */
+  .ci{padding-block:clamp(60px,5vw,72px)}
+  .ci-in{display:grid;gap:var(--s-5);align-items:center}
+  @media (min-width:900px){.ci-in{grid-template-columns:minmax(0,43fr) minmax(0,55fr);column-gap:clamp(48px,4vw,64px);align-items:start}}
+  .ci-crumb{display:none}
+  .ci-copy{padding-top:0}
+  .ci-title{margin:0;font-size:clamp(40px,3.6vw,54px);line-height:1.15;font-weight:700;color:var(--ink)}
+  .ci-desc{margin:var(--s-5) 0 0;max-width:660px;font-size:clamp(17px,1.2vw,18px);line-height:1.9;color:var(--body)}
+  .ci-desc.is-clamped{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+  .ci-readmore{display:inline-flex;align-items:center;min-height:36px;margin-top:var(--s-3);background:none;border:0;padding:0;font:inherit;font-size:var(--fs-small);font-weight:700;color:var(--rust);cursor:pointer;border-radius:var(--radius-xs)}
+  .ci-readmore:hover{color:var(--rust-deep)} .ci-readmore:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  .ci-cta{display:none}
+  .ci-chips{gap:14px;margin-top:var(--s-4)}
+  .ci-chip{min-height:42px;padding:8px 18px;gap:8px;font-size:14px;border:0;background:rgba(165,62,26,.08);color:var(--rust-deep)}
+  .ci-chip--nature{background:rgba(47,111,94,.09);color:#24564a} .ci-chip--people{background:rgba(52,92,112,.09);color:#2b4d60}
+  .ci-panel{background:transparent;border:0;box-shadow:none;overflow:visible;border-radius:0}
+  .ci-tabs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;padding:0;border:0;overflow:visible;min-height:100px}
+  .ci-tab{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-width:0;min-height:100px;padding:var(--s-3);border:0;border-radius:22px;background:transparent;color:var(--muted);font-size:15px;font-weight:700;box-shadow:none;transition:color .2s ease,background-color .2s ease,box-shadow .2s ease}
+  .ci-tab + .ci-tab{border:0}
+  .ci-tab svg{width:30px;height:30px;stroke-width:1.5;color:currentColor}
+  .ci-tab:hover{background:rgba(255,255,255,.55);color:var(--ink)}
+  .ci-tab[aria-selected="true"]{background:#fff;color:var(--ink);box-shadow:0 1px 2px rgba(43,29,14,.04),0 14px 34px -28px rgba(43,29,14,.4)}
   .ci-tab[aria-selected="true"] svg{color:var(--rust)}
-  .ci-pane{padding:var(--s-3) 0 0}
-  .ci-card{background:#fff;border:1px solid rgba(43,29,14,.07);border-radius:var(--radius-card-lg);padding:var(--s-4) var(--s-4);box-shadow:0 1px 2px rgba(43,29,14,.04),0 22px 50px -36px rgba(43,29,14,.35)}
-  @media (min-width:768px){.ci-card{padding:var(--s-5)}}
-  .ci-weather{gap:var(--s-3)} @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s-3)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}.ci-now,html[dir="rtl"] .ci-now{border:0;padding-inline:0}}
-  .ci-now{display:flex;flex-direction:column}
-  .ci-now .ci-h{font-size:var(--fs-h3);letter-spacing:.02em}
-  .ci-now-main{margin-top:auto;padding-top:var(--s-4);gap:var(--s-2)}
-  .ci-now-ico{width:64px;height:64px} .ci-now-ico svg{width:54px;height:54px}
-  .ci-yearly-h{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px;margin:0;padding-bottom:var(--s-3);border-bottom:1px solid rgba(43,29,14,.1)}
-  .ci-yearly-h b{font-size:var(--fs-h3);font-weight:800;color:var(--ink)} .ci-yearly-h span{font-size:var(--fs-small);color:var(--muted)}
-  .ci-season-grid{margin-top:var(--s-4);gap:var(--s-4) var(--s-6)}
-  .ci-season-head{font-size:var(--fs-body-lg)} .ci-season-head svg{width:22px;height:22px;color:var(--muted)!important}
-  .ci-range{grid-template-columns:auto minmax(0,1fr) auto;gap:12px;font-size:var(--fs-body);color:var(--ink);font-weight:600}
-  .ci-bar{height:7px;background:rgba(43,29,14,.1);overflow:visible}
-  .ci-bar i{left:0!important;width:100%!important;border-radius:999px}
-  .ci-bar u{position:absolute;top:50%;left:0;width:14px;height:14px;margin-left:-7px;border-radius:999px;background:#fff;border:3px solid var(--ink);transform:translateY(-50%);box-shadow:0 1px 3px rgba(0,0,0,.25)}
-  .ci-season--winter .ci-bar i{background:linear-gradient(90deg,#8fb6cf,#2b6a8f 60%,#3fae9a)} .ci-season--spring .ci-bar i{background:linear-gradient(90deg,#e0a25a,#e0623c)} .ci-season--summer .ci-bar i{background:linear-gradient(90deg,#f0a35a,#c2410c)} .ci-season--autumn .ci-bar i{background:linear-gradient(90deg,#8fb6cf,#b8741a)}
-  .ci-months{display:none}
-  .ci-note{margin-top:var(--s-3)}
-
-  /* ===== CityInfoSection v2.1: spacing and hierarchy ===== */
-  .ci-weather{align-items:stretch}
-  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,5fr) minmax(0,9fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,9fr) minmax(0,5fr)}}
-  .ci-now{display:grid;grid-template-rows:auto auto 1fr auto;gap:2px;align-content:start}
-  .ci-now .ci-h{font-size:var(--fs-h3);line-height:1.2}
-  .ci-now .ci-sub{line-height:1.5}
-  .ci-now-main{grid-row:3;align-self:center;margin-top:0;padding-top:var(--s-3);padding-bottom:var(--s-2);display:flex;align-items:center;gap:var(--s-2)}
-  .ci-now-ico{width:56px;height:56px;color:#d98a2b} .ci-now-ico svg{width:46px;height:46px}
-  .ci-temp{font-size:clamp(40px,3.2vw,52px)}
-  .ci-now .ci-sub:last-child{grid-row:4;font-size:var(--fs-small);color:var(--body);font-weight:600;margin:0}
-  .ci-seasons{display:grid;grid-template-rows:auto 1fr auto}
-  .ci-season-grid{margin-top:var(--s-3);gap:var(--s-3) var(--s-5);align-content:space-around}
-  .ci-season{gap:10px}
-  .ci-season-head{gap:10px;font-size:var(--fs-body)} .ci-season-head svg{width:20px;height:20px}
-  .ci-range{grid-template-columns:3.2em minmax(0,1fr) 3.2em;gap:10px;font-size:var(--fs-small);font-weight:600}
+  .ci-pane{padding:16px 0 0}
+  .ci-card{background:#fff;border:0;border-radius:22px;padding:30px;box-shadow:0 1px 2px rgba(43,29,14,.03),0 18px 40px -34px rgba(43,29,14,.3)}
+  .ci-weather{display:grid;gap:16px;align-items:stretch;min-height:262px}
+  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,31fr) minmax(0,67fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,67fr) minmax(0,31fr)}html[dir="rtl"] .ci-now{order:2}html[dir="rtl"] .ci-seasons{order:1}}
+  .ci-now,html[dir="rtl"] .ci-now{display:grid;grid-template-rows:auto auto 1fr auto;gap:0;border:0;padding-inline:30px;align-content:start}
+  .ci-now .ci-h{font-size:17px;font-weight:800;letter-spacing:.06em;line-height:1.2;color:var(--ink)}
+  html.lang-latin .ci-now .ci-h{text-transform:uppercase}
+  .ci-now .ci-sub{margin-top:8px;font-size:13px;line-height:1.5;color:var(--muted)}
+  .ci-now-main{grid-row:3;align-self:center;display:flex;align-items:center;justify-content:center;gap:10px;margin:0;padding:12px 0 0}
+  .ci-now-ico{width:60px;height:60px;color:#d98a2b;flex:none} .ci-now-ico svg{width:56px;height:56px;stroke-width:1.5}
+  .ci-temp{font-size:clamp(48px,3.3vw,60px);font-weight:800;line-height:1;letter-spacing:-.02em;white-space:nowrap;color:var(--ink)}
+  .ci-now .ci-sub:last-child{grid-row:4;margin:0;text-align:center;font-size:13px;color:var(--muted);font-weight:500}
+  .ci-seasons{display:grid;grid-template-rows:auto 1fr auto;gap:0}
+  .ci-yearly-h{display:flex;align-items:baseline;gap:10px;margin:0;padding-bottom:14px;border-bottom:1px solid rgba(43,29,14,.1)}
+  .ci-yearly-h b{font-size:17px;font-weight:800;letter-spacing:.06em;color:var(--ink)} html.lang-latin .ci-yearly-h b{text-transform:uppercase} .ci-yearly-h span{font-size:13px;color:var(--muted)}
+  .ci-season-grid{margin:18px 0 0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px 36px;align-content:space-around}
+  .ci-season{display:grid;gap:8px}
+  .ci-season-head{display:flex;align-items:center;gap:10px;font-size:15px;font-weight:700;color:var(--ink)} .ci-season-head svg{width:22px;height:22px;color:var(--muted)!important;stroke-width:1.6}
+  .ci-range{display:grid;grid-template-columns:3.4em minmax(0,1fr) 3.4em;align-items:center;gap:10px;font-size:14.5px;font-weight:500;color:var(--body);direction:ltr}
   .ci-range>span:first-child{text-align:right} .ci-range>span:last-child{text-align:left}
-  .ci-bar{height:6px}
-  .ci-bar u{width:13px;height:13px;margin-left:-6.5px;border-width:2.5px}
-  .ci-note{margin-top:var(--s-3);padding-top:var(--s-3);border-top:1px solid rgba(43,29,14,.08);font-size:12px}
-  .ci-card{padding:var(--s-4)} @media (min-width:768px){.ci-card{padding:var(--s-4) var(--s-5)}}
-  .ci-tabs{padding:0 0 var(--s-2)} .ci-tab{min-height:88px;gap:6px} .ci-tab svg{width:26px;height:26px}
-  .ci-pane{padding-top:var(--s-2)}
+  .ci-bar{position:relative;height:6px;border-radius:999px;background:rgba(43,29,14,.1);overflow:visible}
+  .ci-bar i{position:absolute;top:0;bottom:0;left:18%!important;width:82%!important;border-radius:999px}
+  .ci-bar u{position:absolute;top:50%;width:10px;height:10px;margin-left:-5px;border-radius:999px;background:#2b2b2b;border:0;transform:translateY(-50%);box-shadow:0 0 0 2px #fff}
+  .ci-season--winter .ci-bar i{background:linear-gradient(90deg,#4a8fc8,#3fae9a)} .ci-season--spring .ci-bar i{background:linear-gradient(90deg,#e0623c,#c2410c)} .ci-season--summer .ci-bar i{background:linear-gradient(90deg,#e0623c,#c2410c)} .ci-season--autumn .ci-bar i{background:linear-gradient(90deg,#7b8fb3,#c9803a)}
+  .ci-months,.ci-note{display:none}
+  /* best time: same outer size, same card language */
+  #ciPane-best .ci-card,#ciPane-move .ci-card{min-height:262px;display:flex;flex-direction:column}
+  .ci-lead{margin:0 0 18px;font-size:15px;font-weight:700;color:var(--ink);line-height:1.5}
+  .ci-best{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px 24px;margin:0;padding:0;list-style:none}
+  .ci-best li{display:grid;gap:6px;padding:0;border:0;background:transparent;border-radius:0}
+  .ci-best li.is-rec{border:0;background:transparent}
+  .ci-best-head b{font-size:15px} .ci-best-head b svg{width:20px;height:20px;color:var(--muted)}
+  .ci-rec{background:rgba(47,111,94,.1);color:#24564a} .ci-best small{font-size:13px;color:var(--muted)} .ci-best p{font-size:13.5px;line-height:1.6;color:var(--body);margin:0}
+  /* transport: three equal columns with thin vertical dividers */
+  .ci-move{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:0;margin:0;padding:0;list-style:none;flex:1}
+  .ci-move li{display:flex;flex-direction:column;gap:12px;align-items:flex-start;padding:4px 24px;border:0;background:transparent;border-radius:0}
+  .ci-move li + li{border-inline-start:1px solid rgba(43,29,14,.1)}
+  .ci-move li:first-child{padding-inline-start:0} .ci-move li:last-child{padding-inline-end:0}
+  .ci-move-ico{width:44px;height:44px;border:0;background:rgba(165,62,26,.07);color:var(--rust)} .ci-move-ico svg{width:24px;height:24px}
+  .ci-move b{font-size:15px;color:var(--ink)} .ci-move p{margin:4px 0 0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+  .ci-move-sub{display:grid;gap:6px;margin:6px 0 0;padding:0;list-style:none;font-size:13px;color:var(--body)}
+  .ci-move-sub li{padding:0;border:0!important;display:block}
+  .ci-more{margin-top:auto;padding-top:16px;align-self:flex-start}
+  @media (max-width:899px){.ci-in{align-items:start}.ci-tabs{display:flex;overflow-x:auto;scrollbar-width:none}.ci-tabs::-webkit-scrollbar{display:none}.ci-tab{flex:1 0 150px}}
+  @media (max-width:767px){.ci-weather{min-height:0}.ci-now,html[dir="rtl"] .ci-now{grid-template-rows:auto auto auto auto}.ci-now-main{justify-content:flex-start;padding:16px 0}.ci-move{grid-template-columns:1fr}.ci-move li{padding:12px 0}.ci-move li + li{border-inline-start:0;border-top:1px solid rgba(43,29,14,.1)}.ci-best{grid-template-columns:1fr}#ciPane-best .ci-card,#ciPane-move .ci-card{min-height:0}.ci-card{padding:22px}}
 
-  /* v2.2: balance between the two halves, text aligned to the panel top, tabs spread across the panel */
-  @media (min-width:900px){.ci-in{grid-template-columns:minmax(0,11fr) minmax(0,13fr);gap:var(--s-6);align-items:start}}
-  @media (min-width:1200px){.ci-in{gap:var(--s-7)}}
-  .ci-copy{padding-top:6px}
-  .ci-crumb ol{font-size:13px}
-  .ci-title{margin-top:var(--s-2);font-size:clamp(32px,3.2vw,46px)}
-  .ci-desc{margin-top:var(--s-3);max-width:none;font-size:var(--fs-body-lg);line-height:1.8}
-  .ci-tabs{padding:0 0 var(--s-2);gap:var(--s-2)} .ci-tab{flex:1 1 0;min-width:0;min-height:84px}
-  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,4fr) minmax(0,8fr);gap:var(--s-3)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,8fr) minmax(0,4fr)}}
-  .ci-temp{font-size:clamp(38px,2.8vw,48px)}
-
-  /* v2.3: room for the live reading */
-  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,5fr) minmax(0,8fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,8fr) minmax(0,5fr)}}
-  .ci-now-main{gap:6px} .ci-temp{font-size:clamp(34px,2.4vw,42px);white-space:nowrap} .ci-now-ico{width:46px;height:46px;flex:none} .ci-now-ico svg{width:40px;height:40px}
-  .ci-now .ci-sub{font-size:12.5px}
+  /* v3.1: Today card room for the reading; equal pane heights */
+  @media (min-width:768px){.ci-weather{grid-template-columns:minmax(0,36fr) minmax(0,62fr)}html[dir="rtl"] .ci-weather{grid-template-columns:minmax(0,62fr) minmax(0,36fr)}}
+  .ci-now,html[dir="rtl"] .ci-now{padding-inline:24px}
+  .ci-temp{font-size:clamp(44px,2.9vw,56px)} .ci-now-ico{width:52px;height:52px} .ci-now-ico svg{width:48px;height:48px}
+  .ci-now .ci-sub{white-space:normal}
+  #ciPane-move .ci-card{max-height:262px;overflow:auto;scrollbar-width:thin}
+  .ci-move li{gap:8px} .ci-move-sub{gap:4px;font-size:12.5px} .ci-move p{font-size:12.5px}
   .lx-leaf{position:relative;overflow:hidden;isolation:isolate}
   .lx-leaf .paths-fronds{z-index:-1;opacity:.5}
   .lx-leaf + .lx-leaf .paths-fronds{transform:scaleX(-1)}
@@ -1576,6 +1586,7 @@
           <nav class="ci-crumb" aria-label="مسار التنقل"><ol id="ciCrumb"></ol></nav>
           <h2 class="display lx-h ci-title" id="lx-about"></h2>
           <p class="ci-desc" id="ciDesc"></p>
+          <button type="button" class="ci-readmore" id="ciReadMore" aria-expanded="false" hidden>اقرأ المزيد</button>
           <a class="ci-cta" id="ciCta" href="#"><span></span><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 12H5M11 6l-6 6 6 6"/></svg></a>
           <div class="ci-chips" id="ciChips"></div>
         </div>
@@ -2699,6 +2710,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const root = document.getElementById('cityInfo'); if (!root || !window.CITY_INFO) return;
   const city = root.dataset.city, D = CITY_INFO[city]; const $ = id => document.getElementById(id); const t = k => I18N.t(k); const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const ICO = {"spring":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 19c0-7 4-12 14-13-1 10-6 14-13 14\"/><path d=\"M5 19c3-4 6-7 10-9\"/></svg>","summer":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg>","autumn":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 21V11\"/><path d=\"M12 11C8 11 5 8 5 4c4 0 7 3 7 7zM12 11c4 0 7-3 7-7-4 0-7 3-7 7z\"/></svg>","winter":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M12 2v20M2 12h20M5 5l14 14M19 5L5 19\"/></svg>","plane":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 16l20-8-6 10-4-3-5 3z\"/><path d=\"M12 15l4-7\"/></svg>","train":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"5\" y=\"3\" width=\"14\" height=\"14\" rx=\"3\"/><path d=\"M5 11h14M9 21l1.5-4M15 21l-1.5-4\"/><circle cx=\"9\" cy=\"14\" r=\"1\"/><circle cx=\"15\" cy=\"14\" r=\"1\"/></svg>","bus":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"14\" rx=\"3\"/><path d=\"M4 11h16M7 18v2M17 18v2\"/><circle cx=\"8\" cy=\"15\" r=\"1\"/><circle cx=\"16\" cy=\"15\" r=\"1\"/></svg>","boat":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17l2 3h14l2-3zM4 17l8-3 8 3M12 14V4l6 8z\"/></svg>","taxi":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 17h18M5 17v-5l2-4h10l2 4v5M9 8V6h6v2M7 17v2M17 17v2\"/><circle cx=\"8\" cy=\"14\" r=\"1\"/><circle cx=\"16\" cy=\"14\" r=\"1\"/></svg>","ferry":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M2 18c2 0 2 1 4 1s2-1 4-1 2 1 4 1 2-1 4-1 2 1 4 1\"/><path d=\"M5 15V9h14v6M9 9V6h6v3M12 6V4\"/></svg>","bike":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"6\" cy=\"17\" r=\"3.5\"/><circle cx=\"18\" cy=\"17\" r=\"3.5\"/><path d=\"M6 17l4-8h5l3 8M10 9h4M12 9l2-3h3\"/></svg>","heritage":"<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 20h18M4.5 8h15M12 3l8 5H4l8-5zM6.5 8v12M10.2 8v12M13.8 8v12M17.5 8v12\"/></svg>","nature":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M5 19c0-7 4-12 14-13-1 10-6 14-13 14\"/><path d=\"M5 19c3-4 6-7 10-9\"/></svg>","people":"<svg width=\"16\" height=\"16\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"9\" cy=\"8\" r=\"3.5\"/><path d=\"M2.5 20a6.5 6.5 0 0 1 13 0M16 4.5a3.5 3.5 0 0 1 0 7M21.5 20a6.5 6.5 0 0 0-5-6.3\"/></svg>","sun":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><circle cx=\"12\" cy=\"12\" r=\"4\"/><path d=\"M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4\"/></svg>","cloud":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 18h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 18z\"/></svg>","rain":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M7 15h10a4 4 0 0 0 0-8 6 6 0 0 0-11.5 2A3 3 0 0 0 7 15z\"/><path d=\"M9 18l-1 3M13 18l-1 3M17 18l-1 3\"/></svg>","wind":"<svg width=\"22\" height=\"22\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.7\" stroke-linecap=\"round\" stroke-linejoin=\"round\" aria-hidden=\"true\"><path d=\"M3 8h11a3 3 0 1 0-3-3M3 12h15a3 3 0 1 1-3 3M3 16h8a2 2 0 1 1-2 2\"/></svg>"};
+  const MOVE = { arrive: ['الوصول إلى المدينة', ['plane', 'train', 'bus', 'boat']], local: ['التنقل داخل المدينة', ['taxi', 'bike']], river: ['النقل النهري', ['ferry', 'boat']] };
   const lang = () => document.documentElement.lang || 'ar';
   const LO = 10, HI = 46; const pct = v => Math.round((v - LO) / (HI - LO) * 100);
   function render() {
@@ -2712,7 +2724,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('ciSeasons').innerHTML = ORDER.map(k => D.seasons.find(x => x.k === k)).map(s => { const pos = cur == null ? 0 : Math.max(0, Math.min(100, Math.round((cur - s.min) / (s.max - s.min) * 100))); return '<li class="ci-season ci-season--' + s.k + '"><div class="ci-season-head">' + ICO[s.k] + '<span>' + esc(t(s.n)) + '</span></div><div class="ci-range"><span>' + s.min + '.0°</span><span class="ci-bar"><i></i><u style="left:' + pos + '%" title="' + esc(t('القراءة الحالية')) + '"></u></span><span>' + s.max + '.0°</span></div><span class="ci-months">' + esc(t(s.months)) + '</span></li>'; }).join('');
     $('ciBestNote').textContent = t(D.bestNote);
     $('ciBest').innerHTML = D.seasons.map(s => '<li class="' + (s.rec ? 'is-rec' : '') + '"><div class="ci-best-head"><b>' + ICO[s.k] + esc(t(s.n)) + '</b>' + (s.rec ? '<span class="ci-rec">' + esc(t('موصى به')) + '</span>' : '') + '</div><small>' + esc(t(s.months)) + ' · ' + s.min + '–' + s.max + '°</small><p>' + esc(t(s.note)) + '</p></li>').join('');
-    $('ciMove').innerHTML = D.transport.map(m => '<li><span class="ci-move-ico">' + ICO[m.k] + '</span><div><b>' + esc(t(m.n)) + '</b><p>' + esc(t(m.s)) + '</p></div></li>').join('');
+    $('ciMove').innerHTML = Object.entries(MOVE).map(([k, [title, keys]]) => { const items = keys.map(key => D.transport.find(m => m.k === key)).filter(Boolean); if (!items.length) return ''; return '<li><span class="ci-move-ico">' + ICO[items[0].k] + '</span><div><b>' + esc(t(title)) + '</b><ul class="ci-move-sub">' + items.map(m => '<li><b style="font-size:13.5px">' + esc(t(m.n)) + '</b> <span style="color:var(--muted)">' + esc(t(m.s)) + '</span></li>').join('') + '</ul></div></li>'; }).join('');
+    (() => { const d = $('ciDesc'), b = $('ciReadMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
     if (window.__ciNow) paintNow(window.__ciNow); else { $('ciNowTemp').textContent = '—'; $('ciNowLabel').textContent = t('جارٍ التحديث…'); }
   }
   /* live reading (Open-Meteo, no key). Unavailable → say so rather than show a made-up number. */
