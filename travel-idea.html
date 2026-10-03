@@ -1539,7 +1539,7 @@
   @media (max-width:1023px){.tg-toc-m{display:flex;gap:8px;margin-top:var(--s-5);overflow-x:auto;scrollbar-width:none;padding-bottom:4px} .tg-toc-m::-webkit-scrollbar{display:none} .tg-toc-m a{flex:none;display:inline-flex;align-items:center;gap:6px;height:38px;padding-inline:14px;border-radius:999px;background:#fff;border:1px solid rgba(43,29,14,.12);font-size:13.5px;font-weight:700;color:var(--ink)} .tg-toc-m a i{font-style:normal;color:var(--rust);font-size:12px}}
   .tg-side .dxi{position:static;top:auto}
   /* day plan */
-  .tg-day{margin-top:var(--s-5)} .tg-day:first-child{margin-top:var(--s-4)}
+  .tg-day{position:relative;margin-top:var(--s-5)} .tg-day:first-child{margin-top:var(--s-4)}
   .tg-day-h{display:flex;align-items:center;gap:14px;margin:0 0 var(--s-2);font-size:19px;font-weight:800;color:var(--ink)} .tg-day-h::after{content:"";flex:1;height:1px;background:rgba(43,29,14,.12)}
   .tg-day-h span{display:inline-grid;place-items:center;min-width:40px;height:40px;padding-inline:12px;border-radius:999px;background:var(--rust);color:#fff;font-size:14px}
   .tg-day .stop + .stop{border-top:1px solid rgba(43,29,14,.1)}
@@ -1588,6 +1588,30 @@
 
   .tg-sec .lx-faq{margin-top:32px}
   .tg-more{margin-top:120px} @media (max-width:1023px){.tg-more{margin-top:72px}}
+  /* reference-driven additions: glance tiles, day overview rows, photo day strips, side sketch, local banner */
+  .tg-glance{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:14px;margin:var(--s-5) 0 0;padding:0;list-style:none}
+  @media (max-width:1023px){.tg-glance{grid-template-columns:repeat(3,minmax(0,1fr))}} @media (max-width:639px){.tg-glance{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}}
+  .tg-glance li{position:relative;display:grid;align-content:space-between;min-height:132px;padding:18px 18px 16px;background:#fff;border:1px solid rgba(43,29,14,.08);border-radius:18px}
+  .tg-glance h3{margin:0;font-size:14px;font-weight:800;color:var(--ink)} .tg-glance b{display:block;font-size:34px;line-height:1;font-weight:800;color:var(--ink)} .tg-glance small{display:block;margin-top:4px;font-size:12.5px;font-weight:600;color:var(--muted)}
+  .tg-glance i{position:absolute;inset-inline-end:14px;bottom:14px;display:grid;place-items:center;width:40px;height:40px;border-radius:12px;background:rgba(165,62,26,.08);color:var(--rust)}
+  .tg-overview{margin:32px 0 0;padding:0;list-style:none}
+  .tg-overview li{display:grid;grid-template-columns:150px minmax(0,1.2fr) 120px minmax(0,1.6fr) 48px;align-items:center;gap:var(--s-4);padding:18px 6px;border-top:1px solid rgba(43,29,14,.14);cursor:pointer;transition:background-color .25s ease} .tg-overview li:last-child{border-bottom:1px solid rgba(43,29,14,.14)} .tg-overview li:hover{background:rgba(255,255,255,.6)}
+  .tg-overview b{font-size:clamp(22px,2vw,30px);font-weight:800;color:var(--ink);line-height:1.1}
+  .tg-overview .tags{display:flex;flex-wrap:wrap;gap:6px} .tg-overview .tags span{font-size:12.5px;font-weight:700;color:var(--rust);}
+  .tg-overview .pill{width:120px;height:56px;border-radius:999px;overflow:hidden;background:#dcc9a8} .tg-overview .pill img{width:100%;height:100%;object-fit:cover;display:block}
+  .tg-overview p{margin:0;font-size:14px;line-height:1.6;color:var(--body)}
+  .tg-overview .go{display:grid;place-items:center;width:48px;height:48px;border-radius:999px;border:1px solid rgba(43,29,14,.18);background:#fff;color:var(--ink);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .25s ease,color .25s ease} .tg-overview li:hover .go{background:var(--rust);border-color:var(--rust);color:#fff;transform:translateY(3px)}
+  @media (max-width:767px){.tg-overview li{grid-template-columns:minmax(0,1fr) 90px 44px}.tg-overview .tags,.tg-overview p{display:none}.tg-overview .pill{width:90px;height:44px}}
+  .tg-daystrip{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:stretch;min-height:150px;margin:var(--s-5) 0 var(--s-2);border-radius:18px;overflow:hidden;background:#241a12;color:#fff;isolation:isolate}
+  .tg-daystrip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.9} .tg-daystrip::before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(18,11,6,.72),rgba(18,11,6,.2))} html[dir="ltr"] .tg-daystrip::before{background:linear-gradient(270deg,rgba(18,11,6,.72),rgba(18,11,6,.2))}
+  .tg-daystrip>div{position:relative;display:grid;align-content:space-between;gap:10px;padding:20px 22px} .tg-daystrip h3{margin:0;font-size:22px;font-weight:800} .tg-daystrip h3 small{display:block;margin-top:4px;font-size:13px;font-weight:600;opacity:.9} .tg-daystrip p{margin:0;font-size:14px;font-weight:600;opacity:.95}
+  .tg-daystrip>b{position:relative;align-self:start;padding:18px 24px 0 0;font-size:56px;line-height:1;font-weight:800;text-shadow:0 2px 20px rgba(0,0,0,.35)} html[dir="ltr"] .tg-daystrip>b{padding:18px 0 0 24px}
+  .tg-day .tg-day-h{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+  .tg-sketch{display:grid;place-items:center;padding:16px 16px 10px;color:var(--rust);background:linear-gradient(180deg,#fbf7ef,#fff)} .tg-sketch:hover{color:var(--rust-deep)} .tg-sketch:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:-3px}
+  .tg-local{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:var(--s-5);align-items:center;padding:36px;border-radius:20px;background:#2b1d0e;color:#fff}
+  .tg-local-txt .tg-h{color:#fff;font-size:clamp(26px,2.6vw,38px)} .tg-local-txt p{margin:14px 0 0;max-width:46ch;font-size:var(--fs-body-lg);line-height:1.8;color:rgba(255,255,255,.85)} .tg-local-cta{display:inline-flex;height:48px;padding-inline:22px;margin-top:22px}
+  .tg-local-pics{display:flex;justify-content:flex-end;gap:-20px} .tg-local-pics a{display:block;width:150px;aspect-ratio:3/4;border-radius:999px;overflow:hidden;border:4px solid #2b1d0e;margin-inline-start:-28px;background:#dcc9a8;transition:transform .5s cubic-bezier(.2,.8,.2,1)} .tg-local-pics a:first-child{margin-inline-start:0} .tg-local-pics a:hover{transform:translateY(-8px)} .tg-local-pics img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (max-width:767px){.tg-local{grid-template-columns:1fr;padding:24px}.tg-local-pics{justify-content:flex-start}.tg-local-pics a{width:110px}}
 </style>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
@@ -1683,10 +1707,12 @@
           <p class="tg-lede" id="dxSum"></p>
           <div class="tg-body" id="dxDesc"></div>
           <div class="dx-tags tg-tags" id="dxTags"></div>
+          <ul class="tg-glance" id="tgGlance" role="list"></ul>
         </section>
         <nav class="tg-toc-m" id="tgTocM" aria-label="الانتقال إلى"></nav>
         <section class="tg-sec" id="g-plan" aria-labelledby="tgPlanH">
           <h2 class="display tg-h" id="tgPlanH">برنامج المسار</h2><p class="tg-sub">محطة بعد محطة</p>
+          <ol class="tg-overview" id="tgOverview" role="list" hidden></ol>
           <div id="tgPlan"></div>
         </section>
         <section class="tg-sec" id="g-season" aria-labelledby="tgSeasonH">
@@ -1701,6 +1727,9 @@
           <h2 class="display tg-h" id="tgMapH">المحطات على الخريطة</h2>
           <div class="tg-map" id="dxMap" role="region" aria-label="المحطات على الخريطة"></div>
         </section>
+        <section class="tg-sec" id="g-local" aria-labelledby="tgLocalH">
+          <div class="tg-local"><div class="tg-local-txt"><h2 class="display tg-h" id="tgLocalH">تجارب يقدّمها أهل المكان</h2><p id="tgLocalP">رواد أعمال محليون يفتحون لك ورشهم وبيوتهم على هذا المسار. المنصة تعرّفك بهم ولا تتقاضى أي رسوم.</p><a class="dx-cta tg-local-cta" id="tgLocalCta" href="entrepreneurs.html"><span>تعرّف على رواد الأعمال</span></a></div><div class="tg-local-pics" id="tgLocalPics"></div></div>
+        </section>
         <section class="tg-sec" id="g-city">
           <a class="tg-banner" id="tgBanner" href="#"><img id="tgBannerImg" alt="" loading="lazy" decoding="async"><span class="tg-banner-shade" aria-hidden="true"></span><span class="tg-banner-txt"><strong class="display" id="tgBannerH"></strong><span id="tgBannerP"></span><span class="dx-cta tg-banner-cta" id="tgBannerCta"></span></span></a>
         </section>
@@ -1712,7 +1741,7 @@
       <aside class="tg-side">
         <nav class="tg-toc" aria-labelledby="tgTocH"><h2 class="tg-toc-h" id="tgTocH">الانتقال إلى</h2><ol id="tgToc"></ol></nav>
         <div class="dxi tg-facts" aria-labelledby="dxiH">
-          <div class="dxi-band" aria-hidden="true"></div>
+          <a class="tg-sketch" id="tgSketch" href="#g-map" aria-label="المحطات على الخريطة"></a>
           <div class="dxi-body"><h2 class="dxi-h" id="dxiH">المعلومات</h2><dl class="dxi-facts" id="dxFacts"></dl></div>
           <div class="dxi-actions" id="dxiActions"></div>
         </div>
@@ -1860,7 +1889,7 @@
   const setBurger = (open) => {
     burger.setAttribute('aria-expanded', open);
     mobileMenu.classList.toggle('open', open);
-    $('#burgerIcon').innerHTML = open ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
+    const bi = $('#burgerIcon'); if (bi) bi.innerHTML = open ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
   };
   burger.addEventListener('click', () => setBurger(burger.getAttribute('aria-expanded') !== 'true'));
   $$('a', mobileMenu).forEach(a => a.addEventListener('click', () => setBurger(false)));
@@ -2024,6 +2053,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   const TAG = ICON('tag', 16), ROUTE = ICON('path', 16), CAL = ICON('calendar-blank', 16), INFOI = ICON('info', 18);
   const SICO = { spring: 'plant', summer: 'sun', autumn: 'leaf', winter: 'snowflake' }, MICO = { plane: 'airplane-tilt', train: 'train', bus: 'bus', boat: 'boat', taxi: 'taxi', ferry: 'ferry', bike: 'bicycle' };
   const DAYS = ['اليوم الأول', 'اليوم الثاني', 'اليوم الثالث', 'اليوم الرابع', 'اليوم الخامس'];
+  const ptsOf = i => i.stops.map(([k, s]) => k === 'd' ? (DESTINATIONS.bySlug(s) || {}).ll : (EXPERIENCES.list.find(x => x.slug === s) || {}).ll); const cnt = i => ({ d: i.stops.filter(s => s[0] === 'd').length, e: i.stops.filter(s => s[0] === 'e').length });
+  const BANK = ICON('bank', 20), COMP = ICON('compass', 20), CALI = ICON('calendar-blank', 20), CLKI = ICON('clock', 20), ROUTEI = ICON('path', 20), ARW_D = ICON('arrow-down', 20);
   const q = new URLSearchParams(location.search); const e = CONTENT.travelIdeas.find(x => x.slug === q.get('slug'));
   if (!e) { ['dxHero', 'dx', 'g-more'].forEach(id => { $(id).hidden = true; }); $('dxEmpty').hidden = false; return; }
   const CI = window.CITY_INFO && CITY_INFO[e.city];
@@ -2040,7 +2071,20 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('dxTags').innerHTML = '<span class="dx-tag">' + PIN + esc(cn) + '</span><span class="dx-tag">' + CLOCK + esc(t(e.dur)) + '</span><span class="dx-tag">' + ROUTE + esc(stops.length + ' ' + t('محطات')) + '</span><span class="dx-tag">' + TAG + esc(t(P[e.p])) + '</span>';
     /* day plan: days[] when the CMS gives it, otherwise one ordered list */
     let k = 0; const days = e.days && e.days.length ? e.days : [stops.length];
-    $('tgPlan').innerHTML = days.map((cnt, d) => { const part = stops.slice(k, k + cnt); k += cnt; return '<div class="tg-day">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (d + 1) + '</span>' + esc(t(DAYS[d] || (t('اليوم') + ' ' + (d + 1)))) + '</h3>' : '') + '<ol class="stops">' + part.map(stopRow).join('') + '</ol></div>'; }).join('');
+    const parts = []; days.forEach((cnt2, di) => { parts.push(stops.slice(k, k + cnt2)); k += cnt2; });
+    const dayLabel = di => t(DAYS[di] || (t('اليوم') + ' ' + (di + 1)));
+    const kinds = part => { const dd = part.filter(x => x.ll && x.kind === t('مكان')).length, ee = part.length - dd; return [dd ? dd + ' ' + t('أماكن') : '', ee ? ee + ' ' + t('تجارب') : ''].filter(Boolean).join(' · '); };
+    $('tgPlan').innerHTML = parts.map((part, di) => '<div class="tg-day" id="day-' + (di + 1) + '">' + (days.length > 1 ? '<h3 class="tg-day-h"><span>' + (di + 1) + '</span>' + esc(dayLabel(di)) + '</h3><div class="tg-daystrip">' + (part[0] ? pic(part[0].img, '(min-width:1024px) 900px, 92vw') : '') + '<div><h3>' + esc(dayLabel(di)) + '<small>' + esc(part.length + ' ' + t('محطات') + ' · ' + kinds(part)) + '</small></h3><p>' + esc(part.map(x => x.title).join(' ← ')) + '</p></div><b>' + String(di + 1).padStart(2, '0') + '</b></div>' : '') + '<ol class="stops">' + part.map(stopRow).join('') + '</ol></div>').join('');
+    /* day overview rows (only when there is more than one day) */
+    $('tgOverview').hidden = parts.length < 2;
+    $('tgOverview').innerHTML = parts.length < 2 ? '' : parts.map((part, di) => '<li data-day="day-' + (di + 1) + '"><b>' + esc(dayLabel(di)) + '</b><div class="tags">' + [...new Set(part.map(x => '#' + x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</div><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></li>').join('');
+    /* at a glance */
+    const cc = cnt(e);
+    $('tgGlance').innerHTML = [[CALI, 'الأيام', days.length, ''], [ROUTEI, 'المحطات', stops.length, ''], [BANK, 'أماكن', cc.d, ''], [COMP, 'تجارب', cc.e, ''], [CLKI, 'المدة', t(e.dur), '']].map(([ic, h, v]) => '<li><h3>' + esc(t(h)) + '</h3><div><b>' + esc(String(v)) + '</b></div><i>' + ic + '</i></li>').join('');
+    /* side sketch + local entrepreneurs on this route */
+    $('tgSketch').innerHTML = EX.route(ptsOf(e), 280, 150);
+    const ents = ENTREPRENEURS.list.filter(x => x.city === e.city).slice(0, 3);
+    $('g-local').hidden = !ents.length; $('tgLocalCta').href = 'entrepreneurs.html?city=' + e.city; $('tgLocalPics').innerHTML = ents.map(x => '<a href="' + ENTREPRENEURS.href(x) + '" aria-label="' + esc(t(x.name)) + '">' + pic(x.img, '150px') + '</a>').join('');
     /* seasons + transport from the city's practical information */
     $('g-season').hidden = !(CI && CI.seasons); $('g-move').hidden = !(CI && CI.transport);
     if (CI && CI.seasons) { $('tgSeasonSub').textContent = t(CI.bestNote || ''); $('tgSeasons').innerHTML = CI.seasons.map(x => '<li class="tg-season' + (x.rec ? ' is-rec' : '') + '"><h3>' + esc(t(x.n)) + '<small>' + esc(t(x.months)) + '</small></h3>' + ICON(SICO[x.k] || 'sun', 36) + '<b>' + x.min + '° – ' + x.max + '°</b><p>' + esc(t(x.note)) + '</p>' + (x.rec ? '<span class="tg-rec">' + esc(t('موصى به')) + '</span>' : '') + '<a href="' + e.city + '.html#lx-info">' + esc(t('اعرف أكثر')) + '</a></li>').join(''); }
@@ -2051,7 +2095,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     /* faq: only when the entry carries it */
     $('g-faq').hidden = !(e.faq && e.faq.length); if (e.faq && e.faq.length) $('tgFaq').innerHTML = e.faq.map(f => '<details class="lx-q"><summary>' + esc(t(f.q)) + '<i>' + ICON('plus', 18) + '</i></summary><p>' + esc(t(f.a)) + '</p></details>').join('');
     /* side: TOC (existing sections only) + facts */
-    const secs = [['g-about', 'عن المسار'], ['g-plan', 'برنامج المسار'], ['g-season', 'أفضل وقت للزيارة'], ['g-move', 'كيف تتنقل'], ['g-map', 'المحطات على الخريطة'], ['g-city', t('استكشف') + ' ' + cn], ['g-faq', 'الأسئلة الشائعة'], ['g-more', 'أفكار أخرى']].filter(([id]) => !$(id).hidden);
+    const secs = [['g-about', 'عن المسار'], ['g-plan', 'برنامج المسار'], ['g-season', 'أفضل وقت للزيارة'], ['g-move', 'كيف تتنقل'], ['g-map', 'المحطات على الخريطة'], ['g-local', 'تجارب يقدّمها أهل المكان'], ['g-city', t('استكشف') + ' ' + cn], ['g-faq', 'الأسئلة الشائعة'], ['g-more', 'أفكار أخرى']].filter(([id]) => !$(id).hidden);
     const toc = (cls) => secs.map(([id, l], i) => '<a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a>').join('');
     $('tgToc').innerHTML = secs.map(([id, l], i) => '<li><a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a></li>').join(''); $('tgTocM').innerHTML = toc();
     $('dxFacts').innerHTML = [[PIN, 'المدينة', cn], [CLOCK, 'المدة', t(e.dur)], [ROUTE, 'المحطات', String(stops.length)], [CAL, 'الأيام', String(days.length)], [TAG, 'محور المحتوى', t(P[e.p])]].map(([i, k2, v]) => '<div><dt>' + i + esc(t(k2)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
@@ -2069,6 +2113,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   /* TOC highlight + smooth jumps */
   document.addEventListener('click', ev => { const a = ev.target.closest('.tg-toc a, .tg-toc-m a'); if (!a) return; ev.preventDefault(); const el = $(a.getAttribute('href').slice(1)); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
   new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe && document.querySelectorAll('.tg-sec').forEach(sec => new IntersectionObserver(es => { es.forEach(en => { if (en.isIntersecting) document.querySelectorAll('.tg-toc a').forEach(a => a.classList.toggle('is-on', a.getAttribute('href') === '#' + en.target.id)); }); }, { rootMargin: '-30% 0px -60% 0px' }).observe(sec));
+  $('tgOverview').addEventListener('click', ev => { const li = ev.target.closest('li[data-day]'); if (!li) return; const el = $(li.dataset.day); if (el) el.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth', block: 'start' }); });
   document.addEventListener('click', ev => { const c = ev.target.closest('.gem[data-href]'); if (!c || ev.target.closest('a,button')) return; location.href = c.dataset.href; });
   $('tgShare').addEventListener('click', async () => { const data = { title: document.title, url: location.href }; try { if (navigator.share) await navigator.share(data); else { await navigator.clipboard.writeText(location.href); const tt = $('toast'); if (tt) { tt.textContent = t('تم نسخ الرابط'); tt.classList.add('show'); clearTimeout(tt._h); tt._h = setTimeout(() => tt.classList.remove('show'), 2200); } } } catch {} });
   document.addEventListener('i18n:change', render); render();

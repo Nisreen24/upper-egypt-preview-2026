@@ -25,6 +25,16 @@ window.EX = (() => {
   const pop = e => '<div class="mp-card"><div class="mp-thumb">' + pic(e.imgs[0], '96px') + '</div><div class="mp-info"><span class="mp-tag" style="--c:#a53e1a">' + ICON(CATS[e.c].p, 14) + '<span>' + esc(t(CATS[e.c].n)) + '</span></span><strong class="mp-name">' + esc(t(e.n)) + '</strong><p class="mp-sum">' + esc(t(e.s)) + '</p><a class="mp-more" href="' + href(e) + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>';
   const crumb = (items) => '<nav class="ex-crumb" aria-label="' + esc(t('مسار التنقل')) + '"><ol>' + items.map(([n, h]) => h ? '<li><a href="' + h + '">' + esc(t(n)) + '</a></li>' : '<li aria-current="page">' + esc(t(n)) + '</li>').join('') + '</ol></nav>';
   document.addEventListener('DOMContentLoaded', () => { document.querySelectorAll('.footer-links a[href="index.html#luxor"],.footer-links a[href="luxor.html"]').forEach(a => a.href = 'luxor.html'); });
+  /* route sketch: an SVG polyline through the stops' coordinates with numbered dots; purely illustrative, no map tiles */
+  const route = (pts, w, h) => {
+    pts = pts.filter(Boolean); w = w || 120; h = h || 84; if (pts.length < 2) return '';
+    const lats = pts.map(p => p[0]), lngs = pts.map(p => p[1]); const pad = 12;
+    const sx = (Math.max(...lngs) - Math.min(...lngs)) || 0.001, sy = (Math.max(...lats) - Math.min(...lats)) || 0.001, k = Math.min((w - 2 * pad) / sx, (h - 2 * pad) / sy);
+    const ox = (w - sx * k) / 2, oy = (h - sy * k) / 2;
+    const P = pts.map(p => [ox + (p[1] - Math.min(...lngs)) * k, h - (oy + (p[0] - Math.min(...lats)) * k)]);
+    const d = P.map((p, i) => (i ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1)).join(' ');
+    return '<svg class="route" viewBox="0 0 ' + w + ' ' + h + '" width="' + w + '" height="' + h + '" aria-hidden="true" focusable="false"><path d="' + d + '" fill="none" stroke="currentColor" stroke-width="2" stroke-dasharray="4 3" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/>' + P.map((p, i) => '<g transform="translate(' + p[0].toFixed(1) + ' ' + p[1].toFixed(1) + ')"><circle r="7" fill="var(--rust)" stroke="#fff" stroke-width="2"/><text y="2.6" text-anchor="middle" font-size="7.5" font-weight="700" fill="#fff" font-family="inherit">' + (i + 1) + '</text></g>').join('') + '</svg>';
+  };
   /* related-card strips: more than three cards → horizontal swipe with arrows and page dots (three per view on desktop) */
   const strip = (() => {
     const ARW_R = '<svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg>';
@@ -58,5 +68,5 @@ window.EX = (() => {
     if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', watch); else watch();
     return apply;
   })();
-  return { CITIES, CATS, P, PR, AC, q, city, t, lang, cityName, esc, svg, ARW, CLOCK, PIN, all, href, listHref, pic, card, icon, pop, crumb, strip };
+  return { CITIES, CATS, P, PR, AC, q, city, t, lang, cityName, esc, svg, ARW, CLOCK, PIN, all, href, listHref, pic, card, icon, pop, crumb, strip, route };
 })();

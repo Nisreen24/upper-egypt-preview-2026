@@ -1609,7 +1609,7 @@
   const setBurger = (open) => {
     burger.setAttribute('aria-expanded', open);
     mobileMenu.classList.toggle('open', open);
-    $('#burgerIcon').innerHTML = open ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
+    const bi = $('#burgerIcon'); if (bi) bi.innerHTML = open ? '<path d="M6 6l12 12M18 6L6 18"/>' : '<path d="M4 7h16M4 12h16M4 17h16"/>';
   };
   burger.addEventListener('click', () => setBurger(burger.getAttribute('aria-expanded') !== 'true'));
   $$('a', mobileMenu).forEach(a => a.addEventListener('click', () => setBurger(false)));
