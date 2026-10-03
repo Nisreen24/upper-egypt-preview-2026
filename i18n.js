@@ -1235,6 +1235,10 @@ window.I18N = (() => {
     'للتنقل داخل المدينة وعلى الكورنيش.': { en: "For getting around the city and the Corniche.", es: "Para moverse por la ciudad y la Corniche." },
     'مراكب مرخّصة إلى الجزر والقرى النوبية.': { en: "Licensed boats to the islands and Nubian villages.", es: "Barcas con licencia a las islas y aldeas nubias." },
     'كل المعلومات العملية': { en: "All practical information", es: "Toda la información práctica" },
+    'اليوم': { en: "Today", es: "Hoy" },
+    'سنويًا': { en: "Yearly", es: "Anual" },
+    'متوسط درجات الحرارة': { en: "Average temperatures", es: "Temperaturas medias" },
+    'القراءة الحالية': { en: "Current reading", es: "Lectura actual" },
   };
 
   /* Localised event data (mirrors the EVENTS array in index.html) */
