@@ -1351,27 +1351,17 @@
   .ds-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:40px}
   .ds-h{margin:0;font-size:clamp(30px,3.3vw,48px);line-height:1.25;font-weight:700;color:var(--ink)}
   .ds-link{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--rust);white-space:nowrap} .ds-link:hover{color:var(--rust-deep);text-decoration:underline;text-underline-offset:4px} .ds-link:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:6px}
-  .ds-split{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:stretch}
-  .ds-map{position:relative;height:640px;border-radius:20px;overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate;z-index:0}
-  #dsMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)} #dsMap .leaflet-control-attribution{font-size:10px}
-  .ds-pin{display:block;width:44px;height:44px;border-radius:50%;overflow:hidden;border:3px solid var(--rust);background:#fff;box-shadow:0 2px 10px rgba(43,29,14,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1)} .ds-pin img{width:100%;height:100%;object-fit:cover;display:block}
-  .leaflet-marker-icon:hover .ds-pin,.ds-pin.is-on{transform:scale(1.15)}
-  .ds-pop .leaflet-popup-content{margin:12px 16px;font-family:inherit;text-align:start} .ds-pop b{display:block;font-size:15px;color:var(--ink)} .ds-pop span{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)} .ds-pop a{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--rust)}
-  .ds-side{height:640px;margin:0;padding:0 0 0 4px;list-style:none;display:grid;grid-auto-rows:max-content;gap:26px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(43,29,14,.25) transparent}
-  html[dir="ltr"] .ds-side{padding:0 4px 0 0}
   .ds-card{display:block;color:inherit}
   .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)} .ds-card:hover .ds-card-media img{transform:scale(1.04)}
-  .ds-side .ds-card-media{border-radius:14px}
   .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 0;font-size:14px;line-height:1.4;color:var(--body)} .ds-side .ds-card-meta{margin-top:20px;font-size:13.5px}
   .ds-card-meta>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
   .ds-card-w{display:inline-flex;align-items:center;gap:6px;flex:none;color:var(--body);direction:ltr} .ds-card-w svg{color:var(--rust)} .ds-card-w:empty{display:none}
   .ds-card-t{margin:8px 0 0;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
   .ds-card:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:4px;border-radius:16px}
-  .ds-side .ds-card.is-on .ds-card-t{color:var(--rust)}
   .ds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px;margin:0;padding:0;list-style:none}
   .ds-note{margin:56px 0 0;font-size:12.5px;color:var(--muted)}
-  @media (max-width:1023px){.ds-split{grid-template-columns:1fr}.ds-map{height:420px}.ds-side{height:auto;max-height:520px;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}.ds-head{margin-bottom:28px}}
-  @media (max-width:639px){.ds-map{height:340px}.ds-side{display:flex;gap:16px;max-height:none;overflow-x:auto;overflow-y:hidden;padding:4px 0 8px;scroll-snap-type:x mandatory;scrollbar-width:none}.ds-side::-webkit-scrollbar{display:none}.ds-side>li{flex:0 0 240px;scroll-snap-align:start}.ds-grid{grid-template-columns:1fr;gap:28px}.ds-card-meta{margin-top:16px}.ds-card-t{font-size:18px}}
+  @media (max-width:1023px){.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}.ds-head{margin-bottom:28px}}
+  @media (max-width:639px){.ds-grid{grid-template-columns:1fr;gap:28px}.ds-card-meta{margin-top:16px}.ds-card-t{font-size:18px}}
 </style>
 
 </head>
@@ -1458,13 +1448,6 @@
       <div class="ds-hero-shade" aria-hidden="true"></div>
       <h1 class="ds-hero-title display" id="ex-h">الوجهات</h1>
       <div class="xh-band ds-band" aria-hidden="true"></div>
-    </section>
-    <section class="ds-sec" aria-labelledby="ds-h1">
-      <header class="ds-head"><h2 class="display ds-h" id="ds-h1">وجهات صعيد مصر</h2><a class="ds-link" href="map.html">عرض الخريطة التفاعلية</a></header>
-      <div class="ds-split">
-        <div class="ds-map" id="dsMap" role="region" aria-label="خريطة الوجهات"></div>
-        <ul class="ds-side" id="dsSide" role="list" aria-label="الوجهات على الخريطة"></ul>
-      </div>
     </section>
     <section class="ds-sec" aria-labelledby="ds-h2">
       <header class="ds-head"><h2 class="display ds-h" id="ds-h2">كل الوجهات</h2></header>
@@ -1754,8 +1737,6 @@
 <script>
 document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); b.innerHTML = ICON(on ? 'heart-fill' : 'heart', 16); });
 </script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="experiences.js"></script>
 <script src="entrepreneurs.js"></script>
 <script src="destinations.js"></script>
@@ -1773,35 +1754,15 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
   Object.entries(CITY_LL).forEach(([c, ll]) => fetch('https://api.open-meteo.com/v1/forecast?latitude=' + ll[0] + '&longitude=' + ll[1] + '&current=temperature_2m,weather_code&timezone=Africa%2FCairo').then(r => r.json()).then(j => { W[c] = { t: j.current.temperature_2m, code: j.current.weather_code }; document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }); }).catch(() => {}));
   const meta = x => esc(t(CAT[x.c])) + (x.area ? '، ' + esc(t(x.area)) : '') + ' · ' + esc(cityName(x.city));
   const card = (x, side) => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], side ? '330px' : '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><p class="ds-card-meta"><span>' + meta(x) + '</span>' + weather(x.city) + '</p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></a></li>';
-  /* map: photo pins; the side list and the pins highlight each other */
-  let map = null; const markers = {};
-  function mapInit() {
-    if (map || typeof L === 'undefined') return;
-    map = L.map('dsMap', { center: [24.95, 32.75], zoom: 8, scrollWheelZoom: false, zoomControl: true });
-    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map);
-    list.filter(x => x.ll).forEach(x => {
-      const ic = L.divIcon({ className: 'ds-pin-wrap', iconSize: [44, 44], iconAnchor: [22, 22], popupAnchor: [0, -24], html: '<span class="ds-pin" data-slug="' + x.slug + '"><img src="' + x.imgs[0].src + '" alt="" loading="lazy"></span>' });
-      const mk = L.marker(x.ll, { icon: ic, title: t(x.n) }).addTo(map);
-      mk.bindPopup(() => '<b>' + esc(t(x.n)) + '</b><span>' + meta(x) + '</span><a href="' + href(x) + '">' + esc(t('عرض التفاصيل')) + '</a>', { className: 'ds-pop', closeButton: false, offset: [0, 0] });
-      mk.on('click', () => focusSide(x.slug)); markers[x.slug] = mk;
-    });
-    const b = L.latLngBounds(list.filter(x => x.ll).map(x => x.ll)); map.fitBounds(b.pad(0.12));
-    setTimeout(() => map.invalidateSize(), 200);
-  }
-  function focusSide(slug) { document.querySelectorAll('#dsSide .ds-card').forEach(a => a.classList.toggle('is-on', a.dataset.slug === slug)); document.querySelectorAll('.ds-pin').forEach(p => p.classList.toggle('is-on', p.dataset.slug === slug)); }
-  $('dsSide').addEventListener('mouseover', e => { const a = e.target.closest('.ds-card'); if (!a || !map || !markers[a.dataset.slug]) return; focusSide(a.dataset.slug); });
-  $('dsSide').addEventListener('click', e => { const a = e.target.closest('.ds-card'); if (!a || !map || !markers[a.dataset.slug]) return; if (e.target.closest('.ds-card-media')) { e.preventDefault(); const mk = markers[a.dataset.slug]; map.flyTo(mk.getLatLng(), Math.max(map.getZoom(), 11), { duration: .8 }); mk.openPopup(); focusSide(a.dataset.slug); } });
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الوجهات']]); document.title = t('الوجهات') + ' — ' + t('صعيد مصر'); }
   function render() {
     const sorted = list.slice().sort((a, b) => a.city.localeCompare(b.city));
-    $('dsSide').innerHTML = sorted.map(x => card(x, true)).join('');
     $('exGrid').innerHTML = sorted.map(x => card(x, false)).join('');
     const d = new Date(document.lastModified); $('dsNote').textContent = t('آخر تحديث') + ': ' + d.toLocaleDateString(EX.lang() === 'ar' ? 'ar-EG' : EX.lang() === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
     Object.keys(W).forEach(c => document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }));
-    Object.values(markers).forEach(mk => { if (mk.isPopupOpen()) { mk.closePopup(); mk.openPopup(); } });
   }
   document.addEventListener('i18n:change', () => { head(); render(); });
-  head(); render(); mapInit();
+  head(); render();
   window.__dest = { total: list.length };
 })();
 </script>
