@@ -1734,7 +1734,6 @@
           <div class="dx-tags tg-tags" id="dxTags"></div>
           <ul class="tg-glance" id="tgGlance" role="list"></ul>
         </section>
-        <nav class="tg-toc-m" id="tgTocM" aria-label="الانتقال إلى"></nav>
         <section class="tg-sec" id="g-plan" aria-labelledby="tgPlanH">
           <h2 class="display tg-h" id="tgPlanH">برنامج المسار</h2><p class="tg-sub">محطة بعد محطة</p>
           <ol class="tg-overview" id="tgOverview" role="list" hidden></ol>
@@ -1764,7 +1763,6 @@
         </section>
       </div>
       <aside class="tg-side">
-        <nav class="tg-toc" aria-labelledby="tgTocH"><h2 class="tg-toc-h" id="tgTocH">الانتقال إلى</h2><ol id="tgToc"></ol></nav>
         <div class="dxi tg-facts" aria-labelledby="dxiH">
           <a class="tg-sketch" id="tgSketch" href="#g-map" aria-label="المحطات على الخريطة"></a>
           <div class="dxi-body"><h2 class="dxi-h" id="dxiH">المعلومات</h2><dl class="dxi-facts" id="dxFacts"></dl></div>
@@ -2125,7 +2123,7 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     /* side: TOC (existing sections only) + facts */
     const secs = [['g-about', 'عن المسار'], ['g-plan', 'برنامج المسار'], ['g-season', 'أفضل وقت للزيارة'], ['g-move', 'كيف تتنقل'], ['g-map', 'المحطات على الخريطة'], ['g-local', 'تجارب يقدّمها أهل المكان'], ['g-city', t('استكشف') + ' ' + cn], ['g-faq', 'الأسئلة الشائعة'], ['g-more', 'أفكار أخرى']].filter(([id]) => !$(id).hidden);
     const toc = (cls) => secs.map(([id, l], i) => '<a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a>').join('');
-    $('tgToc').innerHTML = secs.map(([id, l], i) => '<li><a href="#' + id + '"><i>' + String(i + 1).padStart(2, '0') + '</i>' + esc(t(l)) + '</a></li>').join(''); $('tgTocM').innerHTML = toc();
+    
     $('dxFacts').innerHTML = [[PIN, 'المدينة', cn], [CLOCK, 'المدة', t(e.dur)], [ROUTE, 'المحطات', String(stops.length)], [CAL, 'الأيام', String(days.length)], [TAG, 'محور المحتوى', t(P[e.p])]].map(([i, k2, v]) => '<div><dt>' + i + esc(t(k2)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
     $('dxiActions').innerHTML = '<a class="dx-cta" href="' + e.city + '.html">' + '<span>' + esc(t('استكشف') + ' ' + cn) + '</span></a><a class="dx-cta dx-cta--ghost" href="' + e.city + '.html#lx-info">' + INFOI + '<span>' + esc(t('معلومات عملية عن') + ' ' + cn) + '</span></a>';
     /* more ideas */
