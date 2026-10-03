@@ -1336,6 +1336,42 @@
   svg.ic{fill:currentColor!important;stroke:none!important;flex:none}
   svg.ic.ic--stroke{fill:none!important;stroke:currentColor!important;stroke-width:16!important}
   .gem-fav[aria-pressed="true"] svg.ic{transform:scale(1.1)}
+  /* destinations: Visit Saudi /destinations sectioning in our tokens */
+  .ds{padding-top:calc(var(--tb-top,100px) + 24px);padding-bottom:var(--s-8);background:var(--paper)}
+  .ds-wrap{width:min(1400px,100% - 2 * var(--s-3));margin-inline:auto}
+  .ds-crumb{margin-bottom:22px;font-size:14px;color:var(--muted)} .ds-crumb a{color:var(--muted)} .ds-crumb a:hover{color:var(--ink)} .ds-crumb .ex-crumb{margin:0}
+  .ds-hero{position:relative;overflow:hidden;border-radius:20px;aspect-ratio:1400/540;min-height:320px;max-height:540px;background:#b0703c;isolation:isolate}
+  .ds-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
+  .ds-hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.55),rgba(18,11,6,0) 55%);pointer-events:none}
+  .ds-hero-title{position:absolute;inset-inline-start:48px;bottom:80px;margin:0;font-size:clamp(40px,5vw,80px);line-height:1.1;font-weight:700;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
+  .ds-band{height:18px}
+  @media (max-width:767px){.ds-hero{aspect-ratio:4/3;min-height:0}.ds-hero-title{inset-inline-start:20px;bottom:44px}.ds-band{height:14px}}
+  .ds-sec{margin-top:120px}
+  @media (max-width:1023px){.ds-sec{margin-top:72px}}
+  .ds-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:40px}
+  .ds-h{margin:0;font-size:clamp(30px,3.3vw,48px);line-height:1.25;font-weight:700;color:var(--ink)}
+  .ds-link{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--rust);white-space:nowrap} .ds-link:hover{color:var(--rust-deep);text-decoration:underline;text-underline-offset:4px} .ds-link:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:6px}
+  .ds-split{display:grid;grid-template-columns:minmax(0,1fr) 330px;gap:20px;align-items:stretch}
+  .ds-map{position:relative;height:640px;border-radius:20px;overflow:hidden;border:1px solid rgba(43,29,14,.12);background:#e9e2d2;isolation:isolate;z-index:0}
+  #dsMap .leaflet-tile-pane{filter:sepia(.28) saturate(.9)} #dsMap .leaflet-control-attribution{font-size:10px}
+  .ds-pin{display:block;width:44px;height:44px;border-radius:50%;overflow:hidden;border:3px solid var(--rust);background:#fff;box-shadow:0 2px 10px rgba(43,29,14,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1)} .ds-pin img{width:100%;height:100%;object-fit:cover;display:block}
+  .leaflet-marker-icon:hover .ds-pin,.ds-pin.is-on{transform:scale(1.15)}
+  .ds-pop .leaflet-popup-content{margin:12px 16px;font-family:inherit;text-align:start} .ds-pop b{display:block;font-size:15px;color:var(--ink)} .ds-pop span{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)} .ds-pop a{display:inline-block;margin-top:8px;font-size:13px;font-weight:700;color:var(--rust)}
+  .ds-side{height:640px;margin:0;padding:0 0 0 4px;list-style:none;display:grid;grid-auto-rows:max-content;gap:26px;overflow-y:auto;scrollbar-width:thin;scrollbar-color:rgba(43,29,14,.25) transparent}
+  html[dir="ltr"] .ds-side{padding:0 4px 0 0}
+  .ds-card{display:block;color:inherit}
+  .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)} .ds-card:hover .ds-card-media img{transform:scale(1.04)}
+  .ds-side .ds-card-media{border-radius:14px}
+  .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 0;font-size:14px;line-height:1.4;color:var(--body)} .ds-side .ds-card-meta{margin-top:20px;font-size:13.5px}
+  .ds-card-meta>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ds-card-w{display:inline-flex;align-items:center;gap:6px;flex:none;color:var(--body);direction:ltr} .ds-card-w svg{color:var(--rust)} .ds-card-w:empty{display:none}
+  .ds-card-t{margin:8px 0 0;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
+  .ds-card:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:4px;border-radius:16px}
+  .ds-side .ds-card.is-on .ds-card-t{color:var(--rust)}
+  .ds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px;margin:0;padding:0;list-style:none}
+  .ds-note{margin:56px 0 0;font-size:12.5px;color:var(--muted)}
+  @media (max-width:1023px){.ds-split{grid-template-columns:1fr}.ds-map{height:420px}.ds-side{height:auto;max-height:520px;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}.ds-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:32px 24px}.ds-head{margin-bottom:28px}}
+  @media (max-width:639px){.ds-map{height:340px}.ds-side{display:flex;gap:16px;max-height:none;overflow-x:auto;overflow-y:hidden;padding:4px 0 8px;scroll-snap-type:x mandatory;scrollbar-width:none}.ds-side::-webkit-scrollbar{display:none}.ds-side>li{flex:0 0 240px;scroll-snap-align:start}.ds-grid{grid-template-columns:1fr;gap:28px}.ds-card-meta{margin-top:16px}.ds-card-t{font-size:18px}}
 </style>
 
 </head>
@@ -1414,51 +1450,28 @@
   </div>
 </header>
 
-<main>
-  <section class="xh" id="xh" aria-labelledby="ex-h">
-    <div class="xh-crumb" id="exCrumb"></div>
-    <div class="xh-media" id="xhMedia">
-      <img id="xhImg" src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp" srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w" sizes="95vw" alt="أعمدة ونقوش في معبد بالأقصر" fetchpriority="high" decoding="async">
-      <div class="xh-shade"></div>
-      <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="ex-h">الوجهات</h1>
-        <p class="xh-cap-sub" id="exSub">معابد وجزر ومتاحف وطبيعة تستحق الزيارة، ومن كل مكان تصل إلى التجارب التي يقدّمها أهله.</p>
-        <p class="xh-cap-loc"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر وأسوان، صعيد مصر</span></p>
+<main class="ds">
+  <div class="ds-wrap">
+    <div class="ds-crumb" id="exCrumb"></div>
+    <section class="ds-hero" aria-labelledby="ex-h">
+      <img id="dsHeroImg" src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp" srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w" sizes="(min-width:1440px) 1400px, 92vw" alt="أعمدة ونقوش في معبد بالأقصر" fetchpriority="high" decoding="async">
+      <div class="ds-hero-shade" aria-hidden="true"></div>
+      <h1 class="ds-hero-title display" id="ex-h">الوجهات</h1>
+      <div class="xh-band ds-band" aria-hidden="true"></div>
+    </section>
+    <section class="ds-sec" aria-labelledby="ds-h1">
+      <header class="ds-head"><h2 class="display ds-h" id="ds-h1">وجهات صعيد مصر</h2><a class="ds-link" href="map.html">عرض الخريطة التفاعلية</a></header>
+      <div class="ds-split">
+        <div class="ds-map" id="dsMap" role="region" aria-label="خريطة الوجهات"></div>
+        <ul class="ds-side" id="dsSide" role="list" aria-label="الوجهات على الخريطة"></ul>
       </div>
-      <div class="xh-band" aria-hidden="true"></div>
-    </div>
-  </section>
-  <section class="ex" id="exList" aria-labelledby="ex-h">
-    <div class="wrap">
-      <nav class="mp-cats ls-switch" aria-label="نوع القائمة">
-        <a class="mp-chip" href="destinations.html" aria-current="page" aria-pressed="true"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M24,104H48v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16H208V104h24a8,8,0,0,0,4.19-14.81l-104-64a8,8,0,0,0-8.38,0l-104,64A8,8,0,0,0,24,104Zm40,0H96v64H64Zm80,0v64H112V104Zm48,64H160V104h32ZM128,41.39,203.74,88H52.26ZM248,208a8,8,0,0,1-8,8H16a8,8,0,0,1,0-16H240A8,8,0,0,1,248,208Z"/></svg><span>أماكن تزورها</span></a>
-        <a class="mp-chip" href="experiences.html" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg><span>تجارب ومنتجات</span></a>
-        <a class="mp-chip" href="entrepreneurs.html" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M188,48a27.75,27.75,0,0,0-12,2.71V44a28,28,0,0,0-54.65-8.6A28,28,0,0,0,80,60v64l-3.82-6.13a28,28,0,0,0-48.6,27.82c16,33.77,28.93,57.72,43.72,72.69C86.24,233.54,103.2,240,128,240a88.1,88.1,0,0,0,88-88V76A28,28,0,0,0,188,48Zm12,104a72.08,72.08,0,0,1-72,72c-20.38,0-33.51-4.88-45.33-16.85C69.44,193.74,57.26,171,41.9,138.58a6.36,6.36,0,0,0-.3-.58,12,12,0,0,1,20.79-12,1.76,1.76,0,0,0,.14.23l18.67,30A8,8,0,0,0,96,152V60a12,12,0,0,1,24,0v60a8,8,0,0,0,16,0V44a12,12,0,0,1,24,0v76a8,8,0,0,0,16,0V76a12,12,0,0,1,24,0Z"/></svg><span>رواد أعمال</span></a>
-      </nav>
-      <div class="mp-bar ex-bar" style="margin-top:0">
-        <div class="mp-search"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><input id="exQ" type="search" placeholder="ابحث عن مكان..." aria-label="ابحث في الوجهات" autocomplete="off"></div>
-        <button type="button" class="mp-adv-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M40,88H73a32,32,0,0,0,62,0h81a8,8,0,0,0,0-16H135a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16Zm64-24A16,16,0,1,1,88,80,16,16,0,0,1,104,64ZM216,168H199a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16h97a32,32,0,0,0,62,0h17a8,8,0,0,0,0-16Zm-48,24a16,16,0,1,1,16-16A16,16,0,0,1,168,192Z"/></svg><span>تصفية</span><b id="exAdvN" hidden></b></button>
-        <div class="mp-cats" role="group" aria-label="المدينة">
-          <button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg><span>كل المدن</span></button>
-          <button type="button" class="mp-chip" data-cat="luxor" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر</span></button>
-          <button type="button" class="mp-chip" data-cat="aswan" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>أسوان</span></button>
-        </div>
-      </div>
-      <div class="mp-adv" id="exAdv" hidden>
-        <fieldset data-g="c"><legend>الفئة</legend><label><input type="checkbox" data-f="c" value="heritage"><span>موقع تراثي</span></label><label><input type="checkbox" data-f="c" value="museum"><span>متحف</span></label><label><input type="checkbox" data-f="c" value="nature"><span>طبيعة</span></label><label><input type="checkbox" data-f="c" value="viewpoint"><span>إطلالة</span></label><label><input type="checkbox" data-f="c" value="market"><span>سوق</span></label></fieldset>
-        <fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset>
-        <fieldset data-g="a"><legend>إمكانية الوصول</legend><label><input type="checkbox" data-f="a" value="step"><span>دخول بلا درجات</span></label><label><input type="checkbox" data-f="a" value="wc"><span>دورة مياه مهيأة</span></label><label><input type="checkbox" data-f="a" value="seat"><span>أماكن جلوس</span></label><label><input type="checkbox" data-f="a" value="av"><span>دعم سمعي أو بصري</span></label></fieldset>
-      </div>
-      <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
-      <div class="ex-body">
-        <div>
-          <ul class="ex-grid" id="exGrid" role="list"></ul>
-          <div class="mp-empty" id="exEmpty" hidden><p>لا توجد أماكن مطابقة. جرّب مدينة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
-        </div>
-      </div>
-      <div class="ev-foot" style="justify-content:center;margin-top:var(--s-6)"><a class="ev-all" href="experiences.html"><span>ابحث عن تجربة بدلًا من مكان</span><i><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></i></a></div>
-    </div>
-  </section>
+    </section>
+    <section class="ds-sec" aria-labelledby="ds-h2">
+      <header class="ds-head"><h2 class="display ds-h" id="ds-h2">كل الوجهات</h2></header>
+      <ul class="ds-grid" id="exGrid" role="list"></ul>
+    </section>
+    <p class="ds-note" id="dsNote"></p>
+  </div>
 </main>
 
 <footer class="footer" aria-label="تذييل الصفحة">
@@ -1741,56 +1754,55 @@
 <script>
 document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); b.innerHTML = ICON(on ? 'heart-fill' : 'heart', 16); });
 </script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="experiences.js"></script>
 <script src="entrepreneurs.js"></script>
 <script src="destinations.js"></script>
 <script src="listing-shared.js"></script>
 <script>
 (() => {
-  const { P, CITIES, q, t, esc, svg, PIN, ARW, pic, crumb } = EX, { CAT, list, href, related } = DESTINATIONS;
+  const { CITIES, t, esc, pic, crumb } = EX, { CAT, list, href } = DESTINATIONS;
   const $ = id => document.getElementById(id);
-  const F = { q: q.get('q') || '', city: CITIES[q.get('city')] ? q.get('city') : 'all', c: new Set((q.get('category') || '').split(',').filter(Boolean)), p: new Set((q.get('pillar') || '').split(',').filter(Boolean)), a: new Set((q.get('a') || '').split(',').filter(Boolean)) };
   const cityName = c => CITIES[c][EX.lang()] || CITIES[c].ar;
-  (() => {
-    const xh = $('xh'), nav = document.querySelector('.nav-bar');
-    const size = () => {
-      const mobile = innerWidth < 768, vh = innerHeight;
-      const navB = nav ? nav.getBoundingClientRect().bottom : 0;
-      const w = Math.min(mobile ? 950 : 1550, innerWidth * 0.95);
-      const h = Math.min(mobile ? 600 : 800, vh * 0.85, vh - navB - 100);
-      const top = Math.max((vh - h) / 2, navB + 80);
-      xh.style.setProperty('--xh-w', w + 'px'); xh.style.setProperty('--xh-h', h + 'px'); xh.style.setProperty('--xh-top', top + 'px');
-    };
-    size(); addEventListener('resize', size); addEventListener('load', size);
-  })();
-  const LAND = ICON('bank', 16);
-  const card = x => { const n = related(x).length; return '<li><article class="gem" data-slug="' + x.slug + '" data-href="' + href(x) + '"><div class="gem-media">' + pic(x.imgs[0], '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + LAND + '<span>' + esc(t(CAT[x.c])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(t(P[x.p])) + '</span><h3 class="gem-title">' + esc(t(x.n)) + '</h3><p class="gem-desc">' + esc(t(x.s)) + '</p><p class="gem-meta"><span>' + PIN + esc(cityName(x.city) + ' · ' + t(x.area)) + '</span>' + (n ? '<span>' + esc(n + ' ' + t(n === 1 ? 'تجربة حولها' : 'تجارب حولها')) + '</span>' : '') + '</p><a class="gem-cta" href="' + href(x) + '"><span>' + esc(t('اكتشف المكان')) + '</span>' + ARW + '</a></div></article></li>'; };
-  const hay = x => [x.n, x.s, x.area, CAT[x.c], P[x.p], t(x.n), t(x.s), t(x.area), t(CAT[x.c])].join(' ').toLowerCase();
-  const match = x => (F.city === 'all' || x.city === F.city) && (!F.q || hay(x).includes(F.q.toLowerCase())) && (!F.c.size || F.c.has(x.c)) && (!F.p.size || F.p.has(x.p)) && (!F.a.size || [...F.a].every(k => (x.a || []).includes(k)));
-  const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' place' : ' places') : l === 'es' ? n + (n === 1 ? ' lugar' : ' lugares') : n + ' ' + (n === 1 ? 'مكان' : n === 2 ? 'مكانان' : n <= 10 ? 'أماكن' : 'مكانًا'); };
-  function url() { const u = new URLSearchParams(); if (F.city !== 'all') u.set('city', F.city); if (F.q) u.set('q', F.q); if (F.c.size) u.set('category', [...F.c].join(',')); if (F.p.size) u.set('pillar', [...F.p].join(',')); if (F.a.size) u.set('a', [...F.a].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
+  const SUN = ICON('sun', 16), CLOUD = ICON('cloud', 16), RAIN = ICON('cloud-rain', 16);
+  /* live reading per city (Open-Meteo); nothing is shown until it arrives */
+  const W = {}; const CITY_LL = { luxor: [25.69, 32.64], aswan: [24.09, 32.90] };
+  const wIcon = code => code <= 1 ? SUN : code >= 51 ? RAIN : CLOUD;
+  const weather = city => W[city] ? '<span class="ds-card-w">' + wIcon(W[city].code) + Math.round(W[city].t) + '°C</span>' : '<span class="ds-card-w" data-w="' + city + '"></span>';
+  Object.entries(CITY_LL).forEach(([c, ll]) => fetch('https://api.open-meteo.com/v1/forecast?latitude=' + ll[0] + '&longitude=' + ll[1] + '&current=temperature_2m,weather_code&timezone=Africa%2FCairo').then(r => r.json()).then(j => { W[c] = { t: j.current.temperature_2m, code: j.current.weather_code }; document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }); }).catch(() => {}));
+  const meta = x => esc(t(CAT[x.c])) + (x.area ? '، ' + esc(t(x.area)) : '') + ' · ' + esc(cityName(x.city));
+  const card = (x, side) => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], side ? '330px' : '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><p class="ds-card-meta"><span>' + meta(x) + '</span>' + weather(x.city) + '</p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></a></li>';
+  /* map: photo pins; the side list and the pins highlight each other */
+  let map = null; const markers = {};
+  function mapInit() {
+    if (map || typeof L === 'undefined') return;
+    map = L.map('dsMap', { center: [24.95, 32.75], zoom: 8, scrollWheelZoom: false, zoomControl: true });
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map);
+    list.filter(x => x.ll).forEach(x => {
+      const ic = L.divIcon({ className: 'ds-pin-wrap', iconSize: [44, 44], iconAnchor: [22, 22], popupAnchor: [0, -24], html: '<span class="ds-pin" data-slug="' + x.slug + '"><img src="' + x.imgs[0].src + '" alt="" loading="lazy"></span>' });
+      const mk = L.marker(x.ll, { icon: ic, title: t(x.n) }).addTo(map);
+      mk.bindPopup(() => '<b>' + esc(t(x.n)) + '</b><span>' + meta(x) + '</span><a href="' + href(x) + '">' + esc(t('عرض التفاصيل')) + '</a>', { className: 'ds-pop', closeButton: false, offset: [0, 0] });
+      mk.on('click', () => focusSide(x.slug)); markers[x.slug] = mk;
+    });
+    const b = L.latLngBounds(list.filter(x => x.ll).map(x => x.ll)); map.fitBounds(b.pad(0.12));
+    setTimeout(() => map.invalidateSize(), 200);
+  }
+  function focusSide(slug) { document.querySelectorAll('#dsSide .ds-card').forEach(a => a.classList.toggle('is-on', a.dataset.slug === slug)); document.querySelectorAll('.ds-pin').forEach(p => p.classList.toggle('is-on', p.dataset.slug === slug)); }
+  $('dsSide').addEventListener('mouseover', e => { const a = e.target.closest('.ds-card'); if (!a || !map || !markers[a.dataset.slug]) return; focusSide(a.dataset.slug); });
+  $('dsSide').addEventListener('click', e => { const a = e.target.closest('.ds-card'); if (!a || !map || !markers[a.dataset.slug]) return; if (e.target.closest('.ds-card-media')) { e.preventDefault(); const mk = markers[a.dataset.slug]; map.flyTo(mk.getLatLng(), Math.max(map.getZoom(), 11), { duration: .8 }); mk.openPopup(); focusSide(a.dataset.slug); } });
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الوجهات']]); document.title = t('الوجهات') + ' — ' + t('صعيد مصر'); }
   function render() {
-    const shown = list.filter(match);
-    $('exGrid').innerHTML = shown.map(card).join('');
-    $('exCount').textContent = countText(shown.length);
-    $('exEmpty').hidden = shown.length > 0;
-    const n = F.c.size + F.p.size + F.a.size; $('exAdvN').hidden = !n; $('exAdvN').textContent = n;
-    url();
+    const sorted = list.slice().sort((a, b) => a.city.localeCompare(b.city));
+    $('dsSide').innerHTML = sorted.map(x => card(x, true)).join('');
+    $('exGrid').innerHTML = sorted.map(x => card(x, false)).join('');
+    const d = new Date(document.lastModified); $('dsNote').textContent = t('آخر تحديث') + ': ' + d.toLocaleDateString(EX.lang() === 'ar' ? 'ar-EG' : EX.lang() === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
+    Object.keys(W).forEach(c => document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }));
+    Object.values(markers).forEach(mk => { if (mk.isPopupOpen()) { mk.closePopup(); mk.openPopup(); } });
   }
-  $('exGrid').addEventListener('click', e => { const c = e.target.closest('.gem'); if (!c || e.target.closest('a,button')) return; location.href = c.dataset.href; });
-  const chips = [...document.querySelectorAll('.mp-chip')];
-  const syncChips = () => chips.forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cat === F.city)));
-  chips.forEach(c => c.addEventListener('click', () => { F.city = c.dataset.cat; syncChips(); render(); }));
-  $('exQ').value = F.q; let qt = 0; $('exQ').addEventListener('input', e => { clearTimeout(qt); qt = setTimeout(() => { F.q = e.target.value.trim(); render(); }, 160); });
-  document.querySelectorAll('#exAdv input').forEach(i => { i.checked = F[i.dataset.f].has(i.value); i.addEventListener('change', () => { const s = F[i.dataset.f]; i.checked ? s.add(i.value) : s.delete(i.value); render(); }); });
-  $('exAdvBtn').addEventListener('click', () => { const open = $('exAdv').hidden; $('exAdv').hidden = !open; $('exAdvBtn').setAttribute('aria-expanded', String(open)); });
-  $('exClear').addEventListener('click', () => { F.q = ''; F.city = 'all'; F.c.clear(); F.p.clear(); F.a.clear(); $('exQ').value = ''; document.querySelectorAll('#exAdv input').forEach(i => i.checked = false); syncChips(); render(); });
-  document.querySelectorAll('#exAdv fieldset').forEach(f => { let any = false; f.querySelectorAll('label').forEach(l => { const v = l.querySelector('input').value; const has = list.some(d => f.dataset.g === 'a' ? (d.a || []).includes(v) : d[f.dataset.g] === v); l.hidden = !has; any = any || has; }); f.hidden = !any; });
-  if (F.c.size || F.p.size) { $('exAdv').hidden = false; $('exAdvBtn').setAttribute('aria-expanded', 'true'); }
   document.addEventListener('i18n:change', () => { head(); render(); });
-  syncChips(); head(); render();
-  window.__dest = { F, total: list.length };
+  head(); render(); mapInit();
+  window.__dest = { total: list.length };
 })();
 </script>
 </body>
