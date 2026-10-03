@@ -1763,7 +1763,7 @@
       </div>
       <aside class="tg-side">
         <div class="dxi tg-facts" aria-labelledby="dxiH">
-          <a class="tg-sketch" id="tgSketch" href="#g-map" aria-label="المحطات على الخريطة"></a>
+          <div class="dxi-band" aria-hidden="true"></div>
           <div class="dxi-body"><h2 class="dxi-h" id="dxiH">المعلومات</h2><dl class="dxi-facts" id="dxFacts"></dl></div>
           <div class="dxi-actions" id="dxiActions"></div>
         </div>
@@ -2104,7 +2104,6 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
       : '<div class="tg-accs">' + parts.map((part, di) => { const id = 'day-' + (di + 1), on = openDays.has(id); return '<section class="tg-acc tg-day" id="' + id + '"' + (on ? ' open' : '') + '><h3 class="tg-acc-h"><button type="button" class="tg-acc-btn" aria-expanded="' + on + '" aria-controls="' + id + '-panel"><b>' + esc(dayLabel(di)) + '</b><span class="tags">' + [...new Set(part.map(x => x.cat))].map(x => '<span>' + esc(x) + '</span>').join('') + '</span><span class="pill">' + (part[0] ? pic(part[0].img, '120px') : '') + '</span><p>' + esc(part.map(x => x.title).join('، ')) + '</p><span class="go">' + ARW_D + '</span></button></h3><div class="tg-acc-panel" id="' + id + '-panel"' + (on ? '' : ' hidden') + '>' + strip(part, di) + tiles(part) + '</div></section>'; }).join('') + '</div>';
     document.querySelectorAll('.tg-stops').forEach(ul => EX.strip(ul));
     /* side sketch + local entrepreneurs on this route */
-    $('tgSketch').innerHTML = EX.route(ptsOf(e), 280, 150);
     const ents = ENTREPRENEURS.list.filter(x => x.city === e.city).slice(0, 3);
     $('g-local').hidden = !ents.length; $('tgLocalCta').href = 'entrepreneurs.html?city=' + e.city; $('tgLocalPics').innerHTML = ents.map(x => '<a href="' + ENTREPRENEURS.href(x) + '" aria-label="' + esc(t(x.name)) + '">' + pic(x.img, '150px') + '</a>').join('');
     /* seasons + transport from the city's practical information */
