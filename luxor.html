@@ -130,7 +130,7 @@
   html.lang-latin .xa-mini span{letter-spacing:.04em;text-transform:uppercase;font-size:clamp(13px,1.1vw,16px)}
   html.lang-latin .hero .copy{text-align:start}
   html[dir="ltr"] .fwd{transform:scaleX(-1)}
-  html[dir="ltr"] :is(.cta,.card-cta,.xa-cta,.ev-cta,.journey-btn,.news-btn,.ev-all,.xcard-cta,.xcard-go,.xa-go):hover .fwd{transform:scaleX(-1) translateX(-4px)}
+  html[dir="ltr"] :is(.cta,.card-cta,.xa-cta,.ev-cta,.journey-btn,.news-btn,.xcard-cta,.xcard-go,.xa-go):hover .fwd{transform:scaleX(-1) translateX(-4px)} html[dir="ltr"] .ev-all:hover i{transform:translateX(4px)}
   html[dir="ltr"] .footer-links a::before{transform:rotate(135deg)}
   /* ---------- BRAND LOCKUP ---------- */
   .lockup{display:inline-flex;align-items:center;gap:8px;color:var(--nav-ink);direction:ltr}
@@ -1698,7 +1698,7 @@
           <h2 class="display lx-h ci-title" id="lx-about"></h2>
           <p class="ci-desc" id="ciDesc"></p>
           <button type="button" class="ci-readmore" id="ciReadMore" aria-expanded="false" hidden>اقرأ المزيد</button>
-          <a class="ci-cta" id="ciCta" href="#"><span></span><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="ci-cta" id="ciCta" href="#"><span></span><svg class="ic fwd" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
           <div class="ci-chips" id="ciChips"></div>
         </div>
         <div class="ci-panel">
@@ -1728,7 +1728,7 @@
           </div></div>
           <div class="ci-pane" role="tabpanel" id="ciPane-move" aria-labelledby="ciTab-move" hidden><div class="ci-card">
             <ul class="ci-move" id="ciMove" role="list"></ul>
-            <a class="ci-more" href="#lx-info"><span>كل المعلومات العملية</span><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+            <a class="ci-more" href="#lx-info"><span>كل المعلومات العملية</span><svg class="ic fwd" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
           </div></div>
         </div>
       </div>
@@ -1814,7 +1814,7 @@
             <span class="cf-cap"><span class="cf-name">مسار الحرف في الأقصر</span><span class="cf-more">اضغط لمعرفة المزيد</span></span>
           </a></li>
         </ul>
-        <button class="cf-nav cf-next" type="button" aria-label="الرحلة التالية"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
+        <button class="cf-nav cf-next" type="button" aria-label="الرحلة التالية"><svg class="ic fwd" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
       </div>
       <div class="wrap">
         <p class="cf-desc" aria-live="polite">حقول وقرى ومعابد بإيقاع أبطأ، بعيدًا عن الحافلات.</p>
@@ -1840,7 +1840,7 @@
             <p class="pv-desc" id="pvDesc">أكبر مجمّع معابد في مصر القديمة، بصالة أعمدته الشاهقة وبحيرته المقدسة وطريق الكباش الذي يصله بمعبد الأقصر.</p>
             <p class="pv-temp" id="pvTemp" hidden><span class="lx-temp">صورة مؤقتة</span></p>
           </div>
-          <a class="pv-cta" id="pvCta" href="#"><span>اكتشف المكان</span><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="pv-cta" id="pvCta" href="#"><span>اكتشف المكان</span><svg class="ic fwd" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
         </div>
         <div class="pv-side">
           <ul class="pv-rail" role="list">
@@ -1868,7 +1868,7 @@
           <div class="pv-foot">
             <div class="pv-arrows">
               <button class="pv-nav pv-prev" type="button" aria-label="المكان السابق"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-              <button class="pv-nav pv-next" type="button" aria-label="المكان التالي"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
+              <button class="pv-nav pv-next" type="button" aria-label="المكان التالي"><svg class="ic fwd" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
             </div>
             <div class="pv-bar" aria-hidden="true"><i id="pvBar"></i></div>
             <p class="pv-num display" aria-hidden="true"><b id="pvNum">01</b></p>
@@ -1886,7 +1886,7 @@
         <h2 id="lx-people" class="display st-title">تعرف على رواد الأعمال المحلــــيين</h2>
         <p class="st-sub">تعرّف على سيدات وشباب من الأقصر حوّلوا الحرف والتراث المحلي إلى مشاريع تنبض بالإبداع وتخلق فرصًا جديدة لمجتمعاتهم.</p>
       </div>
-      <a class="st-cta" href="entrepreneurs.html"><span>استكشف جميع الرواد</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+      <a class="st-cta" href="entrepreneurs.html"><span>استكشف جميع الرواد</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
     </header>
 
     <div class="st-grid">
@@ -1899,7 +1899,7 @@
           <p class="st-biz">الحرفجية</p>
           <span class="st-loc"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر</span></span>
           <p class="st-desc">تُبدع فاطمة في تصميم وصناعة منتجات جلدية يدوية مستوحاة من التراث المصري القديم، حيث تمزج بين الحرف التقليدية والتصميم العصري لتقدم قطعاً تحكي قصة الأقصر بروح جديدة.</p>
-          <a class="st-link" href="entrepreneur.html?slug=fatma-boghdady"><span>عرض الملف الشخصي</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="st-link" href="entrepreneur.html?slug=fatma-boghdady"><span>عرض الملف الشخصي</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
         </div>
       </article>
       <article class="st-feature" data-slot="1">
@@ -1911,7 +1911,7 @@
           <p class="st-biz">زينب للإكسسوارات</p>
           <span class="st-loc"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر</span></span>
           <p class="st-desc">تصنع زينب إكسسوارات يدوية مستوحاة من جمال الطبيعة والتراث المحلي، لتقدم منتجات فريدة تعكس هوية الصعيد وتدعم الحرف المنزلية.</p>
-          <a class="st-link" href="entrepreneur.html?slug=zainab-gamal"><span>عرض الملف الشخصي</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="st-link" href="entrepreneur.html?slug=zainab-gamal"><span>عرض الملف الشخصي</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
         </div>
       </article>
     </div>
@@ -1936,7 +1936,7 @@
               <span class="gem-cat">إطلالة نيلية</span>
               <h3 class="gem-title">مطاعم على ضفاف النيل</h3>
               <p class="gem-desc">أطباق مصرية بإطلالة مباشرة على النهر.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=nile-restaurants"><span>عرض التفاصيل</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+              <a class="gem-cta" href="experience.html?city=luxor&slug=nile-restaurants"><span>عرض التفاصيل</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
             </div>
           </article></li>
           <li><article class="gem">
@@ -1950,7 +1950,7 @@
               <span class="gem-cat">مطبخ صعيدي</span>
               <h3 class="gem-title">مطاعم محلية</h3>
               <p class="gem-desc">مأكولات صعيدية تقليدية في مطاعم يديرها أهل المكان.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=local-restaurants"><span>عرض التفاصيل</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+              <a class="gem-cta" href="experience.html?city=luxor&slug=local-restaurants"><span>عرض التفاصيل</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
             </div>
           </article></li>
           <li><article class="gem">
@@ -1964,7 +1964,7 @@
               <span class="gem-cat">مقاهٍ وجلسات</span>
               <h3 class="gem-title">مقاهي الكورنيش</h3>
               <p class="gem-desc">جلسات هادئة وموسيقى وشاي على كورنيش النيل.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=corniche-cafes"><span>عرض التفاصيل</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+              <a class="gem-cta" href="experience.html?city=luxor&slug=corniche-cafes"><span>عرض التفاصيل</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
             </div>
           </article></li>
           <li><article class="gem">
@@ -1978,7 +1978,7 @@
               <span class="gem-cat">أكلات شعبية</span>
               <h3 class="gem-title">مأكولات تقليدية</h3>
               <p class="gem-desc">كشري وفول وطعمية وخبز شمسي من قلب المطبخ المصري.</p>
-              <a class="gem-cta" href="experience.html?city=luxor&slug=traditional-food"><span>عرض التفاصيل</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+              <a class="gem-cta" href="experience.html?city=luxor&slug=traditional-food"><span>عرض التفاصيل</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
             </div>
           </article></li>
         </ul>
@@ -2019,8 +2019,8 @@
               <div class="sy-row"><h3 class="sy-t">فيلا نايل</h3><a class="sy-btn" href="experience.html?city=luxor&slug=villa-nile">عرض التفاصيل</a></div>
             </li>
           </ul>
-          <button class="sy-nav sy-prev" type="button" aria-label="السابق" hidden><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
-          <button class="sy-nav sy-next" type="button" aria-label="التالي"><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
+          <button class="sy-nav sy-prev" type="button" aria-label="السابق" hidden><svg class="ic fwd" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
+          <button class="sy-nav sy-next" type="button" aria-label="التالي"><svg class="ic fwd" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
         </div>
       </div>
     </section>
@@ -2094,9 +2094,9 @@
       <div class="wrap">
         <header class="lx-head"><div><span class="sec-eyebrow">إلى أين بعد ذلك؟</span><h2 class="display lx-h" id="lx-keep-h">تابع الاستكشاف</h2></div></header>
         <div class="lx-keep-row">
-          <a class="lx-btn" href="aswan.html"><span>استكشف أسوان</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
-          <a class="lx-btn lx-btn--ghost" href="destinations.html?city=luxor"><span>كل الأماكن في الأقصر</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
-          <a class="lx-btn lx-btn--ghost" href="experiences.html?city=luxor"><span>كل التجارب والمنتجات</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="lx-btn" href="aswan.html"><span>استكشف أسوان</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="lx-btn lx-btn--ghost" href="destinations.html?city=luxor"><span>كل الأماكن في الأقصر</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+          <a class="lx-btn lx-btn--ghost" href="experiences.html?city=luxor"><span>كل التجارب والمنتجات</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
         </div>
       </div>
     </section>
@@ -2663,7 +2663,7 @@
   const $ = id => document.getElementById(id), t = k => I18N.t(k), lang = () => document.documentElement.lang || 'ar';
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const svg = (p, z) => '<svg width="' + (z || 16) + '" height="' + (z || 16) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
-  const ARW = ICON('arrow-left', 16);
+  const ARW = ICON('arrow-left', 16, 'fwd');
   const toast = m => { const e = $('toast'); if (!e) return; e.textContent = m; e.classList.add('show'); clearTimeout(e._h); e._h = setTimeout(() => e.classList.remove('show'), 2200); };
   const rm = matchMedia('(prefers-reduced-motion:reduce)'), mobile = matchMedia('(max-width:767px)');
   const F = { q: '', cat: 'all', p: new Set(), pr: new Set(), a: new Set() };

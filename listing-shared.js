@@ -9,7 +9,7 @@ window.EX = (() => {
   const cityName = () => CITIES[city][lang()] || CITIES[city].ar;
   const esc = x => String(x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const svg = (p, z) => '<svg width="' + (z || 16) + '" height="' + (z || 16) + '" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">' + p + '</svg>';
-  const ARW = ICON('arrow-left', 16), CLOCK = ICON('clock', 16), PIN = ICON('map-pin', 16);
+  const ARW = ICON('arrow-left', 16, 'fwd'), CLOCK = ICON('clock', 16), PIN = ICON('map-pin', 16);
   const all = () => EXPERIENCES.list.filter(e => e.city === city);
   const href = e => 'experience.html?city=' + e.city + '&slug=' + e.slug;
   const listHref = (c, cat) => 'experiences.html?city=' + c + (cat ? '&category=' + cat : '');
