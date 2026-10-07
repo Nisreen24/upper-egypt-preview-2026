@@ -8,13 +8,28 @@
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="brand_assets/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-400.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-400-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-500.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-500-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-600.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-600-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-700.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-700-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-serif-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-serif-700.woff2") format("woff2")}
+</style>
+<link rel="stylesheet" href="tailwind.css">
+<style>
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
 
   :root{
     --paper:#f1e4d2;
@@ -367,8 +382,8 @@
   html[dir="ltr"] .ev-nav--next svg{transform:scaleX(-1)} html[dir="ltr"] .ev-nav--prev svg{transform:none}
   .ev-nav:hover{background:#fff;transform:translateY(-50%) scale(1.06)} .ev-nav:active{transform:translateY(-50%) scale(.95)} .ev-nav:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
   .ev-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-4);margin-top:var(--s-4);width:min(100%,1180px);margin-inline:auto}
-  .ev-all{display:inline-flex;align-items:center;gap:var(--s-2);font-size:17px;font-weight:700;color:var(--nav-ink);order:2}
-  .ev-all i{width:32px;height:32px;border-radius:999px;background:var(--rust);color:#fff;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .ev-all{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);order:2;transition:color .2s ease} .ev-all:hover{color:var(--rust-deep)}
+  .ev-all i{display:inline-flex;align-items:center;color:currentColor;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ev-all:hover i{transform:translateX(-4px)} .ev-all:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:8px}
   .ev-thumbs{display:flex;gap:var(--s-2);order:1;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;padding-block:4px}
   .ev-thumbs::-webkit-scrollbar{display:none}
@@ -509,9 +524,9 @@
   .ss-more svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ss-more:hover{background:#fff;transform:translateY(-1px)} .ss-more:hover svg{transform:translateX(-4px)} .ss-more:active{transform:scale(.98)} .ss-more:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
   /* textured panel variant: the artwork PNG supplies the wave edge, paper texture and lotus */
-  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-1410.webp") center bottom/101% 100% no-repeat}
-  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-1410.webp")}
-  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-1410.webp")}
+  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-960.webp") center bottom/101% 100% no-repeat}
+  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-960.webp")}
+  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-960.webp")}
   html[dir="rtl"] .ss-card--tex .ss-panel{transform:scaleX(-1)} html[dir="rtl"] .ss-card--tex .ss-body{transform:scaleX(-1)}
   .ss-card--tex .ss-body{background:transparent;padding-top:64px;padding-bottom:calc(var(--s-4) + 6px)}
   .ss-card--tex .ss-cat{margin-top:0}
@@ -702,7 +717,7 @@
   .st-feature,.ss-card,.ev-stage{border-radius:var(--radius-card-lg)}
   /* buttons: primary (section-level) 48px · in-card 44px · secondary outline 48px */
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta{height:var(--btn-h)!important;min-height:0;font-size:var(--fs-btn);border-radius:var(--radius-btn)}
-  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h-sm);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
+  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta,.card-cta,.gem-cta,.ev-cta,.ss-more{padding-inline:var(--s-4);gap:var(--s-2);font-weight:700}
   .cta svg,.st-cta svg,.rv-cta svg,.gems-cta svg,.news-btn svg,.journey-btn svg,.xa-cta svg,.card-cta svg,.gem-cta svg,.ev-cta svg,.ss-more svg,.st-link svg,.ev-all svg{width:16px;height:16px;min-width:16px;min-height:16px;flex:none}
   /* text links get a 44px tap area without changing their look */
@@ -746,7 +761,7 @@
 
   .xh-media{background:#b0703c;position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:2;
     width:300px;height:400px;max-width:95vw;max-height:85vh;border-radius:16px;overflow:hidden;
-    box-shadow:0 30px 100px rgba(43,29,14,.3);will-change:width,height}
+    will-change:width,height}
   .xh-media img,.xh-media video{width:100%;height:100%;object-fit:cover;object-position:center;pointer-events:none;user-select:none}
   .xh-shade{position:absolute;inset:0;background:#000;opacity:.5;pointer-events:none}
   .xh-band{position:absolute;inset-inline:0;bottom:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none;z-index:2}
@@ -804,9 +819,9 @@
   @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
   .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
   .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
-  .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
+  .lx-all{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:6px;white-space:nowrap;transition:color .2s ease}
   .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
+  .lx-all:hover{color:var(--rust-deep)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
   html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg,html[dir="ltr"] .lx-keep .lx-btn svg{transform:scaleX(-1)}
   .lx-keep .lx-btn.lx-btn--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
   .lx-keep .lx-btn.lx-btn--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
@@ -822,7 +837,6 @@
   .lx-btn:hover{transform:translateY(-1px);background:var(--rust-deep)} .lx-btn:active{transform:scale(.98)}
   @media (min-width:1024px){
     .lx-split-in{grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--s-5)}
-    .lx-split--3 .lx-split-in{grid-template-columns:minmax(0,5fr) minmax(0,6fr) auto}
     .lx-art{border-radius:0;aspect-ratio:auto;height:230px}
     .lx-art--wide{height:260px;border-radius:var(--radius-card)}
     html[dir="rtl"] .lx-art--wide{-webkit-mask-image:linear-gradient(to left,transparent 0,#000 26%);mask-image:linear-gradient(to left,transparent 0,#000 26%)}
@@ -901,6 +915,13 @@
   .ac-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-3);margin-bottom:var(--s-4)}
   .ac-h{font-size:var(--fs-h2);line-height:1.2;color:var(--ink);font-weight:700}
   html.lang-latin .ac-h{line-height:1.08}
+  /* activities: side pattern rails, same treatment as the home "picked for you" section */
+  .ac{position:relative}
+  .ac::before,.ac::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:url("ASSETS/Group 6.webp") center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
+  .ac::before{inset-inline-start:var(--s-3)} .ac::after{inset-inline-end:var(--s-3)}
+  .ac > .wrap{position:relative;z-index:1}
+  @media (min-width:1024px){.ac::before,.ac::after{display:block}}
+  @media (min-width:1280px){.ac::before,.ac::after{width:64px;background-size:64px auto;inset-inline-start:var(--s-4)}.ac::after{inset-inline-start:auto;inset-inline-end:var(--s-4)}}
   @media (min-width:768px){.ac-head{flex-direction:row;align-items:flex-end;justify-content:space-between;margin-bottom:var(--s-5)}}
   .ac-all{display:inline-flex;align-items:stretch;gap:6px;height:var(--btn-h);font-size:var(--fs-btn);font-weight:700;color:#fff;border-radius:var(--radius-btn)}
   .ac-all-t,.ac-all-i{display:inline-flex;align-items:center;justify-content:center;background:var(--rust);border-radius:var(--radius-btn);transition:background-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1);
@@ -1201,9 +1222,52 @@
   .ci-now .ci-sub{white-space:normal}
   #ciPane-move .ci-card{max-height:262px;overflow:auto;scrollbar-width:thin}
   .ci-move li{gap:8px} .ci-move-sub{gap:4px;font-size:12.5px} .ci-move p{font-size:12.5px}
+  /* v3.2: minimalist panes: icon, title, one line */
+  .ci-best{flex:1;align-content:center;gap:26px 24px}
+  .ci-best li{gap:4px}
+  .ci-best-head b{gap:10px} .ci-best-head b svg{color:var(--rust)}
+  .ci-best small{font-size:13.5px;color:var(--muted)}
+  .ci-move{align-content:center}
+  .ci-move li{gap:12px;justify-content:center}
+  .ci-move p{margin:0;font-size:13.5px;line-height:1.6;color:var(--muted)}
+  #ciPane-move .ci-card{overflow:hidden}
+  @media (max-width:899px){.ci-in{grid-template-columns:minmax(0,1fr)}}
+  @media (max-width:767px){#ciPane-move .ci-card{max-height:none}}
   .lx-leaf{position:relative;overflow:hidden;isolation:isolate}
   .lx-leaf .paths-fronds{z-index:-1;opacity:.5}
   .lx-leaf + .lx-leaf .paths-fronds{transform:scaleX(-1)}
+  /* sustainable tourism: editorial two-column highlights */
+  .sus-in{display:grid;gap:var(--s-5);align-items:center}
+  .sus-list{list-style:disc;margin:var(--s-4) 0 0;padding:0 1.15em 0 0;display:grid;gap:10px}
+  html[dir="ltr"] .sus-list{padding:0 0 0 1.15em}
+  .sus-list li{font-size:16px;line-height:1.75;color:var(--muted);padding-inline-start:4px}
+  .sus-list li::marker{color:var(--rust)}
+  .sus-list li strong{color:var(--ink);font-weight:700}
+  .sus-art{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:16/9;background:#2b1d0e;
+    box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -22px rgba(43,29,14,.35)}
+  .sus-art img{display:block;width:100%;height:100%;object-fit:cover}
+  .sus-zoom{position:absolute;top:12px;inset-inline-end:12px;width:40px;height:40px;border-radius:10px;background:rgba(255,255,255,.92);color:var(--ink);display:grid;place-items:center;
+    box-shadow:0 1px 2px rgba(43,29,14,.12),0 8px 18px -6px rgba(43,29,14,.5);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease}
+  .sus-zoom:hover{transform:translateY(-1px);background:#fff} .sus-zoom:active{transform:scale(.96)} .sus-zoom:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:2px}
+  .sus-dlg{width:100vw;height:100vh;max-width:100vw;max-height:100vh;margin:0;border:0;padding:0;background:transparent;overflow:hidden;color:#fff}
+  .sus-dlg::backdrop{background:rgba(11,9,6,.78);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .sus-dlg-stage{position:absolute;inset:0;display:grid;place-items:center;padding:76px 24px 124px}
+  .sus-dlg-view{position:relative;overflow:hidden;border-radius:16px;background:#0b0906;box-shadow:0 30px 80px -20px rgba(0,0,0,.7);touch-action:none}
+  .sus-dlg-view img{display:block;max-width:min(72vw,1100px);max-height:calc(100vh - 200px);width:auto;height:auto;transform-origin:center;transition:transform .35s cubic-bezier(.2,.8,.2,1);user-select:none;-webkit-user-drag:none}
+  .sus-dlg-view.is-zoomed{cursor:grab} .sus-dlg-view.is-dragging{cursor:grabbing} .sus-dlg-view.is-dragging img{transition:none}
+  .sus-dlg-x{position:absolute;top:20px;inset-inline-end:20px;width:48px;height:48px;border-radius:999px;background:#fff;color:var(--ink);display:grid;place-items:center;box-shadow:0 2px 6px rgba(0,0,0,.25),0 10px 24px -10px rgba(0,0,0,.6);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease}
+  .sus-dlg-x:hover{transform:scale(1.06);background:#f6ead8} .sus-dlg-x:active{transform:scale(.95)} .sus-dlg-x:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .sus-dlg-zoom{position:absolute;bottom:14px;inset-inline-end:14px;display:inline-flex;align-items:center;gap:2px;padding:4px;border-radius:999px;background:rgba(11,9,6,.55);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+  .sus-dlg-zoom button{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;color:#fff;background:transparent;transition:background-color .25s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .sus-dlg-zoom button:hover{background:rgba(255,255,255,.18)} .sus-dlg-zoom button:active{transform:scale(.94)} .sus-dlg-zoom button:focus-visible{outline:2px solid #fff;outline-offset:2px}
+  .sus-dlg-zoom [data-zoom="in"]{background:#fff;color:var(--ink)} .sus-dlg-zoom [data-zoom="in"]:hover{background:#f6ead8}
+  .sus-dlg-zoom button:disabled{opacity:.35;pointer-events:none}
+  .sus-dlg-pct{min-width:54px;text-align:center;font-size:14px;font-weight:700;font-variant-numeric:tabular-nums;direction:ltr}
+  .sus-dlg-thumb{position:absolute;bottom:20px;inset-inline-start:20px;width:112px;height:76px;padding:0;border-radius:10px;overflow:hidden;border:2px solid #fff;background:#000;box-shadow:0 8px 24px -8px rgba(0,0,0,.6);transition:transform .3s cubic-bezier(.2,.8,.2,1)}
+  .sus-dlg-thumb img{display:block;width:100%;height:100%;object-fit:cover}
+  .sus-dlg-thumb:hover{transform:translateY(-2px)} .sus-dlg-thumb:active{transform:scale(.97)} .sus-dlg-thumb:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  @media (max-width:767px){.sus-dlg-stage{padding:70px 12px 112px}.sus-dlg-view img{max-width:calc(100vw - 24px);max-height:calc(100vh - 182px)}.sus-dlg-x{top:14px;inset-inline-end:14px;width:44px;height:44px}.sus-dlg-thumb{width:88px;height:60px;bottom:16px;inset-inline-start:16px}.sus-dlg-zoom{bottom:10px;inset-inline-end:10px}.sus-dlg-zoom button{width:36px;height:36px}}
+  @media (min-width:1024px){.sus-in{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-7)}.sus-list{margin-top:var(--s-5);gap:12px}}
   /* food cards */
   .fd-row{display:grid;grid-auto-flow:column;grid-auto-columns:min(78vw,320px);gap:var(--s-4);margin:0;list-style:none;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;overscroll-behavior-x:contain;
     margin-inline:calc(var(--s-3) * -1);padding:12px var(--s-3) var(--s-3);scroll-padding-inline:var(--s-3)}
@@ -1213,10 +1277,6 @@
   @media (min-width:1024px){.fd-row{grid-auto-flow:row;grid-auto-columns:auto;grid-template-columns:repeat(4,minmax(0,1fr));overflow:visible;margin-inline:0;padding:0}}
   .fd-row .gem-title{font-size:var(--fs-h3)}
   /* credits */
-  .lx-credits{background:#fbf7ef;padding-block:0 var(--s-4);font-size:12.5px;color:var(--muted)}
-  .lx-credits summary{display:inline-flex;align-items:center;min-height:var(--tap);cursor:pointer;font-weight:600;border-radius:var(--radius-xs)}
-  .lx-credits summary:hover{color:var(--rust)} .lx-credits summary:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:2px}
-  .lx-credits p{margin:0 0 var(--s-2);line-height:1.7!important;text-align:left}
   .lx-stories{padding-block:var(--s-7) var(--s-6)}
   @media (min-width:1024px){
     .lx-stories .st-grid{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
@@ -1228,10 +1288,8 @@
     .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
   }
   /* ambient sound */
-  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:12px;height:56px;padding-inline:var(--s-4);border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:16px;font-weight:700;white-space:nowrap;
+  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;
     border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  .snd::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--rust);opacity:0;pointer-events:none}
-  .snd[aria-pressed="false"]::before{animation:snd-ring 2.2s ease-out infinite}
   @keyframes snd-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
   .snd[aria-pressed="true"]{background:var(--ink)}
   .snd-ico{flex:none;width:22px;height:22px}
@@ -1441,17 +1499,17 @@
 
     <!-- Brand (inline-start = right in RTL) -->
     <a href="index.html" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
-      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
-      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" decoding="async">
+      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
+      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" decoding="async" loading="lazy">
     </a>
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
       <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-      <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
-      <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="index.html#experiences">التجارب</a>
-        <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+      <li><a class="nav-link" href="travel-ideas.html">الجولات</a></li>
+      <li><a class="nav-link" href="destinations.html" aria-current="page">الوجهات</a></li>
+      <li><a class="nav-link" href="experiences.html">التجارب</a></li>
+      <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
       <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
@@ -1493,9 +1551,9 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden" role="dialog" aria-label="قائمة التنقل">
     <a href="index.html">الرئيسية</a>
-    <a href="index.html#tours">الجولات</a>
-    <a href="index.html#destinations" aria-current="page">الوجهات</a>
-    <a href="index.html#experiences">التجارب</a>
+    <a href="travel-ideas.html">الجولات</a>
+    <a href="destinations.html" aria-current="page">الوجهات</a>
+    <a href="experiences.html">التجارب</a>
     <a href="resources.html">لرواد الأعمال</a>
     <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
@@ -1574,17 +1632,64 @@
       </div>
     </nav>
 
-    <section class="lx-sec lx-split lx-split--3 lx-leaf" aria-labelledby="lx-sus">
+    <section class="lx-sec lx-leaf sus" aria-labelledby="lx-sus">
       <img class="paths-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy">
-      <div class="wrap lx-split-in">
-        <div class="lx-copy">
+      <div class="wrap sus-in">
+        <div class="sus-copy">
           <h2 class="display lx-h" id="lx-sus">السياحة المستدامــــة في الأقصر</h2>
-          <p>نعمل مع المجتمع المحلي للحفاظ على تراث الأقصر الثقافي والطبيعي، ودعم السياحة المسؤولة التي تساهم في تنمية المنطقة وتوفير الفرص للأجيال القادمة.</p>
+          <ul class="sus-list" role="list">
+            <li><strong>الحفاظ على التراث</strong> استكشف المواقع التاريخية بطريقة تحافظ على قيمتها وتساعد في صونها للأجيال القادمة.</li>
+            <li><strong>دعم أهل الأقصر</strong> اختر التجارب والخدمات المحلية التي تخلق فرصًا حقيقية للمجتمع وتعيد جزءًا من أثر السياحة إليه.</li>
+            <li><strong>اكتشاف الحرف الأصيلة</strong> تعرف على الحرفيين والمنتجات المحلية التي تحمل مهارات وقصصًا متوارثة عبر الأجيال.</li>
+            <li><strong>عِش التجربة المحلية</strong> اقترب من ثقافة الأقصر من خلال تجارب أصيلة تمنحك فهمًا أعمق للمكان وأهله.</li>
+          </ul>
         </div>
-        <div class="lx-art lx-art--both"><img src="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp" srcset="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-480.webp 480w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp 960w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-1440.webp 1440w" sizes="(min-width:1024px) 560px, 100vw" alt="معبد الأقصر مطلًّا على النيل عند الغروب" loading="lazy" decoding="async"></div>
-        <a class="lx-btn" href="experiences.html?city=luxor"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg><span>اكتشف المزيد</span></a>
+        <div class="sus-art"><img src="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp" srcset="ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-480.webp 480w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-960.webp 960w, ASSETS/7d3260b6-e059-456d-afd3-cdbeb1af3126-1440.webp 1440w" sizes="(min-width:1024px) 620px, 100vw" alt="معبد الأقصر مطلًّا على النيل عند الغروب" loading="lazy" decoding="async"><button class="sus-zoom" type="button" aria-label="عرض الصورة بحجم أكبر"><svg width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-50.34,50.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM106.34,138.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l50.35-50.34a8,8,0,0,0-11.32-11.32Z"/></svg></button></div>
       </div>
     </section>
+    <dialog class="sus-dlg" id="susDlg" aria-label="عرض الصورة بحجم أكبر">
+      <div class="sus-dlg-stage">
+        <div class="sus-dlg-view">
+          <img id="susDlgImg" src="" alt="">
+          <div class="sus-dlg-zoom" role="group" aria-label="التكبير">
+            <button type="button" data-zoom="out" aria-label="تصغير"><svg width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128Z"/></svg></button>
+            <span class="sus-dlg-pct" aria-live="polite">100%</span>
+            <button type="button" data-zoom="in" aria-label="تكبير"><svg width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H136v80a8,8,0,0,1-16,0V136H40a8,8,0,0,1,0-16h80V40a8,8,0,0,1,16,0v80h80A8,8,0,0,1,224,128Z"/></svg></button>
+          </div>
+        </div>
+      </div>
+      <button class="sus-dlg-x" type="button" aria-label="إغلاق"><svg width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
+      <button class="sus-dlg-thumb" type="button" aria-label="إعادة الصورة إلى الحجم الأصلي" aria-current="true"><img src="" alt=""></button>
+    </dialog>
+    <script>(() => {
+      const art = document.querySelector('.sus-art'), btn = art && art.querySelector('.sus-zoom'), dlg = document.getElementById('susDlg'); if (!btn || !dlg) return;
+      const src = art.querySelector('img'), view = dlg.querySelector('.sus-dlg-view'), full = view.querySelector('img'), thumb = dlg.querySelector('.sus-dlg-thumb'), pct = dlg.querySelector('.sus-dlg-pct');
+      const zin = dlg.querySelector('[data-zoom="in"]'), zout = dlg.querySelector('[data-zoom="out"]');
+      const STEPS = [1, 1.25, 1.5, 2, 2.5, 3]; let i = 0, x = 0, y = 0, drag = null;
+      const best = () => { const c = (src.getAttribute('srcset') || '').split(',').map(s => s.trim().split(/\s+/)).filter(p => p[0]); c.sort((a, b) => parseInt(b[1]) - parseInt(a[1])); return c.length ? c[0][0] : (src.currentSrc || src.src); };
+      const apply = () => {
+        const z = STEPS[i];
+        if (z === 1) { x = 0; y = 0; } else { const r = view.getBoundingClientRect(), mx = r.width * (z - 1) / 2, my = r.height * (z - 1) / 2; x = Math.max(-mx, Math.min(mx, x)); y = Math.max(-my, Math.min(my, y)); }
+        full.style.transform = 'translate(' + x + 'px,' + y + 'px) scale(' + z + ')';
+        pct.textContent = Math.round(z * 100) + '%'; zout.disabled = i === 0; zin.disabled = i === STEPS.length - 1; view.classList.toggle('is-zoomed', i > 0);
+      };
+      const zoom = d => { i = Math.max(0, Math.min(STEPS.length - 1, i + d)); apply(); };
+      zin.addEventListener('click', () => zoom(1)); zout.addEventListener('click', () => zoom(-1));
+      thumb.addEventListener('click', () => { i = 0; apply(); });
+      full.addEventListener('dblclick', () => { i = i ? 0 : 2; apply(); });
+      view.addEventListener('wheel', e => { e.preventDefault(); zoom(e.deltaY < 0 ? 1 : -1); }, { passive: false });
+      view.addEventListener('pointerdown', e => { if (i === 0 || e.button || e.target.closest('.sus-dlg-zoom')) return; drag = { px: e.clientX, py: e.clientY, x, y }; view.setPointerCapture(e.pointerId); view.classList.add('is-dragging'); e.preventDefault(); });
+      view.addEventListener('pointermove', e => { if (!drag) return; x = drag.x + (e.clientX - drag.px); y = drag.y + (e.clientY - drag.py); apply(); });
+      const end = () => { drag = null; view.classList.remove('is-dragging'); }; view.addEventListener('pointerup', end); view.addEventListener('pointercancel', end);
+      dlg.addEventListener('keydown', e => {
+        if (e.key === '+' || e.key === '=') { zoom(1); e.preventDefault(); } else if (e.key === '-' || e.key === '_') { zoom(-1); e.preventDefault(); }
+        else if (i > 0 && e.key.startsWith('Arrow')) { const s = 48; if (e.key === 'ArrowLeft') x += s; if (e.key === 'ArrowRight') x -= s; if (e.key === 'ArrowUp') y += s; if (e.key === 'ArrowDown') y -= s; apply(); e.preventDefault(); }
+      });
+      btn.addEventListener('click', () => { full.src = best(); full.alt = src.alt; thumb.querySelector('img').src = src.currentSrc || src.src; i = 0; x = 0; y = 0; apply(); dlg.showModal(); document.body.classList.add('no-scroll'); zin.focus(); });
+      dlg.querySelector('.sus-dlg-x').addEventListener('click', () => dlg.close());
+      dlg.addEventListener('click', e => { if (e.target === dlg || e.target.classList.contains('sus-dlg-stage')) dlg.close(); });
+      dlg.addEventListener('close', () => { document.body.classList.remove('no-scroll'); btn.focus(); });
+    })();</script>
 
     <section class="lx-sec ci" id="cityInfo" aria-labelledby="lx-about" data-city="luxor">
       <div class="wrap ci-in">
@@ -1998,9 +2103,6 @@
   </div>
 </main>
 
-<aside class="lx-credits" aria-label="حقوق الصور"><div class="wrap"><details><summary>حقوق الصور</summary>
-      <p dir="ltr" lang="en">Wikimedia Commons: Winter Palace, Sonesta St George, Jolie Ville infinity pool, Valley of the Kings — Marc Ryckaert (CC BY-SA 4.0) · Steigenberger — Olaf Tausch (CC BY 3.0) · Hôtel Villa Nile — Chabe01 (CC BY-SA 4.0) · Egyptian Koshari — Basma (CC BY-SA 4.0) · Small restaurant in Luxor — anagh (CC BY-SA 3.0). Music: “Desert City” by Kevin MacLeod, incompetech.com (CC BY 4.0).</p></details></div></aside>
-
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
   <img class="footer-lotus footer-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.webp" alt="" aria-hidden="true" loading="lazy" width="383" height="383">
@@ -2008,20 +2110,20 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
-        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
+        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
         <p class="footer-support">بدعم من</p>
         <div class="partner-logos"><img src="brand_assets/aecid.png" alt="AECID — Spanish Agency for International Development Cooperation" width="720" height="320" loading="lazy"><img class="tall" src="brand_assets/cideal.png" alt="Cideal" width="544" height="757" loading="lazy"></div>
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
-        <h3 class="footer-h" id="f-explore">استكشـف</h3>
+        <h2 class="footer-h" id="f-explore">استكشـف</h2>
         <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
-        <h3 class="footer-h" id="f-platform">المنصـة</h3>
+        <h2 class="footer-h" id="f-platform">المنصـة</h2>
         <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
-        <h3 class="footer-h">تابعنـا</h3>
+        <h2 class="footer-h">تابعنـا</h2>
         <div class="footer-social">
           <a href="#" aria-label="لينكدإن"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></svg></a>
           <a href="#" aria-label="يوتيوب"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></svg></a>
@@ -2478,7 +2580,7 @@
   overflow(); onScroll();
 })();
 </script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="vendor/gsap.min.js"></script>
 <script>
 /* Activities: expanding cards, same timeline as the home experiences section */
 (() => {
@@ -2725,8 +2827,8 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     const ORDER = ['winter', 'spring', 'summer', 'autumn']; const cur = window.__ciNow ? window.__ciNow.temp : null;
     $('ciSeasons').innerHTML = ORDER.map(k => D.seasons.find(x => x.k === k)).map(s => { const pos = cur == null ? 0 : Math.max(0, Math.min(100, Math.round((cur - s.min) / (s.max - s.min) * 100))); return '<li class="ci-season ci-season--' + s.k + '"><div class="ci-season-head">' + ICO[s.k] + '<span>' + esc(t(s.n)) + '</span></div><div class="ci-range"><span>' + s.min + '.0°</span><span class="ci-bar"><i></i><u style="left:' + pos + '%" title="' + esc(t('القراءة الحالية')) + '"></u></span><span>' + s.max + '.0°</span></div><span class="ci-months">' + esc(t(s.months)) + '</span></li>'; }).join('');
     $('ciBestNote').textContent = t(D.bestNote);
-    $('ciBest').innerHTML = D.seasons.map(s => '<li class="' + (s.rec ? 'is-rec' : '') + '"><div class="ci-best-head"><b>' + ICO[s.k] + esc(t(s.n)) + '</b>' + (s.rec ? '<span class="ci-rec">' + esc(t('موصى به')) + '</span>' : '') + '</div><small>' + esc(t(s.months)) + ' · ' + s.min + '–' + s.max + '°</small><p>' + esc(t(s.note)) + '</p></li>').join('');
-    $('ciMove').innerHTML = Object.entries(MOVE).map(([k, [title, keys]]) => { const items = keys.map(key => D.transport.find(m => m.k === key)).filter(Boolean); if (!items.length) return ''; return '<li><span class="ci-move-ico">' + ICO[items[0].k] + '</span><div><b>' + esc(t(title)) + '</b><ul class="ci-move-sub">' + items.map(m => '<li><b style="font-size:13.5px">' + esc(t(m.n)) + '</b> <span style="color:var(--muted)">' + esc(t(m.s)) + '</span></li>').join('') + '</ul></div></li>'; }).join('');
+    $('ciBest').innerHTML = D.seasons.map(s => '<li><div class="ci-best-head"><b>' + ICO[s.k] + esc(t(s.n)) + '</b></div><small>' + esc(t(s.months)) + '</small></li>').join('');
+    $('ciMove').innerHTML = Object.entries(MOVE).map(([k, [title, keys]]) => { const items = keys.map(key => D.transport.find(m => m.k === key)).filter(Boolean); if (!items.length) return ''; return '<li><span class="ci-move-ico">' + ICO[items[0].k] + '</span><div><b>' + esc(t(title)) + '</b><p>' + items.map(m => esc(t(m.n))).join(' · ') + '</p></div></li>'; }).join('');
     (() => { const d = $('ciDesc'), b = $('ciReadMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
     if (window.__ciNow) paintNow(window.__ciNow); else { $('ciNowTemp').textContent = '—'; $('ciNowLabel').textContent = t('جارٍ التحديث…'); }
   }

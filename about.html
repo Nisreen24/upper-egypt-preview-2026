@@ -8,13 +8,28 @@
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="brand_assets/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-400.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-400-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-500.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-500-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-600.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-600-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-700.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-700-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-serif-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-serif-700.woff2") format("woff2")}
+</style>
+<link rel="stylesheet" href="tailwind.css">
+<style>
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
 
   :root{
     --paper:#f1e4d2;
@@ -367,8 +382,8 @@
   html[dir="ltr"] .ev-nav--next svg{transform:scaleX(-1)} html[dir="ltr"] .ev-nav--prev svg{transform:none}
   .ev-nav:hover{background:#fff;transform:translateY(-50%) scale(1.06)} .ev-nav:active{transform:translateY(-50%) scale(.95)} .ev-nav:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
   .ev-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-4);margin-top:var(--s-4);width:min(100%,1180px);margin-inline:auto}
-  .ev-all{display:inline-flex;align-items:center;gap:var(--s-2);font-size:17px;font-weight:700;color:var(--nav-ink);order:2}
-  .ev-all i{width:32px;height:32px;border-radius:999px;background:var(--rust);color:#fff;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .ev-all{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);order:2;transition:color .2s ease} .ev-all:hover{color:var(--rust-deep)}
+  .ev-all i{display:inline-flex;align-items:center;color:currentColor;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ev-all:hover i{transform:translateX(-4px)} .ev-all:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:8px}
   .ev-thumbs{display:flex;gap:var(--s-2);order:1;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;padding-block:4px}
   .ev-thumbs::-webkit-scrollbar{display:none}
@@ -509,9 +524,9 @@
   .ss-more svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ss-more:hover{background:#fff;transform:translateY(-1px)} .ss-more:hover svg{transform:translateX(-4px)} .ss-more:active{transform:scale(.98)} .ss-more:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
   /* textured panel variant: the artwork PNG supplies the wave edge, paper texture and lotus */
-  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-1410.webp") center bottom/101% 100% no-repeat}
-  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-1410.webp")}
-  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-1410.webp")}
+  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-960.webp") center bottom/101% 100% no-repeat}
+  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-960.webp")}
+  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-960.webp")}
   html[dir="rtl"] .ss-card--tex .ss-panel{transform:scaleX(-1)} html[dir="rtl"] .ss-card--tex .ss-body{transform:scaleX(-1)}
   .ss-card--tex .ss-body{background:transparent;padding-top:64px;padding-bottom:calc(var(--s-4) + 6px)}
   .ss-card--tex .ss-cat{margin-top:0}
@@ -702,7 +717,7 @@
   .st-feature,.ss-card,.ev-stage{border-radius:var(--radius-card-lg)}
   /* buttons: primary (section-level) 48px · in-card 44px · secondary outline 48px */
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta{height:var(--btn-h)!important;min-height:0;font-size:var(--fs-btn);border-radius:var(--radius-btn)}
-  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h-sm);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
+  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta,.card-cta,.gem-cta,.ev-cta,.ss-more{padding-inline:var(--s-4);gap:var(--s-2);font-weight:700}
   .cta svg,.st-cta svg,.rv-cta svg,.gems-cta svg,.news-btn svg,.journey-btn svg,.xa-cta svg,.card-cta svg,.gem-cta svg,.ev-cta svg,.ss-more svg,.st-link svg,.ev-all svg{width:16px;height:16px;min-width:16px;min-height:16px;flex:none}
   /* text links get a 44px tap area without changing their look */
@@ -750,9 +765,9 @@
   @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
   .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
   .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
-  .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
+  .lx-all{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:6px;white-space:nowrap;transition:color .2s ease}
   .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
+  .lx-all:hover{color:var(--rust-deep)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
   html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg{transform:scaleX(-1)}
   html[dir="ltr"] .lx-all:hover svg{transform:scaleX(-1) translateX(-3px)}
 
@@ -1035,10 +1050,8 @@
     .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
   }
   /* ambient sound */
-  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:12px;height:56px;padding-inline:var(--s-4);border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:16px;font-weight:700;white-space:nowrap;
+  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;
     border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  .snd::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--rust);opacity:0;pointer-events:none}
-  .snd[aria-pressed="false"]::before{animation:snd-ring 2.2s ease-out infinite}
   @keyframes snd-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
   .snd[aria-pressed="true"]{background:var(--ink)}
   .snd-ico{flex:none;width:22px;height:22px}
@@ -1264,7 +1277,7 @@
   /* ===== forms (BRD 5.4) ===== */
   .f-form{display:grid;gap:var(--s-4);max-width:720px}
   .f-form fieldset{margin:0;padding:var(--s-4);border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);background:#fff;display:grid;gap:var(--s-3)}
-  .f-form legend{padding-inline:6px;font-size:var(--fs-small);font-weight:800;color:var(--ink)}
+  .f-form legend{float:inline-start;width:100%;margin:0 0 4px;padding:0;font-size:var(--fs-h3);line-height:1.3;font-weight:800;color:var(--ink)}
   .f-field{display:grid;gap:6px}
   .f-field label,.f-label{font-size:var(--fs-body);font-weight:700;color:var(--ink)}
   .f-field .f-hint{margin:0;font-size:13px;color:var(--muted);line-height:1.5}
@@ -1455,18 +1468,18 @@
 
     <!-- Brand (inline-start = right in RTL) -->
     <a href="index.html" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
-      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
-      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" decoding="async">
+      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
+      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" decoding="async" loading="lazy">
     </a>
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
       <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-      <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
-      <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="index.html#experiences">التجارب</a>
-        <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="contact.html" aria-current="page">تواصل معنا</a></li>
+      <li><a class="nav-link" href="travel-ideas.html">الجولات</a></li>
+      <li><a class="nav-link" href="destinations.html">الوجهات</a></li>
+      <li><a class="nav-link" href="experiences.html">التجارب</a></li>
+      <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
@@ -1507,9 +1520,9 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden" role="dialog" aria-label="قائمة التنقل">
     <a href="index.html">الرئيسية</a>
-    <a href="index.html#tours">الجولات</a>
-    <a href="index.html#destinations" aria-current="page">الوجهات</a>
-    <a href="index.html#experiences">التجارب</a>
+    <a href="travel-ideas.html">الجولات</a>
+    <a href="destinations.html">الوجهات</a>
+    <a href="experiences.html">التجارب</a>
     <a href="resources.html">لرواد الأعمال</a>
     <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
@@ -1562,20 +1575,20 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
-        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
+        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
         <p class="footer-support">بدعم من</p>
         <div class="partner-logos"><img src="brand_assets/aecid.png" alt="AECID — Spanish Agency for International Development Cooperation" width="720" height="320" loading="lazy"><img class="tall" src="brand_assets/cideal.png" alt="Cideal" width="544" height="757" loading="lazy"></div>
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
-        <h3 class="footer-h" id="f-explore">استكشـف</h3>
+        <h2 class="footer-h" id="f-explore">استكشـف</h2>
         <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
-        <h3 class="footer-h" id="f-platform">المنصـة</h3>
+        <h2 class="footer-h" id="f-platform">المنصـة</h2>
         <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
-        <h3 class="footer-h">تابعنـا</h3>
+        <h2 class="footer-h">تابعنـا</h2>
         <div class="footer-social">
           <a href="#" aria-label="لينكدإن"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></svg></a>
           <a href="#" aria-label="يوتيوب"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></svg></a>

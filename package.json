@@ -3,5 +3,15 @@
   "type": "module",
   "dependencies": {
     "puppeteer": "^25.12.0"
+  },
+  "devDependencies": {
+    "subset-font": "^2.9.0",
+    "tailwindcss": "^3.4.17"
+  },
+  "scripts": {
+    "css": "tailwindcss -c tailwind.config.cjs -i tailwind.src.css -o tailwind.css --minify",
+    "serve": "node serve.mjs",
+    "audit": "node audit.mjs",
+    "audit:mobile": "node audit.mjs --mobile"
   }
 }

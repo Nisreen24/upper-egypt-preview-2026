@@ -8,13 +8,28 @@
 <link rel="icon" type="image/png" sizes="64x64" href="brand_assets/favicon-64.png">
 <link rel="icon" type="image/png" sizes="512x512" href="brand_assets/favicon-512.png">
 <link rel="apple-touch-icon" sizes="180x180" href="brand_assets/favicon-180.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700;800&family=IBM+Plex+Serif:wght@600;700&display=swap" rel="stylesheet">
-<script src="https://cdn.tailwindcss.com"></script>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-400.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="fonts/sub/ibm-plex-sans-arabic-700.woff2" as="font" type="font/woff2" crossorigin>
 <style>
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
-  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-400.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-400-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-500.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-500-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-600.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-600-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-700.woff2") format("woff2");unicode-range:U+0600-06FF, U+0750-077F, U+0870-0891, U+0897-08E1, U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF, U+FE70-FE74, U+FE76-FEFC, U+102E0-102FB, U+10E60-10E7E, U+10EC2-10EC7, U+10EC9-10EEE, U+10EF0-10EFF, U+1EE00-1EE03, U+1EE05-1EE1F, U+1EE21-1EE22, U+1EE24, U+1EE27, U+1EE29-1EE32, U+1EE34-1EE37, U+1EE39, U+1EE3B, U+1EE42, U+1EE47, U+1EE49, U+1EE4B, U+1EE4D-1EE4F, U+1EE51-1EE52, U+1EE54, U+1EE57, U+1EE59, U+1EE5B, U+1EE5D, U+1EE5F, U+1EE61-1EE62, U+1EE64, U+1EE67-1EE6A, U+1EE6C-1EE72, U+1EE74-1EE77, U+1EE79-1EE7C, U+1EE7E, U+1EE80-1EE89, U+1EE8B-1EE9B, U+1EEA1-1EEA3, U+1EEA5-1EEA9, U+1EEAB-1EEBB, U+1EEF0-1EEF1}
+@font-face{font-family:"IBM Plex Sans Arabic";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/ibm/ibm-plex-sans-arabic-700-latin.woff2") format("woff2");unicode-range:U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD}
+@font-face{font-family:"IBM Plex Sans";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-serif-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-style:normal;font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-serif-700.woff2") format("woff2")}
+</style>
+<link rel="stylesheet" href="tailwind.css">
+<style>
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Bold.woff2") format("woff2");font-weight:700;font-display:swap}
+  @font-face{font-family:"Thmanyah Serif Display";src:url("fonts/sub/thmanyahserifdisplay-Medium.woff2") format("woff2");font-weight:500;font-display:swap}
 
   :root{
     --paper:#f1e4d2;
@@ -367,8 +382,8 @@
   html[dir="ltr"] .ev-nav--next svg{transform:scaleX(-1)} html[dir="ltr"] .ev-nav--prev svg{transform:none}
   .ev-nav:hover{background:#fff;transform:translateY(-50%) scale(1.06)} .ev-nav:active{transform:translateY(-50%) scale(.95)} .ev-nav:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:2px}
   .ev-foot{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-4);margin-top:var(--s-4);width:min(100%,1180px);margin-inline:auto}
-  .ev-all{display:inline-flex;align-items:center;gap:var(--s-2);font-size:17px;font-weight:700;color:var(--nav-ink);order:2}
-  .ev-all i{width:32px;height:32px;border-radius:999px;background:var(--rust);color:#fff;display:grid;place-items:center;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+  .ev-all{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);order:2;transition:color .2s ease} .ev-all:hover{color:var(--rust-deep)}
+  .ev-all i{display:inline-flex;align-items:center;color:currentColor;transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ev-all:hover i{transform:translateX(-4px)} .ev-all:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:8px}
   .ev-thumbs{display:flex;gap:var(--s-2);order:1;min-width:0;max-width:100%;overflow-x:auto;scrollbar-width:none;padding-block:4px}
   .ev-thumbs::-webkit-scrollbar{display:none}
@@ -509,9 +524,9 @@
   .ss-more svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ss-more:hover{background:#fff;transform:translateY(-1px)} .ss-more:hover svg{transform:translateX(-4px)} .ss-more:active{transform:scale(.98)} .ss-more:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
   /* textured panel variant: the artwork PNG supplies the wave edge, paper texture and lotus */
-  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-1410.webp") center bottom/101% 100% no-repeat}
-  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-1410.webp")}
-  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-1410.webp")}
+  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-960.webp") center bottom/101% 100% no-repeat}
+  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-960.webp")}
+  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-960.webp")}
   html[dir="rtl"] .ss-card--tex .ss-panel{transform:scaleX(-1)} html[dir="rtl"] .ss-card--tex .ss-body{transform:scaleX(-1)}
   .ss-card--tex .ss-body{background:transparent;padding-top:64px;padding-bottom:calc(var(--s-4) + 6px)}
   .ss-card--tex .ss-cat{margin-top:0}
@@ -702,7 +717,7 @@
   .st-feature,.ss-card,.ev-stage{border-radius:var(--radius-card-lg)}
   /* buttons: primary (section-level) 48px · in-card 44px · secondary outline 48px */
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta{height:var(--btn-h)!important;min-height:0;font-size:var(--fs-btn);border-radius:var(--radius-btn)}
-  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h-sm);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
+  .card-cta,.gem-cta,.ev-cta,.ss-more{height:var(--btn-h);font-size:var(--fs-btn);border-radius:var(--radius-btn)}
   .cta,.st-cta,.rv-cta,.gems-cta,.news-btn,.journey-btn,.xa-cta,.card-cta,.gem-cta,.ev-cta,.ss-more{padding-inline:var(--s-4);gap:var(--s-2);font-weight:700}
   .cta svg,.st-cta svg,.rv-cta svg,.gems-cta svg,.news-btn svg,.journey-btn svg,.xa-cta svg,.card-cta svg,.gem-cta svg,.ev-cta svg,.ss-more svg,.st-link svg,.ev-all svg{width:16px;height:16px;min-width:16px;min-height:16px;flex:none}
   /* text links get a 44px tap area without changing their look */
@@ -750,9 +765,9 @@
   @media (min-width:1024px){.lx-sec{padding-block:var(--s-5)}.lx-sec:first-child{padding-top:var(--s-7)}}
   .lx-h{font-size:clamp(26px,2.7vw,38px);line-height:1.3;color:var(--ink);font-weight:700}
   .lx-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-4)}
-  .lx-all{display:inline-flex;align-items:center;gap:6px;min-height:44px;font-size:15px;font-weight:700;color:var(--ink);border-radius:6px;white-space:nowrap;transition:color .2s ease}
+  .lx-all{display:inline-flex;align-items:center;gap:8px;min-height:44px;font-size:var(--fs-btn);font-weight:700;color:var(--rust);border-radius:6px;white-space:nowrap;transition:color .2s ease}
   .lx-all svg{transition:transform .35s cubic-bezier(.2,.8,.2,1)}
-  .lx-all:hover{color:var(--rust)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
+  .lx-all:hover{color:var(--rust-deep)} .lx-all:hover svg{transform:translateX(-3px)} .lx-all:active{color:var(--rust-deep)}
   html[dir="ltr"] .lx-all svg,html[dir="ltr"] .lx-go svg{transform:scaleX(-1)}
   html[dir="ltr"] .lx-all:hover svg{transform:scaleX(-1) translateX(-3px)}
 
@@ -1035,10 +1050,8 @@
     .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
   }
   /* ambient sound */
-  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:12px;height:56px;padding-inline:var(--s-4);border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:16px;font-weight:700;white-space:nowrap;
+  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;
     border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  .snd::before{content:"";position:absolute;inset:-2px;border-radius:inherit;border:2px solid var(--rust);opacity:0;pointer-events:none}
-  .snd[aria-pressed="false"]::before{animation:snd-ring 2.2s ease-out infinite}
   @keyframes snd-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
   .snd[aria-pressed="true"]{background:var(--ink)}
   .snd-ico{flex:none;width:22px;height:22px}
@@ -1278,6 +1291,62 @@
   .ep-id-actions{margin-top:auto;padding-top:var(--s-4)}
   .ep-id-actions .dx-cta{margin-top:0} .ep-id-actions .dxi-note{margin-top:var(--s-2)}
   .ep-sec{margin-top:var(--s-6)}
+  /* story chapters */
+  .ep-quote{position:relative;margin:var(--s-4) 0 0;padding:var(--s-3) var(--s-4);border-inline-start:3px solid var(--rust);border-radius:var(--radius-xs);background:linear-gradient(to left,rgba(165,62,26,.07),rgba(165,62,26,0) 70%)}
+  html[dir="ltr"] .ep-quote{background:linear-gradient(to right,rgba(165,62,26,.07),rgba(165,62,26,0) 70%)}
+  .ep-quote-k{display:block;margin-bottom:6px;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--rust)}
+  .ep-quote p{margin:0;font-size:clamp(20px,2vw,26px);line-height:1.6;font-weight:700;color:var(--ink)}
+  .ep-quote footer{margin-top:8px;font-size:var(--fs-small);font-weight:600;color:var(--muted)}
+  .ep-ch{margin-top:var(--s-5);padding-top:var(--s-4);border-top:1px dashed rgba(43,29,14,.14)}
+  .ep-ch-h{display:flex;align-items:center;gap:10px;margin:0 0 var(--s-3);font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .ep-ch-n{display:inline-grid;place-items:center;min-width:34px;height:34px;padding-inline:8px;border-radius:var(--radius-xs);background:rgba(165,62,26,.1);color:var(--rust);font-size:13px;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;vertical-align:middle}
+  .lx-h .ep-ch-n{margin-inline-end:10px;position:relative;top:-3px}
+  .ep-timeline{margin:0;padding:0;list-style:none}
+  .ep-timeline li{position:relative;display:grid;grid-template-columns:72px minmax(0,1fr);column-gap:var(--s-4);padding-bottom:var(--s-4)}
+  .ep-timeline li::before{content:"";position:absolute;top:12px;bottom:-8px;inset-inline-start:calc(72px + var(--s-4) / 2);width:2px;margin-inline-start:-1px;background:rgba(165,62,26,.2)}
+  .ep-timeline li:last-child{padding-bottom:0} .ep-timeline li:last-child::before{display:none}
+  .ep-timeline li::after{content:"";position:absolute;top:6px;inset-inline-start:calc(72px + var(--s-4) / 2);width:12px;height:12px;margin-inline-start:-6px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px #fff,0 0 0 5px rgba(165,62,26,.25);z-index:1}
+  .ep-tl-y{padding-top:2px;font-size:var(--fs-small);font-weight:800;line-height:1.5;color:var(--rust);text-align:end;font-variant-numeric:tabular-nums}
+  .ep-timeline p{margin:0;font-size:var(--fs-body-lg);line-height:1.75;color:var(--body)}
+  .ep-steps{margin:0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:s}
+  .ep-steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:var(--s-3);align-items:start;counter-increment:s}
+  .ep-steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--rust);color:#fff;font-size:14px;font-weight:800}
+  .ep-steps p{margin:0;padding-top:6px;font-size:var(--fs-body-lg);line-height:1.7;color:var(--body)}
+  .ep-impact{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-2)}
+  @media (min-width:640px){.ep-impact{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .ep-impact li{display:grid;gap:4px;align-content:start;padding:var(--s-3);border-radius:var(--radius-md);background:#fbf7ef;border:1px solid rgba(43,29,14,.1)}
+  .ep-impact b{font-size:clamp(24px,2.4vw,32px);line-height:1.1;font-weight:800;color:var(--rust);font-variant-numeric:tabular-nums}
+  .ep-impact span{font-size:var(--fs-small);line-height:1.5;font-weight:600;color:var(--muted)}
+  .ep-visit-grid{display:grid;gap:var(--s-3)}
+  @media (min-width:768px){.ep-visit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .ep-visit-card{display:grid;gap:6px;align-content:start;padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);color:var(--ink);box-shadow:0 1px 2px rgba(43,29,14,.05),0 14px 30px -22px rgba(43,29,14,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1),border-color .25s ease,background-color .25s ease}
+  .ep-visit-card:hover{transform:translateY(-3px);border-color:var(--rust)} .ep-visit-card:active{transform:translateY(0)} .ep-visit-card:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px}
+  .ep-visit-ic{display:grid;place-items:center;width:40px;height:40px;margin-bottom:4px;border-radius:var(--radius-md);background:rgba(165,62,26,.1);color:var(--rust)}
+  .ep-visit-card b{font-size:var(--fs-body-lg);font-weight:700}
+  .ep-visit-card span{font-size:var(--fs-body);line-height:1.6;color:var(--muted)}
+  .ep-visit-card em{margin-top:6px;font-style:normal;font-size:var(--fs-btn);font-weight:700;color:var(--rust)}
+  .ep-visit-card--cta{background:var(--rust);border-color:var(--rust);color:#fff} .ep-visit-card--cta .ep-visit-ic{background:rgba(255,255,255,.16);color:#fff} .ep-visit-card--cta span{color:rgba(255,255,255,.85)} .ep-visit-card--cta em{color:#fff} .ep-visit-card--cta:hover{background:var(--rust-deep);border-color:var(--rust-deep)}
+  .ep-visit-card[hidden]{display:none}
+  /* single story flow */
+  .ep{--ep-w:960px}
+  .ep-flow,.ep .ep-sec{max-width:var(--ep-w);margin-inline:auto}
+  .ep-story{padding:0;background:transparent;border:0;border-radius:0}
+  .ep-story-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-2) var(--s-3)}
+  .ep-story-head .ep-badge{align-self:center}
+  .ep-story .ss-grid--one{margin-top:var(--s-5)}
+  .ep .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
+  .ep .dx-rel.ep-prod--few .ex-grid{grid-template-columns:1fr;gap:var(--s-3)}
+  @media (min-width:768px){
+    .ep .dx-rel.ep-prod--few .gem{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);height:auto}
+    .ep .dx-rel.ep-prod--few .gem-media{aspect-ratio:auto;min-height:300px;height:100%}
+    .ep .dx-rel.ep-prod--few .gem-body{padding:var(--s-5);justify-content:center}
+    .ep .dx-rel.ep-prod--few .gem-title{font-size:var(--fs-h3-lg)}
+    .ep .dx-rel.ep-prod--few .gem-desc{font-size:var(--fs-body);max-width:52ch}
+    .ep .dx-rel.ep-prod--few .gem-cta{width:max-content;margin-top:var(--s-2);padding-inline:var(--s-5)}
+  }
+  .ep-visit-note{margin:var(--s-3) 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .ep-visit-note a{color:var(--rust);font-weight:700} .ep-visit-note a:hover{color:var(--rust-deep)}
+  @media (min-width:1024px){.ep-row{align-items:start}.ep-id{position:sticky;top:calc(var(--tb-top,100px) + 16px)}}
   .ep .dxg{margin-top:var(--s-6)}
   .ex-crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
   .ex-crumb li{display:inline-flex;align-items:center;gap:8px}
@@ -1341,7 +1410,7 @@
   /* information card */
   .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
   @media (max-width:1023px){.dxi{position:relative;top:auto}}
-  .dxi-band{height:52px;background:#f6ead8 url("ASSETS/motifs/strip.png") center/auto 100% repeat-x}
+  .dxi-band{height:48px;background:#f6ead8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Crect width='96' height='48' fill='%23f6ead8'/%3E%3Crect y='4' width='96' height='2' fill='%23a53e1a'/%3E%3Crect y='42' width='96' height='2' fill='%23a53e1a'/%3E%3Crect y='9' width='96' height='1' fill='%23d9a066'/%3E%3Crect y='38' width='96' height='1' fill='%23d9a066'/%3E%3Cpath d='M48 11 61 24 48 37 35 24Z' fill='none' stroke='%23a53e1a' stroke-width='2'/%3E%3Cpath d='M48 17 55 24 48 31 41 24Z' fill='%23d9a066'/%3E%3Cpath d='M14 15 23 24 14 33' fill='none' stroke='%23a53e1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M82 15 73 24 82 33' fill='none' stroke='%23a53e1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='6' cy='24' r='2.5' fill='%23d9a066'/%3E%3Ccircle cx='90' cy='24' r='2.5' fill='%23d9a066'/%3E%3C/svg%3E") center/auto 100% repeat-x}
   .dxi-body{padding:var(--s-4) var(--s-4) var(--s-3)}
   .dxi-h{margin:0;font-size:var(--fs-small);font-weight:800;line-height:1.3;color:var(--ink)}
   html.lang-latin .dxi-h{letter-spacing:.06em;text-transform:uppercase}
@@ -1380,6 +1449,7 @@
   .dx-side{display:grid;gap:var(--s-4)}
   .dx-cta{display:flex;align-items:center;justify-content:center;gap:var(--s-2);height:var(--btn-h);margin-top:var(--s-3);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
   .dx-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .dx-cta:active{transform:scale(.98)} .dx-cta:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+  .dx-cta.dx-cta--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)} .dx-cta.dx-cta--ghost:hover{background:rgba(165,62,26,.08);color:var(--rust-deep);box-shadow:inset 0 0 0 1.5px var(--rust-deep)}
   .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:0;padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}}
   .dx-ent figure{margin:0;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#dcc9a8} .dx-ent img{width:100%;height:100%;object-fit:cover}
@@ -1422,17 +1492,17 @@
 
     <!-- Brand (inline-start = right in RTL) -->
     <a href="index.html" class="brand" aria-label="اكتشف صعيد مصر — الصفحة الرئيسية">
-      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
-      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" decoding="async">
+      <img class="brand-logo brand-logo--ar" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" decoding="async" fetchpriority="high">
+      <img class="brand-logo brand-logo--en" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" decoding="async" loading="lazy">
     </a>
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
       <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-      <li><a class="nav-link" href="index.html#tours">الجولات</a></li>
-      <li><a class="nav-link" href="index.html#destinations" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="index.html#experiences">التجارب</a>
-        <a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+      <li><a class="nav-link" href="travel-ideas.html">الجولات</a></li>
+      <li><a class="nav-link" href="destinations.html">الوجهات</a></li>
+      <li><a class="nav-link" href="experiences.html">التجارب</a></li>
+      <li><a class="nav-link" href="resources.html" aria-current="page">لرواد الأعمال</a></li>
       <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
     </ul>
 
@@ -1474,10 +1544,10 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden" role="dialog" aria-label="قائمة التنقل">
     <a href="index.html">الرئيسية</a>
-    <a href="index.html#tours">الجولات</a>
-    <a href="index.html#destinations" aria-current="page">الوجهات</a>
-    <a href="index.html#experiences">التجارب</a>
-    <a href="resources.html">لرواد الأعمال</a>
+    <a href="travel-ideas.html">الجولات</a>
+    <a href="destinations.html">الوجهات</a>
+    <a href="experiences.html">التجارب</a>
+    <a href="resources.html" aria-current="page">لرواد الأعمال</a>
     <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
@@ -1500,36 +1570,47 @@
         <p class="xh-cap-sub" id="dxSum"></p>
         <div class="dx-tags" id="dxTags"></div>
       </div>
-      <div class="xh-band" aria-hidden="true"></div>
     </div>
   </section>
   <div class="wrap">
     <article class="ex dx ep" id="dx">
-      <div class="ep-row">
+      <div class="ep-flow">
         <section class="ep-story" aria-labelledby="epStoryH">
-          <h2 class="display lx-h" id="epStoryH">قصتها</h2>
+          <div class="ep-story-head"><h2 class="display lx-h" id="epStoryH">قصتها</h2><span class="ep-badge" id="epHelmak" hidden><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg><span>مشارك في برنامج حلمك</span></span></div>
           <p class="ep-sum" id="dxaSum"></p>
+          <blockquote class="ep-quote" id="epQuote" hidden>
+            <span class="ep-quote-k" id="epQuoteK">من القصة</span>
+            <p class="display" id="epQuoteT"></p>
+            <footer id="epQuoteBy"></footer>
+          </blockquote>
           <p class="dx-desc ep-desc" id="dxDesc"></p>
+          <div class="ep-ch" id="epJourney" hidden>
+            <h3 class="ep-ch-h"><span class="ep-ch-n">01</span><span>الرحلة</span></h3>
+            <ol class="ep-timeline" id="epJourneyL"></ol>
+          </div>
+          <div class="ep-ch" id="epProcess" hidden>
+            <h3 class="ep-ch-h"><span class="ep-ch-n">02</span><span>الحرفة: كيف تُصنع</span></h3>
+            <ol class="ep-steps" id="epProcessL"></ol>
+          </div>
+          <div class="ep-ch" id="epImpact" hidden>
+            <h3 class="ep-ch-h"><span class="ep-ch-n">03</span><span>الأثر</span></h3>
+            <ul class="ep-impact" id="epImpactL"></ul>
+          </div>
           <div class="ss-grid ss-grid--one" id="dxStoryGrid" hidden></div>
         </section>
-        <aside class="ep-id" aria-labelledby="epIdH">
-          <div class="dxi-band" aria-hidden="true"></div>
-          <div class="ep-id-body">
-            <span class="ep-badge" id="epHelmak" hidden><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg><span>مشارك في برنامج حلمك</span></span>
-            <h2 class="ep-id-name" id="epIdH"></h2>
-            <p class="ep-biz" id="epIdBiz"></p>
-            <dl class="dxi-facts" id="dxFacts"></dl>
-            <div class="ep-id-actions" id="epContact" hidden>
-              <a class="dx-cta" id="dxContact" href="#"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg><span>تواصل مع رائد الأعمال</span></a>
-              <p class="dxi-note">التواصل يتم مباشرة مع رائد الأعمال عبر قناة التواصل المعلنة في ملفه.</p>
-              <a class="dx-cta dx-cta--ghost" id="epUpdate" href="#" style="margin-top:var(--s-2)"><span>هل هذا ملفك؟ اطلب رابط التحديث</span></a>
-            </div>
-          </div>
-        </aside>
       </div>
       <section class="dx-rel ep-sec" id="dxRel" aria-labelledby="dxRelH" hidden>
-        <header class="lx-head"><h2 class="display lx-h" id="dxRelH">المنتجات والتجارب</h2><a class="lx-all" id="dxRelAll" href="experiences.html"><span>عرض كل التجارب</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
+        <header class="lx-head"><h2 class="display lx-h" id="dxRelH"><span class="ep-ch-n">04</span>المنتجات والتجارب</h2><a class="lx-all" id="dxRelAll" href="experiences.html"><span>عرض كل التجارب</span><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
         <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
+      </section>
+      <section class="ep-visit ep-sec" id="epVisit" aria-labelledby="epVisitH">
+        <header class="lx-head"><h2 class="display lx-h" id="epVisitH"><span class="ep-ch-n">05</span>كيف تزور أو تشتري</h2></header>
+        <div class="ep-visit-grid">
+          <a class="ep-visit-card" id="epVisitCityL" href="#"><i class="ep-visit-ic" data-ic="map-pin,map-pin-line,compass"></i><b>الموقع</b><span id="epVisitCity"></span><em>استكشف المدينة</em></a>
+          <a class="ep-visit-card" id="epVisitProd" href="#"><i class="ep-visit-ic" data-ic="storefront,shopping-bag,basket,tag"></i><b>المنتجات</b><span>تصفّح ما تقدّمه الورشة من منتجات وتجارب</span><em>عرض المنتجات</em></a>
+          <a class="ep-visit-card ep-visit-card--cta" id="epVisitContact" href="#"><i class="ep-visit-ic" data-ic="chat-circle-dots,envelope-simple,envelope,phone"></i><b>التواصل</b><span>مباشرة عبر القناة المعلنة في الملف</span><em>تواصل الآن</em></a>
+        </div>
+        <p class="ep-visit-note" id="epContact" hidden>التواصل يتم مباشرة مع رائد الأعمال عبر قناة التواصل المعلنة في ملفه. <a id="epUpdate" href="#">هل هذا ملفك؟ اطلب رابط التحديث</a></p>
       </section>
       <p class="dx-empty" id="dxEmpty" hidden>هذا الملف غير موجود. <a href="entrepreneurs.html" style="color:var(--rust);font-weight:700">العودة إلى رواد الأعمال</a></p>
     </article>
@@ -1543,20 +1624,20 @@
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
-        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.png" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.png" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
+        <a class="footer-brand" href="index.html" aria-label="اكتشف صعيد مصر — أعلى الصفحة"><img class="brand-logo brand-logo--ar brand-logo--footer" src="brand_assets/logo-ar.webp" alt="اكتشف صعيد مصر" width="602" height="302" loading="lazy"><img class="brand-logo brand-logo--en brand-logo--footer" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt" width="580" height="272" loading="lazy"></a>
         <p class="footer-support">بدعم من</p>
         <div class="partner-logos"><img src="brand_assets/aecid.png" alt="AECID — Spanish Agency for International Development Cooperation" width="720" height="320" loading="lazy"><img class="tall" src="brand_assets/cideal.png" alt="Cideal" width="544" height="757" loading="lazy"></div>
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
-        <h3 class="footer-h" id="f-explore">استكشـف</h3>
+        <h2 class="footer-h" id="f-explore">استكشـف</h2>
         <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
-        <h3 class="footer-h" id="f-platform">المنصـة</h3>
+        <h2 class="footer-h" id="f-platform">المنصـة</h2>
         <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
-        <h3 class="footer-h">تابعنـا</h3>
+        <h2 class="footer-h">تابعنـا</h2>
         <div class="footer-social">
           <a href="#" aria-label="لينكدإن"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,24H40A16,16,0,0,0,24,40V216a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V40A16,16,0,0,0,216,24Zm0,192H40V40H216V216ZM96,112v64a8,8,0,0,1-16,0V112a8,8,0,0,1,16,0Zm88,28v36a8,8,0,0,1-16,0V140a20,20,0,0,0-40,0v36a8,8,0,0,1-16,0V112a8,8,0,0,1,15.79-1.78A36,36,0,0,1,184,140ZM100,84A12,12,0,1,1,88,72,12,12,0,0,1,100,84Z"/></svg></a>
           <a href="#" aria-label="يوتيوب"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M164.44,121.34l-48-32A8,8,0,0,0,104,96v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,145.05V111l25.58,17ZM234.33,69.52a24,24,0,0,0-14.49-16.4C185.56,39.88,131,40,128,40s-57.56-.12-91.84,13.12a24,24,0,0,0-14.49,16.4C19.08,79.5,16,97.74,16,128s3.08,48.5,5.67,58.48a24,24,0,0,0,14.49,16.41C69,215.56,120.4,216,127.34,216h1.32c6.94,0,58.37-.44,91.18-13.11a24,24,0,0,0,14.49-16.41c2.59-10,5.67-28.22,5.67-58.48S236.92,79.5,234.33,69.52Zm-15.49,113a8,8,0,0,1-4.77,5.49c-31.65,12.22-85.48,12-86,12H128c-.54,0-54.33.2-86-12a8,8,0,0,1-4.77-5.49C34.8,173.39,32,156.57,32,128s2.8-45.39,5.16-54.47A8,8,0,0,1,41.93,68c30.52-11.79,81.66-12,85.85-12h.27c.54,0,54.38-.18,86,12a8,8,0,0,1,4.77,5.49C221.2,82.61,224,99.43,224,128S221.2,173.39,218.84,182.47Z"/></svg></a>
@@ -1852,17 +1933,31 @@ document.addEventListener('click', e => { const b = e.target.closest('.gem-fav')
     $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + CRAFT + esc(t(ACT[e.act])) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
     const hero = $('xhMedia').querySelector('img'); if (hero) hero.remove();
     $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + e.img.src + '" srcset="' + e.img.srcset + '" sizes="95vw" alt="' + esc(t(e.img.alt)) + '" style="object-position:' + (e.pos || '50% 50%') + '" fetchpriority="high" decoding="async">');
-    $('epStoryH').textContent = t(e.female === false ? 'قصته' : 'قصتها');
+    $('epStoryH').textContent = t(e.plural ? 'قصتهم' : e.female === false ? 'قصته' : 'قصتها');
     $('dxaSum').textContent = t(e.sum); $('dxDesc').textContent = t(e.desc);
+    /* chapters: every block is fed from the entry's own data and stays hidden when that data is missing */
+    const show = (id, on) => { $(id).hidden = !on; return !!on; };
+    const q = e.quote || (e.story ? { t: e.story.sum, by: e.story.title, fromStory: true } : null);
+    if (show('epQuote', q)) { $('epQuoteK').textContent = t(q.fromStory ? 'من القصة' : e.plural ? 'بكلماتهم' : e.female === false ? 'بكلماته' : 'بكلماتها'); $('epQuoteT').textContent = t(q.t); $('epQuoteBy').textContent = t(q.by || e.name); }
+    const hasJourney = show('epJourney', e.journey && e.journey.length);
+    if (hasJourney) $('epJourneyL').innerHTML = e.journey.map(s => '<li><span class="ep-tl-y">' + esc(t(s.y)) + '</span><p>' + esc(t(s.t)) + '</p></li>').join('');
+    $('dxDesc').hidden = hasJourney; /* the timeline tells the same story; the paragraph stays only as a fallback */
+    if (show('epProcess', e.process && e.process.length)) $('epProcessL').innerHTML = e.process.map(s => '<li><p>' + esc(t(s)) + '</p></li>').join('');
+    if (show('epImpact', e.impact && e.impact.length)) $('epImpactL').innerHTML = e.impact.map(s => '<li><b>' + esc(t(s.n)) + '</b><span>' + esc(t(s.l)) + '</span></li>').join('');
+    $('epVisitCity').textContent = cn; $('epVisitCityL').href = e.city + '.html';
+    $('epVisitProd').href = 'experiences.html?city=' + e.city; $('epVisitProd').hidden = !products.length;
+    $('epVisitContact').hidden = !e.contact; if (e.contact) $('epVisitContact').href = e.contact;
+    /* number only the chapters that are actually on the page */
+    [...document.querySelectorAll('.ep-ch-n')].filter(n => !n.closest('[hidden]')).forEach((n, i) => { n.textContent = String(i + 1).padStart(2, '0'); });
     $('epHelmak').hidden = !e.helmak;
-    $('epIdH').textContent = t(e.name); $('epIdBiz').textContent = t(e.biz);
-    $('dxFacts').innerHTML = [[EX.PIN, 'الموقع', cn], [CRAFT, 'النشاط', t(ACT[e.act])], [TAG, 'محور المحتوى', t(P[e.p])]].map(([i, k, v]) => '<div><dt>' + i + esc(t(k)) + '</dt><dd>' + esc(v) + '</dd></div>').join('');
-    if (products.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = products.map(x => card(x)).join(''); $('dxRelAll').href = 'experiences.html?city=' + e.city; } else $('dxRel').hidden = true;
+    
+    if (products.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = products.map(x => card(x)).join(''); $('dxRel').classList.toggle('ep-prod--few', products.length <= 2); $('dxRelAll').href = 'experiences.html?city=' + e.city; } else $('dxRel').hidden = true;
     if (e.story) { $('dxStoryGrid').hidden = false; $('dxStoryGrid').innerHTML = '<article class="ss-card ss-card--clay ss-card--tex">' + pic(e.story.img, '(max-width:899px) 100vw, 60vw', 'ss-img') + '<span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span><span class="ss-loc"><span>' + esc(cn) + '</span></span><div class="ss-media" aria-hidden="true"></div><div class="ss-panel"><div class="ss-body"><span class="ss-cat">' + esc(t(e.story.cat)) + '</span><h3 class="ss-name display">' + esc(t(e.story.title)) + '</h3><p class="ss-desc">' + esc(t(e.story.sum)) + '</p><a class="ss-more" href="' + e.story.href + '"><span>' + esc(t('اقرأ القصة كاملة')) + '</span>' + EX.ARW + '</a></div></div></article>'; } else $('dxStoryGrid').hidden = true;
     /* contact: only the public route on the entry; the block disappears when there is none */
     $('epUpdate').href = 'update-request.html?kind=entrepreneur&slug=' + e.slug;
-    $('epContact').hidden = false; $('dxContact').hidden = !e.contact; if (e.contact) $('dxContact').href = e.contact;
+    $('epContact').hidden = false;
   }
+  document.querySelectorAll('.ep-visit-ic').forEach(i => { const n = i.dataset.ic.split(',').find(k => window.ICONS && ICONS[k]); if (n) i.innerHTML = ICON(n, 20); });
   document.addEventListener('i18n:change', render); render();
   window.__ent = { slug: e.slug, city: e.city };
 })();

@@ -4,6 +4,7 @@ import { createServer } from "node:http";
 import { readFile, stat } from "node:fs/promises";
 import { join, extname, normalize } from "node:path";
 import { fileURLToPath } from "node:url";
+import { gzipSync } from "node:zlib";
 
 const ROOT = fileURLToPath(new URL(".", import.meta.url));
 const PORT = Number(process.env.PORT) || 3001;
@@ -40,11 +41,12 @@ const server = createServer(async (req, res) => {
     let target = filePath;
     const info = await stat(target).catch(() => null);
     if (info?.isDirectory()) target = join(target, "index.html");
-    const data = await readFile(target);
-    res.writeHead(200, {
-      "Content-Type": MIME[extname(target).toLowerCase()] || "application/octet-stream",
-      "Cache-Control": "no-store",
-    });
+    let data = await readFile(target);
+    const type = MIME[extname(target).toLowerCase()] || "application/octet-stream";
+    // Dev-only approximation of production hosting: gzip text, allow revalidation (no-store blocks bfcache).
+    const headers = { "Content-Type": type, "Cache-Control": "no-cache", "Vary": "Accept-Encoding" };
+    if ((type.startsWith("text/") || ["application/javascript", "application/json", "application/xml"].includes(type.split(";")[0])) && String(req.headers["accept-encoding"] || "").includes("gzip")) { data = gzipSync(data); headers["Content-Encoding"] = "gzip"; }
+    res.writeHead(200, headers);
     res.end(data);
   } catch {
     res.writeHead(404, { "Content-Type": "text/plain; charset=utf-8" });
