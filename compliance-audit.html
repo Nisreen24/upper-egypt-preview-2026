@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<meta name="description" content="Compliance audit of the Discover Upper Egypt prototype against Inception Report v1.2.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
+<title>Compliance Audit vs Inception Report v1.2</title>
+</head>
+<body>
+<style>
+/* layout: one reading column, sticky section index on wide screens; calm document, tables carry the findings */
+:root{--bg:#f7f5f1;--panel:#ffffff;--fg:#24312f;--ink:#0b2230;--muted:#5d5952;--line:#e3dfd6;--accent:#a53e1a;--accent-soft:rgba(165,62,26,.08);
+ --ok:#1f5c45;--ok-bg:#dbeee5;--part:#7a4a05;--part-bg:#fbe9c9;--miss:#7a1f12;--miss-bg:#f8dcd7;--oos:#143a4a;--oos-bg:#cfe4ee;--clar:#4a4a46;--clar-bg:#e9e6e0;
+ --font:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;--serif:"IBM Plex Serif",Georgia,serif}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17150f;--panel:#1f1c16;--fg:#e8e1d6;--ink:#f3ece3;--muted:#a79f92;--line:#36312a;--accent:#e0825c;--accent-soft:rgba(224,130,92,.14);
+ --ok:#9ad7b8;--ok-bg:#1f3a2e;--part:#f0c278;--part-bg:#3f3115;--miss:#f3a79b;--miss-bg:#4a221c;--oos:#a9d3e8;--oos-bg:#1c3542;--clar:#d8d2c7;--clar-bg:#33302a;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#17150f;--panel:#1f1c16;--fg:#e8e1d6;--ink:#f3ece3;--muted:#a79f92;--line:#36312a;--accent:#e0825c;--accent-soft:rgba(224,130,92,.14);
+ --ok:#9ad7b8;--ok-bg:#1f3a2e;--part:#f0c278;--part-bg:#3f3115;--miss:#f3a79b;--miss-bg:#4a221c;--oos:#a9d3e8;--oos-bg:#1c3542;--clar:#d8d2c7;--clar-bg:#33302a;color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--font);font-size:14.5px;line-height:1.6;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 80px}
+.wrap{max-width:1100px;margin:0 auto}
+header.top{padding:48px 0 24px;border-bottom:1px solid var(--line);margin-bottom:8px}
+.eyebrow{font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--accent);margin:0 0 10px}
+h1{font-family:var(--serif);font-size:clamp(28px,4vw,40px);line-height:1.1;letter-spacing:-.02em;color:var(--ink);margin:0 0 12px;text-wrap:balance}
+h2{font-family:var(--serif);font-size:clamp(22px,2.6vw,28px);letter-spacing:-.015em;color:var(--ink);margin:56px 0 10px;scroll-margin-top:16px}
+h2 .n{display:block;font-family:var(--font);font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin-bottom:6px}
+h3{font-size:17px;color:var(--ink);margin:30px 0 8px}
+h4{font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:22px 0 8px}
+p{margin:0 0 12px;max-width:78ch}
+ul{margin:0 0 12px;padding-inline-start:1.2em}li{margin:3px 0}
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px 18px;font-size:13px;color:var(--muted);margin:14px 0 0}
+.meta b{display:block;color:var(--ink);font-weight:600}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:10px;margin:18px 0 8px}
+.kpi{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.kpi b{display:block;font-family:var(--serif);font-size:28px;line-height:1;color:var(--ink);font-variant-numeric:tabular-nums}
+.kpi span{font-size:12px;color:var(--muted)}
+.toc{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13px;margin:14px 0 0}
+.toc a{color:var(--accent);text-decoration:none}.toc a:hover{text-decoration:underline}
+.note{border-inline-start:3px solid var(--accent);background:var(--accent-soft);padding:10px 14px;border-radius:0 8px 8px 0;margin:12px 0;font-size:13.5px;max-width:none}
+.tw{overflow-x:auto;margin:10px 0 18px;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{width:100%;border-collapse:collapse;font-size:13px;min-width:720px}
+th,td{text-align:left;vertical-align:top;padding:8px 10px;border-bottom:1px solid var(--line)}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:700;background:var(--bg);position:sticky;top:0}
+tr:last-child td{border-bottom:0}
+td:first-child{white-space:nowrap;color:var(--muted);font-size:12.5px}
+.s{display:inline-block;padding:2px 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.s.m{background:var(--ok-bg);color:var(--ok)}.s.p{background:var(--part-bg);color:var(--part)}.s.x{background:var(--miss-bg);color:var(--miss)}.s.o{background:var(--oos-bg);color:var(--oos)}.s.c{background:var(--clar-bg);color:var(--clar)}
+.pri{font-weight:700}
+.chk{list-style:none;padding:0;margin:0 0 14px}
+.chk li{padding-inline-start:26px;position:relative;margin:5px 0}
+.chk li::before{content:"";position:absolute;inset-inline-start:0;top:6px;width:14px;height:14px;border:1.5px solid var(--accent);border-radius:4px;background:var(--panel)}
+.chk li.done::before{background:var(--accent);box-shadow:inset 0 0 0 3px var(--panel)}
+code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(--accent-soft);padding:1px 5px;border-radius:4px;color:var(--ink);overflow-wrap:anywhere}
+.small{font-size:12.5px;color:var(--muted)}
+@media (max-width:640px){table{min-width:600px}}
+</style>
+<div class="wrap">
+<header class="top">
+  <p class="eyebrow">Discover Upper Egypt · audit only, no design changes</p>
+  <h1>Compliance Audit of the Prototype vs Inception Report v1.2</h1>
+  <p>Review → compare → identify gaps → document required actions. The prototype at <code>nisreen24.github.io/upper-egypt-preview-2026</code> was checked page by page against Inception Report v1.2 (25 September 2026). Every finding cites the report section or figure it relates to; nothing in the UI was changed. Where the report does not define something, the item is marked <span class="s c">Needs Clarification</span>.</p>
+  <div class="meta"><div><b>Reference</b>Inception Report v1.2, SwiftX for Fundación CIDEAL</div><div><b>Reviewed</b>33 public pages, 6 forms, 10 listings, 3 languages (Arabic fully, English and Spanish spot-checked)</div><div><b>Method</b>source inspection of the published prototype (HTML, data and script files) plus browser checks</div><div><b>Date</b>26 October 2026</div></div>
+  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a></nav>
+</header>
+
+<h2 id="a"><span class="n">A</span>Executive summary</h2>
+<div class="kpis">
+  <div class="kpi"><b>33</b><span>public pages reviewed</span></div>
+  <div class="kpi"><b>23</b><span>requirements matched</span></div>
+  <div class="kpi"><b>23</b><span>partial</span></div>
+  <div class="kpi"><b>2</b><span>missing</span></div>
+  <div class="kpi"><b>4</b><span>out of scope in UI</span></div>
+  <div class="kpi"><b>6</b><span>need clarification</span></div>
+  <div class="kpi"><b>14</b><span>decisions required</span></div>
+  <div class="kpi"><b>7</b><span>critical blockers</span></div>
+</div>
+<p>The prototype covers almost every page in the sitemap (§3.2) and most of the detail, listing and form templates, and the RTL layout mirrors as §7.3 requires. Three things block the core journeys in Figure 7: the tourist cannot reach the entrepreneur (the "contact" route points at the home newsletter anchor), site search returns nothing (§2.1), and pages have no language-specific addresses (§3.1). Five features the report removed or excludes are still present (travel ideas, background music, hotels under "where to stay", favourites, weather). The remaining gaps are content accuracy (programme code, placeholder emails and social links) and the §9 accessibility, SEO and weight rules, which are implementation work for the production build rather than design changes.</p>
+
+<h2 id="b"><span class="n">B</span>Critical issues</h2>
+<p>Resolve before formal handoff or client review. Each blocks a journey in Figure 7, contradicts an explicit rule, or would mislead the client.</p>
+<div class="tw"><table><thead><tr><th>#</th><th>Issue</th><th>Report evidence</th><th>Where in the UI</th><th>Required action</th></tr></thead><tbody>
+<tr><td>1</td><td class="pri">No route from a visitor to the entrepreneur</td><td>§4 Figure 7 tourist flow ends "sends the contact form or follows the link out → the entrepreneur has the enquiry"; Figure 15 "Contact route or link out"; Figure 16 "Contact this entrepreneur → request workflow"</td><td>Entrepreneur data sets <code>contact: 'index.html#contact'</code>, which is the newsletter band on Home. The profile's "التواصل" card and the experience page's booking button resolve to it. The other CTAs open CIDEAL's general contact form.</td><td>Decide the public contact route per entrepreneur (link out, or the request workflow) and point both CTAs at it. Implementation issue; no design change needed.</td></tr>
+<tr><td>2</td><td class="pri">Site search is not functional</td><td>§2.1 "Site search: free text search across destinations, experiences, entrepreneurs and organisations"</td><td>Header search field expands and shows a toast "بحث عن: …"; no results page; placeholder reads "ابحث عن وجهة…"</td><td>Build the results page grouped by type. Until then the control is <span class="s p">Partial</span> (visual, not functional).</td></tr>
+<tr><td>3</td><td class="pri">Language not carried in the URL</td><td>§3.1 "the address carries the language"; §7.3 "the public site serves a path for each language"</td><td>Language is stored in <code>localStorage</code> (<code>se-lang</code>); every page keeps the same address in all three languages</td><td>Production build must use locale paths (<code>/ar/</code>, <code>/en/</code>, <code>/es/</code>). Prototype limitation; log as a build requirement.</td></tr>
+<tr><td>4</td><td class="pri">Descoped "Travel ideas" still in scope of the UI</td><td>§11.1 structural decision 3 (struck through): descoped in v1.1</td><td><code>travel-ideas.html</code>, <code>travel-idea.html</code>, the planning assistant, "الجولات" (Tours) in the top nav, "أفكار السفر" in the footer, and the "Trip ideas" coverflow in both city guides</td><td>Remove, or re-add to scope through change control (§10.4). Decision required (J-1).</td></tr>
+<tr><td>5</td><td class="pri">Background music on Home</td><td>§6.6 "No background music, autoplay audio or self-hosted video will be used"</td><td><code>home-ambient.mp3</code> with a floating sound toggle on <code>index.html</code></td><td>Remove the audio and the toggle.</td></tr>
+<tr><td>6</td><td class="pri">Hotels listed under "Where to stay"</td><td>§6.4 accommodation is "community-based and entrepreneur-run lodging such as a guesthouse or homestay, not a hotel"; §3.5 item 7 "community-based only"</td><td>Luxor stays: Winter Palace, Steigenberger Nile Palace, Jolie Ville Kings Island, Sonesta St. George; hotel entries also in the experiences data and the Aswan guide</td><td>Replace with community-based stays or hide the section until CIDEAL supplies entries (§3.5: an empty section is hidden, not left standing).</td></tr>
+<tr><td>7</td><td class="pri">Wrong programme code and placeholder facts visible</td><td>§1 programme number <b>2022-PCONV-000504</b>; §6.2 logos only from official files; §8.3 canonical domain</td><td>Content data holds "ACDE/000XXX"; footer and contact use <code>hello@example.com</code>; four social links are <code>#</code></td><td>Correct the code, replace placeholder email and links before anyone at CIDEAL reviews the prototype (content correction H-1 to H-3).</td></tr>
+</tbody></table></div>
+
+<h2 id="c"><span class="n">C</span>Page-by-page compliance</h2>
+<p>Statuses: <span class="s m">Matched</span> <span class="s p">Partial</span> <span class="s x">Missing</span> <span class="s o">Out of Scope in UI</span> <span class="s c">Needs Clarification</span>. "Current UI" describes what exists today; "Required action" is a recommendation, separate from the requirement.</p>
+
+<h3>Home</h3>
+<div class="tw"><table id="t-home"><thead><tr><th>Report ref</th><th>Page</th><th>Section / requirement</th><th>Current UI</th><th>Status</th><th>Required action</th></tr></thead><tbody>
+<tr><td>§3.3 Fig 5 #1, Fig 11</td><td>Home</td><td>Hero with the platform line and one image</td><td>Collage hero with eyebrow, headline, lede and one primary button</td><td><span class="s m">Matched</span></td><td>None. The illustrated hero of local people needs CIDEAL's approval (§6.2 consent and authenticity); see H-7.</td></tr>
+<tr><td>§3.3 Fig 5 #2</td><td>Home</td><td>Luxor and Aswan, one card each</td><td>"Journey" art section with two buttons (Explore Luxor / Explore Aswan), not two cards</td><td><span class="s p">Partial</span></td><td>Confirm the buttons satisfy the "one card each" block (J-8).</td></tr>
+<tr><td>§3.3 Fig 5 #3, §3.5 rules</td><td>Home</td><td>Featured destinations, four at once</td><td>"Hidden gems" rail with 3 static cards; appears after experiences</td><td><span class="s p">Partial</span></td><td>Show four (or top up from the source as §3.5 rules describe) and confirm block order (J-8).</td></tr>
+<tr><td>§3.3 Fig 5 #4</td><td>Home</td><td>Featured experiences and products, four cards</td><td>Expanding accordion of 5 experience panels, placed before destinations</td><td><span class="s p">Partial</span></td><td>Confirm the expanding treatment as the approved card variant and the order (J-8).</td></tr>
+<tr><td>§3.3 Fig 5 #5</td><td>Home</td><td>Featured entrepreneurs, four cards</td><td>One feature card + two side cards (3)</td><td><span class="s p">Partial</span></td><td>Show four, or confirm 1 + 2 as the approved layout.</td></tr>
+<tr><td>§3.3 Fig 5 #6, Fig 11</td><td>Home</td><td>Success stories (3 in the wireframe)</td><td>Three colour story cards linking to profiles</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.3 Fig 5 #7</td><td>Home</td><td>Upcoming events</td><td>Event stage with 5 date thumbnails, registration link on detail</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.3 Fig 5 #8</td><td>Home</td><td>Two links at the end: entrepreneurs, organisations</td><td>Three audience cards (tourists, entrepreneurs, stakeholders) placed near the top, directly under the hero</td><td><span class="s p">Partial</span></td><td>Confirm position and the extra "tourists" card (J-8).</td></tr>
+<tr><td>§2.1 Newsletter</td><td>Home</td><td>Email subscribe point on the public site</td><td>Newsletter band on Home and Resources; email + button; confirm / unsubscribe pages exist</td><td><span class="s p">Partial</span></td><td>Add consent and a privacy-notice link (§4.1, §7.4: every form asks consent). See F.</td></tr>
+<tr><td>§2.1 Site search</td><td>Home (header)</td><td>Free text search across four types</td><td>Field shows a toast only</td><td><span class="s p">Partial</span></td><td>Critical B-2.</td></tr>
+<tr><td>§6.6</td><td>Home</td><td>No background music</td><td>Ambient audio with toggle</td><td><span class="s o">Out of Scope in UI</span></td><td>Remove (B-5).</td></tr>
+<tr><td>§11.1 decision 3</td><td>Home / nav</td><td>Travel ideas descoped</td><td>"الجولات" nav item → travel-ideas.html; planner</td><td><span class="s o">Out of Scope in UI</span></td><td>Remove or re-scope (J-1).</td></tr>
+</tbody></table></div>
+
+<h3>Explore, city guides, destinations, experiences</h3>
+<div class="tw"><table><thead><tr><th>Report ref</th><th>Page</th><th>Section / requirement</th><th>Current UI</th><th>Status</th><th>Required action</th></tr></thead><tbody>
+<tr><td>§3.2 Fig 4</td><td>Explore</td><td>Top-level "Explore" section holding Luxor, Aswan, Destinations, Experiences, Entrepreneurs, Map</td><td>No Explore landing page; the footer "للسياح" link opens destinations.html; children all exist</td><td><span class="s c">Needs Clarification</span></td><td>The report draws Explore as a section, not a page. Confirm whether a landing page is expected or a menu group suffices (J-9).</td></tr>
+<tr><td>§3.5 Fig 6 #1</td><td>Luxor, Aswan</td><td>Hero with the city name</td><td>Scroll-expanding video hero with the city name</td><td><span class="s m">Matched</span></td><td>None (video is self-hosted under §6.6 "no self-hosted video": see J-10).</td></tr>
+<tr><td>§3.5 #2</td><td>Luxor, Aswan</td><td>Sustainable tourism in this city</td><td>Section present, two columns with zoomable image</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.5 #3, §6.2 City</td><td>Luxor, Aswan</td><td>About the city (introduction, practical information, images)</td><td>Description with tabs: live weather (Open-Meteo), best time, getting around</td><td><span class="s p">Partial</span></td><td>Live weather is not in §6.2 or §7.1 (needs a third-party API). Keep static best-season text, remove the live reading, or approve the API (J-11).</td></tr>
+<tr><td>§3.5 #4</td><td>Luxor, Aswan</td><td>Things to do (experiences: workshop, guided tour)</td><td>"Top activities" expanding cards</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.5 #5</td><td>Luxor, Aswan</td><td>Places to go (destinations)</td><td>"Places worth visiting" full-bleed viewer</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.5 #6</td><td>Luxor, Aswan</td><td>Where to eat (experiences: food and drink)</td><td>Four food cards</td><td><span class="s p">Partial</span></td><td>Order: appears after "Meet the entrepreneurs" (report: before). J-7.</td></tr>
+<tr><td>§3.5 #7, §6.4</td><td>Luxor, Aswan</td><td>Where to stay, community-based only</td><td>Hotels (B-6)</td><td><span class="s o">Out of Scope in UI</span></td><td>Replace content (B-6).</td></tr>
+<tr><td>§3.5 #8</td><td>Luxor, Aswan</td><td>Meet the entrepreneurs (entrepreneurs in this city)</td><td>Two feature cards, placed before food and stays</td><td><span class="s p">Partial</span></td><td>Reorder per §3.5 (J-7).</td></tr>
+<tr><td>§3.5 #9, Fig 12</td><td>Luxor, Aswan</td><td>Practical information as an accordion (wireframe: Transport, Climate, Safety, Cultural tips)</td><td>Accordion with four FAQ-style items from city data</td><td><span class="s p">Partial</span></td><td>Align the four items with the wireframe topics, or confirm the FAQ set with CIDEAL.</td></tr>
+<tr><td>§3.5 #10</td><td>Luxor, Aswan</td><td>The map, centred on the city, with a list</td><td>Map with search, filters, list beside it, bottom sheet on mobile</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.5 rules</td><td>Luxor, Aswan</td><td>Each section links to its full filtered listing; four cards; hidden when empty</td><td>"View all" links present; four cards in food and stays; empty-state hiding not applicable to static data</td><td><span class="s m">Matched</span></td><td>None (hiding rule is CMS behaviour).</td></tr>
+<tr><td>Fig 12 #7</td><td>Luxor, Aswan</td><td>"Where to buy local products" (wireframe only; absent from the §3.5 list)</td><td>No such section; products are inside experiences</td><td><span class="s c">Needs Clarification</span></td><td>Confirm whether Figure 12's extra section is required (J-12).</td></tr>
+<tr><td>—</td><td>Luxor, Aswan</td><td>Trip ideas coverflow; "Keep exploring" CTA band; ambient sound button</td><td>Present</td><td><span class="s o">Out of Scope in UI</span></td><td>Trip ideas: remove (J-1). "Keep exploring": not in the template; keep only if approved. Sound: remove (§6.6).</td></tr>
+<tr><td>§2.1, Fig 13</td><td>Destinations</td><td>Listing with filters, state held in the URL</td><td>Plain sorted grid, no filters, no search, no URL state; cards carry a live weather chip</td><td><span class="s p">Partial</span></td><td>Confirm the filter set for destinations (Figure 13 is drawn for experiences) and remove the weather chip (J-11).</td></tr>
+<tr><td>Fig 14</td><td>Destination detail</td><td>Lead image, name + city·category·pillar, description, gallery, map location, related experiences and entrepreneurs</td><td>All present (bento gallery, sidebar map, related strips, nearby)</td><td><span class="s m">Matched</span></td><td>The extra 3D "cylinder" gallery is decorative; keep only if approved.</td></tr>
+<tr><td>§2.1, Fig 13</td><td>Experiences and products</td><td>Filters city, category, pillar, price band, accessibility; URL state; load more</td><td>City in URL, category chips, pillar / price / accessibility panel, search, URL sync. No "load more": all results render at once</td><td><span class="s p">Partial</span></td><td>Add pagination or confirm "render all" is acceptable at launch volumes.</td></tr>
+<tr><td>Fig 15, §6.2</td><td>Experience detail</td><td>Lead image, name + city·type·pillar·price band·duration·accessibility, description, the entrepreneur block inside the page, gallery, contact route or link out, map</td><td>All blocks present; contact route resolves to the newsletter anchor (B-1); directions / city info ghost links</td><td><span class="s p">Partial</span></td><td>Fix the contact route (B-1).</td></tr>
+</tbody></table></div>
+
+<h3>Entrepreneurs, resources, events, stories</h3>
+<div class="tw"><table><thead><tr><th>Report ref</th><th>Page</th><th>Section / requirement</th><th>Current UI</th><th>Status</th><th>Required action</th></tr></thead><tbody>
+<tr><td>§2.1 Entrepreneur profiles</td><td>Entrepreneurs</td><td>Directory to browse entrepreneurs</td><td>Grid with city chips, activity and pillar filters, search, URL state</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 16, §6.2</td><td>Entrepreneur profile</td><td>Portrait 4:5, name · activity · city · Helmak badge, story, products and experiences, gallery, contact → request workflow</td><td>Portrait hero, badge, story chapters, impact tiles, products strip, visit cards. No gallery. Contact card → newsletter anchor (B-1)</td><td><span class="s p">Partial</span></td><td>Add the gallery block (§4.2 says the holder edits it) and fix the contact route.</td></tr>
+<tr><td>Fig 16 note, §6.2</td><td>Entrepreneur profile</td><td>Published only where the consent field is set</td><td>Static data; no consent gating visible</td><td><span class="s c">Needs Clarification</span></td><td>CMS behaviour not represented in the prototype; confirm it is a build requirement only.</td></tr>
+<tr><td>§4.2</td><td>Entrepreneur profile, Organisation</td><td>"Request to update" link on the entry's own page</td><td>Present on both (update-request.html?kind=…)</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§3.3 Fig 5 For Entrepreneurs #1, Fig 17</td><td>Resources</td><td>Learning paths open before the raw resource list</td><td>Learning paths grid first, then the resource library</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 5 #2, Fig 17</td><td>Resources</td><td>Resources by topic, format and pillar</td><td>Format chips; topic and pillar in the filter panel; search</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>§6.4 Audience</td><td>Resources</td><td>Audience taxonomy applies to resources, learning paths and events</td><td>No audience filter on resources or learning paths (events have it)</td><td><span class="s x">Missing</span></td><td>Add the audience filter (entrepreneurs, organisations, both).</td></tr>
+<tr><td>Fig 5 #3</td><td>Resources</td><td>Upcoming events for entrepreneurs</td><td>Events carousel on the page</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 5 #4</td><td>Resources</td><td>Success stories, each linking to a profile</td><td>Not on the Resources page; stories live on stories.html (not linked from Resources)</td><td><span class="s p">Partial</span></td><td>Link or embed the stories block in the For Entrepreneurs area.</td></tr>
+<tr><td>Fig 18</td><td>Learning path detail</td><td>Ordered steps (document · video · link); related success stories</td><td>Numbered steps with inline player; "other paths" instead of related stories</td><td><span class="s p">Partial</span></td><td>Add related stories or confirm "other paths" replaces them.</td></tr>
+<tr><td>§2.1 Events</td><td>Events, Event detail</td><td>Dates, location, registration link; audience filter</td><td>Audience chips, city and pillar filters; detail has date, time, place, audience, status and a registration button</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 24</td><td>Success stories</td><td>Filters city, pillar, entrepreneur; featured story above the grid; load more</td><td>Lead story + grid; city chips and pillar filter; no entrepreneur filter; no load more</td><td><span class="s p">Partial</span></td><td>Add the entrepreneur filter; confirm pagination.</td></tr>
+<tr><td>§6.2 Story</td><td>Story detail</td><td>A success story about an entrepreneur, with the entrepreneur and products</td><td>Shared detail template with entrepreneur block and products</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+</tbody></table></div>
+
+<h3>Stakeholders, organisations, about, contact, legal, utility</h3>
+<div class="tw"><table><thead><tr><th>Report ref</th><th>Page</th><th>Section / requirement</th><th>Current UI</th><th>Status</th><th>Required action</th></tr></thead><tbody>
+<tr><td>§3.3 Fig 5 Stakeholders #1, Fig 19</td><td>Stakeholders</td><td>Directory and map, by city, type and value chain; list beside the map with the same result set</td><td>City chips, organisation type and value chain filters, search, list + sticky map</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 5 #2, Fig 20</td><td>Stakeholders</td><td>Register an organisation</td><td>CTA to register-organisation.html</td><td><span class="s m">Matched</span></td><td>None.</td></tr>
+<tr><td>Fig 5 #3, Fig 19</td><td>Stakeholders</td><td>Sector news (and events) reachable from the section</td><td>news.html exists but is not linked from the Stakeholders page</td><td><span class="s p">Partial</span></td><td>Link News (and Events) from the Stakeholders page per Figure 19.</td></tr>
+<tr><td>§2.1 Organisation directory</td><td>Organisation detail</td><td>Public contact routes shown</td><td>One action: external official site when a URL exists, otherwise "Contact via platform" (CIDEAL's form)</td><td><span class="s p">Partial</span></td><td>Render the public contact route as entered (§6.2); confirm what "contact via platform" should do (J-3).</td></tr>
+<tr><td>§3.4 Fig 25</td><td>About the Project</td><td>Four sections: programme identity, local context, work so far, what comes next</td><td>Four numbered blocks in that order, partner pills, quotes</td><td><span class="s m">Matched</span></td><td>Correct the programme code (H-1); partner logos not shown (Fig 25 "partner logos") → see J-13.</td></tr>
+<tr><td>Fig 26, §4.1</td><td>Contact</td><td>Name, email, subject, message, consent; acknowledgement on submission</td><td>All present + conditional business fields when "listing" is chosen; acknowledgement with request id</td><td><span class="s p">Partial</span></td><td>Conditional fields are not in Figure 26: document or remove (J-5).</td></tr>
+<tr><td>§7.4, Annex A</td><td>Privacy notice</td><td>Purpose, controller, sub-processors, retention (24 months), rights; GDPR and Law 151/2020</td><td>Six sections incl. 24-month retention and rights; no mention of GDPR / Law 151, sub-processors, Turnstile or YouTube</td><td><span class="s p">Partial</span></td><td>Extend; final text is CIDEAL's (Annex A, 26 Nov).</td></tr>
+<tr><td>§9.3</td><td>Accessibility statement</td><td>Not in the sitemap</td><td>accessibility.html exists and is linked in the footer</td><td><span class="s c">Needs Clarification</span></td><td>Keep only if approved; harmless addition.</td></tr>
+<tr><td>§4.1, §4.2</td><td>Update request, Edit entry</td><td>One-time link emailed; opens that entry only; changes reviewed before publishing; neutral answer whether or not the address matches</td><td>Request form, token-based edit page with locked fields and "changes are reviewed before they appear"; success copy "if this email is registered, we have sent the link"</td><td><span class="s m">Matched</span></td><td>Add consent to the request form (§4.1). See F.</td></tr>
+<tr><td>§2.1 Organisation directory, Fig 7</td><td>Directory request</td><td>"Requests the contact directory" when no public contact is shown; routes to the queue</td><td>directory-request.html with purpose and consents</td><td><span class="s m">Matched</span></td><td>§4.1 says three request types; this is a fourth → J-2.</td></tr>
+<tr><td>—</td><td>404, newsletter confirm / unsubscribe</td><td>Not specified</td><td>Present</td><td><span class="s c">Needs Clarification</span></td><td>Keep; no report requirement either way.</td></tr>
+<tr><td>§2.1 Map</td><td>Map</td><td>Filtered by city, category, pillar, price band and accessibility for visitors; organisations by city, type and value chain</td><td>Type chips, city / category / pillar / price / accessibility panel, list beside markers; organisation map on Stakeholders</td><td><span class="s m">Matched</span></td><td>Library differs from §7.1 (Leaflet vs MapLibre) → J-6.</td></tr>
+<tr><td>§3.1, §7.3</td><td>All pages (languages)</td><td>Address per language; mirrored Arabic; numerals, dates and map follow the language</td><td>Switcher on every public page; RTL mirrors; dates localised; same URL for all languages</td><td><span class="s p">Partial</span></td><td>Locale paths in the build (B-3).</td></tr>
+<tr><td>§6.3</td><td>All pages (languages)</td><td>English fallback when a translation is missing</td><td>Prototype shows the Arabic string when a translation is missing</td><td><span class="s c">Needs Clarification</span></td><td>CMS fallback policy; confirm the prototype needs no change.</td></tr>
+<tr><td>§9.4</td><td>All pages</td><td>Metadata per page and language, hreflang, canonical, sitemaps, structured data, Open Graph / Twitter cards</td><td>Meta description on Home only; none of the rest</td><td><span class="s x">Missing</span></td><td>Build requirement for the page templates (I).</td></tr>
+</tbody></table></div>
+
+<h2 id="d"><span class="n">D</span>User flow audit</h2>
+<p>Flows extracted from §4 Figures 7, 8, 9 and 10. Each was walked in the prototype without changing it.</p>
+<div class="tw"><table><thead><tr><th>Flow</th><th>Report requirement (start → steps → expected result)</th><th>Current flow</th><th>Status</th><th>Gap</th></tr></thead><tbody>
+<tr><td>Tourist (Fig 7)</td><td>Arrives from search or a shared link → opens a city guide → filters the listing → opens an entry → reads who runs it → sends the contact form or follows the link out → the entrepreneur has the enquiry</td><td>City guide ✓ → listing with filters ✓ → experience detail ✓ → entrepreneur block ✓ → booking CTA resolves to the newsletter anchor; "تواصل معنا" opens CIDEAL's general form</td><td><span class="s p">Partial</span></td><td>Dead end at the last step: the enquiry never reaches the entrepreneur (B-1). "Shared link" also fails to carry the language (B-3).</td></tr>
+<tr><td>Entrepreneur (Fig 7)</td><td>Hears of it at a CIDEAL session → opens For Entrepreneurs → learning path → knows how to reach visitors; or own entry → one-time link → edits and sends → coordinator reviews → updated profile is live</td><td>Resources page ✓ → learning path with ordered steps ✓; profile → "update" link ✓ → request form ✓ → edit page with locked fields and review notice ✓ → success with request number ✓</td><td><span class="s m">Matched</span></td><td>Request form has no consent checkbox (§4.1). Review and publication are CMS behaviour, simulated only.</td></tr>
+<tr><td>Tourism stakeholder (Fig 7)</td><td>Looks for partners → opens the map of organisations → filters by type, city or value chain → contact shown? yes: gets in touch directly; no: requests the contact directory → review queue</td><td>Stakeholders map + list ✓ → filters ✓ → organisation page shows the official site when one exists, else "Contact via platform" → directory request form ✓</td><td><span class="s p">Partial</span></td><td>"Contact shown" only works for organisations with a website URL; a public email or phone route is not rendered (J-3).</td></tr>
+<tr><td>Request → queue (Fig 8)</td><td>Opens a form → which form → confirms consent → complete and passes checks? no: told what to fix; yes: stored, team alerted, acknowledgement emailed, in the queue as new</td><td>Inline errors and summary ✓ → consent on contact, registration, directory and edit ✓ → Turnstile placeholder ✓ → success state with request number ✓ (local queue; emails not sent in the prototype)</td><td><span class="s m">Matched</span></td><td>Newsletter and update-request forms skip consent.</td></tr>
+<tr><td>Submission states (Fig 9) and editorial flow (Fig 10)</td><td>New → in review → approved / rejected / closed; draft → in review → published</td><td>admin-queue.html and admin-entry.html prototype the queue and the three-language entry</td><td><span class="s c">Needs Clarification</span></td><td>CMS screens are outside the public UI audit; they exist as prototypes only.</td></tr>
+</tbody></table></div>
+
+<h2 id="e"><span class="n">E</span>Navigation and sitemap audit</h2>
+<div class="tw"><table><thead><tr><th>Area</th><th>Report (§3.2 Figure 4)</th><th>Current UI</th><th>Finding</th></tr></thead><tbody>
+<tr><td>Top navigation</td><td>Home · Explore · For Entrepreneurs · For Tourism Stakeholders · About the Project · Contact</td><td>Home · Tours · Destinations · Experiences · For Entrepreneurs · Contact</td><td>Extra: Tours (descoped). Missing: Explore, For Tourism Stakeholders, About the Project (both only in the footer). Naming: "Destinations / Experiences" replace the Explore group.</td></tr>
+<tr><td>Explore children</td><td>Luxor, Aswan, Destinations, Experiences and Products, Entrepreneurs, Map</td><td>All six pages exist; reachable from footer "استكشف" group and Home</td><td>Matched as pages; grouping under Explore not reflected in the top nav.</td></tr>
+<tr><td>For Entrepreneurs children</td><td>Resources, Learning Paths, Events, Success Stories</td><td>resources.html (paths + resources + events); stories.html separate</td><td>Stories not linked from the Resources page.</td></tr>
+<tr><td>For Tourism Stakeholders children</td><td>Directory and map, Register as an Organisation, News</td><td>stakeholders.html, register-organisation.html, news.html</td><td>News not linked from the Stakeholders page.</td></tr>
+<tr><td>About, Contact, Privacy</td><td>Top level; privacy reached from the footer</td><td>About and Contact in footer; Contact in top nav; privacy in footer</td><td>About missing from top nav.</td></tr>
+<tr><td>Footer</td><td>AECID logo · CIDEAL logo · partner logos · social · contact · privacy notice (Fig 11)</td><td>Platform logo, AECID and CIDEAL logos, three link groups, four social icons (<code>href="#"</code>), mailto hello@example.com, privacy and accessibility links</td><td>Social links and email are placeholders (H-2, H-3). Footer headings use tatweel (I).</td></tr>
+<tr><td>Listing → detail</td><td>Every card links to a detail page (§3.5)</td><td>All card types link to their detail template</td><td>Matched.</td></tr>
+<tr><td>Locale URLs</td><td>Every branch repeats under /ar/, /en/, /es/ (§3.1)</td><td>One address per page; language in localStorage</td><td>Missing (B-3).</td></tr>
+<tr><td>Extra pages</td><td>—</td><td>travel-ideas, travel-idea, accessibility statement, newsletter confirm / unsubscribe, 404</td><td>Travel ideas out of scope; the rest need confirmation (J).</td></tr>
+</tbody></table></div>
+
+<h2 id="f"><span class="n">F</span>Forms audit</h2>
+<p>Required forms: general inquiry, organisation registration, profile update (§4.1 Figure 8); directory request (Figure 7); newsletter signup (§2.1). Every form "states its purpose and asks for consent before submission" (§7.4) and is protected by Turnstile and rate limits (§4.1).</p>
+<div class="tw"><table><thead><tr><th>Form</th><th>Report fields</th><th>Current fields</th><th>Consent</th><th>Privacy link</th><th>Validation / bot check</th><th>Success state</th><th>Status</th></tr></thead><tbody>
+<tr><td>Contact (Fig 26)</td><td>Name, email, subject, message, consent</td><td>Name, email, subject (select), message, consent; when subject = listing: business name, city, activity, business contact (conditional, required)</td><td>Yes</td><td>No</td><td>Required + email format; Turnstile placeholder; 5 / hour limit</td><td>Fieldsets hide; green banner with request number</td><td><span class="s p">Partial</span> conditional fields undocumented (J-5); no privacy link</td></tr>
+<tr><td>Organisation registration (Fig 20)</td><td>Organisation name, type, city, short description, public contact route, your name and email, consent; privacy notice link</td><td>Applicant name + email; organisation name, type, city, six value-chain checkboxes, description, public contact; private contact name / phone / email; directory-listing consent; two consents</td><td>Yes (2 required)</td><td>No</td><td>As above</td><td>Banner + "CIDEAL creates a draft entry" note</td><td><span class="s p">Partial</span> extra private-contact and value-chain fields (J-4); no privacy link</td></tr>
+<tr><td>Profile update request (§4.2)</td><td>Registered email; neutral response whether or not it matches</td><td>Email + entry type (entrepreneur / organisation)</td><td><b>No</b></td><td>No</td><td>Turnstile placeholder</td><td>"If this email is registered with us, we have sent the link" (neutral)</td><td><span class="s p">Partial</span> add consent (§4.1)</td></tr>
+<tr><td>Edit entry via one-time link (Fig 28)</td><td>Holder edits descriptive text, gallery, contact route (entrepreneur) or description, public contact (organisation); notice that changes are reviewed; save and send for review; cancel</td><td>Entrepreneur: summary, description, gallery (text), contact. Organisation: description, public contact, private name / phone / email, directory consent. Locked-fields fieldset; review notice; save button; no cancel</td><td>Yes (checkbox)</td><td>No</td><td>Required only; no Turnstile (token link)</td><td>Banner</td><td><span class="s p">Partial</span> organisation editable set wider than §4.2 (J-4); no cancel</td></tr>
+<tr><td>Directory request (Fig 7)</td><td>Not detailed in the report</td><td>Name, email, organisation, purpose, two consents</td><td>Yes</td><td>No</td><td>As contact</td><td>Banner</td><td><span class="s c">Needs Clarification</span> fourth request type (J-2)</td></tr>
+<tr><td>Newsletter (§2.1, §7.4)</td><td>Email subscribe point; consent on every form</td><td>Email only; confirm and unsubscribe pages</td><td><b>No</b></td><td>No</td><td>Email format</td><td>Inline message; confirm page</td><td><span class="s p">Partial</span> add consent + privacy link</td></tr>
+</tbody></table></div>
+<p class="small">All forms announce errors as text (role="alert") and use real labels (§9.3). No form links to the privacy notice from inside the form; Figure 20 shows "Privacy notice link · retention stated" under the consent.</p>
+
+<h2 id="g"><span class="n">G</span>Listings, filters and search</h2>
+<p>Visual presence and actual function are separated: a control that exists but does nothing is Partial.</p>
+<div class="tw"><table><thead><tr><th>Listing</th><th>Report requirement</th><th>Filters present and working</th><th>Search</th><th>URL state</th><th>Empty state</th><th>Pagination / carousel</th><th>Status</th></tr></thead><tbody>
+<tr><td>Experiences and products</td><td>Fig 13: city, category, pillar, price band, accessibility; URL state; load more</td><td>Category chips; pillar, price band, accessibility panel; city via URL. All functional</td><td>Yes</td><td>Yes (city, category, q, p, pr, a)</td><td>Yes + clear</td><td>None: all results render</td><td><span class="s p">Partial</span></td></tr>
+<tr><td>Destinations</td><td>§2.1 listing; Fig 13 pattern</td><td>None</td><td>No</td><td>No</td><td>n/a</td><td>None</td><td><span class="s p">Partial</span> (J-12)</td></tr>
+<tr><td>Entrepreneurs</td><td>§2.1 directory to browse</td><td>City chips; activity (value chain) and pillar panel</td><td>Yes</td><td>Yes</td><td>Yes</td><td>None</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Map</td><td>§2.1: city, category, pillar, price band, accessibility; list beside it</td><td>Type chips; city, category, pillar, price, accessibility panel; markers redraw and fit</td><td>Yes</td><td>Yes</td><td>Yes</td><td>n/a</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Stakeholders directory and map</td><td>Fig 19: type, city, value chain; same result set beside the map</td><td>City chips; organisation type and value chain panel; hover syncs marker</td><td>Yes</td><td>Yes</td><td>Yes</td><td>n/a</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Resources</td><td>Fig 17: topic, format, pillar; §6.4 audience</td><td>Format chips; topic and pillar panel. No audience</td><td>Yes</td><td>Yes</td><td>Yes</td><td>Events carousel on the page</td><td><span class="s p">Partial</span></td></tr>
+<tr><td>Events</td><td>§2.1 dates, location, registration; §6.4 audience</td><td>Audience chips; city and pillar panel</td><td>Yes</td><td>Yes</td><td>Yes</td><td>None</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Success stories</td><td>Fig 24: city, pillar, entrepreneur; featured story; load more</td><td>City chips; pillar panel; lead story</td><td>Yes</td><td>Yes</td><td>Yes</td><td>None</td><td><span class="s p">Partial</span></td></tr>
+<tr><td>News</td><td>§6.2 short articles; sorted by date</td><td>City chips; pillar panel; newest first</td><td>Yes</td><td>Yes</td><td>Yes</td><td>None</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Site search (header)</td><td>§2.1 across destinations, experiences, entrepreneurs, organisations</td><td>Field only; toast on submit</td><td>Visual only</td><td>No</td><td>No</td><td>No results page</td><td><span class="s p">Partial</span> (B-2)</td></tr>
+<tr><td>Home and city-guide sections</td><td>§3.5: four at once; more than four → reader-advanced carousel capped at twelve; hidden when empty</td><td>Home gems 3, entrepreneurs 3, events 5 (stage); city rows 4 with snap scrolling</td><td>—</td><td>—</td><td>—</td><td>Carousels advance by reader; keyboard on strips, not on the home gems rail</td><td><span class="s p">Partial</span></td></tr>
+</tbody></table></div>
+<p class="small">No listing offers sorting; the report does not require it. Card → detail works on every listing.</p>
+
+<h3>CMS and editability (§6)</h3>
+<p>The prototype is static: content lives in JavaScript data files, so "editable" cannot be tested in the UI. The mapping below records what §6.2 expects each type to hold and how the prototype represents it.</p>
+<div class="tw"><table><thead><tr><th>Page / component</th><th>Content field</th><th>Report requirement</th><th>Current UI representation</th><th>Notes</th></tr></thead><tbody>
+<tr><td>City guide</td><td>Introduction, practical information, images, featured entries per section</td><td>§6.2 City; §3.5 sections bound to a source, CIDEAL picks and orders entries</td><td>Hard-coded sections; practical info from <code>city-info.js</code></td><td>Section source binding is CMS behaviour not represented.</td></tr>
+<tr><td>Destination detail</td><td>Description, gallery, location, accessibility, related experiences and entrepreneurs</td><td>§6.2 Destination</td><td>All fields rendered from data; related strips automatic by city</td><td>Relationship vs automatic selection: CMS behaviour not specified in report.</td></tr>
+<tr><td>Experience detail</td><td>Description, gallery, price band, duration, accessibility, location, entrepreneur</td><td>§6.2 Experience or Product; §11.1 decision 7 price and accessibility optional</td><td>All rendered; price as symbols; optional values omitted</td><td>Matched representation.</td></tr>
+<tr><td>Entrepreneur profile</td><td>Story, photographs, offer, Helmak flag, contact route, consent to publish</td><td>§6.2 Entrepreneur; §4.2 holder edits text, gallery, contact</td><td>Story, portrait, products, Helmak badge, contact (broken route); no gallery; consent not visible</td><td>Gallery missing in UI; consent gating is CMS behaviour.</td></tr>
+<tr><td>Story</td><td>Story and where it appears</td><td>§6.2 Story</td><td>Rendered via the shared template</td><td>Placement is CMS behaviour not specified in UI.</td></tr>
+<tr><td>Resource / Learning path</td><td>Document, link or video with topic and audience; ordered route</td><td>§6.2, §6.6 (YouTube embed, captions and transcript)</td><td>Format tile, inline player; no audience; no captions / transcript field visible</td><td>Captions and transcript: CMS behaviour not specified in UI.</td></tr>
+<tr><td>Event</td><td>Dates, place, registration link, audience</td><td>§6.2 Event</td><td>All rendered</td><td>Matched representation.</td></tr>
+<tr><td>Organisation</td><td>Description, public contact routes, type, city, value chain</td><td>§6.2 Organisation; §4.2 holder edits description and public contact</td><td>Rendered; public contact only as a website link</td><td>See J-3.</td></tr>
+<tr><td>Page (About, Privacy)</td><td>Fixed page text</td><td>§6.2 Page</td><td>Static HTML</td><td>Matched representation.</td></tr>
+<tr><td>Site configuration</td><td>Home featured entries, navigation labels, footer details, retention period</td><td>§6.2 Site configuration</td><td>Hard-coded</td><td>CMS behaviour not represented in the prototype.</td></tr>
+<tr><td>Media</td><td>Alt text in three languages; consent release per identifiable person</td><td>§4.3, §6.2 media library; §11.2 image without a release is not used</td><td>Alt text present; releases not represented</td><td>CMS behaviour not specified in UI.</td></tr>
+</tbody></table></div>
+
+<h2 id="h"><span class="n">H</span>Content corrections</h2>
+<div class="tw"><table><thead><tr><th>#</th><th>Item</th><th>Current</th><th>Report</th><th>Correction</th></tr></thead><tbody>
+<tr><td>H-1</td><td>Programme code</td><td>"ACDE/000XXX" in the About data</td><td>§1: programme numbered <b>2022-PCONV-000504</b></td><td>Replace the placeholder code. Also verify the Arabic descriptions of FPSC, KEF and ENROOT with CIDEAL.</td></tr>
+<tr><td>H-2</td><td>Contact email</td><td><code>hello@example.com</code> in the footer and on the Contact page</td><td>§8.3 recommends discoverupperegypt.com as canonical; programme email address shown on Contact (Fig 26)</td><td>Replace with the address CIDEAL confirms.</td></tr>
+<tr><td>H-3</td><td>Social links</td><td>LinkedIn, YouTube, Facebook, Instagram all <code>href="#"</code></td><td>Fig 11 footer "social"</td><td>Supply real URLs or hide the icons until supplied.</td></tr>
+<tr><td>H-4</td><td>Name spelling</td><td>"Manal Awaga" in English data and pages; "Awadallah" in two translation strings; Arabic "منال عوض"</td><td>Naming consistency</td><td>Use one spelling in all three languages (CIDEAL to confirm the transliteration).</td></tr>
+<tr><td>H-5</td><td>Hotels in sample content</td><td>Winter Palace, Steigenberger, Jolie Ville, Sonesta in stays and experiences data</td><td>§6.4 accommodation is community-based only</td><td>Remove from sample data (B-6).</td></tr>
+<tr><td>H-6</td><td>Third-party images</td><td>Experience galleries credit Wikimedia Commons images under CC BY-SA 2.0 / 3.0</td><td>§6.6 rights register; SwiftX informs CIDEAL before using ShareAlike material</td><td>Log in the rights register and notify CIDEAL, or replace with supplied photography (Annex A, 12 Nov).</td></tr>
+<tr><td>H-7</td><td>Sample people and stories</td><td>Prototype stories, portraits and the illustrated hero depict local people</td><td>§6.2: sample content is for demonstration only; publication needs CIDEAL approval and consent releases</td><td>Mark as placeholder content; obtain approval before any public use.</td></tr>
+<tr><td>H-8</td><td>Terminology</td><td>Nav "الجولات" (Tours); footer "للسياح" for Explore</td><td>§3.2 labels: Explore, For Entrepreneurs, For Tourism Stakeholders, About the Project, Contact</td><td>Align labels with the sitemap once J-1 and J-9 are decided.</td></tr>
+</tbody></table></div>
+
+<h2 id="i"><span class="n">I</span>Accessibility and performance (§9)</h2>
+<p>Only requirements the report states. "Design" means the token or component decision; "Development" means the production build.</p>
+<div class="tw"><table><thead><tr><th>Requirement</th><th>Report</th><th>Current UI</th><th>Type</th><th>Status</th></tr></thead><tbody>
+<tr><td>WCAG 2.1 AA without an overlay</td><td>§9.3 templates and components built and tested to AA</td><td>Accessibility drawer adds overlay-style tools (dictation, read aloud, invert, reading guide); templates must pass without it</td><td>Design</td><td><span class="s p">Partial</span> keep the drawer light; conformance must not depend on it</td></tr>
+<tr><td>Skip to content</td><td>§9.3 keyboard operable; WCAG 2.4.1</td><td>No skip link on any page</td><td>Development</td><td><span class="s x">Missing</span></td></tr>
+<tr><td>Focus ring contrast</td><td>§9.3 focus ring "takes a colour that clears 3:1 on both grounds rather than the platform's accent colour"</td><td>Global ring is rust at 40% opacity (about 1.8:1 on paper); white over imagery</td><td>Design</td><td><span class="s p">Partial</span> choose a 3:1 ring colour (ink)</td></tr>
+<tr><td>Field outlines 3:1</td><td>§9.3 form field outline clears 3:1</td><td>Inputs use a 20% ink outline (about 1.5:1)</td><td>Design</td><td><span class="s p">Partial</span></td></tr>
+<tr><td>Keyboard reach of carousels</td><td>§9.3 every card stays reachable in sequence whether or not the reader advances it</td><td>Related strips, coverflow and places viewer support arrow keys; the home gems rail has no keyboard handling</td><td>Development</td><td><span class="s p">Partial</span></td></tr>
+<tr><td>Alt text, labels, text errors, heading order, map list</td><td>§9.3</td><td>Descriptive alt in the active language; real labels; errors as text; one h1 per page; list beside every map</td><td>—</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Stretched Arabic letters</td><td>§9.3 screen reader and search readability; README of the design system forbids tatweel</td><td>Tatweel in footer headings and in 21 places on each city guide (section titles such as "السياحة المستدامــــة")</td><td>Design</td><td><span class="s p">Partial</span> use letter-spacing or clean text with aria-label</td></tr>
+<tr><td>No autoplay audio or self-hosted video</td><td>§6.6</td><td>Ambient audio toggle (user-initiated); self-hosted hero videos autoplay muted on city guides and stories</td><td>Design</td><td><span class="s o">Out of Scope in UI</span> audio; video → J-10</td></tr>
+<tr><td>Critical path ≤ 250 KB, page ≤ 500 KB without images, LCP &lt; 8 s at 400 kbps</td><td>§9.2</td><td>Home HTML 207 KB, Luxor 325 KB; 16 font files referenced; GSAP + 2 plugins; full data scripts on every page; several hero image variants (151–351 KB)</td><td>Development</td><td><span class="s p">Partial</span> budgets apply to the production templates; the prototype exceeds them</td></tr>
+<tr><td>Images lazy below the fold, modern formats at layout size</td><td>§9.2</td><td>WebP with srcset; lazy loading below the fold; hero preloaded</td><td>—</td><td><span class="s m">Matched</span></td></tr>
+<tr><td>Map page budget 900 KB, library loads after first paint</td><td>§9.2</td><td>Leaflet from cdnjs; loads with the page</td><td>Development</td><td><span class="s c">Needs Clarification</span> depends on J-6</td></tr>
+<tr><td>SEO metadata</td><td>§9.4</td><td>Meta description on Home only; no hreflang, canonical, sitemap, structured data, Open Graph</td><td>Development</td><td><span class="s x">Missing</span></td></tr>
+<tr><td>RTL mirroring</td><td>§7.3, Fig 22–23</td><td>Mirrors from one attribute; arrows and carets flip; three languages complete in the dictionary</td><td>—</td><td><span class="s m">Matched</span></td></tr>
+</tbody></table></div>
+
+<h2 id="j"><span class="n">J</span>Decision required</h2>
+<p>Where the UI and the report disagree, neither is assumed wrong; some UI choices may be later decisions not yet written into the report.</p>
+<div class="tw"><table><thead><tr><th>#</th><th>Topic</th><th>Report</th><th>Current UI</th><th>Decision needed</th></tr></thead><tbody>
+<tr><td>J-1</td><td>Travel ideas</td><td>§11.1 decision 3: descoped in v1.1</td><td>Page, planner, city-guide coverflow, nav and footer links</td><td>Remove, or re-add through change control (§10.4).</td></tr>
+<tr><td>J-2</td><td>Number of request types</td><td>§4.1 "There are three"; Figure 7 mentions a directory request</td><td>Four: inquiry, registration, profile update, directory request</td><td>Add the directory request to §4.1 and §6.7, or merge it into the inquiry.</td></tr>
+<tr><td>J-3</td><td>Organisation public contact</td><td>§2.1 and §6.2: public contact routes shown</td><td>Website link only; otherwise "Contact via platform"</td><td>Define which routes are public (email, phone, website) and what "via platform" does.</td></tr>
+<tr><td>J-4</td><td>What organisations can edit / register</td><td>§4.2: description and public contact route; Fig 20 field set</td><td>Registration and edit add private contact name / phone / email, value-chain checkboxes, directory consent</td><td>Align the report or trim the forms.</td></tr>
+<tr><td>J-5</td><td>Contact form conditional fields</td><td>Figure 26: name, email, subject, message, consent</td><td>Extra business fields when "listing request" is chosen</td><td>Document in the report or remove.</td></tr>
+<tr><td>J-6</td><td>Map library</td><td>§7.1 MapLibre GL with MapTiler vector tiles</td><td>Leaflet with OpenStreetMap tiles</td><td>Confirm the production library and tile provider.</td></tr>
+<tr><td>J-7</td><td>City guide section order</td><td>§3.5: eat, stay, then entrepreneurs; no trip ideas; no closing CTA band</td><td>Entrepreneurs before eat and stay; trip ideas inserted; "Keep exploring" band at the end</td><td>Reorder to §3.5 or update Figure 6.</td></tr>
+<tr><td>J-8</td><td>Home block order and shape</td><td>§3.3: destinations before experiences; two audience links at the end; four cards per block</td><td>Audience picker near the top (three cards); experiences before destinations; 3 cards in two blocks</td><td>Confirm the intent and update Figure 11, or reorder.</td></tr>
+<tr><td>J-9</td><td>Explore section</td><td>§3.2 top-level "Explore" with six children</td><td>No landing page; children in the nav and footer</td><td>Landing page or menu group.</td></tr>
+<tr><td>J-10</td><td>Self-hosted hero video</td><td>§6.6 "no self-hosted video"; video embedded from YouTube only</td><td>Local MP4 autoplaying (muted) in the city guides and stories hero</td><td>Replace with a still image, or approve decorative hero video as an exception.</td></tr>
+<tr><td>J-11</td><td>Weather</td><td>Not in §6.2 or §7.1 (third-party API)</td><td>Live Open-Meteo readings in the city guides and destination cards</td><td>Remove, or replace with static best-season text under Practical information.</td></tr>
+<tr><td>J-12</td><td>Destinations listing filters; "Where to buy local products"</td><td>Figure 13 is the experiences listing; Figure 12 shows a "buy local products" row the §3.5 list omits</td><td>Destinations grid without filters; products inside experiences</td><td>Confirm the destination filter set and whether the extra city-guide row is required.</td></tr>
+<tr><td>J-13</td><td>Partner logos on About; accessibility statement page</td><td>Figure 25 "partner logos" in programme identity; no accessibility page in the sitemap</td><td>Partner names as text pills; accessibility.html present</td><td>Supply logos (Annex A) and confirm the extra page.</td></tr>
+<tr><td>J-14</td><td>Favourites</td><td>Not in §2.1; §2.2 excludes visitor accounts</td><td>Heart toggle on experience cards (no persistence)</td><td>Remove, or log as a scope addition.</td></tr>
+</tbody></table></div>
+
+<h2 id="k"><span class="n">K</span>Already matched</h2>
+<ul>
+  <li>All sitemap pages exist except an Explore landing (§3.2); listing → detail links work everywhere.</li>
+  <li>City guide: hero, sustainable tourism, about the city, things to do, places to go, practical accordion, map with list (§3.5).</li>
+  <li>Destination, experience, story, event and news detail templates carry the blocks in Figures 14–15; experience pages embed the entrepreneur block.</li>
+  <li>Resources open on learning paths before the resource list (Figure 17); learning paths show ordered steps (Figure 18); events carry dates, place and a registration link.</li>
+  <li>Entrepreneurs directory with city, activity and pillar filters; profiles show the Helmak badge; update link on entries (§4.2).</li>
+  <li>Stakeholder directory and map with type, city and value chain, list beside the map; organisation registration; directory request (Figure 19–20).</li>
+  <li>Map filtered by city, category, pillar, price band and accessibility with a list view (§2.1).</li>
+  <li>About has the four §3.4 sections in order; Contact has the Figure 26 fields plus acknowledgement; 404 in place.</li>
+  <li>One-time edit-link flow with locked fields, review notice and neutral response (§4.2); Turnstile placeholder on every public form; rate limiting (§4.1).</li>
+  <li>RTL mirrors from one attribute; English and Spanish strings complete; dates follow the language (§7.3).</li>
+  <li>Price band as symbols; price and accessibility optional on entries (§6.4, §11.1 decision 7); pillars as a shared tag filter (§11.1 decision 6).</li>
+</ul>
+
+<h2 id="l"><span class="n">L</span>Final action checklist</h2>
+<h4>Must fix</h4>
+<ul class="chk">
+  <li>Entrepreneur contact route: point profile and experience CTAs at the entrepreneur's public route (B-1)</li>
+  <li>Remove background music and the sound toggle (B-5, §6.6)</li>
+  <li>Replace hotel entries under "Where to stay" with community-based stays or hide the section (B-6, §6.4)</li>
+  <li>Correct the programme code to 2022-PCONV-000504; replace hello@example.com and the "#" social links (H-1 to H-3)</li>
+  <li>Add consent and a privacy-notice link to the newsletter and update-request forms; add privacy links to all forms (§4.1, §7.4, Fig 20)</li>
+  <li>Add the audience filter to resources and learning paths (§6.4)</li>
+  <li>Link News and Events from the Stakeholders page and Stories from the Resources page (Fig 5, Fig 19)</li>
+  <li>Add the gallery block to the entrepreneur profile (§4.2, Fig 16)</li>
+  <li>One spelling for "Manal Awaga / Awadallah / منال عوض" (H-4)</li>
+  <li>Build items for production: locale paths (§3.1), site search results page (§2.1), SEO metadata (§9.4), skip link, keyboard reach on the home gems rail, weight budgets (§9.2)</li>
+  <li>Design tokens: focus ring and field outline colours that clear 3:1 (§9.3); remove tatweel from headings</li>
+</ul>
+<h4>Needs decision</h4>
+<ul class="chk">
+  <li>J-1 Travel ideas · J-2 fourth request type · J-3 organisation public contact · J-4 organisation fields · J-5 contact conditional fields</li>
+  <li>J-6 map library · J-7 city guide order · J-8 home block order · J-9 Explore landing · J-10 hero video</li>
+  <li>J-11 weather · J-12 destination filters and "buy local products" · J-13 partner logos and accessibility page · J-14 favourites</li>
+</ul>
+<h4>Waiting for content / client input</h4>
+<ul class="chk">
+  <li>Photography library with consent releases (Annex A, 12 Nov) to replace Commons images and sample portraits (H-6, H-7)</li>
+  <li>Privacy notice text (Annex A, 26 Nov) covering GDPR, Law 151/2020, sub-processors, Turnstile and YouTube</li>
+  <li>Partner logos and the Arabic descriptions of FPSC, KEF and ENROOT; confirmed contact email and social URLs</li>
+  <li>Community-based accommodation entries for Luxor and Aswan; practical-information topics per city</li>
+</ul>
+<h4>Already closed</h4>
+<ul class="chk">
+  <li class="done">Sitemap pages, detail templates, listing filters for experiences, entrepreneurs, map, stakeholders, events and news</li>
+  <li class="done">Edit-link flow, directory request, registration form, Turnstile placeholders, rate limiting</li>
+  <li class="done">RTL mirroring, three-language dictionary, localised dates, directional icons</li>
+  <li class="done">Learning paths before resources; events with registration; About in four sections; 404</li>
+</ul>
+<p class="small" style="margin-top:36px">Audit only. No design, markup, routes or features were changed. Approval is required before any of the actions above are implemented.</p>
+</div>
+
+</body>
+</html>
