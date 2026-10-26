@@ -1,0 +1,1216 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Discover Upper Egypt — Design System</title>
+<meta name="description" content="Developer handoff: tokens, atoms, molecules, organisms, page patterns and CMS editability for the Discover Upper Egypt platform.">
+<link rel="icon" type="image/png" sizes="32x32" href="brand_assets/favicon-32.png">
+<style>
+@font-face{font-family:"IBM Plex Sans";font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:500;font-display:swap;src:url("fonts/sub/ibm-plex-sans-500.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:600;font-display:swap;src:url("fonts/sub/ibm-plex-sans-600.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans";font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-weight:400;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-400.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Sans Arabic";font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-sans-arabic-700.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Serif";font-weight:700;font-display:swap;src:url("fonts/sub/ibm-plex-serif-700.woff2") format("woff2")}
+@font-face{font-family:"Thmanyah Serif Display";font-weight:700;font-display:swap;src:url("fonts/sub/thmanyahserifdisplay-Bold.woff2") format("woff2")}
+
+:root{
+  --paper:#f1e4d2;--paper-inner:#fbf7ef;--cream:#f6ead8;--section:#f7f1e6;--drawer-bg:#f4f1ea;
+  --ink:#0b2230;--body:#24312f;--muted:#57534e;--nav-ink:#2a2a28;
+  --rust:#a53e1a;--rust-deep:#8a3213;
+  --green:#2f6f5e;--nile:#345c70;--olive:#4b5a33;--clay-deep:#9a4b2c;--sand:#dcc9a8;--amber:#b8741a;
+  --hair:#e6e2d8;--line-10:rgba(43,29,14,.1);--line-12:rgba(43,29,14,.12);--line-16:rgba(43,29,14,.16);--line-20:rgba(43,29,14,.2);
+  --sh-subtle:0 1px 2px rgba(43,29,14,.06),0 10px 30px -12px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.04);
+  --sh-card:0 2px 6px rgba(43,29,14,.06),0 14px 32px rgba(43,29,14,.08);
+  --sh-elevated:0 1px 2px rgba(43,29,14,.12),0 18px 40px -20px rgba(43,29,14,.45);
+  --sh-cta:0 1px 2px rgba(138,50,19,.18),0 6px 16px -6px rgba(138,50,19,.45);
+  --sh-floating:0 2px 6px rgba(43,29,14,.06),0 18px 44px rgba(43,29,14,.14);
+  --doc-bg:#f7f5f1;--doc-side:264px;--doc-max:1080px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:"IBM Plex Sans",system-ui,sans-serif;font-size:14.5px;line-height:1.6;color:var(--body);background:var(--doc-bg)}
+a{color:var(--rust);text-decoration:none}a:hover{text-decoration:underline;text-underline-offset:3px}
+:focus-visible{outline:3px solid rgba(165,62,26,.4);outline-offset:3px;border-radius:6px}
+code{font-family:ui-monospace,"Cascadia Mono",Consolas,monospace;font-size:.9em;background:rgba(43,29,14,.06);padding:1px 5px;border-radius:4px;color:var(--ink)}
+pre{margin:0 0 16px;background:#1f1a14;color:#f6ead8;padding:14px 16px;border-radius:12px;overflow:auto;font-size:12.5px;line-height:1.55}
+pre code{background:none;padding:0;color:inherit}
+h1,h2,h3,h4{color:var(--ink);line-height:1.2;margin:0}
+h1{font-family:"IBM Plex Serif",Georgia,serif;font-size:clamp(30px,3.6vw,44px);letter-spacing:-.02em}
+h2{font-family:"IBM Plex Serif",Georgia,serif;font-size:clamp(24px,2.4vw,30px);letter-spacing:-.02em;padding-top:56px;margin-bottom:8px;scroll-margin-top:12px;border-top:1px solid var(--hair)}
+h2 .n{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;font-weight:700;letter-spacing:.2em;color:var(--rust);display:block;margin-bottom:6px}
+h3{font-size:19px;font-weight:700;margin:40px 0 4px;scroll-margin-top:12px}
+h4{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin:18px 0 6px}
+p{margin:0 0 12px}
+ul{margin:0 0 12px;padding-inline-start:1.2em}
+.lede{color:var(--muted);max-width:68ch}
+.ar{font-family:"IBM Plex Sans Arabic","IBM Plex Sans",sans-serif;direction:rtl;unicode-bidi:isolate}
+.ar-display{font-family:"Thmanyah Serif Display",serif;direction:rtl;unicode-bidi:isolate}
+.latin-display{font-family:"IBM Plex Serif",Georgia,serif;letter-spacing:-.02em}
+
+/* layout */
+.doc{display:grid;grid-template-columns:var(--doc-side) minmax(0,1fr);min-height:100vh}
+.main{min-width:0;padding:36px clamp(20px,4vw,56px) 96px;max-width:calc(var(--doc-max) + 2 * clamp(20px,4vw,56px))}
+.side{position:sticky;top:0;height:100vh;overflow:auto;background:#fff;border-inline-end:1px solid var(--hair);padding:18px 14px 32px;font-size:13px}
+.side .brand{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.side .brand img{height:36px;width:auto}
+.side .brand b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--rust)}
+.side input{width:100%;height:38px;border:1px solid var(--line-16);border-radius:8px;padding:0 10px;font:inherit;background:#fff;margin:2px 0 10px}
+.side input:focus{outline:none;border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.22)}
+.toc,.toc ul{list-style:none;padding:0;margin:0}
+.toc a{display:block;padding:5px 9px;border-radius:6px;color:var(--body);font-weight:500}
+.toc a:hover{background:rgba(43,29,14,.05);text-decoration:none;color:var(--ink)}
+.toc a.is-on{background:rgba(165,62,26,.08);color:var(--rust);font-weight:700}
+.toc .sub a{padding-inline-start:20px;font-size:12px;font-weight:400;color:var(--muted)}
+.toc .hide{display:none}
+.topbar{display:none}
+
+/* overview */
+.meta{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px 16px;background:#fff;border:1px solid var(--hair);border-radius:14px;padding:16px 20px;margin:20px 0}
+.meta b{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.meta span{font-weight:600;color:var(--ink)}
+.legend{display:flex;flex-wrap:wrap;gap:10px 22px;margin:8px 0 0;font-weight:600}
+.legend .ed::before{display:none}
+
+/* editability indicators */
+.ed{display:inline-flex;align-items:center;gap:7px;white-space:nowrap;font-weight:600;font-size:13px}
+.ed::before{content:"";width:10px;height:10px;border-radius:999px;flex:none}
+.ed.cms::before{background:#2f9e5b}.ed.fix::before{background:#2a2a28}.ed.dev::before{background:#2c6fd1}
+.ed.cms{color:#1f5c45}.ed.fix{color:#2a2a28}.ed.dev{color:#1d4a7a}
+.status{display:inline-flex;align-items:center;height:20px;padding:0 8px;border-radius:999px;font-size:11px;font-weight:700;white-space:nowrap}
+.status.ok{background:#dbeee5;color:#1f5c45}.status.std{background:#cfe4ee;color:#143a4a}.status.rev{background:#fbe9c9;color:#7a4a05}
+
+/* tables */
+table{width:100%;border-collapse:collapse;font-size:13px;margin:8px 0 16px;background:#fff;border:1px solid var(--hair);border-radius:10px;overflow:hidden}
+th,td{text-align:left;vertical-align:top;padding:7px 11px;border-bottom:1px solid var(--hair)}
+th{font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:#faf9f6;font-weight:700}
+tr:last-child td{border-bottom:0}
+td code{white-space:normal}
+.tbl-wrap{overflow:auto;margin:8px 0 16px}.tbl-wrap table{margin:0;min-width:640px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start}
+@media (max-width:899px){.two{grid-template-columns:1fr}}
+
+/* component card template */
+.cmp{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:20px 22px 8px;margin:14px 0 28px}
+.cmp h3{margin:0 0 2px}
+.cmp-meta{font-size:12.5px;color:var(--muted);margin-bottom:14px}
+.cmp-meta b{color:var(--ink);font-weight:600}
+.cmp-meta .status{vertical-align:1px;margin-inline-start:4px}
+.cmp table{margin:6px 0 14px}
+.cmp .used{font-size:13px;color:var(--muted);margin:0 0 14px}
+.cmp .used b{color:var(--ink)}
+.cmp .note{font-size:13px;border-inline-start:3px solid var(--amber);background:rgba(184,116,26,.07);padding:8px 12px;border-radius:0 8px 8px 0;margin:0 0 14px}
+
+/* previews */
+.pv{background:var(--paper-inner);border:1px solid var(--hair);border-radius:12px;padding:18px;margin:6px 0 12px;display:flex;flex-wrap:wrap;gap:14px;align-items:center}
+.pv.white{background:#fff}.pv.parch{background:var(--paper)}.pv.dark{background:#1f1a14}
+.pv.col{flex-direction:column;align-items:stretch}.pv.col>*{min-width:0;max-width:100%}
+.pv .lbl{width:100%;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:700;margin:-4px 0 0}
+.pv.dark .lbl{color:#dcc9a8}
+
+/* foundations visuals */
+.swatches{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:10px;margin:6px 0 16px}
+.sw{background:#fff;border:1px solid var(--hair);border-radius:10px;overflow:hidden;font-size:12px}
+.sw i{display:block;height:52px}
+.sw div{padding:8px 10px}.sw b{display:block;color:var(--ink);font-size:12.5px}.sw code{font-size:11px}.sw small{display:block;color:var(--muted);margin-top:2px;line-height:1.4}
+.spec{display:grid;grid-template-columns:150px 1fr 1fr;gap:12px 18px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--hair);font-size:12.5px}
+.spec:last-child{border-bottom:0}
+.spec .k{color:var(--muted)}.spec .k b{display:block;color:var(--ink);font-size:13px}
+.spec .ar{text-align:right}
+@media (max-width:767px){.spec{grid-template-columns:1fr}}
+.space-row{display:flex;flex-wrap:wrap;gap:14px;align-items:flex-end}
+.space-row div{display:grid;gap:6px;font-size:11.5px;color:var(--muted);text-align:center}
+.space-row i{display:block;background:var(--rust);opacity:.85;border-radius:2px;margin-inline:auto}
+.radius-row{display:flex;flex-wrap:wrap;gap:14px}
+.radius-row div{width:88px;height:66px;background:var(--sand);border:1px solid var(--line-20);display:grid;place-items:end start;padding:7px;font-size:11.5px;color:var(--ink);font-weight:600}
+.sh-row{display:flex;flex-wrap:wrap;gap:20px}
+.sh-row div{width:140px;height:84px;background:#fff;border-radius:18px;display:grid;place-items:center;font-size:12px;color:var(--muted);text-align:center;padding:6px}
+.bp{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;font-size:12px;text-align:center;margin:6px 0 16px}
+.bp div{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:8px 6px}.bp b{display:block;color:var(--ink);font-size:15px}
+.gridviz{display:grid;gap:6px;margin:6px 0 12px}
+.gridviz div{display:grid;gap:6px}.gridviz i{display:block;height:34px;background:rgba(165,62,26,.14);border:1px dashed rgba(165,62,26,.5);border-radius:6px}
+.gridviz span{font-size:11.5px;color:var(--muted)}
+.icon-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(84px,1fr));gap:8px}
+.icon-grid div{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:10px 6px;text-align:center;font-size:10.5px;color:var(--muted);display:grid;gap:5px;justify-items:center}
+.icon-grid svg{width:22px;height:22px;fill:var(--ink)}
+.ic{display:inline-block;width:16px;height:16px;fill:currentColor;vertical-align:-3px;flex:none}
+
+/* anatomy & flows */
+.anatomy{background:#faf9f6;border:1px solid var(--hair);border-radius:10px;padding:12px 16px;font-family:ui-monospace,Consolas,monospace;font-size:12px;line-height:1.7;color:var(--ink);white-space:pre;overflow:auto;margin:6px 0 14px}
+.flow{display:grid;gap:0;font-size:12.5px;font-weight:600;color:var(--ink)}
+.flow div{background:#fff;border:1px solid var(--hair);border-radius:8px;padding:8px 12px;position:relative}
+.flow div+div{margin-top:18px}
+.flow div+div::before{content:"↓";position:absolute;top:-19px;left:14px;color:var(--rust);font-size:14px}
+.flow .full{background:var(--section)}.flow .dark{background:#2b1d0e;color:#f6ead8;border-color:#2b1d0e}
+.flow small{display:block;font-weight:400;color:var(--muted)}
+.flow .dark small{color:#dcc9a8}
+.patterns{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.patterns h4{margin-top:0}
+
+/* ---- product component previews (values copied from the site) ---- */
+.p-cta{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding-inline:24px;border-radius:8px;background:var(--rust);color:#fff;font-size:15px;font-weight:700;border:0;cursor:pointer;box-shadow:var(--sh-cta);font-family:inherit;transition:background-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.p-cta:hover{background:var(--rust-deep);color:#fff;text-decoration:none;transform:translateY(-1px)}.p-cta:active{transform:scale(.98)}
+.p-cta:focus-visible{outline:3px solid rgba(165,62,26,.45);outline-offset:3px}
+.p-cta.is-disabled{opacity:.45;pointer-events:none;box-shadow:none}
+.p-cta.sm{height:40px;font-size:13.5px;padding-inline:18px;box-shadow:none}
+.p-cta.ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}.p-cta.ghost:hover{background:rgba(165,62,26,.08)}
+.p-cta.ink{background:var(--ink)}
+.p-cta.on-dark{box-shadow:none}.p-cta.on-dark:focus-visible{outline-color:#fff}
+.p-outline{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:48px;padding-inline:24px;border-radius:8px;border:1.5px solid var(--rust);background:rgba(255,255,255,.3);color:var(--rust);font-size:15.5px;font-weight:700;cursor:pointer;font-family:inherit;transition:background-color .3s ease,color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+.p-outline:hover{background:var(--rust);color:#fff;text-decoration:none;transform:translateY(-1px)}
+.p-link{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:var(--rust);font-size:15px;font-weight:700}
+.p-link:hover{color:var(--rust-deep);text-decoration:none}.p-link .ic{transition:transform .5s cubic-bezier(.2,.8,.2,1)}.p-link:hover .ic{transform:translateX(4px)}
+.p-round{width:44px;height:44px;border-radius:999px;border:1px solid var(--line-12);background:#fff;display:grid;place-items:center;color:var(--ink);cursor:pointer;transition:background-color .3s ease,color .3s ease}
+.p-round:hover{background:var(--rust);color:#fff;border-color:var(--rust)}
+.p-round.sz40{width:40px;height:40px}.p-round.sz48{width:48px;height:48px}.p-round.sz56{width:56px;height:56px}
+.p-round.fab{background:var(--rust);color:#fff;border:0}.p-round.fab:hover{background:var(--rust-deep)}
+.p-fav{width:44px;height:44px;border-radius:999px;border:0;background:rgba(255,255,255,.92);color:var(--rust);display:grid;place-items:center;box-shadow:0 4px 12px -4px rgba(0,0,0,.4);cursor:pointer}
+.p-fav[aria-pressed="true"]{background:var(--rust);color:#fff}
+.p-field{display:grid;gap:6px;min-width:220px;flex:1}
+.p-field label{font-size:15px;font-weight:700;color:var(--ink)}
+.p-field .hint{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+.p-field input,.p-field select,.p-field textarea{width:100%;min-height:48px;padding:10px 14px;border:1.5px solid var(--line-20);border-radius:8px;background:#fff;font:inherit;font-size:15px;color:var(--ink)}
+.p-field textarea{min-height:120px;resize:vertical;line-height:1.6}
+.p-field input:focus,.p-field select:focus,.p-field textarea:focus{outline:3px solid rgba(165,62,26,.4);outline-offset:2px;border-color:var(--rust)}
+.p-field.is-invalid input{border-color:#a52a1a}.p-field .err{font-size:13px;font-weight:700;color:#a52a1a;margin:0}
+.p-field input[disabled]{opacity:.5;background:#faf8f4;cursor:not-allowed}
+.p-check{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;line-height:1.6;color:var(--body)}
+.p-check input{width:18px;height:18px;margin-top:3px;accent-color:var(--rust);flex:none}
+.p-search{display:flex;align-items:center;gap:10px;height:48px;padding-inline:16px;background:#fff;border:1px solid var(--line-16);border-radius:8px;flex:1 1 260px;color:var(--muted)}
+.p-search:focus-within{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.22)}
+.p-search input{border:0;background:none;font:inherit;font-size:15px;flex:1;min-width:0;outline:none;color:var(--ink)}
+.p-chip{display:inline-flex;align-items:center;gap:8px;height:44px;padding-inline:16px;border-radius:8px;background:#fff;border:1px solid var(--line-16);color:var(--ink);font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.p-chip .ic{color:var(--rust)}.p-chip:hover{border-color:var(--rust)}.p-chip:active{transform:scale(.97)}
+.p-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}.p-chip[aria-pressed="true"] .ic{color:#fff}
+.p-pill{display:inline-flex;align-items:center;gap:6px;height:32px;padding-inline:12px 14px;border-radius:999px;font-size:13.5px;font-weight:600;white-space:nowrap}
+.p-pill.loc{background:var(--clay-deep);color:#fff;box-shadow:0 4px 12px -4px rgba(0,0,0,.4)}.p-pill.loc.olive{background:var(--olive)}.p-pill.loc.ink{background:#1e3f4e}
+.p-pill.tag{background:#f6d5c9;color:#7a2f14;font-size:12.5px}.p-pill.tag.olive{background:#dbe5c6;color:#2f4118}.p-pill.tag.ink{background:#cfe4ee;color:#143a4a}
+.p-pill.meta{background:#f4f1ea;border:1px solid #e1ddd0;color:#2a2a28;border-radius:8px;font-size:12.5px}.p-pill.meta .ic{color:var(--muted)}
+.p-pill.glass{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);color:#fff;backdrop-filter:blur(6px);font-size:13px}
+.p-pill.soft{background:rgba(165,62,26,.08);color:var(--rust-deep);min-height:36px;height:auto;font-size:13px;font-weight:700}
+.p-pill.dense{background:rgba(165,62,26,.08);color:var(--rust-deep);height:26px;font-size:12px;font-weight:700}.p-pill.dense.city{background:rgba(52,92,112,.1);color:#345c70}
+.p-pill.map{height:26px;font-size:12px;font-weight:700;background:rgba(47,111,94,.12);color:#2f6f5e}
+.p-date{position:relative;width:104px;height:70px;border-radius:12px;background:var(--sand) url("ASSETS/gal/corniche-cafes-1-480.webp") center/cover;overflow:hidden;flex:none}
+.p-date b{position:absolute;inset-inline-start:8px;bottom:6px;color:#fff;font-size:15px;line-height:1;text-shadow:0 1px 2px rgba(0,0,0,.4)}.p-date b small{display:block;font-size:8.5px;letter-spacing:.14em;margin-top:3px}
+.p-date.sel{outline:2.5px solid var(--rust);outline-offset:2px}
+.p-evc-date{display:inline-grid;justify-items:center;padding:10px 14px;border-radius:0 0 14px 0;background:rgba(43,29,14,.82);color:#fff;line-height:1}.p-evc-date b{font-size:26px;font-weight:800}.p-evc-date small{font-size:12px;letter-spacing:.1em;margin-top:4px}
+.p-evl-date{display:grid;place-items:center;width:72px;height:72px;border-radius:12px;background:var(--rust);color:#fff;line-height:1}.p-evl-date b{font-size:26px;font-weight:800}.p-evl-date small{font-size:12px;margin-top:4px}
+.p-num{display:inline-grid;place-items:center;border-radius:999px;background:var(--rust);color:#fff;font-weight:800}
+.p-gem{width:300px;border-radius:18px;border:1px solid var(--line-10);background:var(--paper-inner);overflow:hidden;transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .3s ease}
+.p-gem:hover{transform:translateY(-6px);border-color:rgba(165,62,26,.35)}
+.p-gem .media{position:relative;aspect-ratio:4/3;background:var(--sand);overflow:hidden;isolation:isolate}
+.p-gem .media img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}.p-gem:hover .media img{transform:scale(1.05)}
+.p-gem .tint{position:absolute;inset:0;background:linear-gradient(160deg,rgba(165,62,26,.18),rgba(11,34,48,.18));mix-blend-mode:multiply}
+.p-gem .shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,6,.45),transparent 50%)}
+.p-gem .media .p-pill{position:absolute;top:16px;inset-inline-start:16px}.p-gem .media .p-fav{position:absolute;top:16px;inset-inline-end:16px}
+.p-gem .body{padding:24px;display:grid;gap:8px}
+.p-gem .cat{font-size:11.5px;font-weight:700;color:var(--rust);letter-spacing:.18em;text-transform:uppercase}.p-gem .cat.ar{letter-spacing:0;text-transform:none;font-size:12.5px;text-align:right}
+.p-gem h4{margin:0;font-size:clamp(20px,1.7vw,24px);line-height:1.3;color:var(--ink);letter-spacing:0;text-transform:none}
+.p-gem .desc{font-size:15px;line-height:1.7;color:var(--muted);margin:0 0 8px}
+.p-gem .meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-size:13.5px;color:var(--muted);margin:0;padding:0;background:none;border:0;border-radius:0}.p-gem .meta span{display:inline-flex;align-items:center;gap:6px}
+.p-gem .p-cta{width:100%}
+.p-org{display:grid;grid-template-columns:48px 1fr;gap:16px;padding:16px 24px;background:#fff;border:1px solid var(--line-12);border-radius:18px;width:100%;max-width:520px}
+.p-org .ico{width:48px;height:48px;border-radius:12px;background:rgba(52,92,112,.1);color:#345c70;display:grid;place-items:center}.p-org .ico .ic{width:22px;height:22px}
+.p-org .kind{font-size:12.5px;font-weight:700;color:var(--rust)}.p-org h4{margin:2px 0 4px;font-size:17px;letter-spacing:0;text-transform:none}.p-org .sum{font-size:13.5px;color:var(--muted);margin:0 0 10px}
+.p-row{display:grid;grid-template-columns:48px 1fr auto;gap:16px;align-items:center;padding:16px 24px;background:#fff;border:1px solid var(--line-12);border-radius:18px;width:100%;max-width:560px}
+.p-row .ico{width:48px;height:48px;border-radius:12px;background:rgba(165,62,26,.08);color:var(--rust);display:grid;place-items:center}
+.p-row h4{margin:0 0 2px;font-size:16px;letter-spacing:0;text-transform:none}.p-row .meta{font-size:13px;color:var(--muted);display:flex;gap:12px}
+.p-hero{position:relative;width:100%;aspect-ratio:1400/540;min-height:200px;border-radius:20px;overflow:hidden;background:#2b1d0e url("ASSETS/hero-bg-1440.webp") center/cover}
+.p-hero::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.55),transparent 55%)}
+.p-hero .t{position:absolute;inset-inline-start:40px;bottom:40px;z-index:1;color:#fff;font-family:"IBM Plex Serif",serif;font-size:clamp(26px,4vw,52px);line-height:1.05;letter-spacing:-.02em}
+.p-hero .band{position:absolute;left:0;right:0;bottom:0;height:18px;background:url("ASSETS/motifs/band-luxor.png") repeat-x center/auto 100%;z-index:1}
+.p-hero .tags{position:absolute;inset-inline-start:40px;top:24px;z-index:1;display:flex;gap:8px}
+.p-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;height:72px;padding-inline:12px 24px;background:#fff;border-radius:999px;box-shadow:var(--sh-subtle);width:100%}
+.p-nav{overflow:hidden}
+.p-nav .links{display:flex;gap:20px;font-size:17px;font-weight:600;color:var(--nav-ink)}
+.p-nav .links a{color:inherit;position:relative;padding:8px 4px;white-space:nowrap}.p-nav .links a.on{color:var(--rust);font-weight:700}
+.p-nav .links a.on::after{content:"";position:absolute;left:4px;right:4px;bottom:0;height:2.5px;border-radius:2px;background:var(--rust)}
+.p-nav img{height:50px}.p-nav .ctl{display:flex;align-items:center;gap:10px}.p-nav .vdiv{width:1px;height:26px;background:var(--hair)}
+.p-crumb{display:flex;flex-wrap:wrap;gap:0 6px;align-items:center;font-size:15px;color:var(--muted);list-style:none;margin:0;padding:0}
+.p-crumb li{display:flex;align-items:center;gap:6px;min-height:44px}
+.p-crumb li+li::before{content:"";width:6px;height:6px;border-right:1.5px solid currentColor;border-bottom:1.5px solid currentColor;transform:rotate(-45deg);opacity:.7}
+.p-crumb[dir="rtl"] li+li::before{transform:rotate(135deg)}
+.p-crumb li[aria-current]{color:var(--ink);font-weight:600}
+.p-sec{display:inline-flex;align-items:center;gap:16px;font-family:"IBM Plex Serif",serif;font-size:clamp(26px,3.2vw,40px);color:var(--ink);letter-spacing:-.02em;line-height:1.15}
+.p-sec .rule{width:clamp(24px,6vw,72px);height:2px;border-radius:2px;background:linear-gradient(to left,transparent,var(--rust) 35%,var(--rust) 65%,transparent);opacity:.9}
+.p-sec em{font-style:normal;color:var(--rust)}
+.p-eyebrow{font-size:13px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rust);display:block}
+.p-tabs{display:flex;gap:4px;border-bottom:1px solid var(--hair);width:100%;overflow-x:auto}
+.p-tabs a{position:relative;display:inline-flex;align-items:center;min-height:44px;padding:0 14px;font-size:15px;font-weight:600;color:var(--muted)}
+.p-tabs a.on{color:var(--rust);font-weight:700}.p-tabs a.on::after{content:"";position:absolute;left:0;right:0;bottom:-1px;height:2.5px;background:var(--rust);border-radius:2px}
+.p-tabs a:hover{text-decoration:none;color:var(--ink)}
+.p-tabs2{display:flex;gap:6px;background:var(--section);padding:6px;border-radius:12px}
+.p-tabs2 a{display:inline-flex;align-items:center;gap:8px;min-height:40px;padding:0 14px;border-radius:8px;font-size:14px;font-weight:600;color:var(--ink)}
+.p-tabs2 a.on{background:#fff;box-shadow:var(--sh-subtle)}.p-tabs2 a .ic{color:var(--rust)}
+details.p-q{border:1px solid var(--line-12);border-radius:12px;background:#fff;margin:6px 0;width:100%}
+details.p-q summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:8px 18px;font-weight:700;color:var(--ink)}
+details.p-q summary::-webkit-details-marker{display:none}
+details.p-q summary::after{content:"+";font-size:22px;color:var(--rust);transition:transform .4s cubic-bezier(.2,.8,.2,1)}
+details.p-q[open] summary::after{transform:rotate(45deg)}
+details.p-q summary:hover{background:rgba(165,62,26,.05);color:var(--rust);border-radius:12px}
+details.p-q div{padding:0 18px 16px;color:var(--muted);font-size:14px}
+.p-marker{width:38px;height:38px;border-radius:999px;background:var(--green);border:2.5px solid #fff;display:grid;place-items:center;color:#fff;box-shadow:0 4px 10px -2px rgba(11,9,6,.5)}
+.p-marker .ic{width:20px;height:20px}.p-marker.hot{transform:scale(1.22);box-shadow:0 0 0 4px rgba(47,111,94,.3),0 4px 10px -2px rgba(11,9,6,.5)}
+.p-marker.stay{background:var(--nile)}.p-marker.food{background:var(--amber)}.p-marker.product{background:var(--rust)}.p-marker.work{background:#6b4a2f}
+.p-mpcard{display:grid;grid-template-columns:96px 1fr;gap:12px;width:300px;padding:12px;background:#fff;border-radius:12px;box-shadow:var(--sh-floating)}
+.p-mpcard img{width:96px;height:96px;object-fit:cover;border-radius:8px;display:block}.p-mpcard h4{margin:4px 0 2px;font-size:15.5px;letter-spacing:0;text-transform:none;color:var(--ink)}
+.p-mpcard p{font-size:13px;color:var(--muted);margin:0 0 6px;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}.p-mpcard a{font-size:13.5px;font-weight:700}
+.p-lang{position:relative}.p-lang button{display:inline-flex;align-items:center;gap:6px;min-height:44px;padding:0 10px;border:0;background:none;font:inherit;font-size:15px;font-weight:600;color:var(--nav-ink);cursor:pointer}
+.p-lang .menu{background:#fff;border-radius:12px;min-width:150px;box-shadow:var(--sh-subtle);padding:6px;display:grid}
+.p-lang .menu button{justify-content:space-between;min-height:40px;border-radius:8px;font-weight:500}.p-lang .menu button[aria-checked="true"]{color:var(--rust);font-weight:600;background:rgba(165,62,26,.07)}
+.p-toast{display:inline-block;background:#1f1a14;color:#fff;font-size:14px;padding:10px 16px;border-radius:12px}
+.p-empty{display:grid;place-items:center;gap:14px;padding:40px 24px;text-align:center;color:var(--muted);width:100%}
+.p-status{padding:12px 16px;border-radius:8px;font-weight:700;font-size:14px}
+.p-status.err{background:rgba(165,42,26,.08);color:#7a1f12}.p-status.ok{background:rgba(47,111,94,.08);color:#1f4a3f;padding:20px;border-radius:18px}
+.p-status.ok b{display:block;font-size:20px;color:var(--ink);margin-bottom:4px}
+.p-img{width:200px;aspect-ratio:4/3;border-radius:18px;overflow:hidden;position:relative;background:var(--sand) url("ASSETS/gal/corniche-cafes-2-480.webp") center/cover;isolation:isolate}
+.p-img::before{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(165,62,26,.18),rgba(11,34,48,.18));mix-blend-mode:multiply}
+.p-img::after{content:"";position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,6,.45),transparent 50%)}
+.p-img.sq{aspect-ratio:1/1;width:140px;border-radius:22px}.p-img.wide{aspect-ratio:16/9;width:240px;border-radius:16px}.p-img.thumb{aspect-ratio:4/3;width:88px;border-radius:12px;opacity:.75}.p-img.thumb.sel{opacity:1;outline:3px solid var(--rust);outline-offset:2px}
+.p-news{width:100%;border-radius:18px;background:#2b1d0e url("ASSETS/gal/corniche-cafes-1-960.webp") center/cover;padding:32px 24px;display:grid;justify-items:center;gap:14px;text-align:center;color:#fff;position:relative;isolation:isolate}
+.p-news::before{content:"";position:absolute;inset:0;background:rgba(18,11,6,.55);z-index:-1;border-radius:18px}
+.p-news .p-sec{color:#fff}.p-news .p-sec .rule{background:#fff}
+.p-news form{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;width:100%}
+.p-news input{height:50px;border:0;border-radius:8px;padding-inline:16px;font:inherit;font-size:15px;width:min(100%,360px);box-shadow:0 8px 20px -10px rgba(0,0,0,.45)}
+.p-ci{display:grid;grid-template-columns:1fr 1fr;gap:16px;width:100%}
+.p-ci .card{background:#fff;border-radius:22px;padding:22px;min-height:180px}
+.p-ci .temp{font-size:44px;font-weight:800;color:var(--ink);line-height:1}
+.p-ci .bar{height:6px;border-radius:3px;background:linear-gradient(90deg,#e0623c,#c2410c);position:relative;margin:8px 0}.p-ci .bar.cold{background:linear-gradient(90deg,#4a8fc8,#3fae9a)}
+.p-ci .bar u{position:absolute;top:-2px;left:60%;width:10px;height:10px;border-radius:999px;background:var(--ink);border:2px solid #fff}
+@media (max-width:767px){.p-ci{grid-template-columns:1fr}}
+.sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
+
+@media (max-width:1023px){
+  .doc{grid-template-columns:minmax(0,1fr)}
+  .side{position:fixed;inset:0 auto 0 0;width:min(84vw,300px);transform:translateX(-100%);transition:transform .3s cubic-bezier(.2,.8,.2,1);z-index:50;box-shadow:var(--sh-floating)}
+  .side.open{transform:none}
+  .topbar{display:flex;position:sticky;top:0;z-index:40;align-items:center;gap:12px;background:#fff;border-bottom:1px solid var(--hair);padding:10px 16px;font-size:13.5px}
+  .topbar button{height:38px;padding:0 12px;border:1px solid var(--line-16);border-radius:8px;background:#fff;font:inherit;font-weight:600;cursor:pointer}
+  .main{padding:20px 16px 72px}
+  .main table{display:block;overflow-x:auto;max-width:100%}
+  .main table thead,.main table tbody,.main table tr{display:table;width:100%;min-width:560px}
+  .p-nav .links{display:none}.bp{grid-template-columns:repeat(2,1fr)}
+  code{white-space:normal;overflow-wrap:anywhere}
+  .cmp{padding:16px 14px 4px}.pv{padding:14px}
+  .p-row{grid-template-columns:48px 1fr}.p-row>a{grid-column:1/-1;justify-self:start}
+}
+@media print{.side,.topbar{display:none}.doc{display:block}.main{max-width:none;padding:0}h2{break-before:page;padding-top:0;border:0}.cmp,.pv,.sw,table,.anatomy{break-inside:avoid}a{color:inherit}body{background:#fff}}
+</style>
+</head>
+<body>
+<div class="topbar"><button type="button" id="menuBtn" aria-controls="side" aria-expanded="false">Contents</button><b>Discover Upper Egypt — Design System</b></div>
+<div class="doc">
+<aside class="side" id="side" aria-label="Table of contents">
+  <div class="brand"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div><b>Design System</b><span style="font-size:11.5px;color:var(--muted)">Developer handoff · v2</span></div></div>
+  <label class="sr-only" for="q">Find a component</label>
+  <input id="q" type="search" placeholder="Find a component…" autocomplete="off">
+  <nav><ul class="toc" id="toc">
+    <li><a href="#s00">00 — Overview</a></li>
+    <li><a href="#s01">01 — Foundations</a><ul class="sub"><li><a href="#f-color">Colors</a></li><li><a href="#f-type">Typography</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-grid">Grid</a></li><li><a href="#f-radius">Radius</a></li><li><a href="#f-border">Borders &amp; shadows</a></li><li><a href="#f-icon">Iconography</a></li></ul></li>
+    <li><a href="#s02">02 — Atoms</a><ul class="sub"><li><a href="#a-button">Button</a></li><li><a href="#a-icon">Icon</a></li><li><a href="#a-link">Link</a></li><li><a href="#a-input">Input</a></li><li><a href="#a-textarea">Textarea</a></li><li><a href="#a-select">Select</a></li><li><a href="#a-checkbox">Checkbox</a></li><li><a href="#a-chip">Chip / Tag</a></li><li><a href="#a-badge">Badge</a></li><li><a href="#a-divider">Divider</a></li></ul></li>
+    <li><a href="#s03">03 — Molecules</a><ul class="sub"><li><a href="#m-breadcrumb">Breadcrumb</a></li><li><a href="#m-heading">Section Heading</a></li><li><a href="#m-meta">Metadata Row</a></li><li><a href="#m-search">Search Control</a></li><li><a href="#m-filter">Filter Control</a></li><li><a href="#m-field">Form Field</a></li><li><a href="#m-location">Location Label</a></li><li><a href="#m-date">Date Badge</a></li><li><a href="#m-carnav">Carousel Navigation</a></li><li><a href="#m-lang">Language Switcher</a></li><li><a href="#m-empty">Result Count / Empty State</a></li><li><a href="#m-card">Content Card</a></li></ul></li>
+    <li><a href="#s04">04 — Organisms</a><ul class="sub"><li><a href="#o-header">Header</a></li><li><a href="#o-footer">Footer</a></li><li><a href="#o-hero">Hero</a></li><li><a href="#o-filterbar">Filter Bar</a></li><li><a href="#o-carousel">Section Carousel</a></li><li><a href="#o-gallery">Gallery</a></li><li><a href="#o-tabs">Tabs</a></li><li><a href="#o-accordion">Accordion</a></li><li><a href="#o-map">Map + Results List</a></li><li><a href="#o-newsletter">Newsletter Section</a></li><li><a href="#o-form">Form Shell</a></li><li><a href="#o-related">Related Content</a></li><li><a href="#o-city">City Information</a></li></ul></li>
+    <li><a href="#s05">05 — Page Patterns</a></li>
+    <li><a href="#s06">06 — CMS Editability</a></li>
+    <li><a href="#s07">07 — Responsive &amp; RTL</a></li>
+    <li><a href="#s08">08 — Accessibility</a></li>
+    <li><a href="#s09">09 — Component Inventory</a></li>
+    <li><a href="#s10">10 — Open Decisions</a></li>
+  </ul></nav>
+</aside>
+
+<main class="main">
+<!-- ============================================================ -->
+<h2 id="s00" style="padding-top:0;border:0"><span class="n">00 — Overview</span>Overview</h2>
+<p class="p-eyebrow" style="margin-bottom:6px">Discover Upper Egypt</p>
+<h1>Design System &amp; UI Component Library</h1>
+<div class="meta">
+  <div><b>Project</b><span>Discover Upper Egypt</span></div>
+  <div><b>Languages</b><span>Arabic / English / Spanish</span></div>
+  <div><b>Primary direction</b><span>Arabic RTL</span></div>
+  <div><b>Accessibility target</b><span>WCAG 2.1 AA</span></div>
+  <div><b>Purpose</b><span>Design-to-development handoff</span></div>
+  <div><b>Status</b><span>Final Design System Documentation</span></div>
+</div>
+<h4>Editability legend</h4>
+<div class="legend"><span class="ed cms">🟢 CMS Editable</span><span class="ed fix">⚫ Fixed UI</span><span class="ed dev">🔵 Developer Config</span></div>
+<p style="margin-top:14px;font-size:13px;color:var(--muted)">Source of truth: the inline stylesheet shared by every page, <code>icons.js</code>, <code>i18n.js</code>, <code>listing-shared.js</code>, <code>listing-engine.js</code>, <code>entry-engine.js</code>, <code>forms.js</code>. Every value on this page was read from that code.</p>
+
+<!-- ============================================================ -->
+<h2 id="s01"><span class="n">01 — Foundations</span>Foundations</h2>
+
+<h3 id="f-color">Colors</h3>
+<h4>Primary</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#a53e1a"></i><div><b>Rust</b><code>--rust</code><small>#a53e1a · primary actions, links, active states, eyebrows, focus ring (40%)</small></div></div>
+  <div class="sw"><i style="background:#8a3213"></i><div><b>Rust deep</b><code>--rust-deep</code><small>#8a3213 · hover of every rust element</small></div></div>
+  <div class="sw"><i style="background:#0b2230"></i><div><b>Ink</b><code>--ink</code><small>#0b2230 · headings, selected chips, user chat bubble, clusters</small></div></div>
+</div>
+<h4>Accent (category tints and map markers)</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#2f6f5e"></i><div><b>Heritage green</b><code>#2f6f5e</code><small>tour marker, link-resource icon, success</small></div></div>
+  <div class="sw"><i style="background:#345c70"></i><div><b>Nile blue</b><code>#345c70</code><small>stay marker, organisation tile, ink story card</small></div></div>
+  <div class="sw"><i style="background:#4b5a33"></i><div><b>Olive</b><code>#4b5a33</code><small>olive image badge; story card uses #687650</small></div></div>
+  <div class="sw"><i style="background:#9a4b2c"></i><div><b>Clay</b><code>#9a4b2c</code><small>default image badge; story card uses #b0684a</small></div></div>
+  <div class="sw"><i style="background:#b8741a"></i><div><b>Amber</b><code>#b8741a</code><small>food marker</small></div></div>
+  <div class="sw"><i style="background:#6b4a2f"></i><div><b>Bark</b><code>#6b4a2f</code><small>workshop / organisation marker</small></div></div>
+  <div class="sw"><i style="background:#f6d5c9"></i><div><b>Clay tint</b><code>#f6d5c9 / #7a2f14</code><small>pillar tag pair</small></div></div>
+  <div class="sw"><i style="background:#dbe5c6"></i><div><b>Olive tint</b><code>#dbe5c6 / #2f4118</code><small>pillar tag pair</small></div></div>
+  <div class="sw"><i style="background:#cfe4ee"></i><div><b>Ink tint</b><code>#cfe4ee / #143a4a</code><small>pillar tag pair</small></div></div>
+</div>
+<h4>Neutral</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#dcc9a8"></i><div><b>Sand</b><code>#dcc9a8</code><small>image fallback fill</small></div></div>
+  <div class="sw"><i style="background:#2b1d0e"></i><div><b>Cocoa</b><code>#2b1d0e</code><small>dark cards, base of all neutral shadows rgba(43,29,14,α)</small></div></div>
+  <div class="sw"><i style="background:#1f1a14"></i><div><b>Charcoal</b><code>#1f1a14</code><small>toast, tooltip, social buttons</small></div></div>
+  <div class="sw"><i style="background:#ffffff;border-bottom:1px solid #e6e2d8"></i><div><b>White</b><code>#ffffff</code><small>header, fieldsets, chips, rows, popups</small></div></div>
+</div>
+<h4>Background</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#f1e4d2"></i><div><b>Parchment</b><code>--paper</code><small>#f1e4d2 · home page body</small></div></div>
+  <div class="sw"><i style="background:#fbf7ef;border-bottom:1px solid #e6e2d8"></i><div><b>Paper</b><code>#fbf7ef</code><small>inner pages, cards, footer</small></div></div>
+  <div class="sw"><i style="background:#f7f1e6"></i><div><b>Section cream</b><code>#f7f1e6</code><small>alternating home sections</small></div></div>
+  <div class="sw"><i style="background:#f4f1ea"></i><div><b>Drawer</b><code>--drawer-bg</code><small>#f4f1ea · accessibility drawer, metadata chips</small></div></div>
+  <div class="sw"><i style="background:#f3e3c9"></i><div><b>Form paper</b><code>#f3e3c9</code><small>+ papyrus texture 30% on form pages</small></div></div>
+</div>
+<h4>Text</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#0b2230"></i><div><b>Heading</b><code>--ink</code><small>#0b2230 · 15.3:1 on paper</small></div></div>
+  <div class="sw"><i style="background:#24312f"></i><div><b>Body</b><code>--body</code><small>#24312f · 12.6:1</small></div></div>
+  <div class="sw"><i style="background:#57534e"></i><div><b>Muted</b><code>--muted</code><small>#57534e · summaries, meta, hints · 7.1:1</small></div></div>
+  <div class="sw"><i style="background:#2a2a28"></i><div><b>Nav ink</b><code>--nav-ink</code><small>#2a2a28 · header links, footer headings</small></div></div>
+  <div class="sw"><i style="background:#f6ead8"></i><div><b>Cream</b><code>--cream</code><small>#f6ead8 · city hero title on dark</small></div></div>
+</div>
+<h4>Border</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#e6e2d8"></i><div><b>Hairline</b><code>--hair</code><small>#e6e2d8 · dividers</small></div></div>
+  <div class="sw"><i style="background:#e1ddd0"></i><div><b>Chip border</b><code>--card-border</code><small>#e1ddd0 · metadata chips</small></div></div>
+  <div class="sw"><i style="background:rgba(43,29,14,.12)"></i><div><b>Ink alpha</b><code>rgba(43,29,14,.10–.20)</code><small>.10 cards · .12 rows · .16 chips · .20 inputs</small></div></div>
+</div>
+<h4>Semantic</h4>
+<div class="swatches">
+  <div class="sw"><i style="background:#a52a1a"></i><div><b>Error</b><code>#a52a1a</code><small>border + message; banner text #7a1f12 on rgba(165,42,26,.08)</small></div></div>
+  <div class="sw"><i style="background:#2f6f5e"></i><div><b>Success</b><code>#2f6f5e</code><small>verified border; banner text #1f4a3f on rgba(47,111,94,.08)</small></div></div>
+  <div class="sw"><i style="background:rgba(165,62,26,.4)"></i><div><b>Focus</b><code>rgba(165,62,26,.4)</code><small>3px outline, offset 3 (2 in forms); white on rust/dark</small></div></div>
+  <div class="sw"><i style="background:#7a2400"></i><div><b>High-contrast rust</b><code>#7a2400</code><small>replaces rust in <code>html.a11y-contrast</code></small></div></div>
+</div>
+
+<h3 id="f-type">Typography</h3>
+<table><thead><tr><th>Role</th><th>Arabic</th><th>Latin (<code>html.lang-latin</code>)</th><th>Weights</th></tr></thead><tbody>
+<tr><td>Display / headings</td><td>Thmanyah Serif Display</td><td>IBM Plex Serif, −.02em</td><td>500, 700</td></tr>
+<tr><td>Body / UI</td><td>IBM Plex Sans Arabic</td><td>IBM Plex Sans</td><td>400, 500, 600, 700</td></tr>
+</tbody></table>
+<div class="pv white col" style="gap:0">
+  <div class="spec"><div class="k"><b>Display</b>--fs-h1 · clamp(42px,6vw,84px) · 700 · lh .94–1.02<br>home hero only</div><div class="latin-display" style="font-size:40px;color:#0b2230;line-height:1">Discover <span style="color:#a53e1a">Upper Egypt</span></div><div class="ar-display" style="font-size:40px;color:#0b2230;line-height:1.05">اكتشف <span style="color:#a53e1a">صعيد مصر</span></div></div>
+  <div class="spec"><div class="k"><b>H1</b>--fs-h2 · clamp(32px,4.4vw,56px) · 700 · lh 1.15<br>page titles, section titles (home)</div><div class="latin-display" style="font-size:32px;color:#0b2230">Upcoming <span style="color:#a53e1a">events</span></div><div class="ar-display" style="font-size:32px;color:#0b2230">الفعاليات القادمة</div></div>
+  <div class="spec"><div class="k"><b>H2</b>.lx-h · clamp(26px,2.7vw,38px) · 700 · lh 1.3<br>inner section headings</div><div class="latin-display" style="font-size:26px;color:#0b2230">Practical information</div><div class="ar-display" style="font-size:26px;color:#0b2230">معلومات عملية</div></div>
+  <div class="spec"><div class="k"><b>H3</b>--fs-h3 · clamp(20px,1.7vw,24px) · 700 · lh 1.3<br>card titles, legends (800)</div><div style="font-size:21px;font-weight:700;color:#0b2230">Hot-air balloon rides</div><div class="ar" style="font-size:21px;font-weight:700;color:#0b2230">رحلات البالون</div></div>
+  <div class="spec"><div class="k"><b>H4</b>16–18px · 700 · lh 1.3<br>row titles</div><div style="font-size:17px;font-weight:700;color:#0b2230">Luxor Heritage Association</div><div class="ar" style="font-size:17px;font-weight:700;color:#0b2230">جمعية تراث الأقصر</div></div>
+  <div class="spec"><div class="k"><b>Body Large</b>--fs-body-lg · clamp(16px,1.25vw,18px) · 400 · lh 1.7–1.85<br>ledes, prose, detail body</div><div style="font-size:17px">Tea and stories with the people of Luxor.</div><div class="ar" style="font-size:17px">شاي وحكايات مع أهل الأقصر.</div></div>
+  <div class="spec"><div class="k"><b>Body</b>--fs-body · 15px · 400 · lh 1.7<br>card summaries, labels; nav 17px/600</div><div style="font-size:15px">A felucca ride on the Nile at sunset.</div><div class="ar" style="font-size:15px">رحلة فلوكة في النيل وقت الغروب.</div></div>
+  <div class="spec"><div class="k"><b>Body Small</b>--fs-small · 13.5px · 400–700 · lh 1.5<br>metadata, badges, checkbox text</div><div style="font-size:13.5px;color:#57534e">About two hours · Aswan</div><div class="ar" style="font-size:13.5px;color:#57534e">نحو ساعتين · أسوان</div></div>
+  <div class="spec"><div class="k"><b>Label</b>--fs-label · 12.5px · 600–700<br>Latin eyebrow 11.5px uppercase .18em</div><div style="font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#a53e1a">Hidden gems</div><div class="ar" style="font-size:12.5px;font-weight:700;color:#a53e1a">جواهر مخفية</div></div>
+  <div class="spec"><div class="k"><b>Caption</b>13px · 400 (errors 700) · lh 1.5<br>hints, errors, popup summary</div><div style="font-size:13px;color:#57534e">We reply within five working days.</div><div class="ar" style="font-size:13px;color:#57534e">نرد خلال خمسة أيام عمل.</div></div>
+</div>
+<p style="font-size:13px;color:var(--muted)">Arabic text never receives letter-spacing, uppercase or tatweel stretching. Buttons: <code>--fs-btn</code> 15px/700 (compact 13.5px).</p>
+
+<h3 id="f-space">Spacing</h3>
+<div class="pv white"><div class="space-row">
+  <div><i style="width:8px;height:8px"></i>--s-1<br>8</div><div><i style="width:12px;height:12px"></i>--s-2<br>12</div><div><i style="width:16px;height:16px"></i>--s-3<br>16</div><div><i style="width:24px;height:24px"></i>--s-4<br>24</div><div><i style="width:32px;height:32px"></i>--s-5<br>32</div><div><i style="width:48px;height:48px"></i>--s-6<br>48</div><div><i style="width:64px;height:64px"></i>--s-7<br>64</div><div><i style="width:96px;height:96px"></i>--s-8<br>96</div>
+</div></div>
+<table><thead><tr><th>Context</th><th>Desktop</th><th>Mobile ≤767</th></tr></thead><tbody>
+<tr><td>Section padding</td><td>112 top / 96 bottom (<code>--sec-pt / --sec-pb</code>); listing sections 64 / 96</td><td>64 / 64</td></tr>
+<tr><td>Card padding · inner gap</td><td>24 · 8 (rows 16/24)</td><td>same</td></tr>
+<tr><td>Grid gap</td><td>32 row / 24 column</td><td>24</td></tr>
+<tr><td>Gutter (<code>.wrap</code>)</td><td>24 (≥640)</td><td>16</td></tr>
+<tr><td>Button padding · icon gap</td><td>24 · 12</td><td>same</td></tr>
+<tr><td>Form: field gap · fieldset gap · form gap</td><td>6 · 16 · 24</td><td>same</td></tr>
+</tbody></table>
+
+<h3 id="f-grid">Grid</h3>
+<div class="bp"><div><b>640</b>sm</div><div><b>768</b>md</div><div><b>1024</b>lg</div><div><b>1280</b>xl</div></div>
+<table><thead><tr><th>Container</th><th>Max width</th><th>Used by</th></tr></thead><tbody>
+<tr><td><code>.wrap</code></td><td>1200px</td><td>default sections</td></tr>
+<tr><td><code>#exList .wrap</code>, <code>.ds-wrap</code></td><td>1400px</td><td>listing grids, destinations, framed hero</td></tr>
+<tr><td><code>.footer-grid</code> · <code>.f-form</code> · <code>.prose</code></td><td>1180 · 720 · 72ch</td><td>footer, forms, static text</td></tr>
+</tbody></table>
+<div class="pv white col">
+  <span class="lbl">Desktop ≥1024 · 3 columns · gap 32×24</span><div class="gridviz" style="grid-template-columns:repeat(3,1fr)"><i></i><i></i><i></i></div>
+  <span class="lbl">Tablet 640–1023 · auto-fill minmax(320px) → 2 columns</span><div class="gridviz" style="grid-template-columns:repeat(2,1fr)"><i></i><i></i></div>
+  <span class="lbl">Mobile &lt;640 · 1 column · 4-card rows become horizontal snap (min(78vw,320px))</span><div class="gridviz" style="grid-template-columns:1fr"><i></i></div>
+  <span class="lbl">Split layouts ≥1024 · detail 1fr + 380 (420 ≥1280) · form 1fr + 360 · directory 1fr + 420 sticky map</span><div class="gridviz" style="grid-template-columns:1fr 160px"><i></i><i style="background:rgba(52,92,112,.14);border-color:#345c70"></i></div>
+</div>
+
+<h3 id="f-radius">Radius</h3>
+<div class="pv white"><div class="radius-row"><div style="border-radius:6px">xs 6</div><div style="border-radius:8px">sm · btn 8</div><div style="border-radius:12px">md 12</div><div style="border-radius:18px">card 18</div><div style="border-radius:22px">card-lg 22</div><div style="border-radius:999px;width:110px">full 999</div></div></div>
+<table><thead><tr><th>Token</th><th>Used for</th></tr></thead><tbody>
+<tr><td><code>--radius-xs</code> 6</td><td>focus ring corners, nav link</td></tr>
+<tr><td><code>--radius-sm</code> / <code>--radius-btn</code> 8</td><td>buttons, inputs, filter chips, metadata chips, map controls</td></tr>
+<tr><td><code>--radius-md</code> 12</td><td>thumbnails, icon tiles, popups, menus, toast</td></tr>
+<tr><td><code>--radius-card</code> 18</td><td>cards, rows, fieldsets, sidebar, hero media</td></tr>
+<tr><td><code>--radius-card-lg</code> 22</td><td>feature and story cards, lead images, mobile menu, page frame</td></tr>
+<tr><td><code>--radius-full</code> 999</td><td>pills, round buttons, header bar</td></tr>
+</tbody></table>
+<p style="font-size:13px;color:var(--muted)">Two accepted exceptions: 20px (framed hero, planner panel) and 16px (destination card media). Animated radii on expanding cards (44→30, 28→22) are states, not tokens.</p>
+
+<h3 id="f-border">Borders &amp; shadows</h3>
+<table><thead><tr><th>Border</th><th>Value</th><th>Where</th></tr></thead><tbody>
+<tr><td>Card</td><td>1px rgba(43,29,14,.10) · hover rgba(165,62,26,.35)</td><td><code>.gem</code></td></tr>
+<tr><td>Row / fieldset / popup</td><td>1px rgba(43,29,14,.12)</td><td><code>.org-row .rs-row fieldset</code></td></tr>
+<tr><td>Chip / search / round button</td><td>1px rgba(43,29,14,.16) · hover rust</td><td><code>.mp-chip .mp-search</code></td></tr>
+<tr><td>Input</td><td>1.5px rgba(43,29,14,.20) · focus rust · error #a52a1a</td><td><code>.f-field</code></td></tr>
+<tr><td>Outline button</td><td>1.5px rust (ghost: inset ring)</td><td><code>.st-cta .dx-cta--ghost</code></td></tr>
+<tr><td>Divider</td><td>1px <code>--hair</code> or rgba(43,29,14,.1)</td><td>footer, steps</td></tr>
+</tbody></table>
+<div class="pv"><div class="sh-row">
+  <div style="border:1px solid rgba(43,29,14,.1)">none<br><small>cards at rest</small></div>
+  <div style="box-shadow:var(--sh-subtle)">subtle<br><small>header, menus</small></div>
+  <div style="box-shadow:var(--sh-card)">card<br><small>feature cards</small></div>
+  <div style="box-shadow:var(--sh-elevated)">elevated<br><small>dark cards, hover</small></div>
+  <div style="box-shadow:var(--sh-cta);background:#a53e1a;color:#fff">cta<br><small>rust buttons</small></div>
+  <div style="box-shadow:var(--sh-floating)">floating<br><small>popups, drawer</small></div>
+</div></div>
+<table><thead><tr><th>Shadow</th><th>Value</th></tr></thead><tbody>
+<tr><td>subtle</td><td>0 1px 2px rgba(43,29,14,.06), 0 10px 30px −12px rgba(43,29,14,.35), 0 0 0 1px rgba(43,29,14,.04)</td></tr>
+<tr><td>card</td><td>0 2px 6px rgba(43,29,14,.06), 0 14px 32px rgba(43,29,14,.08)</td></tr>
+<tr><td>elevated</td><td>0 1px 2px rgba(43,29,14,.12), 0 18px 40px −20px rgba(43,29,14,.45)</td></tr>
+<tr><td>cta</td><td>0 1px 2px rgba(138,50,19,.18), 0 6px 16px −6px rgba(138,50,19,.45)</td></tr>
+<tr><td>floating</td><td>0 2px 6px rgba(43,29,14,.06), 0 18px 44px rgba(43,29,14,.14)</td></tr>
+<tr><td>on-image badge</td><td>0 4px 12px −4px rgba(0,0,0,.4) (only neutral black shadow)</td></tr>
+</tbody></table>
+
+<h3 id="f-icon">Iconography</h3>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody>
+<tr><td>Family</td><td>Phosphor Icons, regular weight, <b>filled paths</b> (not stroked), 256×256 viewBox, <code>fill="currentColor"</code>. 130 glyphs in <code>icons.js</code> + 2 custom (<code>ferry</code>, <code>hot-air-balloon</code>) drawn to the same grid. One family only; no emoji.</td></tr>
+<tr><td>API</td><td><code>ICON(name, size, cls)</code> → inline <code>&lt;svg class="ic" aria-hidden="true" focusable="false"&gt;</code></td></tr>
+<tr><td>Sizes</td><td><b>16</b> default (buttons, meta, chips) · 14 inside pills · 20 in round buttons and markers · 22–24 header and drawer tiles · 32 form page-head tile</td></tr>
+<tr><td>Colour</td><td>inherits: rust on white, white on rust/dark, muted in metadata rows</td></tr>
+<tr><td>Active / inactive</td><td>expressed by the parent (filled chip → white icon; favourite pressed → <code>heart-fill</code>); icons never change colour alone</td></tr>
+<tr><td>Direction</td><td>forward arrows use <code>arrow-left</code> + class <code>fwd</code>; <code>html[dir="ltr"] .fwd{transform:scaleX(-1)}</code>. Carets mirror per component. <code>arrow-square-out</code>, <code>arrow-down</code> never mirror.</td></tr>
+</tbody></table>
+<div class="icon-grid">
+<div><span data-ic="arrow-left"></span>arrow-left</div><div><span data-ic="caret-right"></span>caret-right</div><div><span data-ic="caret-down"></span>caret-down</div><div><span data-ic="list"></span>list</div><div><span data-ic="x"></span>x</div><div><span data-ic="magnifying-glass"></span>search</div><div><span data-ic="map-pin"></span>map-pin</div><div><span data-ic="compass"></span>compass</div><div><span data-ic="hand"></span>hand</div><div><span data-ic="fork-knife"></span>fork-knife</div><div><span data-ic="bed"></span>bed</div><div><span data-ic="basket"></span>basket</div><div><span data-ic="bank"></span>bank</div><div><span data-ic="sailboat"></span>sailboat</div><div><span data-ic="hot-air-balloon"></span>balloon*</div><div><span data-ic="ferry"></span>ferry*</div><div><span data-ic="clock"></span>clock</div><div><span data-ic="calendar-blank"></span>calendar</div><div><span data-ic="users"></span>users</div><div><span data-ic="tag"></span>tag</div><div><span data-ic="heart"></span>heart</div><div><span data-ic="heart-fill"></span>heart-fill</div><div><span data-ic="share-network"></span>share</div><div><span data-ic="download-simple"></span>download</div><div><span data-ic="play"></span>play</div><div><span data-ic="sliders-horizontal"></span>sliders</div><div><span data-ic="sun"></span>sun</div><div><span data-ic="cloud"></span>cloud</div><div><span data-ic="wind"></span>wind</div><div><span data-ic="person-arms-spread"></span>a11y</div><div><span data-ic="wheelchair"></span>wheelchair</div><div><span data-ic="info"></span>info</div><div><span data-ic="warning"></span>warning</div><div><span data-ic="check"></span>check</div><div><span data-ic="envelope-simple"></span>envelope</div><div><span data-ic="facebook-logo"></span>facebook</div><div><span data-ic="instagram-logo"></span>instagram</div><div><span data-ic="linkedin-logo"></span>linkedin</div><div><span data-ic="youtube-logo"></span>youtube</div><div><span data-ic="arrow-square-out"></span>external</div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s02"><span class="n">02 — Atoms</span>Atoms</h2>
+
+<div class="cmp" id="a-button">
+<h3>Button</h3>
+<p class="cmp-meta"><b>Atom</b> · Global · <span class="status ok">Approved</span></p>
+<div class="pv"><span class="lbl">Live preview</span><a class="p-cta" href="#a-button">See event details <span data-ic="arrow-right"></span></a><a class="p-outline" href="#a-button">Explore all <span data-ic="arrow-right"></span></a><a class="p-link" href="#a-button">View all events <span data-ic="arrow-right"></span></a><button class="p-round" aria-label="Next"><span data-ic="caret-right"></span></button></div>
+<h4>Variants</h4>
+<div class="pv"><a class="p-cta" href="#a-button">Primary</a><a class="p-outline" href="#a-button">Secondary</a><a class="p-cta ghost" href="#a-button">Ghost</a><a class="p-cta sm" href="#a-button">Compact 40</a><a class="p-cta sm ink" href="#a-button">Compact ink</a><a class="p-link" href="#a-button">Text <span data-ic="arrow-right"></span></a><button class="p-round sz40" aria-label="Icon 40"><span data-ic="caret-right"></span></button><button class="p-round" aria-label="Icon 44"><span data-ic="caret-right"></span></button><button class="p-round sz56" aria-label="Icon 56"><span data-ic="arrow-right"></span></button><button class="p-round fab" aria-label="FAB"><span data-ic="person-arms-spread"></span></button><button class="p-fav" aria-pressed="true" aria-label="Favourite"><span data-ic="heart-fill"></span></button></div>
+<h4>States</h4>
+<div class="pv"><a class="p-cta" href="#a-button">Default</a><a class="p-cta" href="#a-button" style="background:var(--rust-deep);transform:translateY(-1px)">Hover</a><a class="p-cta" href="#a-button" style="outline:3px solid rgba(165,62,26,.45);outline-offset:3px">Focus</a><a class="p-cta" href="#a-button" style="transform:scale(.98);box-shadow:none">Active</a><span class="p-cta is-disabled">Disabled</span></div>
+<div class="pv dark"><span class="lbl">On image / dark · white focus ring, no tinted shadow</span><a class="p-cta on-dark" href="#a-button">Explore more <span data-ic="arrow-right"></span></a><a class="p-cta on-dark" href="#a-button" style="outline:3px solid #fff;outline-offset:3px">Focus</a></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value / token</th></tr></thead><tbody>
+<tr><td>Height · padding · gap</td><td>48 (<code>--btn-h</code>) · 24 · 12; compact 40–44, padding 18; text link min-height 44</td></tr>
+<tr><td>Type</td><td><code>--fs-btn</code> 15/700 (secondary 15.5, compact 13.5)</td></tr>
+<tr><td>Radius</td><td><code>--radius-btn</code> 8; icon buttons <code>--radius-full</code></td></tr>
+<tr><td>Primary</td><td>bg rust, text #fff, shadow cta · hover rust-deep, translateY −1 · active scale .98</td></tr>
+<tr><td>Secondary</td><td>1.5px rust border, bg white .3, text rust · hover fills rust; ghost: inset 1.5px ring, hover rust .08</td></tr>
+<tr><td>Text</td><td>rust 15/700 · hover rust-deep, arrow translateX 4 (mirrored)</td></tr>
+<tr><td>Icon</td><td>40 / 44 / 48 / 56 circle, white, 1px rgba(43,29,14,.16) · hover rust fill · disabled opacity .35; FAB rust; favourite white .92 → rust when pressed</td></tr>
+<tr><td>Icon glyph</td><td>16px trailing <code>arrow-left.fwd</code>; 20px in icon buttons</td></tr>
+<tr><td>Classes in code</td><td>Primary <code>.cta .card-cta .gem-cta .ev-cta .xa-cta .journey-btn .news-btn .lx-btn .dx-cta .pv-cta .sy-btn</code> · Secondary <code>.st-cta .rv-cta .gems-cta</code> · Ghost <code>.dx-cta--ghost</code> · Text <code>.st-link .ev-all .lx-all .mp-more .ds-link</code> · Icon <code>.gems-nav .ev-nav .ex-strip-btn .cf-nav .sy-nav .icon-btn .gem-fav</code></td></tr>
+</tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody>
+<tr><td>Label</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>URL / target</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Colour, typography, padding, radius, shadow</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Variant per placement, icon</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Interaction states, mirroring, disabled logic</td><td><span class="ed dev">Developer Config</span></td></tr>
+</tbody></table>
+<p class="used"><b>Used on:</b> all pages. New code uses <code>.dx-cta</code> / <code>.dx-cta--ghost</code>; do not add button classes.</p>
+</div>
+
+<div class="cmp" id="a-icon">
+<h3>Icon</h3>
+<p class="cmp-meta"><b>Atom</b> · Global · <span class="status ok">Approved</span></p>
+<div class="pv"><span data-ic="map-pin" style="width:14px;height:14px"></span><span data-ic="map-pin"></span><span data-ic="map-pin" style="width:20px;height:20px"></span><span data-ic="map-pin" style="width:24px;height:24px"></span><span data-ic="map-pin" style="width:32px;height:32px"></span><span style="font-size:12px;color:var(--muted)">14 · 16 · 20 · 24 · 32</span><span data-ic="map-pin" style="color:var(--rust)"></span><span data-ic="map-pin" style="color:var(--muted)"></span><span style="background:var(--rust);color:#fff;padding:6px;border-radius:6px;display:inline-flex"><span data-ic="map-pin"></span></span></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Source</td><td><code>ICON(name, size, cls)</code> from <code>icons.js</code> (Phosphor, filled)</td></tr><tr><td>Attributes</td><td><code>class="ic" aria-hidden="true" focusable="false" fill="currentColor"</code>; width = height = size</td></tr><tr><td>Sizes</td><td>14 pills · 16 default · 20 round buttons, markers · 22–24 header · 32 page-head tile</td></tr><tr><td>Colour</td><td><code>currentColor</code></td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Category → icon mapping (taxonomy)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Glyph set, size, colour</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Mirroring (<code>.fwd</code>)</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all pages.</p>
+</div>
+
+<div class="cmp" id="a-link">
+<h3>Link</h3>
+<p class="cmp-meta"><b>Atom</b> · Global · <span class="status std">Standardized</span></p>
+<div class="pv"><a href="#a-link" style="text-decoration:underline;text-underline-offset:3px">Inline link</a><a href="#a-link" style="font-size:17px;font-weight:600;color:var(--nav-ink)">Nav link</a><a href="#a-link" style="font-size:17px;font-weight:700;color:var(--rust);border-bottom:2.5px solid var(--rust)">Nav current</a><a href="#a-link" style="font-size:16px;font-weight:500;color:var(--body)">› Footer link</a><a href="#a-link" style="font-size:15px;color:var(--muted)">Breadcrumb link</a><a class="p-cta ghost" href="#a-link">Official site <span data-ic="arrow-square-out"></span></a></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Value</th><th>Hover / current</th></tr></thead><tbody>
+<tr><td>Inline (prose)</td><td>rust; underline, offset 3 (standardized — was colour-only)</td><td>rust-deep</td></tr>
+<tr><td>Navigation <code>.nav-link</code></td><td>17/600 nav-ink, padding 8×4, min-height 44</td><td>hover rust; current rust/700 + 2.5px bar (<code>aria-current="page"</code>)</td></tr>
+<tr><td>Footer</td><td>16/500 body, 6px rust chevron before</td><td>rust + 2px nudge</td></tr>
+<tr><td>Breadcrumb</td><td>15 muted, min-height 44</td><td>rust; current ink/600</td></tr>
+<tr><td>External</td><td>ghost button, <code>target="_blank" rel="noopener"</code>, <code>arrow-square-out</code></td><td>—</td></tr>
+</tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, URL</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Colour, weight, underline, chevron</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Current-page detection, external attributes</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all pages.</p>
+</div>
+
+<div class="cmp" id="a-input">
+<h3>Input</h3>
+<p class="cmp-meta"><b>Atom</b> · Forms, listings, newsletter · <span class="status ok">Approved</span></p>
+<div class="pv white"><div class="p-field"><label for="i1">Default</label><input id="i1" type="text" value="Nisreen"></div><div class="p-field"><label for="i2">Focus</label><input id="i2" type="email" style="outline:3px solid rgba(165,62,26,.4);outline-offset:2px;border-color:var(--rust)" value="name@"></div><div class="p-field is-invalid"><label for="i3">Error</label><input id="i3" type="email" aria-invalid="true" value="name@"><p class="err" role="alert">Please enter a valid email address.</p></div><div class="p-field"><label for="i4">Disabled</label><input id="i4" type="text" disabled value="Locked"></div></div>
+<div class="pv"><div class="p-search" role="search"><span data-ic="magnifying-glass" style="width:20px;height:20px"></span><input type="search" placeholder="Search…" aria-label="Search"></div><input type="email" placeholder="Your email" aria-label="Newsletter email" style="height:50px;border:0;border-radius:8px;padding-inline:16px;font:inherit;font-size:15px;width:260px;box-shadow:0 8px 20px -10px rgba(0,0,0,.45)"></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody>
+<tr><td>Field</td><td>min-height 48, padding 10×14, 1.5px rgba(43,29,14,.2), radius 8, #fff, 15px ink</td></tr>
+<tr><td>Search</td><td>48, 1px rgba(43,29,14,.16), 20px icon, placeholder rgba(36,49,47,.6); focus-within rust + 0 0 0 3px rgba(165,62,26,.22)</td></tr>
+<tr><td>Newsletter</td><td>50, no border, shadow 0 8px 20px −10px rgba(0,0,0,.45); focus 3px white</td></tr>
+<tr><td>States</td><td>focus 3px rust .4 outline offset 2 + rust border · error <code>.is-invalid</code> border #a52a1a + <code>aria-invalid</code> · disabled opacity .5, bg #faf8f4 (standardized)</td></tr>
+<tr><td>Types in use</td><td>text, email, tel, search. No radio, file, date or time inputs exist.</td></tr>
+</tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, placeholder, hint, error text</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Size, border, radius, colours</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Validation rules, required flags, debounce</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> contact, register-organisation, directory-request, update-request, edit, all listing pages, home and resources (newsletter), travel-ideas (planner).</p>
+</div>
+
+<div class="cmp" id="a-textarea">
+<h3>Textarea</h3>
+<p class="cmp-meta"><b>Atom</b> · Forms · <span class="status ok">Approved</span></p>
+<div class="pv white"><div class="p-field" style="max-width:420px"><label for="t1">Message</label><textarea id="t1"></textarea><p class="hint">Up to 1,000 characters.</p></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Box</td><td>as Input + min-height 140, <code>resize:vertical</code>, line-height 1.6</td></tr><tr><td>States</td><td>as Input</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, hint, error</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>maxlength, required</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> contact, register-organisation, directory-request, edit.</p>
+</div>
+
+<div class="cmp" id="a-select">
+<h3>Select</h3>
+<p class="cmp-meta"><b>Atom</b> · Forms, admin · <span class="status ok">Approved</span></p>
+<div class="pv white"><div class="p-field" style="max-width:320px"><label for="s1">City</label><div style="position:relative"><select id="s1" style="appearance:none;padding-inline-end:44px"><option>Luxor</option><option>Aswan</option></select><span data-ic="caret-down" style="position:absolute;inset-inline-end:16px;top:50%;transform:translateY(-50%);width:18px;height:18px;color:var(--ink);pointer-events:none"></span></div></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Box</td><td>as Input, <code>appearance:none</code>, padding-inline-end 44</td></tr><tr><td>Caret</td><td><code>.f-select::after</code> 18px <code>icons/ui/caret-down.svg</code> mask at inline-end 16, ink</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, options</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style, caret</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Conditional reveal (contact subject → listing fields)</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> contact, register-organisation, edit, admin pages.</p>
+</div>
+
+<div class="cmp" id="a-checkbox">
+<h3>Checkbox</h3>
+<p class="cmp-meta"><b>Atom</b> · Forms, filters · <span class="status ok">Approved</span></p>
+<div class="pv white"><label class="p-check"><input type="checkbox" checked> I agree to the privacy notice.</label><label class="p-check"><input type="checkbox"> Wheelchair access</label><label class="p-check"><input type="checkbox" disabled> Disabled</label></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Control</td><td>18×18, <code>accent-color</code> rust, margin-top 3, gap 10</td></tr><tr><td>Text</td><td>13.5/1.6 body (filter grid 14, min-height 40)</td></tr><tr><td>States</td><td>native checked; focus global ring</td></tr><tr><td>Radio</td><td>not used; if added, same spec</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, option list (filter values)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Required consent, auto-hide empty filter values</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all forms, advanced filter panels.</p>
+</div>
+
+<div class="cmp" id="a-chip">
+<h3>Chip / Tag</h3>
+<p class="cmp-meta"><b>Atom</b> · Listings, cards, details · <span class="status std">Standardized</span></p>
+<div class="pv"><span class="lbl">Filter chip · 44 · radius 8</span><button class="p-chip" aria-pressed="false"><span data-ic="compass"></span>Tours</button><button class="p-chip" aria-pressed="true"><span data-ic="fork-knife"></span>Food &amp; drink</button><button class="p-chip" aria-pressed="false" style="border-color:var(--rust)">Hover</button></div>
+<div class="pv" style="background:#2b1d0e url('ASSETS/gal/corniche-cafes-1-960.webp') center/cover"><span class="lbl" style="color:#fff">On image · 32 pill</span><span class="p-pill loc"><span data-ic="compass" style="width:14px;height:14px"></span>Guided tour</span><span class="p-pill loc olive"><span data-ic="fork-knife" style="width:14px;height:14px"></span>Food</span><span class="p-pill loc ink"><span data-ic="bed" style="width:14px;height:14px"></span>Stay</span><span class="p-pill glass"><span data-ic="map-pin"></span>Aswan</span></div>
+<div class="pv"><span class="lbl">Tag · 32 pill tints · soft 36 · dense 26 · metadata 32 radius 8</span><span class="p-pill tag"><span data-ic="hand" style="width:14px;height:14px"></span>Handicrafts</span><span class="p-pill tag olive">Agriculture</span><span class="p-pill tag ink">Music</span><span class="p-pill soft"><span data-ic="path"></span>Value chain</span><span class="p-pill dense">Training</span><span class="p-pill dense city">Luxor</span><span class="p-pill map"><span data-ic="compass" style="width:14px;height:14px"></span>Tour</span><span class="p-pill meta"><span data-ic="clock"></span>6:00 PM</span></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Class</th><th>Value</th></tr></thead><tbody>
+<tr><td>Filter chip</td><td><code>.mp-chip[aria-pressed]</code></td><td>44 / radius 8 / #fff + 1px .16 / 14px 600 / 16px rust icon · pressed: ink fill, white</td></tr>
+<tr><td>Image badge</td><td><code>.gem-loc</code> (<code>--olive --ink</code>)</td><td>32 pill / #9a4b2c · #4b5a33 · #1e3f4e / white 13.5/600 / 14px icon / shadow on-image</td></tr>
+<tr><td>Glass pill</td><td><code>.dx-tag .ss-loc .lp-steps</code></td><td>28–32 pill / white .16 + white .35 border + blur 6 / 13/600</td></tr>
+<tr><td>Pillar tag</td><td><code>.st-tag .ss-cat</code></td><td>32 pill / tint pairs / 12.5/600</td></tr>
+<tr><td>Soft chip</td><td><code>.dxi-chip .ti-tags</code></td><td>36 pill / rust .08 on rust-deep / 13/700</td></tr>
+<tr><td>Dense tag</td><td><code>.org-tag .mp-tag</code></td><td>26 pill / rust .08 or category .12 / 12/700</td></tr>
+<tr><td>Metadata chip</td><td><code>.ev-chip</code></td><td>32 / <b>radius 8</b> / #f4f1ea + 1px #e1ddd0 / 12.5/600 (intentional: facts, not categories)</td></tr>
+</tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, taxonomy term, icon-to-category map, colour variant per category</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Height, radius, tints, typography</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Pressed state, URL sync</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all listing pages, cards, detail sidebars, home.</p>
+</div>
+
+<div class="cmp" id="a-badge">
+<h3>Badge</h3>
+<p class="cmp-meta"><b>Atom</b> · Events, steps, counts · <span class="status std">Standardized</span></p>
+<div class="pv"><div class="p-evc-date"><b>15</b><small>NOV</small></div><div class="p-evl-date"><b>22</b><small>NOV</small></div><span class="p-num" style="width:40px;height:40px;font-size:14px">01</span><span class="p-num" style="width:44px;height:44px;font-size:15px">03</span><span class="p-num" style="width:22px;height:22px;font-size:12px">2</span><span class="p-num" style="width:44px;height:44px;background:var(--ink);border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);font-size:15px">12</span><span class="p-pill glass" style="background:rgba(11,9,6,.55);border:0">3 / 8</span></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Value</th></tr></thead><tbody>
+<tr><td>Date block <code>.evc-date</code></td><td>rgba(43,29,14,.82), radius 14 end-end corner, day 26/800, month 12 uppercase, top-start of image</td></tr>
+<tr><td>Date tile <code>.evl-date</code></td><td>72×72 rust, radius 12, 26/800 + 12</td></tr>
+<tr><td>Step number</td><td>rust circle, white 800, CSS counter "01"; 40 in-body, 44 page-level (standardized from 34/36/40/44)</td></tr>
+<tr><td>Count</td><td>22px rust circle, 12px white (<code>#exAdvN</code>, planner tabs)</td></tr>
+<tr><td>Map cluster</td><td>44px ink, 3px white border, 15/700</td></tr>
+<tr><td>Image count <code>.xp-count</code></td><td>glass pill "n / N" on lead image</td></tr>
+</tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Date value, step content</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Shape, colours, type</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Locale date formatting, counters</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> events, event detail, resources, learning-path, entrepreneur, experience, map.</p>
+</div>
+
+<div class="cmp" id="a-divider">
+<h3>Divider</h3>
+<p class="cmp-meta"><b>Atom</b> · Global · <span class="status ok">Approved</span></p>
+<div class="pv white col"><div style="height:1px;background:var(--hair)"></div><div style="height:1px;background:rgba(43,29,14,.1)"></div><div style="display:flex;gap:16px;align-items:center"><span style="width:1px;height:26px;background:var(--hair)"></span><span class="p-sec" style="font-size:24px"><span class="rule"></span>Title rule<span class="rule"></span></span></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Value</th></tr></thead><tbody><tr><td>Hairline</td><td>1px <code>--hair</code> #e6e2d8 (footer, steps)</td></tr><tr><td>Alpha line</td><td>1px rgba(43,29,14,.1) (footer columns, rows, chat dock)</td></tr><tr><td>Vertical <code>.vdiv</code></td><td>1×26 in header</td></tr><tr><td>Title rule <code>.rule</code></td><td>2px, clamp(24px,6vw,72px), rust gradient to transparent, hidden ≤379</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>All</td><td><span class="ed fix">Fixed UI</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all pages.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s03"><span class="n">03 — Molecules</span>Molecules</h2>
+
+<div class="cmp" id="m-breadcrumb">
+<h3>Breadcrumb</h3>
+<p class="cmp-meta"><b>Molecule</b> · All inner pages · <span class="status ok">Approved</span></p>
+<div class="pv col"><ol class="p-crumb" aria-label="Breadcrumb"><li><a href="#m-breadcrumb">Home</a></li><li><a href="#m-breadcrumb">Destinations</a></li><li><a href="#m-breadcrumb">Aswan</a></li><li aria-current="page">Gharb Soheil village</li></ol><ol class="p-crumb ar" dir="rtl" aria-label="مسار التنقل"><li><a href="#m-breadcrumb">الرئيسية</a></li><li><a href="#m-breadcrumb">الوجهات</a></li><li><a href="#m-breadcrumb">أسوان</a></li><li aria-current="page">قرية غرب سهيل</li></ol></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Markup</td><td><code>nav.ex-crumb[aria-label] &gt; ol &gt; li</code>, built by <code>EX.crumb()</code>, last item <code>aria-current="page"</code></td></tr><tr><td>Type</td><td>15 muted; links min-height 44; current ink/600</td></tr><tr><td>Separator</td><td>6×6 CSS chevron (<code>li+li::before</code>) rotate −45° RTL / 45° LTR</td></tr><tr><td>Position</td><td>58px above hero media (<code>.xh-crumb</code>) or above page title; max 4 items</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Labels, trail (from page hierarchy)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style, separator</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Generation, i18n re-render</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-heading">
+<h3>Section Heading</h3>
+<p class="cmp-meta"><b>Molecule</b> · Global · <span class="status ok">Approved</span></p>
+<div class="pv col" style="align-items:center;text-align:center"><span class="p-eyebrow">Living heritage</span><div class="p-sec"><span class="rule"></span>Upcoming <em>events</em><span class="rule"></span></div><div class="p-sec ar-display" style="font-size:32px"><span class="rule"></span>الفعاليات <em>القادمة</em><span class="rule"></span></div></div>
+<div class="pv" style="justify-content:space-between"><span class="lbl">Variant · inner page <code>.lx-head</code> (start-aligned, no rules, optional "view all")</span><div><span class="p-eyebrow">Nearby</span><span class="latin-display" style="font-size:28px;color:var(--ink)">Experiences in Aswan</span></div><a class="p-link" href="#m-heading">View all <span data-ic="arrow-right"></span></a></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Eyebrow</td><td><code>.sec-eyebrow</code> 15/700 rust, margin-bottom 12; Latin 13 uppercase .2em</td></tr><tr><td>Title</td><td><code>h2.display.sec-title</code> <code>--fs-h2</code>, gap 16, nowrap Arabic / wraps Latin; accent word in <code>&lt;em&gt;</code> rust</td></tr><tr><td>Inner variant</td><td><code>.lx-head</code> flex space-between, <code>h2.lx-h</code> clamp(26px,2.7vw,38px), margin-bottom 24</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Eyebrow, title, accent word, "view all" link</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Rules, serif, alignment</td><td><span class="ed fix">Fixed UI</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> home (centred), every inner section (<code>.lx-head</code>).</p>
+</div>
+
+<div class="cmp" id="m-meta">
+<h3>Metadata Row</h3>
+<p class="cmp-meta"><b>Molecule</b> · Cards, rows, details · <span class="status ok">Approved</span></p>
+<div class="pv"><div class="p-gem" style="width:auto;border:0;background:none"><div class="meta"><span><span data-ic="clock"></span>About two hours</span><span><span data-ic="coins"></span>$$</span><span><span data-ic="wheelchair"></span>Accessible</span><span><span data-ic="map-pin"></span>Aswan</span></div></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Layout</td><td>flex wrap, gap 6×14, 13.5 muted (events 12.5/700, resources 13), 16px icons gap 6</td></tr><tr><td>Order</td><td>experiences: duration → price → accessibility · events: pin → kind → time · resources: format → duration/size</td></tr><tr><td>Empty</td><td>item omitted; row collapses when empty</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Values (duration, price, city, time…)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Icons, order, type</td><td><span class="ed fix">Fixed UI</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> <code>.gem-meta .rs-meta .evc-meta .xa-meta .dxi-facts</code>.</p>
+</div>
+
+<div class="cmp" id="m-search">
+<h3>Search Control</h3>
+<p class="cmp-meta"><b>Molecule</b> · Listing pages, city map · <span class="status ok">Approved</span></p>
+<div class="pv"><div class="p-search" role="search" style="max-width:420px"><span data-ic="magnifying-glass" style="width:20px;height:20px"></span><input type="search" placeholder="Search experiences…" aria-label="Search listings"></div><p style="margin:0;font-size:15px;font-weight:700;color:var(--ink)" role="status">24 results</p></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Anatomy</td><td><code>.mp-search</code> &gt; 20px icon + <code>input#exQ[type=search]</code> → debounce 160ms → re-render → <code>p.ex-count[role=status]</code></td></tr><tr><td>URL</td><td><code>?q=</code> via <code>history.replaceState</code></td></tr><tr><td>Header search</td><td>collapsed 0→140px field in the header; not wired to results (see §10)</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Placeholder, count wording</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Searchable fields, debounce, URL key</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-filter">
+<h3>Filter Control</h3>
+<p class="cmp-meta"><b>Molecule</b> · Listing pages, city map · <span class="status ok">Approved</span></p>
+<div class="pv col"><div style="display:flex;gap:8px;overflow:auto;padding-bottom:4px"><button class="p-chip" aria-pressed="true">All</button><button class="p-chip" aria-pressed="false"><span data-ic="compass"></span>Tours</button><button class="p-chip" aria-pressed="false"><span data-ic="hand"></span>Workshops</button><button class="p-chip" aria-pressed="false"><span data-ic="fork-knife"></span>Food</button><button class="p-chip" aria-pressed="false"><span data-ic="bed"></span>Stay</button><button class="p-chip" aria-pressed="false" aria-expanded="true"><span data-ic="sliders-horizontal"></span>Filter <span class="p-num" style="width:22px;height:22px;font-size:12px">2</span></button></div><div style="background:#fff;border:1px solid var(--line-12);border-radius:12px;padding:16px;display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px"><label class="p-check"><input type="checkbox">Wheelchair access</label><label class="p-check"><input type="checkbox" checked>Family friendly</label><label class="p-check"><input type="checkbox">Price $–$$</label></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Anatomy</td><td><code>.mp-cats</code> scroll row of chips (one primary parameter per page) + <code>.mp-adv-btn[aria-expanded]</code> with count → <code>.mp-adv</code> panel (white, 1px, radius 12, motif band, checkbox fieldsets, 3 columns ≥768)</td></tr><tr><td>Primary parameter</td><td>experiences category · entrepreneurs city · resources format · map type · events audience · news/stories/stakeholders/travel-ideas city</td></tr><tr><td>Behaviour</td><td>values with zero published entries are hidden; no sort control (fixed order per page); no pagination (all results render)</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Taxonomy terms, icons, group labels</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Chip and panel style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Parameter per page, URL keys, auto-hide, order</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-field">
+<h3>Form Field</h3>
+<p class="cmp-meta"><b>Molecule</b> · Forms · <span class="status std">Standardized</span></p>
+<div class="pv white"><div class="p-field" style="max-width:360px"><label for="f1">Email</label><input id="f1" type="email" aria-describedby="f1h" value="name@example.com"><p class="hint" id="f1h">We only use it to reply.</p></div><div class="p-field is-invalid" style="max-width:360px"><label for="f2">Phone</label><input id="f2" type="tel" aria-invalid="true" aria-describedby="f2e"><p class="err" id="f2e" role="alert">This field is required.</p></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Anatomy</td><td><code>.f-field</code> grid gap 6: <code>label.f-label</code> 15/700 ink → control → <code>.f-hint</code> 13 muted → <code>p.f-err[role=alert]</code> 13/700 #a52a1a</td></tr><tr><td>Required</td><td>no marker; all fields required unless the hint says optional</td></tr><tr><td>Error wiring</td><td><code>.is-invalid</code> + <code>aria-invalid</code>; standardized: link hint/error with <code>aria-describedby</code></td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Label, hint, error copy</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Spacing, type, colours</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Validation, required, conditional visibility</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-location">
+<h3>Location Label</h3>
+<p class="cmp-meta"><b>Molecule</b> · Cards, heroes, details · <span class="status ok">Approved</span></p>
+<div class="pv"><span style="display:inline-flex;gap:6px;align-items:center;font-size:13.5px;color:var(--muted)"><span data-ic="map-pin" style="color:var(--rust);width:14px;height:14px"></span>Aswan</span><span class="p-pill meta"><span data-ic="map-pin"></span>Aswan</span><span class="p-pill dense city">Luxor</span><span style="font-size:15px;color:#fff;background:#2b1d0e;padding:6px 10px;border-radius:8px;display:inline-flex;gap:6px;align-items:center"><span data-ic="map-pin"></span>Gharb Soheil, Aswan</span></div>
+<div class="pv" style="background:#2b1d0e url('ASSETS/gal/corniche-cafes-2-960.webp') center/cover"><span class="p-pill glass"><span data-ic="map-pin"></span>Aswan</span><span class="p-pill glass" style="background:rgba(20,12,6,.42);border-color:rgba(255,255,255,.22)">West bank</span></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Value</th></tr></thead><tbody><tr><td>Inline <code>.st-loc .gem-meta</code></td><td>13.5 muted + 14–16px rust pin</td></tr><tr><td>Chip <code>.ev-chip</code></td><td>32, radius 8, #f4f1ea</td></tr><tr><td>Glass <code>.ss-loc .dx-tag</code></td><td>32 pill on image; dark glass rgba(20,12,6,.42) on story cards</td></tr><tr><td>Hero caption <code>.xh-cap-loc</code></td><td>15px white with pin</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>City / place name (relationship)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Icon, style per placement</td><td><span class="ed fix">Fixed UI</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-date">
+<h3>Date Badge</h3>
+<p class="cmp-meta"><b>Molecule</b> · Events · <span class="status ok">Approved</span></p>
+<div class="pv"><div class="p-date"><b>28<small>OCT</small></b></div><div class="p-date sel"><b>02<small>NOV</small></b></div><div class="p-evc-date"><b>15</b><small>NOV</small></div><div class="p-evl-date"><b>22</b><small>NOV</small></div><div class="p-evl-date ar"><b>٢٢</b><small>نوف</small></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Variant</th><th>Value</th></tr></thead><tbody><tr><td>Thumbnail <code>.ev-thumb b</code></td><td>day 15/700 + month 8.5 uppercase on 104×70 radius 12 thumb; selected = 2.5px rust outline (<code>aria-selected</code>)</td></tr><tr><td>Block <code>.evc-date</code></td><td>see Badge atom</td></tr><tr><td>Tile <code>.evl-date</code></td><td>72×72 rust</td></tr><tr><td>Format</td><td>3-letter uppercase month (Latin) / short Arabic month; Arabic-Indic digits via <code>ar-EG</code></td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Date (ISO)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Shape, type</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Locale formatting</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> home events, events, event detail, resources carousel.</p>
+</div>
+
+<div class="cmp" id="m-carnav">
+<h3>Carousel Navigation</h3>
+<p class="cmp-meta"><b>Molecule</b> · Home, listings, city, resources · <span class="status std">Standardized</span></p>
+<div class="pv"><button class="p-round" aria-label="Previous"><span data-ic="caret-left"></span></button><div style="display:flex;gap:8px;align-items:center" role="tablist"><span style="width:9px;height:9px;border-radius:999px;background:rgba(165,62,26,.45)"></span><span style="width:20px;height:9px;border-radius:999px;background:var(--rust)"></span><span style="width:9px;height:9px;border-radius:999px;background:rgba(165,62,26,.45)"></span></div><button class="p-round" aria-label="Next"><span data-ic="caret-right"></span></button><button class="p-round" style="opacity:.35" disabled aria-label="Next disabled"><span data-ic="caret-right"></span></button><div class="p-date sel"><b>28<small>OCT</small></b></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Buttons</td><td>Icon button 44 standard (40 events, 48 coverflow, 56 stays/evcar); disabled opacity .35 or hidden at ends</td></tr><tr><td>Dots</td><td>8–9px rust .22–.45; current solid rust stretched (scaleX 2.2 or 24px pill); <code>role=tablist</code></td></tr><tr><td>Thumbnails</td><td>home events: date-badge thumbs as tabs</td></tr><tr><td>Keyboard / RTL</td><td>←/→ on focusable track, direction from <code>html[dir]</code>; glyphs mirror</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>aria-labels (strings)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Size, style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Snap, paging, keyboard, RTL sign</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-lang">
+<h3>Language Switcher</h3>
+<p class="cmp-meta"><b>Molecule</b> · Header · <span class="status ok">Approved</span></p>
+<div class="pv" style="align-items:flex-start"><div class="p-lang"><button aria-haspopup="menu" aria-expanded="true">EN <span data-ic="caret-down"></span></button><div class="menu" role="menu"><button role="menuitemradio" aria-checked="false"><span class="ar">العربية</span><small>AR</small></button><button role="menuitemradio" aria-checked="true">English<small>EN</small></button><button role="menuitemradio" aria-checked="false">Español<small>ES</small></button></div></div><span class="p-toast">Language changed to English</span></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Trigger</td><td><code>#langBtn</code> 15/600, min-height 44, caret</td></tr><tr><td>Menu</td><td><code>#langMenu[role=menu]</code> white, radius 12, min-width 150, shadow subtle; items <code>menuitemradio[aria-checked]</code>; checked rust/600</td></tr><tr><td>Effect</td><td><code>I18N.set()</code> → <code>html[lang][dir]</code>, <code>html.lang-latin</code>, <code>localStorage.se-lang</code>, <code>i18n:change</code>, toast</td></tr><tr><td>Mobile &lt;640</td><td>three-button row inside the mobile menu</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Language names, toast text</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Style</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Language list, persistence, crossfade</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-empty">
+<h3>Result Count / Empty State</h3>
+<p class="cmp-meta"><b>Molecule</b> · Listing pages, details · <span class="status ok">Approved</span></p>
+<div class="pv col"><p style="margin:0;font-size:15px;font-weight:700;color:var(--ink)" role="status">0 results</p><div class="p-empty"><span data-ic="magnifying-glass" style="width:32px;height:32px;color:var(--rust)"></span><p style="margin:0">No results match these filters.</p><button class="p-cta sm ghost">Clear filters</button></div></div>
+<h4>Properties</h4>
+<table><thead><tr><th>Property</th><th>Value</th></tr></thead><tbody><tr><td>Count</td><td><code>p.ex-count[role=status][aria-live=polite]</code> 15/700 ink, localized</td></tr><tr><td>Empty</td><td><code>.mp-empty</code> centred, muted, padding 48×24, gap 16, one line + <code>.mp-clear</code> compact ghost</td></tr><tr><td>Detail not found</td><td><code>p.dx-empty</code> with back-to-list link</td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Messages</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Layout</td><td><span class="ed fix">Fixed UI</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="m-card">
+<h3>Content Card</h3>
+<p class="cmp-meta"><b>Molecule</b> · All listing and related sections · <span class="status std">Standardized</span></p>
+<div class="pv" style="align-items:flex-start">
+  <article class="p-gem"><div class="media"><img src="ASSETS/gal/corniche-cafes-1-960.webp" alt=""><div class="tint"></div><div class="shade"></div><span class="p-pill loc"><span data-ic="fork-knife" style="width:14px;height:14px"></span>Food &amp; drink</span><button class="p-fav" aria-pressed="false" aria-label="Add to favourites"><span data-ic="heart"></span></button></div><div class="body"><span class="cat">Hidden gems</span><h4>Corniche cafés</h4><p class="desc">Quiet seating, music and tea on the Nile Corniche.</p><div class="meta"><span><span data-ic="clock"></span>About two hours</span><span><span data-ic="coins"></span>$</span></div><a class="p-cta" href="#m-card">View details <span data-ic="arrow-right"></span></a></div></article>
+  <article class="p-gem ar" dir="rtl"><div class="media"><img src="ASSETS/gal/corniche-cafes-2-960.webp" alt=""><div class="tint"></div><div class="shade"></div><span class="p-pill loc ink"><span data-ic="bed" style="width:14px;height:14px"></span>إقامة</span><button class="p-fav" aria-pressed="true" aria-label="إزالة من المفضلة"><span data-ic="heart-fill"></span></button></div><div class="body"><span class="cat ar">جواهر مخفية</span><h4 class="ar">مقاهي الكورنيش</h4><p class="desc">جلسات هادئة وموسيقى وشاي على كورنيش النيل.</p><div class="meta"><span><span data-ic="clock"></span>نحو ساعتين</span><span><span data-ic="map-pin"></span>أسوان</span></div><a class="p-cta" href="#m-card">عرض التفاصيل <span data-ic="arrow-left"></span></a></div></article>
+</div>
+<div class="pv" style="align-items:flex-start"><span class="lbl">Row variants · organisation · resource</span>
+  <article class="p-org"><div class="ico"><span data-ic="buildings"></span></div><div><span class="kind">Association</span><h4>Luxor Heritage Association</h4><p class="sum">Training and support for heritage crafts on the west bank.</p><div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px"><span class="p-pill dense">Training</span><span class="p-pill dense city">Luxor</span></div><a class="p-cta sm" href="#m-card">View organisation <span data-ic="arrow-right"></span></a></div></article>
+  <article class="p-row"><div class="ico"><span data-ic="file-pdf" style="width:22px;height:22px"></span></div><div><h4>Hospitality basics guide</h4><div class="meta"><span>PDF · 2.4 MB</span><span>Arabic</span></div></div><a class="p-outline" style="height:44px;padding-inline:16px;font-size:14px" href="#m-card">Download <span data-ic="download-simple"></span></a></article>
+</div>
+<div class="anatomy">article.gem  radius 18 · 1px rgba(43,29,14,.10) · bg #fbf7ef · hover translateY(-6) + rust .35 border
+├ .gem-media   4/3 · tint (160° rust→ink .18, multiply) · shade (to top .45→0 at 50%) · hover img scale 1.05
+│   ├ .gem-loc  category badge, top-start 16        [required]
+│   └ .gem-fav  favourite 44, top-end 16            [optional: experiences, home, city]
+└ .gem-body    padding 24 · gap 8
+    ├ .gem-cat   eyebrow 12.5/700 rust              [required]
+    ├ .gem-title --fs-h3 ink                        [required · ≤ 2 lines]
+    ├ .gem-desc  15 muted lh 1.7                    [optional · ≤ 3 lines]
+    ├ .gem-biz   13.5/700 rust (person / business)  [optional]
+    ├ .gem-meta  metadata row                       [optional]
+    └ .gem-cta   primary button, full width         [required · label per type]</div>
+<h4>Variants (same anatomy, content and generator differ)</h4>
+<div class="tbl-wrap"><table><thead><tr><th>Card</th><th>Class / generator</th><th>Image</th><th>Badge</th><th>Metadata</th><th>CTA label</th><th>Optional</th><th>Editable fields</th></tr></thead><tbody>
+<tr><td>Experience / Product</td><td><code>.gem</code> · <code>EX.card()</code></td><td>4/3</td><td>category (compass / hand / fork-knife / bed / basket)</td><td>duration · price · accessibility</td><td>View details</td><td>favourite</td><td>image, alt, category, title, summary, duration, price, flags, link</td></tr>
+<tr><td>Destination</td><td><code>.ds-card</code> (link card)</td><td>16/9 radius 16</td><td>—</td><td>live weather chip</td><td>none (title → rust)</td><td>summary</td><td>image, title, summary, link</td></tr>
+<tr><td>Entrepreneur</td><td><code>.gem</code> · <code>card()</code></td><td>4/3</td><td>activity (hand)</td><td>pin + city</td><td>View profile</td><td>business line</td><td>portrait, activity, name, business, city, summary, link</td></tr>
+<tr><td>Event</td><td><code>.evc</code> (image) · <code>.evl-row</code> (row)</td><td>1/1</td><td>date block</td><td>pin · kind · time (12.5/700)</td><td>Register now (compact)</td><td>audience</td><td>image, date, time, title, kind, city, audience, link</td></tr>
+<tr><td>Story</td><td><code>.gem</code> · lead <code>.st-lead</code></td><td>4/3 · lead full-bleed 420</td><td>category</td><td>person (<code>.gem-biz</code>)</td><td>Read full story</td><td>city, summary</td><td>image, category, title, person, summary, link</td></tr>
+<tr><td>News</td><td><code>.gem</code></td><td>4/3</td><td>calendar + date</td><td>pin + city</td><td>Read the article</td><td>summary</td><td>image, date, title, city, summary, link</td></tr>
+<tr><td>Resource</td><td><code>.rs-row</code></td><td>none · 48px format tile</td><td>—</td><td>format · size · language</td><td>Download / Open link / Play</td><td>duration</td><td>title, format, file or URL, meta</td></tr>
+<tr><td>Learning path</td><td><code>.lp-card</code></td><td>full-bleed min 380, dark gradient</td><td>step count (glass)</td><td>—</td><td>Start the path</td><td>summary</td><td>image, title, summary, steps, link</td></tr>
+<tr><td>Organisation</td><td><code>.org-row</code></td><td>none · 48px nile tile</td><td>kind eyebrow</td><td>dense tags, city</td><td>View organisation (compact)</td><td>summary</td><td>type, name, summary, tags, city, link</td></tr>
+<tr><td>Travel idea</td><td><code>.gem.ti-card</code> · list <code>.ti-row</code></td><td>16/10</td><td>duration badge (top-end)</td><td>counts (sites · experiences · stops)</td><td>View the itinerary</td><td>—</td><td>image, duration, city, pillar, title, counts, link</td></tr>
+</tbody></table></div>
+<h4>States</h4>
+<table><thead><tr><th>State</th><th>Value</th></tr></thead><tbody><tr><td>Hover</td><td>card translateY −6 (rows −2), border rust .35, image scale 1.05</td></tr><tr><td>Focus</td><td>inner CTA / favourite: global ring (white ring on image cards)</td></tr><tr><td>Selected (map sync)</td><td><code>.is-on</code> rust border + 3px rgba(165,62,26,.18) ring</td></tr><tr><td>Favourite pressed</td><td>rust fill, <code>heart-fill</code>, <code>aria-pressed</code></td></tr></tbody></table>
+<h4>Editability</h4>
+<table><thead><tr><th>Property</th><th>Control</th></tr></thead><tbody><tr><td>Image, title, summary, category (taxonomy), location (relationship), metadata values, CTA destination</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Ratio, radius, padding, badge style, CTA label per type, typography</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Hover, favourite toggle, strip threshold, lazy loading, line limits</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> experiences, map, stories, news, stakeholders, entrepreneurs, travel-ideas, resources, events, destinations, home gems, city food rows, every related strip. Home editorial cards (<code>.card .xa-card .st-feature .st-card .ss-card</code>) are fixed home modules, not reusable variants.</p>
+<p class="note">Title and summary are not clamped in CSS. CMS limits: title ≤ 45 Arabic / 40 Latin characters, summary ≤ 110 characters, badge ≤ 18 characters.</p>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s04"><span class="n">04 — Organisms</span>Organisms</h2>
+
+<div class="cmp" id="o-header">
+<h3>Header</h3>
+<p class="cmp-meta"><b>Organism</b> · All public pages · <span class="status rev">Needs review</span></p>
+<div class="pv col"><span class="lbl">Desktop · LTR</span><div class="p-nav"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div class="links"><a class="on" href="#o-header">Home</a><a href="#o-header">Tours</a><a href="#o-header">Destinations</a><a href="#o-header">Experiences</a><a href="#o-header">For entrepreneurs</a><a href="#o-header">Contact us</a></div><div class="ctl"><button class="p-round fab" aria-label="Accessibility"><span data-ic="person-arms-spread"></span></button><span class="vdiv"></span><span style="font-weight:600">EN <span data-ic="caret-down"></span></span><span class="vdiv"></span><button class="p-round" style="border:0" aria-label="Search"><span data-ic="magnifying-glass" style="width:22px;height:22px"></span></button></div></div>
+<span class="lbl">Desktop · RTL (same markup; logo file and order mirror)</span><div class="p-nav ar" dir="rtl"><img src="brand_assets/logo-ar.webp" alt="صعيد مصر"><div class="links"><a class="on" href="#o-header">الرئيسية</a><a href="#o-header">الجولات</a><a href="#o-header">الوجهات</a><a href="#o-header">التجارب</a><a href="#o-header">لرواد الأعمال</a><a href="#o-header">تواصل معنا</a></div><div class="ctl"><button class="p-round fab" aria-label="إمكانية الوصول"><span data-ic="person-arms-spread"></span></button><span class="vdiv"></span><span style="font-weight:600">AR <span data-ic="caret-down"></span></span><span class="vdiv"></span><button class="p-round" style="border:0" aria-label="بحث"><span data-ic="magnifying-glass" style="width:22px;height:22px"></span></button></div></div>
+<span class="lbl">Mobile · menu open</span><div style="display:grid;gap:10px;max-width:390px"><div class="p-nav" style="height:64px;padding-inline:10px 14px"><img src="brand_assets/logo-en.webp" alt="" style="height:44px"><div class="ctl"><button class="p-round fab" aria-label="Accessibility"><span data-ic="person-arms-spread"></span></button><button class="p-round" style="border:0" aria-label="Menu"><span data-ic="list" style="width:22px;height:22px"></span></button></div></div><div style="background:#fff;border-radius:22px;box-shadow:var(--sh-subtle);padding:10px;display:grid;font-size:16px;font-weight:500"><a style="padding:12px 14px;border-radius:12px;background:rgba(165,62,26,.07);color:var(--rust)" href="#o-header">Home</a><a style="padding:12px 14px;color:var(--body)" href="#o-header">Tours</a><a style="padding:12px 14px;color:var(--body)" href="#o-header">Destinations</a><div style="display:flex;gap:8px;padding:8px 14px 4px"><button class="p-chip" style="height:36px;padding-inline:12px" aria-pressed="false">AR</button><button class="p-chip" style="height:36px;padding-inline:12px" aria-pressed="true">EN</button><button class="p-chip" style="height:36px;padding-inline:12px" aria-pressed="false">ES</button></div></div></div></div>
+<div class="anatomy">header.nav (fixed, inset 16/20/24, z 40)
+└ nav.nav-bar (white pill 999, shadow subtle, 64 / 72 / 76px)
+   ├ a.brand   img.brand-logo--ar | --en  (44 / 50 / 56px, switched by html[lang])
+   ├ ul.links  6 × a.nav-link 17/600 · current: rust/700 + 2.5px bar      [hidden &lt;1024]
+   └ controls  #a11yOpen FAB · .vdiv · #langBtn + #langMenu · .vdiv · #searchForm (0→140px) · #burger [hidden ≥1024]
+#mobileMenu  dropdown card below bar: white, radius 22, fade + translateY(-8) scale(.98) → none, links 16/500 padding 12×14, lang row &lt;640</div>
+<table><thead><tr><th>Variants</th><th>States</th><th>Responsive</th></tr></thead><tbody><tr><td>Desktop bar · mobile bar + dropdown menu</td><td>current link · menu open (<code>.open</code>, closes on link, outside click, Esc) · search open · hover rust · active translateY 1</td><td>&lt;768 64px, logo 44 · 768–1023 72px · ≥1024 76px with links; no sticky/scroll state</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Menu labels and targets (6), logo files, aria-labels</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Bar height, pill, link style, menu animation</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Breakpoint 1024, search behaviour, language list, current-page logic</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all public pages (not admin).</p>
+<p class="note">Burger icon never swaps (<code>#burgerIcon</code> missing) and no skip link precedes the header. See §10.</p>
+</div>
+
+<div class="cmp" id="o-footer">
+<h3>Footer</h3>
+<p class="cmp-meta"><b>Organism</b> · All public pages · <span class="status ok">Approved</span></p>
+<div class="pv col" style="background:#fbf7ef"><div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:24px;font-size:14px"><div><img src="brand_assets/logo-en.webp" alt="" style="height:56px"><p style="font-size:13px;color:var(--muted);margin:10px 0 6px">Supported by</p><div style="display:flex;gap:12px;align-items:center"><img src="brand_assets/aecid.png" alt="AECID" style="height:36px"><img src="brand_assets/cideal.png" alt="CIDEAL" style="height:46px"></div></div><div><b style="display:block;color:var(--nav-ink);font-size:17px;border-bottom:2px solid var(--rust);padding-bottom:4px;margin-bottom:8px">Explore</b><div style="display:grid;gap:6px;color:var(--body);font-weight:500">› Luxor<br>› Aswan<br>› Destinations<br>› Experiences</div></div><div><b style="display:block;color:var(--nav-ink);font-size:17px;border-bottom:2px solid var(--rust);padding-bottom:4px;margin-bottom:8px">Platform</b><div style="display:grid;gap:6px;color:var(--body);font-weight:500">› Resources<br>› Stakeholders<br>› About<br>› Privacy · Accessibility</div></div><div><b style="display:block;color:var(--nav-ink);font-size:17px;border-bottom:2px solid var(--rust);padding-bottom:4px;margin-bottom:8px">Follow us</b><div style="display:flex;gap:8px;margin-bottom:10px"><span class="p-round" style="background:#1f1a14;color:#fff;border:0"><span data-ic="linkedin-logo" style="width:20px;height:20px"></span></span><span class="p-round" style="background:#1f1a14;color:#fff;border:0"><span data-ic="youtube-logo" style="width:20px;height:20px"></span></span><span class="p-round" style="background:#1f1a14;color:#fff;border:0"><span data-ic="facebook-logo" style="width:20px;height:20px"></span></span><span class="p-round" style="background:#1f1a14;color:#fff;border:0"><span data-ic="instagram-logo" style="width:20px;height:20px"></span></span></div><a class="p-outline" style="height:44px;font-size:14px;padding-inline:16px" href="#o-footer"><span data-ic="envelope-simple"></span> Contact us</a></div></div></div>
+<div class="anatomy">footer.footer[aria-label]  bg #fbf7ef · lotus art bottom corners (clamp(120px,16vw,240px), .75 / .35 ≤1023) · Group 23 strip on bottom edge
+└ .footer-grid  min(100%,1180px) · padding-block 48/32 → 64/48 (≥640) → 96/64 (≥1024)
+   ├ brand    logo 72 (80 ≥1024) · "Supported by" 14 muted · aecid.png 52 · cideal.png 68
+   ├ nav      h2.footer-h 18/700 + 2px rust underline · a 16/500 with 6px rust chevron · hover rust + 2px nudge
+   ├ nav
+   └ follow   .footer-social 4 × 44 #1f1a14 circles (hover rust, translateY -2) · .footer-contact outline mailto</div>
+<table><thead><tr><th>Variants</th><th>States</th><th>Responsive</th></tr></thead><tbody><tr><td>one</td><td>link hover · social hover · focus 3px rust .35</td><td>&lt;640 2 columns (brand + follow full width) · 640–1023 3 columns, brand row on top · ≥1024 1.25fr 1fr 1fr 1.05fr with 1px dividers</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Column headings, links, social URLs, contact email, partner logos, "supported by" text</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Grid, dividers, lotus art, strip, link chevrons</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Column template per breakpoint</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> all public pages. Newsletter is a separate organism above the footer.</p>
+</div>
+
+<div class="cmp" id="o-hero">
+<h3>Hero</h3>
+<p class="cmp-meta"><b>Organism</b> · Every page · <span class="status ok">Approved</span></p>
+<div class="pv col"><span class="lbl">Variant C/D preview · media hero with glass tags, title and motif band</span><div class="p-hero"><div class="tags"><span class="p-pill glass"><span data-ic="map-pin"></span>Aswan</span><span class="p-pill glass"><span data-ic="calendar-blank"></span>28 Oct</span></div><div class="t">A Nile evening<br>on the banks of Aswan</div><div class="band"></div></div></div>
+<div class="anatomy">A  Home collage      section.hero   picture (hero-bg / mobile) · eyebrow · h1.display (ink + rust word) · lede · one .cta   · no overlay · GSAP intro
+B  City expand       section.xh     100dvh · .xh-bg + rgba(0,0,0,.38) · .xh-media video 300×400 → full (scroll-driven, body locked) · .xh-line ×2 · .xh-cap · .xh-crumb · .xh-scroll cue · .xh-band
+C  Media hero        .xh (settled)  .xh-media sized by JS (w ≤1550/950, h ≤800/600, 85vh) radius 18 shadow 0 30px 100px .3 · .xh-shade .22 · .xh-cap gradient + h1.xh-cap-title + .xh-cap-sub + .dx-tag chips · .xh-crumb · .xh-band
+D  Framed hero       .ds-hero       breadcrumb above · min(1400px,100%−32px) · 1400/540 (4/3 &lt;768) radius 20 · shade to top .55→0 at 55% · title bottom-start · band 18
+E  Text page head    .pg-head       nav.ex-crumb · eyebrow · h1.pg-title clamp(32px,3.6vw,52px) · p.pg-lede 70ch · (forms: .pg-frame white card radius 22, 28px motif edge, 64px icon tile, on .pg-paper)</div>
+<table><thead><tr><th>Variant</th><th>Used on</th><th>Title size</th><th>States</th></tr></thead><tbody>
+<tr><td>A Home collage</td><td>index</td><td>clamp(44px, 12px+5vw, 96px) · ≥640 aspect 1440/923; &lt;640 stacked</td><td>intro animation (reduced-motion gated)</td></tr>
+<tr><td>B City expand</td><td>luxor, aswan</td><td>clamp(2.75rem,6.4vw,6.5rem) cream</td><td>locked → expanding → settled (<code>.is-locked</code>); wheel / touch / keys</td></tr>
+<tr><td>C Media hero</td><td>experiences, map, resources, stakeholders, entrepreneurs, stories, news, events + all detail pages</td><td>clamp(44px,6vw,92px)</td><td>video with 4-image reel fallback (stories)</td></tr>
+<tr><td>D Framed hero</td><td>destinations, travel-idea</td><td>clamp(40px,5vw,80px) white</td><td>—</td></tr>
+<tr><td>E Text page head</td><td>about, 404, privacy, accessibility, newsletter pages; contact, register, directory, update, edit (framed)</td><td>clamp(32px,3.6vw,52px) · frame clamp(28px,3vw,42px)</td><td>—</td></tr>
+</tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Image / video, alt, title, subtitle, eyebrow, lede, breadcrumb trail, CTA label + URL (A only), tag values</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Variant per page type, overlays, band, title size, radius</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Responsive crop (JS sizing), scroll-expand thresholds, autoplay, reduced-motion fallback</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Responsive:</b> C height min(600, 85vh) on mobile; D 4/3 &lt;768 with offsets 20/44; A stacked with mobile image &lt;640. No sixth variant.</p>
+</div>
+
+<div class="cmp" id="o-filterbar">
+<h3>Filter Bar</h3>
+<p class="cmp-meta"><b>Organism</b> · Listing pages, city map · <span class="status std">Standardized</span></p>
+<div class="pv col"><div style="display:flex;gap:12px;flex-wrap:wrap;align-items:center"><div class="p-search" role="search" style="max-width:320px"><span data-ic="magnifying-glass" style="width:20px;height:20px"></span><input type="search" placeholder="Search…" aria-label="Search"></div><button class="p-chip" aria-pressed="true">All</button><button class="p-chip" aria-pressed="false"><span data-ic="compass"></span>Tours</button><button class="p-chip" aria-pressed="false"><span data-ic="hand"></span>Workshops</button><button class="p-chip" aria-pressed="false"><span data-ic="sliders-horizontal"></span>Filter</button></div><p style="margin:0;font-size:15px;font-weight:700;color:var(--ink)" role="status">24 experiences</p></div>
+<div class="anatomy">.mp-tools   .mp-search  +  .mp-cats (scroll row of .mp-chip)  +  .mp-adv-btn[aria-expanded] (count badge)
+.mp-adv     checkbox fieldsets (3 cols ≥768 · 1 col mobile)   [hidden until toggled]
+p.ex-count  role=status aria-live=polite
+ul.ex-grid  results  →  .mp-empty when 0</div>
+<table><thead><tr><th>Variants</th><th>States</th><th>Responsive</th></tr></thead><tbody><tr><td>Shared engine (<code>LISTING.init</code>: events, map, news, stakeholders, stories, travel-ideas) · local copies (experiences, entrepreneurs, resources) · city map (<code>#mpQ #mpAdv</code>)</td><td>chip pressed · panel expanded · count · empty</td><td>chips scroll horizontally &lt;1024; panel 1 column &lt;768; search full width</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Taxonomy, group labels, placeholder, empty message</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Layout and control styles</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Primary parameter, URL keys, debounce, sort order, auto-hide</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="used"><b>Used on:</b> experiences, map, stories, news, stakeholders, entrepreneurs, travel-ideas, resources, events, luxor, aswan.</p>
+</div>
+
+<div class="cmp" id="o-carousel">
+<h3>Section Carousel</h3>
+<p class="cmp-meta"><b>Organism</b> · Home, listings, city guides, resources · <span class="status std">Standardized</span></p>
+<div class="pv col"><div style="display:flex;gap:24px;overflow:hidden"><div class="p-img" style="flex:1 0 calc((100% - 48px)/3);width:auto;border-radius:18px"></div><div class="p-img" style="flex:1 0 calc((100% - 48px)/3);width:auto;border-radius:18px;background-image:url('ASSETS/gal/corniche-cafes-1-960.webp')"></div><div class="p-img" style="flex:1 0 calc((100% - 48px)/3);width:auto;border-radius:18px"></div></div><div style="display:flex;justify-content:center;align-items:center;gap:16px"><button class="p-round" aria-label="Previous"><span data-ic="caret-left"></span></button><div style="display:flex;gap:8px" role="tablist"><span style="width:8px;height:8px;border-radius:999px;background:rgba(165,62,26,.22)"></span><span style="width:8px;height:8px;border-radius:999px;background:var(--rust);transform:scale(1.35)"></span><span style="width:8px;height:8px;border-radius:999px;background:rgba(165,62,26,.22)"></span></div><button class="p-round" aria-label="Next"><span data-ic="caret-right"></span></button></div></div>
+<div class="anatomy">ul.ex-strip  scroll-snap-type:x mandatory · tabindex=0 · ←/→ pages by clientWidth (RTL-aware)
+  ≥1024  3 per view (100% − 2×24)/3     640–1023  2 per view     &lt;640  1 + 24px peek
+.ex-strip-nav  .ex-strip-btn 44 ×2 · .ex-strip-dots role=tablist (8px, selected rust scale 1.35)
+Activated automatically on any ul.ex-grid outside #exList with more than data-strip-min (3) items</div>
+<table><thead><tr><th>Variant</th><th>Per view (desktop / tablet / mobile)</th><th>Controls</th><th>Used on</th></tr></thead><tbody>
+<tr><td>Related strip <code>.ex-strip</code></td><td>3 / 2 / 1</td><td>44px + dots, keyboard</td><td>all detail and listing related sections</td></tr>
+<tr><td>Home gems <code>.gems-track</code></td><td>static 3-up / min(78%,420) / 88%</td><td>44px blur-white + dots (hidden ≥1024)</td><td>index</td></tr>
+<tr><td>Events stage <code>#ev</code></td><td>1 stage (5fr / 2fr ≥900)</td><td>40–46px in image + date-badge thumbs</td><td>index</td></tr>
+<tr><td>Events carousel <code>.evcar</code></td><td>3.3 / 2.25 / 1.08</td><td>56 (48 ≤1023, hidden &lt;640) + drag</td><td>resources</td></tr>
+<tr><td>Stays <code>.sy-rail</code></td><td>3.25 / 340px / min(78vw,300)</td><td>56px, hidden at ends</td><td>luxor, aswan</td></tr>
+<tr><td>Coverflow <code>.cf</code> · Places viewer <code>.pv</code></td><td>1 centred + 2 rotated sides · 1 full-bleed + card rail</td><td>48px + dots · 48px outline + progress bar</td><td>luxor, aswan</td></tr>
+</tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Items (card fields), section heading</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Per-view counts, control sizes, dots</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Snap, threshold, keyboard, RTL sign, reduced-motion (instant scroll)</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-gallery">
+<h3>Gallery</h3>
+<p class="cmp-meta"><b>Organism</b> · Detail pages, city guides · <span class="status rev">Needs review</span></p>
+<div class="pv col"><span class="lbl">Lead + thumbnails (experience)</span><div class="p-img wide" style="width:100%;max-width:520px;aspect-ratio:16/10;border-radius:22px"></div><div style="display:flex;gap:8px"><div class="p-img thumb sel"></div><div class="p-img thumb"></div><div class="p-img thumb" style="background-image:url('ASSETS/gal/corniche-cafes-1-480.webp')"></div><div class="p-img thumb"></div></div><span class="lbl">Bento grid (event, story, news, organisation, destination)</span><div style="display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:70px;gap:6px;max-width:520px"><div class="p-img" style="grid-column:span 2;grid-row:span 2;width:auto;aspect-ratio:auto;border-radius:12px"></div><div class="p-img" style="width:auto;aspect-ratio:auto;border-radius:12px;background-image:url('ASSETS/gal/corniche-cafes-1-480.webp')"></div><div class="p-img" style="width:auto;aspect-ratio:auto;border-radius:12px"></div><div class="p-img" style="grid-column:span 2;width:auto;aspect-ratio:auto;border-radius:12px;background-image:url('ASSETS/gal/corniche-cafes-1-480.webp')"></div><div class="p-img" style="width:auto;aspect-ratio:auto;border-radius:12px"></div></div></div>
+<table><thead><tr><th>Variant</th><th>Layout</th><th>States</th><th>Responsive</th><th>Used on</th></tr></thead><tbody>
+<tr><td>Lead + thumbs <code>.xp-lead .xp-thumbs</code></td><td>16/10 radius 22 + "n / N" pill; 5 × 4/3 thumbs radius 12 opacity .75</td><td>selected <code>aria-current</code>: opacity 1 + 3px rust outline</td><td>4 thumbs per row &lt;640</td><td>experience</td></tr>
+<tr><td>Bento <code>.dxa-bento</code></td><td>3 columns, rows 150 (170 ≥1024); photo 1 = 2×2, photo 4 = 2 wide; 2–5 photos</td><td>hover scale 1.04</td><td>2 columns, rows 130 &lt;640</td><td>event, story, news, organisation, destination</td></tr>
+<tr><td>Cylinder strip <code>.dxg</code></td><td>full-bleed dark, 8 slices on a 3D cylinder, drifts, ≥3 photos</td><td>pause on hover; frozen under reduced motion; no controls</td><td>same</td><td>destination</td></tr>
+<tr><td>Zoom dialog <code>.sus-dlg</code></td><td>native <code>&lt;dialog&gt;</code>, backdrop rgba(11,9,6,.78) blur 8</td><td>zoom 1–3×, +/−, arrows pan, drag, live %; focus returns</td><td>same</td><td>luxor, aswan</td></tr>
+</tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Images, alt text, order (2–5 bento; 1 lead + ≤8 thumbs)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Grid, radii, ratios, overlays</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Minimum counts, drift speed, zoom steps, reduced-motion</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+<p class="note">The cylinder strip has no keyboard access; the bento grid is the accessible gallery on the same page. Decision pending in §10.</p>
+</div>
+
+<div class="cmp" id="o-tabs">
+<h3>Tabs</h3>
+<p class="cmp-meta"><b>Organism</b> · City guides, experience, listings, planner · <span class="status std">Standardized</span></p>
+<div class="pv col"><span class="lbl">ARIA tabs (city info)</span><div class="p-tabs2" role="tablist"><a class="on" role="tab" aria-selected="true" href="#o-tabs"><span data-ic="sun"></span>Weather now</a><a role="tab" href="#o-tabs"><span data-ic="calendar-blank"></span>Best time</a><a role="tab" href="#o-tabs"><span data-ic="bus"></span>Getting around</a></div><span class="lbl">Section nav (listing switcher, city bar, experience nav)</span><div class="p-tabs"><a class="on" href="#o-tabs" aria-current="page">Experiences</a><a href="#o-tabs">Products</a><a href="#o-tabs">Entrepreneurs</a><a href="#o-tabs" style="outline:2px solid var(--rust);outline-offset:-2px">Focus</a></div></div>
+<table><thead><tr><th>Variant</th><th>Semantics</th><th>Active</th><th>Inactive / hover / focus</th><th>Responsive</th><th>Used on</th></tr></thead><tbody>
+<tr><td>Tabs <code>.ci-tab</code></td><td><code>role=tablist/tab/tabpanel</code>, roving tabindex, ←/→ Home/End</td><td>white fill, ink, rust icon</td><td>transparent · hover white .55 · focus 3px rust inset −3</td><td>horizontal scroll, 150px tabs</td><td>luxor, aswan, planner (<code>.pl-tabs</code>)</td></tr>
+<tr><td>Section nav <code>.ls-tab .tb-link .xp-nav</code></td><td>links with <code>aria-current</code> / scroll-spy</td><td>rust/700 + 2.5px underline (scaleX .3s)</td><td>muted 15/600 · focus 2px rust at −2</td><td>sideways scroll, <code>.tb-more</code> fade; city bar sticky 60/68px</td><td>entrepreneurs, luxor, aswan, experience</td></tr>
+</tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Tab labels, panel content</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Underline, fills, type</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Keyboard model, scroll-spy thresholds</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-accordion">
+<h3>Accordion</h3>
+<p class="cmp-meta"><b>Organism</b> · City guides, travel idea · <span class="status std">Standardized</span></p>
+<div class="pv col" style="max-width:600px"><details class="p-q" open><summary>Do I need a visa for Egypt?</summary><div>Most visitors can obtain a visa on arrival or an e-visa before travel.</div></details><details class="p-q"><summary>What is the best time to visit Luxor?</summary><div>October to April.</div></details></div>
+<table><thead><tr><th>Variant</th><th>Element</th><th>Open indicator</th><th>Behaviour</th><th>Used on</th></tr></thead><tbody>
+<tr><td>FAQ <code>.lx-q</code></td><td>native <code>&lt;details&gt;/&lt;summary&gt;</code>, min-height 56, white, 1px border, radius 12</td><td>plus rotates 45° (.4s); hover rust on 5% rust</td><td>one open at a time (city pages)</td><td>luxor, aswan, travel-idea FAQ</td></tr>
+<tr><td>Itinerary days <code>.tg-acc</code></td><td><code>h3 &gt; button[aria-expanded][aria-controls]</code>, panel <code>hidden</code></td><td><code>.go</code> circle rotates 180°</td><td>click; instant panel</td><td>travel-idea</td></tr>
+<tr><td>Expanding cards <code>.xl .xa-card</code></td><td><code>button[aria-expanded]</code> full-cover</td><td>flex-grow via GSAP .95s</td><td>hover, click, focus, ←/→</td><td>luxor, aswan, index</td></tr>
+</tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Question / answer, day content</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Summary height, icon, colours</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Single-open rule, animation</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-map">
+<h3>Map + Results List</h3>
+<p class="cmp-meta"><b>Organism</b> · Map, stakeholders, city guides, details · <span class="status ok">Approved</span></p>
+<div class="pv"><div class="p-marker"><span data-ic="compass"></span></div><div class="p-marker hot"><span data-ic="compass"></span></div><div class="p-marker food"><span data-ic="fork-knife"></span></div><div class="p-marker stay"><span data-ic="bed"></span></div><div class="p-marker product"><span data-ic="basket"></span></div><div class="p-marker work"><span data-ic="hand"></span></div><span class="p-num" style="width:44px;height:44px;background:var(--ink);border:3px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2);font-size:15px">12</span><div class="p-mpcard"><img src="ASSETS/gal/corniche-cafes-2-480.webp" alt=""><div><span class="p-pill map"><span data-ic="compass" style="width:14px;height:14px"></span>Tour</span><h4>Corniche cafés</h4><p>Quiet seating, music and tea on the Nile Corniche.</p><a href="#o-map">View details <span data-ic="arrow-right"></span></a></div></div></div>
+<div class="anatomy">DIRECTORY  .sk-split (map.html, stakeholders)         CITY  .mp-body (luxor, aswan)                 EMBED  .dxi-map (details)
+┌ filter bar · count · ul.ex-grid ┬ map 420 sticky ┐  ┌ list 320 (420 ≥1100) ┬ Leaflet + cluster ┐     220px in sidebar, zoom 14,
+│ card hover → marker .is-hot     │ min(72vh,680) │  │ .mp-item buttons     │ .mp-ctl 44 zoom   │     scrollWheelZoom off, role=region
+└─────────────────────────────────┴────────────────┘  └──────────────────────┴ 620 / 680px ──────┘
+&lt;1024 stacked, map 380 after list                     &lt;768 map 70vh; list = bottom sheet min(78vh,640) via .mp-open (48 ink) · scrim .45 · Esc</div>
+<table><thead><tr><th>Element</th><th>Value</th></tr></thead><tbody><tr><td>Library</td><td>Leaflet 1.9.4 (cdnjs) + OSM tiles, <code>filter:sepia(.28) saturate(.9)</code>; MarkerCluster on city pages</td></tr><tr><td>Marker <code>.mp-pin</code></td><td>38 circle, category colour, 2.5px white, 20px glyph; hot/selected scale 1.22 + 4px ring 30%</td></tr><tr><td>Colours</td><td>tour #2f6f5e · workshop #6b4a2f · food #b8741a · stay #345c70 · product #a53e1a; cluster 44 ink</td></tr><tr><td>Popup <code>.mp-pop</code></td><td>radius 12, 300 (260 ≤767), 96px thumb, tag, name 15.5, 2-line summary, text link, 32px close</td></tr><tr><td>States</td><td>marker hot · card <code>.is-on</code> · sheet open</td></tr><tr><td>Accessible alternative</td><td>list mirrors markers; <code>button.mp-name</code> opens marker; markers keyboard-focusable with title/alt</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Coordinates, type, name, summary, thumbnail</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Marker and popup style, split widths</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Tile source, colour per type, zoom, cluster radius, sheet behaviour</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-newsletter">
+<h3>Newsletter Section</h3>
+<p class="cmp-meta"><b>Organism</b> · Home, resources · <span class="status ok">Approved</span></p>
+<div class="pv col"><div class="p-news"><div class="p-sec" style="font-size:30px"><span class="rule"></span>Stay in touch<span class="rule"></span></div><p style="margin:0;color:rgba(255,255,255,.9)">Monthly news from Upper Egypt.</p><form onsubmit="return false"><input type="email" placeholder="Your email" aria-label="Your email"><button class="p-cta on-dark" type="button">Subscribe now <span data-ic="arrow-right"></span></button></form><p style="margin:0;font-size:13.5px;min-height:22px" role="status"></p></div></div>
+<div class="anatomy">section.news#contact  background image .news-bg · h2.news-title with white .rule · p.news-sub
+└ form.news-form[novalidate]  label.news-field (sr-only label + input#news-email 50px + mail icon) + button.news-btn 48 · gap 12 · stacks ≤520
+   p.news-msg[role=status][aria-live=polite]  13.5 white</div>
+<table><thead><tr><th>States</th><th>Responsive</th><th>Used on</th></tr></thead><tbody><tr><td>invalid (message + focus + shake) · pending (stored with confirm/unsubscribe tokens) · confirm / unsubscribe pages use the text page head</td><td>column &lt;520; input max 420</td><td>index, resources</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Title, subtitle, button label, messages, background image</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Input and button style, rules</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Validation, subscribe endpoint, tokens</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-form">
+<h3>Form Shell</h3>
+<p class="cmp-meta"><b>Organism</b> · Contact, register, directory, update, edit · <span class="status ok">Approved</span></p>
+<div class="pv col"><fieldset style="border:1px solid var(--line-12);border-radius:18px;padding:20px;background:#fff;display:grid;gap:14px;max-width:560px;margin:0"><legend style="font-size:20px;font-weight:800;color:var(--ink);padding:0 6px">Your message</legend><div class="p-field"><label for="fs1">Subject</label><input id="fs1" type="text" value="Listing request"></div><div class="p-field"><label for="fs2">Message</label><textarea id="fs2" style="min-height:80px"></textarea></div><label class="p-check"><input type="checkbox"> I agree to the privacy notice.</label></fieldset><div style="display:flex;gap:12px;align-items:center"><a class="p-cta" href="#o-form">Send</a></div><div class="p-status err" style="max-width:560px">Review the highlighted fields and resend.</div><div class="p-status ok" style="max-width:560px"><b>Thank you, your request has been received.</b>We reply within five working days.<br><small>Request number: DUE-2041</small></div></div>
+<div class="anatomy">.pg-paper (#f3e3c9 + papyrus 30%)
+└ .pg-frame  page head: white radius 22, 28px motif edge (18 &lt;640), 64px icon tile, title clamp(28px,3vw,42px), padding 32 / 48 (≥768) / 16 (&lt;640)
+.pg-grid  minmax(0,1fr) + 360px aside .pg-card (≥1024) · single column below
+└ form.f-form[novalidate]  grid gap 24, max 720
+   ├ fieldset  padding 24 · 1px .12 · radius 18 · white · gap 16 · legend --fs-h3/800
+   │   └ .f-field × n · .f-note callout (radius 18, rust .06) · .f-turnstile bot check (dashed) · .f-check consent
+   ├ button.dx-cta  (single submit; no cancel, no steps)
+   └ p.f-status[tabindex=-1]  .is-error (rgba(165,42,26,.08) / #7a1f12) · .is-ok (rgba(47,111,94,.08) / #1f4a3f, hides fieldsets, receives focus)</div>
+<table><thead><tr><th>Behaviour (<code>FORMS.wire</code>)</th><th>Value</th></tr></thead><tbody><tr><td>Validation</td><td><code>required</code> + email regex; hidden groups skipped; first invalid field focused; summary status set</td></tr><tr><td>Messages</td><td>"This field is required." · "This consent is required." · "Please enter a valid email address." · "Complete the verification step first." (via <code>I18N.t</code>)</td></tr><tr><td>Rate limit</td><td>5 submissions / hour (localStorage); submissions queued locally (prototype)</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Legends, labels, hints, consent text, success/error copy, aside content, due-day values</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Frame, fieldset card, field and status styles</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Validation rules, conditional groups, rate limit, endpoint, bot check</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-related">
+<h3>Related Content</h3>
+<p class="cmp-meta"><b>Organism</b> · All detail pages · <span class="status ok">Approved</span></p>
+<div class="anatomy">section.dx-rel
+├ .lx-head   [.sec-eyebrow] + h2.lx-h + a.lx-all "View all" (text link, arrow nudge 3px)
+└ ul.ex-grid  Content Cards · minmax(320px,1fr) · ≤3 items = grid · &gt;3 items = .ex-strip carousel (3 / 2 / 1)
+Groups built by entry-engine.js: related experiences · entrepreneurs · city · nearby (≤4) · other events (.evl-row) · products</div>
+<table><thead><tr><th>States</th><th>Responsive</th><th>Used on</th></tr></thead><tbody><tr><td>grid · strip (carousel controls) · hidden when empty</td><td>3 / 2 / 1 columns; strip controls on tablet and mobile</td><td>destination, experience, entrepreneur, event, story, news-article, organisation, travel-idea, learning-path</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>Heading, "view all" link, related items (relationship or auto by city/category)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Layout</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Auto-selection rules, strip threshold, max items</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<div class="cmp" id="o-city">
+<h3>City Information / Practical Information</h3>
+<p class="cmp-meta"><b>Organism</b> · Luxor, Aswan · <span class="status ok">Approved</span></p>
+<div class="pv col" style="background:var(--section)"><div class="p-ci"><div class="card"><span class="p-eyebrow">About the city</span><div class="latin-display" style="font-size:30px;color:var(--ink);margin-bottom:8px">Aswan</div><p style="color:var(--muted);margin:0 0 10px">A different kind of peace: Nubian villages, islands and the quiet of the Nile.</p><div style="display:flex;gap:8px;flex-wrap:wrap"><span class="p-pill soft" style="min-height:42px"><span data-ic="bank"></span>Heritage</span><span class="p-pill soft" style="min-height:42px"><span data-ic="leaf"></span>Nature</span><span class="p-pill soft" style="min-height:42px"><span data-ic="users"></span>People</span></div></div><div class="card"><div class="p-tabs2" role="tablist" style="margin-bottom:14px"><a class="on" role="tab" aria-selected="true" href="#o-city"><span data-ic="sun"></span>Now</a><a role="tab" href="#o-city"><span data-ic="calendar-blank"></span>Best time</a><a role="tab" href="#o-city"><span data-ic="bus"></span>Around</a></div><div style="display:flex;gap:14px;align-items:center"><span data-ic="sun" style="width:40px;height:40px;color:#d98a2b"></span><span class="temp">31°</span><span style="font-size:13px;color:var(--muted)">Sunny · live reading</span></div><div style="font-size:12.5px;color:var(--muted);margin-top:12px">Winter 12–24°</div><div class="bar cold"></div><div style="font-size:12.5px;color:var(--muted)">Summer 26–43°</div><div class="bar"><u></u></div></div></div></div>
+<div class="anatomy">section.ci  2 columns ≥1024 · stacked below
+├ left   title clamp(40px,3.6vw,54px) · description clamped 6 lines + "Read more" · 42px chips (heritage / nature / people)
+└ right  .ci-card white radius 22 padding 30 min-height 262 · ARIA tabs (.ci-tab)
+         weather   .ci-now live Open-Meteo (icon #d98a2b, .ci-temp clamp(44px,2.9vw,56px)/800, "—" + message on failure) · .ci-seasons 4 rows with 6px gradient bars + today marker
+         best time .ci-best 2 columns · .ci-rec pill
+         getting around .ci-move 3 columns, 44px icon tiles
+Practical FAQ  .lx-faq  4 × details.lx-q (Accordion organism)</div>
+<table><thead><tr><th>States</th><th>Responsive</th></tr></thead><tbody><tr><td>tab selected · weather loaded / unavailable · description expanded</td><td>tabs scroll horizontally; cards stack; season bars full width</td></tr></tbody></table>
+<table><thead><tr><th>Editability</th><th></th></tr></thead><tbody><tr><td>City copy, chips, season names, months and temperature ranges, best-time notes, transport items, FAQ (all from <code>city-info.js</code>)</td><td><span class="ed cms">CMS Editable</span></td></tr><tr><td>Card layout, tabs, bars, type</td><td><span class="ed fix">Fixed UI</span></td></tr><tr><td>Weather API endpoint and fallback, clamp lines</td><td><span class="ed dev">Developer Config</span></td></tr></tbody></table>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s05"><span class="n">05 — Page Patterns</span>Page Patterns</h2>
+<p class="lede">How the organisms assemble. Header and Footer frame every page; the accessibility drawer, toast and tooltip layers are global.</p>
+<div class="patterns">
+<div><h4>Home</h4><div class="flow"><div>HEADER</div><div class="full">HERO A · collage<small>h1 + one CTA</small></div><div>PATHS<small>3 dark cards (home-only)</small></div><div class="dark">JOURNEY<small>full-bleed art + 2 buttons</small></div><div>EXPERIENCES<small>expanding cards</small></div><div class="full">GEMS<small>Section Heading + Carousel + secondary CTA</small></div><div>ENTREPRENEURS<small>feature + 2 cards</small></div><div class="full">SUCCESS STORIES<small>3 colour cards</small></div><div>EVENTS<small>stage carousel</small></div><div>NEWS<small>Content Cards</small></div><div class="dark">NEWSLETTER</div><div>FOOTER</div></div></div>
+<div><h4>Audience Landing<small style="font-weight:400;color:var(--muted)"> · Explore / Entrepreneurs / Stakeholders / Resources</small></h4><div class="flow"><div>HEADER</div><div class="full">HERO C · media + breadcrumb</div><div>INTRO<small>lede + primary CTA</small></div><div>TABS<small>section nav (entrepreneurs)</small></div><div>FILTER BAR</div><div>CONTENT<small>Content Cards · or list + Map</small></div><div>SECONDARY<small>learning paths, events carousel</small></div><div class="dark">NEWSLETTER<small>resources</small></div><div>FOOTER</div></div></div>
+<div><h4>City Guide<small style="font-weight:400;color:var(--muted)"> · Luxor / Aswan</small></h4><div class="flow"><div>HEADER</div><div class="full">HERO B · scroll-expand</div><div>SECTION NAV<small>sticky Tabs</small></div><div>SUSTAINABILITY<small>2 columns + Gallery zoom</small></div><div>CITY INFORMATION<small>tabs: weather / best time / around</small></div><div>TOP ACTIVITIES<small>expanding Accordion cards</small></div><div>TRIP IDEAS<small>coverflow Carousel</small></div><div class="dark">PLACES VIEWER<small>full-bleed Carousel</small></div><div>ENTREPRENEURS<small>2 feature cards</small></div><div>FOOD · STAYS<small>card row · Carousel</small></div><div>PRACTICAL INFO<small>Accordion</small></div><div>MAP + RESULTS</div><div>KEEP EXPLORING<small>CTA group</small></div><div>FOOTER</div></div></div>
+<div><h4>Listing Page<small style="font-weight:400;color:var(--muted)"> · Experiences / Events / News / Stories / Travel ideas / Map</small></h4><div class="flow"><div>HEADER</div><div class="full">HERO C + breadcrumb</div><div>INTRO<small>optional · view toggle</small></div><div>FILTER BAR<small>search + chips + panel</small></div><div>RESULT COUNT</div><div>CONTENT CARDS<small>3 / 2 / 1 · or Map split</small></div><div>EMPTY STATE<small>when 0</small></div><div>FOOTER</div></div></div>
+<div><h4>Destination Detail</h4><div class="flow"><div>HEADER</div><div class="full">HERO C + glass tags</div><div>BODY + SIDEBAR<small>lead, clamped text, bento Gallery · facts, chips, map embed, CTA group</small></div><div class="dark">GALLERY<small>cylinder strip</small></div><div>RELATED<small>experiences · entrepreneurs · nearby</small></div><div>FOOTER</div></div></div>
+<div><h4>Experience / Product Detail</h4><div class="flow"><div>HEADER</div><div>BREADCRUMB + H1</div><div>GALLERY<small>lead + thumbnails</small></div><div>SECTION NAV<small>sticky</small></div><div>SECTIONS + SIDEBAR<small>overview, steps, includes · booking card (mobile: bottom bar)</small></div><div>RELATED</div><div>FOOTER</div></div></div>
+<div><h4>Entrepreneur Profile</h4><div class="flow"><div>HEADER</div><div class="full">HERO C · portrait</div><div>INTRO<small>badge + pull-quote</small></div><div>CHAPTERS<small>numbered · timeline · steps</small></div><div>IMPACT<small>4 tiles</small></div><div>VISIT<small>3 cards</small></div><div>RELATED<small>products</small></div><div>FOOTER</div></div></div>
+<div><h4>Resource / Learning Path</h4><div class="flow"><div>HEADER</div><div class="full">HERO C</div><div>INTRO</div><div>STEPS<small>numbered resource rows</small></div><div>RELATED<small>other paths</small></div><div class="dark">NEWSLETTER</div><div>FOOTER</div></div></div>
+<div><h4>Event / Story / News Detail</h4><div class="flow"><div>HEADER</div><div class="full">HERO C + subtitle</div><div>BODY + SIDEBAR<small>lead, text, bento · facts, map, CTA group</small></div><div>ENTREPRENEUR<small>story only</small></div><div>RELATED</div><div>FOOTER</div></div></div>
+<div><h4>Map / Organisation Directory</h4><div class="flow"><div>HEADER</div><div class="full">HERO C</div><div>FILTER BAR</div><div>RESULT COUNT</div><div>MAP + RESULTS LIST<small>cards + sticky map</small></div><div>FOOTER</div></div></div>
+<div><h4>Form Page</h4><div class="flow"><div>HEADER</div><div>BREADCRUMB</div><div class="full">HERO E · framed head</div><div>FORM SHELL + ASIDE</div><div>STATUS</div><div>FOOTER</div></div></div>
+<div><h4>Static Content Page<small style="font-weight:400;color:var(--muted)"> · About / Privacy / Accessibility / 404</small></h4><div class="flow"><div>HEADER</div><div>BREADCRUMB + HERO E</div><div>PROSE<small>72ch · h2 + p</small></div><div>CTA GROUP<small>404 only</small></div><div>FOOTER</div></div></div>
+</div>
+
+<!-- ============================================================ -->
+<h2 id="s06"><span class="n">06 — CMS Editability</span>CMS Editability</h2>
+<p class="lede">Master matrix. Decorative assets (fronds, motif bands, lotus art, papyrus, card textures) are <b>Fixed UI</b> unless listed as editable below.</p>
+<div class="tbl-wrap"><table><thead><tr><th>Component</th><th>Property</th><th>CMS Editable</th><th>Fixed UI</th><th>Developer Config</th><th>Notes</th></tr></thead><tbody>
+<tr><td rowspan="4">Header</td><td>Menu labels, targets, logo files</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td>6 links</td></tr>
+<tr><td>Bar, pill, link style, menu animation</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Breakpoint, search, language list</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td>Accessibility FAB, drawer options</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td>not a CMS feature</td></tr>
+<tr><td rowspan="3">Footer</td><td>Headings, links, social URLs, contact email, partner logos, "supported by"</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Grid, dividers, lotus art, strip</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Column template</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="4">Hero</td><td>Title, subtitle / description, eyebrow, image or video, alt, tag values</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td>video only on B / C</td></tr>
+<tr><td>CTA label, CTA URL</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td>home hero only</td></tr>
+<tr><td>Typography, layout, spacing, radius, overlays, band</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Responsive crop, scroll-expand, autoplay</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="2">Section Heading</td><td>Eyebrow, title, accent word, "view all" link</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Rules, serif, alignment</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td rowspan="5">Content Card</td><td>Image, alt, title</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Summary</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td>where the type supports it</td></tr>
+<tr><td>Category, location, metadata values</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td>taxonomy / relationship</td></tr>
+<tr><td>CTA destination, CTA label per type, radius, padding, badge style</td><td><span class="ed cms">dest.</span></td><td><span class="ed fix">label, style</span></td><td></td><td></td></tr>
+<tr><td>Hover, favourite, lazy loading, strip threshold</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="3">Filter Bar</td><td>Taxonomy terms, icons, group labels, placeholder, empty message</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Chip and panel style</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Primary parameter, URL keys, order, auto-hide</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="2">Carousel</td><td>Items, heading</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Per-view counts, controls · snap, keyboard, RTL</td><td></td><td><span class="ed fix">counts</span></td><td><span class="ed dev">behaviour</span></td><td></td></tr>
+<tr><td rowspan="3">Detail page</td><td>Title, subtitle, lead, body, gallery (2–5), facts, pillar chips, coordinates, actions (label, URL, external), related items</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Column split, sidebar band, map size, bento layout, CTA styles</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Template config per type, zoom, sticky offset, clamp lines</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="3">City Information</td><td>Copy, chips, seasons, temperatures, best-time notes, transport, FAQ, hero video</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td><code>city-info.js</code></td></tr>
+<tr><td>Section order, tabs, bars, coverflow, viewer, accordion style</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Weather API, cluster settings, scroll-lock</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="3">Map</td><td>Coordinates, type, name, summary, thumbnail</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Marker, popup, split widths</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Tiles, colours per type, zoom, cluster, sheet</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="3">Forms</td><td>Legends, labels, hints, consent, success / error copy, aside, due-days</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Field, fieldset, frame, status styles</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td>Validation, conditional groups, rate limit, endpoint, bot check</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+<tr><td rowspan="2">Newsletter</td><td>Title, subtitle, button label, messages, background image</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Styles · validation, endpoint, tokens</td><td></td><td><span class="ed fix">styles</span></td><td><span class="ed dev">logic</span></td><td></td></tr>
+<tr><td rowspan="2">Entrepreneur profile</td><td>Portrait, badge, quote, chapters, timeline, impact numbers, visit cards, products</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Numbering, rail, tile sizes · icon fallback list</td><td></td><td><span class="ed fix">layout</span></td><td><span class="ed dev">fallbacks</span></td><td></td></tr>
+<tr><td rowspan="2">Learning path</td><td>Steps (title, resource, format, file / link / video), other paths</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Step counter, row layout · inline player</td><td></td><td><span class="ed fix">layout</span></td><td><span class="ed dev">player</span></td><td></td></tr>
+<tr><td rowspan="2">Planner</td><td>Quick-reply chips, canned answers, plan templates</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Chat bubbles, dock · rule engine, max saved plans (12)</td><td></td><td><span class="ed fix">UI</span></td><td><span class="ed dev">engine</span></td><td></td></tr>
+<tr><td rowspan="2">Static pages</td><td>Headings, paragraphs, partner names</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td></td></tr>
+<tr><td>Prose width and type</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td></td></tr>
+<tr><td rowspan="3">Global</td><td>All UI strings per language, document titles, meta descriptions</td><td><span class="ed cms">Yes</span></td><td></td><td></td><td><code>i18n.js</code> dictionary</td></tr>
+<tr><td>Tokens: colour, type, spacing, radius, shadow; decorative backgrounds and motifs</td><td></td><td><span class="ed fix">Yes</span></td><td></td><td>not editor-replaceable</td></tr>
+<tr><td>Breakpoints, motion and reduced-motion gates, lazy loading, performance budget</td><td></td><td></td><td><span class="ed dev">Yes</span></td><td></td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ -->
+<h2 id="s07"><span class="n">07 — Responsive &amp; RTL</span>Responsive &amp; RTL</h2>
+<div class="bp"><div><b>&lt;640</b>Mobile</div><div><b>640–767</b>Large phone</div><div><b>768–1023</b>Tablet</div><div><b>≥1024 · ≥1280</b>Desktop · Wide</div></div>
+<div class="tbl-wrap"><table><thead><tr><th>Rule</th><th>Mobile &lt;640</th><th>Tablet 640–1023</th><th>Desktop ≥1024</th></tr></thead><tbody>
+<tr><td>Gutter / container</td><td>16px</td><td>24px</td><td>24px · 1200 (listing 1400)</td></tr>
+<tr><td>Columns (cards)</td><td>1 · 4-card rows become horizontal snap min(78vw,320)</td><td>2 (auto-fill 320) · 4-card rows auto-fill 240</td><td>3 (4 for events / food) · gap 32×24 · paths gap 48 ≥1280</td></tr>
+<tr><td>Stacking</td><td>sidebar after body; form aside below; map after list</td><td>same</td><td>split: 1fr + 380 / 420 (≥1280) · form 1fr + 360 · directory 1fr + 420 sticky</td></tr>
+<tr><td>Section spacing</td><td>64 / 64</td><td>64 / 64 (≤767) → 112 / 96</td><td>112 / 96</td></tr>
+<tr><td>Typography</td><td>clamp minimums: h1 34–44, h2 32, h3 20, body 15</td><td>fluid</td><td>clamp maximums: h1 84–96, h2 56, h3 24, body-lg 18</td></tr>
+<tr><td>Navigation</td><td>64px bar, burger + dropdown menu, language row in menu</td><td>72px bar, burger, language button</td><td>76px bar, 6 links, search expands</td></tr>
+<tr><td>Carousels</td><td>1 card + peek, swipe, dots; arrows hidden (gems, evcar)</td><td>2 per view (strip), 2.25 (evcar)</td><td>3 per view with arrows + dots; home gems static 3-up</td></tr>
+<tr><td>Tabs / section nav</td><td>horizontal scroll, 150px tabs, fade button</td><td>scroll if needed</td><td>inline; city bar sticky 68px</td></tr>
+<tr><td>Map</td><td>map 70vh + list bottom sheet (city) · map 380 after list (directory)</td><td>320 list + map from 768 (city) · stacked (directory)</td><td>420 list ≥1100 · sticky 420 map column, min(72vh,680)</td></tr>
+<tr><td>Hero</td><td>A stacked, B/C height min(600,85vh), D 4/3</td><td>C width 95vw</td><td>C ≤1550 × ≤800 · D 1400/540</td></tr>
+<tr><td>Expanding cards</td><td>column 720–820px tall</td><td>row from 768</td><td>row 600–640 / 460–500</td></tr>
+<tr><td>Footer</td><td>2 columns</td><td>3 columns</td><td>4 columns with dividers</td></tr>
+</tbody></table></div>
+
+<h3>Arabic RTL · English / Spanish LTR</h3>
+<div class="pv col"><div class="two"><div style="background:#fff;border:1px solid var(--hair);border-radius:12px;padding:14px"><span class="lbl" style="margin-bottom:8px">RTL (source)</span><div class="ar" style="display:grid;gap:10px"><ol class="p-crumb ar" dir="rtl" style="font-size:13.5px"><li><a href="#s07">الرئيسية</a></li><li><a href="#s07">الوجهات</a></li><li aria-current="page">أسوان</li></ol><a class="p-cta sm" href="#s07">عرض التفاصيل <span data-ic="arrow-left"></span></a><div style="display:flex;gap:8px"><button class="p-round sz40" aria-label="السابق"><span data-ic="caret-right"></span></button><button class="p-round sz40" aria-label="التالي"><span data-ic="caret-left"></span></button></div></div></div><div style="background:#fff;border:1px solid var(--hair);border-radius:12px;padding:14px"><span class="lbl" style="margin-bottom:8px">LTR (mirrored)</span><div style="display:grid;gap:10px"><ol class="p-crumb" style="font-size:13.5px"><li><a href="#s07">Home</a></li><li><a href="#s07">Destinations</a></li><li aria-current="page">Aswan</li></ol><a class="p-cta sm" href="#s07" style="justify-self:start">View details <span data-ic="arrow-right"></span></a><div style="display:flex;gap:8px"><button class="p-round sz40" aria-label="Previous"><span data-ic="caret-left"></span></button><button class="p-round sz40" aria-label="Next"><span data-ic="caret-right"></span></button></div></div></div></div></div>
+<table><thead><tr><th>Concern</th><th>Arabic (RTL)</th><th>English / Spanish (LTR)</th><th>Mechanism</th></tr></thead><tbody>
+<tr><td>Switch</td><td><code>html[lang=ar][dir=rtl]</code></td><td><code>html[lang=en|es][dir=ltr].lang-latin</code></td><td><code>i18n.js</code>; stored in <code>localStorage.se-lang</code></td></tr>
+<tr><td>Layout</td><td>right → left</td><td>mirrored automatically</td><td>logical properties only (<code>inset-inline</code>, <code>padding-inline</code>, <code>text-align:start</code>)</td></tr>
+<tr><td>Fonts</td><td>IBM Plex Sans Arabic + Thmanyah</td><td>IBM Plex Sans + IBM Plex Serif; eyebrows uppercase .2em</td><td><code>html.lang-latin</code> rules</td></tr>
+<tr><td>Forward arrows</td><td><code>arrow-left</code> points left</td><td>mirrored to point right</td><td><code>.fwd</code> + <code>html[dir="ltr"] .fwd{transform:scaleX(-1)}</code>; hover nudge flipped</td></tr>
+<tr><td>Carousel prev / next</td><td>prev right, next left</td><td>prev left, next right</td><td>per-component LTR rules; JS scroll sign from <code>html[dir]</code>; ←/→ mapped at runtime</td></tr>
+<tr><td>Breadcrumb chevron</td><td>rotate(−45°)</td><td>rotate(45°)</td><td><code>li+li::before</code></td></tr>
+<tr><td>Map split</td><td>map first</td><td>list first</td><td><code>html[dir="rtl"] .mp-body</code> order</td></tr>
+<tr><td>Decorative art, gradient masks</td><td>as authored</td><td><code>scaleX(-1)</code> / LTR gradient variants</td><td>explicit <code>html[dir="ltr"]</code> rules</td></tr>
+<tr><td>Forms</td><td>right-aligned, caret at inline-end</td><td>left-aligned</td><td>logical properties</td></tr>
+<tr><td>Numerals / dates</td><td><code>ar-EG</code> (Arabic-Indic digits)</td><td><code>en-GB</code> / <code>es-ES</code></td><td><code>toLocaleDateString / toLocaleTimeString</code></td></tr>
+<tr><td>Text</td><td>no letter-spacing, no uppercase, no tatweel</td><td>tracking allowed on eyebrows</td><td>missing strings fall back to Arabic</td></tr>
+</tbody></table>
+
+<!-- ============================================================ -->
+<h2 id="s08"><span class="n">08 — Accessibility</span>Accessibility</h2>
+<table><thead><tr><th>Rule</th><th>Implementation</th></tr></thead><tbody>
+<tr><td>Target</td><td>WCAG 2.1 AA without the accessibility drawer; Lighthouse Accessibility 100 enforced by <code>npm run audit</code></td></tr>
+<tr><td>Contrast</td><td>rust on paper 5.95:1 · rust on parchment 5.08:1 · muted on paper 7.1:1 · body 12.6:1 · ink 15.3:1 · white on rust 6.36:1. Text on images sits on the shade gradient.</td></tr>
+<tr><td>Keyboard</td><td>All controls are <code>&lt;a&gt;</code> / <code>&lt;button&gt;</code>; menus, drawer and dialog close on Esc and return focus; expanding cards open on focus; map markers focusable</td></tr>
+<tr><td>Visible focus</td><td>3px rgba(165,62,26,.4) outline, offset 3 (2 in forms), radius 6; white ring on rust / dark; never removed</td></tr>
+<tr><td>Skip to content</td><td>Required: <code>a.skip[href="#main"]</code> as first child of body, visible on focus. Not yet implemented (§10)</td></tr>
+<tr><td>Semantic headings</td><td>one <code>h1</code> per page; h1 → h2 → h3 without skipping; footer headings h2; sections labelled with <code>aria-labelledby</code></td></tr>
+<tr><td>Landmarks</td><td><code>header &gt; nav[aria-label]</code>, <code>main</code>, <code>aside[aria-labelledby]</code>, <code>footer[aria-label]</code>, <code>role=search</code>, map <code>role=region</code></td></tr>
+<tr><td>Alt text</td><td>descriptive, translated <code>alt</code> on content images; <code>alt=""</code> + <code>aria-hidden</code> on decorative layers; SVG icons <code>aria-hidden focusable=false</code></td></tr>
+<tr><td>Form labels</td><td>visible <code>label[for]</code> on every field; <code>sr-only</code> label on newsletter; icon buttons carry <code>aria-label</code></td></tr>
+<tr><td>Text-based errors</td><td><code>p.f-err[role=alert]</code> in the field + <code>aria-invalid</code> + <code>aria-describedby</code>; first invalid field focused; summary status focused</td></tr>
+<tr><td>Carousel keyboard</td><td>track <code>tabindex="0"</code>, ←/→ page (RTL-aware); dots <code>role=tablist</code>; buttons labelled</td></tr>
+<tr><td>Map alternative</td><td>result list mirrors markers; list buttons open markers; sidebar maps have no wheel zoom</td></tr>
+<tr><td>Live regions</td><td>result count, toast, carousel description, newsletter message: <code>role=status aria-live=polite</code></td></tr>
+<tr><td>Motion</td><td><code>prefers-reduced-motion</code>: transitions .01ms, hover transforms removed, GSAP gated, video paused, instant scroll</td></tr>
+<tr><td>States</td><td><code>aria-pressed</code> chips and favourites · <code>aria-current</code> nav and thumbnails · <code>aria-expanded / aria-controls</code> toggles · <code>menuitemradio aria-checked</code> languages</td></tr>
+</tbody></table>
+
+<!-- ============================================================ -->
+<h2 id="s09"><span class="n">09 — Component Inventory</span>Component Inventory</h2>
+<div class="tbl-wrap"><table id="inventory"><thead><tr><th>Component</th><th>Atomic level</th><th>Variants</th><th>Used on</th><th>CMS editable</th><th>Status</th></tr></thead><tbody>
+<tr><td>Button</td><td>Atom</td><td>Primary · Secondary · Ghost · Compact · Text · Icon (40/44/48/56) · FAB · Favourite</td><td>All</td><td>label, URL</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Icon</td><td>Atom</td><td>14 · 16 · 20 · 24 · 32</td><td>All</td><td>category mapping</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Link</td><td>Atom</td><td>Inline · Nav · Footer · Breadcrumb · External</td><td>All</td><td>label, URL</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Input</td><td>Atom</td><td>Field · Search · Newsletter · Chat</td><td>Forms, listings, home, resources, travel-ideas</td><td>label, placeholder, hint, error</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Textarea</td><td>Atom</td><td>—</td><td>Forms</td><td>label, hint</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Select</td><td>Atom</td><td>—</td><td>Forms, admin</td><td>label, options</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Checkbox</td><td>Atom</td><td>Consent · Filter grid</td><td>Forms, filters</td><td>label, options</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Chip / Tag</td><td>Atom</td><td>Filter · Image badge (3) · Glass · Pillar (3 tints) · Soft · Dense · Metadata</td><td>All listing, card and detail pages</td><td>label, taxonomy</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Badge</td><td>Atom</td><td>Date block · Date tile · Step · Count · Cluster · Image count</td><td>Events, details, map</td><td>values</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Divider</td><td>Atom</td><td>Hairline · Alpha · Vertical · Title rule</td><td>All</td><td>—</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Breadcrumb</td><td>Molecule</td><td>Above hero · Above title</td><td>All inner pages</td><td>labels</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Section Heading</td><td>Molecule</td><td>Centred with rules · Inner start-aligned</td><td>All</td><td>eyebrow, title, link</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Metadata Row</td><td>Molecule</td><td>Card · Row · Event · Facts</td><td>Cards, details</td><td>values</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Search Control</td><td>Molecule</td><td>Listing · Header (unwired)</td><td>Listings, header</td><td>placeholder</td><td><span class="status rev">Needs review</span></td></tr>
+<tr><td>Filter Control</td><td>Molecule</td><td>Chips · Advanced panel</td><td>9 listing pages, city maps</td><td>taxonomy, labels</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Form Field</td><td>Molecule</td><td>—</td><td>5 forms</td><td>label, hint, error</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Location Label</td><td>Molecule</td><td>Inline · Chip · Glass · Hero caption</td><td>Cards, heroes, details</td><td>place</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Date Badge</td><td>Molecule</td><td>Thumb · Block · Tile</td><td>Home, events, event, resources</td><td>date</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Carousel Navigation</td><td>Molecule</td><td>Buttons + dots · Buttons · Thumbnails</td><td>Home, listings, city, resources</td><td>aria strings</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Language Switcher</td><td>Molecule</td><td>Menu · Mobile row</td><td>All</td><td>names, toast</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Result Count / Empty State</td><td>Molecule</td><td>—</td><td>Listings, details</td><td>messages</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Content Card</td><td>Molecule</td><td>Experience · Destination · Entrepreneur · Event · Story · News · Resource · Learning path · Organisation · Travel idea</td><td>12 pages + every related strip</td><td>image, title, summary, category, location, meta, link</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Header</td><td>Organism</td><td>Desktop · Mobile dropdown</td><td>All public pages</td><td>menu, logo</td><td><span class="status rev">Needs review</span></td></tr>
+<tr><td>Footer</td><td>Organism</td><td>—</td><td>All public pages</td><td>links, logos, contact</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Hero</td><td>Organism</td><td>A Home · B City · C Media · D Framed · E Text head</td><td>All</td><td>media, title, lede, CTA</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Filter Bar</td><td>Organism</td><td>Shared engine · Local · City map</td><td>11 pages</td><td>taxonomy</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Section Carousel</td><td>Organism</td><td>Strip · Gems · Events stage · Evcar · Stays · Coverflow · Places viewer</td><td>Home, listings, city, resources, details</td><td>items</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Gallery</td><td>Organism</td><td>Lead + thumbs · Bento · Cylinder · Zoom dialog</td><td>Experience, details, destination, city</td><td>images</td><td><span class="status rev">Needs review</span></td></tr>
+<tr><td>Tabs</td><td>Organism</td><td>ARIA tabs · Section nav</td><td>City, experience, entrepreneurs, planner</td><td>labels, content</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Accordion</td><td>Organism</td><td>FAQ · Itinerary · Expanding cards</td><td>City, travel-idea, home</td><td>content</td><td><span class="status std">Standardized</span></td></tr>
+<tr><td>Map + Results List</td><td>Organism</td><td>Directory split · City split + sheet · Embed</td><td>Map, stakeholders, city, details, travel-idea</td><td>points</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Newsletter Section</td><td>Organism</td><td>—</td><td>Home, resources</td><td>copy, image</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Form Shell</td><td>Organism</td><td>Framed page</td><td>5 forms</td><td>copy, fields</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Related Content</td><td>Organism</td><td>Grid · Strip</td><td>9 detail pages</td><td>heading, items</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>City Information</td><td>Organism</td><td>Info tabs · Practical FAQ</td><td>Luxor, Aswan</td><td>city data</td><td><span class="status ok">Approved</span></td></tr>
+<tr><td>Home editorial modules</td><td>Organism (fixed)</td><td>Paths · Journey · Expanding experiences · Entrepreneur feature · Story cards</td><td>Home (feature also on city pages)</td><td>content</td><td><span class="status ok">Approved</span> home-only</td></tr>
+<tr><td>Planner chat</td><td>Organism</td><td>—</td><td>Travel-ideas</td><td>chips, answers</td><td><span class="status ok">Approved</span></td></tr>
+</tbody></table></div>
+
+<!-- ============================================================ -->
+<h2 id="s10"><span class="n">10 — Open Decisions</span>Open Decisions</h2>
+<table><thead><tr><th>Item</th><th>Current state</th><th>Decision needed</th><th>Owner</th></tr></thead><tbody>
+<tr><td>Icon-button hover</td><td>Three treatments: white → #fff + scale · white → rust · outline → white</td><td>Adopt one (recommended: rust fill)</td><td>Design</td></tr>
+<tr><td>Favourite toggle</td><td>Changes <code>aria-pressed</code> only; nothing is stored</td><td>Persist (localStorage or account) or remove the control</td><td>Product</td></tr>
+<tr><td>Header search</td><td>Expands and shows a toast; no results</td><td>Wire to <code>experiences.html?q=</code> or remove</td><td>Product</td></tr>
+<tr><td>Cylinder gallery</td><td>Decorative strip without keyboard access</td><td>Mark <code>aria-hidden</code> (bento stays the accessible gallery) or add controls</td><td>Design</td></tr>
+<tr><td>City hero under reduced motion</td><td>Scroll-lock expansion still runs</td><td>Show the settled hero and skip the lock</td><td>Design</td></tr>
+<tr><td>Skip link and burger icon</td><td>No skip link; burger glyph never toggles (<code>#burgerIcon</code> missing)</td><td>Approve the skip-link placement and icon swap</td><td>Design</td></tr>
+<tr><td>Accessibility drawer scope</td><td>Effect rules target <code>#page</code>, present only on index</td><td>Confirm retargeting to <code>body</code> on all pages</td><td>Development</td></tr>
+</tbody></table>
+</main>
+</div>
+<script src="icons.js"></script>
+<script>
+(function(){
+  document.querySelectorAll('[data-ic]').forEach(function(el){
+    var n=el.getAttribute('data-ic'); if(!window.ICONS||!ICONS[n]) return;
+    var grid=!!el.closest('.icon-grid'); var st=el.getAttribute('style');
+    el.outerHTML=ICON(n,grid?22:16,'').replace('class="ic"',(st?'style="'+st+'" ':'')+'class="ic'+(el.className?' '+el.className:'')+'"');
+  });
+  var q=document.getElementById('q'), toc=document.getElementById('toc'), links=[].slice.call(toc.querySelectorAll('a'));
+  q.addEventListener('input',function(){
+    var v=q.value.trim().toLowerCase();
+    links.forEach(function(a){ a.parentElement.classList.toggle('hide', !!v && a.textContent.toLowerCase().indexOf(v)<0); });
+    toc.querySelectorAll(':scope > li').forEach(function(li){ if(v && li.querySelector('.sub li:not(.hide)')) li.classList.remove('hide'); });
+    if(v){ var hit=[].slice.call(document.querySelectorAll('.cmp h3, main h3, #inventory td:first-child')).filter(function(h){return h.textContent.toLowerCase().indexOf(v)>=0;})[0]; if(hit && q.dataset.last!==v) hit.scrollIntoView({block:'start'}); q.dataset.last=v; }
+  });
+  var heads=[].slice.call(document.querySelectorAll('main h2[id], main h3[id], main .cmp[id]'));
+  var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){a.classList.toggle('is-on', a.getAttribute('href')==='#'+e.target.id);}); } }); },{rootMargin:'-8% 0px -82% 0px'});
+  heads.forEach(function(h){io.observe(h);});
+  var side=document.getElementById('side'), btn=document.getElementById('menuBtn');
+  btn.addEventListener('click',function(){ var o=side.classList.toggle('open'); btn.setAttribute('aria-expanded',o); });
+  side.addEventListener('click',function(e){ if(e.target.closest('a')){ side.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ side.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } });
+})();
+</script>
+</body>
+</html>
