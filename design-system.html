@@ -321,18 +321,53 @@ details.p-q div{padding:0 18px 16px;color:var(--muted);font-size:14px}
   .p-row{grid-template-columns:48px 1fr}.p-row>a{grid-column:1/-1;justify-self:start}
 }
 @media print{.side,.topbar{display:none}.doc{display:block}.main{max-width:none;padding:0}h2{break-before:page;padding-top:0;border:0}.cmp,.pv,.sw,table,.anatomy{break-inside:avoid}a{color:inherit}body{background:#fff}details.dev{display:none}}
+
+/* ---- opening pages ---- */
+.cover{position:relative;min-height:calc(100vh - 72px);display:flex;align-items:center;background:var(--paper-inner);border:1px solid var(--hair);border-radius:16px;overflow:hidden;margin:0 0 56px;isolation:isolate}
+.cover-fronds{position:absolute;inset-inline-end:-6%;top:-10%;width:52%;max-width:620px;opacity:.28;mix-blend-mode:multiply;pointer-events:none;z-index:0}
+.cover-in{position:relative;z-index:1;padding:clamp(40px,8vw,96px) clamp(24px,7vw,88px) clamp(56px,10vw,120px);max-width:720px}
+.cover-logo{height:72px;width:auto;margin-bottom:40px;display:block}
+.cover-brand{margin:0 0 10px;font-size:12.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--rust)}
+.cover-title{font-family:"IBM Plex Serif",Georgia,serif;font-size:clamp(52px,8vw,104px);line-height:.96;letter-spacing:-.025em;color:var(--ink);margin:0}
+.cover-sub{margin:18px 0 0;font-size:clamp(17px,1.8vw,22px);font-weight:600;color:var(--ink)}
+.cover-lede{margin:14px 0 0;font-size:16px;line-height:1.6;color:var(--muted);max-width:52ch}
+.cover-foot{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:clamp(40px,6vw,72px);font-size:13.5px;font-weight:600;color:var(--ink)}
+.cover-foot span{display:inline-flex;align-items:center;gap:10px}
+.cover-foot span+span::before{content:"";width:4px;height:4px;border-radius:999px;background:var(--rust)}
+.cover-band{position:absolute;left:0;right:0;bottom:0;height:22px;background:url("ASSETS/motifs/band-luxor.png") repeat-x center/auto 100%;opacity:.9;z-index:1}
+.intro{margin:0 0 24px}
+h2.plain{border-top:0;padding-top:24px}
+.use-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin:24px 0 18px}
+.use-card{background:#fff;border:1px solid var(--hair);border-radius:16px;padding:24px 22px 18px}
+.use-card h3{margin:14px 0 6px;font-size:18px}
+.use-card p{color:var(--muted);margin:0 0 10px;font-size:14px}
+.use-card ul{list-style:none;padding:0;margin:0;display:grid;gap:4px;font-size:14.5px;color:var(--ink)}
+.use-card li::before{content:"";display:inline-block;width:6px;height:6px;border-radius:999px;background:var(--hair);margin-inline-end:10px;vertical-align:2px}
+.use-ico{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;color:#fff}
+.use-ico .ic{width:22px;height:22px}
+.use-ico.cms{background:#2f9e5b}.use-ico.fix{background:#2a2a28}.use-ico.dev{background:#2c6fd1}
+.type-h{margin:36px 0 8px;font-size:12px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--rust)}
+.type-family{display:grid;grid-template-columns:200px minmax(0,1fr);gap:16px 32px;align-items:center;padding:22px 0;border-bottom:1px solid var(--hair)}
+.type-meta b{display:block;font-size:17px;color:var(--ink)}.type-meta span{font-size:13.5px;color:var(--muted)}
+.type-sample{margin:0;color:var(--ink);font-size:clamp(40px,6vw,72px);line-height:1.08;letter-spacing:-.02em;overflow-wrap:anywhere}
+.type-sample.ar,.type-sample.ar-display{text-align:right}
+.type-sample.ar-display{font-size:clamp(44px,6.4vw,80px);line-height:1.15;letter-spacing:0}
+table.scale{max-width:560px}
+@media (max-width:767px){.type-family{grid-template-columns:1fr}.cover{min-height:auto}.cover-logo{height:56px}}
 </style>
 </head>
 <body>
 <div class="topbar"><button type="button" id="menuBtn" aria-controls="side" aria-expanded="false">Contents</button><b>Discover Upper Egypt — Design System</b></div>
 <div class="doc">
 <aside class="side" id="side" aria-label="Table of contents">
-  <div class="brand"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div><b>Design System</b><span style="font-size:11.5px;color:var(--muted)">Handoff · v3</span></div></div>
+  <div class="brand"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div><b>Design System</b><span style="font-size:11.5px;color:var(--muted)">Handoff · v4</span></div></div>
   <label class="sr-only" for="q">Find a component</label>
   <input id="q" type="search" placeholder="Find a component…" autocomplete="off">
   <nav><ul class="toc" id="toc">
-    <li><a href="#s00">00 — Overview</a></li>
-    <li><a href="#s01">01 — Foundations</a><ul class="sub"><li><a href="#f-color">Colors</a></li><li><a href="#f-type">Typography</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-grid">Grid</a></li><li><a href="#f-radius">Radius</a></li><li><a href="#f-border">Borders &amp; shadows</a></li><li><a href="#f-icon">Iconography</a></li></ul></li>
+    <li><a href="#s00">Cover</a></li>
+    <li><a href="#s0a">How to use this system</a></li>
+    <li><a href="#s0b">Typography</a></li>
+    <li><a href="#s01">01 — Foundations</a><ul class="sub"><li><a href="#f-color">Colors</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-grid">Grid</a></li><li><a href="#f-radius">Radius</a></li><li><a href="#f-border">Borders &amp; shadows</a></li><li><a href="#f-icon">Iconography</a></li></ul></li>
     <li><a href="#s02">02 — Atoms</a><ul class="sub"><li><a href="#a-button">Button</a></li><li><a href="#a-icon">Icon</a></li><li><a href="#a-link">Link</a></li><li><a href="#a-input">Input</a></li><li><a href="#a-textarea">Textarea</a></li><li><a href="#a-select">Select</a></li><li><a href="#a-checkbox">Checkbox</a></li><li><a href="#a-chip">Chip / Tag</a></li><li><a href="#a-badge">Badge</a></li><li><a href="#a-divider">Divider</a></li></ul></li>
     <li><a href="#s03">03 — Molecules</a><ul class="sub"><li><a href="#m-breadcrumb">Breadcrumb</a></li><li><a href="#m-heading">Section Heading</a></li><li><a href="#m-meta">Metadata Row</a></li><li><a href="#m-search">Search Control</a></li><li><a href="#m-filter">Filter Control</a></li><li><a href="#m-field">Form Field</a></li><li><a href="#m-location">Location Label</a></li><li><a href="#m-date">Date Badge</a></li><li><a href="#m-carnav">Carousel Navigation</a></li><li><a href="#m-lang">Language Switcher</a></li><li><a href="#m-empty">Result Count / Empty State</a></li><li><a href="#m-card">Card Anatomy</a></li></ul></li>
     <li><a href="#s04">04 — Organisms</a><ul class="sub"><li><a href="#o-header">Header</a></li><li><a href="#o-footer">Footer</a></li><li><a href="#o-hero">Hero</a></li><li><a href="#c-experience">Experience Card</a></li><li><a href="#c-destination">Destination Card</a></li><li><a href="#c-entrepreneur">Entrepreneur Card</a></li><li><a href="#c-event">Event Card</a></li><li><a href="#c-organisation">Organisation Card</a></li><li><a href="#c-resource">Resource Card</a></li><li><a href="#c-other">Story · News · Learning Path · Travel Idea</a></li><li><a href="#o-filterbar">Filter Bar</a></li><li><a href="#o-carousel">Section Carousel</a></li><li><a href="#o-gallery">Gallery</a></li><li><a href="#o-tabs">Tabs</a></li><li><a href="#o-accordion">Accordion</a></li><li><a href="#o-map">Map + Results List</a></li><li><a href="#o-newsletter">Newsletter Section</a></li><li><a href="#o-form">Form Shell</a></li><li><a href="#o-related">Related Content</a></li><li><a href="#o-city">City Information</a></li></ul></li>
@@ -347,23 +382,104 @@ details.p-q div{padding:0 18px 16px;color:var(--muted);font-size:14px}
 
 <main class="main">
 <!-- ============================================================ -->
-<h2 id="s00" style="padding-top:0;border:0"><span class="n">00 — Overview</span>Overview</h2>
-<p class="p-eyebrow" style="margin-bottom:6px">Discover Upper Egypt</p>
-<h1>Design System &amp; UI Component Library</h1>
-<div class="meta">
-  <div><b>Project</b><span>Discover Upper Egypt</span></div>
-  <div><b>Languages</b><span>Arabic / English / Spanish</span></div>
-  <div><b>Primary direction</b><span>Arabic RTL</span></div>
-  <div><b>Accessibility target</b><span>WCAG 2.1 AA</span></div>
-  <div><b>Purpose</b><span>Design-to-development handoff</span></div>
-  <div><b>Status</b><span>Final Design System Documentation</span></div>
-</div>
-<div class="hier"><a href="#s01">Foundation</a><i>↓</i><a href="#s02">Atom</a><i>↓</i><a href="#s03">Molecule</a><i>↓</i><a href="#s04">Organism</a><i>↓</i><a href="#s05">Page Pattern</a></div>
-<h4>Editability legend</h4>
-<div class="legend"><span class="ed cms">🟢 Content Editable</span><span class="ed fix">⚫ Design System Locked</span><span class="ed dev">🔵 Developer Configuration</span></div>
-<p class="small" style="margin-top:10px">Content is editable only when exposed by CMS configuration. The CMS field set is not yet confirmed; §06 marks each content item that still needs confirmation. Start with the <a href="#s09">Component Inventory</a> to find any component.</p>
+<!-- ============================================================ -->
+<section class="cover" id="s00" aria-label="Cover">
+  <img class="cover-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true">
+  <div class="cover-in">
+    <img class="cover-logo" src="brand_assets/logo-en.webp" alt="Discover Upper Egypt">
+    <p class="cover-brand">Discover Upper Egypt</p>
+    <h1 class="cover-title">Design System</h1>
+    <p class="cover-sub">UI Guidelines &amp; Component Library</p>
+    <p class="cover-lede">A shared reference for designing, building and maintaining the Discover Upper Egypt platform.</p>
+    <div class="cover-foot"><span>Arabic · English · Spanish</span><span>RTL + LTR</span><span>October 2026</span></div>
+  </div>
+  <div class="cover-band" aria-hidden="true"></div>
+</section>
 
 <!-- ============================================================ -->
+<section class="intro" id="s0a">
+  <h2 class="plain"><span class="n">Start here</span>How to use this system</h2>
+  <p class="lede">This Design System defines the visual styles, reusable components and interface rules used across the Discover Upper Egypt platform.</p>
+  <div class="use-grid">
+    <div class="use-card">
+      <div class="use-ico cms"><span data-ic="text-aa"></span></div>
+      <h3>Content Editable</h3>
+      <p>Things the content team can update.</p>
+      <ul><li>Text</li><li>Images</li><li>Links</li><li>Content entries</li></ul>
+    </div>
+    <div class="use-card">
+      <div class="use-ico fix"><span data-ic="lock"></span></div>
+      <h3>Design System Locked</h3>
+      <p>Visual rules that stay the same everywhere.</p>
+      <ul><li>Typography</li><li>Colors</li><li>Spacing</li><li>Component layout</li></ul>
+    </div>
+    <div class="use-card">
+      <div class="use-ico dev"><span data-ic="sliders-horizontal"></span></div>
+      <h3>Developer Configuration</h3>
+      <p>Technical settings controlled during development.</p>
+      <ul><li>Responsive behavior</li><li>Interactions</li><li>Animations</li><li>Accessibility behavior</li></ul>
+    </div>
+  </div>
+  <p class="small">Every component later in this file is marked with these three labels: 🟢 Content Editable · ⚫ Design System Locked · 🔵 Developer Configuration.</p>
+</section>
+
+<!-- ============================================================ -->
+<section class="intro" id="s0b">
+  <h2 class="plain"><span class="n">Typefaces</span>Typography</h2>
+  <p class="lede">Arabic and Latin use separate typefaces to maintain clarity and character across all supported languages.</p>
+
+  <h3 class="type-h">Arabic</h3>
+  <div class="type-family">
+    <div class="type-meta"><b>Thmanyah Serif Display</b><span>Headings</span></div>
+    <p class="type-sample ar-display" lang="ar" dir="rtl">اكتشف صعيد مصر</p>
+  </div>
+  <div class="type-family">
+    <div class="type-meta"><b>IBM Plex Sans Arabic</b><span>Body &amp; interface</span></div>
+    <p class="type-sample ar" lang="ar" dir="rtl" style="font-size:clamp(20px,2.4vw,26px);line-height:1.7">تجارب أصيلة، أماكن ملهمة، وحكايات من قلب الصعيد.</p>
+  </div>
+
+  <h3 class="type-h">English &amp; Spanish</h3>
+  <div class="type-family">
+    <div class="type-meta"><b>IBM Plex Serif</b><span>Headings</span></div>
+    <p class="type-sample latin-display">Discover Upper Egypt</p>
+  </div>
+  <div class="type-family">
+    <div class="type-meta"><b>IBM Plex Sans</b><span>Body &amp; interface</span></div>
+    <p class="type-sample" style="font-size:clamp(18px,2.2vw,24px);line-height:1.6">Explore authentic places, experiences and stories across Upper Egypt.</p>
+  </div>
+
+  <h3 class="type-h">Type scale</h3>
+  <table class="scale"><thead><tr><th>Name</th><th>Size</th><th>Weight</th></tr></thead><tbody>
+    <tr><td>Display</td><td>42 – 84px</td><td>Bold (700)</td></tr>
+    <tr><td>Heading 1</td><td>32 – 56px</td><td>Bold (700)</td></tr>
+    <tr><td>Heading 2</td><td>26 – 38px</td><td>Bold (700)</td></tr>
+    <tr><td>Heading 3</td><td>20 – 24px</td><td>Bold (700)</td></tr>
+    <tr><td>Body</td><td>15 – 18px</td><td>Regular (400)</td></tr>
+    <tr><td>Small text</td><td>12.5 – 13.5px</td><td>Semibold (600)</td></tr>
+  </tbody></table>
+  <details class="dev"><summary>Developer Specs</summary><div>
+<table><thead><tr><th>Role</th><th>Arabic</th><th>Latin (<code>html.lang-latin</code>)</th><th>Weights</th></tr></thead><tbody>
+<tr><td>Display / headings</td><td>Thmanyah Serif Display</td><td>IBM Plex Serif, −.02em</td><td>500, 700</td></tr>
+<tr><td>Body / UI</td><td>IBM Plex Sans Arabic</td><td>IBM Plex Sans</td><td>400, 500, 600, 700</td></tr>
+</tbody></table>
+<table><thead><tr><th>Role</th><th>Usage</th><th>Token / selector</th><th>Value</th><th>Line height</th></tr></thead><tbody>
+<tr><td>Display</td><td>Home hero headline</td><td><code>--fs-h1</code> · <code>.hero .headline</code></td><td>clamp(42px,6vw,84px) · hero clamp(44px, calc(12px + 5vw), 96px); Latin clamp(36px, calc(8px + 3.9vw), 76px)</td><td>.94–1.02</td></tr>
+<tr><td>Heading 1</td><td>Page and home section titles</td><td><code>--fs-h2</code> · <code>.pg-title</code> · <code>--fs-h2-hero</code></td><td>clamp(32px,4.4vw,56px) · clamp(32px,3.6vw,52px) · clamp(38px,5.6vw,76px)</td><td>1.15</td></tr>
+<tr><td>Heading 2</td><td>Inner section headings</td><td><code>.lx-h</code> · <code>.xh-cap-title</code></td><td>clamp(26px,2.7vw,38px) · hero caption clamp(44px,6vw,92px)</td><td>1.3</td></tr>
+<tr><td>Heading 3</td><td>Card titles, form legends (800)</td><td><code>--fs-h3</code> · <code>--fs-h3-lg</code></td><td>clamp(20px,1.7vw,24px) · clamp(24px,2vw,28px)</td><td>1.3</td></tr>
+<tr><td>Heading 4</td><td>Row titles</td><td>—</td><td>16–18px / 700</td><td>1.3</td></tr>
+<tr><td>Body Large / Body</td><td>Ledes, prose · card summaries, labels, navigation (17/600)</td><td><code>--fs-body-lg</code> · <code>--fs-body</code></td><td>clamp(16px,1.25vw,18px) · 15px</td><td>1.7 (prose 1.85)</td></tr>
+<tr><td>Small / Label / Caption</td><td>Metadata, badges · card eyebrows, tags · hints, errors</td><td><code>--fs-small</code> · <code>--fs-label</code></td><td>13.5px · 12.5px (Latin eyebrow 11.5px uppercase .18em) · 13px</td><td>1.5</td></tr>
+<tr><td>Button / eyebrow</td><td>All buttons · section eyebrow</td><td><code>--fs-btn</code> · <code>--fs-eyebrow</code></td><td>15px (compact 13.5px) · 15px (Latin 13px, .2em, uppercase)</td><td>1 · 1.5</td></tr>
+<tr><td>Line heights</td><td>—</td><td><code>--lh-tight --lh-heading --lh-body</code></td><td>1.15 · 1.3 · 1.7</td><td>—</td></tr>
+<tr><td>Latin switch</td><td>—</td><td><code>html.lang-latin</code></td><td>body → IBM Plex Sans; <code>.display</code> → IBM Plex Serif, letter-spacing −.02em</td><td>—</td></tr>
+<tr><td>Readable mode</td><td>Accessibility drawer</td><td><code>html.a11y-readable</code></td><td>IBM Plex Sans everywhere; <code>--a11y-scale</code> 0.9–1.4 on html font-size</td><td>—</td></tr>
+<tr><td>Fonts</td><td>—</td><td><code>fonts/sub</code>, <code>fonts/ibm</code></td><td>self-hosted WOFF2, two Arabic weights preloaded, no external font links</td><td>—</td></tr>
+</tbody></table>
+<p>Arabic text never receives letter-spacing, uppercase or tatweel stretching.</p>
+</div></details>
+</section>
+
 <h2 id="s01"><span class="n">01 — Foundations</span>Foundations</h2>
 
 <h3 id="f-color">Colors</h3>
@@ -421,39 +537,6 @@ details.p-q div{padding:0 18px 16px;color:var(--muted);font-size:14px}
 </div>
 <h4>Tokens</h4>
 <table><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code>--rust</code> · <code>--rust-deep</code></td><td>#a53e1a · #8a3213</td></tr><tr><td><code>--ink</code> · <code>--body</code> · <code>--muted</code> · <code>--nav-ink</code></td><td>#0b2230 · #24312f · #57534e · #2a2a28</td></tr><tr><td><code>--paper</code></td><td>#f1e4d2 (home) · #fbf7ef on inner pages</td></tr><tr><td><code>--hair</code> · <code>--card-border</code> · <code>--drawer-bg</code> · <code>--cream</code></td><td>#e6e2d8 · #e1ddd0 · #f4f1ea · #f6ead8</td></tr><tr><td><code>--pill</code> / <code>--pill-ink</code></td><td>scoped per tag modifier</td></tr><tr><td><code>html.a11y-contrast</code></td><td>paper #fff · ink/body/muted #000 · rust #7a2400 · borders #000</td></tr></tbody></table>
-</div></details>
-
-<h3 id="f-type">Typography</h3>
-<table><thead><tr><th>Role</th><th>Arabic</th><th>Latin</th><th>Weights</th></tr></thead><tbody>
-<tr><td>Display / headings</td><td>Thmanyah Serif Display</td><td>IBM Plex Serif</td><td>500, 700</td></tr>
-<tr><td>Body / UI</td><td>IBM Plex Sans Arabic</td><td>IBM Plex Sans</td><td>400, 500, 600, 700</td></tr>
-</tbody></table>
-<div class="pv white col" style="gap:0">
-  <div class="spec"><div class="k"><b>Display</b>Home hero headline<br>42–96px · 700 · lh 0.94–1.02</div><div class="latin-display" style="font-size:40px;color:#0b2230;line-height:1">Discover <span style="color:#a53e1a">Upper Egypt</span></div><div class="ar-display" style="font-size:40px;color:#0b2230;line-height:1.05">اكتشف <span style="color:#a53e1a">صعيد مصر</span></div></div>
-  <div class="spec"><div class="k"><b>H1</b>Page and home section titles<br>32–56px · 700 · lh 1.15</div><div class="latin-display" style="font-size:32px;color:#0b2230">Upcoming <span style="color:#a53e1a">events</span></div><div class="ar-display" style="font-size:32px;color:#0b2230">الفعاليات القادمة</div></div>
-  <div class="spec"><div class="k"><b>H2</b>Inner section headings<br>26–38px · 700 · lh 1.3</div><div class="latin-display" style="font-size:26px;color:#0b2230">Practical information</div><div class="ar-display" style="font-size:26px;color:#0b2230">معلومات عملية</div></div>
-  <div class="spec"><div class="k"><b>H3</b>Card titles, form legends<br>20–24px · 700 · lh 1.3</div><div style="font-size:21px;font-weight:700;color:#0b2230">Hot-air balloon rides</div><div class="ar" style="font-size:21px;font-weight:700;color:#0b2230">رحلات البالون</div></div>
-  <div class="spec"><div class="k"><b>H4</b>Row titles<br>16–18px · 700 · lh 1.3</div><div style="font-size:17px;font-weight:700;color:#0b2230">Luxor Heritage Association</div><div class="ar" style="font-size:17px;font-weight:700;color:#0b2230">جمعية تراث الأقصر</div></div>
-  <div class="spec"><div class="k"><b>Body Large</b>Ledes, prose, detail body<br>16–18px · 400 · lh 1.7–1.85</div><div style="font-size:17px">Tea and stories with the people of Luxor.</div><div class="ar" style="font-size:17px">شاي وحكايات مع أهل الأقصر.</div></div>
-  <div class="spec"><div class="k"><b>Body</b>Card summaries, labels, navigation<br>15px (nav 17px) · 400 · lh 1.7</div><div style="font-size:15px">A felucca ride on the Nile at sunset.</div><div class="ar" style="font-size:15px">رحلة فلوكة في النيل وقت الغروب.</div></div>
-  <div class="spec"><div class="k"><b>Body Small</b>Metadata, badges, checkbox text<br>13.5px · 400–700 · lh 1.5</div><div style="font-size:13.5px;color:#57534e">About two hours · Aswan</div><div class="ar" style="font-size:13.5px;color:#57534e">نحو ساعتين · أسوان</div></div>
-  <div class="spec"><div class="k"><b>Label</b>Card eyebrows, tags<br>12.5px (Latin 11.5 uppercase) · 600–700</div><div style="font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;color:#a53e1a">Hidden gems</div><div class="ar" style="font-size:12.5px;font-weight:700;color:#a53e1a">جواهر مخفية</div></div>
-  <div class="spec"><div class="k"><b>Caption</b>Hints, errors, popup summaries<br>13px · 400 (errors 700) · lh 1.5</div><div style="font-size:13px;color:#57534e">We reply within five working days.</div><div class="ar" style="font-size:13px;color:#57534e">نرد خلال خمسة أيام عمل.</div></div>
-</div>
-<p class="small">Arabic text never receives letter-spacing, uppercase or tatweel stretching. Buttons: 15px/700 (compact 13.5px).</p>
-<details class="dev"><summary>Developer details · tokens and clamp() values</summary><div>
-<table><thead><tr><th>Role</th><th>Token / selector</th><th>Value</th></tr></thead><tbody>
-<tr><td>Display</td><td><code>--fs-h1</code> · <code>.hero .headline</code></td><td>clamp(42px,6vw,84px) · hero clamp(44px, calc(12px + 5vw), 96px); Latin clamp(36px, calc(8px + 3.9vw), 76px)</td></tr>
-<tr><td>H1</td><td><code>--fs-h2</code> · <code>.pg-title</code> · <code>--fs-h2-hero</code></td><td>clamp(32px,4.4vw,56px) · clamp(32px,3.6vw,52px) · clamp(38px,5.6vw,76px)</td></tr>
-<tr><td>H2</td><td><code>.lx-h</code> · <code>.xh-cap-title</code></td><td>clamp(26px,2.7vw,38px) · hero caption clamp(44px,6vw,92px)</td></tr>
-<tr><td>H3 / H3 large</td><td><code>--fs-h3</code> · <code>--fs-h3-lg</code></td><td>clamp(20px,1.7vw,24px) · clamp(24px,2vw,28px)</td></tr>
-<tr><td>Body Large / Body / Small / Label</td><td><code>--fs-body-lg --fs-body --fs-small --fs-label</code></td><td>clamp(16px,1.25vw,18px) · 15px · 13.5px · 12.5px</td></tr>
-<tr><td>Button / eyebrow</td><td><code>--fs-btn --fs-eyebrow</code></td><td>15px · 15px (Latin 13px, .2em, uppercase)</td></tr>
-<tr><td>Line heights</td><td><code>--lh-tight --lh-heading --lh-body</code></td><td>1.15 · 1.3 · 1.7</td></tr>
-<tr><td>Latin switch</td><td><code>html.lang-latin</code></td><td>body → IBM Plex Sans; <code>.display</code> → IBM Plex Serif, letter-spacing −.02em</td></tr>
-<tr><td>Readable mode</td><td><code>html.a11y-readable</code></td><td>IBM Plex Sans everywhere; <code>--a11y-scale</code> 0.9–1.4 on html font-size</td></tr>
-<tr><td>Fonts</td><td><code>fonts/sub</code>, <code>fonts/ibm</code></td><td>self-hosted WOFF2, two Arabic weights preloaded, no external font links</td></tr>
-</tbody></table>
 </div></details>
 
 <h3 id="f-space">Spacing</h3>
