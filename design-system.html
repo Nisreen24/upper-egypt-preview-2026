@@ -354,23 +354,47 @@ h2.plain{border-top:0;padding-top:24px}
 .type-sample.ar-display{font-size:clamp(44px,6.4vw,80px);line-height:1.15;letter-spacing:0}
 table.scale{max-width:560px}
 @media (max-width:767px){.type-family{grid-template-columns:1fr}.cover{min-height:auto}.cover-logo{height:56px}}
+
+/* ---- collapsible sidebar and groups ---- */
+.side-head{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:12px}
+.side-head .brand{margin:0;min-width:0}
+.side-close{width:32px;height:32px;border:1px solid var(--line-16);border-radius:8px;background:#fff;cursor:pointer;display:grid;place-items:center;color:var(--muted);flex:none;padding:0}
+.side-close:hover{color:var(--rust);border-color:var(--rust)}
+.side-close svg{width:16px;height:16px;fill:currentColor}
+.side-fab{position:fixed;top:14px;left:14px;z-index:45;display:none;align-items:center;gap:8px;height:38px;padding:0 12px;border:1px solid var(--line-16);border-radius:8px;background:#fff;font:inherit;font-size:13px;font-weight:600;color:var(--ink);cursor:pointer;box-shadow:var(--sh-subtle)}
+.side-fab svg{width:16px;height:16px;fill:currentColor}
+.side-fab:hover{border-color:var(--rust);color:var(--rust)}
+@media (min-width:1024px){.doc.side-closed{grid-template-columns:minmax(0,1fr)}.doc.side-closed .side{display:none}.doc.side-closed .side-fab{display:inline-flex}.doc.side-closed .main{padding-top:64px}}
+.tools{display:flex;gap:6px;margin:0 0 8px}
+.tools button{height:26px;padding:0 10px;border:1px solid var(--hair);border-radius:999px;background:#fff;font:inherit;font-size:11.5px;font-weight:600;color:var(--muted);cursor:pointer}
+.tools button:hover{color:var(--rust);border-color:var(--rust)}
+.toc .grp{display:flex;align-items:center;gap:2px}
+.toc .grp>a{flex:1;min-width:0}
+.toc .tg{width:28px;height:28px;border:0;background:none;cursor:pointer;color:var(--muted);display:grid;place-items:center;border-radius:6px;flex:none;padding:0}
+.toc .tg:hover{background:rgba(43,29,14,.05);color:var(--rust)}
+.toc .tg::before{content:"▸";font-size:14px;line-height:1}
+.toc li.open>.grp .tg::before{content:"▾"}
+.toc .sub{display:none}
+.toc li.open>.sub{display:block}
+.toc li.open>.grp>a{color:var(--ink)}
 </style>
 </head>
 <body>
 <div class="topbar"><button type="button" id="menuBtn" aria-controls="side" aria-expanded="false">Contents</button><b>Discover Upper Egypt — Design System</b></div>
-<div class="doc">
+<div class="doc" id="doc">
+<button type="button" class="side-fab" id="sideOpen" aria-label="Show contents"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M224,128a8,8,0,0,1-8,8H40a8,8,0,0,1,0-16H216A8,8,0,0,1,224,128ZM40,72H216a8,8,0,0,0,0-16H40a8,8,0,0,0,0,16ZM216,184H40a8,8,0,0,0,0,16H216a8,8,0,0,0,0-16Z"/></svg>Contents</button>
 <aside class="side" id="side" aria-label="Table of contents">
-  <div class="brand"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div><b>Design System</b><span style="font-size:11.5px;color:var(--muted)">Handoff · v4</span></div></div>
+  <div class="side-head"><div class="brand"><img src="brand_assets/logo-en.webp" alt="Discover Upper Egypt"><div><b>Design System</b><span style="font-size:11.5px;color:var(--muted)">Handoff · v4</span></div></div><button type="button" class="side-close" id="sideClose" aria-label="Hide contents" title="Hide contents"><svg viewBox="0 0 256 256" aria-hidden="true"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button></div>
   <label class="sr-only" for="q">Find a component</label>
   <input id="q" type="search" placeholder="Find a component…" autocomplete="off">
-  <nav><ul class="toc" id="toc">
+  <nav><div class="toc tools" aria-label="Contents controls"><button type="button" id="tocExpand">Expand all</button><button type="button" id="tocCollapse">Collapse all</button></div><ul class="toc" id="toc">
     <li><a href="#s00">Cover</a></li>
     <li><a href="#s0a">How to use this system</a></li>
     <li><a href="#s0b">Typography</a></li>
-    <li><a href="#s01">01 — Foundations</a><ul class="sub"><li><a href="#f-color">Colors</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-grid">Grid</a></li><li><a href="#f-radius">Radius</a></li><li><a href="#f-border">Borders &amp; shadows</a></li><li><a href="#f-icon">Iconography</a></li></ul></li>
-    <li><a href="#s02">02 — Atoms</a><ul class="sub"><li><a href="#a-button">Button</a></li><li><a href="#a-icon">Icon</a></li><li><a href="#a-link">Link</a></li><li><a href="#a-input">Input</a></li><li><a href="#a-textarea">Textarea</a></li><li><a href="#a-select">Select</a></li><li><a href="#a-checkbox">Checkbox</a></li><li><a href="#a-chip">Chip / Tag</a></li><li><a href="#a-badge">Badge</a></li><li><a href="#a-divider">Divider</a></li></ul></li>
-    <li><a href="#s03">03 — Molecules</a><ul class="sub"><li><a href="#m-breadcrumb">Breadcrumb</a></li><li><a href="#m-heading">Section Heading</a></li><li><a href="#m-meta">Metadata Row</a></li><li><a href="#m-search">Search Control</a></li><li><a href="#m-filter">Filter Control</a></li><li><a href="#m-field">Form Field</a></li><li><a href="#m-location">Location Label</a></li><li><a href="#m-date">Date Badge</a></li><li><a href="#m-carnav">Carousel Navigation</a></li><li><a href="#m-lang">Language Switcher</a></li><li><a href="#m-empty">Result Count / Empty State</a></li><li><a href="#m-card">Card Anatomy</a></li></ul></li>
-    <li><a href="#s04">04 — Organisms</a><ul class="sub"><li><a href="#o-header">Header</a></li><li><a href="#o-footer">Footer</a></li><li><a href="#o-hero">Hero</a></li><li><a href="#c-experience">Experience Card</a></li><li><a href="#c-destination">Destination Card</a></li><li><a href="#c-entrepreneur">Entrepreneur Card</a></li><li><a href="#c-event">Event Card</a></li><li><a href="#c-organisation">Organisation Card</a></li><li><a href="#c-resource">Resource Card</a></li><li><a href="#c-other">Story · News · Learning Path · Travel Idea</a></li><li><a href="#o-filterbar">Filter Bar</a></li><li><a href="#o-carousel">Section Carousel</a></li><li><a href="#o-gallery">Gallery</a></li><li><a href="#o-tabs">Tabs</a></li><li><a href="#o-accordion">Accordion</a></li><li><a href="#o-map">Map + Results List</a></li><li><a href="#o-newsletter">Newsletter Section</a></li><li><a href="#o-form">Form Shell</a></li><li><a href="#o-related">Related Content</a></li><li><a href="#o-city">City Information</a></li></ul></li>
+    <li><div class="grp"><a href="#s01">01 — Foundations</a><button type="button" class="tg" aria-expanded="false" aria-label="Toggle Foundations"></button></div><ul class="sub"><li><a href="#f-color">Colors</a></li><li><a href="#f-space">Spacing</a></li><li><a href="#f-grid">Grid</a></li><li><a href="#f-radius">Radius</a></li><li><a href="#f-border">Borders &amp; shadows</a></li><li><a href="#f-icon">Iconography</a></li></ul></li>
+    <li><div class="grp"><a href="#s02">02 — Atoms</a><button type="button" class="tg" aria-expanded="false" aria-label="Toggle Atoms"></button></div><ul class="sub"><li><a href="#a-button">Button</a></li><li><a href="#a-icon">Icon</a></li><li><a href="#a-link">Link</a></li><li><a href="#a-input">Input</a></li><li><a href="#a-textarea">Textarea</a></li><li><a href="#a-select">Select</a></li><li><a href="#a-checkbox">Checkbox</a></li><li><a href="#a-chip">Chip / Tag</a></li><li><a href="#a-badge">Badge</a></li><li><a href="#a-divider">Divider</a></li></ul></li>
+    <li><div class="grp"><a href="#s03">03 — Molecules</a><button type="button" class="tg" aria-expanded="false" aria-label="Toggle Molecules"></button></div><ul class="sub"><li><a href="#m-breadcrumb">Breadcrumb</a></li><li><a href="#m-heading">Section Heading</a></li><li><a href="#m-meta">Metadata Row</a></li><li><a href="#m-search">Search Control</a></li><li><a href="#m-filter">Filter Control</a></li><li><a href="#m-field">Form Field</a></li><li><a href="#m-location">Location Label</a></li><li><a href="#m-date">Date Badge</a></li><li><a href="#m-carnav">Carousel Navigation</a></li><li><a href="#m-lang">Language Switcher</a></li><li><a href="#m-empty">Result Count / Empty State</a></li><li><a href="#m-card">Card Anatomy</a></li></ul></li>
+    <li><div class="grp"><a href="#s04">04 — Organisms</a><button type="button" class="tg" aria-expanded="false" aria-label="Toggle Organisms"></button></div><ul class="sub"><li><a href="#o-header">Header</a></li><li><a href="#o-footer">Footer</a></li><li><a href="#o-hero">Hero</a></li><li><a href="#c-experience">Experience Card</a></li><li><a href="#c-destination">Destination Card</a></li><li><a href="#c-entrepreneur">Entrepreneur Card</a></li><li><a href="#c-event">Event Card</a></li><li><a href="#c-organisation">Organisation Card</a></li><li><a href="#c-resource">Resource Card</a></li><li><a href="#c-other">Story · News · Learning Path · Travel Idea</a></li><li><a href="#o-filterbar">Filter Bar</a></li><li><a href="#o-carousel">Section Carousel</a></li><li><a href="#o-gallery">Gallery</a></li><li><a href="#o-tabs">Tabs</a></li><li><a href="#o-accordion">Accordion</a></li><li><a href="#o-map">Map + Results List</a></li><li><a href="#o-newsletter">Newsletter Section</a></li><li><a href="#o-form">Form Shell</a></li><li><a href="#o-related">Related Content</a></li><li><a href="#o-city">City Information</a></li></ul></li>
     <li><a href="#s05">05 — Page Patterns</a></li>
     <li><a href="#s06">06 — Editability</a></li>
     <li><a href="#s07">07 — Responsive &amp; RTL</a></li>
@@ -585,12 +609,12 @@ table.scale{max-width:560px}
 </div></details>
 
 <h3 id="f-icon">Iconography</h3>
-<div class="spec-list"><div><b>Family</b>Phosphor Icons, regular, filled paths. One family; no emoji</div><div><b>Sizes</b>16 default · 14 in pills · 20 round buttons and markers · 24 drawer tiles · 32 page-head tile</div><div><b>Stroke</b>none (filled glyphs), 256 grid</div><div><b>Colour</b>inherits text colour: rust on white, white on rust / dark, muted in metadata</div><div><b>Active</b>expressed by the parent (filled chip, pressed favourite → heart-fill)</div><div><b>Direction</b>forward arrows mirror in LTR; external-link and down arrows never mirror</div></div>
+<div class="spec-list"><div><b>Family</b>Phosphor Icons, Regular weight, filled paths. One family; no emoji</div><div><b>Source</b>phosphoricons.com (open source, MIT). 128 SVGs downloaded to <code>icons/phosphor/</code> and compiled into <code>icons.js</code>; nothing loads from a CDN or icon font</div><div><b>Sizes</b>16 default · 14 in pills · 20 round buttons and markers · 24 drawer tiles · 32 page-head tile</div><div><b>Stroke</b>none (filled glyphs), 256 grid</div><div><b>Colour</b>inherits text colour: rust on white, white on rust / dark, muted in metadata</div><div><b>Active</b>expressed by the parent (filled chip, pressed favourite → heart-fill)</div><div><b>Direction</b>forward arrows mirror in LTR; external-link and down arrows never mirror</div></div>
 <div class="icon-grid">
 <div><span data-ic="arrow-left"></span>arrow-left</div><div><span data-ic="caret-right"></span>caret-right</div><div><span data-ic="caret-down"></span>caret-down</div><div><span data-ic="list"></span>list</div><div><span data-ic="x"></span>x</div><div><span data-ic="magnifying-glass"></span>search</div><div><span data-ic="map-pin"></span>map-pin</div><div><span data-ic="compass"></span>compass</div><div><span data-ic="hand"></span>hand</div><div><span data-ic="fork-knife"></span>fork-knife</div><div><span data-ic="bed"></span>bed</div><div><span data-ic="basket"></span>basket</div><div><span data-ic="bank"></span>bank</div><div><span data-ic="sailboat"></span>sailboat</div><div><span data-ic="hot-air-balloon"></span>balloon*</div><div><span data-ic="ferry"></span>ferry*</div><div><span data-ic="clock"></span>clock</div><div><span data-ic="calendar-blank"></span>calendar</div><div><span data-ic="users"></span>users</div><div><span data-ic="tag"></span>tag</div><div><span data-ic="heart"></span>heart</div><div><span data-ic="heart-fill"></span>heart-fill</div><div><span data-ic="share-network"></span>share</div><div><span data-ic="download-simple"></span>download</div><div><span data-ic="play"></span>play</div><div><span data-ic="sliders-horizontal"></span>sliders</div><div><span data-ic="sun"></span>sun</div><div><span data-ic="cloud"></span>cloud</div><div><span data-ic="wind"></span>wind</div><div><span data-ic="person-arms-spread"></span>a11y</div><div><span data-ic="wheelchair"></span>wheelchair</div><div><span data-ic="info"></span>info</div><div><span data-ic="warning"></span>warning</div><div><span data-ic="check"></span>check</div><div><span data-ic="envelope-simple"></span>envelope</div><div><span data-ic="facebook-logo"></span>facebook</div><div><span data-ic="instagram-logo"></span>instagram</div><div><span data-ic="linkedin-logo"></span>linkedin</div><div><span data-ic="youtube-logo"></span>youtube</div><div><span data-ic="arrow-square-out"></span>external</div>
 </div>
 <p class="small">* custom glyphs drawn to the Phosphor grid.</p>
-<details class="dev"><summary>Developer details · API and mirroring</summary><div><p>130 glyphs in <code>icons.js</code> as <code>window.ICONS</code>; <code>ICON(name, size, cls)</code> returns <code>&lt;svg class="ic" width height viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"&gt;</code>. Custom glyphs in <code>icons/custom/</code>; <code>icons/ui/caret-down.svg</code> is used as a CSS mask for selects. Forward arrows: <code>ICON('arrow-left', 16, 'fwd')</code> with <code>html[dir="ltr"] .fwd{transform:scaleX(-1)}</code>; carets mirror per component rule.</p></div></details>
+<details class="dev"><summary>Developer details · API and mirroring</summary><div><p>Library: Phosphor Icons (<code>https://phosphoricons.com</code>, npm <code>@phosphor-icons/core</code>, MIT), Regular weight. 128 source SVGs sit in <code>icons/phosphor/</code>; 130 glyphs (those plus the two custom ones) are embedded in <code>icons.js</code> as <code>window.ICONS</code>; <code>ICON(name, size, cls)</code> returns <code>&lt;svg class="ic" width height viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"&gt;</code>. Custom glyphs in <code>icons/custom/</code>; <code>icons/ui/caret-down.svg</code> is used as a CSS mask for selects. Forward arrows: <code>ICON('arrow-left', 16, 'fwd')</code> with <code>html[dir="ltr"] .fwd{transform:scaleX(-1)}</code>; carets mirror per component rule.</p></div></details>
 
 <!-- ============================================================ -->
 <h2 id="s02"><span class="n">02 — Atoms</span>Atoms</h2>
@@ -626,7 +650,7 @@ table.scale{max-width:560px}
 <div class="pv main-pv"><span data-ic="map-pin" style="width:14px;height:14px"></span><span data-ic="map-pin"></span><span data-ic="map-pin" style="width:20px;height:20px"></span><span data-ic="map-pin" style="width:24px;height:24px"></span><span data-ic="map-pin" style="width:32px;height:32px"></span><span class="small">14 · 16 · 20 · 24 · 32</span><span data-ic="map-pin" style="color:var(--rust)"></span><span data-ic="map-pin" style="color:var(--muted)"></span><span style="background:var(--rust);color:#fff;padding:6px;border-radius:6px;display:inline-flex"><span data-ic="map-pin"></span></span></div>
 <div class="ed-sum"><div><span class="ed cms">Content Editable</span><span class="v">Icon chosen per category (taxonomy) — when exposed by CMS</span></div><div><span class="ed fix">Design System Locked</span><span class="v">Glyph set · Sizes · Colour inheritance</span></div><div><span class="ed dev">Developer Configuration</span><span class="v">Icon mapping logic · Mirroring</span></div></div>
 <h4>Specifications</h4>
-<div class="spec-list"><div><b>Set</b>Phosphor filled, 256 grid</div><div><b>Sizes</b>14 / 16 / 20 / 24 / 32</div><div><b>Colour</b>inherits</div><div><b>Decorative</b>hidden from assistive tech</div></div>
+<div class="spec-list"><div><b>Set</b>Phosphor Icons (phosphoricons.com), Regular weight, 256 grid, MIT licence</div><div><b>Sizes</b>14 / 16 / 20 / 24 / 32</div><div><b>Colour</b>inherits</div><div><b>Decorative</b>hidden from assistive tech</div></div>
 <p class="used"><b>Used on:</b> all pages.</p>
 <details class="dev"><summary>Developer details</summary><div><p><code>ICON(name, size, cls)</code> from <code>icons.js</code>; output <code>class="ic" aria-hidden="true" focusable="false" fill="currentColor"</code>, width = height = size. Category → glyph map lives in the listing data (<code>CATS</code> in <code>listing-shared.js</code>: compass, hand, fork-knife, bed, basket).</p></div></details>
 </div>
@@ -1386,10 +1410,28 @@ EMBED #dxMap 220px, zoom 14, scrollWheelZoom:false, role=region</div><p>Leaflet 
   var heads=[].slice.call(document.querySelectorAll('main h2[id], main h3[id], main .cmp[id]'));
   var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ links.forEach(function(a){a.classList.toggle('is-on', a.getAttribute('href')==='#'+e.target.id);}); } }); },{rootMargin:'-8% 0px -82% 0px'});
   heads.forEach(function(h){io.observe(h);});
-  var side=document.getElementById('side'), btn=document.getElementById('menuBtn');
+  var side=document.getElementById('side'), btn=document.getElementById('menuBtn'), doc=document.getElementById('doc');
+  var store={get:function(k){try{return localStorage.getItem(k);}catch(e){return null;}},set:function(k,v){try{localStorage.setItem(k,v);}catch(e){}}};
+  // desktop: hide / show the sidebar
+  function setSide(closed){ doc.classList.toggle('side-closed', closed); store.set('ds-side', closed?'closed':'open'); }
+  if(store.get('ds-side')==='closed') doc.classList.add('side-closed');
+  document.getElementById('sideClose').addEventListener('click',function(){ if(window.innerWidth<1024){ side.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } else { setSide(true); } });
+  document.getElementById('sideOpen').addEventListener('click',function(){ setSide(false); });
+  // mobile drawer
   btn.addEventListener('click',function(){ var o=side.classList.toggle('open'); btn.setAttribute('aria-expanded',o); });
   side.addEventListener('click',function(e){ if(e.target.closest('a')){ side.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ side.classList.remove('open'); btn.setAttribute('aria-expanded','false'); } });
+  // collapsible groups (accordion: opening one closes the others)
+  var groups=[].slice.call(toc.querySelectorAll(':scope > li'));
+  function openGroup(li, exclusive){ groups.forEach(function(g){ var on = g===li; if(exclusive || on){ g.classList.toggle('open', on || (!exclusive && g.classList.contains('open'))); var t=g.querySelector('.grp .tg'); if(t) t.setAttribute('aria-expanded', g.classList.contains('open')); } }); }
+  groups.forEach(function(g){ var t=g.querySelector('.grp .tg'); if(!t) return; t.addEventListener('click',function(){ if(g.classList.contains('open')){ g.classList.remove('open'); t.setAttribute('aria-expanded','false'); } else { openGroup(g, true); } }); g.querySelector('.grp > a').addEventListener('click',function(){ openGroup(g, true); }); });
+  document.getElementById('tocExpand').addEventListener('click',function(){ groups.forEach(function(g){ if(g.querySelector('.sub')){ g.classList.add('open'); g.querySelector('.grp .tg').setAttribute('aria-expanded','true'); } }); });
+  document.getElementById('tocCollapse').addEventListener('click',function(){ groups.forEach(function(g){ g.classList.remove('open'); var t=g.querySelector('.grp .tg'); if(t) t.setAttribute('aria-expanded','false'); }); });
+  // keep the group of the current section open while scrolling
+  var spyObs=new MutationObserver(function(){ var on=toc.querySelector('a.is-on'); if(!on) return; var li=on.closest('#toc > li'); if(li && !li.classList.contains('open') && !q.value.trim()) openGroup(li, true); });
+  links.forEach(function(a){ spyObs.observe(a,{attributes:true,attributeFilter:['class']}); });
+  // the filter opens every group that still has a visible entry
+  q.addEventListener('input',function(){ var v=q.value.trim(); groups.forEach(function(g){ if(!g.querySelector('.sub')) return; if(v){ g.classList.toggle('open', !!g.querySelector('.sub li:not(.hide)')); } }); if(!v){ var on=toc.querySelector('a.is-on'); if(on) openGroup(on.closest('#toc > li'), true); } });
 })();
 </script>
 </body>
