@@ -112,7 +112,7 @@ td code{white-space:normal}
 .cmp .used b{color:var(--ink)}
 .cmp .note{font-size:13px;border-inline-start:3px solid var(--amber);background:rgba(184,116,26,.07);padding:8px 12px;border-radius:0 8px 8px 0;margin:6px 0 12px}
 .spec-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:6px 20px;font-size:13px;margin:0 0 10px}
-.spec-list div{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--hair)}
+.spec-list div{display:flex;gap:8px;padding:5px 0;border-bottom:1px solid var(--hair);min-width:0;overflow-wrap:anywhere}
 .spec-list b{color:var(--ink);font-weight:600;min-width:96px;flex:none}
 details.dev{border:1px dashed var(--line-16);border-radius:10px;margin:14px 0 6px;background:#faf9f6}
 details.dev summary{cursor:pointer;list-style:none;padding:9px 14px;font-size:12.5px;font-weight:700;color:var(--nav-ink);display:flex;align-items:center;gap:8px}
@@ -377,6 +377,34 @@ table.scale{max-width:560px}
 .toc .sub{display:none}
 .toc li.open>.sub{display:block}
 .toc li.open>.grp>a{color:var(--ink)}
+
+/* ---- card anatomy ---- */
+.anat{display:grid;grid-template-columns:320px minmax(0,1fr);gap:28px;align-items:start;width:100%}
+.anat-card{position:relative;padding-left:12px}
+.anat-card .p-gem{width:300px}
+.dot{position:absolute;width:22px;height:22px;border-radius:999px;background:var(--rust);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center;border:2px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.3);z-index:2}
+.anat-list{list-style:none;padding:0;margin:4px 0 0;display:grid;gap:10px}
+.anat-list li{display:grid;grid-template-columns:24px minmax(0,1fr);gap:10px;align-items:start;font-size:13.5px;line-height:1.5;color:var(--body)}
+.anat-list li i{width:22px;height:22px;border-radius:999px;background:var(--rust);color:#fff;font-size:12px;font-weight:700;font-style:normal;display:grid;place-items:center}
+.anat-list b{color:var(--ink)}
+.req,.opt{display:inline-block;margin-inline-start:6px;padding:1px 7px;border-radius:999px;font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;vertical-align:1px}
+.req{background:rgba(165,62,26,.1);color:var(--rust-deep)}.opt{background:rgba(43,29,14,.07);color:var(--muted)}
+.fam{display:grid;grid-template-columns:repeat(auto-fill,minmax(148px,1fr));gap:14px;margin:0 0 16px}
+.fam a{display:block;color:inherit;text-decoration:none}
+.fam a:hover .fm{border-color:var(--rust)}
+.fm{background:#fff;border:1px solid var(--line-12);border-radius:12px;padding:10px;display:grid;gap:6px;min-height:150px;align-content:start;transition:border-color .2s}
+.fm-img{background:var(--sand);border-radius:8px;aspect-ratio:4/3;position:relative;overflow:hidden}
+.fm-img.r1{aspect-ratio:1/1}.fm-img.r169{aspect-ratio:16/9}.fm-img.r1610{aspect-ratio:16/10}.fm-img.tall{aspect-ratio:3/4}
+.fm-badge{position:absolute;top:6px;left:6px;height:10px;width:34px;border-radius:999px;background:var(--clay-deep)}
+.fm-fav{position:absolute;top:6px;right:6px;width:14px;height:14px;border-radius:999px;background:#fff}
+.fm-date{position:absolute;top:0;left:0;width:24px;height:24px;background:rgba(43,29,14,.82);border-radius:0 0 8px 0}
+.fm-line{display:block;height:6px;border-radius:3px;background:var(--hair);width:100%}
+.fm-line.t{height:8px;background:var(--ink);opacity:.75;width:70%}.fm-line.s{width:90%}.fm-line.c{background:var(--rust);height:12px;border-radius:4px;margin-top:2px;opacity:1}
+.fm.row{grid-template-columns:28px 1fr;align-items:center;min-height:0}
+.fm-ico{width:28px;height:28px;border-radius:8px;background:rgba(165,62,26,.12)}
+.fam-name{font-size:13px;font-weight:700;color:var(--ink);margin:8px 0 0}
+.fam-note{font-size:12px;color:var(--muted);margin:0}
+@media (max-width:767px){.anat{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -879,18 +907,42 @@ table.scale{max-width:560px}
 <h3>Card Anatomy</h3>
 <p class="cmp-meta"><b>Molecule (base)</b> · Shared by every content card · <span class="status std">Standardized</span></p>
 <div class="pv main-pv" style="align-items:flex-start">
-  <article class="p-gem"><div class="media"><img src="ASSETS/gal/corniche-cafes-1-960.webp" alt=""><div class="tint"></div><div class="shade"></div><span class="p-pill loc"><span data-ic="compass" style="width:14px;height:14px"></span>Badge</span><button class="p-fav" aria-pressed="false" aria-label="Favourite"><span data-ic="heart"></span></button></div><div class="body"><span class="cat">Eyebrow</span><h4>Title</h4><p class="desc">Summary, one sentence.</p><div class="meta"><span><span data-ic="clock"></span>Meta</span><span><span data-ic="map-pin"></span>Meta</span></div><a class="p-cta" href="#m-card">CTA <span data-ic="arrow-right"></span></a></div></article>
-  <div class="anatomy" style="margin:0;align-self:stretch;flex:1 1 300px">Card  radius 18 · hairline · paper
-├ Media  4/3 · tint + shade
-│   ├ Badge      top-start      [required]
-│   └ Favourite  top-end        [optional]
-└ Body  padding 24 · gap 8
-    ├ Eyebrow    category       [required]
-    ├ Title      H3             [required · ≤ 2 lines]
-    ├ Summary    body muted     [optional · ≤ 3 lines]
-    ├ Person     13.5 rust      [optional]
-    ├ Metadata   row            [optional]
-    └ CTA        primary, full  [required]</div>
+  <div class="anat">
+    <div class="anat-card">
+      <article class="p-gem"><div class="media"><img src="ASSETS/gal/corniche-cafes-1-960.webp" alt=""><div class="tint"></div><div class="shade"></div><span class="p-pill loc"><span data-ic="compass" style="width:14px;height:14px"></span>Category</span><button class="p-fav" aria-pressed="false" aria-label="Favourite"><span data-ic="heart"></span></button></div><div class="body"><span class="cat">Eyebrow</span><h4>Title of the card</h4><p class="desc">One-sentence summary.</p><div class="meta"><span><span data-ic="clock"></span>Meta</span><span><span data-ic="map-pin"></span>Meta</span></div><a class="p-cta" href="#m-card">Button <span data-ic="arrow-right"></span></a></div></article>
+      <span class="dot" style="top:102px;left:-11px">1</span>
+      <span class="dot" style="top:38px;left:128px">2</span>
+      <span class="dot" style="top:62px;left:224px">3</span>
+      <span class="dot" style="top:238px;left:-11px">4</span>
+      <span class="dot" style="top:272px;left:-11px">5</span>
+      <span class="dot" style="top:316px;left:-11px">6</span>
+      <span class="dot" style="top:354px;left:-11px">7</span>
+      <span class="dot" style="top:404px;left:-11px">8</span>
+    </div>
+    <ol class="anat-list">
+      <li><i>1</i><div><b>Image</b> 4:3 photo with a warm tint and a soft shade at the bottom <span class="req">required</span></div></li>
+      <li><i>2</i><div><b>Category badge</b> top-left pill in the category colour <span class="req">required</span></div></li>
+      <li><i>3</i><div><b>Favourite</b> round button, top-right <span class="opt">optional</span></div></li>
+      <li><i>4</i><div><b>Eyebrow</b> small rust label (theme or type) <span class="req">required</span></div></li>
+      <li><i>5</i><div><b>Title</b> up to two lines <span class="req">required</span></div></li>
+      <li><i>6</i><div><b>Summary</b> one sentence, up to three lines <span class="opt">optional</span></div></li>
+      <li><i>7</i><div><b>Metadata</b> icon + value pairs (duration, price, place…) <span class="opt">optional</span></div></li>
+      <li><i>8</i><div><b>Button</b> full-width primary action; label fixed per card type <span class="req">required</span></div></li>
+    </ol>
+  </div>
+</div>
+<h4>Card family · same structure, one slot changes</h4>
+<div class="fam">
+  <a href="#c-experience"><div class="fm"><div class="fm-img"><span class="fm-badge"></span><span class="fm-fav"></span></div><span class="fm-line t"></span><span class="fm-line s"></span><span class="fm-line c"></span></div><p class="fam-name">Experience / Product</p><p class="fam-note">4:3 · badge · favourite · meta</p></a>
+  <a href="#c-destination"><div class="fm"><div class="fm-img r169"></div><span class="fm-line t"></span><span class="fm-line s"></span></div><p class="fam-name">Destination</p><p class="fam-note">16:9 · whole card is a link · no button</p></a>
+  <a href="#c-entrepreneur"><div class="fm"><div class="fm-img"><span class="fm-badge"></span></div><span class="fm-line t"></span><span class="fm-line s" style="background:rgba(165,62,26,.45);width:55%"></span><span class="fm-line c"></span></div><p class="fam-name">Entrepreneur</p><p class="fam-note">4:3 · name + business line · no favourite</p></a>
+  <a href="#c-event"><div class="fm"><div class="fm-img r1"><span class="fm-date"></span></div><span class="fm-line s" style="width:60%"></span><span class="fm-line t"></span><span class="fm-line c" style="width:60%"></span></div><p class="fam-name">Event</p><p class="fam-note">1:1 · date block · compact button</p></a>
+  <a href="#c-other"><div class="fm"><div class="fm-img"><span class="fm-badge"></span></div><span class="fm-line t"></span><span class="fm-line s" style="background:rgba(165,62,26,.45);width:45%"></span><span class="fm-line c"></span></div><p class="fam-name">Story</p><p class="fam-note">4:3 · person under the title</p></a>
+  <a href="#c-other"><div class="fm"><div class="fm-img"><span class="fm-badge" style="background:var(--ink)"></span></div><span class="fm-line t"></span><span class="fm-line s"></span><span class="fm-line c"></span></div><p class="fam-name">News</p><p class="fam-note">4:3 · badge shows the date</p></a>
+  <a href="#c-resource"><div class="fm row"><span class="fm-ico"></span><div style="display:grid;gap:6px"><span class="fm-line t" style="width:85%"></span><span class="fm-line s" style="width:60%"></span></div></div><p class="fam-name">Resource</p><p class="fam-note">row · format tile · download / open / play</p></a>
+  <a href="#c-other"><div class="fm"><div class="fm-img tall" style="background:#2b1d0e"><span class="fm-badge" style="background:rgba(255,255,255,.35)"></span><span class="fm-line t" style="position:absolute;left:8px;bottom:26px;width:60%;background:#fff"></span><span class="fm-line c" style="position:absolute;left:8px;right:8px;bottom:8px"></span></div></div><p class="fam-name">Learning path</p><p class="fam-note">full-bleed image · text on image</p></a>
+  <a href="#c-organisation"><div class="fm row"><span class="fm-ico" style="background:rgba(52,92,112,.15)"></span><div style="display:grid;gap:6px"><span class="fm-line t" style="width:85%"></span><span class="fm-line s" style="width:70%"></span><span class="fm-line c" style="width:50%;height:10px"></span></div></div><p class="fam-name">Organisation</p><p class="fam-note">row · type tile · tags · compact button</p></a>
+  <a href="#c-other"><div class="fm"><div class="fm-img r1610"><span class="fm-date" style="left:auto;right:0;border-radius:0 0 0 6px"></span></div><span class="fm-line t"></span><span class="fm-line s" style="width:50%"></span><span class="fm-line c"></span></div><p class="fam-name">Travel idea</p><p class="fam-note">16:10 · duration badge · counts row</p></a>
 </div>
 <div class="ed-sum"><div><span class="ed cms">Content Editable</span><span class="v">Image · Title · Summary · Category · Location · Metadata · Link</span></div><div><span class="ed fix">Design System Locked</span><span class="v">Ratio · Radius · Padding · Badge style · Typography · CTA label per type</span></div><div><span class="ed dev">Developer Configuration</span><span class="v">Hover · Favourite · Lazy loading · Line limits · Strip threshold</span></div></div>
 <h4>States</h4>
@@ -898,7 +950,17 @@ table.scale{max-width:560px}
 <h4>Specifications</h4>
 <div class="spec-list"><div><b>Surface</b>radius 18 · 1px ink 10% · paper · no shadow</div><div><b>Media</b>4/3 · tint rust→ink 18% multiply · shade to top</div><div><b>Body</b>padding 24 · gap 8</div><div><b>Limits</b>title ≤ 45 Arabic / 40 Latin chars · summary ≤ 110 · badge ≤ 18</div></div>
 <p class="used"><b>Composite cards built on this base:</b> <a href="#c-experience">Experience</a>, <a href="#c-destination">Destination</a>, <a href="#c-entrepreneur">Entrepreneur</a>, <a href="#c-event">Event</a>, <a href="#c-organisation">Organisation</a>, <a href="#c-resource">Resource</a>, <a href="#c-other">Story · News · Learning Path · Travel Idea</a> (§04).</p>
-<details class="dev"><summary>Developer details</summary><div><p><code>article.gem</code> · <code>.gem-media</code> (<code>.gem-tint</code> 160° rgba(165,62,26,.18)→rgba(11,34,48,.18) multiply, <code>.gem-shade</code> rgba(20,12,6,.45)→0 at 50%, hover img scale 1.05 .7s) · <code>.gem-loc</code> · <code>.gem-fav</code> · <code>.gem-body</code> (<code>.gem-cat .gem-title .gem-desc .gem-biz .gem-meta .gem-cta</code>). Hover <code>translateY(-6px)</code> + border rgba(165,62,26,.35). <code>.ex-grid .gem.is-on</code> rust border + 0 0 0 3px rgba(165,62,26,.18). <code>.gem[data-href]</code> delegated click. Generator <code>EX.card()</code> in <code>listing-shared.js</code>; page-local <code>gemCard()</code> on news, stories, map, stakeholders, events, travel-ideas and detail pages. Title and summary are not clamped in CSS; limits are CMS rules.</p></div></details>
+<details class="dev"><summary>Developer details</summary><div><div class="anatomy">article.gem  radius 18 · hairline · paper
+├ .gem-media  4/3 · .gem-tint + .gem-shade
+│   ├ .gem-loc  badge, top-start 16      [required]
+│   └ .gem-fav  favourite 44, top-end 16 [optional]
+└ .gem-body    padding 24 · gap 8
+    ├ .gem-cat    eyebrow 12.5/700 rust   [required]
+    ├ .gem-title  --fs-h3 ink            [required · ≤ 2 lines]
+    ├ .gem-desc   15 muted lh 1.7        [optional · ≤ 3 lines]
+    ├ .gem-biz    13.5/700 rust          [optional]
+    ├ .gem-meta   metadata row           [optional]
+    └ .gem-cta    primary, full width    [required]</div><p><code>article.gem</code> · <code>.gem-media</code> (<code>.gem-tint</code> 160° rgba(165,62,26,.18)→rgba(11,34,48,.18) multiply, <code>.gem-shade</code> rgba(20,12,6,.45)→0 at 50%, hover img scale 1.05 .7s) · <code>.gem-loc</code> · <code>.gem-fav</code> · <code>.gem-body</code> (<code>.gem-cat .gem-title .gem-desc .gem-biz .gem-meta .gem-cta</code>). Hover <code>translateY(-6px)</code> + border rgba(165,62,26,.35). <code>.ex-grid .gem.is-on</code> rust border + 0 0 0 3px rgba(165,62,26,.18). <code>.gem[data-href]</code> delegated click. Generator <code>EX.card()</code> in <code>listing-shared.js</code>; page-local <code>gemCard()</code> on news, stories, map, stakeholders, events, travel-ideas and detail pages. Title and summary are not clamped in CSS; limits are CMS rules.</p></div></details>
 </div>
 
 <!-- ============================================================ -->
