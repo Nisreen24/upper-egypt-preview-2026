@@ -433,7 +433,6 @@ table.scale{max-width:560px}
     <li><a href="#s07">07 — Responsive &amp; RTL</a></li>
     <li><a href="#s08">08 — Accessibility</a></li>
     <li><a href="#s09">09 — Component Inventory</a></li>
-    <li><a href="#s10">10 — Open Decisions</a></li>
   </ul></nav>
 </aside>
 
@@ -695,7 +694,7 @@ table.scale{max-width:560px}
 <tr><td>Secondary / ghost</td><td><code>.st-cta .rv-cta .gems-cta</code> · <code>.dx-cta--ghost</code></td><td>ghost rule lives under <code>.dxi-actions</code> only (404 renders solid)</td></tr>
 <tr><td>Compact</td><td><code>.org-row .gem-cta</code>, <code>.evc .ev-cta</code>, <code>.mp-clear</code>, <code>.mp-open</code> (ink), <code>.ad-btn</code> 38</td><td>no shadow</td></tr>
 <tr><td>Text link</td><td><code>.st-link .ev-all .lx-all .mp-more .ds-link .evcar-all .dxa-more</code></td><td>focus offset 4, radius 4; <code>.ev-all</code> moves the <code>&lt;i&gt;</code> wrapper</td></tr>
-<tr><td>Icon round</td><td><code>.gems-nav .ev-nav .ex-strip-btn .sy-nav .evcar-nav .ac-go .lx-go .icon-btn .close-x .mp-close .mp-ctl</code></td><td>hover differs by family (see §10)</td></tr>
+<tr><td>Icon round</td><td><code>.gems-nav .ev-nav .ex-strip-btn .sy-nav .evcar-nav .ac-go .lx-go .icon-btn .close-x .mp-close .mp-ctl</code></td><td>hover differs by family</td></tr>
 <tr><td>Arrow</td><td><code>ICON('arrow-left', 16, 'fwd')</code></td><td>hover <code>translateX(-4px)</code>; LTR <code>scaleX(-1) translateX(-4px)</code></td></tr>
 <tr><td>Motion</td><td>background-color .3s ease · transform .45s cubic-bezier(.2,.8,.2,1)</td><td>removed under <code>prefers-reduced-motion</code></td></tr>
 </tbody></table></div></details>
@@ -720,7 +719,7 @@ table.scale{max-width:560px}
 <h4>Variants</h4>
 <div class="spec-list"><div><b>Inline</b><span>rust, underlined (offset 3)</span></div><div><b>Navigation</b><span>17/600 · current rust/700 + 2.5px bar</span></div><div><b>Footer</b><span>16/500 with rust chevron · hover rust + 2px nudge</span></div><div><b>Breadcrumb</b><span>15 muted · current ink/600</span></div><div><b>External</b><span>ghost button + external icon, new tab</span></div></div>
 <p class="used"><b>Used on:</b> all pages.</p>
-<details class="dev"><summary>Developer details</summary><div><p><code>.nav-link</code> padding 8×4, min-height 44, <code>aria-current="page"</code> moved by JS; footer <code>a::before</code> 6px chevron, hover <code>translateX(-2px)</code> (needs LTR flip); external links <code>target="_blank" rel="noopener"</code>; inline prose links were colour-only — underline added as the standard (§10 resolved).</p></div></details>
+<details class="dev"><summary>Developer details</summary><div><p><code>.nav-link</code> padding 8×4, min-height 44, <code>aria-current="page"</code> moved by JS; footer <code>a::before</code> 6px chevron, hover <code>translateX(-2px)</code> (needs LTR flip); external links <code>target="_blank" rel="noopener"</code>; inline prose links were colour-only — underline added as the standard.</p></div></details>
 </div>
 
 <div class="cmp" id="a-input">
@@ -1012,7 +1011,7 @@ table.scale{max-width:560px}
    │   └ #exploreBtn.nav-link--menu + #exploreMenu.menu.menu--nav (6 × a[role=menuitem])
    └ controls  #a11yOpen.icon-btn.a11y-fab · .vdiv · #langBtn + #langMenu · .vdiv · #searchForm (0→140px) · #burger [hidden ≥1024]
 #mobileMenu  dropdown: white, radius 22, opacity 0 → 1, translateY(-8) scale(.98) → none (.2 / .3s); links 16/500 padding 12×14; lang row &lt;640</div>
-<p>Shadow: 0 1px 2px rgba(43,29,14,.06), 0 10px 30px −12px rgba(43,29,14,.35), 0 0 0 1px rgba(43,29,14,.04). <code>.icon-btn</code> 44 (48 ≥1024). Page offset below the header relies on <code>--tb-top</code> (fallback 100px). Known defects: <code>#burgerIcon</code> is referenced but absent (icon never swaps); drawer effect rules target <code>#page</code> which only index has. These are implementation fixes, tracked outside §10.</p>
+<p>Shadow: 0 1px 2px rgba(43,29,14,.06), 0 10px 30px −12px rgba(43,29,14,.35), 0 0 0 1px rgba(43,29,14,.04). <code>.icon-btn</code> 44 (48 ≥1024). Page offset below the header relies on <code>--tb-top</code> (fallback 100px). Known defects: <code>#burgerIcon</code> is referenced but absent (icon never swaps); drawer effect rules target <code>#page</code> which only index has. These are implementation fixes.</p>
 </div></details>
 </div>
 
@@ -1203,7 +1202,7 @@ Activates on any ul.ex-grid outside #exList with more than data-strip-min (3) it
 </tbody></table>
 <h4>States</h4>
 <div class="spec-list"><div><b>Thumb selected</b><span>opacity 1 + 3px rust outline</span></div><div><b>Hover</b><span>bento image zoom 1.04</span></div><div><b>Zoomed</b><span>dialog open, + / − keys, arrows pan</span></div></div>
-<details class="dev"><summary>Developer details</summary><div><p><code>.xp-lead</code> 16/10 radius 22 · <code>.xp-count</code> · <code>.xp-thumbs</code> (5 → 4 columns, <code>aria-current</code>) · <code>.dxa-bento</code> rows 150 (170 ≥1024, 130 mobile), overlay rgba(43,29,14,.28)→0 at 55%, hidden under 2 photos · <code>.dxg</code> 8 <code>.dxg-slice</code> on <code>perspective:1500px</code>, rAF drift 0.045px/ms, frozen under reduced motion, no keyboard · <code>dialog.sus-dlg</code> backdrop rgba(11,9,6,.78) blur 8, zoom steps 1 / 1.25 / 1.5 / 2 / 2.5 / 3, <code>aria-live</code> percentage. The cylinder strip is decorative in practice; the bento grid is the accessible gallery on the same page (§10).</p></div></details>
+<details class="dev"><summary>Developer details</summary><div><p><code>.xp-lead</code> 16/10 radius 22 · <code>.xp-count</code> · <code>.xp-thumbs</code> (5 → 4 columns, <code>aria-current</code>) · <code>.dxa-bento</code> rows 150 (170 ≥1024, 130 mobile), overlay rgba(43,29,14,.28)→0 at 55%, hidden under 2 photos · <code>.dxg</code> 8 <code>.dxg-slice</code> on <code>perspective:1500px</code>, rAF drift 0.045px/ms, frozen under reduced motion, no keyboard · <code>dialog.sus-dlg</code> backdrop rgba(11,9,6,.78) blur 8, zoom steps 1 / 1.25 / 1.5 / 2 / 2.5 / 3, <code>aria-live</code> percentage. The cylinder strip is decorative in practice; the bento grid is the accessible gallery on the same page.</p></div></details>
 </div>
 
 <div class="cmp" id="o-tabs">
@@ -1467,14 +1466,6 @@ EMBED #dxMap 220px, zoom 14, scrollWheelZoom:false, role=region</div><p>MapLibre
 <tr><td>Home editorial modules</td><td>Organism (fixed)</td><td>Paths · Journey · Expanding experiences · Entrepreneur feature · Story cards</td><td>Home (feature also on city pages)</td><td>content</td><td><span class="status ok">Approved</span> home-only</td></tr>
 </tbody></table></div>
 
-<!-- ============================================================ -->
-<h2 id="s10"><span class="n">10 — Open Decisions</span>Open Decisions</h2>
-<p class="lede">Only decisions the Inception Report does not already answer. Each item was checked against the report before being kept here; anything the report defines has been removed and the documentation aligned with it. Implementation defects are development tasks and live inside the relevant Developer details, not here.</p>
-<table><thead><tr><th>Item</th><th>Current state</th><th>Decision needed</th><th>Owner</th></tr></thead><tbody>
-<tr><td>Round button hover</td><td>Round arrow buttons on carousels react to hover in three different ways: grow, fill with rust, or turn white. The report does not define hover behaviour.</td><td>Choose one hover behaviour for every round button (recommended: fill with rust).</td><td>Design</td></tr>
-<tr><td>Destination photo strip</td><td>Destination pages show a decorative rotating photo strip that cannot be operated with a keyboard. The accessible photo grid on the same page is the gallery the report describes.</td><td>Keep the strip as decoration (hidden from screen readers) or give it visible controls.</td><td>Design</td></tr>
-<tr><td>City hero with reduced motion</td><td>When a visitor's device asks for reduced motion, the city page hero still expands and briefly holds the scroll. The report asks for WCAG 2.1 AA (§9.3) but does not describe this case.</td><td>Approve showing the finished hero straight away, without the scroll hold.</td><td>Design</td></tr>
-</tbody></table>
 </main>
 </div>
 <script src="icons.full.js"></script>
