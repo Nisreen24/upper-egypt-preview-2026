@@ -367,12 +367,12 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
   }
 @media (min-width:1024px){.paths-grid{grid-template-columns:repeat(3,1fr);gap:var(--s-5)}}
 .gems-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * var(--s-5)) / 3);gap:var(--s-5);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-block:12px 48px;margin-block:-12px -48px;scrollbar-width:none}
-.gem-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:url("ASSETS/Group 6.webp") center top/24px auto repeat-y;opacity:.28;pointer-events:none}
-.exp::before,.exp::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:url("ASSETS/Group 6.webp") center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
+.gem-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/24px auto repeat-y;opacity:.28;pointer-events:none}
+.exp::before,.exp::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
 .exp::before{inset-inline-start:var(--s-3)}
 .journey-btn:hover{background:var(--rust-deep);transform:translateY(-1px)}
 /* ornament strip runs down the panel's outer (inline-end) edge, full height */
-  .st-panel::before{content:"";position:absolute;top:0;bottom:0;inset-inline-end:8px;width:18px;background:url("ASSETS/Group 6.webp") center top/18px auto repeat-y;opacity:.45;pointer-events:none}
+  .st-panel::before{content:"";position:absolute;top:0;bottom:0;inset-inline-end:8px;width:18px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/18px auto repeat-y;opacity:.45;pointer-events:none}
 }
   .st-card figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .st-card figure::after{content:"";position:absolute;inset:0;background:linear-gradient(160deg,rgba(165,62,26,.1),rgba(11,34,48,.12));mix-blend-mode:multiply;pointer-events:none}
@@ -384,7 +384,7 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
   .st-link svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .st-link:hover{color:var(--rust-deep)} .st-link:hover svg{transform:translateX(-4px)} .st-link:active{transform:translateY(1px)} .st-link:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 4px #fff;border-radius:4px}
   /* faint side ornament at the section edges, like the reference */
-  .stories::before,.stories::after{content:"";position:absolute;top:22%;bottom:8%;width:22px;background:url("ASSETS/Group 6.webp") center top/22px auto repeat-y;opacity:.25;pointer-events:none;z-index:0}
+  .stories::before,.stories::after{content:"";position:absolute;top:22%;bottom:8%;width:22px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/22px auto repeat-y;opacity:.25;pointer-events:none;z-index:0}
   .stories::before{inset-inline-start:6px} .stories::after{inset-inline-end:6px}
   @media (max-width:1279px){.stories::before,.stories::after{display:none}
 }
@@ -394,7 +394,7 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
   /* ---------- SUCCESS STORIES: أفكار متجذّرة في الناس والمكان (editorial slider) ---------- */
   .rv{position:relative;overflow:hidden;padding-block:var(--s-8);isolation:isolate;color:var(--ink);background:#fbf7ef}
   /* same side ornament strips as "لحظات تبقى معك" */
-  .rv::before,.rv::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:url("ASSETS/Group 6.webp") center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none;z-index:0}
+  .rv::before,.rv::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none;z-index:0}
   .rv::before{inset-inline-start:var(--s-3)}
   .rv::after{inset-inline-end:var(--s-3)}
   @media (min-width:1024px){.rv::before,.rv::after{display:block}
@@ -426,9 +426,9 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
   .ss-more svg{transition:transform .5s cubic-bezier(.2,.8,.2,1)}
   .ss-more:hover{background:#fff;transform:translateY(-1px)} .ss-more:hover svg{transform:translateX(-4px)} .ss-more:active{transform:scale(.98)} .ss-more:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
   /* textured panel variant: the artwork PNG supplies the wave edge, paper texture and lotus */
-  .ss-card--tex .ss-panel{margin-top:-64px;background:url("ASSETS/motifs/card-clay-960.webp") center bottom/101% 100% no-repeat}
-  .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-960.webp")}
-  .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-960.webp")}
+  .ss-card--tex .ss-panel{margin-top:-64px;background:image-set(url("ASSETS/motifs/card-clay-960.avif") type("image/avif"),url("ASSETS/motifs/card-clay-960.webp") type("image/webp")) center bottom/101% 100% no-repeat}
+  .ss-card--ink.ss-card--tex .ss-panel{background-image:image-set(url("ASSETS/motifs/card-ink-960.avif") type("image/avif"),url("ASSETS/motifs/card-ink-960.webp") type("image/webp"))}
+  .ss-card--olive.ss-card--tex .ss-panel{background-image:image-set(url("ASSETS/motifs/card-olive-960.avif") type("image/avif"),url("ASSETS/motifs/card-olive-960.webp") type("image/webp"))}
   html[dir="rtl"] .ss-card--tex .ss-panel{transform:scaleX(-1)} html[dir="rtl"] .ss-card--tex .ss-body{transform:scaleX(-1)}
   .ss-card--tex .ss-body{background:transparent;padding-top:64px;padding-bottom:calc(var(--s-4) + 6px)}
   .ss-card--tex .ss-cat{margin-top:0}

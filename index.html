@@ -198,7 +198,7 @@ html[dir="ltr"] .gems-nav--prev svg{transform:none}
 @media (min-width:1024px){.gems-nav,.gems-dots{display:none}.gems-track{overflow:visible;padding-block:0;margin-block:0}}
 @media (min-width:1024px){.exp{padding-block:calc(var(--s-8) + var(--s-4)) calc(var(--s-8) + var(--s-4))}}
 .exp::before,.exp::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
-.exp.is-near::before,.exp.is-near::after,.gems.is-near .gem-body::after,.stories.is-near .st-panel::before,.stories.is-near::before,.stories.is-near::after,.rv.is-near::before,.rv.is-near::after{background-image:url("ASSETS/Group 6.webp")}
+.exp.is-near::before,.exp.is-near::after,.gems.is-near .gem-body::after,.stories.is-near .st-panel::before,.stories.is-near::before,.stories.is-near::after,.rv.is-near::before,.rv.is-near::after{background-image:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp"))}
 /* decorative images load when the section approaches */
   .exp::before{inset-inline-start:var(--s-3)}
 @media (min-width:1024px){.exp::before,.exp::after{display:block}}
@@ -272,9 +272,9 @@ html[dir="rtl"] .st-panel{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmln
   .ss-more:hover{background:#fff;transform:translateY(-1px)} .ss-more:hover svg{transform:translateX(-4px)} .ss-more:active{transform:scale(.98)} .ss-more:focus-visible{outline:3px solid rgba(255,255,255,.7);outline-offset:3px}
   /* textured panel variant: the artwork PNG supplies the wave edge, paper texture and lotus */
   .ss-card--tex .ss-panel{margin-top:-64px;background:center bottom/101% 100% no-repeat}
-  .is-near .ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-clay-960.webp")}
-  .is-near .ss-card--ink.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-ink-960.webp")}
-  .is-near .ss-card--olive.ss-card--tex .ss-panel{background-image:url("ASSETS/motifs/card-olive-960.webp")}
+  .is-near .ss-card--tex .ss-panel{background-image:image-set(url("ASSETS/motifs/card-clay-960.avif") type("image/avif"),url("ASSETS/motifs/card-clay-960.webp") type("image/webp"))}
+  .is-near .ss-card--ink.ss-card--tex .ss-panel{background-image:image-set(url("ASSETS/motifs/card-ink-960.avif") type("image/avif"),url("ASSETS/motifs/card-ink-960.webp") type("image/webp"))}
+  .is-near .ss-card--olive.ss-card--tex .ss-panel{background-image:image-set(url("ASSETS/motifs/card-olive-960.avif") type("image/avif"),url("ASSETS/motifs/card-olive-960.webp") type("image/webp"))}
   html[dir="rtl"] .ss-card--tex .ss-panel{transform:scaleX(-1)} html[dir="rtl"] .ss-card--tex .ss-body{transform:scaleX(-1)}
   .ss-card--tex .ss-body{background:transparent;padding-top:64px;padding-bottom:calc(var(--s-4) + 6px)}
   .ss-card--tex .ss-cat{margin-top:0}

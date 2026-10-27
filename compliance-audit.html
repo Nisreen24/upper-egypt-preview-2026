@@ -62,7 +62,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
   <h1>Compliance Audit of the Prototype vs Inception Report v1.2</h1>
   <p>Review → compare → identify gaps → document required actions. The prototype at <code>nisreen24.github.io/upper-egypt-preview-2026</code> was checked page by page against Inception Report v1.2 (25 September 2026). Every finding cites the report section or figure it relates to; nothing in the UI was changed. Where the report does not define something, the item is marked <span class="s c">Needs Clarification</span>.</p>
   <div class="meta"><div><b>Reference</b>Inception Report v1.2, SwiftX for Fundación CIDEAL</div><div><b>Reviewed</b>33 public pages, 6 forms, 10 listings, 3 languages (Arabic fully, English and Spanish spot-checked)</div><div><b>Method</b>source inspection of the published prototype (HTML, data and script files) plus browser checks</div><div><b>Date</b>26 October 2026</div></div>
-  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a><a href="#m">M Verification</a><a href="#n">N Conformance</a></nav>
+  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a><a href="#m">M Verification</a><a href="#n">N Conformance</a><a href="#o">O Decisions</a></nav>
 </header>
 
 <h2 id="a"><span class="n">A</span>Executive summary</h2>
@@ -492,5 +492,41 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
   <li>Screenshots reviewed: Home (ar, desktop), Explore menu (ar), mobile menu (ar), Luxor about / practical information (en), Destinations with filters (en desktop and mobile), Stories (ar mobile).</li>
 </ul>
 <p class="note">Files: 3 deleted (travel-ideas.html, travel-idea.html, planner.js); 42 modified; new: locale.js, ld.js, build-locales.mjs, i18n.ar/en/es.js, ar/ en/ es/ (96 generated pages), sitemap-ar/en/es.xml. Nothing committed or published.</p>
+
+
+<h2 id="o"><span class="n">O</span>Decisions applied, 27 October 2026 (Phases 0–5)</h2>
+<p>The client's decisions table (items 1–14) closed every open point of section N. This section records the final status per requirement and the measured weight before and after the performance work. Figure 12 of the Inception Report is to be corrected in v1.3 to the ten sections of §3.5 (decision 1).</p>
+<table><thead><tr><th>Requirement</th><th>Report</th><th>State</th><th>Status</th></tr></thead><tbody>
+<tr><td>City guide: ten sections of §3.5, no "Where to buy local products" section</td><td>§3.5, decision 1</td><td>Built to §3.5; local products reachable through the category in Things to do and the experiences listing; Figure 12 flagged for v1.3</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Exactly three request types</td><td>§4.1, decision 2</td><td>directory-request.html deleted; the directory is a preset subject of the inquiry form (contact.html?subject=directory)</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Map on MapLibre GL + MapTiler, clustered, list beside the map, loaded after first paint</td><td>§7.1, decision 3</td><td>maps.js: MapLibre GL 4.7 behind the pages' map API, RTL text plugin, proximity clusters, demo style until the MapTiler key is set in MAP_CONFIG</td><td><span class="s m">Done</span> · key <span class="s c">Open item</span></td></tr>
+<tr><td>Accessibility drawer without overlay features</td><td>§9.3, decision 4</td><td>Dictation, read-aloud, invert, reading guide, image hiding, brightness, grayscale, tooltips and cursor removed; text size, readable font, high contrast, reduced motion, link highlight kept</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Contact form fields</td><td>Figure 26, decision 5</td><td>Name, email, subject, message, consent, Turnstile placeholder; conditional business fields removed</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Hero collage</td><td>§6.2, decision 6</td><td>Kept, captioned on the page as sample content; listed in rights-register.md and the handover list</td><td><span class="s m">Done</span></td></tr>
+<tr><td>No ShareAlike images</td><td>§6.6, decision 7</td><td>22 galleries with CC BY-SA credits withdrawn (315 files removed); 3 CC BY / CC0 galleries kept; rights-register.md written</td><td><span class="s m">Done</span> · photography <span class="s c">Open item</span></td></tr>
+<tr><td>Explore: link + submenu, six header items</td><td>§3.2, decision 8</td><td>Explore links to the destinations listing; a caret button opens the six-page submenu (hover, click, keyboard, Esc); same on mobile in all three languages</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Newsletter on the Contact page</td><td>§2.1, decision 9</td><td>Home has the eight blocks of Figure 11; the subscribe form sits in the Contact side panel with email, consent, privacy link and Turnstile placeholder</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Emails and social links</td><td>§8.3, decision 10</td><td>info@discoverupperegypt.com everywhere; placeholder social links removed</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Programme code</td><td>§1, decision 11</td><td>2022-PCONV-000504</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Localized slugs</td><td>§9.4, decision 12</td><td>Per-locale page names and entry slugs from slugs.js (Arabic in Arabic script, Spanish in Spanish); canonical, hreflang, sitemaps and the language switcher follow them; old root paths forward</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Content owned by CIDEAL</td><td>decision 13</td><td>YouTube IDs: poster with click-to-load embed; FPSC and KEF show names only</td><td><span class="s c">Open item</span></td></tr>
+<tr><td>Consent, privacy link, text errors on every form and the newsletter</td><td>§4.1, §7.4, decision 14</td><td>In place</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Curation rules (top-up to 4, cap 12, hide empty)</td><td>§3.5</td><td>CMS logic</td><td><span class="s o">Not applicable</span></td></tr>
+<tr><td>Design tokens</td><td>design-system.html</td><td>All page colours are tokens; 24 component shades named and documented</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Performance budgets</td><td>§9.2</td><td>See the table below</td><td><span class="s x">Not met</span> on the critical path · see notes</td></tr>
+</tbody></table>
+<h4>Performance, measured on localhost (gzip transfer, headless Chrome, 1366 px)</h4>
+<p>Critical path follows the §9.2 definition: HTML + CSS + the first font (33 KB) + the scripts in the head (20 KB). "Page excl. images" after the change includes the MapLibre bundle, vector tiles and glyphs on pages with a map, which load after first paint; the demo tile style is heavier than a tuned MapTiler style.</p>
+<table><thead><tr><th>Template</th><th>Critical path (budget 250 KB)</th><th>Page excl. images (500 KB)</th><th>Whole page</th><th>LCP on 4G (2.5 s)</th><th>LCP at 400 kbps (8 s)</th></tr></thead><tbody>
+<tr><td>home</td><td>99 KB → <b>104 KB</b></td><td>397 KB → <b>352 KB</b></td><td>756 KB → <b>758 KB</b></td><td>708 → <b>748</b> ms</td><td>1572 → <b>12584</b> ms</td></tr>
+<tr><td>city</td><td>122 KB → <b>135 KB</b></td><td>481 KB → <b>1227 KB</b></td><td>2081 KB → <b>2537 KB</b></td><td>1564 → <b>1044</b> ms</td><td>14548 → <b>8424</b> ms</td></tr>
+<tr><td>listing</td><td>96 KB → <b>95 KB</b></td><td>356 KB → <b>349 KB</b></td><td>1523 KB → <b>1380 KB</b></td><td>716 → <b>792</b> ms</td><td>7472 → <b>3616</b> ms</td></tr>
+<tr><td>detail</td><td>105 KB → <b>110 KB</b></td><td>406 KB → <b>1112 KB</b></td><td>1119 KB → <b>1582 KB</b></td><td>688 → <b>1688</b> ms</td><td>15640 → <b>10200</b> ms</td></tr>
+<tr><td>map</td><td>101 KB → <b>107 KB</b></td><td>424 KB → <b>2743 KB</b></td><td>1110 KB → <b>3253 KB</b></td><td>596 → <b>1244</b> ms</td><td>1504 → <b>13900</b> ms</td></tr>
+</tbody></table>
+<ul class="chk">
+  <li>Steps taken: shared CSS moved to site.css with critical rules inline; dictionary split per locale; icon set pruned to the icons used; GSAP and page motion deferred after first paint; AVIF with WebP fallback for every eager image and the hero preloaded; hero posters converted from JPEG; content-visibility on below-the-fold blocks; _headers for long-cache hosts (GitHub Pages ignores it).</li>
+  <li>Not done: hashed file names (GitHub Pages cannot set cache headers); the production build on Next.js (§7.1) will own that.</li>
+</ul>
 
 

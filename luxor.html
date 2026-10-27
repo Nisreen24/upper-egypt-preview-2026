@@ -310,7 +310,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
   html.lang-latin .ac-h{line-height:1.08}
   /* activities: side pattern rails, same treatment as the home "picked for you" section */
   .ac{position:relative}
-  .ac::before,.ac::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:url("ASSETS/Group 6.webp") center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
+  .ac::before,.ac::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
   .ac::before{inset-inline-start:var(--s-3)} .ac::after{inset-inline-end:var(--s-3)}
   .ac > .wrap{position:relative;z-index:1}
   @media (min-width:1024px){.ac::before,.ac::after{display:block}}
