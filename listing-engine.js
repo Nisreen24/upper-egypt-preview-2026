@@ -12,7 +12,7 @@ window.LISTING = (() => {
       size(); addEventListener('resize', size); addEventListener('load', size);
     })();
     const match = x => (F.chip === 'all' || [].concat(cfg.chipOf(x)).includes(F.chip)) && (!F.q || cfg.hay(x).toLowerCase().includes(F.q.toLowerCase())) && (cfg.groups || []).every(g => !F[g].size || cfg.groupOf(x, g).some(v => F[g].has(v)));
-    function url() { const u = new URLSearchParams(); if (F.chip !== 'all') u.set(cfg.chipParam, F.chip); if (F.q) u.set('q', F.q); (cfg.groups || []).forEach(g => { if (F[g].size) u.set(g, [...F[g]].join(',')); }); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
+    function url() { const u = new URLSearchParams(); if (F.chip !== 'all') u.set(cfg.chipParam, F.chip); if (F.q) u.set('q', F.q); (cfg.groups || []).forEach(g => { if (F[g].size) u.set(g, [...F[g]].join(',')); }); history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u.toString() : '')); }
     function head() { if (cfg.crumb) $('exCrumb').innerHTML = crumb(cfg.crumb()); document.title = cfg.title() + ' — ' + t('صعيد مصر'); if (cfg.onHead) cfg.onHead(); }
     function render() {
       const shown = cfg.items().filter(match).sort(cfg.sort || (() => 0));
@@ -22,7 +22,7 @@ window.LISTING = (() => {
       const n = (cfg.groups || []).reduce((a, g) => a + F[g].size, 0); if ($('exAdvN')) { $('exAdvN').hidden = !n; $('exAdvN').textContent = n; }
       url(); if (cfg.onRender) cfg.onRender(shown);
     }
-    $('exGrid').addEventListener('click', e => { const c = e.target.closest('[data-href]'); if (!c || e.target.closest('a,button')) return; location.href = c.dataset.href; });
+    $('exGrid').addEventListener('click', e => { const c = e.target.closest('[data-href]'); if (!c || e.target.closest('a,button')) return; location.href = (window.LURL || (u => u))(c.dataset.href); });
     const chips = [...document.querySelectorAll('.mp-chip[data-cat]')];
     const syncChips = () => chips.forEach(x => x.setAttribute('aria-pressed', String(x.dataset.cat === F.chip)));
     chips.forEach(c => c.addEventListener('click', () => { F.chip = c.dataset.cat; syncChips(); render(); }));

@@ -3,15 +3,20 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="locale.js"></script>
 <title>الوجهات — صعيد مصر</title>
 <meta name="description" content="كل الوجهات في الأقصر وأسوان: مواقع تراثية، متاحف، طبيعة، إطلالات وأسواق.">
-<link rel="canonical" href="https://nisreen24.github.io/upper-egypt-preview-2026/destinations.html">
+<link rel="canonical" href="https://nisreen24.github.io/upper-egypt-preview-2026/ar/destinations.html">
+<link rel="alternate" hreflang="ar" href="https://nisreen24.github.io/upper-egypt-preview-2026/ar/destinations.html">
+<link rel="alternate" hreflang="en" href="https://nisreen24.github.io/upper-egypt-preview-2026/en/destinations.html">
+<link rel="alternate" hreflang="es" href="https://nisreen24.github.io/upper-egypt-preview-2026/es/destinations.html">
+<link rel="alternate" hreflang="x-default" href="https://nisreen24.github.io/upper-egypt-preview-2026/ar/destinations.html">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="اكتشف صعيد مصر">
 <meta property="og:locale" content="ar_EG">
 <meta property="og:title" content="الوجهات — صعيد مصر">
 <meta property="og:description" content="كل الوجهات في الأقصر وأسوان: مواقع تراثية، متاحف، طبيعة، إطلالات وأسواق.">
-<meta property="og:url" content="https://nisreen24.github.io/upper-egypt-preview-2026/destinations.html">
+<meta property="og:url" content="https://nisreen24.github.io/upper-egypt-preview-2026/ar/destinations.html">
 <meta property="og:image" content="https://nisreen24.github.io/upper-egypt-preview-2026/ASSETS/hero-bg.webp">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="الوجهات — صعيد مصر">
@@ -99,7 +104,7 @@
   .menu.open{opacity:1;transform:none;pointer-events:auto}
   .menu button{display:flex;width:100%;align-items:center;justify-content:space-between;gap:10px;padding:9px 10px;border-radius:9px;font-size:14px;color:var(--nav-ink);transition:background-color .15s}
   .menu button:hover{background:rgba(43,29,14,.06)}
-  .menu button[aria-checked="true"]{color:var(--rust);font-weight:600}
+  .menu button[aria-checked="true"]{color:var(--rust);font-weight:600}.menu a{display:flex;width:100%;align-items:center;gap:10px;padding:9px 10px;border-radius:9px;font-size:14px;color:var(--nav-ink);white-space:nowrap;transition:background-color .15s}.menu a:hover{background:rgba(43,29,14,.06)}.menu a[aria-current="page"]{color:var(--rust);font-weight:600}.menu--nav{min-width:200px}.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}.nav-link--menu svg{width:14px;height:14px;flex:none}.nav-link[aria-current="true"]{color:var(--rust);font-weight:700}
 
   .search{display:flex;align-items:center;gap:6px}
   .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
@@ -114,7 +119,7 @@
   .mobile-menu.open{opacity:1;transform:none;pointer-events:auto}
   .mobile-menu a{display:block;padding:12px 14px;border-radius:12px;font-weight:500;font-size:16px;color:var(--nav-ink);transition:background-color .15s}
   .mobile-menu a:hover{background:rgba(43,29,14,.06)}
-  .mobile-menu a[aria-current="page"]{color:var(--rust);font-weight:600;background:rgba(165,62,26,.07)}
+  .mobile-menu a[aria-current="page"]{color:var(--rust);font-weight:600;background:rgba(165,62,26,.07)}.mobile-menu .mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}.mobile-menu a.mm-sub{padding-inline-start:28px;font-size:15px}
 
   /* ---------- HERO ---------- */
   .hero{position:relative;overflow:hidden;background:var(--paper);padding-top:96px}
@@ -250,10 +255,6 @@
   .gem-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(20,12,6,.45),rgba(20,12,6,0) 50%);pointer-events:none}
   .gem-loc{position:absolute;top:var(--s-3);inset-inline-start:var(--s-3);z-index:2;display:inline-flex;align-items:center;gap:6px;height:32px;padding-inline:12px 14px;border-radius:999px;background:var(--pill,#9a4b2c);color:#fff;font-size:13px;font-weight:600;box-shadow:0 4px 12px -4px rgba(0,0,0,.4)}
   .gem-loc--olive{--pill:#4b5a33} .gem-loc--ink{--pill:#1e3f4e}
-  .gem-fav{position:absolute;top:var(--s-3);inset-inline-end:var(--s-3);z-index:2;width:40px;height:40px;border-radius:999px;background:rgba(255,255,255,.92);color:var(--rust);display:grid;place-items:center;box-shadow:0 4px 12px -4px rgba(0,0,0,.4);transition:transform .35s cubic-bezier(.2,.8,.2,1),background-color .25s ease}
-  .gem-fav svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:2;stroke-linejoin:round;transition:fill .2s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  .gem-fav:hover{transform:scale(1.08)} .gem-fav:active{transform:scale(.92)} .gem-fav:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
-  .gem-fav[aria-pressed="true"]{background:var(--rust);color:#fff} .gem-fav[aria-pressed="true"] svg{fill:currentColor;transform:scale(1.1)}
   .gem-body{position:relative;flex:1 1 auto;display:flex;flex-direction:column;gap:var(--s-1);padding:var(--s-4);text-align:start}
   .gem-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:url("ASSETS/Group 6.webp") center top/24px auto repeat-y;opacity:.28;pointer-events:none}
   .gem-cat{font-size:12px;font-weight:700;color:var(--rust);letter-spacing:.02em}
@@ -742,7 +743,6 @@
   .menu button{min-height:var(--tap);padding-block:12px}
   .footer-social{gap:8px}
   .footer-social a{flex:none;min-width:var(--tap);min-height:var(--tap)}
-  .gem-fav{width:var(--tap);height:var(--tap)}
   .footer-links{gap:0}
   .footer-links a{min-height:var(--tap);padding-block:10px;align-items:center}
   .footer-social a{width:var(--tap);height:var(--tap)}
@@ -1063,13 +1063,6 @@
     .lx-stories .st-card .st-body{padding:var(--s-3) var(--s-2) var(--s-2)}
     .lx-stories .st-body .st-name{font-size:var(--fs-h3-lg)}
   }
-  /* ambient sound */
-  .snd{position:fixed;z-index:80;bottom:var(--s-4);inset-inline-start:var(--s-4);display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;
-    border:2px solid #fff;box-shadow:0 2px 4px rgba(0,0,0,.2),0 16px 34px -10px rgba(138,50,19,.75);transition:background-color .3s ease,transform .35s cubic-bezier(.2,.8,.2,1)}
-  @keyframes snd-ring{0%{opacity:.7;transform:scale(1)}100%{opacity:0;transform:scale(1.25,1.6)}}
-  .snd[aria-pressed="true"]{background:var(--ink)}
-  .snd-ico{flex:none;width:22px;height:22px}
-  @media (prefers-reduced-motion:reduce){.snd[aria-pressed="false"]::before{animation:none}}
   .snd:hover{background:var(--rust-deep)} .snd:active{transform:scale(.96)}
   .snd:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
   .snd-bars{display:inline-flex;align-items:flex-end;gap:3px;height:16px}
@@ -1350,7 +1343,7 @@
   .dx-cta:hover{background:var(--rust-deep);transform:translateY(-1px)} .dx-cta:active{transform:scale(.98)} .dx-cta:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
   .dx-mapbox{background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);padding:var(--s-3) var(--s-4) var(--s-4)}
   .dx-mapbox .mp-map{height:280px;margin-top:var(--s-3)}
-  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:var(--s-6);padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:var(--s-6);padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}.dx-ent[hidden]{display:none}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}}
   .dx-ent figure{margin:0;aspect-ratio:1/1;border-radius:var(--radius-md);overflow:hidden;background:#dcc9a8} .dx-ent img{width:100%;height:100%;object-fit:cover}
   .dx-ent .st-name{font-size:var(--fs-h3);font-weight:700;color:var(--ink);line-height:1.3} .dx-ent .st-biz{font-size:var(--fs-small);font-weight:700;color:var(--rust);margin-top:2px}
@@ -1363,7 +1356,6 @@
   /* icon system */
   svg.ic{fill:currentColor!important;stroke:none!important;flex:none}
   svg.ic.ic--stroke{fill:none!important;stroke:currentColor!important;stroke-width:16!important}
-  .gem-fav[aria-pressed="true"] svg.ic{transform:scale(1.1)}
   /* destinations: Visit Saudi /destinations sectioning in our tokens */
   .ds{padding-top:calc(var(--tb-top,100px) + 24px);padding-bottom:var(--s-8);background:var(--paper)}
   .ds-wrap{width:min(1400px,100% - 2 * var(--s-3));margin-inline:auto}
@@ -1383,7 +1375,6 @@
   .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)} .ds-card:hover .ds-card-media img{transform:scale(1.04)}
   .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 0;font-size:14px;line-height:1.4;color:var(--body)} .ds-side .ds-card-meta{margin-top:20px;font-size:13.5px}
   .ds-card-meta>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .ds-card-w{display:inline-flex;align-items:center;gap:6px;flex:none;color:var(--body);direction:ltr} .ds-card-w svg{color:var(--rust)} .ds-card-w:empty{display:none}
   .ds-card-t{margin:8px 0 0;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
   .ds-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 4px #fff;border-radius:16px}
   .ds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px;margin:0;padding:0;list-style:none}
@@ -1424,13 +1415,14 @@
 
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
-      <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-      <li><a class="nav-link" href="travel-ideas.html">الجولات</a></li>
-      <li><a class="nav-link" href="destinations.html" aria-current="page">الوجهات</a></li>
-      <li><a class="nav-link" href="experiences.html">التجارب</a></li>
-      <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
-      <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
-    </ul>
+        <li><a class="nav-link" href="index.html">الرئيسية</a></li>
+        <li class="relative"><button id="exploreBtn" class="nav-link nav-link--menu" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-current="true">استكشف <svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="luxor.html">الأقصر</a><a role="menuitem" href="aswan.html">أسوان</a><a role="menuitem" href="destinations.html" aria-current="page">الوجهات</a><a role="menuitem" href="experiences.html">التجارب والمنتجات</a><a role="menuitem" href="entrepreneurs.html">رواد الأعمال</a><a role="menuitem" href="map.html">الخريطة</a></div></li>
+        <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+        <li><a class="nav-link" href="stakeholders.html">للجهات السياحية</a></li>
+        <li><a class="nav-link" href="about.html">عن المشروع</a></li>
+        <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
+      </ul>
 
     <!-- Controls (inline-end = left in RTL) -->
     <div class="flex items-center gap-1 sm:gap-2.5">
@@ -1470,10 +1462,16 @@
   <!-- Mobile menu -->
   <div id="mobileMenu" class="mobile-menu lg:hidden" role="dialog" aria-label="قائمة التنقل">
     <a href="index.html">الرئيسية</a>
-    <a href="travel-ideas.html">الجولات</a>
-    <a href="destinations.html" aria-current="page">الوجهات</a>
-    <a href="experiences.html">التجارب</a>
+    <span class="mm-group">استكشف</span>
+    <a class="mm-sub" href="luxor.html">الأقصر</a>
+    <a class="mm-sub" href="aswan.html">أسوان</a>
+    <a class="mm-sub" href="destinations.html" aria-current="page">الوجهات</a>
+    <a class="mm-sub" href="experiences.html">التجارب والمنتجات</a>
+    <a class="mm-sub" href="entrepreneurs.html">رواد الأعمال</a>
+    <a class="mm-sub" href="map.html">الخريطة</a>
     <a href="resources.html">لرواد الأعمال</a>
+    <a href="stakeholders.html">للجهات السياحية</a>
+    <a href="about.html">عن المشروع</a>
     <a href="contact.html">تواصل معنا</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
@@ -1495,9 +1493,21 @@
       <h1 class="ds-hero-title display" id="ex-h">الوجهات</h1>
       <div class="xh-band ds-band" aria-hidden="true"></div>
     </section>
+    <div class="mp-bar ex-bar">
+      <button type="button" class="mp-adv-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M40,88H73a32,32,0,0,0,62,0h81a8,8,0,0,0,0-16H135a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16Zm64-24A16,16,0,1,1,88,80,16,16,0,0,1,104,64ZM216,168H199a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16h97a32,32,0,0,0,62,0h17a8,8,0,0,0,0-16Zm-48,24a16,16,0,1,1,16-16A16,16,0,0,1,168,192Z"/></svg><span>تصفية</span><b id="exAdvN" hidden></b></button>
+      <div class="mp-cats" role="group" aria-label="المدينة"><button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg><span>كل المدن</span></button><button type="button" class="mp-chip" data-cat="luxor" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر</span></button><button type="button" class="mp-chip" data-cat="aswan" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>أسوان</span></button></div>
+    </div>
+    <div class="mp-adv" id="exAdv" hidden>
+        <fieldset data-g="category"><legend>الفئة</legend><label><input type="checkbox" data-f="category" value="heritage"><span>موقع تراثي</span></label><label><input type="checkbox" data-f="category" value="museum"><span>متحف</span></label><label><input type="checkbox" data-f="category" value="nature"><span>طبيعة</span></label><label><input type="checkbox" data-f="category" value="viewpoint"><span>إطلالة</span></label><label><input type="checkbox" data-f="category" value="market"><span>سوق</span></label></fieldset>
+        <fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset>
+        <fieldset data-g="pr"><legend>فئة السعر</legend><label><input type="checkbox" data-f="pr" value="1"><span>$</span></label><label><input type="checkbox" data-f="pr" value="2"><span>$</span></label><label><input type="checkbox" data-f="pr" value="3"><span>$$</span></label><label><input type="checkbox" data-f="pr" value="4"><span>$$</span></label></fieldset>
+        <fieldset data-g="a"><legend>إمكانية الوصول</legend><label><input type="checkbox" data-f="a" value="step"><span>دخول بلا درجات</span></label><label><input type="checkbox" data-f="a" value="wc"><span>دورة مياه مهيأة</span></label><label><input type="checkbox" data-f="a" value="seat"><span>أماكن جلوس</span></label><label><input type="checkbox" data-f="a" value="av"><span>دعم سمعي أو بصري</span></label></fieldset>
+    </div>
+    <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
     <section class="ds-sec" aria-labelledby="ds-h2">
       <header class="ds-head"><h2 class="display ds-h" id="ds-h2">كل الوجهات</h2></header>
       <ul class="ds-grid" id="exGrid" role="list"></ul>
+      <div class="mp-empty" id="exEmpty" hidden><p>لا توجد نتائج مطابقة. جرّب فئة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
     </section>
     <p class="ds-note" id="dsNote"></p>
   </div>
@@ -1516,11 +1526,11 @@
       </div>
       <nav class="footer-col" aria-labelledby="f-explore">
         <h2 class="footer-h" id="f-explore">استكشف</h2>
-        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="travel-ideas.html">أفكار السفر</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
+        <div class="footer-links"><a href="luxor.html">الأقصر</a><a href="aswan.html">أسوان</a><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="map.html">الخريطة</a></div>
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="destinations.html">للسياح</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تابعنا</h2>
@@ -1646,13 +1656,17 @@
   const langBtn = $('#langBtn'), langMenu = $('#langMenu');
   const setLang = (open) => { langBtn.setAttribute('aria-expanded', open); langMenu.classList.toggle('open', open); };
   langBtn.addEventListener('click', () => setLang(langBtn.getAttribute('aria-expanded') !== 'true'));
+
+  const exploreBtn = $('#exploreBtn'), exploreMenu = $('#exploreMenu');
+  const setExplore = (open) => { if (!exploreBtn) return; exploreBtn.setAttribute('aria-expanded', open); exploreMenu.classList.toggle('open', open); };
+  if (exploreBtn) exploreBtn.addEventListener('click', () => setExplore(exploreBtn.getAttribute('aria-expanded') !== 'true'));
   const syncLangUI = (l) => {
     const L = l.toUpperCase(); $('#langLabel').textContent = L;
     $$('#langMenu [data-lang]').forEach(x => x.setAttribute('aria-checked', String(x.dataset.lang === L)));
     $$('#mobileMenu [data-lang]').forEach(x => { const on = x.dataset.lang === L; x.classList.toggle('text-[var(--rust)]', on); x.classList.toggle('bg-[rgba(165,62,26,.08)]', on); });
   };
   $$('[data-lang]').forEach(b => b.addEventListener('click', () => {
-    const l = b.dataset.lang.toLowerCase(); (window.switchLang || I18N.set)(l); setLang(false); setBurger(false);
+    const l = b.dataset.lang.toLowerCase(); (window.LOCALE_NAV || window.switchLang || I18N.set)(l); setLang(false); setBurger(false);
     toast(l === 'ar' ? 'اللغة: العربية' : I18N.t('تم تغيير اللغة'));
   }));
   document.addEventListener('i18n:change', e => syncLangUI(e.detail.lang)); syncLangUI(I18N.lang);
@@ -1660,18 +1674,19 @@
   /* ---------- Nav: search ---------- */
   const searchForm = $('#searchForm'), searchBtn = $('#searchBtn'), searchInput = $('#searchInput');
   const setSearch = (open) => { searchForm.classList.toggle('open', open); searchBtn.setAttribute('aria-expanded', open); searchInput.tabIndex = open ? 0 : -1; if (open) searchInput.focus(); };
-  searchBtn.addEventListener('click', () => { if (searchForm.classList.contains('open') && searchInput.value.trim()) { location.href = 'search.html?q=' + encodeURIComponent(searchInput.value.trim()); return; } setSearch(!searchForm.classList.contains('open')); });
-  searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && searchInput.value.trim()) location.href = 'search.html?q=' + encodeURIComponent(searchInput.value.trim()); });
+  searchBtn.addEventListener('click', () => { if (searchForm.classList.contains('open') && searchInput.value.trim()) { location.href = LURL('search.html?q=' + encodeURIComponent(searchInput.value.trim())); return; } setSearch(!searchForm.classList.contains('open')); });
+  searchInput.addEventListener('keydown', e => { if (e.key === 'Enter' && searchInput.value.trim()) location.href = LURL('search.html?q=' + encodeURIComponent(searchInput.value.trim())); });
 
   /* ---------- Nav: outside click, active link ---------- */
   document.addEventListener('click', e => {
     const path = e.composedPath();                 // stable even if the target was re-rendered
     const within = (...ids) => path.some(n => n.id && ids.includes(n.id));
     if (!within('langBtn', 'langMenu')) setLang(false);
+    if (!within('exploreBtn', 'exploreMenu')) setExplore(false);
     if (!within('burger', 'mobileMenu')) setBurger(false);
     if (!within('searchForm') && !searchInput.value) setSearch(false);
   });
-  $$('.nav-link, #mobileMenu a').forEach(a => a.addEventListener('click', () => {
+  $$('a.nav-link, #mobileMenu a').forEach(a => a.addEventListener('click', () => {
     const href = a.getAttribute('href');
     $$('.nav-link, #mobileMenu a').forEach(x => x.removeAttribute('aria-current'));
     $$(`.nav-link[href="${href}"], #mobileMenu a[href="${href}"]`).forEach(x => x.setAttribute('aria-current', 'page'));
@@ -1697,7 +1712,7 @@
   closeBtn.addEventListener('click', closeDrawer);
   backdrop.addEventListener('click', closeDrawer);
   document.addEventListener('keydown', e => {
-    if (e.key === 'Escape') { if (drawer.classList.contains('open')) closeDrawer(); setLang(false); setBurger(false); setSearch(false); }
+    if (e.key === 'Escape') { if (drawer.classList.contains('open')) closeDrawer(); setLang(false); setExplore(false); setBurger(false); setSearch(false); }
     if (e.key === 'Tab' && drawer.classList.contains('open')) {
       const f = $$('button, [href], input, [tabindex]:not([tabindex="-1"])', drawer).filter(el => !el.disabled);
       const first = f[0], last = f[f.length - 1];
@@ -1780,35 +1795,23 @@
   applyAll();
 })();
 </script>
-<script>
-document.addEventListener('click', e => { const b = e.target.closest('.gem-fav'); if (!b) return; const on = b.getAttribute('aria-pressed') !== 'true'; b.setAttribute('aria-pressed', String(on)); b.setAttribute('aria-label', I18N.t(on ? 'إزالة من المفضلة' : 'أضف إلى المفضلة')); b.innerHTML = ICON(on ? 'heart-fill' : 'heart', 16); });
-</script>
 <script src="experiences.js"></script>
 <script src="entrepreneurs.js"></script>
 <script src="destinations.js"></script>
 <script src="listing-shared.js"></script>
+<script src="listing-engine.js"></script>
 <script>
 (() => {
   const { CITIES, t, esc, pic, crumb } = EX, { CAT, list, href } = DESTINATIONS;
   const $ = id => document.getElementById(id);
   const cityName = c => CITIES[c][EX.lang()] || CITIES[c].ar;
-  const SUN = ICON('sun', 16), CLOUD = ICON('cloud', 16), RAIN = ICON('cloud-rain', 16);
-  /* live reading per city (Open-Meteo); nothing is shown until it arrives */
-  const W = {}; const CITY_LL = { luxor: [25.69, 32.64], aswan: [24.09, 32.90] };
-  const wIcon = code => code <= 1 ? SUN : code >= 51 ? RAIN : CLOUD;
-  const weather = city => W[city] ? '<span class="ds-card-w">' + wIcon(W[city].code) + Math.round(W[city].t) + '°C</span>' : '<span class="ds-card-w" data-w="' + city + '"></span>';
-  Object.entries(CITY_LL).forEach(([c, ll]) => fetch('https://api.open-meteo.com/v1/forecast?latitude=' + ll[0] + '&longitude=' + ll[1] + '&current=temperature_2m,weather_code&timezone=Africa%2FCairo').then(r => r.json()).then(j => { W[c] = { t: j.current.temperature_2m, code: j.current.weather_code }; document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }); }).catch(() => {}));
   const meta = x => esc(t(CAT[x.c])) + (x.area ? '، ' + esc(t(x.area)) : '') + ' · ' + esc(cityName(x.city));
-  const card = (x, side) => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], side ? '330px' : '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><p class="ds-card-meta"><span>' + meta(x) + '</span>' + weather(x.city) + '</p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></a></li>';
-  function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الوجهات']]); document.title = t('الوجهات') + ' — ' + t('صعيد مصر'); }
-  function render() {
-    const sorted = list.slice().sort((a, b) => a.city.localeCompare(b.city));
-    $('exGrid').innerHTML = sorted.map(x => card(x, false)).join('');
-    const d = new Date(document.lastModified); $('dsNote').textContent = t('آخر تحديث') + ': ' + d.toLocaleDateString(EX.lang() === 'ar' ? 'ar-EG' : EX.lang() === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' });
-    Object.keys(W).forEach(c => document.querySelectorAll('[data-w="' + c + '"]').forEach(el => { el.innerHTML = wIcon(W[c].code) + Math.round(W[c].t) + '°C'; el.removeAttribute('data-w'); }));
-  }
-  document.addEventListener('i18n:change', () => { head(); render(); });
-  head(); render();
+  const card = x => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><p class="ds-card-meta"><span>' + meta(x) + '</span></p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></a></li>';
+  const countText = n => { const l = EX.lang(); return l === 'ar' ? n + ' ' + (n === 1 ? 'وجهة' : n <= 10 ? 'وجهات' : 'وجهة') : n + ' ' + t(n === 1 ? 'وجهة' : 'وجهات'); };
+  /* filter state lives in the URL (Figure 13); price band and accessibility hide themselves while no destination carries them */
+  const KEY = { category: 'c', p: 'p', pr: 'pr', a: 'a' };
+  LISTING.init({ hero: false, chipParam: 'city', chips: ['luxor', 'aswan'], groups: ['category', 'p', 'pr', 'a'], items: () => list.slice().sort((a, b) => a.city.localeCompare(b.city)), chipOf: x => x.city, groupOf: (x, g) => { const v = x[KEY[g]]; return v == null ? [] : [].concat(v).map(String); }, hay: x => [x.n, x.s, t(x.n), t(x.s)].join(' '), card, count: countText, title: () => t('الوجهات'), crumb: () => [['الرئيسية', 'index.html'], ['الوجهات']],
+    onRender: () => { const d = new Date(document.lastModified); $('dsNote').textContent = t('آخر تحديث') + ': ' + d.toLocaleDateString(EX.lang() === 'ar' ? 'ar-EG' : EX.lang() === 'es' ? 'es-ES' : 'en-GB', { year: 'numeric', month: 'long', day: 'numeric' }); } });
   window.__dest = { total: list.length };
 })();
 </script>

@@ -62,7 +62,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
   <h1>Compliance Audit of the Prototype vs Inception Report v1.2</h1>
   <p>Review → compare → identify gaps → document required actions. The prototype at <code>nisreen24.github.io/upper-egypt-preview-2026</code> was checked page by page against Inception Report v1.2 (25 September 2026). Every finding cites the report section or figure it relates to; nothing in the UI was changed. Where the report does not define something, the item is marked <span class="s c">Needs Clarification</span>.</p>
   <div class="meta"><div><b>Reference</b>Inception Report v1.2, SwiftX for Fundación CIDEAL</div><div><b>Reviewed</b>33 public pages, 6 forms, 10 listings, 3 languages (Arabic fully, English and Spanish spot-checked)</div><div><b>Method</b>source inspection of the published prototype (HTML, data and script files) plus browser checks</div><div><b>Date</b>26 October 2026</div></div>
-  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a><a href="#m">M Verification</a></nav>
+  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a><a href="#m">M Verification</a><a href="#n">N Conformance</a></nav>
 </header>
 
 <h2 id="a"><span class="n">A</span>Executive summary</h2>
@@ -421,3 +421,76 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
 
 </body>
 </html>
+<h2 id="n"><span class="n">N</span>Conformance pass, 27 October 2026 (Phases 0–4)</h2>
+<p>Scope of this pass: bring every page to Inception Report v1.2 sections 2–6 and keep visuals on design-system.html. The client brief of 27 October explicitly asked for the removals that section M had parked as "Decision Required" (travel ideas, favourites, weather, the tourists card, the newsletter block on Home); they are applied here on that instruction.</p>
+
+<h4>Phase 0 · tokens read from design-system.html</h4>
+<table><thead><tr><th>Group</th><th>Values</th></tr></thead><tbody>
+<tr><td>Core / neutral</td><td>rust #a53e1a · rust deep #8a3213 · ink #0b2230 · sand #dcc9a8 · cocoa #2b1d0e · charcoal #1f1a14 · hairline #e6e2d8 · white #fff</td></tr>
+<tr><td>Backgrounds</td><td>parchment #f1e4d2 (home) · paper #fbf7ef · section cream #f7f1e6 · drawer #f4f1ea · form paper #f3e3c9</td></tr>
+<tr><td>Text</td><td>heading #0b2230 · body #24312f · muted #57534e · cream on dark #f6ead8 · nav ink #2a2a28</td></tr>
+<tr><td>Semantic / functional</td><td>error #a52a1a (#7a1f12 banner) · success #2f6f5e (#1f4a3f) · nile #345c70 · olive #4b5a33 · clay #9a4b2c · amber #b8741a · bark #6b4a2f · pillar tints clay #f6d5c9/#7a2f14, olive #dbe5c6/#2f4118, ink #cfe4ee/#143a4a · chip border #e1ddd0 · high-contrast rust #7a2400 · focus: 3px ink outline over a 3px white ring</td></tr>
+<tr><td>Type</td><td>Thmanyah Serif Display (headings) · IBM Plex Sans / IBM Plex Sans Arabic (body) · h1 44–96, h2 --fs-h2, body --fs-body / --fs-body-lg, buttons --fs-btn, eyebrow --fs-eyebrow · body line-height 1.7</td></tr>
+<tr><td>Spacing</td><td>--s-1…--s-8 = 8 12 16 24 32 48 64 96 · section 112/96 (64/64 mobile) · card padding 24 · grid gap 32×24 · gutters 24 / 16</td></tr>
+<tr><td>Radius / shadow</td><td>--radius-sm · md · card · card-lg 22 · btn · full 999 · shadow subtle 0 1px 2px rgba(43,29,14,.06), 0 10px 30px −12px rgba(43,29,14,.35)</td></tr>
+<tr><td>Components (inventory §09)</td><td>Button, Icon, Link, Input, Textarea, Select, Checkbox, Chip/Tag, Badge, Divider, Breadcrumb, Section heading, Metadata row, Search control, Filter control, Form field, Location label, Date badge, Carousel navigation, Language switcher, Result count/empty, Card anatomy, Header, Footer, Hero (A–E), Experience / Destination / Entrepreneur / Event / Organisation / Resource / Story-News-Path cards, Filter bar, Section carousel, Gallery, Tabs, Accordion, Map + list, Newsletter section, Form shell, Related content, City information, Home editorial modules</td></tr>
+</tbody></table>
+
+<h4>Status per requirement</h4>
+<table><thead><tr><th>Requirement</th><th>Report</th><th>What the prototype does now</th><th>Status</th></tr></thead><tbody>
+<tr><td>Travel ideas removed</td><td>§11.1 decision 3</td><td>travel-ideas.html, travel-idea.html, planner.js deleted; the "Tours" nav item, footer link, the city-guide coverflow and the content data are gone; 16 dead dictionary keys dropped</td><td><span class="s m">Done</span></td></tr>
+<tr><td>No background music or autoplay audio</td><td>§6.6</td><td>Player, toggle and leftover CSS removed from every page</td><td><span class="s m">Done</span></td></tr>
+<tr><td>No self-hosted video</td><td>§6.6, §7.1</td><td>City heroes show the still poster; the stories hero is the image reel; resource videos embed youtube-nocookie.com only when the poster is activated, and stay hidden until CIDEAL supplies the YouTube IDs</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Where to stay = community-based only</td><td>§6.4, decision 5</td><td>Hotels removed earlier from listings and city guides; this pass also removed them from the city map data and the stay-kind labels, and swapped the hotel façade used as the events hero</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Favourites, weather</td><td>§2.1 / §2.2 / §6.2</td><td>Heart buttons, their handlers and CSS removed from cards, Home rail and city rows; live weather tab and the °C on destination cards removed</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Top navigation: six sitemap items in order</td><td>§3.2, Fig 4</td><td>Home · Explore · For Entrepreneurs · For Tourism Stakeholders · About the Project · Contact, desktop and mobile, on all 32 public pages; Explore opens a menu of its six pages (it has no page of its own in Fig 4)</td><td><span class="s m">Done</span> <span class="s c">Needs decision</span></td></tr>
+<tr><td>Footer</td><td>Fig 11 footer row</td><td>Platform column lists the six items in order; Explore column lists the Explore pages; privacy and accessibility links kept</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Language in the URL</td><td>§3.1, §7.3</td><td>Static copies under /ar/, /en/, /es/ generated by build-locales.mjs; root pages forward to the saved or default locale; the language switcher changes the path; links, cards, search and anchors stay inside the locale</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Home: eight blocks in order</td><td>§3.3, Fig 5, Fig 11</td><td>Hero · Luxor and Aswan · featured destinations (4) · featured experiences (4) · featured entrepreneurs · success stories · upcoming events · two audience links. Newsletter block and the tourists card removed</td><td><span class="s m">Done</span></td></tr>
+<tr><td>About: four sections</td><td>§3.4, Fig 25</td><td>Unchanged, verified</td><td><span class="s m">Done</span></td></tr>
+<tr><td>City guide: ten sections in order</td><td>§3.5, Fig 6</td><td>Hero · sustainable tourism · about the city · things to do (4) · places to go (viewer with link to the filtered listing) · where to eat (4) · where to stay · meet the entrepreneurs · practical information (Transport · Climate · Safety · Cultural tips) · map. Trip ideas and "Keep exploring" removed</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Curation rules (carousel over 4, cap 12, top-up, hide empty)</td><td>§3.5</td><td>Static prototype shows every published entry per section (4 or fewer in each case); the top-up, cap and auto-hide are CMS behaviour</td><td><span class="s o">Not applicable</span></td></tr>
+<tr><td>Destinations listing with filters in the URL</td><td>§5 Fig 13</td><td>City chips plus category, pillar, price band and accessibility in the panel, state held in the URL; price band and accessibility hide themselves while no destination carries them</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Site search results grouped by type</td><td>§2.1</td><td>search.html, wired from every header, locale-aware</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Entrepreneur profile: gallery, Helmak badge, contact route</td><td>§4.2, Fig 16</td><td>Gallery block (shows when 2+ photos exist), Helmak badge, contact route to the request workflow</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Organisation public contact route</td><td>§2.1, Fig 19</td><td>Shown as the primary action (external site or the platform form)</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Resources audience filter</td><td>§6.4</td><td>Entrepreneurs · organisations · both</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Forms: name, email, message, consent, Turnstile placeholder, privacy link</td><td>§4.1, §7.4</td><td>Contact, organisation registration and update request carry all of them; errors announced as text; event registration links go to the request workflow</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Three request types</td><td>§4.1</td><td>A fourth (contact-directory request) still exists</td><td><span class="s c">Needs decision</span></td></tr>
+<tr><td>No booking, payment, native app, visitor accounts</td><td>§2.2</td><td>None present; profile edits use the one-time link</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Accessibility: skip link, 3:1 boundaries, visible focus, keyboard carousels, clean Arabic headings</td><td>§9.3</td><td>In place from the earlier pass; verified on every page in three languages</td><td><span class="s m">Done</span></td></tr>
+<tr><td>SEO: per page and per language metadata, hreflang, canonical, sitemap per locale, Open Graph, Twitter, structured data</td><td>§9.4</td><td>All in place; JSON-LD TouristAttraction / Product, LocalBusiness, Event and Organization on the detail templates</td><td><span class="s m">Done</span></td></tr>
+<tr><td>Localized slugs</td><td>§9.4</td><td>File names stay English in all three locales</td><td><span class="s x">Not met</span> build-level</td></tr>
+<tr><td>Weight budgets</td><td>§9.2</td><td>Home (ar): HTML 196 KB + CSS 9 + scripts 186 + two preloaded fonts 67 = 458 KB on the critical path against 250 KB; luxor.html 287 KB HTML; map.html 204 KB + 154 KB scripts + Leaflet. The dictionary is now split per locale (ar 5 KB, en 157 KB, es 162 KB instead of 239 KB everywhere). Meeting the budget needs shared CSS and the icon set moved out of each page and GSAP deferred, which is a build change</td><td><span class="s x">Not met</span> build-level</td></tr>
+<tr><td>Design tokens</td><td>design-system.html</td><td>All colours, type, spacing and radii used by the new markup come from the tokens. 24 colour values already in the shared CSS are not in the token list (dark media backgrounds #241a12 / #1a130c / #0b0906, map and placeholder surfaces #e9e2d2 / #e6d8bd / #eee5d6 / #eceadf, viewer gradient #c9ae82 / #8b6a44 / #5d4429, pill tints #1e3f4e / #e3ebd3 / #d6e6ee / #f8e0d6, placeholder text #8a847a, accents #f3c9a8 / #b0703c / #cdb48a / #e6e3d6 / #e6e3d6, drawer #0a0c10 / #1a1d22 / #2b2b2b / #24564a / #2b4d60). Left unchanged: mapping them to tokens would change the visuals the design system does not define</td><td><span class="s c">Needs decision</span></td></tr>
+</tbody></table>
+
+<h4>Needs decision</h4>
+<ol class="chk">
+  <li>City guide: §3.5 lists ten sections; Figure 12 adds "Where to buy local products" with different numbering. Built to §3.5.</li>
+  <li>Directory request: the prototype has a fourth request type (directory-request.html); §4.1 names three. Kept until the report or the UI is aligned.</li>
+  <li>Map library: Leaflet with OpenStreetMap in the prototype; §7.1 specifies MapLibre GL with MapTiler. Build decision.</li>
+  <li>Accessibility drawer overlay features (dictation, read aloud, invert, reading guide): left in place.</li>
+  <li>Contact form: conditional business fields when "request listing as entrepreneur" is chosen are not in Figure 26.</li>
+  <li>Illustrated hero collage needs CIDEAL approval (§6.2); the Wikimedia CC BY-SA images need flagging in the rights register (§6.6).</li>
+  <li>Programme code reads 2022-PCONV-000504 (§1); the Arabic descriptions of FPSC and KEF need CIDEAL's confirmation.</li>
+  <li>Explore is a section without a page in Figure 4; it is implemented as a menu of its six pages, styled like the language menu. Confirm, or name a landing page.</li>
+  <li>Newsletter sign-up (§2.1) now lives on the Resources page only, because Figure 11 has no newsletter block on Home. Confirm where the subscribe point should sit.</li>
+  <li>YouTube IDs for the two video resources are needed; the players stay hidden until then.</li>
+  <li>"Winter Palace Hotel" remains in the stakeholder directory as a private-sector organisation (§2.1), not as a stay.</li>
+  <li>English nav label reads "Contact us" (the same string labels the contact buttons); the report's item is "Contact".</li>
+  <li>24 colour values outside the token list (table above): add them to the design system or map them.</li>
+  <li>Localized slugs and per-language static titles: the locale copies carry Arabic titles until the page loads; slugs stay English.</li>
+</ol>
+
+<h4>Verification</h4>
+<ul class="chk">
+  <li>32 public pages × 3 locales loaded in a headless browser: 0 script errors, 0 failed requests, 0 horizontal overflow, six nav items on every page, lang and dir set per locale.</li>
+  <li>Flows: Explore menu → destinations; city chip and category checkbox update the URL (?city=luxor&amp;category=heritage) and the count; card → detail stays in /en/; header search → /en/search.html?q=…; language switch → /es/… keeping the query; hash links and the city section bar work inside the locale copies; Home hero cue scrolls to the destinations block.</li>
+  <li>Grep over all site HTML and JS: zero matches for travel-idea, ambient, the hotel names (one stakeholder organisation excepted), favourite / المفضلة / gem-fav, weather / °C / open-meteo, hello@example and &lt;video&gt;.</li>
+  <li>No broken internal link in the root pages; <code>npm run css</code> rebuilt; inline scripts parse on every page.</li>
+  <li>Screenshots reviewed: Home (ar, desktop), Explore menu (ar), mobile menu (ar), Luxor about / practical information (en), Destinations with filters (en desktop and mobile), Stories (ar mobile).</li>
+</ul>
+<p class="note">Files: 3 deleted (travel-ideas.html, travel-idea.html, planner.js); 42 modified; new: locale.js, ld.js, build-locales.mjs, i18n.ar/en/es.js, ar/ en/ es/ (96 generated pages), sitemap-ar/en/es.xml. Nothing committed or published.</p>
+
+

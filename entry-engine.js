@@ -32,6 +32,7 @@ window.ENTRY = (() => {
       if (v.ll) { $('dxMapBox').hidden = false; if (!map) { map = L.map('dxMap', { center: v.ll, zoom: v.zoom || 14, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); L.marker(v.ll, { icon: EX.icon(v.pin || 'tour'), title: v.title }).addTo(map); setTimeout(() => map.invalidateSize(), 200); } } else $('dxMapBox').hidden = true;
       $('dxEnt').hidden = !v.ent; if (v.ent) $('dxEnt').innerHTML = v.ent;
       const secs = v.sections || []; const host = $('dxSections'); host.innerHTML = secs.map((s, i) => '<section class="dx-rel" aria-labelledby="dxs' + i + '"><header class="lx-head"><div>' + (s.eyebrow ? '<span class="sec-eyebrow">' + esc(s.eyebrow) + '</span>' : '') + '<h2 class="display lx-h" id="dxs' + i + '">' + esc(s.title) + '</h2></div>' + (s.all ? '<a class="lx-all" href="' + s.all.href + '"><span>' + esc(s.all.label) + '</span>' + EX.ARW + '</a>' : '') + '</header>' + s.html + '</section>').join('');
+      if (cfg.ld && window.LD) LD(cfg.ld(v, e));
       if (cfg.after) cfg.after(v);
     }
     document.addEventListener('i18n:change', render); render();
