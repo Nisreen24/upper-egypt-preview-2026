@@ -1424,6 +1424,11 @@ window.I18N = (() => {
     'وجهات': { en: "destinations", es: "destinos" },
     'الأقسام السابقة': { en: "Previous sections", es: "Secciones anteriores" },
     'الأقسام التالية': { en: "Next sections", es: "Secciones siguientes" },
+    'قائمة استكشف': { en: "Explore menu", es: "Menú Explorar" },
+    'أحدث القصص والفعاليات والفرص إلى بريدك.': { en: "The latest stories, events and opportunities in your inbox.", es: "Las últimas historias, eventos y oportunidades en tu correo." },
+    'اشترك': { en: "Subscribe", es: "Suscribirse" },
+    'صورة توضيحية لأغراض العرض فقط، لا تُستخدم في النسخة النهائية دون موافقة CIDEAL.': { en: "Sample illustration for demonstration only; not for production without CIDEAL’s approval.", es: "Ilustración de muestra solo para demostración; no se usará en producción sin la aprobación de CIDEAL." },
+    'التحقق من أنك لست روبوتًا': { en: "Verify that you are not a robot", es: "Verifica que no eres un robot" },
   };
 
   /* Localised event data (mirrors the EVENTS array in index.html) */

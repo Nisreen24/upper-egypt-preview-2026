@@ -46,7 +46,7 @@ window.CONTENT = (() => {
 
   /* ---- site configuration (BRD 7.2: one entry edited by an administrator) ---- */
   const site = {
-    email: 'info@discoverupperegypt.org',
+    email: 'info@discoverupperegypt.com',
     subjects: [['general', 'سؤال عام'], ['correction', 'تصحيح في أحد المداخل'], ['listing', 'طلب الإدراج كرائد أعمال'], ['directory', 'طلب دليل التواصل'], ['press', 'استفسار صحفي أو شراكة']],
     responseDays: { general: 5, directory: 10, registration: 10, update: 5 },
     retentionMonths: 24,
@@ -54,7 +54,7 @@ window.CONTENT = (() => {
       programme: 'تعزيز البدائل الاقتصادية والاجتماعية المستدامة القائمة على السياحة في صعيد مصر، مع تركيز خاص على النساء والشباب',
       code: 'AECID 2022-PCONV-000504',
       funder: 'الوكالة الإسبانية للتعاون الإنمائي الدولي (AECID)',
-      partners: [['CIDEAL', 'المنظمة المنفذة'], ['FPSC', 'مؤسسة الترقية الاجتماعية'], ['KEF', 'مؤسسة التعليم والمعرفة'], ['ENROOT', 'شريك التنمية المحلية']],
+      partners: [['CIDEAL', 'المنظمة المنفذة'], ['FPSC', ''], ['KEF', ''], ['ENROOT', 'شريك التنمية المحلية']],
     },
   };
 

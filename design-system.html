@@ -591,6 +591,31 @@ table.scale{max-width:560px}
   <div class="sw"><i style="background:#f3e3c9"></i><div><b>Form paper</b><code>#f3e3c9</code><small>+ papyrus texture 30%</small></div></div>
   <div class="sw"><i style="background:rgba(43,29,14,.12)"></i><div><b>Ink-alpha borders</b><code>rgba(43,29,14,.10–.20)</code><small>.10 cards · .12 rows · .16 chips · .20 inputs</small></div></div>
   <div class="sw"><i style="background:#7a2400"></i><div><b>High-contrast rust</b><code>#7a2400</code><small>replaces rust in the contrast mode</small></div></div>
+  <p class="lbl" style="margin-top:12px">Component shades (tokens used by single components; same values as before, now named)</p>
+  <div class="sw"><i style="background:#241a12"></i><div><b>--media-dark</b><code>#241a12</code><small>dark ground behind event media</small></div></div>
+  <div class="sw"><i style="background:#1a130c"></i><div><b>--viewer-dark</b><code>#1a130c</code><small>places viewer ground</small></div></div>
+  <div class="sw"><i style="background:#0b0906"></i><div><b>--shade-black</b><code>#0b0906</code><small>image shade endpoint</small></div></div>
+  <div class="sw"><i style="background:#e9e2d2"></i><div><b>--map-surface</b><code>#e9e2d2</code><small>map container before tiles load</small></div></div>
+  <div class="sw"><i style="background:#e6d8bd"></i><div><b>--thumb-surface</b><code>#e6d8bd</code><small>thumbnail placeholder</small></div></div>
+  <div class="sw"><i style="background:#eee5d6"></i><div><b>--journey-surface</b><code>#eee5d6</code><small>Luxor–Aswan block ground</small></div></div>
+  <div class="sw"><i style="background:#eceadf"></i><div><b>--card-alt</b><code>#eceadf</code><small>secondary card ground</small></div></div>
+  <div class="sw"><i style="background:#c9ae82"></i><div><b>--viewer-ph-1</b><code>#c9ae82</code><small>viewer placeholder gradient start</small></div></div>
+  <div class="sw"><i style="background:#8b6a44"></i><div><b>--viewer-ph-2</b><code>#8b6a44</code><small>viewer placeholder gradient mid</small></div></div>
+  <div class="sw"><i style="background:#5d4429"></i><div><b>--viewer-ph-3</b><code>#5d4429</code><small>viewer placeholder gradient end</small></div></div>
+  <div class="sw"><i style="background:#cdb48a"></i><div><b>--sand-deep</b><code>#cdb48a</code><small>deeper sand accent</small></div></div>
+  <div class="sw"><i style="background:#f3c9a8"></i><div><b>--kicker-on-dark</b><code>#f3c9a8</code><small>kicker text on dark grounds</small></div></div>
+  <div class="sw"><i style="background:#b0703c"></i><div><b>--clay-light</b><code>#b0703c</code><small>light clay accent</small></div></div>
+  <div class="sw"><i style="background:#8a847a"></i><div><b>--placeholder</b><code>#8a847a</code><small>input placeholder text</small></div></div>
+  <div class="sw"><i style="background:#1e3f4e"></i><div><b>--pill-ink-deep</b><code>#1e3f4e</code><small>ink location pill</small></div></div>
+  <div class="sw"><i style="background:#e3ebd3"></i><div><b>--pill-olive-tint</b><code>#e3ebd3</code><small>olive story pill</small></div></div>
+  <div class="sw"><i style="background:#d6e6ee"></i><div><b>--pill-ink-tint</b><code>#d6e6ee</code><small>ink story pill</small></div></div>
+  <div class="sw"><i style="background:#f8e0d6"></i><div><b>--pill-clay-soft</b><code>#f8e0d6</code><small>soft clay pill</small></div></div>
+  <div class="sw"><i style="background:#e6e3d6"></i><div><b>--tile-hover</b><code>#e6e3d6</code><small>drawer tile hover</small></div></div>
+  <div class="sw"><i style="background:#0a0c10"></i><div><b>--drawer-dark-1</b><code>#0a0c10</code><small>drawer dark surface</small></div></div>
+  <div class="sw"><i style="background:#1a1d22"></i><div><b>--drawer-dark-2</b><code>#1a1d22</code><small>drawer dark surface, raised</small></div></div>
+  <div class="sw"><i style="background:#2b2b2b"></i><div><b>--drawer-dark-3</b><code>#2b2b2b</code><small>drawer dark text</small></div></div>
+  <div class="sw"><i style="background:#24564a"></i><div><b>--green-deep</b><code>#24564a</code><small>deep green accent</small></div></div>
+  <div class="sw"><i style="background:#2b4d60"></i><div><b>--nile-deep</b><code>#2b4d60</code><small>deep nile accent</small></div></div>
 </div>
 <h4>Tokens</h4>
 <table><thead><tr><th>Token</th><th>Value</th></tr></thead><tbody><tr><td><code>--rust</code> · <code>--rust-deep</code></td><td>#a53e1a · #8a3213</td></tr><tr><td><code>--ink</code> · <code>--body</code> · <code>--muted</code> · <code>--nav-ink</code></td><td>#0b2230 · #24312f · #57534e · #2a2a28</td></tr><tr><td><code>--paper</code></td><td>#f1e4d2 (home) · #fbf7ef on inner pages</td></tr><tr><td><code>--hair</code> · <code>--card-border</code> · <code>--drawer-bg</code> · <code>--cream</code></td><td>#e6e2d8 · #e1ddd0 · #f4f1ea · #f6ead8</td></tr><tr><td><code>--pill</code> / <code>--pill-ink</code></td><td>scoped per tag modifier</td></tr><tr><td><code>html.a11y-contrast</code></td><td>paper #fff · ink/body/muted #000 · rust #7a2400 · borders #000</td></tr></tbody></table>
@@ -1224,7 +1249,7 @@ Activates on any ul.ex-grid outside #exList with more than data-strip-min (3) it
 <div class="spec-list"><div><b>Marker</b><span>38 circle, 2.5px white border, 20px glyph</span></div><div><b>Colours</b><span>tour green · workshop bark · food amber · stay nile · product rust</span></div><div><b>Popup</b><span>radius 12, 300 wide (260 mobile), 96px thumb, 2-line summary</span></div><div><b>Cluster</b><span>44 ink circle</span></div><div><b>Accessible alternative</b><span>list mirrors markers; list buttons open markers</span></div></div>
 <details class="dev"><summary>Developer details</summary><div><div class="anatomy">DIRECTORY .sk-split ≥1024: 1fr + 420 sticky (top --tb-top + 16, min(72vh,680)) · &lt;1024 stacked, map 380 after list
 CITY .mp-body ≥768: 320 list (420 ≥1100) + map 620 (680 ≥1100) · RTL map order:1 · &lt;768 map 70vh (440–620), list = fixed sheet min(78vh,640) via .mp-open (48 ink), scrim rgba(11,9,6,.45), translateY(102%) .5s
-EMBED #dxMap 220px, zoom 14, scrollWheelZoom:false, role=region</div><p>Leaflet 1.9.4 (cdnjs) + OSM, tiles <code>filter:sepia(.28) saturate(.9)</code>; MarkerCluster 1.5.3 on city pages. <code>.mp-pin span</code> shadow 0 4px 10px −2px rgba(11,9,6,.5); <code>.is-hot</code>. Colours from <code>EX.icon()</code>: tour #2f6f5e · workshop #6b4a2f · food #b8741a · stay #345c70 · product #a53e1a. <code>.mp-pop .mp-card .mp-tag .mp-name .mp-sum .mp-more</code>; <code>.mp-ctl</code> 44 radius 8; markers <code>keyboard:true</code> with title / alt; travel-idea numbered <code>.tg-pin</code> 34.</p></div></details>
+EMBED #dxMap 220px, zoom 14, scrollWheelZoom:false, role=region</div><p>MapLibre GL 4.7 (cdnjs, loaded after first paint) with MapTiler vector tiles (demo style until CIDEAL supplies the key, <code>MAP_CONFIG.maptilerKey</code> in maps.js), markers clustered by proximity, RTL text plugin; canvas <code>filter:sepia(.28) saturate(.9)</code>; MarkerCluster 1.5.3 on city pages. <code>.mp-pin span</code> shadow 0 4px 10px −2px rgba(11,9,6,.5); <code>.is-hot</code>. Colours from <code>EX.icon()</code>: tour #2f6f5e · workshop #6b4a2f · food #b8741a · stay #345c70 · product #a53e1a. <code>.mp-pop .mp-card .mp-tag .mp-name .mp-sum .mp-more</code>; <code>.mp-ctl</code> 44 radius 8; markers <code>keyboard:true</code> with title / alt; travel-idea numbered <code>.tg-pin</code> 34.</p></div></details>
 </div>
 
 <div class="cmp" id="o-newsletter">
