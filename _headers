@@ -1,0 +1,14 @@
+# Long cache for immutable assets, short for pages. GitHub Pages ignores this file (it sets Cache-Control: max-age=600 itself);
+# Netlify, Cloudflare Pages and the production CDN (CloudFront, Inception Report 7.1) honour it.
+/ASSETS/*
+  Cache-Control: public, max-age=31536000, immutable
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+/vendor/*
+  Cache-Control: public, max-age=31536000, immutable
+/*.js
+  Cache-Control: public, max-age=86400
+/*.css
+  Cache-Control: public, max-age=86400
+/*.html
+  Cache-Control: public, max-age=600

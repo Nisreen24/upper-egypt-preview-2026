@@ -13,7 +13,8 @@ window.EX = (() => {
   const all = () => EXPERIENCES.list.filter(e => e.city === city);
   const href = e => 'experience.html?city=' + e.city + '&slug=' + e.slug;
   const listHref = (c, cat) => 'experiences.html?city=' + c + (cat ? '&category=' + cat : '');
-  const pic = (im, sizes, cls) => im ? '<img class="' + (cls || '') + '" src="' + im.src + '" srcset="' + im.srcset + '" sizes="' + sizes + '" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '';
+  const avif = s => String(s).replace(/\.webp(?=\s|,|$)/g, '.avif');
+const pic = (im, sizes, cls) => im ? '<picture><source type="image/avif" srcset="' + avif(im.srcset || im.src) + '" sizes="' + sizes + '"><img class="' + (cls || '') + '" src="' + im.src + '" srcset="' + im.srcset + '" sizes="' + sizes + '" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async"></picture>' : '';
   const card = (e, loc) => '<li><article class="gem" data-slug="' + e.slug + '"><div class="gem-media">' + pic(e.imgs[0], '(min-width:1024px) 300px, 90vw', 'gem-img') +
     '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>' +
     '<span class="gem-loc ' + (e.c === 'stay' ? 'gem-loc--ink' : e.c === 'food' ? 'gem-loc--olive' : '') + '">' + ICON(CATS[e.c].p, 14) + '<span>' + esc(t(CATS[e.c].n)) + '</span></span>' +

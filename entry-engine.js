@@ -18,8 +18,8 @@ window.ENTRY = (() => {
       $('dx-title').textContent = v.title; document.title = v.title + ' — ' + t('صعيد مصر');
       $('dxSum').textContent = v.sub || '';
       $('dxTags').innerHTML = (v.tags || []).map(x => '<span class="dx-tag">' + x + '</span>').join('');
-      const hero = $('xhMedia').querySelector('img'); if (hero) hero.remove();
-      if (v.img) $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + v.img.src + '" srcset="' + v.img.srcset + '" sizes="95vw" alt="' + esc(t(v.img.alt)) + '" style="object-position:' + (v.pos || '50% 50%') + '" fetchpriority="high" decoding="async">');
+      const hero = $('xhMedia').querySelector('picture, img'); if (hero) hero.remove();
+      if (v.img) $('xhMedia').insertAdjacentHTML('afterbegin', '<picture><source type="image/avif" srcset="' + String(v.img.srcset || v.img.src).replace(/\.webp(?=\s|,|$)/g, '.avif') + '" sizes="95vw"><img src="' + v.img.src + '" srcset="' + v.img.srcset + '" sizes="95vw" alt="' + esc(t(v.img.alt)) + '" style="object-position:' + (v.pos || '50% 50%') + '" fetchpriority="high" decoding="async"></picture>');
       $('dxaH').textContent = v.aboutH; $('dxaSum').textContent = v.summary || '';
       $('dxDesc').innerHTML = (v.body || []).map(p => '<p>' + esc(p) + '</p>').join('');
       $('dxaChips').innerHTML = (v.chips || []).map(x => '<span class="dxi-chip">' + x + '</span>').join('');

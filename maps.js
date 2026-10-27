@@ -1,6 +1,6 @@
 /* Maps: MapLibre GL with MapTiler vector tiles (Inception Report 7.1), one component for the directory map, the city maps and the
    detail-page locations, with markers clustered by proximity. The library loads after first paint; calls made before that are queued.
-   The pages keep the small Leaflet-shaped API they were written against (L.map, L.marker, L.divIcon, L.layerGroup,
+   The pages keep the small map API they were written against (L.map, L.marker, L.divIcon, L.layerGroup,
    L.markerClusterGroup, L.latLngBounds), which this file now provides on top of maplibregl. */
 window.MAP_CONFIG = {
   maptilerKey: '',                                   /* CIDEAL supplies the key (Annex A); empty → demo tiles below */
