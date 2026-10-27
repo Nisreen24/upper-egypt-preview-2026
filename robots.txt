@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+Disallow: /admin-
+Sitemap: https://nisreen24.github.io/upper-egypt-preview-2026/sitemap.xml

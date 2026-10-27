@@ -62,7 +62,7 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
   <h1>Compliance Audit of the Prototype vs Inception Report v1.2</h1>
   <p>Review → compare → identify gaps → document required actions. The prototype at <code>nisreen24.github.io/upper-egypt-preview-2026</code> was checked page by page against Inception Report v1.2 (25 September 2026). Every finding cites the report section or figure it relates to; nothing in the UI was changed. Where the report does not define something, the item is marked <span class="s c">Needs Clarification</span>.</p>
   <div class="meta"><div><b>Reference</b>Inception Report v1.2, SwiftX for Fundación CIDEAL</div><div><b>Reviewed</b>33 public pages, 6 forms, 10 listings, 3 languages (Arabic fully, English and Spanish spot-checked)</div><div><b>Method</b>source inspection of the published prototype (HTML, data and script files) plus browser checks</div><div><b>Date</b>26 October 2026</div></div>
-  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a></nav>
+  <nav class="toc"><a href="#a">A Summary</a><a href="#b">B Critical</a><a href="#c">C Page-by-page</a><a href="#d">D Flows</a><a href="#e">E Navigation</a><a href="#f">F Forms</a><a href="#g">G Listings</a><a href="#h">H Content</a><a href="#i">I Accessibility</a><a href="#j">J Decisions</a><a href="#k">K Matched</a><a href="#l">L Checklist</a><a href="#m">M Verification</a></nav>
 </header>
 
 <h2 id="a"><span class="n">A</span>Executive summary</h2>
@@ -334,7 +334,89 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.92em;background:var(
   <li class="done">RTL mirroring, three-language dictionary, localised dates, directional icons</li>
   <li class="done">Learning paths before resources; events with registration; About in four sections; 404</li>
 </ul>
-<p class="small" style="margin-top:36px">Audit only. No design, markup, routes or features were changed. Approval is required before any of the actions above are implemented.</p>
+
+<h2 id="m"><span class="n">M</span>Verification pass, 27 October 2026</h2>
+<p>After approval, the Must Fix list was applied and a second batch of Partial / Missing items followed. Every change was then re-verified against the Inception Report alone (the UI Review was not treated as evidence). Nothing has been committed or published; the working copy runs locally. Decisions below are the stakeholders' and the UI stays as it is until they are taken.</p>
+
+<h4>A. Confirmed fixes supported directly by the report (kept)</h4>
+<div class="tw"><table>
+<tr><th>Change</th><th>Report reference</th><th>Requirement</th><th>Why it was necessary</th><th>Status</th></tr>
+<tr><td>Entrepreneur "Contact" routes to the general inquiry form</td><td>Fig 16; Fig 7; §4.1</td><td>"Contact this entrepreneur → request workflow"; the tourist "sends the contact form … the entrepreneur has the enquiry"</td><td>The button pointed at an anchor that does not exist</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Gallery block on the entrepreneur profile (shown once an entry has two or more photos)</td><td>Fig 16; §4.2; §6.2</td><td>Gallery row; the holder edits "the gallery"; the entry holds "photographs"</td><td>The block did not exist</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Privacy-notice link under the organisation registration form</td><td>Fig 20</td><td>"Privacy notice link · retention stated"</td><td>Missing on that form</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>News and Events reachable from the Stakeholders section</td><td>Fig 19; Fig 5 (#3)</td><td>"value chains · sector news · events" row; "Sector news" block</td><td>News existed but was not linked from the section</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Success stories reachable from For Entrepreneurs (a link above the learning paths)</td><td>Fig 5 (For Entrepreneurs #4)</td><td>"Success stories — stories, each linking to a profile"</td><td>Stories were not reachable from the section. A link rather than an embedded block, so partial</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Programme code 2022-PCONV-000504 on About</td><td>§1</td><td>"the programme numbered 2022-PCONV-000504"</td><td>A placeholder code was shown. This value comes from the report itself and is not provisional</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Skip-to-content link on every page</td><td>§9.3</td><td>Templates "built and tested to WCAG 2.1 AA"; every control operable by keyboard</td><td>No bypass mechanism existed (WCAG 2.4.1)</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Focus ring and form-field outline at 3:1 (ink outline with a white inner ring)</td><td>§9.3</td><td>"a form field outline, a control edge and the focus ring included, takes a colour that clears 3:1 on both grounds rather than the platform's accent colour"</td><td>The ring was the accent colour at 40% opacity</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Keyboard operation of the Home rail</td><td>§9.3</td><td>"the carousel included, where every card stays reachable in sequence whether or not the reader advances it"</td><td>The rail had no keyboard handling</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Home block order</td><td>§3.3; Fig 5 (#1–8); Fig 11</td><td>"The eight blocks in the order section 3.3 sets"</td><td>The audience block sat under the hero and experiences preceded destinations</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Four featured destination cards on Home</td><td>Fig 11</td><td>Four destination cards in the block</td><td>The rail had three. Which entry fills the fourth card is CIDEAL's choice (see B)</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>City guides: "Meet the entrepreneurs" after "Where to stay"</td><td>§3.5 / Fig 6 (#6–8); §11.1 decision 1</td><td>"City guides follow the section order in section 3.5"</td><td>Entrepreneurs sat before food and stays</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Site search with a results page</td><td>§2.1 Site search</td><td>"Free text search across destinations, experiences, entrepreneurs and organisations"</td><td>Submitting only showed a toast. The report defines the feature, not the page layout (see B)</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Related success stories on the learning-path page</td><td>Fig 18</td><td>"Related success stories" row of three cards</td><td>The block did not exist. The selection rule is in B</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Entrepreneur filter on success stories</td><td>Fig 24</td><td>"City ▾ Pillar ▾ Entrepreneur ▾"</td><td>Only city and pillar existed</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Privacy notice: legal framework, sub-processors, embedded video; whole notice in EN and ES</td><td>§7.4; §6.2; Annex A</td><td>GDPR and Law 151/2020; four sub-processors; the player loads on activation; everything a visitor reads in three languages</td><td>Sections were absent and the notice was Arabic-only. Draft wording until CIDEAL's approved text (Annex A, 26 Nov)</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Cancel on the one-time edit form</td><td>Fig 28</td><td>"Save and send for review" beside "Cancel"</td><td>Cancel was missing</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Description, canonical, Open Graph and Twitter tags on every page; sitemap.xml; robots.txt</td><td>§9.4</td><td>"Metadata per page and per language … a canonical URL per page, one sitemap per locale … Open Graph and Twitter cards"</td><td>None existed. The per-locale parts need locale paths (see D)</td><td><span class="s m">Kept</span></td></tr>
+<tr><td>Translations (EN, ES) for every new string</td><td>§6.2</td><td>"Everything a visitor reads exists in Arabic, English and Spanish"</td><td>New strings must not break the trilingual rule</td><td><span class="s m">Kept</span></td></tr>
+</table></div>
+
+<h4>B. Decision Required (applied or present, UI left unchanged until stakeholders confirm)</h4>
+<div class="tw"><table>
+<tr><th>Item</th><th>Current state</th><th>Why it is a decision</th><th>Status</th></tr>
+<tr><td>Newsletter consent checkbox and its validation message</td><td>Applied on Home and Resources</td><td>§7.4 names three forms (inquiry, registration, profile update); §2.1 only says "an email subscribe point". The change came from the UI Review</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Consent checkbox on the update-link request page</td><td>Applied</td><td>§4.1's "profile update" is the one-time-link edit form, which already had consent. §4.2 asks no consent for the link request</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Privacy line under the contact, directory-request, update-request and edit forms</td><td>Applied</td><td>Only Fig 20 (registration) shows it; Fig 26 shows consent only</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Audience filter on resources and the provisional audience tags</td><td>Applied; tags are a guess from topic</td><td>§6.4 defines the taxonomy as data; Fig 17 draws Topic, Format and Pillar only</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Wording of the entrepreneur contact note</td><td>Applied</td><td>Copy written for the prototype, not report text</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Tatweel (stretched letters) removed from headings</td><td>Applied, reversible</td><td>§9.3 does not mention it; raised by the UI Review</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Contact email <code>info@discoverupperegypt.com</code></td><td>Applied in place of the example address</td><td>§8.3 recommends the domain, not the address</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Footer social icons hidden</td><td>Applied; markup kept</td><td>Fig 11's footer carries "social · contact · privacy notice", so the row must return once real URLs arrive</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>"Manal Awaga" spelling unified</td><td>Applied</td><td>Content is CIDEAL's (§2.2); raised by the UI Review</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Which destination fills the fourth Home card (Kitchener's Island)</td><td>Applied</td><td>§3.5: "CIDEAL staff choose which entries appear"</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Related-story selection rule (same pillar first)</td><td>Applied</td><td>§6.2 Story: "where on the site it appears" is a CMS field</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Search results presentation (grouped by type)</td><td>Applied</td><td>The report defines the feature, not the page</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Practical information topics</td><td>Accordion with: how to get there, best time, getting around, tips</td><td>Structure matches §3.5 #9; Fig 12 names Transport, Climate, Safety, Cultural tips</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>"Keep exploring" bands in the city guides</td><td>Present</td><td>Not in the §3.5 template, not explicitly excluded</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Third "tourists" card in the Home audience block</td><td>Present</td><td>Fig 5 #8 specifies "two links: entrepreneurs, organisations"</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Expanding experience accordion with five panels on Home</td><td>Present</td><td>Fig 11 shows four experience cards; purpose is met, presentation differs</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Accessibility drawer tools</td><td>Present</td><td>§9.3 requires conformance without depending on an overlay; the drawer itself is not excluded</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Favourites (heart icons)</td><td>Present</td><td>§2.2 excludes front-end accounts, not favourites held on the device</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Live weather in city guides and on destination cards</td><td>Present</td><td>Not in §6.2 or §7.1; not explicitly excluded</td><td><span class="s c">Decision Required</span></td></tr>
+<tr><td>Earlier items J-2 to J-14 above (request types, organisation fields, contact form fields, map library, destination filters, pagination, "Where to buy local products", 1 + 2 entrepreneur layout)</td><td>Present</td><td>Report and UI disagree or the report is silent</td><td><span class="s c">Decision Required</span></td></tr>
+</table></div>
+
+<h4>C. Out of scope with explicit report evidence</h4>
+<div class="tw"><table>
+<tr><th>Item</th><th>Report reference</th><th>Evidence</th><th>Status</th></tr>
+<tr><td>Background music and ambient audio (Home, Luxor, Aswan)</td><td>§6.6</td><td>"No background music, autoplay audio … will be used"</td><td><span class="s o">Removed (approved)</span></td></tr>
+<tr><td>Hotels under "Where to stay"</td><td>§6.4; Fig 6 #7</td><td>Accommodation is "community-based and entrepreneur-run … not a hotel"; "community-based only"</td><td><span class="s o">Removed (approved)</span></td></tr>
+<tr><td>Travel ideas: page, planner, city-guide sections, nav and footer links</td><td>§11.1 decision 3</td><td>Descoped in v1.1</td><td><span class="s o">Flagged, still present</span></td></tr>
+<tr><td>Self-hosted hero video (city-guide scroll hero; stories hero slot)</td><td>§6.6</td><td>"or self-hosted video will be used"; video "embedded from YouTube only"</td><td><span class="s o">Flagged, still present</span></td></tr>
+</table></div>
+
+<h4>D. Build-level items (development and CMS)</h4>
+<ul class="chk">
+  <li>Locale paths and hreflang (§3.1, §7.3, Fig 4); per-locale sitemaps and structured data on detail pages (§9.4)</li>
+  <li>Performance budgets (§9.2)</li>
+  <li>CMS, roles, review queue, approval actions, message templates and email (§4.3, §6.5, §6.7, Fig 27)</li>
+  <li>Live Turnstile, analytics, error tracking, hosting (§7.1, §8)</li>
+  <li>Community-based stay entries and entrepreneur photo sets (Annex A)</li>
+</ul>
+
+<h4>E. Corrections to the earlier sections of this audit</h4>
+<ul class="chk">
+  <li>The programme code was listed both as fixed and as provisional. §1 states the number; it is confirmed.</li>
+  <li>Hero video sat under Decisions (J-10). §6.6 excludes self-hosted video, so it belongs in C.</li>
+  <li>Favourites, weather, "Keep exploring", the tourists card, the accordion and the accessibility drawer were labelled out of scope without an explicit exclusion. They are decisions (B).</li>
+  <li>Newsletter and update-request consent were presented as §4.1 / §7.4 requirements. §7.4 names three forms and §4.2 asks no consent for the link request. They are decisions (B).</li>
+  <li>Practical information was marked matched while its topic set differs from Fig 12. It is a decision (B).</li>
+  <li>Hiding the social row was presented as a fix, but Fig 11 requires social links in the footer. It is a decision (B).</li>
+  <li>The resources audience filter was marked missing against §6.4, but Fig 17 does not draw it. It is a decision (B).</li>
+</ul>
+
+<p class="small" style="margin-top:36px">Sections A to L are the audit of 26 October 2026 and were not edited. Section M records what was applied after approval, what was verified, and what still waits for a stakeholder decision.</p>
 </div>
 
 </body>
