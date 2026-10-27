@@ -47,7 +47,7 @@ window.CONTENT = (() => {
   /* ---- site configuration (BRD 7.2: one entry edited by an administrator) ---- */
   const site = {
     email: 'info@discoverupperegypt.org',
-    subjects: [['general', 'سؤال عام'], ['correction', 'تصحيح في أحد المداخل'], ['listing', 'طلب الإدراج كرائد أعمال'], ['press', 'استفسار صحفي أو شراكة']],
+    subjects: [['general', 'سؤال عام'], ['correction', 'تصحيح في أحد المداخل'], ['listing', 'طلب الإدراج كرائد أعمال'], ['directory', 'طلب دليل التواصل'], ['press', 'استفسار صحفي أو شراكة']],
     responseDays: { general: 5, directory: 10, registration: 10, update: 5 },
     retentionMonths: 24,
     about: {
