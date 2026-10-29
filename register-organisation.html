@@ -576,71 +576,22 @@ html[dir="rtl"] .sk-list{order:2}
 <div id="backdrop" class="backdrop"></div>
 <aside id="a11yDrawer" class="drawer" role="dialog" aria-modal="true" aria-labelledby="a11yTitle" aria-hidden="true">
   <div class="drawer-head">
-    <span class="w-10 h-10 rounded-full bg-[var(--rust)] text-white grid place-items-center flex-none shadow-[0_6px_14px_-6px_rgba(138,50,19,.6)]">
-      <svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M160,40a32,32,0,1,0-32,32A32,32,0,0,0,160,40ZM128,56a16,16,0,1,1,16-16A16,16,0,0,1,128,56ZM231.5,87.71A19.62,19.62,0,0,0,212,72H44a20,20,0,0,0-8.38,38.16l.13,0,50.75,22.35-21,79.72A20,20,0,0,0,102,228.8l26-44.87,26,44.87a20,20,0,0,0,36.4-16.52l-21-79.72,50.75-22.35.13,0A19.64,19.64,0,0,0,231.5,87.71Zm-17.8,7.9-56.93,25.06a8,8,0,0,0-4.51,9.36L175.13,217a7,7,0,0,0,.49,1.35,4,4,0,0,1-5,5.45,4,4,0,0,1-2.25-2.07,6.31,6.31,0,0,0-.34-.63L134.92,164a8,8,0,0,0-13.84,0L88,221.05a6.31,6.31,0,0,0-.34.63,4,4,0,0,1-2.25,2.07,4,4,0,0,1-5-5.45,7,7,0,0,0,.49-1.35L103.74,130a8,8,0,0,0-4.51-9.36L42.3,95.61A4,4,0,0,1,44,88H212a4,4,0,0,1,1.73,7.61Z"/></svg>
-    </span>
-    <div class="flex-1 min-w-0">
-      <h2 id="a11yTitle" class="text-[19px] font-bold text-[var(--nav-ink)] leading-tight">إمكانية الوصول</h2>
-      <p class="text-[12px] text-[var(--muted)] mt-0.5">خصص تجربة التصفح بما يناسب احتياجاتك</p>
-    </div>
-    <button id="a11yClose" class="close-x" type="button" aria-label="إغلاق">
-      <svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg>
-    </button>
+    <h2 id="a11yTitle" class="drawer-title">إمكانية الوصول</h2>
+    <button id="a11yClose" class="close-x" type="button" aria-label="إغلاق"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M205.66,194.34a8,8,0,0,1-11.32,11.32L128,139.31,61.66,205.66a8,8,0,0,1-11.32-11.32L116.69,128,50.34,61.66A8,8,0,0,1,61.66,50.34L128,116.69l66.34-66.35a8,8,0,0,1,11.32,11.32L139.31,128Z"/></svg></button>
   </div>
-
   <div class="drawer-body">
-    <section class="sec" aria-labelledby="s-content">
-      <div class="sec-head">
-        <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,40H40A16,16,0,0,0,24,56V200a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,160H40V56H216V200ZM184,96a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,96Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,128Zm0,32a8,8,0,0,1-8,8H80a8,8,0,0,1,0-16h96A8,8,0,0,1,184,160Z"/></svg></span>
-        <div><h3 id="s-content" class="text-[15px] font-bold text-[var(--nav-ink)]">المحتوى</h3><p class="text-[11.5px] text-[var(--muted)]">تحكم في كيفية عرض المحتوى على الموقع</p></div>
-      </div>
-      <div class="grid4">
-        <button class="tile" type="button" data-a11y="readable" aria-pressed="false"><span class="glyph">Aa</span><span>خط سهل القراءة</span></button>
-        <button class="tile" type="button" data-a11y="text-dec" aria-pressed="false"><span class="glyph">A-</span><span>تصغير النص</span></button>
-        <button class="tile" type="button" data-a11y="text-inc" aria-pressed="false"><span class="glyph">A+</span><span>تكبير النص</span></button>
-      </div>
-    </section>
-
-    <section class="sec" aria-labelledby="s-colors">
-      <div class="sec-head">
-        <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M200.77,53.89A103.27,103.27,0,0,0,128,24h-1.07A104,104,0,0,0,24,128c0,43,26.58,79.06,69.36,94.17A32,32,0,0,0,136,192a16,16,0,0,1,16-16h46.21a31.81,31.81,0,0,0,31.2-24.88,104.43,104.43,0,0,0,2.59-24A103.28,103.28,0,0,0,200.77,53.89Zm13,93.71A15.89,15.89,0,0,1,198.21,160H152a32,32,0,0,0-32,32,16,16,0,0,1-21.31,15.07C62.49,194.3,40,164,40,128a88,88,0,0,1,87.09-88h.9a88.35,88.35,0,0,1,88,87.25A88.86,88.86,0,0,1,213.81,147.6ZM140,76a12,12,0,1,1-12-12A12,12,0,0,1,140,76ZM96,100A12,12,0,1,1,84,88,12,12,0,0,1,96,100Zm0,56a12,12,0,1,1-12-12A12,12,0,0,1,96,156Zm88-56a12,12,0,1,1-12-12A12,12,0,0,1,184,100Z"/></svg></span>
-        <div><h3 id="s-colors" class="text-[15px] font-bold text-[var(--nav-ink)]">الألوان</h3><p class="text-[11.5px] text-[var(--muted)]">تخصيص ألوان الموقع لتحسين الرؤية</p></div>
-      </div>
-      <div class="grid4">
-        <button class="tile" type="button" data-a11y="contrast" aria-pressed="false"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M201.54,54.46A104,104,0,0,0,54.46,201.54,104,104,0,0,0,201.54,54.46ZM184,195.87a87.16,87.16,0,0,1-16,10.5V99.31l16-16Zm-80-32.56,16-16v68.28a88.37,88.37,0,0,1-16-3ZM88,206.37a87,87,0,0,1-16.3-10.76L88,179.31Zm48-75.06,16-16v97.32a88.37,88.37,0,0,1-16,3ZM40,128A88,88,0,0,1,184.3,60.39L60.38,184.31A87.34,87.34,0,0,1,40,128Zm160,50.59V77.41a88,88,0,0,1,0,101.18Z"/></svg><span>تباين عالٍ</span></button>
-      </div>
-    </section>
-
-    <section class="sec" aria-labelledby="s-nav">
-      <div class="sec-head">
-        <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></span>
-        <div><h3 id="s-nav" class="text-[15px] font-bold text-[var(--nav-ink)]">التنقل</h3><p class="text-[11.5px] text-[var(--muted)]">تسهيل التصفح والتنقل داخل الموقع</p></div>
-      </div>
-      <div class="grid4">
-        <button class="tile" type="button" data-a11y="links" aria-pressed="false"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"/></svg><span>تمييز الروابط</span></button>
-      </div>
-    </section>
-
-    <section class="sec" aria-labelledby="s-motion">
-      <div class="sec-head">
-        <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M56,96v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM88,24a8,8,0,0,0-8,8V224a8,8,0,0,0,16,0V32A8,8,0,0,0,88,24Zm40,32a8,8,0,0,0-8,8V192a8,8,0,0,0,16,0V64A8,8,0,0,0,128,56Zm40,32a8,8,0,0,0-8,8v64a8,8,0,0,0,16,0V96A8,8,0,0,0,168,88Zm40-16a8,8,0,0,0-8,8v96a8,8,0,0,0,16,0V80A8,8,0,0,0,208,72Z"/></svg></span>
-        <div><h3 id="s-motion" class="text-[15px] font-bold text-[var(--nav-ink)]">الحركة</h3><p class="text-[11.5px] text-[var(--muted)]">تقليل المؤثرات الحركية</p></div>
-      </div>
-      <div class="grid3">
-        <button class="tile" type="button" data-a11y="motion" aria-pressed="false"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M222.16,177.25a8,8,0,0,1-1,11.25c-17.36,14.39-32.86,19.5-47,19.5-18.58,0-34.82-8.82-49.93-17-25.35-13.76-47.24-25.64-79.07.74a8,8,0,1,1-10.22-12.31c40.17-33.28,70.32-16.92,96.93-2.48,25.35,13.75,47.24,25.63,79.07-.74A8,8,0,0,1,222.16,177.25Zm-11.27-57c-31.83,26.38-53.72,14.5-79.07.74-26.61-14.43-56.76-30.79-96.93,2.49a8,8,0,0,0,10.22,12.31c31.83-26.38,53.72-14.5,79.07-.74,15.11,8.19,31.35,17,49.93,17,14.14,0,29.64-5.11,47-19.5a8,8,0,1,0-10.22-12.31ZM45.11,79.8c31.83-26.37,53.72-14.49,79.07-.74,15.11,8.2,31.35,17,49.93,17,14.14,0,29.64-5.12,47-19.5a8,8,0,1,0-10.22-12.31c-31.83,26.38-53.72,14.5-79.07.74C105.21,50.58,75.06,34.22,34.89,67.5A8,8,0,1,0,45.11,79.8Z"/></svg><span>تقليل الحركة</span></button>
-      </div>
-    </section>
+    <div class="a11y-grid">
+      <button class="tile" type="button" data-a11y="text-inc" aria-pressed="false"><span class="tile-ic" aria-hidden="true"><span class="glyph">A+</span></span><span class="tile-l">تكبير النص</span><span class="lvl" data-level="0" aria-hidden="true"><i></i><i></i><i></i></span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="text-dec" aria-pressed="false"><span class="tile-ic" aria-hidden="true"><span class="glyph">A−</span></span><span class="tile-l">تصغير النص</span><span class="lvl" data-level="0" aria-hidden="true"><i></i><i></i><i></i></span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="links" aria-pressed="false"><span class="tile-ic" data-ic="link"></span><span class="tile-l">تمييز الروابط</span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="motion" aria-pressed="false"><span class="tile-ic" data-ic="wind"></span><span class="tile-l">تقليل الحركة</span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="cursor" aria-pressed="false"><span class="tile-ic" data-ic="cursor"></span><span class="tile-l">مؤشر كبير</span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="contrast" aria-pressed="false"><span class="tile-ic" data-ic="sun"></span><span class="tile-l">تباين عالٍ</span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+      <button class="tile" type="button" data-a11y="readable" aria-pressed="false"><span class="tile-ic" aria-hidden="true"><span class="glyph">Aa</span></span><span class="tile-l">خط سهل القراءة</span><span class="tile-ok" aria-hidden="true" data-ic="check"></span></button>
+    </div>
   </div>
-
   <div class="drawer-foot">
-    <button id="a11yReset" class="reset" type="button">
-      <svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.07,3.07,0,0,1-.26.25L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z"/></svg>
-      <span>إعادة الإعدادات</span>
-    </button>
-    <p class="text-center text-[11.5px] text-[var(--muted)] mt-2.5 flex items-center justify-center gap-1.5">
-      <svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M229.66,77.66l-128,128a8,8,0,0,1-11.32,0l-56-56a8,8,0,0,1,11.32-11.32L96,188.69,218.34,66.34a8,8,0,0,1,11.32,11.32Z"/></svg>
-      يتم حفظ تفضيلاتك تلقائياً في هذا المتصفح
-    </p>
+    <button id="a11yReset" class="reset" type="button" disabled><svg class="ic" width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a96,96,0,0,1-94.71,96H128A95.38,95.38,0,0,1,62.1,197.8a8,8,0,0,1,11-11.63A80,80,0,1,0,71.43,71.39a3.45,3.45,0,0,1-.26.3L44.59,96H72a8,8,0,0,1,0,16H24a8,8,0,0,1-8-8V56a8,8,0,0,1,16,0V85.8L60.25,60A96,96,0,0,1,224,128Z"/></svg><span>إعادة الإعدادات</span></button>
   </div>
 </aside>
 </div><!-- /a11yLayer -->
@@ -734,35 +685,37 @@ html[dir="rtl"] .sk-list{order:2}
     }
   });
 
-  /* ---------- Accessibility features ---------- */
-  const KEY = 'se-a11y-v1';
-  const TOGGLES = ['readable','contrast','links','motion'];
+  /* ---------- Accessibility features (9.3): seven tiles in a fixed order; saved in this browser only, no request leaves the page ---------- */
+  const KEY = 'se-a11y-v2';
+  const TOGGLES = ['links', 'motion', 'cursor', 'contrast', 'readable'];
+  const INC = [1, 1.125, 1.25, 1.4], DEC = [1, 0.92, 0.85, 0.78];
   const state = Object.assign({ scale: 0 }, Object.fromEntries(TOGGLES.map(k => [k, false])));
-  try { Object.assign(state, JSON.parse(localStorage.getItem(KEY) || '{}')); } catch {}
+  let saved = null; try { saved = JSON.parse(localStorage.getItem(KEY) || 'null'); } catch {}
+  if (saved) Object.assign(state, saved); else if (matchMedia('(prefers-reduced-motion:reduce)').matches) state.motion = true;
   const save = () => { try { localStorage.setItem(KEY, JSON.stringify(state)); } catch {} };
-
   const tiles = Object.fromEntries($$('.tile[data-a11y]').map(t => [t.dataset.a11y, t]));
-  const SCALES = [1, 1.125, 1.25, 1.4];
+  $$('[data-ic]', drawer).forEach(el => { el.innerHTML = ICON(el.dataset.ic, el.classList.contains('tile-ok') ? 14 : 28); if (!el.classList.contains('tile-ok')) el.setAttribute('aria-hidden', 'true'); });
+  const levelText = (n) => { const l = (window.I18N && I18N.lang) || 'ar'; return l === 'en' ? 'level ' + n + ' of 3' : l === 'es' ? 'nivel ' + n + ' de 3' : 'المستوى ' + n + ' من 3'; };
+  const isDefault = () => state.scale === 0 && TOGGLES.every(k => !state[k]);
   const applyAll = () => {
     TOGGLES.forEach(k => { html.classList.toggle('a11y-' + k, !!state[k]); tiles[k].setAttribute('aria-pressed', !!state[k]); });
-    const s = state.scale < 0 ? 0.9 : SCALES[Math.min(state.scale, SCALES.length - 1)];
-    html.style.setProperty('--a11y-scale', s);
-    tiles['text-inc'].setAttribute('aria-pressed', state.scale > 0);
-    tiles['text-dec'].setAttribute('aria-pressed', state.scale < 0);
+    html.style.setProperty('--a11y-scale', state.scale > 0 ? INC[state.scale] : DEC[-state.scale]);
+    [['text-inc', state.scale > 0 ? state.scale : 0], ['text-dec', state.scale < 0 ? -state.scale : 0]].forEach(([k, n]) => {
+      const t = tiles[k]; t.setAttribute('aria-pressed', n > 0); t.querySelector('.lvl').dataset.level = n;
+      t.setAttribute('aria-label', t.querySelector('.tile-l').textContent.trim() + (n ? (I18N.lang === 'ar' ? '، ' : ', ') + levelText(n) : ''));
+    });
+    $('#a11yReset').disabled = isDefault();
     save();
   };
-
   $$('.tile[data-a11y]').forEach(t => t.addEventListener('click', () => {
     const k = t.dataset.a11y;
-    if (k === 'text-inc') { state.scale = state.scale < 0 ? 1 : Math.min(state.scale + 1, SCALES.length - 1); if (state.scale === SCALES.length - 1) toast(I18N.t('أقصى حجم للنص')); }
-    else if (k === 'text-dec') { state.scale = state.scale > 0 ? 0 : -1; }
-    else {
-      state[k] = !state[k];
-    }
+    if (k === 'text-inc') state.scale = state.scale < 0 ? 1 : (state.scale + 1) % 4;
+    else if (k === 'text-dec') state.scale = state.scale > 0 ? -1 : (state.scale - 1 < -3 ? 0 : state.scale - 1);
+    else state[k] = !state[k];
     applyAll();
   }));
   $('#a11yReset').addEventListener('click', () => { TOGGLES.forEach(k => state[k] = false); state.scale = 0; applyAll(); toast(I18N.t('تمت إعادة الإعدادات')); });
-
+  document.addEventListener('i18n:change', applyAll);
   applyAll();
 })();
 </script>

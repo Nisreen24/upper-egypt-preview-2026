@@ -23,7 +23,6 @@ window.I18N = (() => {
   };
 
   const TITLES = { ar: 'صعيد مصر — تراث حي', en: 'Upper Egypt — Living Heritage', es: 'Alto Egipto — Patrimonio vivo' };
-  const SPEECH = { ar: 'ar-EG', en: 'en-GB', es: 'es-ES' };
   const ATTRS = ['placeholder', 'aria-label', 'title', 'alt'];
   const norm = s => String(s).replace(/ـ/g, '').replace(/\s+/g, ' ').trim();
   const textOrig = new WeakMap(), attrOrig = new WeakMap();
@@ -37,7 +36,7 @@ window.I18N = (() => {
     html.setAttribute('lang', lang); html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); html.classList.toggle('lang-latin', lang !== 'ar');
     // text nodes
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const nodes = []; let n;
-    while ((n = walker.nextNode())) { if (n.parentElement && n.parentElement.closest('script,style,#toast,#a11yTip,#news-msg')) continue; nodes.push(n); }
+    while ((n = walker.nextNode())) { if (n.parentElement && n.parentElement.closest('script,style,#toast,#news-msg')) continue; nodes.push(n); }
     nodes.forEach(node => {
       if (!textOrig.has(node)) { if (!norm(node.nodeValue)) return; textOrig.set(node, node.nodeValue); }
       const o = textOrig.get(node); const t = lookup(o, lang);
@@ -61,7 +60,6 @@ window.I18N = (() => {
     t: (key) => { const v = lookup(key, lang); return v == null ? key : v; },
     lookup,
     events: () => EVENTS[lang] || null,          // null → use the Arabic source array
-    speechLang: () => SPEECH[lang],
     init() { let saved = null; try { saved = localStorage.getItem('se-lang'); } catch {} apply(saved || 'ar'); },
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => api.init()); else api.init();

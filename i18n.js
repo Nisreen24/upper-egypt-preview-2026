@@ -655,42 +655,20 @@ window.I18N = (() => {
 
     /* ---- accessibility drawer ---- */
     'إمكانية الوصول': { en: 'Accessibility', es: 'Accesibilidad' },
-    'خصص تجربة التصفح بما يناسب احتياجاتك': { en: 'Adjust the site to suit your needs', es: 'Adapta el sitio a tus necesidades' },
     'إغلاق': { en: 'Close', es: 'Cerrar' },
     'الصورة التالية': { en: 'Next image', es: 'Imagen siguiente' },
     'الصورة السابقة': { en: 'Previous image', es: 'Imagen anterior' },
-    'المحتوى': { en: 'Content', es: 'Contenido' },
-    'تحكم في كيفية عرض المحتوى على الموقع': { en: 'Control how content is displayed', es: 'Controla cómo se muestra el contenido' },
-    'إخفاء الصور': { en: 'Hide images', es: 'Ocultar imágenes' },
     'خط سهل القراءة': { en: 'Readable font', es: 'Fuente legible' },
     'تصغير النص': { en: 'Smaller text', es: 'Reducir texto' },
     'تكبير النص': { en: 'Larger text', es: 'Ampliar texto' },
-    'الألوان': { en: 'Colours', es: 'Colores' },
-    'تخصيص ألوان الموقع لتحسين الرؤية': { en: 'Adjust colours for better visibility', es: 'Ajusta los colores para ver mejor' },
-    'السطوع': { en: 'Brightness', es: 'Brillo' },
-    'عكس الألوان': { en: 'Invert colours', es: 'Invertir colores' },
-    'تدرج رمادي': { en: 'Grayscale', es: 'Escala de grises' },
     'تباين عالٍ': { en: 'High contrast', es: 'Alto contraste' },
     'التنقل': { en: 'Navigation', es: 'Navegación' },
-    'تسهيل التصفح والتنقل داخل الموقع': { en: 'Make browsing and navigation easier', es: 'Facilita la navegación por el sitio' },
-    'تلميحات': { en: 'Tooltips', es: 'Descripciones' },
     'مؤشر كبير': { en: 'Large cursor', es: 'Cursor grande' },
     'تمييز الروابط': { en: 'Highlight links', es: 'Resaltar enlaces' },
-    'دليل القراءة': { en: 'Reading guide', es: 'Guía de lectura' },
     'الحركة': { en: 'Motion', es: 'Movimiento' },
-    'تقليل المؤثرات الحركية': { en: 'Reduce motion effects', es: 'Reduce los efectos de movimiento' },
-    'الإملاء الصوتي': { en: 'Voice dictation', es: 'Dictado por voz' },
-    'قراءة النص': { en: 'Read aloud', es: 'Leer en voz alta' },
     'تقليل الحركة': { en: 'Reduce motion', es: 'Reducir movimiento' },
     'إعادة الإعدادات': { en: 'Reset settings', es: 'Restablecer ajustes' },
-    'يتم حفظ تفضيلاتك تلقائياً في هذا المتصفح': { en: 'Your preferences are saved automatically in this browser', es: 'Tus preferencias se guardan automáticamente en este navegador' },
     'تمت إعادة الإعدادات': { en: 'Settings reset', es: 'Ajustes restablecidos' },
-    'أقصى حجم للنص': { en: 'Maximum text size', es: 'Tamaño máximo de texto' },
-    'قراءة النص غير مدعومة في هذا المتصفح': { en: 'Read aloud is not supported in this browser', es: 'La lectura en voz alta no es compatible con este navegador' },
-    'الإملاء الصوتي غير مدعوم في هذا المتصفح': { en: 'Voice dictation is not supported in this browser', es: 'El dictado por voz no es compatible con este navegador' },
-    'تعذّر الوصول إلى الميكروفون': { en: "Couldn't access the microphone", es: 'No se pudo acceder al micrófono' },
-    'الإملاء الصوتي يعمل — تحدث الآن': { en: 'Voice dictation is on — speak now', es: 'Dictado por voz activado — habla ahora' },
-    'سمعت: ': { en: 'Heard: ', es: 'Escuché: ' },
     'لقطات من': { en: "Scenes from", es: "Escenas de" },
     'باختصار:': { en: "In short:", es: "En resumen:" },
     'المعلومات': { en: "Information", es: "Información" },
@@ -854,6 +832,7 @@ window.I18N = (() => {
     'موارد': { en: "resources", es: "recursos" },
     'استكشف المسار': { en: "Explore the path", es: "Explorar la ruta" },
     'عن هذا المسار': { en: "About this path", es: "Sobre esta ruta" },
+    'يوفر زر إمكانية الوصول في الهيدر سبعة خيارات: تكبير النص وتصغيره على ثلاثة مستويات، وتمييز الروابط، وتقليل الحركة، ومؤشر كبير، وتباين عالٍ، وخط سهل القراءة. تُحفظ في متصفحك فقط، ويُفعَّل تقليل الحركة تلقائيًا إن كان نظامك يطلبه.': { en: "The accessibility button in the header offers seven options: larger and smaller text on three levels, highlighted links, reduced motion, a large cursor, high contrast and a readable font. They are stored in your browser only, and reduced motion switches on by itself when your system asks for it.", es: "El botón de accesibilidad de la cabecera ofrece siete opciones: texto más grande y más pequeño en tres niveles, enlaces resaltados, menos movimiento, un cursor grande, alto contraste y una fuente legible. Se guardan solo en tu navegador, y la reducción de movimiento se activa sola cuando tu sistema lo pide." },
     'دليل التواصل (استفسار عام)': { en: "Contact directory (general inquiry)", es: "Directorio de contactos (consulta general)" },
     'لديك ملف على المنصة؟': { en: "Already listed on the platform?", es: "¿Ya figuras en la plataforma?" },
     'اطلب رابط تحديث بياناتك': { en: "Request a link to update your entry", es: "Solicita un enlace para actualizar tu ficha" },
@@ -1567,7 +1546,6 @@ window.I18N = (() => {
   };
 
   const TITLES = { ar: 'صعيد مصر — تراث حي', en: 'Upper Egypt — Living Heritage', es: 'Alto Egipto — Patrimonio vivo' };
-  const SPEECH = { ar: 'ar-EG', en: 'en-GB', es: 'es-ES' };
   const ATTRS = ['placeholder', 'aria-label', 'title', 'alt'];
   const norm = s => String(s).replace(/ـ/g, '').replace(/\s+/g, ' ').trim();
   const textOrig = new WeakMap(), attrOrig = new WeakMap();
@@ -1581,7 +1559,7 @@ window.I18N = (() => {
     html.setAttribute('lang', lang); html.setAttribute('dir', lang === 'ar' ? 'rtl' : 'ltr'); html.classList.toggle('lang-latin', lang !== 'ar');
     // text nodes
     const walker = document.createTreeWalker(document.body, NodeFilter.SHOW_TEXT); const nodes = []; let n;
-    while ((n = walker.nextNode())) { if (n.parentElement && n.parentElement.closest('script,style,#toast,#a11yTip,#news-msg')) continue; nodes.push(n); }
+    while ((n = walker.nextNode())) { if (n.parentElement && n.parentElement.closest('script,style,#toast,#news-msg')) continue; nodes.push(n); }
     nodes.forEach(node => {
       if (!textOrig.has(node)) { if (!norm(node.nodeValue)) return; textOrig.set(node, node.nodeValue); }
       const o = textOrig.get(node); const t = lookup(o, lang);
@@ -1605,7 +1583,6 @@ window.I18N = (() => {
     t: (key) => { const v = lookup(key, lang); return v == null ? key : v; },
     lookup,
     events: () => EVENTS[lang] || null,          // null → use the Arabic source array
-    speechLang: () => SPEECH[lang],
     init() { let saved = null; try { saved = localStorage.getItem('se-lang'); } catch {} apply(saved || 'ar'); },
   };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', () => api.init()); else api.init();
