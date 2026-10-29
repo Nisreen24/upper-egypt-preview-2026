@@ -42,7 +42,7 @@
 <div class="ad">
   <aside class="ad-side"><div class="brand"><img src="brand_assets/favicon-64.png" alt=""><span>اكتشف صعيد مصر<br><small style="font-weight:500;opacity:.7">لوحة التحرير</small></span></div>
     <nav aria-label="أقسام اللوحة"><a href="admin-queue.html">قائمة الطلبات</a><a href="admin-entry.html" aria-current="page">تحرير مدخل</a><a href="index.html">الموقع العام ↗</a></nav>
-    <p class="who">مسجّل الدخول: منسّق (نموذج)<br>الدور: coordinator</p>
+    <p class="who">مسجّل الدخول: منسّق (نموذج)<br>الدور: <select id="roleSel" aria-label="الدور"><option value="administrator">administrator</option><option value="editor" selected>editor</option><option value="contributor">contributor</option><option value="coordinator">coordinator</option></select></p>
   </aside>
   <main class="ad-main">
     <p class="ad-banner">نموذج تجريبي للشاشات الداخلية: البيانات محفوظة في متصفحك فقط، ولا يوجد خادم أو بريد حقيقي.</p>
@@ -70,15 +70,23 @@
 
   const $ = id => document.getElementById(id); const esc = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
   const L = EXPERIENCES.list; $('entrySel').innerHTML = L.map(e => '<option value="' + e.slug + '">' + esc(e.n) + ' (' + e.city + ')</option>').join('');
-  const LANGS = [['ar', 'العربية', 'rtl'], ['en', 'English', 'ltr'], ['es', 'Español', 'ltr']];
+  const LANGS = [['ar', 'العربية', 'rtl'], ['en', 'English', 'ltr'], ['es', 'Español', 'ltr']]; const STATE = { complete: {} };
   function render() {
     const e = L.find(x => x.slug === $('entrySel').value); const has = (k, l) => l === 'ar' ? true : I18N.lookup(k, l) != null;
-    $('langCols').innerHTML = LANGS.map(([l, name, dir]) => { const complete = has(e.n, l) && has(e.s, l) && has(e.d, l); const val = k => l === 'ar' ? k : (I18N.lookup(k, l) || ''); return '<section class="lang-col"><h3>' + name + ' <span class="pill ' + (complete ? 'ok' : 'missing') + '">' + (complete ? 'مكتملة' : 'ناقصة') + '</span></h3><label>الاسم</label><input dir="' + dir + '" value="' + esc(val(e.n)) + '"><label>الملخص</label><textarea dir="' + dir + '">' + esc(val(e.s)) + '</textarea><label>الوصف</label><textarea dir="' + dir + '">' + esc(val(e.d)) + '</textarea><label>الرابط (slug)</label><input dir="ltr" value="' + esc(e.slug) + '"></section>'; }).join('');
+    $('langCols').innerHTML = LANGS.map(([l, name, dir]) => { const complete = has(e.n, l) && has(e.s, l) && has(e.d, l); STATE.complete[l] = complete; const val = k => l === 'ar' ? k : (I18N.lookup(k, l) || ''); return '<section class="lang-col"><h3>' + name + ' <span class="pill ' + (complete ? 'ok' : 'missing') + '">' + (complete ? 'مكتملة' : 'ناقصة') + '</span></h3><label>الاسم</label><input dir="' + dir + '" value="' + esc(val(e.n)) + '"><label>الملخص</label><textarea dir="' + dir + '">' + esc(val(e.s)) + '</textarea><label>الوصف</label><textarea dir="' + dir + '">' + esc(val(e.d)) + '</textarea><label>الرابط (slug)</label><input dir="ltr" value="' + esc(e.slug) + '"></section>'; }).join('');
     $('shared').innerHTML = '<div><label>المدينة</label><select><option' + (e.city === 'luxor' ? ' selected' : '') + '>الأقصر</option><option' + (e.city === 'aswan' ? ' selected' : '') + '>أسوان</option></select></div><div><label>النوع</label><select><option' + (e.c !== 'product' ? ' selected' : '') + '>تجربة</option><option' + (e.c === 'product' ? ' selected' : '') + '>منتج</option></select></div><div><label>الفئة</label><input value="' + esc(EX.CATS[e.c].n) + '"></div><div><label>المحور</label><input value="' + esc(EX.P[e.p]) + '"></div><div><label>فئة السعر</label><input value="' + esc(e.pr ? '$'.repeat(e.pr) : '') + '"></div><div><label>المدة</label><input value="' + esc(e.dur || '') + '"></div><div><label>الإحداثيات</label><input dir="ltr" value="' + esc(e.ll ? e.ll.join(', ') : '') + '"></div><div><label>رائد الأعمال</label><input value="' + esc(e.ent ? e.ent.name : '') + '"></div>' + '<div class="wide"><label>أبرز الملامح (سطر لكل بند)</label><textarea>' + esc((e.hl || []).join('\n')) + '</textarea></div><div class="wide"><label>برنامج التجربة (سطر لكل خطوة: العنوان | التفاصيل)</label><textarea>' + esc((e.it || []).map(x => x.t + ' | ' + (x.d || '')).join('\n')) + '</textarea></div><div><label>ما تشمله (سطر لكل بند)</label><textarea>' + esc((e.inc || []).join('\n')) + '</textarea></div><div><label>ما لا تشمله (سطر لكل بند)</label><textarea>' + esc((e.exc || []).join('\n')) + '</textarea></div><div class="wide"><label>معلومات مهمة (سطر لكل بند)</label><textarea>' + esc((e.imp || []).join('\n')) + '</textarea></div><div><label>نقطة اللقاء</label><input value="' + esc(e.meet && e.meet.t || '') + '"></div><div><label>إحداثيات نقطة اللقاء (إن اختلفت)</label><input dir="ltr" value="' + esc(e.meet && e.meet.ll ? e.meet.ll.join(', ') : '') + '"></div><div><label>اللغات (ar, en, es…)</label><input dir="ltr" value="' + esc((e.lang || []).join(', ')) + '"></div><div><label>ملاحظة إمكانية الوصول</label><input value="' + esc(e.acc || '') + '"></div><div><label>رابط الحجز الخارجي</label><input dir="ltr" value="' + esc(e.book || '') + '"></div><div><label>مسار التواصل (بديل الحجز)</label><input dir="ltr" value="' + esc(e.contact || '') + '"></div>';
     const pages = ['experiences.html?city=' + e.city, 'experience.html?city=' + e.city + '&slug=' + e.slug, e.city + '.html'].concat(DESTINATIONS.list.filter(d => (d.rel || []).includes(e.slug)).map(d => 'destination.html?slug=' + d.slug)).concat((CONTENT.travelIdeas || []).filter(i => i.stops.some(s => s[1] === e.slug)).map(i => 'travel-idea.html?slug=' + i.slug));
     $('pagesOn').innerHTML = 'يظهر على ' + pages.length + ' صفحات: ' + pages.map(p => '<a href="' + p + '" target="_blank" rel="noopener">' + esc(p.split('?')[0]) + '</a>').join('، ');
   }
-  $('entrySel').addEventListener('change', render); $('btnPublish').addEventListener('click', () => { $('entryStatus').textContent = 'منشور · تُعاد الصفحات خلال 5 دقائق'; }); render();
+  $('entrySel').addEventListener('change', render); $('btnPublish').addEventListener('click', () => {
+    /* 6.5: only an editor or an administrator publishes; 6.3: English must be complete, and a missing Arabic or Spanish needs an explicit confirmation and stays flagged */
+    const role = $('roleSel').value, c = STATE.complete;
+    if (role !== 'administrator' && role !== 'editor') { alert('النشر يتطلب دور editor أو administrator. دور ' + role + ' لا ينشر؛ أرسل المدخل للمراجعة.'); return; }
+    if (!c.en) { alert('النسخة الإنجليزية ناقصة. لا يمكن النشر قبل اكتمالها (6.3).'); return; }
+    const missing = LANGS.map(x => x[0]).filter(l => !c[l]);
+    if (missing.length && !confirm('الترجمة ناقصة (' + missing.join(', ') + '). سيُستخدم الإنجليزي بدلها حتى تكتمل، وتبقى معلَّمة كناقصة في اللوحة. تأكيد النشر؟')) return;
+    $('entryStatus').textContent = 'منشور' + (missing.length ? ' · ترجمات ناقصة: ' + missing.join(', ') : '') + ' · تُعاد الصفحات خلال 5 دقائق';
+  }); render();
 })();
 </script>
 </body>
