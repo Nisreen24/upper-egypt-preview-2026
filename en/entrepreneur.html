@@ -398,20 +398,6 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
   .dxi-actions .dx-cta--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)}
   .dxi-actions .dx-cta--ghost:hover{background:rgba(165,62,26,.07);color:var(--rust-deep)}
   .dxi-note{margin:var(--s-1) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
-  /* gallery: a dark full-bleed strip; pictures glide sideways on a gentle curve, edge to edge */
-  .dxg{--pw:clamp(200px,22vw,360px);--ph:clamp(300px,34vw,540px);--gap:clamp(16px,1.6vw,28px);--n:8;position:relative;isolation:isolate;overflow:hidden;width:100vw;margin-inline-start:calc(50% - 50vw);margin-top:var(--s-7);padding:var(--s-7) 0 var(--s-7);background:var(--drawer-dark-1);color:#fff}
-  .dxg::before{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(60% 50% at 50% 0%,rgba(165,62,26,.22),transparent 70%),radial-gradient(40% 40% at 10% 100%,rgba(47,111,94,.14),transparent 70%)}
-  .dxg::after{content:"";position:absolute;inset:0;z-index:-1;opacity:.05;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
-  .dxg-in{width:100%;max-width:1200px;margin-inline:auto;padding-inline:var(--s-3)}
-  .dxg-eyebrow{margin:0;text-align:center;font-size:13px;font-weight:600;color:rgba(255,255,255,.55)}
-  html.lang-latin .dxg-eyebrow{font-size:12px;letter-spacing:.3em;text-transform:uppercase}
-  .dxg-h{margin:var(--s-2) auto 0;max-width:22ch;text-align:center;font-size:clamp(28px,3.4vw,52px);line-height:1.2;font-weight:700;color:#fff}
-  .dxg-sub{margin:var(--s-2) auto 0;max-width:60ch;text-align:center;font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.6)}
-  .dxg-stage{position:relative;height:calc(var(--ph) * .96);margin-top:var(--s-4);perspective:1500px;perspective-origin:50% 55%;direction:ltr;overflow:hidden}
-  .dxg-track{position:absolute;inset:0;transform-style:preserve-3d}
-  .dxg-slice{position:absolute;top:calc(var(--ph) * .16);left:0;width:calc(var(--pw) / var(--n) + 1.2px);height:var(--ph);overflow:hidden;background:var(--drawer-dark-2);backface-visibility:hidden;will-change:transform}
-  .dxg-slice img{position:absolute;top:0;left:calc(-1 * var(--i) * var(--pw) / var(--n));width:var(--pw);height:100%;max-width:none;object-fit:cover;pointer-events:none;user-select:none}
-  .dxg-slice--first{border-start-start-radius:6px;border-end-start-radius:6px} .dxg-slice--last{border-start-end-radius:6px;border-end-end-radius:6px}
   .dx-h{display:flex;align-items:center;gap:var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
   .dx-h::after{content:"";flex:0 0 40px;height:2px;background:var(--rust);opacity:.8}
   .dx-desc{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.85;color:var(--body);max-width:70ch}
