@@ -836,8 +836,6 @@ window.I18N = (() => {
     'دليل التواصل (استفسار عام)': { en: "Contact directory (general inquiry)", es: "Directorio de contactos (consulta general)" },
     'لديك ملف على المنصة؟': { en: "Already listed on the platform?", es: "¿Ya figuras en la plataforma?" },
     'اطلب رابط تحديث بياناتك': { en: "Request a link to update your entry", es: "Solicita un enlace para actualizar tu ficha" },
-    'المزيد من الإرشاد في الطريق': { en: "More guidance is on the way", es: "Más orientación está en camino" },
-    'هذا المسار ما زال قيد الاستكمال. ستتوفر الموارد والإرشادات العملية هنا قريبًا.': { en: "This learning path is still being completed. Resources and practical guidance will be available here soon.", es: "Esta ruta de aprendizaje aún se está completando. Los recursos y la orientación práctica estarán disponibles aquí pronto." },
     'التراخيص والشهادات للمشروع السياحي الصغير': { en: "Licences and certificates for a small tourism business", es: "Licencias y certificados para un pequeño negocio turístico" },
     'جولة مصوّرة في الشهادات التي يحتاجها بيت الضيافة أو الورشة أو المرشد المحلي قبل استقبال الزوار.': { en: "A video walk through the certificates a guesthouse, workshop or local guide needs before welcoming visitors.", es: "Un recorrido en vídeo por los certificados que necesita una casa de huéspedes, un taller o un guía local antes de recibir visitantes." },
     'بوابة الهيئة العامة للاستثمار: تأسيس مشروع': { en: "GAFI portal: setting up a business", es: "Portal de GAFI: constituir un negocio" },
