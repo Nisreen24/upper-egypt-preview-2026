@@ -257,6 +257,32 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   /* ===== prose / utility pages ===== */
   .pg{padding-top:calc(var(--tb-top,100px) + var(--s-5));padding-bottom:var(--s-8)}
   .pg-head{max-width:70ch;margin-bottom:var(--s-5)}
+  /* framed intro card: white surface with a pharaonic band on the start edge */
+  .pg-frame{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);max-width:none;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:var(--radius-card-lg);box-shadow:none}
+  .pg-frame-edge{position:relative;overflow:hidden}
+  .pg-frame-edge::before{content:"";position:absolute;top:50%;left:50%;width:1600px;height:28px;transform:translate(-50%,-50%) rotate(90deg);background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x}
+  html[dir="ltr"] .pg-frame-edge::before{transform:translate(-50%,-50%) rotate(-90deg)}
+  .pg-frame-body{padding:var(--s-5) var(--s-5) var(--s-5) var(--s-5)}
+  @media (min-width:768px){.pg-frame-body{padding:var(--s-5) var(--s-6)}
+}
+  .pg-frame-row{display:flex;align-items:center;gap:var(--s-4)}
+  .pg-frame-ico{display:grid;place-items:center;flex:none;width:64px;height:64px;border-radius:var(--radius-md);background:rgba(165,62,26,.08);color:var(--rust)}
+  .pg-frame .pg-title{margin-top:4px;font-size:clamp(28px,3vw,42px)}
+  .pg-frame .pg-lede{max-width:70ch;margin-top:var(--s-3)}
+  @media (max-width:639px){.pg-frame{grid-template-columns:18px minmax(0,1fr)}
+.pg-frame-edge::before{height:18px}
+.pg-frame-body{padding:var(--s-4)}
+.pg-frame-ico{width:52px;height:52px}
+.pg-frame-ico svg{width:26px;height:26px}
+}
+  .pg-paper{position:relative;isolation:isolate;overflow:hidden;background:#f3e3c9}
+  .pg-paper::before{content:"";position:absolute;inset:0 0 auto 0;z-index:-1;aspect-ratio:1672/1111;pointer-events:none;opacity:.3;background:image-set(url("ASSETS/motifs/papyrus-form-1672.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-1672.webp") type("image/webp")) center top/100% auto no-repeat;-webkit-mask:linear-gradient(#000 62%,transparent 100%);mask:linear-gradient(#000 62%,transparent 100%)}
+  @media (max-width:767px){.pg-paper::before{background-image:image-set(url("ASSETS/motifs/papyrus-form-960.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-960.webp") type("image/webp"))}
+}
+
+  .pg-card--prose{padding:var(--s-5) var(--s-4)}
+  @media (min-width:768px){.pg-card--prose{padding:var(--s-6)}}
+  .pg-card--prose .prose{max-width:72ch}
   .pg-title{margin:var(--s-2) 0 0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
   .pg-lede{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
   .pg-grid{display:grid;gap:var(--s-5);align-items:start}
@@ -481,10 +507,10 @@ html[dir="rtl"] .sk-list{order:2}
 </header>
 
 <main id="main">
-  <section class="ex pg" aria-label="إشعار الخصوصية">
+  <section class="ex pg pg-paper" aria-label="إشعار الخصوصية">
     <div class="wrap">
       <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
-      <header class="pg-head"><span class="sec-eyebrow">قانوني</span><h1 class="pg-title display">إشعار الخصوصية</h1><p class="pg-lede">كيف تجمع منصة "اكتشف صعيد مصر" البيانات الشخصية وتستخدمها وتحتفظ بها. النص النهائي تعتمده CIDEAL.</p></header>      <div class="prose"><h2>من يعالج بياناتك</h2><p>مؤسسة CIDEAL هي المسؤولة عن معالجة البيانات التي تُرسل عبر هذه المنصة ضمن برنامج تعزيز البدائل الاقتصادية والاجتماعية المستدامة القائمة على السياحة في صعيد مصر.</p><h2>ما الذي نجمعه</h2><p>لا تتطلب أي صفحة عامة تسجيل دخول. نجمع البيانات فقط عندما ترسل نموذجًا: الاسم والبريد والرسالة وما يخص نوع الطلب، مع نص الموافقة كما كان وقت الإرسال.</p><p>قياس الزيارات يتم بأداة لا تستخدم ملفات تعريف الارتباط ولا تحتفظ ببيانات شخصية، لذلك لا تحتاج المنصة إلى لافتة موافقة.</p><h2>لماذا ومتى</h2><p>للرد على طلبك، ولمراجعة طلبات الإدراج والتسجيل والتحديث، ولإرسال دليل التواصل عند الموافقة، ولإرسال النشرة البريدية إن اشتركت وأكدت اشتراكك.</p><h2>الاحتفاظ</h2><p>تُحفظ الطلبات 24 شهرًا افتراضيًا ثم تُحذف، ويمكن حذفها قبل ذلك بطلب منك. روابط التحديث لمرة واحدة تنتهي بعد 24 ساعة. تُحفظ البيانات والنسخ الاحتياطية في منطقة الاتحاد الأوروبي.</p><h2>دليل التواصل</h2><p>تظهر بيانات التواصل الخاصة بالجهات في دليل التواصل فقط بموافقتها، ويمكن سحب الموافقة في أي وقت. الدليل يُرسل لجهة طلبته بعد مراجعة، للغرض المذكور فقط، ولا يُنشر على الموقع.</p><h2>حقوقك</h2><p>يمكنك طلب الاطلاع على بياناتك أو تصحيحها أو حذفها عبر صفحة التواصل أو البريد الإلكتروني للبرنامج.</p><h2>الإطار القانوني</h2><p>تخضع معالجة البيانات للائحة العامة لحماية البيانات في الاتحاد الأوروبي (GDPR) وقانون حماية البيانات الشخصية المصري رقم 151 لسنة 2020. مؤسسة CIDEAL هي المتحكم في البيانات، والجهة المطوّرة تعالجها وفق تعليماتها.</p><h2>من يعالج البيانات نيابةً عنا</h2><p>تُستضاف المنصة وتُحفظ بياناتها ونسخها الاحتياطية في منطقة الاتحاد الأوروبي وتُنقل عبر اتصال مشفّر. يعالج البيانات نيابةً عن CIDEAL أربعة مزوّدين فرعيين: مزوّد الاستضافة، وشبكة توصيل المحتوى مع خدمة الحماية من الروبوتات المستخدمة في النماذج، وخدمة البريد الإلكتروني، وخدمة قياس الزيارات.</p><h2>الفيديو المضمّن</h2><p>مقاطع الفيديو تُضمَّن من يوتيوب ولا يُحمَّل المشغّل إلا عند تفعيلك للصورة المصغّرة، وهو الطرف الثالث الوحيد الذي قد يخزّن شيئًا على جهازك.</p></div>
+      <header class="pg-head pg-frame"><div class="pg-frame-edge" aria-hidden="true"></div><div class="pg-frame-body"><div class="pg-frame-row"><span class="pg-frame-ico" aria-hidden="true"><svg class="ic" width="32" height="32" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M208,80H176V56a48,48,0,0,0-96,0V80H48A16,16,0,0,0,32,96V208a16,16,0,0,0,16,16H208a16,16,0,0,0,16-16V96A16,16,0,0,0,208,80ZM96,56a32,32,0,0,1,64,0V80H96ZM208,208H48V96H208V208Zm-68-56a12,12,0,1,1-12-12A12,12,0,0,1,140,152Z"/></svg></span><div><span class="sec-eyebrow">قانوني</span><h1 class="pg-title display">إشعار الخصوصية</h1></div></div><p class="pg-lede">كيف تجمع منصة "اكتشف صعيد مصر" البيانات الشخصية وتستخدمها وتحتفظ بها. النص النهائي تعتمده CIDEAL.</p></div></header>      <div class="pg-card pg-card--prose"><div class="prose"><h2>من يعالج بياناتك</h2><p>مؤسسة CIDEAL هي المسؤولة عن معالجة البيانات التي تُرسل عبر هذه المنصة ضمن برنامج تعزيز البدائل الاقتصادية والاجتماعية المستدامة القائمة على السياحة في صعيد مصر.</p><h2>ما الذي نجمعه</h2><p>لا تتطلب أي صفحة عامة تسجيل دخول. نجمع البيانات فقط عندما ترسل نموذجًا: الاسم والبريد والرسالة وما يخص نوع الطلب، مع نص الموافقة كما كان وقت الإرسال.</p><p>قياس الزيارات يتم بأداة لا تستخدم ملفات تعريف الارتباط ولا تحتفظ ببيانات شخصية، لذلك لا تحتاج المنصة إلى لافتة موافقة.</p><h2>لماذا ومتى</h2><p>للرد على طلبك، ولمراجعة طلبات الإدراج والتسجيل والتحديث، ولإرسال دليل التواصل عند الموافقة، ولإرسال النشرة البريدية إن اشتركت وأكدت اشتراكك.</p><h2>الاحتفاظ</h2><p>تُحفظ الطلبات 24 شهرًا افتراضيًا ثم تُحذف، ويمكن حذفها قبل ذلك بطلب منك. روابط التحديث لمرة واحدة تنتهي بعد 24 ساعة. تُحفظ البيانات والنسخ الاحتياطية في منطقة الاتحاد الأوروبي.</p><h2>دليل التواصل</h2><p>تظهر بيانات التواصل الخاصة بالجهات في دليل التواصل فقط بموافقتها، ويمكن سحب الموافقة في أي وقت. الدليل يُرسل لجهة طلبته بعد مراجعة، للغرض المذكور فقط، ولا يُنشر على الموقع.</p><h2>حقوقك</h2><p>يمكنك طلب الاطلاع على بياناتك أو تصحيحها أو حذفها عبر صفحة التواصل أو البريد الإلكتروني للبرنامج.</p><h2>الإطار القانوني</h2><p>تخضع معالجة البيانات للائحة العامة لحماية البيانات في الاتحاد الأوروبي (GDPR) وقانون حماية البيانات الشخصية المصري رقم 151 لسنة 2020. مؤسسة CIDEAL هي المتحكم في البيانات، والجهة المطوّرة تعالجها وفق تعليماتها.</p><h2>من يعالج البيانات نيابةً عنا</h2><p>تُستضاف المنصة وتُحفظ بياناتها ونسخها الاحتياطية في منطقة الاتحاد الأوروبي وتُنقل عبر اتصال مشفّر. يعالج البيانات نيابةً عن CIDEAL أربعة مزوّدين فرعيين: مزوّد الاستضافة، وشبكة توصيل المحتوى مع خدمة الحماية من الروبوتات المستخدمة في النماذج، وخدمة البريد الإلكتروني، وخدمة قياس الزيارات.</p><h2>الفيديو المضمّن</h2><p>مقاطع الفيديو تُضمَّن من يوتيوب ولا يُحمَّل المشغّل إلا عند تفعيلك للصورة المصغّرة، وهو الطرف الثالث الوحيد الذي قد يخزّن شيئًا على جهازك.</p></div></div>
     </div>
   </section>
 </main>
@@ -506,7 +532,7 @@ html[dir="rtl"] .sk-list{order:2}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/لرواد-الأعمال.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/بحث.html">البحث في الموقع</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/لرواد-الأعمال.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>

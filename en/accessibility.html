@@ -257,6 +257,32 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   /* ===== prose / utility pages ===== */
   .pg{padding-top:calc(var(--tb-top,100px) + var(--s-5));padding-bottom:var(--s-8)}
   .pg-head{max-width:70ch;margin-bottom:var(--s-5)}
+  /* framed intro card: white surface with a pharaonic band on the start edge */
+  .pg-frame{position:relative;display:grid;grid-template-columns:28px minmax(0,1fr);max-width:none;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:var(--radius-card-lg);box-shadow:none}
+  .pg-frame-edge{position:relative;overflow:hidden}
+  .pg-frame-edge::before{content:"";position:absolute;top:50%;left:50%;width:1600px;height:28px;transform:translate(-50%,-50%) rotate(90deg);background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x}
+  html[dir="ltr"] .pg-frame-edge::before{transform:translate(-50%,-50%) rotate(-90deg)}
+  .pg-frame-body{padding:var(--s-5) var(--s-5) var(--s-5) var(--s-5)}
+  @media (min-width:768px){.pg-frame-body{padding:var(--s-5) var(--s-6)}
+}
+  .pg-frame-row{display:flex;align-items:center;gap:var(--s-4)}
+  .pg-frame-ico{display:grid;place-items:center;flex:none;width:64px;height:64px;border-radius:var(--radius-md);background:rgba(165,62,26,.08);color:var(--rust)}
+  .pg-frame .pg-title{margin-top:4px;font-size:clamp(28px,3vw,42px)}
+  .pg-frame .pg-lede{max-width:70ch;margin-top:var(--s-3)}
+  @media (max-width:639px){.pg-frame{grid-template-columns:18px minmax(0,1fr)}
+.pg-frame-edge::before{height:18px}
+.pg-frame-body{padding:var(--s-4)}
+.pg-frame-ico{width:52px;height:52px}
+.pg-frame-ico svg{width:26px;height:26px}
+}
+  .pg-paper{position:relative;isolation:isolate;overflow:hidden;background:#f3e3c9}
+  .pg-paper::before{content:"";position:absolute;inset:0 0 auto 0;z-index:-1;aspect-ratio:1672/1111;pointer-events:none;opacity:.3;background:image-set(url("ASSETS/motifs/papyrus-form-1672.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-1672.webp") type("image/webp")) center top/100% auto no-repeat;-webkit-mask:linear-gradient(#000 62%,transparent 100%);mask:linear-gradient(#000 62%,transparent 100%)}
+  @media (max-width:767px){.pg-paper::before{background-image:image-set(url("ASSETS/motifs/papyrus-form-960.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-960.webp") type("image/webp"))}
+}
+
+  .pg-card--prose{padding:var(--s-5) var(--s-4)}
+  @media (min-width:768px){.pg-card--prose{padding:var(--s-6)}}
+  .pg-card--prose .prose{max-width:72ch}
   .pg-title{margin:var(--s-2) 0 0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
   .pg-lede{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
   .pg-grid{display:grid;gap:var(--s-5);align-items:start}
@@ -481,10 +507,10 @@ html[dir="rtl"] .sk-list{order:2}
 </header>
 
 <main id="main">
-  <section class="ex pg" aria-label="بيان إمكانية الوصول">
+  <section class="ex pg pg-paper" aria-label="بيان إمكانية الوصول">
     <div class="wrap">
       <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
-      <header class="pg-head"><span class="sec-eyebrow">إمكانية الوصول</span><h1 class="pg-title display">بيان إمكانية الوصول</h1><p class="pg-lede">تلتزم المنصة بمعيار WCAG 2.1 بمستوى AA، وهذا البيان يصف ما ينطبق وكيف تبلغنا عن أي عائق.</p></header>      <div class="prose"><h2>ما ينطبق</h2><p>كل عناصر التحكم تعمل بلوحة المفاتيح مع حالة تركيز ظاهرة، والصور لها نصوص بديلة، والعناوين مرتبة دلاليًا، والنماذج لها تسميات وأخطاء مكتوبة لا بالألوان وحدها، ولكل خريطة قائمة بديلة بنفس النتائج، والتباين يحقق المعيار على كل الخلفيات.</p><h2>أدوات المساعدة</h2><p>يوفر زر إمكانية الوصول في الهيدر خيارات لتكبير النص وخط سهل القراءة وتقليل الحركة والتباين العالي وقراءة النص والإملاء الصوتي حيث يدعمها المتصفح.</p><h2>الحركة والفيديو</h2><p>تحترم كل الحركات تفضيل تقليل الحركة في نظامك، والفيديوهات صامتة ولا تُحمَّل مشغلات الفيديو الخارجية إلا عند تفعيلها.</p><h2>أبلغنا</h2><p>إن واجهت عائقًا في أي صفحة، راسلنا عبر صفحة التواصل مع ذكر الصفحة والمتصفح، ونرد خلال خمسة أيام عمل.</p></div>
+      <header class="pg-head pg-frame"><div class="pg-frame-edge" aria-hidden="true"></div><div class="pg-frame-body"><div class="pg-frame-row"><span class="pg-frame-ico" aria-hidden="true"><svg class="ic" width="32" height="32" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M160,40a32,32,0,1,0-32,32A32,32,0,0,0,160,40ZM128,56a16,16,0,1,1,16-16A16,16,0,0,1,128,56ZM231.5,87.71A19.62,19.62,0,0,0,212,72H44a20,20,0,0,0-8.38,38.16l.13,0,50.75,22.35-21,79.72A20,20,0,0,0,102,228.8l26-44.87,26,44.87a20,20,0,0,0,36.4-16.52l-21-79.72,50.75-22.35.13,0A19.64,19.64,0,0,0,231.5,87.71Zm-17.8,7.9-56.93,25.06a8,8,0,0,0-4.51,9.36L175.13,217a7,7,0,0,0,.49,1.35,4,4,0,0,1-5,5.45,4,4,0,0,1-2.25-2.07,6.31,6.31,0,0,0-.34-.63L134.92,164a8,8,0,0,0-13.84,0L88,221.05a6.31,6.31,0,0,0-.34.63,4,4,0,0,1-2.25,2.07,4,4,0,0,1-5-5.45,7,7,0,0,0,.49-1.35L103.74,130a8,8,0,0,0-4.51-9.36L42.3,95.61A4,4,0,0,1,44,88H212a4,4,0,0,1,1.73,7.61Z"/></svg></span><div><span class="sec-eyebrow">إمكانية الوصول</span><h1 class="pg-title display">بيان إمكانية الوصول</h1></div></div><p class="pg-lede">تلتزم المنصة بمعيار WCAG 2.1 بمستوى AA، وهذا البيان يصف ما ينطبق وكيف تبلغنا عن أي عائق.</p></div></header>      <div class="pg-card pg-card--prose"><div class="prose"><h2>ما ينطبق</h2><p>كل عناصر التحكم تعمل بلوحة المفاتيح مع حالة تركيز ظاهرة، والصور لها نصوص بديلة، والعناوين مرتبة دلاليًا، والنماذج لها تسميات وأخطاء مكتوبة لا بالألوان وحدها، ولكل خريطة قائمة بديلة بنفس النتائج، والتباين يحقق المعيار على كل الخلفيات.</p><h2>أدوات المساعدة</h2><p>يوفر زر إمكانية الوصول في الهيدر خيارات لتكبير النص وخط سهل القراءة وتقليل الحركة والتباين العالي وقراءة النص والإملاء الصوتي حيث يدعمها المتصفح.</p><h2>الحركة والفيديو</h2><p>تحترم كل الحركات تفضيل تقليل الحركة في نظامك، والفيديوهات صامتة ولا تُحمَّل مشغلات الفيديو الخارجية إلا عند تفعيلها.</p><h2>أبلغنا</h2><p>إن واجهت عائقًا في أي صفحة، راسلنا عبر صفحة التواصل مع ذكر الصفحة والمتصفح، ونرد خلال خمسة أيام عمل.</p></div></div>
     </div>
   </section>
 </main>
@@ -506,7 +532,7 @@ html[dir="rtl"] .sk-list{order:2}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/for-entrepreneurs.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/search.html">البحث في الموقع</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/for-entrepreneurs.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>

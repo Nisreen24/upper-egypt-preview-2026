@@ -465,12 +465,13 @@ html[dir="rtl"] .sk-list{order:2}
   @media (min-width:640px){.stl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
   @media (min-width:1024px){.stl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
   .stl-grid>li[hidden]{display:none}
-  .stl-card{position:relative;display:grid;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .stl-grid>li{display:grid}
+  .stl-card{position:relative;display:grid;grid-template-rows:auto 1fr;height:100%;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
   .stl-card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
   .stl-card-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:#2b1d0e}
   .stl-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
   .stl-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s-1) var(--s-3);padding:var(--s-3) var(--s-4)}
-  .stl-card-t{margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .stl-card-t{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;min-height:calc(var(--fs-h3) * 2.6);margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
   .stl-card-t a{color:inherit;text-decoration:none}
   .stl-card-t a::after{content:"";position:absolute;inset:0}
   .stl-card-t a:focus-visible{outline:none} .stl-card:has(a:focus-visible){outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
@@ -612,7 +613,7 @@ html[dir="rtl"] .sk-list{order:2}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="for-entrepreneurs.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="search.html">البحث في الموقع</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="for-entrepreneurs.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
