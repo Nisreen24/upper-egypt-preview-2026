@@ -13,7 +13,8 @@ const I18N_SRC = fs.readFileSync("i18n.js", "utf8");
 const dStart = I18N_SRC.indexOf("  const D = {"), dEnd = I18N_SRC.indexOf("\n  };", dStart) + "\n  };".length;
 const D_ALL = new Function("return " + I18N_SRC.slice(dStart + "  const D = ".length, dEnd - 1))();
 for (const L of Object.keys(LOCALES)) {
-  const D = {}; if (L !== "ar") for (const k in D_ALL) if (D_ALL[k] && D_ALL[k][L] != null) D[k] = { [L]: D_ALL[k][L] };
+  /* 6.3: the Spanish dictionary keeps the English string of any key that has no Spanish yet, so the page falls back to English */
+  const D = {}; if (L !== "ar") for (const k in D_ALL) { const e = D_ALL[k]; if (!e) continue; if (e[L] != null) D[k] = { [L]: e[L] }; else if (L === "es" && e.en != null) D[k] = { en: e.en }; }
   const out = I18N_SRC.slice(0, dStart) + "  const D = " + JSON.stringify(D) + ";" + I18N_SRC.slice(dEnd);
   new Function(out); fs.writeFileSync("i18n." + L + ".js", out);
 }
@@ -84,12 +85,23 @@ for (const L of Object.keys(LOCALES)) {
     s = picturesOutsideScripts(s);
     if (L !== 'ar') s = s.replace(/fonts\/sub\/ibm-plex-sans-arabic-(400|700)\.woff2" as="font"/g, 'fonts/sub/ibm-plex-sans-$1.woff2" as="font"');
     if (f === 'index.html') s = s.replace('<link rel="preload" href="fonts/sub/', '<link rel="preload" as="image" type="image/avif" imagesrcset="ASSETS/hero-bg-1440.avif 1440w, ASSETS/hero-bg.avif 1567w" imagesizes="100vw" media="(min-width:640px)" fetchpriority="high">\n<link rel="preload" href="fonts/sub/');
+    /* learning path: without JavaScript the reader still gets every published path with its steps (titles from the dictionary, English when a translation is missing) */
+    if (f === 'learning-path.html') {
+      const T = n => (L === 'ar' ? n : (tr(n, L) || tr(n, 'en') || n));
+      const esc = x => String(x).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
+      const stepsOf = p => p.plan ? p.plan.map(x => x.t) : p.steps.map(sl => { const r = (ctx.RESOURCES.list || []).find(x => x.slug === sl); return r ? r.n : null; }).filter(Boolean);
+      const list = (ctx.RESOURCES.paths || []).filter(p => !p.draft).map(p => '<li><a href="' + L + '/' + pageName(f, L) + '?slug=' + encodeURIComponent(entries[p.slug] ? entries[p.slug][L] : p.slug) + '">' + esc(T(p.n)) + '</a><ol>' + stepsOf(p).map(n => '<li>' + esc(T(n)) + '</li>').join('') + '</ol></li>').join('');
+      s = s.replace('<div id="exCrumb"></div>', '<div id="exCrumb"></div>\n      <noscript><ul class="lpd-noscript">' + list + '</ul></noscript>');
+    }
     fs.writeFileSync(L + '/' + pageName(f, L), s);
   }
 }
 /* sitemaps: one per locale in an index (9.4) */
 const today = new Date().toISOString().slice(0, 10);
 const url = (L, f) => '  <url><loc>' + BASE + L + '/' + enc(pageName(f, L)) + '</loc>' + ['ar', 'en', 'es'].map(x => '<xhtml:link rel="alternate" hreflang="' + x + '" href="' + BASE + x + '/' + enc(pageName(f, x)) + '"/>').join('') + '<lastmod>' + today + '</lastmod></url>';
-for (const L of Object.keys(LOCALES)) fs.writeFileSync('sitemap-' + L + '.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + PAGES.filter(f => !NOINDEX.has(f)).map(f => url(L, f)).join('\n') + '\n</urlset>\n');
+/* every published learning path has its own address per locale (9.4) */
+const pathUrl = (L, p) => { const e = entries[p.slug]; const at = x => BASE + x + '/' + enc(pageName('learning-path.html', x)) + '?slug=' + encodeURIComponent(e ? e[x] : p.slug); return '  <url><loc>' + at(L) + '</loc>' + ['ar', 'en', 'es'].map(x => '<xhtml:link rel="alternate" hreflang="' + x + '" href="' + at(x) + '"/>').join('') + '<lastmod>' + today + '</lastmod></url>'; };
+const livePaths = (ctx.RESOURCES.paths || []).filter(p => !p.draft);
+for (const L of Object.keys(LOCALES)) fs.writeFileSync('sitemap-' + L + '.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">\n' + PAGES.filter(f => !NOINDEX.has(f)).map(f => url(L, f)).concat(livePaths.map(p => pathUrl(L, p))).join('\n') + '\n</urlset>\n');
 fs.writeFileSync('sitemap.xml', '<?xml version="1.0" encoding="UTF-8"?>\n<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n' + Object.keys(LOCALES).map(L => '  <sitemap><loc>' + BASE + 'sitemap-' + L + '.xml</loc><lastmod>' + today + '</lastmod></sitemap>').join('\n') + '\n</sitemapindex>\n');
 console.log('locale copies: ' + PAGES.length + ' pages × ' + Object.keys(LOCALES).length + ' locales; sitemaps written');

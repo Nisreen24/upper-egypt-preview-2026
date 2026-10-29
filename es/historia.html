@@ -425,7 +425,7 @@ html[dir="rtl"] .sk-list{order:2}
   .dxi{position:sticky;top:calc(var(--tb-top,100px) + 16px);overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
   @media (max-width:1023px){.dxi{position:relative;top:auto}
 }
-  .dxi-band{height:48px;background:#f6ead8 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='96' height='48' viewBox='0 0 96 48'%3E%3Crect width='96' height='48' fill='%23f6ead8'/%3E%3Crect y='4' width='96' height='2' fill='%23a53e1a'/%3E%3Crect y='42' width='96' height='2' fill='%23a53e1a'/%3E%3Crect y='9' width='96' height='1' fill='%23d9a066'/%3E%3Crect y='38' width='96' height='1' fill='%23d9a066'/%3E%3Cpath d='M48 11 61 24 48 37 35 24Z' fill='none' stroke='%23a53e1a' stroke-width='2'/%3E%3Cpath d='M48 17 55 24 48 31 41 24Z' fill='%23d9a066'/%3E%3Cpath d='M14 15 23 24 14 33' fill='none' stroke='%23a53e1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Cpath d='M82 15 73 24 82 33' fill='none' stroke='%23a53e1a' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3Ccircle cx='6' cy='24' r='2.5' fill='%23d9a066'/%3E%3Ccircle cx='90' cy='24' r='2.5' fill='%23d9a066'/%3E%3C/svg%3E") center/auto 100% repeat-x}
+  .dxi-band{height:20px;background:#f6ead8 url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x}
   .dxi-body{padding:var(--s-4) var(--s-4) var(--s-3)}
   .dxi-h{margin:0;font-size:var(--fs-small);font-weight:800;line-height:1.3;color:var(--ink)}
   html.lang-latin .dxi-h{letter-spacing:.06em;text-transform:uppercase}
@@ -453,6 +453,14 @@ html[dir="rtl"] .sk-list{order:2}
   .dx-cta.dx-cta--ghost{background:transparent;color:var(--rust);box-shadow:inset 0 0 0 1.5px var(--rust)} .dx-cta.dx-cta--ghost:hover{background:rgba(165,62,26,.08);color:var(--rust-deep);box-shadow:inset 0 0 0 1.5px var(--rust-deep)}
   .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:0;padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}.dx-ent[hidden]{display:none}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}
+</style>
+<style>
+  /* detail heroes: the breadcrumb stays on one line and the title keeps a phone-friendly size in every language */
+  .xh-crumb{max-width:calc(100% - 2 * var(--xh-x));--xh-crumb--fit:1}
+  .xh-crumb ol{flex-wrap:nowrap}
+  .xh-crumb li{white-space:nowrap}
+  .xh-crumb li[aria-current="page"]{display:block;flex:1 1 auto;min-width:0;overflow:hidden;text-overflow:ellipsis}
+  @media (max-width:767px){.xh-cap .xh-cap-title{font-size:var(--fs-h2);line-height:1.15} .xh-crumb li[aria-current="page"]{display:none}}
 </style>
 </head>
 <body>
@@ -832,8 +840,8 @@ html[dir="rtl"] .sk-list{order:2}
   const q = new URLSearchParams(location.search); const st = CONTENT.stories.find(x => x.slug === q.get('slug'));
   ENTRY.init({ entry: st, view: s => { const en = ENTREPRENEURS.bySlug(s.ent); const cn = cityName(s.city); const prods = en ? ENTREPRENEURS.products(en) : []; const others = CONTENT.stories.filter(x => x.slug !== s.slug).slice(0, 3); return {
     crumb: [['الرئيسية', 'index.html'], ['لرواد الأعمال', 'for-entrepreneurs.html'], ['قصص النجاح', 'stories.html'], [s.n]], title: t(s.n), sub: t(s.person) + (en ? ' · ' + t(en.biz) : ''), img: s.img, pos: s.pos,
-    tags: [PIN + esc(cn), TAG + esc(t(P[s.p])), '<span>' + esc(t(s.cat)) + '</span>'], aboutH: t('القصة'), summary: t(s.s), body: s.body.map(t),
-    chips: [PIN + esc(cn), TAG + esc(t(P[s.p]))], pictures: [s.img].concat(prods.flatMap(x => x.imgs)).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i),
+    tags: [PIN + esc(cn), TAG + esc(t(P[s.p]))].concat(t(s.cat) !== t(P[s.p]) ? ['<span>' + esc(t(s.cat)) + '</span>'] : []), aboutH: t('القصة'), summary: t(s.s), body: s.body.map(t),
+    chips: [PIN + esc(cn), TAG + esc(t(P[s.p]))], pictures: prods.flatMap(x => x.imgs).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i),
     factsH: t('عن القصة'), facts: [[USERS, t('الشخص'), esc(t(s.person))], [PIN, t('المدينة'), esc(cn)]].concat(en ? [[ORG, t('المشروع'), esc(t(en.biz))]] : []), pillar: TAG + esc(t(P[s.p])),
     actions: en ? [{ href: ENTREPRENEURS.href(en), label: t('عرض الملف الشخصي') + ': ' + t(en.name) }, { href: 'entrepreneurs.html?city=' + s.city, label: t('كل رواد الأعمال في') + ' ' + cn, ghost: true }] : [], ent: entBlock(en),
     sections: (prods.length ? [{ title: t('المنتجات والتجارب'), html: '<ul class="ex-grid" role="list">' + prods.map(x => EX.card(x)).join('') + '</ul>' }] : []).concat([{ title: t('قصص أخرى'), all: { href: 'stories.html', label: t('كل القصص') }, html: '<ul class="ex-grid" role="list">' + others.map(x => gemCard({ href: CONTENT.storyHref(x), img: x.img, pos: x.pos, cat: t(P[x.p]), title: t(x.n), biz: t(x.person), desc: t(x.s), cta: t('اقرأ القصة كاملة') })).join('') + '</ul>' }]) }; } });

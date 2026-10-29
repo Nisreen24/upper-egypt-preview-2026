@@ -29,7 +29,7 @@ window.I18N = (() => {
   const textOrig = new WeakMap(), attrOrig = new WeakMap();
   let lang = 'ar';
 
-  const lookup = (src, l) => { if (l === 'ar') return null; const e = D[norm(src)]; return e && e[l] != null ? e[l] : null; };
+  const lookup = (src, l) => { if (l === 'ar') return null; const e = D[norm(src)]; if (!e) return null; return e[l] != null ? e[l] : e.en != null ? e.en : null; }; /* 6.3: English stands in for a missing translation */
 
   function apply(l) {
     lang = ['ar', 'en', 'es'].includes(l) ? l : 'ar';

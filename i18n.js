@@ -854,6 +854,11 @@ window.I18N = (() => {
     'موارد': { en: "resources", es: "recursos" },
     'استكشف المسار': { en: "Explore the path", es: "Explorar la ruta" },
     'عن هذا المسار': { en: "About this path", es: "Sobre esta ruta" },
+    'لا توجد خطوات في هذا المسار بعد.': { en: "This path has no steps yet.", es: "Esta ruta aún no tiene pasos." },
+    'لا توجد موارد لهذه الخطوة بعد.': { en: "No resources for this step yet.", es: "Todavía no hay recursos para este paso." },
+    'تنزيل المستند': { en: "Download the document", es: "Descargar el documento" },
+    'خطوات المسار': { en: "Path steps", es: "Pasos de la ruta" },
+    'لا توجد موارد مطابقة.': { en: "No matching resources.", es: "No hay recursos coincidentes." },
     'الشهادات التي تحتاجها': { en: "Certifications you need", es: "Certificaciones que necesitas" },
     'ما يبحث عنه السائح': { en: "What tourists look for", es: "Qué buscan los turistas" },
     'الدعم من المؤسسات المحلية': { en: "Support from local institutions", es: "Apoyo de las instituciones locales" },
@@ -1536,7 +1541,7 @@ window.I18N = (() => {
   const textOrig = new WeakMap(), attrOrig = new WeakMap();
   let lang = 'ar';
 
-  const lookup = (src, l) => { if (l === 'ar') return null; const e = D[norm(src)]; return e && e[l] != null ? e[l] : null; };
+  const lookup = (src, l) => { if (l === 'ar') return null; const e = D[norm(src)]; if (!e) return null; return e[l] != null ? e[l] : e.en != null ? e.en : null; }; /* 6.3: English stands in for a missing translation */
 
   function apply(l) {
     lang = ['ar', 'en', 'es'].includes(l) ? l : 'ar';

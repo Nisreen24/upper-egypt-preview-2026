@@ -428,6 +428,65 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   @media (max-width:639px){.ex-grid.ex-strip>li{flex-basis:calc(100% - 24px)}
 </style>
 
+<style>
+  /* ---------- FOR ENTREPRENEURS: Wireframe 7 — centred title, learning paths, resources with topic / format / pillar filters, upcoming events ---------- */
+  .fe{padding-top:calc(var(--tb-top,100px) + var(--s-4))}
+  .fe-title{margin:0 0 var(--s-5);text-align:center;font-size:clamp(26px,2.7vw,38px);line-height:1.2;font-weight:700;color:var(--ink)}
+  .fe-sec{margin-top:var(--s-6)} .fe-sec:first-of-type{margin-top:0}
+  .fe-k{margin:0 0 var(--s-3);text-align:center;font-size:var(--fs-body);font-weight:700;color:var(--ink)}
+  .fe-paths{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
+  @media (min-width:768px){.fe-paths{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .fe-path{display:grid;place-items:center;gap:6px;min-height:84px;padding:var(--s-4);border-radius:var(--radius-card);background:var(--cream);border:1px solid rgba(43,29,14,.12);color:var(--ink);text-decoration:none;text-align:center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .fe-path:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  .fe-path:active{transform:translateY(0) scale(.98)}
+  .fe-path:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .fe-path b{font-size:var(--fs-h3);line-height:1.3;font-weight:700}
+  .fe-path small{font-size:var(--fs-small);color:var(--muted)}
+  .stl-filters-btn{width:100%;justify-content:center;gap:8px}
+  .stl-filters-btn .stl-dd-caret{transition:transform .25s}
+  .stl-filters-btn[aria-expanded="true"] .stl-dd-caret{transform:rotate(180deg)}
+  .stl-filters{display:grid;gap:var(--s-2);margin-top:var(--s-3)}
+  .stl-filters[hidden]{display:none}
+  @media (min-width:768px){.stl-filters-btn{display:none} .stl-filters,.stl-filters[hidden]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:0}}
+  .stl-dd{position:relative}
+  .stl-dd summary{list-style:none;display:flex;align-items:center;gap:8px;height:var(--btn-h);padding-inline:var(--s-3);border-radius:var(--radius-sm);background:#fff;border:1px solid rgba(43,29,14,.16);color:var(--ink);font-size:var(--fs-body);font-weight:600;cursor:pointer;transition:background-color .25s ease}
+  .stl-dd summary::-webkit-details-marker{display:none}
+  .stl-dd summary:hover{background:rgba(43,29,14,.06)}
+  .stl-dd summary:active{transform:scale(.98)}
+  .stl-dd summary:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
+  .stl-dd summary>svg:first-child{color:var(--rust)}
+  .stl-dd-caret{margin-inline-start:auto;transition:transform .25s}
+  .stl-dd[open] .stl-dd-caret{transform:rotate(180deg)}
+  .stl-dd-n{display:inline-grid;place-items:center;min-width:22px;height:22px;padding-inline:6px;border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:12px;font-weight:700}
+  .stl-dd-n:empty{display:none}
+  .stl-dd fieldset{display:grid;gap:4px;margin:var(--s-1) 0 0;padding:6px;border:0;min-width:0;background:#fff;border-radius:14px;border:1px solid rgba(43,29,14,.12)}
+  @media (min-width:768px){.stl-dd fieldset{position:absolute;z-index:5;inset-inline:0;top:calc(100% + 8px);margin:0;border:0;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}}
+  .stl-dd legend{float:inline-start;width:100%}
+  .stl-dd label{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:9px;font-size:14px;color:var(--nav-ink);cursor:pointer}
+  .stl-dd label[hidden]{display:none}
+  .stl-dd label:hover{background:rgba(43,29,14,.06)}
+  .stl-dd input{accent-color:var(--rust);width:16px;height:16px;margin:0}
+  .fe .stl-filters{margin-bottom:var(--s-3)}
+  .fe-list{display:grid;gap:var(--s-2);margin:0;padding:0;list-style:none}
+  .fe-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;min-height:56px;padding:var(--s-3) var(--s-4);border-radius:var(--radius-card);background:#fff;border:1px solid rgba(43,29,14,.12);color:var(--ink);text-decoration:none;text-align:center;font-size:var(--fs-body-lg);line-height:1.4;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .fe-row:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  .fe-row:active{transform:translateY(0) scale(.98)}
+  .fe-row:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .fe-row b{font-weight:700}
+  .fe-row small{font-size:var(--fs-small);color:var(--muted)}
+  .fe-fmt{display:inline-flex;align-items:center;gap:6px;color:var(--rust);font-weight:700}
+  .fe-events{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
+  @media (min-width:768px){.fe-events{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  .fe-ev{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;min-height:120px;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .fe-ev:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  .fe-ev:active{transform:translateY(0) scale(.98)}
+  .fe-ev:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .fe-ev-date{display:grid;place-items:center;align-content:center;height:72px;border-radius:var(--radius-md);background:rgba(165,62,26,.08);color:var(--rust);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
+  .fe-ev-date b{font-size:26px} .fe-ev-date small{font-size:12px;font-weight:700}
+  .fe-ev-t{display:block;margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700}
+  .fe-ev-m{display:block;margin:4px 0 0;font-size:var(--fs-small);color:var(--muted)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
 <a class="skip" href="en/for-entrepreneurs.html#main">تخطَّ إلى المحتوى</a>
@@ -513,64 +572,32 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 </header>
 
 <main id="main">
-  <section class="xh" id="xh" aria-labelledby="ex-h">
-    <div class="xh-crumb" id="exCrumb"></div>
-    <div class="xh-media" id="xhMedia">
-      <picture><source type="image/avif" srcset="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-960.avif 960w, ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-1440.avif 1440w, ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-2172.avif 2172w" sizes="95vw"><img id="xhImg" src="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-1440.webp" srcset="ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-960.webp 960w, ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-1440.webp 1440w, ASSETS/d2e28ebe-59f5-4f48-abb2-10159d74916c-2172.webp 2172w" sizes="95vw" alt="أيدي حرفيين من صعيد مصر أثناء العمل" fetchpriority="high" decoding="async"></picture>
-      <div class="xh-shade"></div>
-      <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="ex-h">لرواد الأعمال</h1>
-        <p class="xh-cap-sub" id="exSub">مسارات تعلم وموارد وفعاليات وقصص نجاح تساعدك على تطوير مشروعك في الأقصر وأسوان.</p>
-        <p class="xh-cap-loc"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>لرواد الأعمال في الأقصر وأسوان</span></p>
-      </div>
-      <div class="xh-band" aria-hidden="true"></div>
-    </div>
-  </section>
-  <section class="ex" id="exList" aria-label="لرواد الأعمال">
+  <section class="ex fe" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
-      <section class="rs-sec" id="paths" aria-labelledby="lpH">
-        <header class="lx-head"><div><span class="sec-eyebrow">ابدأ من هنا</span><h2 class="display lx-h" id="lpH">مسارات التعلم</h2></div><a class="lx-all" href="en/resources.html"><span>كل الموارد</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
-        <ul class="lp-grid" id="lpGrid" role="list"></ul>
+      <h1 class="display fe-title" id="ex-h">لرواد الأعمال</h1>
+      <section class="fe-sec" id="paths" aria-labelledby="lpH">
+        <h2 class="fe-k" id="lpH">مسارات التعلم</h2>
+        <ul class="fe-paths" id="lpGrid" role="list"></ul>
       </section>
-      <section class="rs-sec" id="resources" aria-labelledby="rsH">
-        <header class="lx-head"><div><span class="sec-eyebrow">مكتبة المعرفة</span><h2 class="display lx-h" id="rsH">الموارد</h2></div><a class="lx-all" href="en/resources.html"><span>كل الموارد</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
-        <div class="rs-list" id="rsList"></div>
-      </section>
-      <section class="rs-sec evcar-sec" id="events" aria-labelledby="evH" hidden>
-        <header class="evcar-head"><h2 class="display evcar-h" id="evH">الفعاليات القادمة</h2><a class="evcar-all" href="en/events.html">عرض الكل</a></header>
-        <div class="evcar-wrap">
-          <ul class="evcar" id="evList" role="list" tabindex="0" aria-label="الفعاليات القادمة"></ul>
-          <button class="evcar-nav evcar-nav--prev" id="evPrev" type="button" aria-label="الفعاليات السابقة" hidden><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
-          <button class="evcar-nav evcar-nav--next" id="evNext" type="button" aria-label="الفعاليات التالية" hidden><svg class="ic" width="22" height="22" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z"/></svg></button>
+      <section class="fe-sec" id="resources" aria-labelledby="rsH">
+        <h2 class="fe-k" id="rsH">الموارد</h2>
+        <button type="button" class="mp-adv-btn stl-filters-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><span>الفلاتر</span><b class="stl-dd-n" id="exAdvN"></b><span class="stl-dd-caret"></span></button>
+        <div class="stl-filters" id="exAdv" hidden>
+          <details class="stl-dd" id="ddTopic"><summary><span>الموضوع</span><b class="stl-dd-n" data-n="topic"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="topic"><legend class="sr-only">الموضوع</legend><label><input type="checkbox" data-f="topic" value="start"><span>بدء المشروع</span></label><label><input type="checkbox" data-f="topic" value="finance"><span>التمويل والميزانية</span></label><label><input type="checkbox" data-f="topic" value="marketing"><span>التسويق</span></label><label><input type="checkbox" data-f="topic" value="product"><span>تطوير المنتج</span></label><label><input type="checkbox" data-f="topic" value="leadership"><span>القيادة</span></label><label><input type="checkbox" data-f="topic" value="tourism"><span>السياحة المستدامة</span></label></fieldset></details>
+          <details class="stl-dd" id="ddFmt"><summary><span>الصيغة</span><b class="stl-dd-n" data-n="fmt"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="fmt"><legend class="sr-only">الصيغة</legend><label><input type="checkbox" data-f="fmt" value="document"><span>مستند</span></label><label><input type="checkbox" data-f="fmt" value="video"><span>فيديو</span></label><label><input type="checkbox" data-f="fmt" value="webinar"><span>تسجيل ويبينار</span></label><label><input type="checkbox" data-f="fmt" value="link"><span>رابط</span></label></fieldset></details>
+          <details class="stl-dd" id="ddPil"><summary><span>محور المحتوى</span><b class="stl-dd-n" data-n="p"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="p"><legend class="sr-only">محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset></details>
         </div>
+        <p class="sr-only" id="exCount" role="status" aria-live="polite"></p>
+        <ul class="fe-list" id="exGrid" role="list"></ul>
+        <div class="mp-empty" id="exEmpty" hidden><p>لا توجد موارد مطابقة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
       </section>
-      <section class="rs-sec" id="stories" aria-labelledby="ssH" hidden>
-        <header class="lx-head"><div><span class="sec-eyebrow">من الميدان</span><h2 class="display lx-h" id="ssH">قصص النجاح</h2></div><a class="lx-all" href="en/stories.html"><span>كل القصص</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
-        <ul class="lp-grid" id="ssGrid" role="list"></ul>
+      <section class="fe-sec" id="events" aria-labelledby="evH" hidden>
+        <h2 class="fe-k" id="evH">الفعاليات القادمة</h2>
+        <ul class="fe-events" id="evList" role="list"></ul>
       </section>
     </div>
   </section>
 </main>
-<!-- ===== Newsletter ===== -->
-<section id="contact" class="news" aria-labelledby="news-title">
-  <picture><source type="image/avif" srcset="ASSETS/news letter.avif"><img class="news-bg" src="ASSETS/news letter.webp" alt="" aria-hidden="true" loading="lazy"></picture>
-  <div class="news-inner">
-    <h2 id="news-title" class="display sec-title news-title"><span class="rule" aria-hidden="true"></span><span>ابقَ على تواصل</span><span class="rule" aria-hidden="true"></span></h2>
-    <p class="news-sub">أحدث القصص، الفعاليات والفرص مباشرة إلى بريدك.</p>
-    <form class="news-form" id="news-form" novalidate>
-      <label class="news-field">
-        <span class="sr-only">بريدك الإلكتروني</span>
-        <input type="email" name="email" id="news-email" placeholder="بريدك الإلكتروني" autocomplete="email" required>
-        <svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg>
-      </label>
-      <label class="news-consent"><input type="checkbox" id="news-consent" required><span>أوافق على تلقي النشرة البريدية وقرأت <a href="en/privacy.html">إشعار الخصوصية</a>.</span></label>
-      <button class="news-btn" type="submit"><span>اشترك الآن</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></button>
-    </form>
-    <p class="news-msg" id="news-msg" role="status" aria-live="polite"></p>
-  </div>
-</section>
-
-
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
   <picture><source type="image/avif" srcset="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.avif"><img class="footer-lotus footer-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.webp" alt="" aria-hidden="true" loading="lazy" width="383" height="383"></picture>
@@ -800,79 +827,31 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <script src="resources.js"></script>
 <script src="content.js"></script>
 <script src="listing-shared.js"></script>
+<script src="listing-engine.js"></script>
 <script>
 (() => {
-  /* For Entrepreneurs hub (Inception Report Fig 5): learning paths · resources · upcoming events · success stories, each block linking to its own page */
-  const { P, q, t, esc, svg, ARW, pic, crumb } = EX, { FMT, TOPIC, list, paths, bySlug, pathSteps, pathHref, upcoming } = RESOURCES;
+  /* For Entrepreneurs hub (Wireframe 7 / Fig 5): learning paths, resources behind topic · format · pillar filters held in the URL, the next two events */
+  const { P, t, esc } = EX, { FMT, TOPIC, list, paths, pathSteps, pathHref, upcoming } = RESOURCES;
   const $ = id => document.getElementById(id);
-  (() => {
-    const xh = $('xh'), nav = document.querySelector('.nav-bar');
-    const size = () => {
-      const mobile = innerWidth < 768, vh = innerHeight;
-      const navB = nav ? nav.getBoundingClientRect().bottom : 0;
-      const w = Math.min(mobile ? 950 : 1550, innerWidth * 0.95);
-      const h = Math.min(mobile ? 600 : 800, vh * 0.85, vh - navB - 100);
-      const top = Math.max((vh - h) / 2, navB + 80);
-      xh.style.setProperty('--xh-w', w + 'px'); xh.style.setProperty('--xh-h', h + 'px'); xh.style.setProperty('--xh-top', top + 'px');
-    };
-    size(); addEventListener('resize', size); addEventListener('load', size);
-  })();
-
-  const FICO = { document: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg>', link: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"/></svg>', video: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M164.44,105.34l-48-32A8,8,0,0,0,104,80v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,129.05V95l25.58,17ZM216,40H40A16,16,0,0,0,24,56V168a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,128H40V56H216V168Zm16,40a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16H224A8,8,0,0,1,232,208Z"/></svg>', webinar: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Zm-48,48a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,224Zm-3.56-110.66-48-32A8,8,0,0,0,104,88v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,137.05V103l25.58,17Z"/></svg>' };
-  const PLAY = ICON('play', 16), EXT = ICON('arrow-square-out', 16), DOC = ICON('file-pdf', 16), CLK = ICON('clock', 16), TG = ICON('tag', 16), USERS = ICON('users', 16);
-  const resRow = r => {
-    /* CTA per format (no course language): document opens in a new tab, link visits the external site, video / webinar plays inline */
-    const act = r.fmt === 'document' ? '<a class="rs-act" href="' + r.href + '" target="_blank" rel="noopener">' + DOC + '<span>' + esc(t('فتح المستند')) + '</span></a>'
-      : r.fmt === 'link' ? '<a class="rs-act" href="' + r.href + '" target="_blank" rel="noopener">' + EXT + '<span>' + esc(t('زيارة الرابط')) + '</span></a>'
-      : (r.video && r.video.youtube ? '<button type="button" class="rs-act" data-play="' + r.slug + '">' + PLAY + '<span>' + esc(t(r.fmt === 'webinar' ? 'شاهد التسجيل' : 'شاهد الفيديو')) + '</span></button>' : '');
-    const ext = /^https?:\/\//.test(r.href || '');
-    const meta = '<p class="rs-meta"><span>' + FICO[r.fmt] + esc(t(FMT[r.fmt])) + '</span>' + (r.dur ? '<span>' + CLK + esc(t(r.dur)) + '</span>' : '') + (r.pages ? '<span>' + esc(r.pages + ' ' + t('صفحة')) + '</span>' : '') + (r.topic ? '<span>' + TG + esc(t(TOPIC[r.topic])) + '</span>' : '') + (r.p ? '<span>' + esc(t(P[r.p])) + '</span>' : '') + (ext ? '<span>' + EXT + esc(t('رابط خارجي')) + '</span>' : '') + '</p>';
-    return '<article class="rs-row" data-slug="' + r.slug + '"><span class="rs-ico rs-ico--' + r.fmt + '">' + FICO[r.fmt] + '</span><div><h3 class="rs-t">' + esc(t(r.n)) + '</h3><p class="rs-s">' + esc(t(r.s)) + '</p>' + meta + '</div>' + act + (r.video ? '<div class="rs-player" hidden></div>' : '') + '</article>';
-  };
-  document.addEventListener('click', ev => { const b = ev.target.closest('[data-play]'); if (!b) return; const r = bySlug(b.dataset.play); const row = b.closest('.rs-row'), box = row.querySelector('.rs-player'); if (!r.video || !r.video.youtube) return; if (!box.children.length) box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + r.video.youtube + '?autoplay=1" title="' + esc(t(r.n)) + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>'; box.hidden = false; b.hidden = true; });
-
-  /* Learning path card: a guided sequence of resources, not a course. Slots: image, resource count, title, summary, audience · pillar, CTA */
-  const AUD = { entrepreneurs: 'لرواد الأعمال', organisations: 'للجهات السياحية', both: 'لرواد الأعمال والجهات السياحية' };
-  const pathCard = p => { const n = pathSteps(p).length; return '<li><article class="lp-card">' + pic(p.img, '(min-width:1024px) 33vw, 78vw').replace('<img ', '<img style="object-position:' + (p.pos || '50% 50%') + '" ') + '<div class="lp-body"><span class="lp-steps">' + ICON('list', 16) + esc(n + ' ' + t(n === 1 ? 'مورد' : n === 2 ? 'موردان' : 'موارد')) + '</span><h3 class="lp-title">' + esc(t(p.n)) + '</h3><p class="lp-sum">' + esc(t(p.s)) + '</p><p class="lp-meta"><span>' + USERS + esc(t(AUD[p.aud || 'entrepreneurs'])) + '</span>' + (p.p ? '<span>' + TG + esc(t(P[p.p])) + '</span>' : '') + '</p><a class="gem-cta" href="' + pathHref(p) + '"><span>' + esc(t('استكشف المسار')) + '</span>' + ARW + '</a></div></article></li>'; };
+  const CARET = ICON('caret-down', 16), FICO = { document: 'file-text', link: 'link', video: 'video', webinar: 'video' };
+  document.querySelectorAll('.stl-dd-ic').forEach(x => { x.outerHTML = ICON(x.dataset.ic, 18); });
+  document.querySelectorAll('.stl-dd-caret').forEach(x => { x.innerHTML = CARET; });
+  const stepsText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' step' : ' steps') : l === 'es' ? n + (n === 1 ? ' paso' : ' pasos') : n + ' ' + t(n === 1 ? 'خطوة' : n === 2 ? 'خطوتان' : 'خطوات'); };
+  const pathCard = p => { const n = p.plan ? p.plan.length : pathSteps(p).length; return '<li><a class="fe-path" href="' + pathHref(p) + '"><b class="display">' + esc(t(p.n)) + '</b><small>' + esc(stepsText(n)) + '</small></a></li>'; };
+  /* one row per resource: format · title · what it is (pages, minutes or external); documents and links open their file, video and webinar rows go to the resources page player */
+  const detail = r => r.fmt === 'document' && r.pages ? r.pages + ' ' + t('صفحة') : (r.fmt === 'video' || r.fmt === 'webinar') && r.dur ? t(r.dur) : r.fmt === 'link' ? t('رابط خارجي') : '';
+  const ext = r => /^https?:\/\//.test(r.href || '');
+  const resRow = r => { const file = r.fmt === 'document' || r.fmt === 'link'; const href = file ? r.href : 'resources.html?q=' + encodeURIComponent(r.n); return '<li><a class="fe-row" href="' + esc(href) + '"' + (file ? ' target="_blank" rel="noopener"' : '') + '><span class="fe-fmt">' + ICON(FICO[r.fmt], 16) + esc(t(FMT[r.fmt])) + '</span><span aria-hidden="true">·</span><b>' + esc(t(r.n)) + '</b>' + (detail(r) ? '<small>· ' + esc(detail(r)) + '</small>' : '') + '</a></li>'; };
   const MONTHS = { ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] };
-  const evRow = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug, im = e.img; return '<li><article class="evc" data-href="' + href + '"><a class="evc-media" href="' + href + '" aria-label="' + esc(t(e.n)) + '">' + (im ? '<img src="' + im.src + '" srcset="' + im.srcset + '" sizes="(min-width:1024px) 320px, (min-width:640px) 45vw, 90vw" alt="' + esc(t(im.alt)) + '" loading="lazy" decoding="async">' : '') + '<span class="evc-date"><b>' + d.getDate() + '</b><small>' + m + '</small><small>' + d.getFullYear() + '</small></span></a><p class="evc-meta"><span>' + EX.PIN + esc(t(e.loc)) + '</span><i>|</i><span>' + esc(t(e.kind)) + '</span>' + (e.time ? '<span class="evc-time">' + CLK + esc(t(e.time)) + '</span>' : '') + '</p><div class="evc-foot"><h3 class="evc-t"><a href="' + href + '">' + esc(t(e.n)) + '</a></h3>' + (e.reg ? '<a class="ev-cta" href="' + e.reg + '"><span>' + esc(t('سجّل الآن')) + '</span></a>' : '<a class="ev-cta" href="' + href + '"><span>' + esc(t('عرض التفاصيل')) + '</span></a>') + '</div></article></li>'; };
-  /* carousel: arrows step one card, keyboard arrows on the focused list, arrow sits mid-image, prev/next hide at the ends */
-  const carousel = (() => {
-    const list = $('evList'), prev = $('evPrev'), next = $('evNext'), sec = $('events');
-    const gap = () => parseFloat(getComputedStyle(list).gap) || 0;
-    const step = () => { const li = list.firstElementChild; return li ? li.getBoundingClientRect().width + gap() : 320; };
-    const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
-    const update = () => { const max = list.scrollWidth - list.clientWidth, x = Math.abs(list.scrollLeft); prev.hidden = x < 4 || max < 4; next.hidden = max < 4 || x > max - 4; const im = list.querySelector('.evc-media'); if (im) sec.style.setProperty('--evcar-mid', (im.offsetHeight / 2) + 'px'); };
-    const go = n => list.scrollBy({ left: dir() * n * step(), behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' });
-    next.addEventListener('click', () => go(1)); prev.addEventListener('click', () => go(-1));
-    list.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update);
-    list.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go((e.key === 'ArrowRight' ? 1 : -1) * dir()); } });
-    /* pointer drag on desktop */
-    let drag = null; list.addEventListener('pointerdown', e => { if (e.pointerType !== 'mouse') return; drag = { x: e.clientX, s: list.scrollLeft, moved: false }; });
-    list.addEventListener('pointermove', e => { if (!drag) return; const dx = e.clientX - drag.x; if (Math.abs(dx) > 4) { drag.moved = true; list.scrollLeft = drag.s - dx; } });
-    const end = () => { drag = null; }; list.addEventListener('pointerup', end); list.addEventListener('pointercancel', end); list.addEventListener('pointerleave', end);
-    list.addEventListener('click', e => { if (drag && drag.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
-    return { update };
-  })();
-  const storyCard = x => '<li><article class="lp-card">' + pic(x.img, '(min-width:1024px) 33vw, 78vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '<div class="lp-body"><span class="lp-steps">' + esc(t(x.person)) + '</span><h3 class="lp-title">' + esc(t(x.n)) + '</h3><p class="lp-sum">' + esc(t(x.s)) + '</p><a class="gem-cta" href="en/story.html?slug=' + x.slug + '"><span>' + esc(t('اقرأ القصة')) + '</span>' + ARW + '</a></div></article></li>';
-  function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال']]); document.title = t('لرواد الأعمال') + ' — ' + t('صعيد مصر'); }
-  function render() {
-    $('lpGrid').innerHTML = paths.map(pathCard).join('');
-    $('rsList').innerHTML = list.slice(0, 4).map(resRow).join('');
-    const ev = upcoming(); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evRow).join(''); carousel.update();
-    const stories = (window.CONTENT ? CONTENT.stories : []).slice(0, 3); $('stories').hidden = !stories.length; $('ssGrid').innerHTML = stories.map(storyCard).join('');
-  }
-  document.addEventListener('i18n:change', () => { head(); render(); }); head(); render();
-})();
-</script>
-<script>
-(() => {
-  const $ = s => document.querySelector(s); const form = $('#news-form'), email = $('#news-email'), msg = $('#news-msg'); if (!form) return;
-  form.addEventListener('submit', (e) => {
-    e.preventDefault(); const v = email.value.trim(); const ok = $('#news-consent'); if (ok && !ok.checked) { msg.textContent = I18N.t('من فضلك وافق على تلقي النشرة أولًا.'); ok.focus(); return; }
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v)) { msg.textContent = I18N.t('من فضلك أدخل بريداً إلكترونياً صحيحاً.'); email.focus(); return; }
-    const s = FORMS.newsletter.subscribe(v); msg.innerHTML = I18N.t('تم استلام طلبك. أرسلنا رسالة تأكيد إلى بريدك، ولن يبدأ الاشتراك قبل تأكيده.') + ' <a href="en/newsletter-confirm.html?token=' + s.confirm + '" style="color:#fff;text-decoration:underline">' + I18N.t('(نموذج: افتح رابط التأكيد)') + '</a>'; form.reset();
-  });
+  const evCard = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; return '<li><a class="fe-ev" href="en/event.html?slug=' + e.slug + '"><span class="fe-ev-date"><b>' + d.getDate() + '</b><small>' + esc(m) + '</small></span><span><span class="fe-ev-t display">' + esc(t(e.n)) + '</span><span class="fe-ev-m">' + esc([t(e.kind), t(e.loc), t(e.time)].filter(Boolean).join(' · ')) + '</span></span></a></li>'; };
+  LISTING.init({ hero: false, groups: ['topic', 'fmt', 'p'], items: () => list, chipOf: r => r.aud, groupOf: (r, g) => [r[g]], hay: r => [r.n, r.s, t(r.n), t(r.s)].join(' '),
+    title: () => t('لرواد الأعمال'),
+    onHead: () => { $('lpGrid').innerHTML = paths.map(pathCard).join(''); const ev = upcoming().slice(0, 2); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evCard).join(''); },
+    count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' resource' : ' resources') : l === 'es' ? n + (n === 1 ? ' recurso' : ' recursos') : n + ' ' + t(n === 1 ? 'مورد' : n === 2 ? 'موردان' : 'موارد'); },
+    card: resRow, onRender: () => { document.querySelectorAll('.stl-dd').forEach(d => { const n = d.querySelectorAll('input:checked').length; d.querySelector('[data-n]').textContent = n || ''; }); } });
+  document.querySelectorAll('.stl-dd').forEach(d => d.addEventListener('toggle', () => { if (d.open) document.querySelectorAll('.stl-dd[open]').forEach(o => { if (o !== d) o.open = false; }); }));
+  document.addEventListener('click', e => { if (!e.target.closest('.stl-dd')) document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
 })();
 </script>
 </body>

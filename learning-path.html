@@ -356,81 +356,47 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .dx-ent{display:grid;grid-template-columns:120px minmax(0,1fr);gap:var(--s-4);align-items:center;margin-top:var(--s-6);padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}.dx-ent[hidden]{display:none}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}
 </style>
-
 <style>
-  /* ---------- LEARNING PATH: Wireframe 8 / Figure 18 — breadcrumb, title with the Nile art, numbered steps, sticky path card, related stories ---------- */
+  /* ---------- LEARNING PATH: Wireframe 8 — centred title and count, full-width numbered steps, the current step opens its resources, note, related stories ---------- */
   .lpd{padding-top:calc(var(--tb-top,100px) + var(--s-3))}
-  .lpd .ex-crumb{margin:0 0 var(--s-3)}
-  .lpd-head{position:relative;display:grid;align-items:center;min-height:150px;margin-bottom:var(--s-4);overflow:hidden;border-radius:var(--radius-card)}
-  .lpd-head-txt{position:relative;z-index:1;max-width:62ch;padding-block:var(--s-2)}
+  .lpd .ex-crumb{margin:0 0 var(--s-4)}
+  .lpd-head{text-align:center;max-width:62ch;margin:0 auto var(--s-4)}
   .lpd-title{margin:0;font-size:clamp(26px,2.7vw,38px);line-height:1.2;font-weight:700;color:var(--ink)}
-  .lpd-sub{margin:var(--s-2) 0 0;font-size:var(--fs-body-lg);line-height:1.6;color:var(--muted)}
-  .lpd-head-art{display:none;position:absolute;inset-block:0;inset-inline-end:0;width:min(42%,460px);-webkit-mask-image:linear-gradient(to right,transparent,#000 45%);mask-image:linear-gradient(to right,transparent,#000 45%)}
-  html[dir="rtl"] .lpd-head-art{-webkit-mask-image:linear-gradient(to left,transparent,#000 45%);mask-image:linear-gradient(to left,transparent,#000 45%)}
-  @media (min-width:768px){.lpd-head-art{display:block}}
-  .lpd-head-art img{width:100%;height:100%;object-fit:cover}
-  .lpd-grid{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-5);align-items:start}
-  @media (min-width:1024px){.lpd-grid{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}}
+  .lpd-sub{margin:var(--s-2) 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .lpd-sub[hidden]{display:none}
   .lpd-list{display:grid;gap:var(--s-2);margin:0;padding:0;list-style:none}
-  .lpd-row{display:grid;grid-template-columns:40px 36px minmax(0,1fr) 24px;align-items:center;gap:var(--s-3);width:100%;padding:var(--s-3) var(--s-4);border:0;border-radius:var(--radius-md);background:#fff;box-shadow:inset 0 0 0 1px rgba(43,29,14,.12);color:var(--ink);text-align:start;cursor:pointer;font:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background-color .25s ease}
+  .lpd-row{display:grid;gap:4px;width:100%;padding:var(--s-3) var(--s-4);border:0;border-radius:var(--radius-md);background:#fff;box-shadow:inset 0 0 0 1px rgba(43,29,14,.12);color:var(--ink);text-align:center;cursor:pointer;font:inherit;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
   .lpd-row:hover{transform:translateY(-2px);box-shadow:inset 0 0 0 1px rgba(43,29,14,.12),0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
   .lpd-row:active{transform:translateY(0) scale(.98)}
   .lpd-row:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
-  .lpd-row[aria-current="step"]{background:rgba(165,62,26,.07);box-shadow:inset 0 0 0 1.5px var(--rust)}
-  .lpd-n{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:#fff;box-shadow:inset 0 0 0 1px rgba(43,29,14,.12);font-weight:700;font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
-  [aria-current="step"]>.lpd-n{background:rgba(165,62,26,.1);color:var(--rust);box-shadow:none}
-  .lpd-ic{display:grid;place-items:center;color:var(--rust)} .lpd-ic svg{width:32px;height:32px}
-  .lpd-t{display:block;margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .lpd-f{display:block;margin:4px 0 0;font-size:var(--fs-small);line-height:1.5;color:var(--muted)}
-  .lpd-go{display:grid;place-items:center;color:var(--rust)} .lpd-go svg{width:20px;height:20px} html[dir="ltr"] .lpd-go svg{transform:scaleX(-1)}
-  @media (max-width:639px){.lpd-row{grid-template-columns:36px 32px minmax(0,1fr) 20px;gap:var(--s-2);padding:var(--s-2) var(--s-3)} .lpd-n{width:36px;height:36px;font-size:15px} .lpd-ic svg{width:26px;height:26px} .lpd-t{font-size:var(--fs-body-lg)}}
-  .lpd-side{display:none}
-  @media (min-width:1024px){.lpd-side{display:grid;gap:var(--s-4);position:sticky;top:calc(var(--tb-top,100px) + 16px)}}
-  .lpd-card{padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
-  .lpd-card-h{margin:0 0 var(--s-3);font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .lpd-toc{display:grid;gap:4px;margin:0;padding:0;list-style:none}
-  .lpd-toc button{display:grid;grid-template-columns:28px minmax(0,1fr);align-items:center;gap:10px;width:100%;padding:6px 10px;border:0;border-radius:var(--radius-sm);background:none;color:var(--nav-ink);font:inherit;font-size:14px;font-weight:600;line-height:1.35;text-align:start;cursor:pointer;transition:background-color .25s ease}
-  .lpd-toc button:hover{background:rgba(43,29,14,.06)}
-  .lpd-toc button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
-  .lpd-toc button[aria-current="step"]{background:rgba(165,62,26,.07);color:var(--rust)}
-  .lpd-toc .lpd-n{width:28px;height:28px;font-size:13px}
-  .lpd-mini{display:grid;gap:4px;margin:0;padding:0;list-style:none}
-  .lpd-mini a{display:grid;grid-template-columns:56px minmax(0,1fr) 28px;align-items:center;gap:10px;padding:6px;border-radius:var(--radius-sm);color:var(--nav-ink);text-decoration:none;transition:background-color .25s ease}
-  .lpd-mini a:hover{background:rgba(43,29,14,.06)}
-  .lpd-mini a:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
-  .lpd-mini img{width:56px;height:56px;border-radius:var(--radius-sm);object-fit:cover;display:block}
-  .lpd-mini b{display:block;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .lpd-mini small{display:block;margin-top:2px;font-size:12.5px;color:var(--muted)}
-  .lpd-mini .stl-arrow{width:28px;height:28px} .lpd-mini .stl-arrow svg{width:14px;height:14px}
-  .lpd-rel{margin-top:var(--s-6)}
-  .lpd-rel .stl-k{margin-top:0}
-  /* story card (Wireframe 14 grid, Figure 18 related stories): picture 3:2, title, "city · pillar", round arrow; a compact row under 640px */
-  .stl-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:minmax(0,1fr)}
-  @media (min-width:640px){.stl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  @media (min-width:1024px){.stl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  .stl-grid>li[hidden]{display:none}
-  .stl-card{position:relative;display:grid;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-  .stl-card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
-  .stl-card-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:#2b1d0e}
-  .stl-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-  .stl-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s-1) var(--s-3);padding:var(--s-3) var(--s-4)}
-  .stl-card-t{margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .stl-card-t a{color:inherit;text-decoration:none}
-  .stl-card-t a::after{content:"";position:absolute;inset:0}
-  .stl-card-t a:focus-visible{outline:none} .stl-card:has(a:focus-visible){outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
-  .stl-card-body .stl-card-t{grid-column:1;grid-row:1} .stl-card-body .stl-meta{grid-column:1;grid-row:2} .stl-card-body .stl-arrow{grid-column:2;grid-row:1 / span 2}
-  .stl-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;font-size:13px;color:var(--muted)}
-  .stl-meta span{display:inline-flex;align-items:center;gap:6px}
-  .stl-meta svg{color:var(--rust)}
-  .stl-arrow{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:rgba(165,62,26,.1);color:var(--rust);transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .25s ease,color .25s ease}
-  .stl-arrow svg{width:18px;height:18px}
-  html[dir="ltr"] .stl-arrow svg{transform:scaleX(-1)}
-  .stl-arrow--solid{background:var(--rust);color:#fff}
-  .stl-card:hover .stl-arrow,.stl-feat:hover .stl-arrow{background:var(--rust-deep);color:#fff}
-  @media (max-width:639px){.stl-card{grid-template-columns:96px minmax(0,1fr);align-items:center} .stl-card-media{aspect-ratio:auto;height:100%;min-height:96px} .stl-card-body{padding:var(--s-2) var(--s-3)} .stl-card-t{font-size:var(--fs-body-lg)} .stl-card-body .stl-arrow{width:36px;height:36px}}
-  .stl-k{margin:var(--s-6) 0 var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;font-weight:700;color:var(--ink)}
+  .lpd-row[aria-current="step"],.lpd-row[aria-current="step"]:hover{box-shadow:inset 0 0 0 1.5px var(--rust)}
+  .lpd-t{display:block;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .lpd-f{display:block;font-size:var(--fs-small);line-height:1.5;color:var(--muted)}
+  .lpd-res{display:grid;gap:var(--s-2);padding:var(--s-2) 0}
+  .lpd-res[hidden]{display:none}
+  .lpd-res-empty{margin:0;padding:var(--s-2) var(--s-4);text-align:center;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .lpd-note{margin:var(--s-3) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
+  .lpd-note[hidden]{display:none}
+  .lpd-k{margin:var(--s-6) 0 var(--s-3);text-align:center;font-size:var(--fs-body);font-weight:700;color:var(--ink)}
+  .lpd-stories{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:768px){.lpd-stories{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .lpd-story{display:grid;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .lpd-story:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  .lpd-story:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .lpd-story-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:#2b1d0e}
+  .lpd-story-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .lpd-story-body{padding:var(--s-3) var(--s-4)}
+  .lpd-story b{display:block;font-size:var(--fs-h3);line-height:1.3;font-weight:700}
+  .lpd-story small{display:block;margin-top:4px;font-size:13px;color:var(--muted)}
+  .lpd-noscript{margin:0 0 var(--s-5);padding:0 var(--s-4);line-height:1.7}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+  .rs-poster{grid-column:1 / -1;width:100%;max-width:480px;aspect-ratio:16/9;object-fit:cover;border-radius:var(--radius-md);display:block}
+  .rs-player{grid-column:1 / -1;aspect-ratio:16/9;max-width:720px}
+  .rs-player iframe{width:100%;height:100%;border:0;border-radius:var(--radius-md)}
 </style>
 </head>
+
+
 <body>
 <a class="skip" href="#main">تخطَّ إلى المحتوى</a>
 
@@ -518,27 +484,19 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   <section class="ex lpd" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
       <div id="exCrumb"></div>
-      <header class="lpd-head">
-        <div class="lpd-head-txt">
-          <h1 class="display lpd-title" id="ex-h"></h1>
-          <p class="lpd-sub" id="exMeta"></p>
-        </div>
-        <div class="lpd-head-art" aria-hidden="true"><img src="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-960.webp" srcset="ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-480.webp 480w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-960.webp 960w, ASSETS/38ee86c3-b80b-4c1b-abcd-37e619a2827f-1448.webp 1448w" sizes="460px" alt="" decoding="async"></div>
+      <header class="lpd-head" id="lpdHead">
+        <h1 class="display lpd-title" id="ex-h"></h1>
+        <p class="lpd-sub" id="exMeta"></p>
       </header>
-      <div class="lpd-grid" id="lpdGrid">
-        <div class="lpd-main">
-          <ol class="lpd-list" id="lpdSteps" aria-label="خطوات المسار"></ol>
-          <section class="lpd-rel" id="lpStories" aria-labelledby="lpsH" hidden>
-            <h2 class="stl-k display" id="lpsH">قصص نجاح ذات صلة</h2>
-            <ul class="stl-grid" id="lpStoryGrid" role="list"></ul>
-          </section>
-        </div>
-        <aside class="lpd-side">
-          <section class="lpd-card" aria-labelledby="lpdTocH"><h2 class="lpd-card-h display" id="lpdTocH">في هذا المسار</h2><ol class="lpd-toc" id="lpdToc"></ol></section>
-          <section class="lpd-card" id="lpdRelCard" aria-labelledby="lpdRelH" hidden><h2 class="lpd-card-h display" id="lpdRelH">قصص ذات صلة</h2><ul class="lpd-mini" id="lpdMini" role="list"></ul></section>
-        </aside>
-      </div>
-      <p class="dx-empty" id="dxEmpty" hidden>هذا المسار غير موجود. <a href="resources.html" style="color:var(--rust);font-weight:700">العودة إلى الموارد</a></p>
+      <h2 class="sr-only" id="lpdStepsH">خطوات المسار</h2>
+      <ol class="lpd-list" id="lpdSteps" aria-labelledby="lpdStepsH"></ol>
+      <p class="lpd-res-empty" id="lpdNoSteps" hidden>لا توجد خطوات في هذا المسار بعد.</p>
+      <p class="lpd-note" id="lpdNote">قراءة مرتبة: لا تسجيل، ولا تتبع للتقدم، ولا شهادات.</p>
+      <section id="lpStories" aria-labelledby="lpsH" hidden>
+        <h2 class="lpd-k" id="lpsH">قصص نجاح ذات صلة</h2>
+        <ul class="lpd-stories" id="lpStoryGrid" role="list"></ul>
+      </section>
+      <p class="dx-empty" id="dxEmpty" hidden>هذا المسار غير موجود. <a href="resources.html#paths" style="color:var(--rust);font-weight:700">العودة إلى الموارد</a></p>
     </div>
   </section>
 </main>
@@ -772,40 +730,63 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <script src="listing-shared.js"></script>
 <script>
 (() => {
-  /* Wireframe 8 / Figure 18: the path's titled steps (or its resources when it has none), the current step, the sticky path card, related stories */
-  const { P, q, t, esc, pic, crumb, PIN } = EX, { FMT, paths, bySlug, pathBySlug, pathSteps } = RESOURCES;
+  /* Wireframe 8: the path's steps in order; the current step shows its resources with the Resources row (document download, link in a new tab, video / webinar behind its poster, 6.6) */
+  const { P, q, t, esc, pic, crumb } = EX, { FMT, TOPIC, paths, bySlug, pathBySlug } = RESOURCES;
   const $ = id => document.getElementById(id);
-  const p = pathBySlug(q.get('slug'));
-  if (!p) { document.querySelectorAll('#exList > .wrap > *').forEach(x => { x.hidden = x.id !== 'dxEmpty'; }); return; }
+  const notFound = () => { document.querySelectorAll('#exList > .wrap > *').forEach(x => { x.hidden = x.id !== 'dxEmpty'; }); document.title = t('هذا المسار غير موجود.') + ' — ' + t('صعيد مصر'); };
+  /* the slug is checked against a whitelist and never written into the page; a draft path counts as missing */
+  const raw = q.get('slug'); const p = raw && /^[a-z0-9-]{1,80}$/.test(raw) ? pathBySlug(raw) : null;
+  if (!p || p.draft) { notFound(); return; }
   const CITIES = EX.CITIES, cityName = c => c ? (CITIES[c][EX.lang()] || CITIES[c].ar) : '';
-  const BANK = ICON('bank', 16), ARROW = ICON('arrow-left', 18), GO = ICON('caret-left', 20);
-  const FICO = { document: 'file-text', link: 'link', video: 'video', webinar: 'video' };
-  /* a path with a plan lists its titled steps, each with a document, a video and a link; otherwise its resources, one format each */
-  const steps = p.plan ? p.plan.map(x => ({ t: x.t, ic: x.ic, f: ['document', 'video', 'link'] })) : pathSteps(p).map(r => ({ t: r.n, ic: FICO[r.fmt] || 'file-text', f: [r.fmt] }));
+  const FICO = { document: ICON('file-text', 16), link: ICON('link', 16), video: ICON('video', 16), webinar: ICON('monitor-play', 16) };
+  const PLAY = ICON('play', 16), EXT = ICON('arrow-square-out', 16), DOC = ICON('download-simple', 16), CLK = ICON('clock', 16), TG = ICON('tag', 16);
+  const steps = (p.plan ? p.plan.map(x => ({ t: x.t, res: (x.res || []).map(bySlug).filter(Boolean) })) : (p.steps || []).map(bySlug).filter(Boolean).map(r => ({ t: r.n, res: [r] })));
   let cur = 0;
   const stepsText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' step' : ' steps') : l === 'es' ? n + (n === 1 ? ' paso' : ' pasos') : n + ' ' + t(n === 1 ? 'خطوة' : n === 2 ? 'خطوتان' : 'خطوات'); };
+  const hasFile = r => !!r.href && /^(https?:\/\/|ASSETS\/)/.test(r.href);
+  /* the Resources row: the action exists only when the file, link or YouTube video does (empty state 5) */
+  const resRow = r => {
+    const ext = /^https?:\/\//.test(r.href || '');
+    const act = r.fmt === 'document' && hasFile(r) ? '<a class="rs-act" href="' + esc(r.href) + '" download>' + DOC + '<span>' + esc(t('تنزيل المستند')) + '</span></a>'
+      : r.fmt === 'link' && hasFile(r) ? '<a class="rs-act" href="' + esc(r.href) + '" target="_blank" rel="noopener">' + EXT + '<span>' + esc(t('زيارة الرابط')) + '</span></a>'
+      : (r.fmt === 'video' || r.fmt === 'webinar') && r.video && r.video.youtube ? '<button type="button" class="rs-act" data-play="' + esc(r.slug) + '">' + PLAY + '<span>' + esc(t(r.fmt === 'webinar' ? 'شاهد التسجيل' : 'شاهد الفيديو')) + '</span></button>' : '';
+    const meta = '<p class="rs-meta"><span>' + FICO[r.fmt] + esc(t(FMT[r.fmt])) + '</span>' + (r.dur ? '<span>' + CLK + esc(t(r.dur)) + '</span>' : '') + (r.pages ? '<span>' + esc(r.pages + ' ' + t('صفحة')) + '</span>' : '') + (r.topic ? '<span>' + TG + esc(t(TOPIC[r.topic])) + '</span>' : '') + (r.p ? '<span>' + esc(t(P[r.p])) + '</span>' : '') + (ext && hasFile(r) ? '<span>' + EXT + esc(t('رابط خارجي')) + '</span>' : '') + '</p>';
+    const poster = (r.fmt === 'video' || r.fmt === 'webinar') && r.video && r.video.youtube && r.video.poster ? '<img class="rs-poster" src="' + esc(r.video.poster) + '" alt="" loading="lazy">' : '';
+    return '<article class="rs-row" data-slug="' + esc(r.slug) + '"><span class="rs-ico rs-ico--' + r.fmt + '">' + FICO[r.fmt] + '</span><div><h3 class="rs-t">' + esc(t(r.n)) + '</h3><p class="rs-s">' + esc(t(r.s)) + '</p>' + meta + '</div>' + act + poster + (r.video && r.video.youtube ? '<div class="rs-player" hidden></div>' : '') + '</article>';
+  };
+  /* the YouTube player loads only when the visitor presses play (6.6) */
+  document.addEventListener('click', ev => { const b = ev.target.closest('[data-play]'); if (!b) return; const r = bySlug(b.dataset.play); const row = b.closest('.rs-row'), box = row && row.querySelector('.rs-player'); if (!r || !r.video || !r.video.youtube || !box) return; if (!box.children.length) box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + encodeURIComponent(r.video.youtube) + '?autoplay=1" title="' + esc(t(r.n)) + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>'; box.hidden = false; const po = row.querySelector('.rs-poster'); if (po) po.hidden = true; b.hidden = true; });
   const setCurrent = i => {
     cur = i;
-    document.querySelectorAll('#lpdSteps .lpd-row, #lpdToc button').forEach(b => { const on = +b.dataset.i === cur; if (on) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); });
+    document.querySelectorAll('#lpdSteps .lpd-row').forEach(b => { const on = +b.dataset.i === cur; if (on) b.setAttribute('aria-current', 'step'); else b.removeAttribute('aria-current'); b.setAttribute('aria-expanded', String(on)); b.querySelector('.lpd-cur').textContent = on ? ' (' + t('الخطوة الحالية') + ')' : ''; const res = $('lpdRes' + b.dataset.i); if (res) res.hidden = !on; });
   };
-  const storyCard = x => '<li><article class="stl-card" data-href="' + CONTENT.storyHref(x) + '"><div class="stl-card-media">' + pic(x.img, '(min-width:1024px) 33vw, (min-width:640px) 50vw, 96px').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><div class="stl-card-body"><h3 class="stl-card-t display"><a href="' + CONTENT.storyHref(x) + '">' + esc(t(x.n)) + '</a></h3><p class="stl-meta"><span>' + PIN + esc(cityName(x.city)) + '</span><span>' + BANK + esc(t(x.cat)) + '</span></p><span class="stl-arrow stl-arrow--solid" aria-hidden="true">' + ARROW + '</span></div></article></li>';
-  const miniRow = x => '<li><a href="' + CONTENT.storyHref(x) + '"><img src="' + x.img.src + '" srcset="' + x.img.srcset + '" sizes="56px" alt="" style="object-position:' + (x.pos || '50% 50%') + '" loading="lazy"><span><b>' + esc(t(x.n)) + '</b><small>' + esc(cityName(x.city)) + ' · ' + esc(t(x.cat)) + '</small></span><span class="stl-arrow" aria-hidden="true">' + ARROW + '</span></a></li>';
+  const LU = window.LURL || (u => u);
+  const storyCard = x => '<li><a class="lpd-story" href="' + LU(CONTENT.storyHref(x)) + '"><span class="lpd-story-media">' + pic(x.img, '(min-width:768px) 33vw, 100vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</span><span class="lpd-story-body"><b class="display">' + esc(t(x.n)) + '</b><small>' + esc(cityName(x.city)) + ' · ' + esc(t(P[x.p])) + '</small></span></a></li>';
+  /* per-path address, title and description for each locale (9.4): the localized slug comes from slugs.js */
+  const seo = () => {
+    const S = window.SLUGS, L = window.LOCALE, e = S && S.entries[p.slug];
+    const can = document.querySelector('link[rel="canonical"]'); if (!can || !L) return;
+    const base = can.href.replace(/\/(ar|en|es)\/[^/]*$/, '/');
+    const at = l => base + l + '/' + (S.pages['learning-path.html'] ? S.pages['learning-path.html'][l] + '.html' : 'learning-path.html') + '?slug=' + encodeURIComponent(e ? e[l] : p.slug);
+    can.href = at(L);
+    document.querySelectorAll('link[rel="alternate"][hreflang]').forEach(x => { const h = x.getAttribute('hreflang'); x.href = at(h === 'x-default' ? 'ar' : h); });
+    const og = document.querySelector('meta[property="og:url"]'); if (og) og.content = at(L);
+    const d = t(p.s); ['meta[name="description"]', 'meta[property="og:description"]'].forEach(sel => { const m = document.querySelector(sel); if (m) m.content = d; });
+    const ot = document.querySelector('meta[property="og:title"]'); if (ot) ot.content = document.title;
+  };
   function render() {
-    $('exCrumb').innerHTML = crumb([['لرواد الأعمال', 'for-entrepreneurs.html'], ['مسارات التعلم', 'resources.html#paths'], [p.n]]);
+    $('exCrumb').innerHTML = crumb([['لرواد الأعمال', 'for-entrepreneurs.html'], ['مسارات التعلم', 'resources.html#paths'], [p.n]]); $('exCrumb').querySelectorAll('a[href]').forEach(a => a.setAttribute('href', LU(a.getAttribute('href'))));
     $('ex-h').textContent = t(p.n); document.title = t(p.n) + ' — ' + t('مسارات التعلم') + ' — ' + t('صعيد مصر');
-    $('exMeta').textContent = stepsText(steps.length) + ' · ' + t('وصول مفتوح، بدون تسجيل');
-    $('lpdSteps').innerHTML = steps.map((x, i) => '<li><button type="button" class="lpd-row" data-i="' + i + '"><span class="lpd-n" aria-hidden="true">' + (i + 1) + '</span><span class="lpd-ic" aria-hidden="true">' + ICON(x.ic, 32) + '</span><span><span class="lpd-t display">' + esc(t(x.t)) + '</span><span class="lpd-f">' + x.f.map(f => esc(t(FMT[f]))).join(' · ') + '</span></span><span class="lpd-go" aria-hidden="true">' + GO + '</span></button></li>').join('');
-    $('lpdToc').innerHTML = steps.map((x, i) => '<li><button type="button" data-i="' + i + '"><span class="lpd-n" aria-hidden="true">' + (i + 1) + '</span><span>' + esc(t(x.t)) + '</span></button></li>').join('');
-    setCurrent(cur);
-    /* related success stories: the content model has no path→story relation yet, so the first three stories in CMS order show */
-    const stories = (window.CONTENT ? CONTENT.stories : []).slice(0, 3);
+    $('exMeta').hidden = !steps.length; $('exMeta').textContent = stepsText(steps.length) + ' · ' + t('وصول مفتوح، بدون تسجيل');
+    $('lpdNoSteps').hidden = !!steps.length; $('lpdNote').hidden = !steps.length;
+    $('lpdSteps').innerHTML = steps.map((x, i) => { const kinds = [...new Set(x.res.map(r => r.fmt))].map(f => esc(t(FMT[f]))).join(' · '); return '<li><button type="button" class="lpd-row" data-i="' + i + '" aria-controls="lpdRes' + i + '" aria-expanded="false"><span class="lpd-t display">' + (i + 1) + '. ' + esc(t(x.t)) + '<span class="sr-only lpd-cur"></span></span>' + (kinds ? '<span class="lpd-f">' + kinds + '</span>' : '') + '</button><div class="lpd-res" id="lpdRes' + i + '" hidden>' + (x.res.length ? x.res.map(resRow).join('') : '<p class="lpd-res-empty">' + esc(t('لا توجد موارد لهذه الخطوة بعد.')) + '</p>') + '</div></li>'; }).join('');
+    setCurrent(Math.min(cur, Math.max(0, steps.length - 1)));
+    /* related success stories: the ones the path names (Figure 18); none → the section goes (3.5) */
+    const stories = (p.stories || []).map(sl => (window.CONTENT ? CONTENT.stories : []).find(x => x.slug === sl)).filter(Boolean).slice(0, 3);
     $('lpStories').hidden = !stories.length; $('lpStoryGrid').innerHTML = stories.map(storyCard).join('');
-    $('lpdRelCard').hidden = !stories.length; $('lpdMini').innerHTML = stories.map(miniRow).join('');
+    seo();
   }
-  document.addEventListener('click', ev => {
-    const b = ev.target.closest('#lpdSteps .lpd-row, #lpdToc button'); if (b) { setCurrent(+b.dataset.i); if (b.closest('#lpdToc')) { const row = document.querySelector('#lpdSteps .lpd-row[data-i="' + cur + '"]'); if (row) { row.scrollIntoView({ block: 'nearest', behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' }); row.focus({ preventScroll: true }); } } return; }
-    const c = ev.target.closest('#lpStoryGrid [data-href]'); if (c && !ev.target.closest('a,button')) location.href = (window.LURL || (u => u))(c.dataset.href);
-  });
+  document.addEventListener('click', ev => { const b = ev.target.closest('#lpdSteps .lpd-row'); if (b) setCurrent(+b.dataset.i); });
   document.addEventListener('i18n:change', render); render();
 })();
 </script>

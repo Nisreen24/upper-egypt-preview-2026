@@ -30,6 +30,11 @@
     return;
   }
   try { localStorage.setItem('se-lang', L); } catch {}
+  /* links written by page scripts carry the locale address too (3.1), not only on click */
+  const localizeLinks = root => [...(root.matches && root.matches('a[href]') ? [root] : []), ...(root.querySelectorAll ? root.querySelectorAll('a[href]') : [])].forEach(a => { const raw = a.getAttribute('href'); if (raw && /^[\w-]+\.html/.test(raw) && !raw.startsWith(L + '/')) a.setAttribute('href', L + '/' + localize(raw, L)); });
+  const mo = new MutationObserver(ms => ms.forEach(m => { if (m.type === 'attributes') { if (m.target.matches && m.target.matches('a[href]')) localizeLinks({ querySelectorAll: () => [m.target] }); return; } m.addedNodes.forEach(n => { if (n.nodeType === 1) localizeLinks(n); }); }));
+  const start = () => { localizeLinks(document); mo.observe(document.documentElement, { childList: true, subtree: true, attributes: true, attributeFilter: ['href'] }); };
+  if (document.body) start(); else document.addEventListener('DOMContentLoaded', start);
   document.addEventListener('click', e => {
     const a = e.target.closest('a[href]'); if (!a || e.defaultPrevented || e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || a.target === '_blank') return;
     const raw = a.getAttribute('href'); if (!raw) return;
