@@ -278,6 +278,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .lpd-step .rs-row{border:0;padding:0;background:transparent;box-shadow:none}
   .lpd-step .rs-row:hover{transform:none}
   .lpd-body{min-width:0}
+  .lpd-note{margin:var(--s-3) 0 0;font-size:13px;line-height:1.6;color:var(--muted)}
   .lpd-k{margin:0 0 6px;font-size:12.5px;font-weight:700;letter-spacing:.02em;color:var(--rust);text-transform:uppercase}
   .lpd-about{margin-top:0}
   .lpd-facts{display:grid;gap:var(--s-2);margin:0;padding:0}
@@ -462,6 +463,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
       <section class="rs-sec" aria-labelledby="stH">
         <header class="lx-head"><div><span class="sec-eyebrow">خطوة بخطوة</span><h2 class="display lx-h" id="stH">موارد المسار بالترتيب</h2></div><a class="lx-all" href="resources.html"><span>كل الموارد</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
         <ol class="lpd-steps" id="lpdSteps"></ol>
+        <p class="lpd-note">قراءة مرتبة: لا تسجيل، ولا تتبع للتقدم، ولا شهادات.</p>
       </section>
       <section class="rs-sec" id="lpStories" aria-labelledby="lpsH" hidden>
         <header class="lx-head"><div><span class="sec-eyebrow">من الميدان</span><h2 class="display lx-h" id="lpsH">قصص نجاح ذات صلة</h2></div><a class="lx-all" href="stories.html"><span>كل القصص</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
@@ -762,7 +764,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     const steps = pathSteps(p);
     $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'for-entrepreneurs.html'], ['مسارات التعلم', 'resources.html#paths'], [p.n]]);
     $('ex-h').textContent = t(p.n); $('exSub').textContent = t(p.s); document.title = t(p.n) + ' — ' + t('مسارات التعلم') + ' — ' + t('صعيد مصر');
-    $('exMeta').innerHTML = ICON('list', 20) + '<span>' + esc(steps.length + ' ' + t(steps.length === 1 ? 'مورد' : steps.length === 2 ? 'موردان' : 'موارد') + ' · ' + t(P[p.p]) + ' · ' + t(AUD[p.aud || 'entrepreneurs'])) + '</span>';
+    $('exMeta').innerHTML = ICON('list', 20) + '<span>' + esc(steps.length + ' ' + t(steps.length === 1 ? 'مورد' : steps.length === 2 ? 'موردان' : 'موارد') + ' · ' + t(P[p.p]) + ' · ' + t(AUD[p.aud || 'entrepreneurs']) + ' · ' + t('وصول مفتوح، بدون تسجيل')) + '</span>';
     const hero = $('xhMedia').querySelector('img'); if (hero) hero.remove();
     $('xhMedia').insertAdjacentHTML('afterbegin', '<img src="' + p.img.src + '" srcset="' + p.img.srcset + '" sizes="95vw" alt="' + esc(t(p.img.alt)) + '" style="object-position:' + (p.pos || '50% 50%') + '" fetchpriority="high" decoding="async">');
     const stepLabel = (i, n) => { const l = EX.lang(); return l === 'en' ? 'Step ' + i + ' of ' + n : l === 'es' ? 'Paso ' + i + ' de ' + n : 'الخطوة ' + i + ' من ' + n; };
