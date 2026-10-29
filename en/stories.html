@@ -417,6 +417,77 @@ html[dir="rtl"] .sk-list{order:2}
   @media (max-width:639px){.dx-ent{grid-template-columns:1fr}
 </style>
 
+<style>
+  /* ---------- SUCCESS STORIES: Wireframe 14 / Figure 24 — centred title, three filters, featured story, grid of six, load more ---------- */
+  .st{padding-top:calc(var(--tb-top,100px) + var(--s-4))}
+  .stl-head{text-align:center;max-width:62ch;margin:0 auto var(--s-5)}
+  .stl-title{margin:0;font-size:clamp(28px,3.2vw,46px);line-height:1.2;font-weight:700;color:var(--ink)}
+  .stl-sub{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.6;color:var(--muted)}
+  .stl-filters-btn{width:100%;justify-content:center;gap:8px}
+  .stl-filters-btn .stl-dd-caret{transition:transform .25s}
+  .stl-filters-btn[aria-expanded="true"] .stl-dd-caret{transform:rotate(180deg)}
+  .stl-filters{display:grid;gap:var(--s-2);margin-top:var(--s-3)}
+  .stl-filters[hidden]{display:none}
+  @media (min-width:768px){.stl-filters-btn{display:none} .stl-filters,.stl-filters[hidden]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:0}}
+  .stl-dd{position:relative}
+  .stl-dd summary{list-style:none;display:flex;align-items:center;gap:8px;height:var(--btn-h);padding-inline:var(--s-3);border-radius:var(--radius-sm);background:#fff;border:1px solid rgba(43,29,14,.16);color:var(--ink);font-size:var(--fs-body);font-weight:600;cursor:pointer;transition:background-color .25s ease}
+  .stl-dd summary::-webkit-details-marker{display:none}
+  .stl-dd summary:hover{background:rgba(43,29,14,.06)}
+  .stl-dd summary:active{transform:scale(.98)}
+  .stl-dd summary:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
+  .stl-dd summary>svg:first-child{color:var(--rust)}
+  .stl-dd-caret{margin-inline-start:auto;transition:transform .25s}
+  .stl-dd[open] .stl-dd-caret{transform:rotate(180deg)}
+  .stl-dd-n{display:inline-grid;place-items:center;min-width:22px;height:22px;padding-inline:6px;border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:12px;font-weight:700}
+  .stl-dd-n:empty{display:none}
+  .stl-dd fieldset{display:grid;gap:4px;margin:var(--s-1) 0 0;padding:6px;border:0;min-width:0;background:#fff;border-radius:14px;border:1px solid rgba(43,29,14,.12)}
+  @media (min-width:768px){.stl-dd fieldset{position:absolute;z-index:5;inset-inline:0;top:calc(100% + 8px);margin:0;border:0;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}}
+  .stl-dd legend{float:inline-start;width:100%}
+  .stl-dd label{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:9px;font-size:14px;color:var(--nav-ink);cursor:pointer}
+  .stl-dd label[hidden]{display:none}
+  .stl-dd label:hover{background:rgba(43,29,14,.06)}
+  .stl-dd input{accent-color:var(--rust);width:16px;height:16px;margin:0}
+  .stl-feat{position:relative;display:grid;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
+  @media (min-width:768px){.stl-feat{grid-template-columns:minmax(0,2fr) minmax(0,3fr)}}
+  .stl-feat-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#2b1d0e}
+  @media (min-width:768px){.stl-feat-media{aspect-ratio:auto;min-height:280px}}
+  .stl-feat-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .stl-feat-body{display:grid;align-content:center;gap:var(--s-2);padding:var(--s-5) var(--s-4);padding-inline-end:calc(var(--s-4) + 60px)}
+  .stl-feat-t{margin:0;font-size:clamp(26px,2.7vw,38px);line-height:1.2;font-weight:700;color:var(--ink)}
+  .stl-feat-t a{color:inherit;text-decoration:none}
+  .stl-feat-t a::after{content:"";position:absolute;inset:0}
+  .stl-feat:has(a:focus-visible){outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .stl-feat-q{margin:0;font-size:var(--fs-body-lg);line-height:1.6;color:var(--body)}
+  .stl-feat .stl-arrow{position:absolute;inset-inline-end:var(--s-4);top:50%;transform:translateY(-50%)}
+  .stl-more{display:flex;width:100%;justify-content:center;gap:8px;margin-top:var(--s-4);background:var(--cream)}
+  .stl-more[hidden]{display:none}
+  /* story card (Wireframe 14 grid, Figure 18 related stories): picture 3:2, title, "city · pillar", round arrow; a compact row under 640px */
+  .stl-grid{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none;grid-template-columns:minmax(0,1fr)}
+  @media (min-width:640px){.stl-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.stl-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .stl-grid>li[hidden]{display:none}
+  .stl-card{position:relative;display:grid;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .stl-card:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  .stl-card-media{position:relative;aspect-ratio:3/2;overflow:hidden;background:#2b1d0e}
+  .stl-card-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+  .stl-card-body{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:var(--s-1) var(--s-3);padding:var(--s-3) var(--s-4)}
+  .stl-card-t{margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .stl-card-t a{color:inherit;text-decoration:none}
+  .stl-card-t a::after{content:"";position:absolute;inset:0}
+  .stl-card-t a:focus-visible{outline:none} .stl-card:has(a:focus-visible){outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .stl-card-body .stl-card-t{grid-column:1;grid-row:1} .stl-card-body .stl-meta{grid-column:1;grid-row:2} .stl-card-body .stl-arrow{grid-column:2;grid-row:1 / span 2}
+  .stl-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:0;font-size:13px;color:var(--muted)}
+  .stl-meta span{display:inline-flex;align-items:center;gap:6px}
+  .stl-meta svg{color:var(--rust)}
+  .stl-arrow{display:grid;place-items:center;flex:none;width:44px;height:44px;border-radius:50%;background:rgba(165,62,26,.1);color:var(--rust);transition:transform .25s cubic-bezier(.22,1,.36,1),background-color .25s ease,color .25s ease}
+  .stl-arrow svg{width:18px;height:18px}
+  html[dir="ltr"] .stl-arrow svg{transform:scaleX(-1)}
+  .stl-arrow--solid{background:var(--rust);color:#fff}
+  .stl-card:hover .stl-arrow,.stl-feat:hover .stl-arrow{background:var(--rust-deep);color:#fff}
+  @media (max-width:639px){.stl-card{grid-template-columns:96px minmax(0,1fr);align-items:center} .stl-card-media{aspect-ratio:auto;height:100%;min-height:96px} .stl-card-body{padding:var(--s-2) var(--s-3)} .stl-card-t{font-size:var(--fs-body-lg)} .stl-card-body .stl-arrow{width:36px;height:36px}}
+  .stl-k{margin:var(--s-6) 0 var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;font-weight:700;color:var(--ink)}
+  .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+</style>
 </head>
 <body>
 <a class="skip" href="en/stories.html#main">تخطَّ إلى المحتوى</a>
@@ -502,37 +573,25 @@ html[dir="rtl"] .sk-list{order:2}
 </header>
 
 <main id="main">
-  <section class="xh" id="xh" aria-labelledby="ex-h">
-    <div class="xh-crumb" id="exCrumb"></div>
-    <div class="xh-media" id="xhMedia">
-      ,<div class="xh-reel" id="xhReel" aria-hidden="true">
-        <img src="ASSETS/Fatma%20Boghdady-960.webp" srcset="ASSETS/Fatma%20Boghdady-480.webp 480w, ASSETS/Fatma%20Boghdady-960.webp 960w, ASSETS/Fatma%20Boghdady-1448.webp 1448w" sizes="100vw" alt="" style="object-position:62% 35%;animation-delay:0s" fetchpriority="high" decoding="async">
-        <img src="ASSETS/Zainab%20Gamal-960.webp" srcset="ASSETS/Zainab%20Gamal-480.webp 480w, ASSETS/Zainab%20Gamal-960.webp 960w, ASSETS/Zainab%20Gamal-1461.webp 1461w" sizes="100vw" alt="" style="object-position:25% 40%;animation-delay:7s" loading="lazy" decoding="async">
-        <img src="ASSETS/Manal%20Awaga-960.webp" srcset="ASSETS/Manal%20Awaga-480.webp 480w, ASSETS/Manal%20Awaga-960.webp 960w, ASSETS/Manal%20Awaga-1448.webp 1448w" sizes="100vw" alt="" style="object-position:62% 40%;animation-delay:14s" loading="lazy" decoding="async">
-        <img src="ASSETS/asw-silver-960.webp" srcset="ASSETS/asw-silver-480.webp 480w, ASSETS/asw-silver-960.webp 960w, ASSETS/asw-silver-1280.webp 1280w" sizes="100vw" alt="" style="object-position:50% 40%;animation-delay:21s" loading="lazy" decoding="async">
-      </div>,
-      <div class="xh-shade"></div>
-      <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="ex-h">قصص النجاح</h1>
-        <p class="xh-cap-sub" id="exSub">سيدات وشباب من الأقصر وأسوان حوّلوا الحرف والتراث المحلي إلى مشاريع تخلق فرصًا جديدة.</p>
-        <p class="xh-cap-loc"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر وأسوان، صعيد مصر</span></p>
-      </div>
-    </div>
-  </section>
-  <section class="ex" id="exList" aria-labelledby="ex-h">
+  <section class="ex st" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
-      <div id="stLead"></div>
-      <div class="mp-bar ex-bar" style="margin-top:0">
-        <div class="mp-search"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"/></svg><input id="exQ" type="search" placeholder="ابحث في القصص..." aria-label="ابحث في القصص" autocomplete="off"></div>
-        <button type="button" class="mp-adv-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M40,88H73a32,32,0,0,0,62,0h81a8,8,0,0,0,0-16H135a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16Zm64-24A16,16,0,1,1,88,80,16,16,0,0,1,104,64ZM216,168H199a32,32,0,0,0-62,0H40a8,8,0,0,0,0,16h97a32,32,0,0,0,62,0h17a8,8,0,0,0,0-16Zm-48,24a16,16,0,1,1,16-16A16,16,0,0,1,168,192Z"/></svg><span>تصفية</span><b id="exAdvN" hidden></b></button>
-        <div class="mp-cats" role="group" aria-label="المدينة"><button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M104,40H56A16,16,0,0,0,40,56v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,104,40Zm0,64H56V56h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V56A16,16,0,0,0,200,40Zm0,64H152V56h48v48Zm-96,32H56a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,104,136Zm0,64H56V152h48v48Zm96-64H152a16,16,0,0,0-16,16v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V152A16,16,0,0,0,200,136Zm0,64H152V152h48v48Z"/></svg><span>كل المدن</span></button><button type="button" class="mp-chip" data-cat="luxor" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>الأقصر</span></button><button type="button" class="mp-chip" data-cat="aswan" aria-pressed="false"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>أسوان</span></button></div>
+      <header class="stl-head">
+        <h1 class="display stl-title" id="ex-h">قصص النجاح</h1>
+        <p class="stl-sub" id="exSub">سيدات وشباب من الأقصر وأسوان حوّلوا الحرف والتراث المحلي إلى مشاريع تخلق فرصًا جديدة.</p>
+      </header>
+      <button type="button" class="mp-adv-btn stl-filters-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M136,120v96a8,8,0,0,1-16,0V120a8,8,0,0,1,16,0Zm-8-32a8,8,0,0,0,8-8V40a8,8,0,0,0-16,0V80A8,8,0,0,0,128,88Zm64,88a8,8,0,0,0-8,8v32a8,8,0,0,0,16,0V184A8,8,0,0,0,192,176Zm0-40a8,8,0,0,0,8-8V40a8,8,0,0,0-16,0v88A8,8,0,0,0,192,136ZM64,136a8,8,0,0,0-8,8v72a8,8,0,0,0,16,0V144A8,8,0,0,0,64,136Zm0-40a8,8,0,0,0,8-8V40a8,8,0,0,0-16,0V88A8,8,0,0,0,64,96Z"/></svg><span>الفلاتر</span><b class="stl-dd-n" id="exAdvN"></b><span class="stl-dd-caret" id="stCaret"></span></button>
+      <div class="stl-filters" id="exAdv" hidden>
+        <details class="stl-dd" id="ddCity"><summary><span class="stl-dd-ic" data-ic="map-pin"></span><span>المدينة</span><b class="stl-dd-n" data-n="city"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="city"><legend class="sr-only">المدينة</legend><label><input type="checkbox" data-f="city" value="luxor"><span>الأقصر</span></label><label><input type="checkbox" data-f="city" value="aswan"><span>أسوان</span></label></fieldset></details>
+        <details class="stl-dd" id="ddPil"><summary><span class="stl-dd-ic" data-ic="bank"></span><span>محور المحتوى</span><b class="stl-dd-n" data-n="p"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="p" id="ddPilSet"><legend class="sr-only">محور المحتوى</legend></fieldset></details>
+        <details class="stl-dd" id="ddEnt"><summary><span class="stl-dd-ic" data-ic="users"></span><span>رائد الأعمال</span><b class="stl-dd-n" data-n="ent"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="ent" id="ddEntSet"><legend class="sr-only">رائد الأعمال</legend></fieldset></details>
       </div>
-      <div class="mp-adv" id="exAdv" hidden><fieldset data-g="p"><legend>محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset><fieldset data-g="ent"><legend>رائد الأعمال</legend><label><input type="checkbox" data-f="ent" value="fatma-boghdady"><span>فاطمة البغدادي</span></label><label><input type="checkbox" data-f="ent" value="manal-awadallah"><span>منال عوض الله</span></label><label><input type="checkbox" data-f="ent" value="zainab-gamal"><span>زينب جمال</span></label><label><input type="checkbox" data-f="ent" value="nubian-silver-workshop"><span>حرفيو أسوان</span></label></fieldset></div>
-      <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
-      <div class="ex-body"><div>
-        <ul class="ex-grid" id="exGrid" role="list"></ul>
-        <div class="mp-empty" id="exEmpty" hidden><p>لا توجد قصص مطابقة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
-      </div></div>
+      <h2 class="stl-k display" id="stLeadH">القصة المختارة</h2>
+      <div id="stLead"></div>
+      <h2 class="stl-k display" id="stAllH">كل القصص</h2>
+      <p class="sr-only" id="exCount" role="status" aria-live="polite"></p>
+      <ul class="stl-grid" id="exGrid" role="list"></ul>
+      <button type="button" class="mp-adv-btn stl-more" id="stMore" hidden><span>تحميل المزيد</span><span class="stl-dd-caret" id="stMoreCaret"></span></button>
+      <div class="mp-empty" id="exEmpty" hidden><p>لا توجد قصص مطابقة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
     </div>
   </section>
 </main>
@@ -771,26 +830,35 @@ html[dir="rtl"] .sk-list{order:2}
 <script src="entry-engine.js"></script>
 <script>
 (() => {
-
-  const { t, esc, svg, pic, crumb, P, CITIES, PIN, CLOCK, ARW } = EX; const $ = id => document.getElementById(id);
-  const cityName = c => c ? (CITIES[c][EX.lang()] || CITIES[c].ar) : t('عبر الإنترنت');
-  const MONTHS = { ar: ['يناير','فبراير','مارس','أبريل','مايو','يونيو','يوليو','أغسطس','سبتمبر','أكتوبر','نوفمبر','ديسمبر'], en: ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'], es: ['ene','feb','mar','abr','may','jun','jul','ago','sep','oct','nov','dic'] };
-  const dateParts = iso => { const d = new Date(iso); return { day: d.getDate(), mon: (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()], year: d.getFullYear(), time: d.toTimeString().slice(0, 5) }; };
-  const dateText = iso => { const p = dateParts(iso); return p.day + ' ' + p.mon + ' ' + p.year; };
-  const CAL = ICON('calendar-blank', 16), TAG = ICON('tag', 16), USERS = ICON('users', 16), ORG = ICON('buildings', 16), EXT = ICON('arrow-square-out', 16), MAIL = ICON('envelope-simple', 20), ROUTE = ICON('path', 16);
-  const AUD = { entrepreneurs: 'رواد الأعمال', organisations: 'الجهات السياحية', both: 'رواد الأعمال والجهات السياحية' };
-  const gemCard = (o) => '<li><article class="gem" data-href="' + o.href + '"><div class="gem-media">' + pic(o.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (o.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>' + (o.badge ? '<span class="gem-loc">' + o.badge + '</span>' : '') + '</div><div class="gem-body">' + (o.cat ? '<span class="gem-cat">' + esc(o.cat) + '</span>' : '') + '<h3 class="gem-title">' + esc(o.title) + '</h3>' + (o.biz ? '<p class="gem-biz">' + esc(o.biz) + '</p>' : '') + '<p class="gem-desc">' + esc(o.desc) + '</p>' + (o.meta ? '<p class="gem-meta">' + o.meta + '</p>' : '') + '<a class="gem-cta" href="' + o.href + '"><span>' + esc(o.cta) + '</span>' + ARW + '</a></div></article></li>';
-  const stopCard = (kind, slug) => { if (kind === 'd') { const d = DESTINATIONS.bySlug(slug); return d ? { kind: t('مكان'), href: DESTINATIONS.href(d), img: d.imgs[0], pos: d.pos, title: t(d.n), desc: t(d.s), cat: t(DESTINATIONS.CAT[d.c]) } : null; } const e = EXPERIENCES.list.find(x => x.slug === slug); return e ? { kind: t('تجربة'), href: EX.href(e), img: e.imgs[0], title: t(e.n), desc: t(e.s), cat: t(EX.CATS[e.c].n) } : null; };
-  const evRow = e => { const p = dateParts(e.start); return '<li><article class="evl-row" data-href="' + CONTENT.eventHref(e) + '"><span class="evl-date"><b>' + p.day + '</b><small>' + p.mon + '</small></span><div><span class="evl-kind">' + CAL + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta"><span>' + CLOCK + p.time + '</span><span>' + PIN + esc(e.online ? t('عبر الإنترنت') : cityName(e.city)) + '</span><span>' + USERS + esc(t(AUD[e.aud])) + '</span>' + (e.p ? '<span>' + TAG + esc(t(P[e.p])) + '</span>' : '') + '</p></div><a class="ev-cta" href="' + CONTENT.eventHref(e) + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></article></li>'; };
-  const entBlock = en => en ? '<figure><img src="' + en.img.src + '" srcset="' + en.img.srcset + '" sizes="120px" alt="' + esc(t(en.img.alt)) + '" style="object-position:' + (en.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('رائد الأعمال وراء القصة')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(en.name)) + '</p><p class="st-biz">' + esc(t(en.biz)) + '</p><p>' + esc(t(en.sum)) + '</p><a class="st-link" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>' : '';
-
+  /* Wireframe 14 / Figure 24: three filters held in the URL, one featured story that opens the entrepreneur's profile, a grid of six with "load more" */
+  const { t, esc, pic, P, CITIES, PIN } = EX; const $ = id => document.getElementById(id);
+  const cityName = c => c ? (CITIES[c][EX.lang()] || CITIES[c].ar) : '';
+  const BANK = ICON('bank', 16), USERS = ICON('users', 16), ARROW = ICON('arrow-left', 18), CARET = ICON('caret-down', 16);
+  document.querySelectorAll('.stl-dd-ic').forEach(x => { x.outerHTML = ICON(x.dataset.ic, 18); });
+  document.querySelectorAll('.stl-dd-caret').forEach(x => { x.innerHTML = CARET; });
   const lead = CONTENT.placement.lead();
-  const storyCard = s => gemCard({ href: CONTENT.storyHref(s), img: s.img, pos: s.pos, badge: '<span>' + esc(t(s.cat)) + '</span>', cat: t(P[s.p]), title: t(s.n), biz: t(s.person), desc: t(s.s), meta: '<span>' + PIN + esc(cityName(s.city)) + '</span>', cta: t('اقرأ القصة كاملة') });
-  LISTING.init({ chipParam: 'city', chips: ['luxor', 'aswan'], groups: ['p', 'ent'], items: () => CONTENT.stories.filter(s => s.slug !== lead.slug), chipOf: s => s.city, groupOf: (s, g) => [s[g]], hay: s => [s.n, s.person, s.s, t(s.n), t(s.person), t(s.s)].join(' '),
-    crumb: () => [['الرئيسية', 'index.html'], ['لرواد الأعمال', 'for-entrepreneurs.html'], ['قصص النجاح']], title: () => t('قصص النجاح'),
-    onHead: () => { const en = ENTREPRENEURS.bySlug(lead.ent); $('stLead').innerHTML = '<article class="st-lead">' + pic(lead.img, '95vw').replace('<img ', '<img style="object-position:' + (lead.pos || '50% 50%') + '" ') + '<div class="st-lead-body"><span class="st-lead-eyebrow">' + esc(t('القصة المختارة')) + '</span><h2>' + esc(t(lead.n)) + '</h2><p>' + esc(t(lead.s)) + '</p><a class="gem-cta" href="' + CONTENT.storyHref(lead) + '"><span>' + esc(t('اقرأ القصة كاملة')) + '</span>' + ARW + '</a>' + (en ? ' <a class="gem-cta" style="display:inline-flex;width:auto;margin-inline-start:8px;background:transparent;box-shadow:inset 0 0 0 1.5px #fff" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t(en.name)) + '</span>' + ARW + '</a>' : '') + '</div></article>'; },
-    count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' more story' : ' more stories') : l === 'es' ? n + (n === 1 ? ' historia más' : ' historias más') : n + ' ' + (n === 1 ? 'قصة أخرى' : 'قصص أخرى'); },
-    card: storyCard });
+  const others = CONTENT.stories.filter(x => x.slug !== lead.slug);
+  /* filter values come from the published stories */
+  const pillars = [...new Set(others.map(x => x.p))], ents = [...new Set(others.map(x => x.ent))].map(ENTREPRENEURS.bySlug).filter(Boolean);
+  $('ddPilSet').insertAdjacentHTML('beforeend', pillars.map(k => '<label><input type="checkbox" data-f="p" value="' + k + '"><span data-k="' + esc(P[k]) + '">' + esc(t(P[k])) + '</span></label>').join(''));
+  $('ddEntSet').insertAdjacentHTML('beforeend', ents.map(e => '<label><input type="checkbox" data-f="ent" value="' + e.slug + '"><span data-k="' + esc(e.name) + '">' + esc(t(e.name)) + '</span></label>').join(''));
+  const card = s => '<li><article class="stl-card" data-href="' + CONTENT.storyHref(s) + '"><div class="stl-card-media">' + pic(s.img, '(min-width:1024px) 33vw, (min-width:640px) 50vw, 96px').replace('<img ', '<img style="object-position:' + (s.pos || '50% 50%') + '" ') + '</div><div class="stl-card-body"><h3 class="stl-card-t display"><a href="' + CONTENT.storyHref(s) + '">' + esc(t(s.n)) + '</a></h3><p class="stl-meta"><span>' + PIN + esc(cityName(s.city)) + '</span><span>' + BANK + esc(t(P[s.p])) + '</span></p><span class="stl-arrow" aria-hidden="true">' + ARROW + '</span></div></article></li>';
+  const PAGE = 6; let page = 1;
+  const paginate = () => { const lis = [...$('exGrid').children]; lis.forEach((li, i) => { li.hidden = i >= page * PAGE; }); $('stMore').hidden = lis.length <= page * PAGE; };
+  $('stMore').addEventListener('click', () => { page++; paginate(); const first = [...$('exGrid').children].find(li => !li.hidden && li.dataset.fresh !== '1'); });
+  const L = LISTING.init({ hero: false, groups: ['city', 'p', 'ent'], items: () => others, chipOf: s => s.city, groupOf: (s, g) => [s[g]], hay: s => [s.n, s.person, t(s.n), t(s.person)].join(' '),
+    title: () => t('قصص النجاح'),
+    onHead: () => {
+      const en = ENTREPRENEURS.bySlug(lead.ent); const href = en ? ENTREPRENEURS.href(en) : CONTENT.storyHref(lead);
+      $('stLead').innerHTML = '<article class="stl-feat"><div class="stl-feat-media">' + pic(lead.img, '(min-width:768px) 40vw, 100vw').replace('<img ', '<img style="object-position:' + (lead.pos || '50% 50%') + '" ') + '</div><div class="stl-feat-body"><h3 class="stl-feat-t display"><a href="' + href + '">' + esc(t(lead.n)) + '</a></h3><p class="stl-feat-q">\u201C' + esc(t(lead.s)) + '\u201D</p><p class="stl-meta"><span>' + PIN + esc(cityName(lead.city)) + '</span><span>' + BANK + esc(t(P[lead.p])) + '</span><span>' + USERS + esc(t(lead.person)) + '</span></p><span class="stl-arrow" aria-hidden="true">' + ARROW + '</span></div></article>';
+      document.querySelectorAll('#exAdv [data-k]').forEach(x => { x.textContent = t(x.dataset.k); });
+    },
+    count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' story' : ' stories') : l === 'es' ? n + (n === 1 ? ' historia' : ' historias') : n + ' ' + (n === 1 ? 'قصة' : n === 2 ? 'قصتان' : 'قصص'); },
+    card, onRender: () => { page = 1; paginate(); document.querySelectorAll('.stl-dd').forEach(d => { const n = d.querySelectorAll('input:checked').length; d.querySelector('[data-n]').textContent = n || ''; }); } });
+  /* one open dropdown at a time; a click outside closes it */
+  document.querySelectorAll('.stl-dd').forEach(d => d.addEventListener('toggle', () => { if (d.open) document.querySelectorAll('.stl-dd[open]').forEach(o => { if (o !== d) o.open = false; }); }));
+  document.addEventListener('click', e => { if (!e.target.closest('.stl-dd')) document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
 })();
 </script>
 </body>
