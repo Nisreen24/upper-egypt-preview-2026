@@ -10,7 +10,7 @@ window.FORMS = (() => {
   const now = () => new Date().toISOString();
 
   /* queue */
-  const DUE = { general: 5, directory: 10, registration: 10, update: 5 };
+  const DUE = { general: 5, registration: 10, update: 5 };
   const queue = {
     all: () => read(KEY_Q, []),
     add: (type, payload, consent) => { const q = read(KEY_Q, []); const d = new Date(); d.setDate(d.getDate() + (DUE[type] || 5)); const item = { id: uid(), type, payload, consent, status: 'new', created: now(), due: d.toISOString(), assignee: '', note: '', reply: '', lang: document.documentElement.lang || 'ar', history: [{ at: now(), to: 'new' }] }; q.unshift(item); write(KEY_Q, q); return item; },

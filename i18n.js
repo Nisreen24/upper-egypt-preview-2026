@@ -854,6 +854,7 @@ window.I18N = (() => {
     'موارد': { en: "resources", es: "recursos" },
     'استكشف المسار': { en: "Explore the path", es: "Explorar la ruta" },
     'عن هذا المسار': { en: "About this path", es: "Sobre esta ruta" },
+    'دليل التواصل (استفسار عام)': { en: "Contact directory (general inquiry)", es: "Directorio de contactos (consulta general)" },
     'لديك ملف على المنصة؟': { en: "Already listed on the platform?", es: "¿Ya figuras en la plataforma?" },
     'اطلب رابط تحديث بياناتك': { en: "Request a link to update your entry", es: "Solicita un enlace para actualizar tu ficha" },
     'المزيد من الإرشاد في الطريق': { en: "More guidance is on the way", es: "Más orientación está en camino" },

@@ -45,7 +45,7 @@
   </aside>
   <main class="ad-main">
     <p class="ad-banner">نموذج تجريبي للشاشات الداخلية: البيانات محفوظة في متصفحك فقط، ولا يوجد خادم أو بريد حقيقي.</p>
-    <div class="ad-head"><h1>قائمة الطلبات</h1><div class="ad-tools"><select id="fType" aria-label="نوع الطلب"><option value="">كل الأنواع</option><option value="general">استفسار عام</option><option value="directory">طلب دليل التواصل</option><option value="registration">تسجيل جهة</option><option value="update">تحديث ملف</option></select><select id="fStatus" aria-label="الحالة"><option value="">كل الحالات</option><option value="new">جديد</option><option value="in_review">قيد المراجعة</option><option value="approved">مقبول</option><option value="rejected">مرفوض</option><option value="closed">مغلق بلا إجراء</option></select><label style="display:inline-flex;align-items:center;gap:6px"><input type="checkbox" id="fOverdue"> متأخرة فقط</label><button class="ad-btn" id="btnCsv" type="button">تصدير CSV</button><button class="ad-btn" id="btnSeed" type="button">إضافة طلبات تجريبية</button></div></div>
+    <div class="ad-head"><h1>قائمة الطلبات</h1><div class="ad-tools"><select id="fType" aria-label="نوع الطلب"><option value="">كل الأنواع</option><option value="general">استفسار عام</option><option value="registration">تسجيل جهة</option><option value="update">تحديث ملف</option></select><select id="fStatus" aria-label="الحالة"><option value="">كل الحالات</option><option value="new">جديد</option><option value="in_review">قيد المراجعة</option><option value="approved">مقبول</option><option value="rejected">مرفوض</option><option value="closed">مغلق بلا إجراء</option></select><label style="display:inline-flex;align-items:center;gap:6px"><input type="checkbox" id="fOverdue"> متأخرة فقط</label><button class="ad-btn" id="btnCsv" type="button">تصدير CSV</button><button class="ad-btn" id="btnSeed" type="button">إضافة طلبات تجريبية</button></div></div>
     <div class="ad-split">
       <div class="ad-card"><table><thead><tr><th>النوع</th><th>المرسل</th><th>تاريخ الإنشاء</th><th>موعد الرد</th><th>المكلّف</th><th>الحالة</th></tr></thead><tbody id="rows"></tbody></table><div class="ad-empty" id="empty" hidden>لا توجد طلبات مطابقة.</div></div>
       <div class="ad-card ad-detail" id="detail"><p class="ad-empty">اختر طلبًا لعرضه.</p></div>
@@ -67,7 +67,7 @@
   const TITLE = "قائمة الطلبات — لوحة التحرير"; document.title = TITLE; document.addEventListener("i18n:change", () => { document.title = TITLE; });
 
   const $ = id => document.getElementById(id); const esc = x => String(x == null ? '' : x).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
-  const TYPE = { general: 'استفسار عام', directory: 'طلب دليل التواصل', registration: 'تسجيل جهة', update: 'تحديث ملف' }; const STATUS = { new: 'جديد', in_review: 'قيد المراجعة', approved: 'مقبول', rejected: 'مرفوض', closed: 'مغلق بلا إجراء' };
+  const TYPE = { general: 'استفسار عام', registration: 'تسجيل جهة', update: 'تحديث ملف' }; const STATUS = { new: 'جديد', in_review: 'قيد المراجعة', approved: 'مقبول', rejected: 'مرفوض', closed: 'مغلق بلا إجراء' };
   const fmt = iso => new Date(iso).toLocaleString('ar-EG', { dateStyle: 'medium', timeStyle: 'short' });
   const overdue = q => ['new', 'in_review'].includes(q.status) && new Date(q.due) < new Date();
   let sel = null;
@@ -77,7 +77,6 @@
     const A = []; const b = (l, s, cls) => '<button class="ad-btn ' + (cls || '') + '" type="button" data-act="' + s + '">' + l + '</button>';
     if (q.status === 'new') A.push(b('بدء المراجعة', 'in_review'));
     if (q.type === 'general') A.push(b('إرسال الرد وإغلاق', 'approved', 'ad-btn--primary'), b('إغلاق بلا إجراء', 'closed'));
-    if (q.type === 'directory') A.push(b('موافقة: إرسال الدليل PDF', 'approved', 'ad-btn--primary'), b('رفض (لا يُرسل شيء)', 'rejected'));
     if (q.type === 'registration') A.push(b('موافقة: إنشاء مسودة وإبلاغ المحررين', 'approved', 'ad-btn--primary'), b('رفض مع رد', 'rejected'));
     if (q.type === 'update') A.push(b('قبول التغييرات المحددة ونشرها', 'approved', 'ad-btn--primary'), b('رفض مع رد', 'rejected'));
     return A.join('');
@@ -86,7 +85,7 @@
     const q = FORMS.queue.all().find(x => x.id === sel); if (!q) { $('detail').innerHTML = '<p class="ad-empty">اختر طلبًا لعرضه.</p>'; return; }
     const payload = Object.entries(q.payload).filter(([k]) => !/^c_/.test(k));
     const changes = q.type === 'update' && q.payload.changes ? '<label>التغييرات المقترحة (حقل بحقل)</label>' + Object.entries(q.payload.changes).filter(([k]) => !/^c_/.test(k)).map(([k, v]) => '<label class="ad-note" style="display:flex;gap:8px;align-items:flex-start;font-weight:500"><input type="checkbox" data-field="' + esc(k) + '" checked style="width:auto"> <span><b>' + esc(k) + ':</b> ' + esc(v) + '</span></label>').join('') : '';
-    const dirLog = q.type === 'directory' && q.status === 'approved' && q.delivery ? '<dl><dt>أُرسل إلى</dt><dd>' + esc(q.delivery.to) + '</dd><dt>في</dt><dd>' + fmt(q.delivery.at) + '</dd><dt>الغرض</dt><dd>' + esc(q.delivery.purpose) + '</dd></dl>' : '';
+    const dirLog = '';
     $('detail').innerHTML = '<h2>' + esc(TYPE[q.type]) + ' <span class="pill ' + q.status + '">' + esc(STATUS[q.status]) + '</span></h2><p class="ad-note">' + q.id + ' · أُنشئ ' + fmt(q.created) + ' · موعد الرد <span' + (overdue(q) ? ' class="overdue"' : '') + '>' + fmt(q.due) + '</span> · اللغة ' + q.lang + '</p>'
       + '<dl>' + payload.map(([k, v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</dd>').join('') + '</dl>' + changes + dirLog
       + '<label>سجل الموافقة</label><p class="ad-note">' + (q.consent && q.consent.text.length ? q.consent.text.map(esc).join('<br>') : '—') + ' <br>' + (q.consent ? fmt(q.consent.at) : '') + '</p>'
@@ -100,8 +99,7 @@
   function act(q, a) {
     const patch = { assignee: $('asg').value.trim(), note: $('note').value, reply: $('reply').value };
     if (a === 'save') { FORMS.queue.update(q.id, patch); } else {
-      if ((a === 'rejected' || (a === 'approved' && q.type === 'general')) && !patch.reply.trim() && q.type !== 'directory') { alert('اكتب الرد على الزائر أولًا.'); return; }
-      if (a === 'approved' && q.type === 'directory') patch.delivery = { to: q.payload.email, at: new Date().toISOString(), purpose: q.payload.purpose };
+      if ((a === 'rejected' || (a === 'approved' && q.type === 'general')) && !patch.reply.trim()) { alert('اكتب الرد على الزائر أولًا.'); return; }
       if (a === 'approved' && q.type === 'update' && q.payload.changes) patch.accepted = [...$('detail').querySelectorAll('[data-field]')].filter(c => c.checked).map(c => c.dataset.field);
       if (a === 'approved' && q.type === 'registration') patch.draftCreated = true;
       patch.status = a; FORMS.queue.update(q.id, patch);
@@ -111,7 +109,7 @@
   $('rows').addEventListener('click', e => { const tr = e.target.closest('tr[data-id]'); if (!tr) return; sel = tr.dataset.id; renderRows(); renderDetail(); });
   ['fType', 'fStatus', 'fOverdue'].forEach(id => $(id).addEventListener('change', renderRows));
   $('btnCsv').addEventListener('click', () => { const rows = list(); const head = ['id', 'type', 'status', 'created', 'due', 'assignee', 'email', 'name']; const csv = [head.join(',')].concat(rows.map(q => [q.id, q.type, q.status, q.created, q.due, q.assignee, q.payload.email || '', q.payload.name || ''].map(v => '"' + String(v || '').replace(/"/g, '""') + '"').join(','))).join('\n'); const a = document.createElement('a'); a.href = URL.createObjectURL(new Blob(['\ufeff' + csv], { type: 'text/csv' })); a.download = 'submissions.csv'; a.click(); });
-  $('btnSeed').addEventListener('click', () => { const old = new Date(); old.setDate(old.getDate() - 12); const items = [['general', { name: 'سارة محمود', email: 'sara@example.com', subject: 'correction', message: 'عنوان ورشة الفضة غير دقيق على الخريطة.' }], ['directory', { name: 'أحمد علي', email: 'ahmed@tourco.example', org: 'شركة رحلات النيل', purpose: 'التواصل مع مشغّلي الإقامة في أسوان لبرنامج شتوي.' }], ['registration', { name: 'منى حسن', email: 'mona@ngo.example', org: 'جمعية تنمية القرنة', type: 'ngo', city: 'luxor', desc: 'جمعية أهلية تدعم حرفيي الفخار في القرنة.', public_contact: 'https://example.org' }]]; items.forEach(([tp, p]) => FORMS.queue.add(tp, p, { text: ['موافقة تجريبية'], at: new Date().toISOString() })); const q = FORMS.queue.all(); if (q[2]) FORMS.queue.update(q[2].id, { created: old.toISOString(), due: new Date(old.getTime() + 5 * 864e5).toISOString() }); renderRows(); });
+  $('btnSeed').addEventListener('click', () => { const old = new Date(); old.setDate(old.getDate() - 12); const items = [['general', { name: 'سارة محمود', email: 'sara@example.com', subject: 'correction', message: 'عنوان ورشة الفضة غير دقيق على الخريطة.' }], ['registration', { name: 'منى حسن', email: 'mona@ngo.example', org: 'جمعية تنمية القرنة', type: 'ngo', city: 'luxor', desc: 'جمعية أهلية تدعم حرفيي الفخار في القرنة.', public_contact: 'https://example.org' }]]; items.forEach(([tp, p]) => FORMS.queue.add(tp, p, { text: ['موافقة تجريبية'], at: new Date().toISOString() })); const q = FORMS.queue.all(); if (q[2]) FORMS.queue.update(q[2].id, { created: old.toISOString(), due: new Date(old.getTime() + 5 * 864e5).toISOString() }); renderRows(); });
   renderRows();
 })();
 </script>
