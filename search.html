@@ -108,16 +108,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -393,7 +405,13 @@ html[dir="rtl"] .sk-list{order:2}
   .ex-strip-dot[aria-selected="true"]{background:var(--rust);transform:scale(1.35)}
   .ex-strip-dot:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
 
-  .sr-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s-2);align-items:center;max-width:720px;margin-bottom:var(--s-4)}
+  .sr-browse{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-1);margin-bottom:var(--s-4)}
+.sr-browse-l{font-size:14px;color:var(--muted);margin-inline-end:var(--s-1)}
+.sr-browse a{display:inline-flex;align-items:center;min-height:40px;padding:0 16px;border-radius:var(--radius-full,999px);border:1.5px solid var(--muted);color:var(--ink);font-size:14px;font-weight:600;transition:background-color .2s,color .2s,transform .25s}
+.sr-browse a:hover{background:var(--rust);border-color:var(--rust);color:#fff;transform:translateY(-1px)}
+.sr-browse a:active{transform:translateY(1px)}
+.sr-browse a:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+.sr-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:var(--s-2);align-items:center;max-width:720px;margin-bottom:var(--s-4)}
   .sr-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
   .sr-input{height:var(--btn-h,52px);padding:0 var(--s-3);border:1.5px solid var(--muted);border-radius:var(--radius-md,12px);background:#fff;font:inherit;font-size:var(--fs-body-lg);color:var(--ink);min-width:0}
   .sr-input:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
@@ -428,9 +446,9 @@ html[dir="rtl"] .sk-list{order:2}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="destinations.html">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="luxor.html">الأقصر</a><a role="menuitem" href="aswan.html">أسوان</a><a role="menuitem" href="destinations.html">الوجهات</a><a role="menuitem" href="experiences.html">التجارب والمنتجات</a><a role="menuitem" href="entrepreneurs.html">رواد الأعمال</a><a role="menuitem" href="map.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="luxor.html">الأقصر</a><a role="menuitem" href="aswan.html">أسوان</a><a role="menuitem" href="destinations.html">الوجهات</a><a role="menuitem" href="experiences.html">التجارب والمنتجات</a><a role="menuitem" href="map.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="for-entrepreneurs.html">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="stakeholders.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="about.html">عن المشروع</a></li>
         <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
@@ -479,12 +497,12 @@ html[dir="rtl"] .sk-list{order:2}
     <a class="mm-sub" href="aswan.html">أسوان</a>
     <a class="mm-sub" href="destinations.html">الوجهات</a>
     <a class="mm-sub" href="experiences.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="entrepreneurs.html">رواد الأعمال</a>
     <a class="mm-sub" href="map.html">الخريطة</a>
-    <a href="resources.html">لرواد الأعمال</a>
+    <a href="for-entrepreneurs.html">لرواد الأعمال</a>
     <a href="stakeholders.html">للجهات السياحية</a>
     <a href="about.html">عن المشروع</a>
     <a href="contact.html">تواصل معنا</a>
+    <a href="search.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -502,6 +520,7 @@ html[dir="rtl"] .sk-list{order:2}
       <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
       <header class="pg-head"><span class="sec-eyebrow">بحث</span><h1 class="pg-title display" id="srTitle">نتائج البحث</h1><p class="pg-lede" id="srLede">ابحث في الوجهات والتجارب والمنتجات ورواد الأعمال والجهات السياحية.</p></header>
       <form class="sr-form" role="search" action="search.html" method="get"><label class="sr-label" for="srQ">كلمة البحث</label><input class="sr-input" id="srQ" name="q" type="search" placeholder="ابحث في الموقع…" autocomplete="off"><button class="dx-cta" type="submit" style="margin:0;width:auto;padding-inline:24px"><span>بحث</span></button></form>
+      <nav class="sr-browse" id="srBrowse" aria-labelledby="srBrowseL"><span class="sr-browse-l" id="srBrowseL">تصفّح حسب النوع</span><a href="destinations.html">الوجهات</a><a href="experiences.html">التجارب والمنتجات</a><a href="entrepreneurs.html">رواد الأعمال</a><a href="stakeholders.html">الجهات السياحية</a></nav>
       <p class="sr-count" id="srCount" aria-live="polite"></p>
       <div id="srGroups"></div>
       <p class="dx-empty" id="srEmpty" hidden>لا توجد نتائج مطابقة. جرّب كلمة أخرى أو تصفّح <a href="destinations.html" style="color:var(--rust);font-weight:700">الوجهات</a> و<a href="experiences.html" style="color:var(--rust);font-weight:700">التجارب</a>.</p>
@@ -526,7 +545,7 @@ html[dir="rtl"] .sk-list{order:2}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="for-entrepreneurs.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="search.html">البحث في الموقع</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -613,6 +632,7 @@ html[dir="rtl"] .sk-list{order:2}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -744,7 +764,7 @@ html[dir="rtl"] .sk-list{order:2}
 (() => {
   /* Site search (§2.1): free text across destinations, experiences and products, entrepreneurs and organisations, grouped by type */
   const { t, esc, crumb, CITIES } = EX; const $ = id => document.getElementById(id);
-  const q = (new URLSearchParams(location.search).get('q') || '').trim();
+  let q = (new URLSearchParams(location.search).get('q') || '').trim();
   const head = () => { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['نتائج البحث']]).replace(/^<nav[^>]*>|<\/nav>$/g, ''); document.title = (q ? t('نتائج البحث') + ': ' + q : t('نتائج البحث')) + ' — ' + t('صعيد مصر'); };
   const norm = x => String(x || '').toLowerCase().replace(/[\u064B-\u0652\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
   const cityOf = c => (CITIES[c] || {})[document.documentElement.lang] || (CITIES[c] || {}).ar || '';
@@ -757,7 +777,8 @@ html[dir="rtl"] .sk-list{order:2}
     { title: 'الجهات السياحية', icon: 'buildings', items: () => CONTENT.organisations, hay: o => [o.n, o.d], href: o => 'organisation.html?slug=' + o.slug, sum: o => o.d, meta: o => cityOf(o.city) },
   ];
   const render = () => {
-    head(); $('srQ').value = q;
+    head(); if ($('srQ').value.trim() !== q) $('srQ').value = q;
+    $('srBrowse').hidden = !!q;
     if (!q) { $('srCount').textContent = ''; $('srGroups').innerHTML = ''; $('srEmpty').hidden = true; return; }
     const nq = norm(q); let total = 0;
     $('srGroups').innerHTML = GROUPS.map(g => {
@@ -769,6 +790,12 @@ html[dir="rtl"] .sk-list{order:2}
     $('srEmpty').hidden = total > 0;
   };
   render(); document.addEventListener('i18n:change', render);
+  /* results refresh while typing; the address bar keeps ?q= so the page can be shared or reloaded */
+  const srQ = $('srQ'); let tm;
+  const go = () => { q = srQ.value.trim(); history.replaceState(null, '', location.pathname + (q ? '?q=' + encodeURIComponent(q) : '') + location.hash); render(); };
+  srQ.addEventListener('input', () => { clearTimeout(tm); tm = setTimeout(go, 150); });
+  srQ.closest('form').addEventListener('submit', e => { e.preventDefault(); clearTimeout(tm); go(); });
+  if (!q) srQ.focus({ preventScroll: true });
 })();
 </script>
 </body>

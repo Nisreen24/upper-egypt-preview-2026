@@ -109,16 +109,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -198,6 +210,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   /* ===== experiences listing + detail ===== */
   body{background:#fbf7ef}
   /* ===== listing hero: the Luxor hero in its settled state, without the scroll expansion ===== */
+  /* ===== listing hero: the Luxor hero in its settled state, without the scroll expansion ===== */
   .xh{--paper:#fbf7ef;--xh-top:220px;--xh-w:min(1550px,95vw);--xh-h:720px;--xh-x:calc((100% - var(--xh-w)) / 2 + 4px);
     position:relative;width:100%;padding-top:var(--xh-top);background:var(--paper);isolation:isolate}
   .xh-crumb{position:absolute;top:calc(var(--xh-top) - 58px);inset-inline-start:var(--xh-x);z-index:4}
@@ -209,9 +222,6 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   @media (min-width:768px){.xh-band{height:20px}
 }
   .xh-cap-loc svg{flex:none}
-  .xh-cap .dx-tags{margin-top:28px}
-  @media (max-width:767px){.xh-cap .dx-tags{margin-top:18px}
-}
   .ex{padding-top:var(--s-7);padding-bottom:var(--s-8);--paper:#fbf7ef}
   .ep-row{display:grid;gap:var(--s-5);align-items:stretch}
   @media (min-width:1024px){.ep-row{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-6)}
@@ -221,12 +231,11 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 }
   .ep-sum{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;font-weight:700;color:var(--ink)}
   .ep-desc{margin-top:var(--s-3);font-size:var(--fs-body-lg);line-height:1.85;max-width:none}
-  .ep-story .ss-grid--one{margin-top:var(--s-4);grid-template-columns:minmax(0,1fr)}
   .ep-id{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
   .ep-id-body{display:flex;flex-direction:column;flex:1;padding:var(--s-5) var(--s-4)}
   @media (min-width:1024px){.ep-id-body{padding:var(--s-6)}
 }
-  .ep-badge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:32px;padding:4px 12px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:13px;font-weight:700}
+  .ep-badge{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:32px;padding:4px 12px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:13px;font-weight:700}.ep-badge[hidden]{display:none}
   .ep-id-name{margin:var(--s-3) 0 0;font-size:var(--fs-h3-lg);line-height:1.3;font-weight:700;color:var(--ink)}
   .ep-biz{margin:2px 0 0;font-size:var(--fs-body);font-weight:700;color:var(--rust)}
   .ep-id .dxi-facts{margin-top:var(--s-3)}
@@ -234,49 +243,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .ep-id-actions .dx-cta{margin-top:0} .ep-id-actions .dxi-note{margin-top:var(--s-2)}
   .ep-sec{margin-top:var(--s-6)}
   /* story chapters */
-  .ep-quote{position:relative;margin:var(--s-4) 0 0;padding:var(--s-3) var(--s-4);border-inline-start:3px solid var(--rust);border-radius:var(--radius-xs);background:linear-gradient(to left,rgba(165,62,26,.07),rgba(165,62,26,0) 70%)}
-  html[dir="ltr"] .ep-quote{background:linear-gradient(to right,rgba(165,62,26,.07),rgba(165,62,26,0) 70%)}
-  .ep-quote-k{display:block;margin-bottom:6px;font-size:12px;font-weight:800;letter-spacing:.06em;color:var(--rust)}
-  .ep-quote p{margin:0;font-size:clamp(20px,2vw,26px);line-height:1.6;font-weight:700;color:var(--ink)}
-  .ep-quote footer{margin-top:8px;font-size:var(--fs-small);font-weight:600;color:var(--muted)}
-  .ep-ch{margin-top:var(--s-5);padding-top:var(--s-4);border-top:1px dashed rgba(43,29,14,.14)}
-  .ep-ch-h{display:flex;align-items:center;gap:10px;margin:0 0 var(--s-3);font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .ep-ch-n{display:inline-grid;place-items:center;min-width:34px;height:34px;padding-inline:8px;border-radius:var(--radius-xs);background:rgba(165,62,26,.1);color:var(--rust);font-size:13px;font-weight:800;letter-spacing:.04em;font-variant-numeric:tabular-nums;vertical-align:middle}
-  .lx-h .ep-ch-n{margin-inline-end:10px;position:relative;top:-3px}
   /* journey: one centred line, stations alternating sides, each revealed as it enters the viewport; the rust line grows with the scroll */
-  .ep-timeline{position:relative;margin:0;padding:var(--s-3) 0 0;list-style:none;--p:0}
-  .ep-timeline::before,.ep-timeline::after{content:"";position:absolute;top:0;bottom:0;inset-inline-start:9px;width:2px;margin-inline-start:-1px;border-radius:2px}
-  .ep-timeline::before{background:rgba(43,29,14,.14)}
-  .ep-timeline::after{background:var(--rust);transform:scaleY(var(--p));transform-origin:top}
-  .ep-timeline li{position:relative;padding:0 0 var(--s-5);padding-inline-start:36px;opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.22,1,.36,1),transform .8s cubic-bezier(.22,1,.36,1)}
-  .ep-timeline li.is-in{opacity:1;transform:none}
-  .ep-timeline li:last-child{padding-bottom:var(--s-2)}
-  .ep-timeline li::after{content:"";position:absolute;top:14px;inset-inline-start:9px;width:14px;height:14px;margin-inline-start:-7px;border-radius:50%;background:var(--rust);box-shadow:0 0 0 4px #fff,0 0 0 5px rgba(165,62,26,.25);z-index:1;transform:scale(.4);transition:transform .6s cubic-bezier(.22,1,.36,1) .15s}
-  .ep-timeline li.is-in::after{transform:none}
-  .ep-tl-y{display:block;font-size:clamp(28px,3.2vw,42px);line-height:1.1;font-weight:700;color:var(--ink);letter-spacing:-.01em;font-variant-numeric:tabular-nums}
-  .ep-timeline p{margin:var(--s-2) 0 0;max-width:46ch;font-size:var(--fs-body-lg);line-height:1.75;color:var(--body)}
-  @media (min-width:768px){
-    .ep-timeline::before,.ep-timeline::after{inset-inline-start:50%}
-.ep-timeline li{width:50%;padding-inline:0 var(--s-6);text-align:end}
-.ep-timeline li::after{inset-inline-start:auto;inset-inline-end:0;margin-inline-end:-7px;top:16px}
-.ep-timeline li:nth-child(even){margin-inline-start:50%;padding-inline:var(--s-6) 0;text-align:start}
-.ep-timeline li:nth-child(even)::after{inset-inline-start:0;inset-inline-end:auto;margin-inline-start:-7px}
-.ep-timeline li:nth-child(odd) p{margin-inline-start:auto}
-.ep-timeline li + li{margin-top:calc(var(--s-5) * -1)}
-}
-  @media (prefers-reduced-motion:reduce){.ep-timeline li,.ep-timeline li::after{opacity:1;transform:none;transition:none}
-.ep-timeline::after{transform:none}
-}
-  .ep-steps{margin:0;padding:0;list-style:none;display:grid;gap:12px;counter-reset:s}
-  .ep-steps li{display:grid;grid-template-columns:36px minmax(0,1fr);gap:var(--s-3);align-items:start;counter-increment:s}
-  .ep-steps li::before{content:counter(s);display:grid;place-items:center;width:36px;height:36px;border-radius:50%;background:var(--rust);color:#fff;font-size:14px;font-weight:800}
-  .ep-steps p{margin:0;padding-top:6px;font-size:var(--fs-body-lg);line-height:1.7;color:var(--body)}
-  .ep-impact{margin:0;padding:0;list-style:none;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-2)}
-  @media (min-width:640px){.ep-impact{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-  .ep-impact li{display:grid;gap:4px;align-content:start;padding:var(--s-3);border-radius:var(--radius-md);background:#fbf7ef;border:1px solid rgba(43,29,14,.1)}
-  .ep-impact b{font-size:clamp(24px,2.4vw,32px);line-height:1.1;font-weight:800;color:var(--rust);font-variant-numeric:tabular-nums}
-  .ep-impact span{font-size:var(--fs-small);line-height:1.5;font-weight:600;color:var(--muted)}
   .ep-visit-grid{display:grid;gap:var(--s-3)}
   @media (min-width:768px){.ep-visit-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
 }
@@ -293,17 +260,40 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .ep-flow,.ep .ep-sec{max-width:var(--ep-w);margin-inline:auto}
   .ep-story{padding:0;background:transparent;border:0;border-radius:0}
   .ep-story-head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:var(--s-2) var(--s-3)}
-  .ep-story-head .ep-badge{align-self:center}
-  .ep-story .ss-grid--one{margin-top:var(--s-5)}
-  .ep .dx-rel .ex-grid{grid-template-columns:repeat(auto-fill,minmax(280px,1fr))}
-  .ep .dx-rel.ep-prod--few .ex-grid{grid-template-columns:1fr;gap:var(--s-3)}
+  /* products: one card per view in a single row; arrows page through when there is more than one */
+  .ep .dx-rel{content-visibility:visible;contain:none} /* the section must not clip the arrows that sit on the card's edges */
+  .ep-car-wrap{position:relative}
+  .ep-car{display:flex;gap:var(--s-3);margin:0;padding:0;list-style:none;overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .ep-car::-webkit-scrollbar{display:none}
+  .ep-car:focus-visible{outline:3px solid var(--ink);outline-offset:4px;border-radius:var(--radius-card)}
+  .ep-car>li{flex:0 0 100%;min-width:0;scroll-snap-align:start}
+  .ep-car-nav{position:absolute;top:50%;z-index:3;width:52px;height:52px;padding:0;border:0;border-radius:999px;display:grid;place-items:center;transform:translateY(-50%);background:#fff;color:var(--ink);cursor:pointer;box-shadow:0 1px 2px rgba(43,29,14,.12),0 10px 24px -8px rgba(43,29,14,.45);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .ep-car-nav--prev{inset-inline-start:-18px} .ep-car-nav--next{inset-inline-end:-18px}
+  .ep-car-nav svg{width:22px;height:22px}
+  html[dir="rtl"] .ep-car-nav svg{transform:scaleX(-1)}
+  .ep-car-nav--prev svg{transform:scaleX(-1)} html[dir="rtl"] .ep-car-nav--prev svg{transform:none}
+  .ep-car-nav:hover{transform:translateY(-50%) scale(1.06)} .ep-car-nav:active{transform:translateY(-50%) scale(.95)} .ep-car-nav:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .ep-car-nav[hidden]{display:none}
+  .ep-car-count{direction:ltr;margin:var(--s-3) 0 0;text-align:center;font-size:var(--fs-small);font-weight:700;color:var(--muted);font-variant-numeric:tabular-nums} .ep-car-count[hidden]{display:none}
+  @media (max-width:767px){.ep-car-nav{width:44px;height:44px} .ep-car-nav--prev{inset-inline-start:-8px} .ep-car-nav--next{inset-inline-end:-8px}}
+  @media (prefers-reduced-motion:reduce){.ep-car{scroll-behavior:auto} .ep-car-nav{transition:none}}
   @media (min-width:768px){
-    .ep .dx-rel.ep-prod--few .gem{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);height:auto}
-.ep .dx-rel.ep-prod--few .gem-media{aspect-ratio:auto;min-height:300px;height:100%}
-.ep .dx-rel.ep-prod--few .gem-body{padding:var(--s-5);justify-content:center}
-.ep .dx-rel.ep-prod--few .gem-title{font-size:var(--fs-h3-lg)}
-.ep .dx-rel.ep-prod--few .gem-desc{font-size:var(--fs-body);max-width:52ch}
-.ep .dx-rel.ep-prod--few .gem-cta{width:max-content;margin-top:var(--s-2);padding-inline:var(--s-5)}
+    .ep .dx-rel .gem{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,3fr);height:auto}
+.ep .dx-rel .gem-media{aspect-ratio:auto;min-height:300px;height:100%}
+.ep .dx-rel .gem-body{padding:var(--s-5);justify-content:center}
+  /* product cards on the profile stay still on hover (no lift, no image zoom); the CTA keeps its own states */
+  .ep .dx-rel .gem,.ep .dx-rel .gem:hover{transform:none;border-color:rgba(43,29,14,.1);transition:none}
+  .ep .dx-rel .gem:hover .gem-img,.ep .dx-rel .gem-img{transform:none;transition:none}
+  .ep .dx-rel .gem-body{position:relative;isolation:isolate;background:#fff}
+  .ep .dx-rel .gem-body::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;opacity:.5;
+    background:url("ASSETS/motifs/temple.png") no-repeat,url("ASSETS/motifs/lotus.png") no-repeat;
+    background-position:left -6% bottom -4%,left 6% top 8%;background-size:auto 78%,auto 24%}
+  html[dir="ltr"] .ep .dx-rel .gem-body::before{background-position:right -6% bottom -4%,right 6% top 8%}
+  @media (max-width:767px){.ep .dx-rel .gem-body::before{background-position:left -14% bottom -6%,left 4% top 4%;background-size:auto 52%,auto 18%}
+  html[dir="ltr"] .ep .dx-rel .gem-body::before{background-position:right -14% bottom -6%,right 4% top 4%}}
+.ep .dx-rel .gem-title{font-size:var(--fs-h3-lg)}
+.ep .dx-rel .gem-desc{font-size:var(--fs-body);max-width:52ch}
+.ep .dx-rel .gem-cta{width:max-content;margin-top:var(--s-2);padding-inline:var(--s-5)}
 }
   .ep-visit-note{margin:var(--s-3) 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
   .ep-visit-note a{color:var(--rust);font-weight:700} .ep-visit-note a:hover{color:var(--rust-deep)}
@@ -457,6 +447,67 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
 }
   @media (prefers-reduced-motion:reduce){.dxa-bento figure:hover img{transform:none}
 }
+  /* Wireframe 6 layout: portrait + identity card, story card, products, gallery, contact button */
+  /* two columns after the hero: about + story at the start, the Helmak card with the contact CTA at the end */
+  .ep-cols{display:grid;gap:var(--s-5);align-items:start}
+  @media (min-width:1024px){.ep-cols{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}}
+  .ep-main{display:grid;gap:var(--s-5)} .ep-main .ep-sec{margin-top:0}
+  @media (min-width:1024px){.ep-side{position:sticky;top:120px}}
+  .ep-side-card{position:relative;overflow:hidden;display:grid;gap:var(--s-3);align-content:center;min-height:560px;padding:calc(var(--s-5) + 20px) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.35)}
+  .ep-side-card::before,.ep-side-card::after{content:"";position:absolute;inset-inline:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none}
+  .ep-side-card::before{top:0} .ep-side-card::after{bottom:0}
+  @media (min-width:768px){.ep-side-card::before,.ep-side-card::after{height:20px}}
+  .ep-side-ic{display:grid;place-items:center;width:52px;height:52px;border-radius:50%;background:rgba(165,62,26,.1);color:var(--rust)}
+  .ep-side-h{margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .ep-side-card .dx-tags{margin-top:0}
+  .ep-side-card .ep-contact-btn{margin-top:var(--s-2)}
+  .ep-side-card .ep-visit-note{margin-top:0}
+  .ep .ep-row,.ep .ep-sec{max-width:none}
+  .ep-top{align-items:stretch}
+  .ep-portrait{margin:0;overflow:hidden;border-radius:var(--radius-card);background:#efe6d8;aspect-ratio:4/5;max-height:640px}
+  .ep-portrait img{width:100%;height:100%;object-fit:cover;display:block}
+  @media (min-width:1024px){.ep-portrait{aspect-ratio:auto;max-height:none;min-height:520px}}
+  .ep-id-body{justify-content:center}
+  .ep-id .ep-badge{align-self:flex-start}
+  .ep-id-name{font-size:var(--fs-h2);line-height:1.2}
+  .ep .ep-tags{margin-top:var(--s-3)}
+  .ep .ep-tags .dx-tag{background:rgba(165,62,26,.08);border-color:transparent;color:var(--rust-deep);-webkit-backdrop-filter:none;backdrop-filter:none}
+  .ep .ep-story{padding:var(--s-5) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
+  @media (min-width:1024px){.ep .ep-story{padding:var(--s-6)}}
+  .ep .ep-story .ep-desc{margin-top:var(--s-3)}
+  .ep .ep-narr{margin-top:var(--s-3)} .ep .ep-narr p{margin:0;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)} .ep .ep-narr p + p{margin-top:var(--s-3)}
+  .ep-gal{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--s-3)}
+  @media (min-width:768px){.ep-gal{grid-template-columns:repeat(4,minmax(0,1fr))}}
+  .ep-gal figure{margin:0;overflow:hidden;aspect-ratio:4/3;border-radius:var(--radius-md);background:#efe6d8}
+  .ep-gal img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .7s cubic-bezier(.2,.8,.2,1)}
+  .ep-gal-btn{display:block;width:100%;padding:0;border:0;background:none;cursor:zoom-in;border-radius:var(--radius-md);-webkit-tap-highlight-color:transparent}
+  .ep-gal-btn figure{transition:transform .25s cubic-bezier(.22,1,.36,1)}
+  .ep-gal-btn:hover img{transform:scale(1.04)}
+  .ep-gal-btn:active figure{transform:scale(.98)}
+  .ep-gal-btn:focus-visible{outline:3px solid var(--rust);outline-offset:3px}
+  /* lightbox: native dialog (focus trap + Escape), images at their 1280 size, prev / next, caption from the picture's alt */
+  .ep-lb{width:100vw;height:100vh;max-width:none;max-height:none;margin:0;padding:0;border:0;background:transparent;color:#fff}
+  .ep-lb::backdrop{background:rgba(24,14,6,.94)}
+  .ep-lb[open]{display:grid;place-items:center}
+  .ep-lb-fig{margin:0;display:grid;gap:10px;justify-items:center;max-width:min(1200px,calc(100vw - 32px));animation:ep-lb-in .4s cubic-bezier(.22,1,.36,1)}
+  @keyframes ep-lb-in{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
+  .ep-lb-fig img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;border-radius:var(--radius-md);box-shadow:0 30px 70px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.35)}
+  .ep-lb-fig figcaption{font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.85);text-align:center}
+  .ep-lb-count{position:fixed;bottom:14px;inset-inline:0;margin:0;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+  .ep-lb-btn{position:fixed;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;transition:transform .25s cubic-bezier(.22,1,.36,1),opacity .25s;backdrop-filter:blur(6px)}
+  .ep-lb-btn svg{width:22px;height:22px}
+  .ep-lb-btn:hover{transform:scale(1.08)} .ep-lb-btn:active{transform:scale(.94)}
+  .ep-lb-btn:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .ep-lb-close{top:14px;inset-inline-end:14px}
+  .ep-lb-prev{top:50%;inset-inline-start:10px;transform:translateY(-50%)} .ep-lb-next{top:50%;inset-inline-end:10px;transform:translateY(-50%)}
+  .ep-lb-prev:hover,.ep-lb-next:hover{transform:translateY(-50%) scale(1.08)} .ep-lb-prev:active,.ep-lb-next:active{transform:translateY(-50%) scale(.94)}
+  html[dir="ltr"] .ep-lb-prev svg,html[dir="ltr"] .ep-lb-next svg{transform:scaleX(-1)}
+  @media (min-width:1024px){.ep-lb-btn{width:52px;height:52px} .ep-lb-prev{inset-inline-start:24px} .ep-lb-next{inset-inline-end:24px} .ep-lb-close{top:24px;inset-inline-end:24px}}
+  @media (prefers-reduced-motion:reduce){.ep-lb-fig{animation:none} .ep-gal-btn figure,.ep-gal img,.ep-lb-btn{transition:none}}
+  .ep-contact-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 10px 24px -8px rgba(138,50,19,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
+  .ep-contact-btn:hover{background:var(--rust-deep);transform:translateY(-1px)} .ep-contact-btn:active{transform:scale(.99)} .ep-contact-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
+  .ep-contact-btn[hidden]{display:none}
+  .ep-contact .ep-visit-note{margin-top:var(--s-2)}
 </style>
 </head>
 <body>
@@ -474,9 +525,9 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="destinations.html" aria-current="page">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="luxor.html">الأقصر</a><a role="menuitem" href="aswan.html">أسوان</a><a role="menuitem" href="destinations.html">الوجهات</a><a role="menuitem" href="experiences.html">التجارب والمنتجات</a><a role="menuitem" href="entrepreneurs.html" aria-current="page">رواد الأعمال</a><a role="menuitem" href="map.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="resources.html">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu is-current" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="luxor.html">الأقصر</a><a role="menuitem" href="aswan.html">أسوان</a><a role="menuitem" href="destinations.html">الوجهات</a><a role="menuitem" href="experiences.html">التجارب والمنتجات</a><a role="menuitem" href="map.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="for-entrepreneurs.html">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="stakeholders.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="about.html">عن المشروع</a></li>
         <li><a class="nav-link" href="contact.html">تواصل معنا</a></li>
@@ -525,12 +576,12 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
     <a class="mm-sub" href="aswan.html">أسوان</a>
     <a class="mm-sub" href="destinations.html">الوجهات</a>
     <a class="mm-sub" href="experiences.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="entrepreneurs.html" aria-current="page">رواد الأعمال</a>
     <a class="mm-sub" href="map.html">الخريطة</a>
-    <a href="resources.html">لرواد الأعمال</a>
+    <a href="for-entrepreneurs.html">لرواد الأعمال</a>
     <a href="stakeholders.html">للجهات السياحية</a>
     <a href="about.html">عن المشروع</a>
     <a href="contact.html">تواصل معنا</a>
+    <a href="search.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -543,60 +594,68 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
 </header>
 
 <main id="main">
-  <section class="xh" id="dxHero" aria-labelledby="dx-title">
-    <div class="xh-crumb" id="dxCrumb"></div>
+  <!-- 1. The city hero (Luxor / Aswan) in its settled state: the entrepreneur's portrait as the wide media, name · business and activity · city -->
+  <section class="xh" id="xh" aria-labelledby="xh-title">
+    <div class="xh-crumb" id="xhCrumb"></div>
     <div class="xh-media" id="xhMedia">
+      <img id="xhImg" src="" alt="" sizes="95vw" decoding="async" fetchpriority="high">
       <div class="xh-shade"></div>
       <div class="xh-cap">
-        <h1 class="xh-cap-title display" id="dx-title"></h1>
-        <p class="xh-cap-sub" id="dxSum"></p>
-        <div class="dx-tags" id="dxTags"></div>
+        <h1 class="xh-cap-title display" id="xh-title"></h1>
+        <p class="xh-cap-sub" id="xhBiz"></p>
+        <p class="xh-cap-loc"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span id="xhCity"></span></p>
       </div>
+      <div class="xh-band" aria-hidden="true"></div>
     </div>
   </section>
   <div class="wrap">
     <article class="ex dx ep" id="dx">
-      <div class="ep-flow">
-        <section class="ep-story" aria-labelledby="epStoryH">
-          <div class="ep-story-head"><h2 class="display lx-h" id="epStoryH">قصتها</h2><span class="ep-badge" id="epHelmak" hidden><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg><span>مشارك في برنامج حلمك</span></span></div>
-          <p class="ep-sum" id="dxaSum"></p>
-          <blockquote class="ep-quote" id="epQuote" hidden>
-            <span class="ep-quote-k" id="epQuoteK">من القصة</span>
-            <p class="display" id="epQuoteT"></p>
-            <footer id="epQuoteBy"></footer>
-          </blockquote>
-          <p class="dx-desc ep-desc" id="dxDesc"></p>
-          <div class="ep-ch" id="epJourney" hidden>
-            <h3 class="ep-ch-h"><span class="ep-ch-n">01</span><span>الرحلة</span></h3>
-            <ol class="ep-timeline" id="epJourneyL"></ol>
-          </div>
-          <div class="ep-ch" id="epProcess" hidden>
-            <h3 class="ep-ch-h"><span class="ep-ch-n">02</span><span>الحرفة: كيف تُصنع</span></h3>
-            <ol class="ep-steps" id="epProcessL"></ol>
-          </div>
-          <div class="ep-ch" id="epImpact" hidden>
-            <h3 class="ep-ch-h"><span class="ep-ch-n">03</span><span>الأثر</span></h3>
-            <ul class="ep-impact" id="epImpactL"></ul>
-          </div>
-          <div class="ss-grid ss-grid--one" id="dxStoryGrid" hidden></div>
-        </section>
-      </div>
-      <section class="ep-sec" id="epGallery" aria-labelledby="epGalH" hidden>
-        <header class="lx-head"><h2 class="display lx-h" id="epGalH"><span class="ep-ch-n">04</span>معرض الصور</h2></header>
-        <div class="dxa-bento" id="epGal"></div>
+      <!-- 2. Start column: about + story · end column: Helmak card with the contact CTA -->
+      <div class="ep-cols">
+        <div class="ep-main">
+      <!-- 2. About: one descriptive paragraph (the entry's desc field) -->
+      <section class="ep-story ep-sec" id="epAbout" aria-labelledby="epAboutH">
+        <div class="ep-story-head"><h2 class="display lx-h" id="epAboutH">نبذة</h2></div>
+        <p class="ep-sum" id="dxaSum"></p>
+        <p class="dx-desc ep-desc" id="dxDesc"></p>
       </section>
-      <section class="dx-rel ep-sec" id="dxRel" aria-labelledby="dxRelH" hidden>
-        <header class="lx-head"><h2 class="display lx-h" id="dxRelH"><span class="ep-ch-n">04</span>المنتجات والتجارب</h2><a class="lx-all" id="dxRelAll" href="experiences.html"><span>عرض كل التجارب</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></header>
-        <ul class="ex-grid" id="dxRelGrid" role="list"></ul>
+      <!-- 3. Her / His story: the published success story as narrative paragraphs -->
+      <section class="ep-story ep-sec" id="epStory" aria-labelledby="epStoryH">
+        <div class="ep-story-head"><h2 class="display lx-h" id="epStoryH">قصتها</h2></div>
+        <div class="ep-narr" id="epStoryBody"></div>
       </section>
-      <section class="ep-visit ep-sec" id="epVisit" aria-labelledby="epVisitH">
-        <header class="lx-head"><h2 class="display lx-h" id="epVisitH"><span class="ep-ch-n">05</span>كيف تزور أو تشتري</h2></header>
-        <div class="ep-visit-grid">
-          <a class="ep-visit-card" id="epVisitCityL" href="#"><i class="ep-visit-ic" data-ic="map-pin,map-pin-line,compass"></i><b>الموقع</b><span id="epVisitCity"></span><em>استكشف المدينة</em></a>
-          <a class="ep-visit-card" id="epVisitProd" href="#"><i class="ep-visit-ic" data-ic="storefront,shopping-bag,basket,tag"></i><b>المنتجات</b><span>تصفّح ما تقدّمه الورشة من منتجات وتجارب</span><em>عرض المنتجات</em></a>
-          <a class="ep-visit-card ep-visit-card--cta" id="epVisitContact" href="#"><i class="ep-visit-ic" data-ic="chat-circle-dots,envelope-simple,envelope,phone"></i><b>التواصل</b><span>مباشرة عبر القناة المعلنة في الملف</span><em>تواصل الآن</em></a>
         </div>
-        <p class="ep-visit-note" id="epContact" hidden>يصل طلبك إلى فريق التنسيق الذي يوصلك برائد الأعمال. <a id="epUpdate" href="#">هل هذا ملفك؟ اطلب رابط التحديث</a></p>
+        <aside class="ep-side" aria-labelledby="epSideH">
+          <div class="ep-side-card">
+            <span class="ep-side-ic" id="epSideIc" aria-hidden="true"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg></span>
+            <h2 class="ep-side-h" id="epSideH">مشاركة في برنامج حلمك</h2>
+            <div class="dx-tags ep-tags" id="dxTags"></div>
+            <a class="ep-contact-btn" id="epVisitContact" href="#"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,48H32a8,8,0,0,0-8,8V192a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A8,8,0,0,0,224,48ZM203.43,64,128,133.15,52.57,64ZM216,192H40V74.19l82.59,75.71a8,8,0,0,0,10.82,0L216,74.19V192Z"/></svg><span id="epVisitContactT">تواصل مع رائد الأعمال</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a>
+            <p class="ep-visit-note" id="epContact" hidden>يصل طلبك إلى فريق التنسيق الذي يوصلك برائد الأعمال. <a id="epUpdate" href="#">هل هذا ملفك؟ اطلب رابط التحديث</a></p>
+          </div>
+        </aside>
+      </div>
+      <!-- 4. Products & experiences -->
+      <section class="dx-rel ep-sec" id="dxRel" aria-labelledby="dxRelH" hidden>
+        <header class="lx-head"><h2 class="display lx-h" id="dxRelH">المنتجات والتجارب</h2></header>
+        <div class="ep-car-wrap">
+          <ul class="ep-car" id="dxRelGrid" role="list" tabindex="0" aria-label="المنتجات والتجارب"></ul>
+          <button class="ep-car-nav ep-car-nav--prev" id="dxRelPrev" type="button" aria-label="السابق" hidden></button>
+          <button class="ep-car-nav ep-car-nav--next" id="dxRelNext" type="button" aria-label="التالي" hidden></button>
+          <p class="ep-car-count" id="dxRelCount" aria-live="polite" hidden></p>
+        </div>
+      </section>
+      <!-- 5. Gallery -->
+      <section class="ep-sec" id="epGallery" aria-labelledby="epGalH" hidden>
+        <header class="lx-head"><h2 class="display lx-h" id="epGalH">معرض الصور</h2></header>
+        <div class="ep-gal" id="epGal"></div>
+        <dialog class="ep-lb" id="epLb" aria-label="عرض الصورة">
+          <button class="ep-lb-btn ep-lb-close" id="epLbClose" type="button" aria-label="إغلاق"></button>
+          <button class="ep-lb-btn ep-lb-prev" id="epLbPrev" type="button" aria-label="الصورة السابقة"></button>
+          <figure class="ep-lb-fig"><img id="epLbImg" alt="" decoding="async"><figcaption id="epLbCap"></figcaption></figure>
+          <button class="ep-lb-btn ep-lb-next" id="epLbNext" type="button" aria-label="الصورة التالية"></button>
+          <p class="ep-lb-count" id="epLbCount" aria-live="polite"></p>
+        </dialog>
       </section>
       <p class="dx-empty" id="dxEmpty" hidden>هذا الملف غير موجود. <a href="entrepreneurs.html" style="color:var(--rust);font-weight:700">العودة إلى رواد الأعمال</a></p>
     </article>
@@ -620,7 +679,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="resources.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="index.html">الرئيسية</a><a href="for-entrepreneurs.html">لرواد الأعمال</a><a href="stakeholders.html">للجهات السياحية</a><a href="about.html">عن المشروع</a><a href="contact.html">تواصل معنا</a><a href="search.html">البحث في الموقع</a><a href="privacy.html">إشعار الخصوصية</a><a href="accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -707,6 +766,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -834,13 +894,9 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
 (() => {
   const { P, CITIES, q, t, esc, svg, card, icon, crumb, pic, href: exHref } = EX, { ACT, bySlug, products: productsOf, coords } = ENTREPRENEURS;
   const $ = id => document.getElementById(id);
-  const e = bySlug(q.get('slug'));
-  if (!e) { $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxHero').hidden = true; $('dxEmpty').hidden = false; return; }
-  const products = productsOf(e); const story = (window.CONTENT ? CONTENT.stories : []).find(x => x.ent === e.slug); if (story) e.story = { img: story.img, cat: story.cat, title: story.n, sum: story.s, href: CONTENT.storyHref(story) };
-  const TAG = ICON('tag', 16), CRAFT = ICON('hand', 16);
-  const cityName = () => CITIES[e.city][EX.lang()] || CITIES[e.city].ar;
+  /* hero sizing: the Luxor / Aswan hero in its settled state (same width, height and top offset, computed from the viewport) */
   (() => {
-    const xh = $('dxHero'), nav = document.querySelector('.nav-bar');
+    const xh = $('xh'), nav = document.querySelector('.nav-bar');
     const size = () => {
       const mobile = innerWidth < 768, vh = innerHeight;
       const navB = nav ? nav.getBoundingClientRect().bottom : 0;
@@ -851,57 +907,75 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
     };
     size(); addEventListener('resize', size); addEventListener('load', size);
   })();
-  /* gallery: the entry's own portrait and the pictures of its published products; nothing invented */
-  const GAL = [e.img].concat(products.flatMap(x => x.imgs)).filter((im, i, a) => a.findIndex(b => b.src === im.src) === i);
+  const e = bySlug(q.get('slug'));
+  if (!e) { $('xh').hidden = true; $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxEmpty').hidden = false; return; }
+  const products = productsOf(e); const story = (window.CONTENT ? CONTENT.stories : []).find(x => x.ent === e.slug);
+  /* story narrative: the published success story's paragraphs; falls back to the entry's own text when no story is linked */
+  const storyParas = () => (story && story.body && story.body.length) ? story.body : (e.journey && e.journey.length) ? e.journey.map(x => x.t) : [e.desc];
+  const TAG = ICON('tag', 16), CRAFT = ICON('hand', 16);
+  const cityName = () => CITIES[e.city][EX.lang()] || CITIES[e.city].ar;
+  /* hero image: the portrait as the wide media */
+  const hi = $('xhImg'); hi.src = e.img.src; hi.srcset = e.img.srcset || ''; hi.style.objectPosition = e.pos || '50% 50%';
+  /* gallery: only the entry's own photographs field (BRD 6.2); shown once it holds two or more pictures */
+  const GAL = e.gallery || [];
 
-  /* journey motion: each station fades up when it enters the viewport; the rust line grows as the reader scrolls through the list */
-  const journeyRM = matchMedia('(prefers-reduced-motion:reduce)');
-  function journeyMotion() {
-    const list = $('epJourneyL'), items = [...list.children];
-    if (journeyRM.matches || !('IntersectionObserver' in window)) { items.forEach(li => li.classList.add('is-in')); list.style.setProperty('--p', 1); return; }
-    const io = new IntersectionObserver(es => es.forEach(x => { if (x.isIntersecting) { x.target.classList.add('is-in'); io.unobserve(x.target); } }), { rootMargin: '0px 0px -12% 0px', threshold: 0.2 });
-    items.forEach(li => io.observe(li));
-    const grow = () => { const r = list.getBoundingClientRect(); const p = Math.max(0, Math.min(1, (innerHeight * 0.75 - r.top) / r.height)); list.style.setProperty('--p', p.toFixed(3)); };
-    if (!list.dataset.grow) { list.dataset.grow = '1'; addEventListener('scroll', () => requestAnimationFrame(grow), { passive: true }); addEventListener('resize', grow); }
-    grow();
-  }
+  /* products carousel: one card per view; arrows and a "n / total" counter appear only with two or more cards; prev / next hide at the ends */
+  const relCar = (() => {
+    const list = $('dxRelGrid'), prev = $('dxRelPrev'), next = $('dxRelNext'), count = $('dxRelCount');
+    prev.innerHTML = next.innerHTML = ICON('arrow-right', 22);
+    const dir = () => document.documentElement.dir === 'rtl' ? -1 : 1;
+    const step = () => { const li = list.firstElementChild; return li ? li.getBoundingClientRect().width + (parseFloat(getComputedStyle(list).gap) || 0) : list.clientWidth; };
+    const update = () => {
+      const n = list.children.length, max = list.scrollWidth - list.clientWidth, x = Math.abs(list.scrollLeft);
+      const many = n > 1 && max > 4; prev.hidden = !many || x < 4; next.hidden = !many || x > max - 4; count.hidden = !many;
+      if (many) count.textContent = (Math.min(n, Math.round(x / step()) + 1)) + ' / ' + n;
+    };
+    const go = k => list.scrollBy({ left: dir() * k * step(), behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' });
+    next.addEventListener('click', () => go(1)); prev.addEventListener('click', () => go(-1));
+    list.addEventListener('scroll', update, { passive: true }); addEventListener('resize', update);
+    list.addEventListener('keydown', e => { if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') { e.preventDefault(); go((e.key === 'ArrowRight' ? 1 : -1) * dir()); } });
+    return { update };
+  })();
   function render() {
     const cn = cityName();
-    $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['رواد الأعمال', 'entrepreneurs.html'], [e.name]]);
-    $('dx-title').textContent = t(e.name); document.title = t(e.name) + ' — ' + t(e.biz) + ' — ' + t('صعيد مصر');
+    /* hero caption: name · business and activity · city; breadcrumb above the media */
+    $('xhCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['رواد الأعمال', 'entrepreneurs.html'], [e.name]]);
+    $('xh-title').textContent = t(e.name); $('xhBiz').textContent = t(e.biz) + ' · ' + t(ACT[e.act]); $('xhCity').textContent = cn; $('xhImg').alt = t(e.img.alt || e.name);
+    document.title = t(e.name) + ' — ' + t(e.biz) + ' — ' + t('صعيد مصر');
     if (window.LD) LD({ '@type': 'LocalBusiness', name: t(e.biz), founder: { '@type': 'Person', name: t(e.name) }, description: t(e.sum), image: e.img && e.img.src, address: { '@type': 'PostalAddress', addressLocality: cn, addressCountry: 'EG' } });
-    $('dxSum').textContent = t(e.biz);
-    $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + CRAFT + esc(t(ACT[e.act])) + '</span><span class="dx-tag">' + esc(t(P[e.p])) + '</span>';
-    const hero = $('xhMedia').querySelector('picture, img'); if (hero) hero.remove();
-    $('xhMedia').insertAdjacentHTML('afterbegin', '<picture><source type="image/avif" srcset="' + String(e.img.srcset || e.img.src).replace(/\.webp(?=\s|,|$)/g, '.avif') + '" sizes="95vw"><img src="' + e.img.src + '" srcset="' + e.img.srcset + '" sizes="95vw" alt="' + esc(t(e.img.alt)) + '" style="object-position:' + (e.pos || '50% 50%') + '" fetchpriority="high" decoding="async"></picture>');
+    /* side card: Helmak participation (or plain contact when the flag is off) · city · activity · pillar · the contact CTA */
+    $('epSideH').textContent = e.helmak ? t(e.plural ? 'مشاركون في برنامج حلمك' : e.female === false ? 'مشارك في برنامج حلمك' : 'مشاركة في برنامج حلمك') : t('التواصل');
+    $('dxTags').innerHTML = '<span class="dx-tag">' + EX.PIN + esc(cn) + '</span><span class="dx-tag">' + CRAFT + esc(t(ACT[e.act])) + '</span><span class="dx-tag">' + TAG + esc(t(P[e.p])) + '</span>';
     $('epStoryH').textContent = t(e.plural ? 'قصتهم' : e.female === false ? 'قصته' : 'قصتها');
+    /* About (one paragraph) then the story as narrative paragraphs; no chapters, quotes, timelines or statistics */
     $('dxaSum').textContent = t(e.sum); $('dxDesc').textContent = t(e.desc);
-    /* chapters: every block is fed from the entry's own data and stays hidden when that data is missing */
-    const show = (id, on) => { $(id).hidden = !on; return !!on; };
-    const q = e.quote || (e.story ? { t: e.story.sum, by: e.story.title, fromStory: true } : null);
-    if (show('epQuote', q)) { $('epQuoteK').textContent = t(q.fromStory ? 'من القصة' : e.plural ? 'بكلماتهم' : e.female === false ? 'بكلماته' : 'بكلماتها'); $('epQuoteT').textContent = t(q.t); $('epQuoteBy').textContent = t(q.by || e.name); }
-    const hasJourney = show('epJourney', e.journey && e.journey.length);
-    if (hasJourney) $('epJourneyL').innerHTML = e.journey.map(s => '<li><span class="ep-tl-y display">' + esc(t(s.y)) + '</span><p>' + esc(t(s.t)) + '</p></li>').join('');
-    if (hasJourney) journeyMotion();
-    $('dxDesc').hidden = hasJourney; /* the timeline tells the same story; the paragraph stays only as a fallback */
-    if (show('epProcess', e.process && e.process.length)) $('epProcessL').innerHTML = e.process.map(s => '<li><p>' + esc(t(s)) + '</p></li>').join('');
-    if (show('epImpact', e.impact && e.impact.length)) $('epImpactL').innerHTML = e.impact.map(s => '<li><b>' + esc(t(s.n)) + '</b><span>' + esc(t(s.l)) + '</span></li>').join('');
-    $('epVisitCity').textContent = cn; $('epVisitCityL').href = e.city + '.html';
-    $('epVisitProd').href = 'experiences.html?city=' + e.city; $('epVisitProd').hidden = !products.length;
-    $('epVisitContact').hidden = !e.contact; if (e.contact) $('epVisitContact').href = e.contact;
-    /* number only the chapters that are actually on the page */
-    [...document.querySelectorAll('.ep-ch-n')].filter(n => !n.closest('[hidden]')).forEach((n, i) => { n.textContent = String(i + 1).padStart(2, '0'); });
-    $('epHelmak').hidden = !e.helmak;
-    
-    if (products.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = products.map(x => card(x)).join(''); $('dxRel').classList.toggle('ep-prod--few', products.length <= 2); $('dxRelAll').href = 'experiences.html?city=' + e.city; } else $('dxRel').hidden = true;
-    if (e.story) { $('dxStoryGrid').hidden = false; $('dxStoryGrid').innerHTML = '<article class="ss-card ss-card--clay ss-card--tex">' + pic(e.story.img, '(max-width:899px) 100vw, 60vw', 'ss-img') + '<span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span><span class="ss-loc"><span>' + esc(cn) + '</span></span><div class="ss-media" aria-hidden="true"></div><div class="ss-panel"><div class="ss-body"><span class="ss-cat">' + esc(t(e.story.cat)) + '</span><h3 class="ss-name display">' + esc(t(e.story.title)) + '</h3><p class="ss-desc">' + esc(t(e.story.sum)) + '</p><a class="ss-more" href="' + e.story.href + '"><span>' + esc(t('اقرأ القصة كاملة')) + '</span>' + EX.ARW + '</a></div></div></article>'; } else $('dxStoryGrid').hidden = true;
+    $('epStoryBody').innerHTML = storyParas().map(p => '<p>' + esc(t(p)) + '</p>').join('');
+    /* contact this entrepreneur → request workflow (the entry's public route only; the button disappears when there is none) */
+    $('epVisitContact').hidden = !e.contact; if (e.contact) { $('epVisitContact').href = e.contact; $('epVisitContactT').textContent = t(e.plural ? 'تواصل مع الورشة' : e.female === false ? 'تواصل مع رائد الأعمال' : 'تواصل مع رائدة الأعمال'); }
+    if (products.length) { $('dxRel').hidden = false; $('dxRelGrid').innerHTML = products.map(x => card(x)).join(''); relCar.update(); } else $('dxRel').hidden = true;
     /* contact: only the public route on the entry; the block disappears when there is none */
     $('epUpdate').href = 'update-request.html?kind=entrepreneur&slug=' + e.slug;
     $('epContact').hidden = false;
-    $('epGal').innerHTML = GAL.slice(0, 5).map(im => '<figure>' + pic(im, '(min-width:1024px) 33vw, 50vw') + '</figure>').join(''); $('epGallery').hidden = GAL.length < 2;
+    $('epGal').innerHTML = GAL.slice(0, 4).map((im, i) => '<button class="ep-gal-btn" type="button" data-lb="' + i + '" aria-label="' + esc(t('عرض الصورة')) + ': ' + esc(t(im.alt)) + '"><figure>' + pic(im, '(min-width:768px) 25vw, 50vw') + '</figure></button>').join(''); $('epGallery').hidden = GAL.length < 2;
   }
-  document.querySelectorAll('.ep-visit-ic').forEach(i => { const n = i.dataset.ic.split(',').find(k => window.ICONS && ICONS[k]); if (n) i.innerHTML = ICON(n, 20); });
   document.addEventListener('i18n:change', render); render();
+
+  /* lightbox: click a gallery picture → full-size view; prev / next wrap; arrow keys follow the reading direction; Escape and the backdrop close */
+  const lb = $('epLb'), lbImg = $('epLbImg'), lbCap = $('epLbCap'), lbCount = $('epLbCount'); let lbI = 0, lbFrom = null;
+  $('epLbClose').innerHTML = ICON('x', 22); $('epLbPrev').innerHTML = ICON('caret-right', 22); $('epLbNext').innerHTML = ICON('caret-left', 22);
+  const lbShow = i => {
+    const n = Math.min(GAL.length, 4); lbI = (i + n) % n; const im = GAL[lbI];
+    lbImg.src = im.src.replace(/-\d+\.webp$/, '-1280.webp'); lbImg.srcset = im.srcset || ''; lbImg.sizes = '100vw'; lbImg.alt = t(im.alt);
+    lbCap.textContent = t(im.alt); lbCount.textContent = (lbI + 1) + ' / ' + n;
+  };
+  const lbOpen = (i, from) => { lbFrom = from; lbShow(i); if (!lb.open) lb.showModal(); document.body.classList.add('no-scroll'); $('epLbClose').focus(); };
+  $('epGal').addEventListener('click', ev => { const b = ev.target.closest('[data-lb]'); if (b) lbOpen(+b.dataset.lb, b); });
+  $('epLbClose').addEventListener('click', () => lb.close());
+  $('epLbPrev').addEventListener('click', () => lbShow(lbI - 1));
+  $('epLbNext').addEventListener('click', () => lbShow(lbI + 1));
+  lb.addEventListener('click', ev => { if (ev.target === lb) lb.close(); });
+  lb.addEventListener('keydown', ev => { const rtl = document.documentElement.dir !== 'ltr'; if (ev.key === 'ArrowLeft') lbShow(lbI + (rtl ? 1 : -1)); else if (ev.key === 'ArrowRight') lbShow(lbI + (rtl ? -1 : 1)); });
+  lb.addEventListener('close', () => { document.body.classList.remove('no-scroll'); lbImg.removeAttribute('src'); lbImg.removeAttribute('srcset'); if (lbFrom && lbFrom.isConnected) lbFrom.focus(); });
   window.__ent = { slug: e.slug, city: e.city };
 })();
 </script>

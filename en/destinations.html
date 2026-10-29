@@ -109,16 +109,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -351,9 +363,9 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="en/index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="en/destinations.html" aria-current="page">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="en/luxor.html">الأقصر</a><a role="menuitem" href="en/aswan.html">أسوان</a><a role="menuitem" href="en/destinations.html" aria-current="page">الوجهات</a><a role="menuitem" href="en/experiences.html">التجارب والمنتجات</a><a role="menuitem" href="en/entrepreneurs.html">رواد الأعمال</a><a role="menuitem" href="en/map.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="en/resources.html">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu is-current" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="en/luxor.html">الأقصر</a><a role="menuitem" href="en/aswan.html">أسوان</a><a role="menuitem" href="en/destinations.html" aria-current="page">الوجهات</a><a role="menuitem" href="en/experiences.html">التجارب والمنتجات</a><a role="menuitem" href="en/map.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="en/for-entrepreneurs.html">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="en/stakeholders.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="en/about.html">عن المشروع</a></li>
         <li><a class="nav-link" href="en/contact.html">تواصل معنا</a></li>
@@ -402,12 +414,12 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <a class="mm-sub" href="en/aswan.html">أسوان</a>
     <a class="mm-sub" href="en/destinations.html" aria-current="page">الوجهات</a>
     <a class="mm-sub" href="en/experiences.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="en/entrepreneurs.html">رواد الأعمال</a>
     <a class="mm-sub" href="en/map.html">الخريطة</a>
-    <a href="en/resources.html">لرواد الأعمال</a>
+    <a href="en/for-entrepreneurs.html">لرواد الأعمال</a>
     <a href="en/stakeholders.html">للجهات السياحية</a>
     <a href="en/about.html">عن المشروع</a>
     <a href="en/contact.html">تواصل معنا</a>
+    <a href="en/search.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -465,7 +477,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/resources.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/for-entrepreneurs.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/search.html">البحث في الموقع</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -552,6 +564,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.en.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);

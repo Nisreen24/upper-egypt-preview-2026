@@ -110,16 +110,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -335,7 +347,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
   .xp-map{margin-top:var(--s-4)} .xp-map .mp-map{height:300px}
   .xp-list{margin:0;padding-inline-start:1.3em;display:grid;gap:8px;font-size:var(--fs-body-lg);line-height:1.7;color:var(--body)} .xp-list li::marker{color:var(--rust)}
   .xp-desc{max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)} .xp-desc p{margin:0 0 var(--s-3)} .xp-desc p:last-child{margin:0}
-  .xp-ent{margin-top:0}
+  .xp-ent{margin-top:var(--s-5)}
   .xp-info{margin-top:var(--s-4);padding-top:var(--s-4);border-top:1px dashed rgba(43,29,14,.14)}
   .xp-list--yes,.xp-list--no,.xp-list--info{list-style:none;padding-inline-start:0}
   .xp-list--yes li,.xp-list--no li,.xp-list--info li{position:relative;padding-inline-start:30px}
@@ -439,9 +451,9 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="es/index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="es/destinos.html" aria-current="page">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="es/luxor.html">الأقصر</a><a role="menuitem" href="es/asuan.html">أسوان</a><a role="menuitem" href="es/destinos.html">الوجهات</a><a role="menuitem" href="es/experiencias-y-productos.html" aria-current="page">التجارب والمنتجات</a><a role="menuitem" href="es/emprendedores.html">رواد الأعمال</a><a role="menuitem" href="es/mapa.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="es/recursos.html">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu is-current" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="es/luxor.html">الأقصر</a><a role="menuitem" href="es/asuan.html">أسوان</a><a role="menuitem" href="es/destinos.html">الوجهات</a><a role="menuitem" href="es/experiencias-y-productos.html" aria-current="page">التجارب والمنتجات</a><a role="menuitem" href="es/mapa.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="es/para-emprendedores.html">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="es/actores-turisticos.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="es/sobre-el-proyecto.html">عن المشروع</a></li>
         <li><a class="nav-link" href="es/contacto.html">تواصل معنا</a></li>
@@ -490,12 +502,12 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
     <a class="mm-sub" href="es/asuan.html">أسوان</a>
     <a class="mm-sub" href="es/destinos.html">الوجهات</a>
     <a class="mm-sub" href="es/experiencias-y-productos.html" aria-current="page">التجارب والمنتجات</a>
-    <a class="mm-sub" href="es/emprendedores.html">رواد الأعمال</a>
     <a class="mm-sub" href="es/mapa.html">الخريطة</a>
-    <a href="es/recursos.html">لرواد الأعمال</a>
+    <a href="es/para-emprendedores.html">لرواد الأعمال</a>
     <a href="es/actores-turisticos.html">للجهات السياحية</a>
     <a href="es/sobre-el-proyecto.html">عن المشروع</a>
     <a href="es/contacto.html">تواصل معنا</a>
+    <a href="es/buscar.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -537,6 +549,8 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
             <h2 class="xp-h" id="h-desc">الوصف الكامل</h2>
             <div class="xp-desc" id="dxDesc"></div>
           </section>
+          <!-- Wireframe 5: the entrepreneur behind it sits right after the description; shown only when the experience carries an entrepreneur (ent) -->
+          <section class="xp-sec dx-ent xp-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
           <section class="xp-sec" id="sec-itinerary" aria-labelledby="h-itinerary" hidden>
             <h2 class="xp-h" id="h-itinerary">برنامج التجربة</h2>
             <ol class="xp-steps" id="xpIt"></ol>
@@ -568,7 +582,6 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
             <div class="dxi-chips xp-chips" id="xpAccChips" hidden></div>
             <p class="xp-meet" id="xpAccNote" hidden></p>
           </section>
-          <section class="xp-sec dx-ent xp-ent" id="dxEnt" hidden aria-labelledby="dxEntH"></section>
         </div>
         <aside class="xp-side" id="xpSide">
           <div class="dxi xp-card" id="xpCard" aria-labelledby="dxiH">
@@ -629,7 +642,7 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="es/index.html">الرئيسية</a><a href="es/recursos.html">لرواد الأعمال</a><a href="es/actores-turisticos.html">للجهات السياحية</a><a href="es/sobre-el-proyecto.html">عن المشروع</a><a href="es/contacto.html">تواصل معنا</a><a href="es/privacidad.html">إشعار الخصوصية</a><a href="es/accesibilidad.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="es/index.html">الرئيسية</a><a href="es/para-emprendedores.html">لرواد الأعمال</a><a href="es/actores-turisticos.html">للجهات السياحية</a><a href="es/sobre-el-proyecto.html">عن المشروع</a><a href="es/contacto.html">تواصل معنا</a><a href="es/buscar.html">البحث في الموقع</a><a href="es/privacidad.html">إشعار الخصوصية</a><a href="es/accesibilidad.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -716,6 +729,7 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.es.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -946,9 +960,9 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
     const bar = $('xpBar'); bar.hidden = b.hidden; if (!b.hidden) { const c = $('xpBarCta'); c.href = b.href; if (b.target) { c.target = '_blank'; c.rel = 'noopener'; } else { c.removeAttribute('target'); c.removeAttribute('rel'); } c.innerHTML = b.innerHTML; $('xpBarT').textContent = t(e.n); $('xpBarS').textContent = [e.dur ? t(e.dur) : '', e.pr ? PR[e.pr] : ''].filter(Boolean).join(' · '); }
     const dir = $('dxDirections'); dir.hidden = !e.ll; if (e.ll) { dir.href = 'https://www.google.com/maps/dir/?api=1&destination=' + e.ll[0] + ',' + e.ll[1]; dir.innerHTML = MAPI + '<span>' + esc(t('احصل على الاتجاهات')) + '</span>'; }
     $('dxCityInfo').href = city + '.html#lx-info'; $('dxCityInfo').innerHTML = INFOI + '<span>' + esc(t('معلومات عملية عن') + ' ' + cn) + '</span>';
-    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('من يقدّم هذه التجربة؟')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>'; }
+    if (e.ent) { $('dxEnt').hidden = false; $('dxEnt').innerHTML = '<figure><img src="' + e.ent.img.src + '" srcset="' + e.ent.img.srcset + '" sizes="120px" alt="' + esc(t(e.ent.img.alt)) + '" style="object-position:' + (e.ent.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('رائد الأعمال وراء التجربة')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(e.ent.name)) + '</p><p class="st-biz">' + esc(t(e.ent.biz)) + '</p><p>' + esc(t(e.ent.sum)) + '</p><a class="st-link" href="' + e.ent.href + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>'; }
     /* section nav: only the sections that exist */
-    const navItems = [['sec-overview', 'نظرة عامة'], ['sec-highlights', 'أبرز الملامح'], ['sec-desc', 'الوصف'], ['sec-itinerary', 'البرنامج'], ['sec-included', 'ما تشمله'], ['sec-excluded', 'ما لا تشمله'], ['sec-important', 'معلومات مهمة'], ['sec-meeting', 'نقطة اللقاء'], ['sec-languages', 'اللغات'], ['sec-access', 'الوصول'], ['dxEnt', 'مقدّم التجربة'], ['dxGal', 'المعرض'], ['dxRel', 'تجارب مشابهة']].filter(([id]) => !$(id).hidden);
+    const navItems = [['sec-overview', 'نظرة عامة'], ['sec-highlights', 'أبرز الملامح'], ['sec-desc', 'الوصف'], ['dxEnt', 'مقدّم التجربة'], ['sec-itinerary', 'البرنامج'], ['sec-included', 'ما تشمله'], ['sec-excluded', 'ما لا تشمله'], ['sec-important', 'معلومات مهمة'], ['sec-meeting', 'نقطة اللقاء'], ['sec-languages', 'اللغات'], ['sec-access', 'الوصول'], ['dxGal', 'المعرض'], ['dxRel', 'تجارب مشابهة']].filter(([id]) => !$(id).hidden);
     $('xpNav').innerHTML = navItems.map(([id, l], i) => '<a href="es/experiencia.html#' + id + '"' + (i === 0 ? ' class="is-on"' : '') + '>' + esc(t(l)) + '</a>').join('');
     gallery();
     const rel = all().filter(x => x.slug !== e.slug).sort((a, b) => (b.c === e.c) - (a.c === e.c) || (b.p === e.p) - (a.p === e.p)).slice(0, 4);

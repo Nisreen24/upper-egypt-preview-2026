@@ -109,16 +109,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -421,9 +433,9 @@ html[dir="rtl"] .sk-list{order:2}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="ar/index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="ar/الوجهات.html">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="ar/الأقصر.html">الأقصر</a><a role="menuitem" href="ar/أسوان.html">أسوان</a><a role="menuitem" href="ar/الوجهات.html">الوجهات</a><a role="menuitem" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a><a role="menuitem" href="ar/رواد-الأعمال.html">رواد الأعمال</a><a role="menuitem" href="ar/الخريطة.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="ar/الموارد.html" aria-current="page">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="ar/الأقصر.html">الأقصر</a><a role="menuitem" href="ar/أسوان.html">أسوان</a><a role="menuitem" href="ar/الوجهات.html">الوجهات</a><a role="menuitem" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a><a role="menuitem" href="ar/الخريطة.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="ar/لرواد-الأعمال.html" aria-current="page">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="ar/الجهات-السياحية.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="ar/عن-المشروع.html">عن المشروع</a></li>
         <li><a class="nav-link" href="ar/تواصل.html">تواصل معنا</a></li>
@@ -472,12 +484,12 @@ html[dir="rtl"] .sk-list{order:2}
     <a class="mm-sub" href="ar/أسوان.html">أسوان</a>
     <a class="mm-sub" href="ar/الوجهات.html">الوجهات</a>
     <a class="mm-sub" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="ar/رواد-الأعمال.html">رواد الأعمال</a>
     <a class="mm-sub" href="ar/الخريطة.html">الخريطة</a>
-    <a href="ar/الموارد.html" aria-current="page">لرواد الأعمال</a>
+    <a href="ar/لرواد-الأعمال.html" aria-current="page">لرواد الأعمال</a>
     <a href="ar/الجهات-السياحية.html">للجهات السياحية</a>
     <a href="ar/عن-المشروع.html">عن المشروع</a>
     <a href="ar/تواصل.html">تواصل معنا</a>
+    <a href="ar/بحث.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -542,7 +554,7 @@ html[dir="rtl"] .sk-list{order:2}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/الموارد.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/لرواد-الأعمال.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/بحث.html">البحث في الموقع</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -629,6 +641,7 @@ html[dir="rtl"] .sk-list{order:2}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.ar.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -774,7 +787,7 @@ html[dir="rtl"] .sk-list{order:2}
   const lead = CONTENT.placement.lead();
   const storyCard = s => gemCard({ href: CONTENT.storyHref(s), img: s.img, pos: s.pos, badge: '<span>' + esc(t(s.cat)) + '</span>', cat: t(P[s.p]), title: t(s.n), biz: t(s.person), desc: t(s.s), meta: '<span>' + PIN + esc(cityName(s.city)) + '</span>', cta: t('اقرأ القصة كاملة') });
   LISTING.init({ chipParam: 'city', chips: ['luxor', 'aswan'], groups: ['p', 'ent'], items: () => CONTENT.stories.filter(s => s.slug !== lead.slug), chipOf: s => s.city, groupOf: (s, g) => [s[g]], hay: s => [s.n, s.person, s.s, t(s.n), t(s.person), t(s.s)].join(' '),
-    crumb: () => [['الرئيسية', 'index.html'], ['لرواد الأعمال', 'resources.html'], ['قصص النجاح']], title: () => t('قصص النجاح'),
+    crumb: () => [['الرئيسية', 'index.html'], ['لرواد الأعمال', 'for-entrepreneurs.html'], ['قصص النجاح']], title: () => t('قصص النجاح'),
     onHead: () => { const en = ENTREPRENEURS.bySlug(lead.ent); $('stLead').innerHTML = '<article class="st-lead">' + pic(lead.img, '95vw').replace('<img ', '<img style="object-position:' + (lead.pos || '50% 50%') + '" ') + '<div class="st-lead-body"><span class="st-lead-eyebrow">' + esc(t('القصة المختارة')) + '</span><h2>' + esc(t(lead.n)) + '</h2><p>' + esc(t(lead.s)) + '</p><a class="gem-cta" href="' + CONTENT.storyHref(lead) + '"><span>' + esc(t('اقرأ القصة كاملة')) + '</span>' + ARW + '</a>' + (en ? ' <a class="gem-cta" style="display:inline-flex;width:auto;margin-inline-start:8px;background:transparent;box-shadow:inset 0 0 0 1.5px #fff" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t(en.name)) + '</span>' + ARW + '</a>' : '') + '</div></article>'; },
     count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' more story' : ' more stories') : l === 'es' ? n + (n === 1 ? ' historia más' : ' historias más') : n + ' ' + (n === 1 ? 'قصة أخرى' : 'قصص أخرى'); },
     card: storyCard });

@@ -109,16 +109,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -227,7 +239,8 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 }
 
   .ex-intro{margin:0 0 var(--s-5);max-width:70ch;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
-  .gem-biz{margin:2px 0 0;font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .gem-biz{margin:2px 0 var(--s-2);font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .gem-helmak{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:28px;margin-bottom:var(--s-3);padding:3px 10px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:12px;font-weight:700}
   .gem[data-href]{cursor:pointer}
   .ex-crumb ol{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:0;padding:0;list-style:none;font-size:15px;line-height:1.4;color:var(--muted)}
   .ex-crumb li{display:inline-flex;align-items:center;gap:8px}
@@ -309,9 +322,9 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="ar/index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="ar/الوجهات.html" aria-current="page">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="ar/الأقصر.html">الأقصر</a><a role="menuitem" href="ar/أسوان.html">أسوان</a><a role="menuitem" href="ar/الوجهات.html">الوجهات</a><a role="menuitem" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a><a role="menuitem" href="ar/رواد-الأعمال.html" aria-current="page">رواد الأعمال</a><a role="menuitem" href="ar/الخريطة.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="ar/الموارد.html">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu is-current" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="ar/الأقصر.html">الأقصر</a><a role="menuitem" href="ar/أسوان.html">أسوان</a><a role="menuitem" href="ar/الوجهات.html">الوجهات</a><a role="menuitem" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a><a role="menuitem" href="ar/الخريطة.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="ar/لرواد-الأعمال.html">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="ar/الجهات-السياحية.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="ar/عن-المشروع.html">عن المشروع</a></li>
         <li><a class="nav-link" href="ar/تواصل.html">تواصل معنا</a></li>
@@ -360,12 +373,12 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <a class="mm-sub" href="ar/أسوان.html">أسوان</a>
     <a class="mm-sub" href="ar/الوجهات.html">الوجهات</a>
     <a class="mm-sub" href="ar/التجارب-والمنتجات.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="ar/رواد-الأعمال.html" aria-current="page">رواد الأعمال</a>
     <a class="mm-sub" href="ar/الخريطة.html">الخريطة</a>
-    <a href="ar/الموارد.html">لرواد الأعمال</a>
+    <a href="ar/لرواد-الأعمال.html">لرواد الأعمال</a>
     <a href="ar/الجهات-السياحية.html">للجهات السياحية</a>
     <a href="ar/عن-المشروع.html">عن المشروع</a>
     <a href="ar/تواصل.html">تواصل معنا</a>
+    <a href="ar/بحث.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -393,7 +406,6 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   </section>
   <section class="ex" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
-      <p class="ex-intro">تعرّف على رواد الأعمال الذين يحولون التراث المحلي والحرف والتجارب السياحية إلى مشروعات تخلق فرصًا جديدة في صعيد مصر.</p>
       <nav class="ls-tabs" aria-label="نوع القائمة">
         <a class="ls-tab" href="ar/الوجهات.html"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M24,104H48v64H32a8,8,0,0,0,0,16H224a8,8,0,0,0,0-16H208V104h24a8,8,0,0,0,4.19-14.81l-104-64a8,8,0,0,0-8.38,0l-104,64A8,8,0,0,0,24,104Zm40,0H96v64H64Zm80,0v64H112V104Zm48,64H160V104h32ZM128,41.39,203.74,88H52.26ZM248,208a8,8,0,0,1-8,8H16a8,8,0,0,1,0-16H240A8,8,0,0,1,248,208Z"/></svg><span>أماكن تزورها</span></a>
         <a class="ls-tab" href="ar/التجارب-والمنتجات.html"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216ZM172.42,72.84l-64,32a8.05,8.05,0,0,0-3.58,3.58l-32,64A8,8,0,0,0,80,184a8.1,8.1,0,0,0,3.58-.84l64-32a8.05,8.05,0,0,0,3.58-3.58l32-64a8,8,0,0,0-10.74-10.74ZM138,138,97.89,158.11,118,118l40.15-20.07Z"/></svg><span>تجارب ومنتجات</span></a>
@@ -440,7 +452,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/الموارد.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="ar/index.html">الرئيسية</a><a href="ar/لرواد-الأعمال.html">لرواد الأعمال</a><a href="ar/الجهات-السياحية.html">للجهات السياحية</a><a href="ar/عن-المشروع.html">عن المشروع</a><a href="ar/تواصل.html">تواصل معنا</a><a href="ar/بحث.html">البحث في الموقع</a><a href="ar/الخصوصية.html">إشعار الخصوصية</a><a href="ar/إمكانية-الوصول.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -527,6 +539,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <div id="toast" role="status" aria-live="polite"></div>
 <script src="icons.js"></script>
 <script src="i18n.ar.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -668,11 +681,14 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     size(); addEventListener('resize', size); addEventListener('load', size);
   })();
   const CRAFT = ICON('hand', 16);
+  /* card hierarchy (reference): portrait with the activity chip → name → business → city · pillar → Helmak badge → the profile CTA */
+  const TAG = ICON('tag', 16), STAR = '<svg class="ic" width="14" height="14" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>'; /* the same star as the profile's Helmak card */
+  const helmak = e => e.helmak ? '<span class="gem-helmak">' + STAR + '<span>' + esc(t(e.plural ? 'مشاركون في برنامج حلمك' : e.female === false ? 'مشارك في برنامج حلمك' : 'مشاركة في برنامج حلمك')) + '</span></span>' : '';
   const card = e => '<li><article class="gem" data-slug="' + e.slug + '" data-href="' + href(e) + '"><div class="gem-media">' + pic(e.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (e.pos || '50% 50%') + '" ') +
     '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span>' +
     '<span class="gem-loc">' + CRAFT + '<span>' + esc(t(ACT[e.act])) + '</span></span></div>' +
-    '<div class="gem-body"><span class="gem-cat">' + esc(t(P[e.p])) + '</span><h3 class="gem-title">' + esc(t(e.name)) + '</h3><p class="gem-biz">' + esc(t(e.biz)) + '</p><p class="gem-desc">' + esc(t(e.sum)) + '</p>' +
-    '<p class="gem-meta"><span>' + PIN + esc(cityName(e.city)) + '</span></p>' +
+    '<div class="gem-body"><h3 class="gem-title">' + esc(t(e.name)) + '</h3><p class="gem-biz">' + esc(t(e.biz)) + '</p>' +
+    '<p class="gem-meta"><span>' + PIN + esc(cityName(e.city)) + '</span><span>' + TAG + esc(t(P[e.p])) + '</span></p>' + helmak(e) +
     '<a class="gem-cta" href="' + href(e) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div></article></li>';
   const hay = e => [e.name, e.biz, e.sum, ACT[e.act], P[e.p], t(e.name), t(e.biz), t(e.sum), t(ACT[e.act])].join(' ').toLowerCase();
   const match = e => (F.city === 'all' || e.city === F.city) && (!F.q || hay(e).includes(F.q.toLowerCase())) && (!F.act.size || F.act.has(e.act)) && (!F.p.size || F.p.has(e.p));

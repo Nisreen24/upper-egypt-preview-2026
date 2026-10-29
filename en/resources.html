@@ -109,16 +109,28 @@ body{font-family:"IBM Plex Sans Arabic",system-ui,sans-serif;color:var(--body);b
 .menu--nav{min-width:200px}
 .nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;font:inherit;color:var(--nav-ink);cursor:pointer}
 .nav-link--menu svg{width:14px;height:14px;flex:none}
-.nav-caret{display:inline-grid;place-items:center;width:28px;height:28px;margin-inline-start:-2px;border-radius:var(--radius-full);background:none;border:0;color:var(--nav-ink);cursor:pointer;transition:background-color .15s,transform .25s}
-.nav-caret:hover{background:rgba(43,29,14,.06)}
-.nav-caret[aria-expanded="true"] svg{transform:rotate(180deg)}
-.nav-caret:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
 .has-menu{display:inline-flex;align-items:center}
-.has-menu:hover .menu{opacity:1;transform:none;pointer-events:auto}
+.nav-link--menu{display:inline-flex;align-items:center;gap:4px;background:none;border:0;cursor:pointer;font:inherit;font-weight:600;font-size:17px;letter-spacing:.005em}
+.nav-link--menu .nav-caret-ic{transition:transform .25s}
+.nav-link--menu[aria-expanded="true"]{color:var(--rust)}
+.nav-link--menu[aria-expanded="true"] .nav-caret-ic{transform:rotate(180deg)}
+.nav-link.is-current{color:var(--rust);font-weight:700}
+.nav-link.is-current::after{content:"";position:absolute;inset-inline:4px;bottom:0;height:2.5px;background:var(--rust);border-radius:2px}
+.menu--nav{top:100%;padding-top:14px;background:none;box-shadow:none;border-radius:0}
+.menu--nav .menu-panel{background:#fff;border-radius:14px;padding:6px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
 .mobile-menu a.mm-group{display:block;padding:12px 14px 4px;font-size:13px;font-weight:700;color:var(--muted)}
 .search{display:flex;align-items:center;gap:6px}
 .search input{width:0;opacity:0;border:0;background:transparent;font:inherit;font-size:14px;color:var(--nav-ink);transition:width .3s,opacity .2s;outline:0}
-.search.open input{width:140px;opacity:1}
+.search{position:relative}
+.search.open input{width:170px;opacity:1}
+.menu--search{inset-inline-start:auto;inset-inline-end:0;top:calc(100% + 10px);width:min(340px,calc(100vw - 32px));max-height:min(70vh,440px);overflow:auto}
+.menu .ss-item{display:grid;grid-template-columns:28px minmax(0,1fr);gap:8px;align-items:center;padding:8px 10px;border-radius:9px;color:var(--nav-ink);white-space:normal}
+.menu .ss-item:hover,.menu .ss-item[aria-selected="true"]{background:rgba(43,29,14,.06)}
+.menu .ss-item:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+.ss-ico{display:inline-grid;place-items:center;width:28px;height:28px;border-radius:999px;background:rgba(165,62,26,.1);color:var(--rust)}
+.ss-txt{display:grid;min-width:0}.ss-n{font-weight:600;font-size:14px;line-height:1.35;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.ss-m{font-size:12px;color:var(--muted)}
+.menu .ss-all{margin-top:4px;border-top:1px solid rgba(43,29,14,.1);border-radius:0 0 9px 9px;color:var(--rust)}
+@media (max-width:639px){.menu--search{position:fixed;inset-inline:16px;top:88px;width:auto}}
 @media (max-width:1023px){.search.open input{width:110px}}
 .burger{display:inline-flex}
 @media (min-width:1024px){.burger{display:none}}
@@ -236,6 +248,8 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .lp-steps{display:inline-flex;align-items:center;gap:6px;height:28px;padding-inline:10px;border-radius:var(--radius-full);background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.35);font-size:12.5px;font-weight:700}
   .lp-title{margin:var(--s-2) 0 0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;text-shadow:0 2px 12px rgba(0,0,0,.35)}
   .lp-sum{margin:6px 0 0;font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.85)}
+  .lp-meta{display:flex;flex-wrap:wrap;gap:4px 12px;margin:8px 0 0;font-size:12.5px;color:rgba(255,255,255,.8)}
+  .lp-meta span{display:inline-flex;align-items:center;gap:5px}
   .lp-card .gem-cta{margin-top:var(--s-3)}
   .rs-list{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
   .rs-row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:var(--s-3);align-items:start;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
@@ -430,9 +444,9 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <!-- Desktop links -->
     <ul class="hidden lg:flex items-center gap-8 xl:gap-11" role="list">
         <li><a class="nav-link" href="en/index.html">الرئيسية</a></li>
-        <li class="relative has-menu"><a class="nav-link" href="en/destinations.html">استكشف</a><button id="exploreBtn" class="nav-caret" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu" aria-label="قائمة استكشف"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
-          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><a role="menuitem" href="en/luxor.html">الأقصر</a><a role="menuitem" href="en/aswan.html">أسوان</a><a role="menuitem" href="en/destinations.html">الوجهات</a><a role="menuitem" href="en/experiences.html">التجارب والمنتجات</a><a role="menuitem" href="en/entrepreneurs.html">رواد الأعمال</a><a role="menuitem" href="en/map.html">الخريطة</a></div></li>
-        <li><a class="nav-link" href="en/resources.html" aria-current="page">لرواد الأعمال</a></li>
+        <li class="relative has-menu"><button id="exploreBtn" class="nav-link nav-link--menu" type="button" aria-haspopup="menu" aria-expanded="false" aria-controls="exploreMenu">استكشف<svg class="ic nav-caret-ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,101.66l-80,80a8,8,0,0,1-11.32,0l-80-80A8,8,0,0,1,53.66,90.34L128,164.69l74.34-74.35a8,8,0,0,1,11.32,11.32Z"/></svg></button>
+          <div id="exploreMenu" class="menu menu--nav" role="menu" aria-labelledby="exploreBtn"><div class="menu-panel"><a role="menuitem" href="en/luxor.html">الأقصر</a><a role="menuitem" href="en/aswan.html">أسوان</a><a role="menuitem" href="en/destinations.html">الوجهات</a><a role="menuitem" href="en/experiences.html">التجارب والمنتجات</a><a role="menuitem" href="en/map.html">الخريطة</a></div></div></li>
+        <li><a class="nav-link" href="en/for-entrepreneurs.html" aria-current="page">لرواد الأعمال</a></li>
         <li><a class="nav-link" href="en/stakeholders.html">للجهات السياحية</a></li>
         <li><a class="nav-link" href="en/about.html">عن المشروع</a></li>
         <li><a class="nav-link" href="en/contact.html">تواصل معنا</a></li>
@@ -481,12 +495,12 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     <a class="mm-sub" href="en/aswan.html">أسوان</a>
     <a class="mm-sub" href="en/destinations.html">الوجهات</a>
     <a class="mm-sub" href="en/experiences.html">التجارب والمنتجات</a>
-    <a class="mm-sub" href="en/entrepreneurs.html">رواد الأعمال</a>
     <a class="mm-sub" href="en/map.html">الخريطة</a>
-    <a href="en/resources.html" aria-current="page">لرواد الأعمال</a>
+    <a href="en/for-entrepreneurs.html" aria-current="page">لرواد الأعمال</a>
     <a href="en/stakeholders.html">للجهات السياحية</a>
     <a href="en/about.html">عن المشروع</a>
     <a href="en/contact.html">تواصل معنا</a>
+    <a href="en/search.html">البحث في الموقع</a>
     <div class="flex items-center justify-between px-3 pt-3 mt-2 border-t border-[var(--hair)] sm:hidden">
       <span class="text-sm font-medium text-[var(--muted)]">اللغة</span>
       <div class="flex gap-1">
@@ -588,7 +602,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
       </nav>
       <nav class="footer-col" aria-labelledby="f-platform">
         <h2 class="footer-h" id="f-platform">المنصة</h2>
-        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/resources.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
+        <div class="footer-links"><a href="en/index.html">الرئيسية</a><a href="en/for-entrepreneurs.html">لرواد الأعمال</a><a href="en/stakeholders.html">للجهات السياحية</a><a href="en/about.html">عن المشروع</a><a href="en/contact.html">تواصل معنا</a><a href="en/search.html">البحث في الموقع</a><a href="en/privacy.html">إشعار الخصوصية</a><a href="en/accessibility.html">بيان إمكانية الوصول</a></div>
       </nav>
       <div class="footer-col footer-col--follow">
         <h2 class="footer-h">تواصل معنا</h2>
@@ -676,6 +690,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <script src="forms.js"></script>
 <script src="icons.js"></script>
 <script src="i18n.en.js"></script>
+<script src="search-suggest.js" defer></script>
 <script>
 (() => {
   const $ = (s, r = document) => r.querySelector(s);
@@ -817,18 +832,22 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   })();
 
   const FICO = { document: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M213.66,82.34l-56-56A8,8,0,0,0,152,24H56A16,16,0,0,0,40,40V216a16,16,0,0,0,16,16H200a16,16,0,0,0,16-16V88A8,8,0,0,0,213.66,82.34ZM160,51.31,188.69,80H160ZM200,216H56V40h88V88a8,8,0,0,0,8,8h48V216Zm-32-80a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,136Zm0,32a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,168Z"/></svg>', link: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M240,88.23a54.43,54.43,0,0,1-16,37L189.25,160a54.27,54.27,0,0,1-38.63,16h-.05A54.63,54.63,0,0,1,96,119.84a8,8,0,0,1,16,.45A38.62,38.62,0,0,0,150.58,160h0a38.39,38.39,0,0,0,27.31-11.31l34.75-34.75a38.63,38.63,0,0,0-54.63-54.63l-11,11A8,8,0,0,1,135.7,59l11-11A54.65,54.65,0,0,1,224,48,54.86,54.86,0,0,1,240,88.23ZM109,185.66l-11,11A38.41,38.41,0,0,1,70.6,208h0a38.63,38.63,0,0,1-27.29-65.94L78,107.31A38.63,38.63,0,0,1,144,135.71a8,8,0,0,0,16,.45A54.86,54.86,0,0,0,144,96a54.65,54.65,0,0,0-77.27,0L32,130.75A54.62,54.62,0,0,0,70.56,224h0a54.28,54.28,0,0,0,38.64-16l11-11A8,8,0,0,0,109,185.66Z"/></svg>', video: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M164.44,105.34l-48-32A8,8,0,0,0,104,80v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,129.05V95l25.58,17ZM216,40H40A16,16,0,0,0,24,56V168a16,16,0,0,0,16,16H216a16,16,0,0,0,16-16V56A16,16,0,0,0,216,40Zm0,128H40V56H216V168Zm16,40a8,8,0,0,1-8,8H32a8,8,0,0,1,0-16H224A8,8,0,0,1,232,208Z"/></svg>', webinar: '<svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M208,40H48A24,24,0,0,0,24,64V176a24,24,0,0,0,24,24H208a24,24,0,0,0,24-24V64A24,24,0,0,0,208,40Zm8,136a8,8,0,0,1-8,8H48a8,8,0,0,1-8-8V64a8,8,0,0,1,8-8H208a8,8,0,0,1,8,8Zm-48,48a8,8,0,0,1-8,8H96a8,8,0,0,1,0-16h64A8,8,0,0,1,168,224Zm-3.56-110.66-48-32A8,8,0,0,0,104,88v64a8,8,0,0,0,12.44,6.66l48-32a8,8,0,0,0,0-13.32ZM120,137.05V103l25.58,17Z"/></svg>' };
-  const PLAY = ICON('play', 16), EXT = ICON('arrow-square-out', 16), DL = ICON('download-simple', 16), CLK = ICON('clock', 16), TG = ICON('tag', 16);
+  const PLAY = ICON('play', 16), EXT = ICON('arrow-square-out', 16), DOC = ICON('file-pdf', 16), CLK = ICON('clock', 16), TG = ICON('tag', 16), USERS = ICON('users', 16);
   const resRow = r => {
-    const act = r.fmt === 'document' ? '<a class="rs-act" href="' + r.href + '" download>' + DL + '<span>' + esc(t('تحميل المستند')) + '</span></a>'
-      : r.fmt === 'link' ? '<a class="rs-act" href="' + r.href + '" target="_blank" rel="noopener">' + EXT + '<span>' + esc(t('فتح الرابط')) + '</span></a>'
-      : (r.video && r.video.youtube ? '<button type="button" class="rs-act" data-play="' + r.slug + '">' + PLAY + '<span>' + esc(t('تشغيل')) + '</span></button>' : '');
-    const meta = '<p class="rs-meta"><span>' + FICO[r.fmt] + esc(t(FMT[r.fmt])) + '</span>' + (r.dur ? '<span>' + CLK + esc(t(r.dur)) + '</span>' : '') + (r.pages ? '<span>' + esc(r.pages + ' ' + t('صفحة')) + '</span>' : '') + (r.topic ? '<span>' + TG + esc(t(TOPIC[r.topic])) + '</span>' : '') + (r.p ? '<span>' + esc(t(P[r.p])) + '</span>' : '') + '</p>';
+    /* CTA per format (no course language): document opens in a new tab, link visits the external site, video / webinar plays inline */
+    const act = r.fmt === 'document' ? '<a class="rs-act" href="' + r.href + '" target="_blank" rel="noopener">' + DOC + '<span>' + esc(t('فتح المستند')) + '</span></a>'
+      : r.fmt === 'link' ? '<a class="rs-act" href="' + r.href + '" target="_blank" rel="noopener">' + EXT + '<span>' + esc(t('زيارة الرابط')) + '</span></a>'
+      : (r.video && r.video.youtube ? '<button type="button" class="rs-act" data-play="' + r.slug + '">' + PLAY + '<span>' + esc(t(r.fmt === 'webinar' ? 'شاهد التسجيل' : 'شاهد الفيديو')) + '</span></button>' : '');
+    const ext = /^https?:\/\//.test(r.href || '');
+    const meta = '<p class="rs-meta"><span>' + FICO[r.fmt] + esc(t(FMT[r.fmt])) + '</span>' + (r.dur ? '<span>' + CLK + esc(t(r.dur)) + '</span>' : '') + (r.pages ? '<span>' + esc(r.pages + ' ' + t('صفحة')) + '</span>' : '') + (r.topic ? '<span>' + TG + esc(t(TOPIC[r.topic])) + '</span>' : '') + (r.p ? '<span>' + esc(t(P[r.p])) + '</span>' : '') + (ext ? '<span>' + EXT + esc(t('رابط خارجي')) + '</span>' : '') + '</p>';
     return '<article class="rs-row" data-slug="' + r.slug + '"><span class="rs-ico rs-ico--' + r.fmt + '">' + FICO[r.fmt] + '</span><div><h3 class="rs-t">' + esc(t(r.n)) + '</h3><p class="rs-s">' + esc(t(r.s)) + '</p>' + meta + '</div>' + act + (r.video ? '<div class="rs-player" hidden></div>' : '') + '</article>';
   };
   /* video and webinar: the player loads only when the visitor activates it (BRD 7.6) */
   document.addEventListener('click', ev => { const b = ev.target.closest('[data-play]'); if (!b) return; const r = bySlug(b.dataset.play); const row = b.closest('.rs-row'), box = row.querySelector('.rs-player'); if (!r.video || !r.video.youtube) return; if (!box.children.length) box.innerHTML = '<iframe src="https://www.youtube-nocookie.com/embed/' + r.video.youtube + '?autoplay=1" title="' + esc(t(r.n)) + '" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen loading="lazy"></iframe>'; box.hidden = false; b.hidden = true; });
 
-  const pathCard = p => { const n = pathSteps(p).length; return '<li><article class="lp-card">' + pic(p.img, '(min-width:1024px) 33vw, 78vw').replace('<img ', '<img style="object-position:' + (p.pos || '50% 50%') + '" ') + '<div class="lp-body"><span class="lp-steps">' + ICON('list', 16) + esc(n + ' ' + t(n === 1 ? 'مورد' : n === 2 ? 'موردان' : 'موارد')) + '</span><h3 class="lp-title">' + esc(t(p.n)) + '</h3><p class="lp-sum">' + esc(t(p.s)) + '</p><a class="gem-cta" href="' + pathHref(p) + '"><span>' + esc(t('ابدأ المسار')) + '</span>' + ARW + '</a></div></article></li>'; };
+  /* Learning path card: a guided sequence of resources, not a course. Slots: image, resource count, title, summary, audience · pillar, CTA */
+  const AUD = { entrepreneurs: 'لرواد الأعمال', organisations: 'للجهات السياحية', both: 'لرواد الأعمال والجهات السياحية' };
+  const pathCard = p => { const n = pathSteps(p).length; return '<li><article class="lp-card">' + pic(p.img, '(min-width:1024px) 33vw, 78vw').replace('<img ', '<img style="object-position:' + (p.pos || '50% 50%') + '" ') + '<div class="lp-body"><span class="lp-steps">' + ICON('list', 16) + esc(n + ' ' + t(n === 1 ? 'مورد' : n === 2 ? 'موردان' : 'موارد')) + '</span><h3 class="lp-title">' + esc(t(p.n)) + '</h3><p class="lp-sum">' + esc(t(p.s)) + '</p><p class="lp-meta"><span>' + USERS + esc(t(AUD[p.aud || 'entrepreneurs'])) + '</span>' + (p.p ? '<span>' + TG + esc(t(P[p.p])) + '</span>' : '') + '</p><a class="gem-cta" href="' + pathHref(p) + '"><span>' + esc(t('استكشف المسار')) + '</span>' + ARW + '</a></div></article></li>'; };
   const hay = r => [r.n, r.s, FMT[r.fmt], TOPIC[r.topic], P[r.p], t(r.n), t(r.s), t(FMT[r.fmt]), t(TOPIC[r.topic] || '')].join(' ').toLowerCase();
   const match = r => (F.fmt === 'all' || r.fmt === F.fmt) && (!F.q || hay(r).includes(F.q.toLowerCase())) && (!F.topic.size || F.topic.has(r.topic)) && (!F.p.size || F.p.has(r.p)) && (!F.aud.size || !r.aud || r.aud === 'both' || F.aud.has(r.aud));
   const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' resource' : ' resources') : l === 'es' ? n + (n === 1 ? ' recurso' : ' recursos') : n + ' ' + (n === 1 ? 'مورد' : n === 2 ? 'موردان' : n <= 10 ? 'موارد' : 'موردًا'); };
@@ -853,7 +872,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     list.addEventListener('click', e => { if (drag && drag.moved) { e.preventDefault(); e.stopPropagation(); } }, true);
     return { update };
   })();
-  function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'resources.html'], ['الموارد ومسارات التعلم']]); document.title = t('الموارد ومسارات التعلم') + ' — ' + t('صعيد مصر'); }
+  function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['لرواد الأعمال', 'for-entrepreneurs.html'], ['الموارد ومسارات التعلم']]); document.title = t('الموارد ومسارات التعلم') + ' — ' + t('صعيد مصر'); }
   function render() {
     $('lpGrid').innerHTML = paths.map(pathCard).join('');
     const shown = list.filter(match);

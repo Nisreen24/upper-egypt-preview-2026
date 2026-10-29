@@ -32,6 +32,17 @@ Modification status for every item below: resized to 480 / 960 / 1280 px wide, c
 | منتجات البيت النوبي (el-beit-elnoby-textiles) | 5 | Wikimedia Commons | Hagar.mokhtar، Aseel zm، Ahmed Hagrasi، Joey Berzowska، आशीष भटनागर at hi.wikipedia | CC BY-SA 4.0، CC BY 2.0، Public domain | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 | مشغولات الفضة النوبية (nubian-silver-jewellery) | 5 | Wikimedia Commons | Handmadejewelry، W.carter، Marsupium | CC BY-SA 3.0، CC BY-SA 4.0، CC BY 4.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 
+## Entrepreneur galleries
+
+The gallery block on each entrepreneur profile (BRD 6.2 "photographs") shows the entry's own pictures. The entries hold none yet, so the block carries Commons photographs of the same craft, until the entrepreneurs' own photographs arrive with consent. Attribution for these pictures is held in this register (the page shows no credit line). ShareAlike and NonCommercial material is not used.
+
+| Entrepreneur | Photos | Source | Authors | Licences | Status |
+|---|---|---|---|---|---|
+| فاطمة البغدادي (fatma-boghdady) | 4 | Wikimedia Commons | Dtarazona، Auckland Museum Collections، Clem Onojeghuo | Public domain، CC BY 2.0، CC0، CC BY 4.0 | In use as stand-ins for the entry's own photographs · replaced by CIDEAL photography (Annex A) · files: Cuero en Catacaos 354.JPG; Bag (48708824426).jpg; Leather trinket craftsman (Unsplash).jpg; Kit, sewing (AM 1966.243-2).jpg |
+| زينب جمال (zainab-gamal) | 4 | Wikimedia Commons | Corraliew، vastateparksstaff | CC0، CC BY 3.0، CC BY 2.0 | In use as stand-ins for the entry's own photographs · replaced by CIDEAL photography (Annex A) · files: Melon Bead Necklace MET DP112378.jpg; Wired PIPA Knot.jpg; Victoriana earrings.jpg; Beading by Beadsburg (8047126909).jpg |
+| منال عوض الله (manal-awadallah) | 4 | Wikimedia Commons | Hey Paul Studios، Joey Berzowska، Mildred (The Met)، Treefort Music Fest | CC BY 2.0، CC0 | In use as stand-ins for the entry's own photographs · replaced by CIDEAL photography (Annex A) · files: Feather Stitch Green, Blue, and Grey Embroidery Hoop Art. Hand Embroidered. (8355465843).jpg; Chikan embroidery, Lucknow.jpg; Embroidered quilt MET DP123122.jpg; 2015 Atmosphere-Treefort-Credit-Steel-Brooks-9 (16949564681).jpg |
+| ورشة الفضة النوبية (nubian-silver-workshop) | 4 | Wikimedia Commons | Marsupium، W.carter | CC BY 4.0 | In use as stand-ins for the entry's own photographs · replaced by CIDEAL photography (Annex A) · files: Showcase Nubian jewelry - surra pendant and bracelet - Nubian Museum.jpg; Showcase Nubian jewelry - objects - Nubian Museum 01.jpg; Showcase Nubian jewelry - objects - Nubian Museum 03.jpg; Silver rings on licorice candy rolls by ASQ.jpg |
+
 ## Other images
 
 - Lead images, product photos and entrepreneur portraits (ASSETS/*.webp, ASSETS/ev/*) were supplied for the prototype as sample content (§6.2) and are replaced by CIDEAL's photography and consent releases before launch.
