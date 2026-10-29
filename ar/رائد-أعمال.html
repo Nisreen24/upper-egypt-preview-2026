@@ -350,7 +350,7 @@ html[dir="rtl"] .ex-body{grid-template-columns:440px minmax(0,1fr)}
   .dx-gal button[aria-pressed="true"]{outline:3px solid var(--rust);outline-offset:3px}
   .dx-gal img{width:100%;height:100%;object-fit:cover}
   /* two columns after the hero: the story on the start side, the information card on the end side */
-  .dxl{display:grid;gap:var(--s-5);align-items:start}
+  .dxl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-5);align-items:start}
   @media (min-width:1024px){.dxl{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}
 }
   @media (min-width:1280px){.dxl{grid-template-columns:minmax(0,1fr) 420px}
@@ -494,7 +494,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
   @keyframes ep-lb-in{from{opacity:0;transform:scale(.96) translateY(10px)}to{opacity:1;transform:none}}
   .ep-lb-fig img{max-width:100%;max-height:calc(100vh - 140px);object-fit:contain;border-radius:var(--radius-md);box-shadow:0 30px 70px rgba(0,0,0,.55),0 8px 24px rgba(0,0,0,.35)}
   .ep-lb-fig figcaption{font-size:var(--fs-small);line-height:1.6;color:rgba(255,255,255,.85);text-align:center}
-  .ep-lb-count{position:fixed;bottom:14px;inset-inline:0;margin:0;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
+  .ep-lb-count{direction:ltr;position:fixed;bottom:14px;inset-inline:0;margin:0;text-align:center;font-size:13px;font-weight:700;letter-spacing:.04em;color:rgba(255,255,255,.6);font-variant-numeric:tabular-nums}
   .ep-lb-btn{position:fixed;display:grid;place-items:center;width:44px;height:44px;padding:0;border:0;border-radius:50%;background:rgba(255,255,255,.12);color:#fff;cursor:pointer;transition:transform .25s cubic-bezier(.22,1,.36,1),opacity .25s;backdrop-filter:blur(6px)}
   .ep-lb-btn svg{width:22px;height:22px}
   .ep-lb-btn:hover{transform:scale(1.08)} .ep-lb-btn:active{transform:scale(.94)}
@@ -504,6 +504,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
   .ep-lb-prev:hover,.ep-lb-next:hover{transform:translateY(-50%) scale(1.08)} .ep-lb-prev:active,.ep-lb-next:active{transform:translateY(-50%) scale(.94)}
   html[dir="ltr"] .ep-lb-prev svg,html[dir="ltr"] .ep-lb-next svg{transform:scaleX(-1)}
   @media (min-width:1024px){.ep-lb-btn{width:52px;height:52px} .ep-lb-prev{inset-inline-start:24px} .ep-lb-next{inset-inline-end:24px} .ep-lb-close{top:24px;inset-inline-end:24px}}
+  body.no-scroll{overflow:hidden}
   @media (prefers-reduced-motion:reduce){.ep-lb-fig{animation:none} .ep-gal-btn figure,.ep-gal img,.ep-lb-btn{transition:none}}
   .ep-contact-btn{display:flex;align-items:center;justify-content:center;gap:10px;min-height:56px;padding:0 var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;box-shadow:0 1px 2px rgba(138,50,19,.18),0 10px 24px -8px rgba(138,50,19,.5);transition:transform .45s cubic-bezier(.2,.8,.2,1),background-color .3s ease}
   .ep-contact-btn:hover{background:var(--rust-deep);transform:translateY(-1px)} .ep-contact-btn:active{transform:scale(.99)} .ep-contact-btn:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
@@ -744,7 +745,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
     <section class="sec" aria-labelledby="s-motion">
       <div class="sec-head">
         <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M56,96v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM88,24a8,8,0,0,0-8,8V224a8,8,0,0,0,16,0V32A8,8,0,0,0,88,24Zm40,32a8,8,0,0,0-8,8V192a8,8,0,0,0,16,0V64A8,8,0,0,0,128,56Zm40,32a8,8,0,0,0-8,8v64a8,8,0,0,0,16,0V96A8,8,0,0,0,168,88Zm40-16a8,8,0,0,0-8,8v96a8,8,0,0,0,16,0V80A8,8,0,0,0,208,72Z"/></svg></span>
-        <div><h3 id="s-motion" class="text-[15px] font-bold text-[var(--nav-ink)]">الحركة والصوت</h3><p class="text-[11.5px] text-[var(--muted)]">تقليل المؤثرات الحركية والصوتية</p></div>
+        <div><h3 id="s-motion" class="text-[15px] font-bold text-[var(--nav-ink)]">الحركة</h3><p class="text-[11.5px] text-[var(--muted)]">تقليل المؤثرات الحركية</p></div>
       </div>
       <div class="grid3">
         <button class="tile" type="button" data-a11y="motion" aria-pressed="false"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M222.16,177.25a8,8,0,0,1-1,11.25c-17.36,14.39-32.86,19.5-47,19.5-18.58,0-34.82-8.82-49.93-17-25.35-13.76-47.24-25.64-79.07.74a8,8,0,1,1-10.22-12.31c40.17-33.28,70.32-16.92,96.93-2.48,25.35,13.75,47.24,25.63,79.07-.74A8,8,0,0,1,222.16,177.25Zm-11.27-57c-31.83,26.38-53.72,14.5-79.07.74-26.61-14.43-56.76-30.79-96.93,2.49a8,8,0,0,0,10.22,12.31c31.83-26.38,53.72-14.5,79.07-.74,15.11,8.19,31.35,17,49.93,17,14.14,0,29.64-5.11,47-19.5a8,8,0,1,0-10.22-12.31ZM45.11,79.8c31.83-26.37,53.72-14.49,79.07-.74,15.11,8.2,31.35,17,49.93,17,14.14,0,29.64-5.12,47-19.5a8,8,0,1,0-10.22-12.31c-31.83,26.38-53.72,14.5-79.07.74C105.21,50.58,75.06,34.22,34.89,67.5A8,8,0,1,0,45.11,79.8Z"/></svg><span>تقليل الحركة</span></button>

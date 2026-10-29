@@ -272,7 +272,7 @@ html[dir="rtl"] .ex-body{grid-template-columns:440px minmax(0,1fr)}
   .dx-gal button[aria-pressed="true"]{outline:3px solid var(--rust);outline-offset:3px}
   .dx-gal img{width:100%;height:100%;object-fit:cover}
   /* two columns after the hero: the story on the start side, the information card on the end side */
-  .dxl{display:grid;gap:var(--s-5);align-items:start}
+  .dxl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-5);align-items:start}
   @media (min-width:1024px){.dxl{grid-template-columns:minmax(0,1fr) 380px;gap:var(--s-6)}
 }
   @media (min-width:1280px){.dxl{grid-template-columns:minmax(0,1fr) 420px}
@@ -675,7 +675,7 @@ html[dir="rtl"] .sk-list{order:2}
     <section class="sec" aria-labelledby="s-motion">
       <div class="sec-head">
         <span class="sec-ico"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M56,96v64a8,8,0,0,1-16,0V96a8,8,0,0,1,16,0ZM88,24a8,8,0,0,0-8,8V224a8,8,0,0,0,16,0V32A8,8,0,0,0,88,24Zm40,32a8,8,0,0,0-8,8V192a8,8,0,0,0,16,0V64A8,8,0,0,0,128,56Zm40,32a8,8,0,0,0-8,8v64a8,8,0,0,0,16,0V96A8,8,0,0,0,168,88Zm40-16a8,8,0,0,0-8,8v96a8,8,0,0,0,16,0V80A8,8,0,0,0,208,72Z"/></svg></span>
-        <div><h3 id="s-motion" class="text-[15px] font-bold text-[var(--nav-ink)]">الحركة والصوت</h3><p class="text-[11.5px] text-[var(--muted)]">تقليل المؤثرات الحركية والصوتية</p></div>
+        <div><h3 id="s-motion" class="text-[15px] font-bold text-[var(--nav-ink)]">الحركة</h3><p class="text-[11.5px] text-[var(--muted)]">تقليل المؤثرات الحركية</p></div>
       </div>
       <div class="grid3">
         <button class="tile" type="button" data-a11y="motion" aria-pressed="false"><svg class="ic" width="24" height="24" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M222.16,177.25a8,8,0,0,1-1,11.25c-17.36,14.39-32.86,19.5-47,19.5-18.58,0-34.82-8.82-49.93-17-25.35-13.76-47.24-25.64-79.07.74a8,8,0,1,1-10.22-12.31c40.17-33.28,70.32-16.92,96.93-2.48,25.35,13.75,47.24,25.63,79.07-.74A8,8,0,0,1,222.16,177.25Zm-11.27-57c-31.83,26.38-53.72,14.5-79.07.74-26.61-14.43-56.76-30.79-96.93,2.49a8,8,0,0,0,10.22,12.31c31.83-26.38,53.72-14.5,79.07-.74,15.11,8.19,31.35,17,49.93,17,14.14,0,29.64-5.11,47-19.5a8,8,0,1,0-10.22-12.31ZM45.11,79.8c31.83-26.37,53.72-14.49,79.07-.74,15.11,8.2,31.35,17,49.93,17,14.14,0,29.64-5.12,47-19.5a8,8,0,1,0-10.22-12.31c-31.83,26.38-53.72,14.5-79.07.74C105.21,50.58,75.06,34.22,34.89,67.5A8,8,0,1,0,45.11,79.8Z"/></svg><span>تقليل الحركة</span></button>

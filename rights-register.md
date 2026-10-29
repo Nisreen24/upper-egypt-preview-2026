@@ -23,7 +23,7 @@ Modification status for every item below: resized to 480 / 960 / 1280 px wide, c
 | استكشاف جزيرة إلفنتين (elephantine-island) | 5 | Wikimedia Commons | Marc Ryckaert، Marc Ryckaert (MJJR)، Hatem Moushir، Olaf Tausch | CC BY 3.0، CC BY-SA 4.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 | زيارة معبد فيلة (philae-temple-visit) | 6 | Wikimedia Commons | Marc Ryckaert، M.ramadan2014، Marc Ryckaert (MJJR) | CC BY 3.0، CC BY-SA 3.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 | ورشة الفضة النوبية (nubian-silver-workshop) | 4 | Wikimedia Commons | Clément Bardot، W.carter | CC BY-SA 4.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
-| مطاعم على النيل (nile-restaurants-aswan) | 6 | Wikimedia Commons | Marc Ryckaert (MJJR)، Marc Ryckaert | CC BY 3.0 | In use |
+| مطاعم على النيل (nile-restaurants-aswan) | 6 | Wikimedia Commons | Marc Ryckaert (MJJR)، Marc Ryckaert | CC BY 3.0 | Withdrawn (food experiences carry no gallery) · awaiting CIDEAL photography (Annex A) |
 | مطاعم نوبية (nubian-restaurants) | 5 | Wikimedia Commons | Kent Wang | CC BY-SA 2.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 | مقاهي محلية (local-cafes-aswan) | 5 | Wikimedia Commons | Rémih، Silar، Karelj | CC BY-SA 3.0، Public domain | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
 | تجارب طعام منزلية (home-cooked-nubian) | 4 | Wikimedia Commons | Mohamed Hozyen Ahmed، Ahmed Emad Hamdy، لا روسا | CC BY-SA 4.0 | Withdrawn (ShareAlike) · awaiting CIDEAL photography (Annex A) |
@@ -51,4 +51,4 @@ The gallery block on each entrepreneur profile (BRD 6.2 "photographs") shows the
 - Fonts: IBM Plex Sans / IBM Plex Sans Arabic / IBM Plex Serif (SIL OFL 1.1); Thmanyah Serif Display (licence held by the project).
 - Map tiles: OpenFreeMap "Liberty" style (OpenStreetMap contributors, ODbL) as the demo source until the MapTiler key arrives.
 
-Withdrawn files removed from ASSETS/gal: 315.
+Withdrawn files removed from ASSETS/gal: 489 (315 ShareAlike withdrawals, then 174 files of the six hotel galleries that left the data with the hotel entries).
