@@ -430,6 +430,23 @@ html[dir="rtl"] .sk-list{order:2}
   .rs-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
   .rs-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:13px;color:var(--muted)}.rs-meta span{display:inline-flex;align-items:center;gap:5px}
   .sr-go{color:var(--rust)}
+  .sr-grid{display:grid;gap:var(--s-5) var(--s-4);margin:var(--s-4) 0 0;padding:0;list-style:none;grid-template-columns:minmax(0,1fr)}
+  @media (min-width:640px){.sr-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.sr-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}}
+  .sr-grid .gem[data-href]{cursor:pointer}
+  .gem-biz{margin:2px 0 var(--s-2);font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .gem-helmak{display:inline-flex;align-items:center;gap:6px;align-self:flex-start;min-height:28px;margin-bottom:var(--s-3);padding:3px 10px;border-radius:var(--radius-full);background:rgba(165,62,26,.08);color:var(--rust-deep);font-size:12px;font-weight:700}
+  .gem-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin-bottom:var(--s-3);font-size:var(--fs-small);color:var(--muted)} .gem-meta span{display:inline-flex;align-items:center;gap:5px}
+  .ds-card{display:flex;flex-direction:column;color:inherit;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:var(--radius-card);overflow:hidden;isolation:isolate}
+  .ds-card-body{position:relative;padding:var(--s-3) var(--s-4) var(--s-4)}
+  .ds-card-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/24px auto repeat-y;opacity:.28;pointer-events:none}
+  .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover}
+  .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding-inline-end:28px;font-size:14px;line-height:1.4;color:var(--body)}
+  .ds-card-meta>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .ds-card-t{margin:8px 0 0;padding-inline-end:28px;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
+  .ds-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 4px #fff}
+  .sr-group .ex-pager{justify-content:space-between;margin-top:var(--s-4)}
+  .sr-group .ex-pager-n{display:flex;flex-wrap:wrap;gap:8px}
   @media (prefers-reduced-motion:reduce){.rs-row,.rs-row:hover{transition:none;transform:none}
 }
 </style>
@@ -725,27 +742,44 @@ html[dir="rtl"] .sk-list{order:2}
   const head = () => { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['نتائج البحث']]).replace(/^<nav[^>]*>|<\/nav>$/g, ''); document.title = (q ? t('نتائج البحث') + ': ' + q : t('نتائج البحث')) + ' — ' + t('صعيد مصر'); };
   const norm = x => String(x || '').toLowerCase().replace(/[\u064B-\u0652\u0640]/g, '').replace(/[أإآ]/g, 'ا').replace(/ة/g, 'ه').replace(/ى/g, 'ي');
   const cityOf = c => (CITIES[c] || {})[document.documentElement.lang] || (CITIES[c] || {}).ar || '';
-  const ARW = ICON('arrow-left', 16, 'fwd');
-  const row = (href, icon, name, sum, meta) => '<li><a class="rs-row" href="' + href + '"><span class="rs-ico">' + ICON(icon, 22) + '</span><div><h3 class="rs-t">' + esc(t(name)) + '</h3>' + (sum ? '<p class="rs-s">' + esc(t(sum)) + '</p>' : '') + (meta ? '<p class="rs-meta"><span>' + ICON('map-pin', 14) + esc(meta) + '</span></p>' : '') + '</div><span class="sr-go" aria-hidden="true">' + ARW + '</span></a></li>';
+  const { pic, PIN, P } = EX, ARW = EX.ARW, TAG = ICON('tag', 16), CRAFT = ICON('hand', 16), ORG = ICON('buildings', 16), STAR = '<svg class="ic" width="14" height="14" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M239.18,97.26A16.38,16.38,0,0,0,224.92,86l-59-4.76L143.14,26.15a16.36,16.36,0,0,0-30.27,0L90.11,81.23,31.08,86a16.46,16.46,0,0,0-9.37,28.86l45,38.83L53,211.75a16.38,16.38,0,0,0,24.5,17.82L128,198.49l50.53,31.08A16.4,16.4,0,0,0,203,211.75l-13.76-58.07,45-38.83A16.43,16.43,0,0,0,239.18,97.26Zm-15.34,5.47-48.7,42a8,8,0,0,0-2.56,7.91l14.88,62.8a.37.37,0,0,1-.17.48c-.18.14-.23.11-.38,0l-54.72-33.65a8,8,0,0,0-8.38,0L69.09,215.94c-.15.09-.19.12-.38,0a.37.37,0,0,1-.17-.48l14.88-62.8a8,8,0,0,0-2.56-7.91l-48.7-42c-.12-.1-.23-.19-.13-.5s.18-.27.33-.29l63.92-5.16A8,8,0,0,0,103,91.86l24.62-59.61c.08-.17.11-.25.35-.25s.27.08.35.25L153,91.86a8,8,0,0,0,6.75,4.92l63.92,5.16c.15,0,.24,0,.33.29S224,102.63,223.84,102.73Z"/></svg>';
+  const cityName = c => c ? cityOf(c) : t('عبر الإنترنت');
+  const PAGE = 6; const pageOf = {};
+  /* the same cards as the four listing pages */
+  const CITY_IMG = { luxor: { src: 'ASSETS/place-karnak-736.webp', srcset: 'ASSETS/place-karnak-480.webp 480w, ASSETS/place-karnak-736.webp 736w', alt: '' }, aswan: { src: 'ASSETS/asw-philae-960.webp', srcset: 'ASSETS/asw-philae-480.webp 480w, ASSETS/asw-philae-960.webp 960w', alt: '' } };
+  const dsCard = x => '<li><a class="ds-card" href="' + DESTINATIONS.href(x) + '"><div class="ds-card-media">' + pic(x.imgs[0], '(min-width:1024px) 400px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><div class="ds-card-body"><p class="ds-card-meta"><span>' + esc(t(DESTINATIONS.CAT[x.c])) + (x.area ? '، ' + esc(t(x.area)) : '') + ' · ' + esc(cityName(x.city)) + '</span></p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></div></a></li>';
+  const helmak = e => e.helmak ? '<span class="gem-helmak">' + STAR + '<span>' + esc(t(e.plural ? 'مشاركون في برنامج حلمك' : e.female === false ? 'مشارك في برنامج حلمك' : 'مشاركة في برنامج حلمك')) + '</span></span>' : '';
+  const epCard = e => '<li><article class="gem" data-href="' + ENTREPRENEURS.href(e) + '"><div class="gem-media">' + pic(e.img, '(min-width:1024px) 300px, 90vw', 'gem-img').replace('<img ', '<img style="object-position:' + (e.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + CRAFT + '<span>' + esc(t(ENTREPRENEURS.ACT[e.act])) + '</span></span></div><div class="gem-body"><h3 class="gem-title">' + esc(t(e.name)) + '</h3><p class="gem-biz">' + esc(t(e.biz)) + '</p><p class="gem-meta"><span>' + PIN + esc(cityName(e.city)) + '</span><span>' + TAG + esc(t(P[e.p])) + '</span></p>' + helmak(e) + '<a class="gem-cta" href="' + ENTREPRENEURS.href(e) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div></article></li>';
+  const orgCard = o => '<li><article class="gem org-card" data-href="' + CONTENT.orgHref(o) + '"><div class="gem-media">' + pic(CITY_IMG[o.city] || CITY_IMG.luxor, '(min-width:1024px) 400px, (min-width:640px) 50vw, 96vw', 'gem-img') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + ORG + '<span>' + esc(t(CONTENT.ORG_TYPE[o.type])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(cityName(o.city)) + '</span><h3 class="gem-title">' + esc(t(o.n)) + '</h3><p class="gem-desc">' + esc(t(o.d)) + '</p><p class="gem-meta">' + (o.vc || []).map(v => '<span>' + esc(t(CONTENT.VALUE_CHAIN[v])) + '</span>').join('') + '</p><a class="gem-cta" href="' + CONTENT.orgHref(o) + '"><span>' + esc(t('عرض الجهة')) + '</span>' + ARW + '</a></div></article></li>';
   const GROUPS = [
-    { title: 'الوجهات', icon: 'map-pin', items: () => DESTINATIONS.list, hay: d => [d.n, d.s, d.d, d.area], href: d => DESTINATIONS.href(d), sum: d => d.s, meta: d => cityOf(d.city) },
-    { title: 'التجارب والمنتجات', icon: 'compass', items: () => EXPERIENCES.list, hay: e => [e.n, e.s, e.d], href: e => 'experience.html?city=' + e.city + '&slug=' + e.slug, sum: e => e.s, meta: e => cityOf(e.city) },
-    { title: 'رواد الأعمال', icon: 'hand', items: () => ENTREPRENEURS.list.filter(e => e.consent !== false), hay: e => [e.name, e.biz, e.sum], href: e => 'entrepreneur.html?slug=' + e.slug, sum: e => e.biz, meta: e => cityOf(e.city) },
-    { title: 'الجهات السياحية', icon: 'buildings', items: () => CONTENT.organisations, hay: o => [o.n, o.d], href: o => 'organisation.html?slug=' + o.slug, sum: o => o.d, meta: o => cityOf(o.city) },
+    { key: 'dest', title: 'الوجهات', items: () => DESTINATIONS.list, hay: d => [d.n, d.s, d.d, d.area], card: dsCard },
+    { key: 'exp', title: 'التجارب والمنتجات', items: () => EXPERIENCES.list, hay: e => [e.n, e.s, e.d], card: e => EX.card(e) },
+    { key: 'ep', title: 'رواد الأعمال', items: () => ENTREPRENEURS.list.filter(e => e.consent !== false), hay: e => [e.name, e.biz, e.sum], card: epCard },
+    { key: 'org', title: 'الجهات السياحية', items: () => CONTENT.organisations, hay: o => [o.n, o.d], card: orgCard },
   ];
+  /* previous and next arrows at the two ends, the page numbers between them */
+  const AR = '<svg class="ic" width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg>';
+  const pager = (g, page, pages) => { if (pages < 2) return ''; let n = ''; for (let i = 1; i <= pages; i++) n += '<button type="button" class="ex-page" data-g="' + g.key + '" data-p="' + i + '" aria-label="' + esc(t('الصفحة')) + ' ' + i + '"' + (i === page ? ' aria-current="page"' : '') + '>' + i + '</button>'; return '<nav class="ex-pager" aria-label="' + esc(t('ترقيم الصفحات')) + ': ' + esc(t(g.title)) + '"><button type="button" class="ex-page ex-page--prev" data-g="' + g.key + '" data-p="' + (page - 1) + '" aria-label="' + esc(t('السابق')) + '"' + (page === 1 ? ' disabled' : '') + '>' + AR + '</button><span class="ex-pager-n">' + n + '</span><button type="button" class="ex-page ex-page--next" data-g="' + g.key + '" data-p="' + (page + 1) + '" aria-label="' + esc(t('التالي')) + '"' + (page === pages ? ' disabled' : '') + '>' + AR + '</button></nav>'; };
+  const section = (g, hits) => { const pages = Math.ceil(hits.length / PAGE); const page = Math.min(Math.max(pageOf[g.key] || 1, 1), pages); pageOf[g.key] = page; const shown = hits.slice((page - 1) * PAGE, page * PAGE); return '<section class="sr-group" id="sr-' + g.key + '" aria-labelledby="sr-h-' + g.key + '"><header class="lx-head"><h2 class="display lx-h" id="sr-h-' + g.key + '">' + esc(t(g.title)) + ' <span style="font-size:.6em;color:var(--muted)">(' + hits.length + ')</span></h2></header><ul class="sr-grid" role="list">' + shown.map(g.card).join('') + '</ul>' + pager(g, page, pages) + '</section>'; };
+  let lastQ = null;
   const render = () => {
     head(); if ($('srQ').value.trim() !== q) $('srQ').value = q;
+    if (q !== lastQ) { for (const k in pageOf) pageOf[k] = 1; lastQ = q; }
     /* the type chips stay visible with or without a query */
     if (!q) { $('srCount').textContent = ''; $('srGroups').innerHTML = ''; $('srEmpty').hidden = true; return; }
     const nq = norm(q); let total = 0;
     $('srGroups').innerHTML = GROUPS.map(g => {
       const hits = g.items().filter(x => g.hay(x).some(v => norm(v).includes(nq) || norm(t(v)).includes(nq)));
       total += hits.length; if (!hits.length) return '';
-      return '<section class="sr-group" aria-labelledby="sr-' + g.icon + '"><header class="lx-head"><h2 class="display lx-h" id="sr-' + g.icon + '">' + esc(t(g.title)) + ' <span style="font-size:.6em;color:var(--muted)">(' + hits.length + ')</span></h2></header><ul class="sr-list">' + hits.map(x => row(g.href(x), g.icon, x.n || x.name, g.sum(x), g.meta(x))).join('') + '</ul></section>';
+      return section(g, hits);
     }).join('');
     $('srCount').textContent = total ? t('عدد النتائج') + ': ' + total : '';
     $('srEmpty').hidden = total > 0;
   };
+  $('srGroups').addEventListener('click', e => {
+    const b = e.target.closest('.ex-page'); if (b && !b.disabled) { pageOf[b.dataset.g] = +b.dataset.p; render(); const h = $('sr-' + b.dataset.g); if (h) { const top = h.getBoundingClientRect().top + scrollY - 120; scrollTo({ top, behavior: matchMedia('(prefers-reduced-motion:reduce)').matches ? 'auto' : 'smooth' }); } return; }
+    const c = e.target.closest('.gem[data-href]'); if (c && !e.target.closest('a,button')) location.href = c.dataset.href;
+  });
   render(); document.addEventListener('i18n:change', render);
   /* results refresh while typing; the address bar keeps ?q= so the page can be shared or reloaded */
   const srQ = $('srQ'); let tm;

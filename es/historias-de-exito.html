@@ -487,6 +487,7 @@ html[dir="rtl"] .sk-list{order:2}
   .stl-arrow--solid{background:var(--rust);color:#fff}
   .stl-card:hover .stl-arrow,.stl-feat:hover .stl-arrow{background:var(--rust-deep);color:#fff}
   @media (max-width:639px){.stl-card{grid-template-columns:96px minmax(0,1fr);align-items:center} .stl-card-media{aspect-ratio:auto;height:100%;min-height:96px} .stl-card-body{padding:var(--s-2) var(--s-3)} .stl-card-t{font-size:var(--fs-body-lg)} .stl-card-body .stl-arrow{width:36px;height:36px}}
+  .stl-lead .gem[data-href]{cursor:pointer}
   .stl-k{margin:var(--s-6) 0 var(--s-3);font-size:var(--fs-h3-lg);line-height:1.3;font-weight:700;color:var(--ink)}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
@@ -806,12 +807,13 @@ html[dir="rtl"] .sk-list{order:2}
     title: () => t('قصص النجاح'),
     onHead: () => {
       const en = ENTREPRENEURS.bySlug(lead.ent); const href = en ? ENTREPRENEURS.href(en) : CONTENT.storyHref(lead);
-      $('stLead').innerHTML = '<article class="stl-feat"><div class="stl-feat-media">' + pic(lead.img, '(min-width:768px) 40vw, 100vw').replace('<img ', '<img style="object-position:' + (lead.pos || '50% 50%') + '" ') + '</div><div class="stl-feat-body"><h3 class="stl-feat-t display"><a href="' + href + '">' + esc(t(lead.n)) + '</a></h3><p class="stl-feat-q">\u201C' + esc(t(lead.s)) + '\u201D</p><p class="stl-meta"><span>' + PIN + esc(cityName(lead.city)) + '</span><span>' + BANK + esc(t(P[lead.p])) + '</span><span>' + USERS + esc(t(lead.person)) + '</span></p><span class="stl-arrow" aria-hidden="true">' + ARROW + '</span></div></article>';
+      $('stLead').innerHTML = '<ul class="stl-grid stl-lead" role="list"><li><article class="gem" data-href="' + href + '"><div class="gem-media">' + pic(lead.img, '(min-width:1024px) 400px, (min-width:640px) 50vw, 96vw', 'gem-img').replace('<img ', '<img style="object-position:' + (lead.pos || '50% 50%') + '" ') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + BANK + '<span>' + esc(t(P[lead.p])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(cityName(lead.city)) + '</span><h3 class="gem-title">' + esc(t(lead.n)) + '</h3><p class="gem-desc">\u201C' + esc(t(lead.s)) + '\u201D</p><p class="gem-meta"><span>' + USERS + esc(t(lead.person)) + '</span></p><a class="gem-cta" href="' + href + '"><span>' + esc(t('اقرأ القصة')) + '</span>' + ICON('arrow-left', 16, 'fwd') + '</a></div></article></li></ul>';
       document.querySelectorAll('#exAdv [data-k]').forEach(x => { x.textContent = t(x.dataset.k); });
     },
     count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' story' : ' stories') : l === 'es' ? n + (n === 1 ? ' historia' : ' historias') : n + ' ' + (n === 1 ? 'قصة' : n === 2 ? 'قصتان' : 'قصص'); },
     card, onRender: () => { page = 1; paginate(); document.querySelectorAll('.stl-dd').forEach(d => { const n = d.querySelectorAll('input:checked').length; d.querySelector('[data-n]').textContent = n || ''; }); } });
   /* one open dropdown at a time; a click outside closes it */
+  $('stLead').addEventListener('click', e => { const c = e.target.closest('.gem[data-href]'); if (c && !e.target.closest('a,button')) location.href = c.dataset.href; });
   document.querySelectorAll('.stl-dd').forEach(d => d.addEventListener('toggle', () => { if (d.open) document.querySelectorAll('.stl-dd[open]').forEach(o => { if (o !== d) o.open = false; }); }));
   document.addEventListener('click', e => { if (!e.target.closest('.stl-dd')) document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
