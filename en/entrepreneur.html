@@ -857,7 +857,7 @@ html.lang-latin .dxa-top{grid-template-columns:1fr}
     size(); addEventListener('resize', size); addEventListener('load', size);
   })();
   const e = bySlug(q.get('slug'));
-  if (!e) { $('xh').hidden = true; $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); $('dxEmpty').hidden = false; return; }
+  if (!e) { $('xh').hidden = true; $('dx').querySelectorAll(':scope > *:not(#dxEmpty)').forEach(x => x.hidden = true); (() => { const em = $('dxEmpty'); if (em.querySelector('h1')) return; const link = em.querySelector('a'); const msg = (em.firstChild && em.firstChild.nodeType === 3 ? em.firstChild.textContent : em.textContent).trim(); const box = document.createElement('div'); box.className = em.className; box.id = em.id; box.innerHTML = '<h1 class="dx-empty-h"></h1>'; box.firstChild.textContent = msg; if (link) box.appendChild(link); em.replaceWith(box); })(); $('dxEmpty').hidden = false; return; }
   const products = productsOf(e); const story = (window.CONTENT ? CONTENT.stories : []).find(x => x.ent === e.slug);
   /* story narrative: the published success story's paragraphs; falls back to the entry's own text when no story is linked */
   const storyParas = () => (story && story.body && story.body.length) ? story.body : (e.journey && e.journey.length) ? e.journey.map(x => x.t) : [e.desc];
