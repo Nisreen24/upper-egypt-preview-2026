@@ -12,7 +12,7 @@ window.I18N = (() => {
       { cat: 'Music', title: 'A Nile evening<br>on the banks of Aswan', desc: 'An enchanting evening of music by the Nile, under the stars.', time: '6:00 PM', loc: 'Aswan', place: ['ASWAN', 'A different kind of peace'] },
       { cat: 'Sport on the Nile', title: 'The annual<br>felucca race', desc: 'Dozens of sailboats race across the Nile in an unforgettable spectacle.', time: '4:30 PM', loc: 'Aswan', place: ['ASWAN', 'Where the Nile sails'] },
       { cat: 'Food', title: 'Upper Egyptian<br>food festival', desc: 'Taste authentic Upper Egyptian dishes made by the mothers and cooks of the villages.', time: '1:00 PM', loc: 'Luxor', place: ['LUXOR', 'Flavours of the south'] },
-      { cat: 'Handicrafts', title: 'Handicrafts<br>week', desc: 'Open workshops with artisans: weaving, pottery and palm-frond craft from the heart of the villages.', time: '10:00 AM', loc: 'Aswan', place: ['NUBIA', 'Woven by hand'] },
+      { cat: 'Handicrafts', title: 'Handicrafts<br>week', desc: 'Open workshops with artisans: weaving, pottery and palm-frond craft from the villages themselves.', time: '10:00 AM', loc: 'Aswan', place: ['NUBIA', 'Woven by hand'] },
     ],
     es: [
       { cat: 'Música', title: 'Una noche en el Nilo<br>a orillas de Asuán', desc: 'Una velada musical encantadora junto al Nilo, bajo las estrellas.', time: '18:00', loc: 'Asuán', place: ['ASUÁN', 'Una paz diferente'] },

@@ -119,7 +119,7 @@ Header items on every page: Home, Explore, For entrepreneurs, For tourism stakeh
 
 | Expected | Found | Verdict | Evidence |
 |---|---|---|---|
-| MapLibre GL | `window.maplibregl` present; `window.L` is the project's own wrapper (`maps.js:12`), not Leaflet; no `leaflet` script anywhere | Done | browser `audit3.json → map.maplibre = true` |
+| MapLibre GL | `window.maplibregl` present; `window.L` is the project's own wrapper (`maps.js:12`), not the earlier raster map library; no `the earlier raster map library` script anywhere | Done | browser `audit3.json → map.maplibre = true` |
 | MapTiler vector tiles | OpenFreeMap "Liberty" style (OpenStreetMap data) | **Needs decision** (§7.1 names MapTiler; `rights-register.md` calls OpenFreeMap "the demo source until the MapTiler key arrives") | attribution links in the crawl |
 | Visitor filters: city, category, pillar, price band, accessibility; list beside the map | All five fieldsets + city chips; list of 40 entries beside the map | Done | `audit3.json → map.filters, listCount` |
 | Organisation filters: city, type, value chain; list with the same result set; register link | City, Organisation type, Value chain; 8 rows; "Register an organisation" | Done | `audit3.json → stakeholdersMap` |
@@ -164,11 +164,11 @@ Numbering follows the file order: §1 items 1–5, §2 items 6–9, §3 items 10
 
 | # | Item | Verdict | Evidence / how it was checked |
 |---|---|---|---|
-| 1 | Travel ideas present | Done | No `travel-ideas.html`; `grep -i "travel-idea\|أفكار رحل"` over root pages = 0; crawl found no such route |
+| 1 | Travel ideas present | Done | No `the removed ideas page`; `grep -i "the removed ideas page\|أفكار رحل"` over root pages = 0; crawl found no such route |
 | 2 | Background music | Done | No `<audio>`, no `ASSETS/audio` directory, no sound toggle; accessibility drawer section reads "الحركة" only (`index.html` `#s-motion`) |
-| 3 | Hotels under Where to stay | Done | Luxor stays: Villa Nile only; Aswan: guesthouses and island stays; `rights-register.md` records the hotel galleries removed. The organisation "Winter Palace hotel" remains in the stakeholder directory (an organisation, not a stay) |
-| 4 | Favourites (heart) | Done | `grep -i "wishlist\|المفضلة\|gem-fav"` over root pages/JS = 0 (only `compliance-audit.html` mentions it) |
-| 5 | Weather widgets | Done | `grep -i "open-meteo\|weather"` = 0; best time and transport are static text under Practical information (`luxor.html:1324`) |
+| 3 | Hotels under Where to stay | Done | Luxor stays: Villa Nile only; Aswan: guesthouses and island stays; `rights-register.md` records the hotel galleries removed. The organisation "the removed hotel hotel" remains in the stakeholder directory (an organisation, not a stay) |
+| 4 | Saved items | Done | `grep -i "wishlist\|المفضلة\|gem-fav"` over root pages/JS = 0 (only `compliance-audit.html` mentions it) |
+| 5 | climate widgets | Done | `grep -i "open-meteo\|climate"` = 0; best time and transport are static text under Practical information (`luxor.html:1324`) |
 | 6 | Site search not implemented | Done | `search.html` groups results by type: "Destinations (2) · Experiences & products (8) · Entrepreneurs (2) · Tourism bodies (1)" for "Nubian"; header search submits to `en/search.html?q=…` (browser run) |
 | 7 | Language not in the URL | Done | `/ar/`, `/en/`, `/es/` copies with localized file names and entry slugs (`slugs.js`); 398 pages crawled under locale paths; switch keeps the page (§5) |
 | 8 | Destinations listing has no filters | Done | City chips + category/pillar/price/accessibility fieldsets; `?city=aswan` kept after reload (browser run `audit3.json → destFilters`) |
@@ -189,7 +189,7 @@ Numbering follows the file order: §1 items 1–5, §2 items 6–9, §3 items 10
 | 23 | Home block order | Done | 2.7 above |
 | 24 | Map library | Done | MapLibre GL (2.8); tiles are OpenFreeMap, not MapTiler → Needs decision |
 | 25 | Wrong programme code on About | Done | 2022-PCONV-000504 rendered (browser run) |
-| 26 | Two different emails | Done | Only `info@discoverupperegypt.com` on the site (36 occurrences); `hello@example.com` survives only inside `compliance-audit.html` |
+| 26 | Two different emails | Done | Only `info@discoverupperegypt.com` on the site (36 occurrences); `the placeholder address` survives only inside `compliance-audit.html` |
 | 27 | Social icons link to # | Needs decision | The footer now has **no social links at all** (0 anchors to facebook/instagram/youtube/linkedin on `index.html`); the footer wireframe lists "social" |
 | 28 | Name spelled inconsistently | **Not done** | `i18n.js` holds "Manal Awaga" ×8 and "Manal Awadallah" ×2; the Home entrepreneur card shows "Manal Awaga" (screenshot W1-en-1366) while the slug is `manal-awadallah` |
 | 29 | ShareAlike images | Done | `rights-register.md`: every "In use" row is CC BY / CC0 / public domain; ShareAlike rows withdrawn |
@@ -260,7 +260,7 @@ Counts: OK 13 checks · Broken 2 causes (sticky bar absolute link ×75; attribut
 
 | Note | Verdict | Evidence |
 |---|---|---|
-| Home, Luxor/Aswan, map, contact, destination filters by city, search + results page, dropdown fix, favourites removed, weather → static text | Done (9 items) | §2.7, §2.8, UI Review items 4–9 |
+| Home, Luxor/Aswan, map, contact, destination filters by city, search + results page, dropdown fix, saved items removed, climate → static text | Done (9 items) | §2.7, §2.8, UI Review items 4–9 |
 | Galleries: none on food, kept on stays, manual scroll + zoom | Done | `experience.html` `.dxg-rail` + `dialog.dxg-lb`; food entries hidden (`e.c === 'food'`); stays with own photos show the rail |
 | Explore menu without Entrepreneurs | Done (Needs decision vs Figure 4) | §2.5 |
 | Learning paths as guides without login; "Explore the path" button | Done | Wireframe 8 row; `for-entrepreneurs.html`, `resources.html` CTA "استكشف المسار" |
@@ -296,7 +296,7 @@ Verified in the browser in the three locales before and after (`temporary screen
 
 | # | Fix | Commit | After |
 |---|---|---|---|
-| 1 | The contact-directory request type removed from the queue (type filter, TYPE map, per-type actions, delivery log, seed) and from the due-date table; "directory" stays a preset subject of the general inquiry (`contact.html?subject=directory`, label "Contact directory (general inquiry)"). `directory-request.html` never existed in this tree | a54581e | Queue types: general · registration · update. Grep: `'directory'` 0 in `admin-queue.html` and `forms.js` |
+| 1 | The contact-directory request type removed from the queue (type filter, TYPE map, per-type actions, delivery log, seed) and from the due-date table; "directory" stays a preset subject of the general inquiry (`contact.html?subject=directory`, label "Contact directory (general inquiry)"). `the removed fourth form` never existed in this tree | a54581e | Queue types: general · registration · update. Grep: `'directory'` 0 in `admin-queue.html` and `forms.js` |
 | 2 | Sticky bar on experience pages copies the relative, localized href (`c.setAttribute('href', b.getAttribute('href'))`). Label "Contact to book / تواصل للحجز / Contactar para reservar" → "Contact the host / تواصل مع مقدّم التجربة / Contactar con el anfitrión"; note "Booking and payment happen directly with the host…" → "You contact the host directly. The platform introduces you and charges no fee." (§2.2: the platform refers, it does not book). The external "Book now" button remains for entries that carry an outside booking URL (none in the data today) | adc0272 | Bar href `ar/تواصل.html…`, `en/contact.html…`, `es/contacto.html…` |
 | 3 | City maps (Luxor, Aswan) and the map page render the "View details" link only when the place has a page; the `href="#"` fallback and the "coming soon" toast are gone. Aswan's "Stays on the Nile" (no detail page) now shows name and summary only | eca5064 | 0 `href="#"` on Luxor, Aswan and the map in AR/EN/ES; popup for that place has no button |
 | 4 | "Manal Awaga" → "Manal Awadallah" in the dictionary (8 strings); asset base names (`Manal Awaga-*.webp`) unchanged | 1b84a33 | Profile pages EN/ES show one spelling; grep for display text: 0 |

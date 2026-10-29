@@ -7,7 +7,7 @@
   const box = document.createElement('div');
   box.id = 'searchSuggest'; box.className = 'menu menu--search'; box.setAttribute('role', 'listbox'); box.setAttribute('aria-label', 'اقتراحات البحث');
   form.appendChild(box);
-  input.setAttribute('autocomplete', 'off'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-controls', 'searchSuggest'); input.setAttribute('aria-expanded', 'false');
+  input.setAttribute('autocomplete', 'off'); input.setAttribute('role', 'combobox'); input.setAttribute('aria-autocomplete', 'list'); input.setAttribute('aria-controls', 'searchSuggest'); input.setAttribute('aria-expanded', 'false');
 
   const t = k => (window.I18N ? I18N.t(k) : k);
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));

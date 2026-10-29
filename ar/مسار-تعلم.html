@@ -701,7 +701,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   /* Wireframe 8: the path's steps in order; the current step shows its resources with the Resources row (document download, link in a new tab, video / webinar behind its poster, 6.6) */
   const { P, q, t, esc, pic, crumb } = EX, { FMT, TOPIC, paths, bySlug, pathBySlug } = RESOURCES;
   const $ = id => document.getElementById(id);
-  const notFound = () => { document.querySelectorAll('#exList > .wrap > *').forEach(x => { x.hidden = x.id !== 'dxEmpty'; }); document.title = t('هذا المسار غير موجود.') + ' — ' + t('صعيد مصر'); };
+  const notFound = () => { document.querySelectorAll('#exList > .wrap > *').forEach(x => { x.hidden = x.id !== 'dxEmpty'; }); (() => { const em = $('dxEmpty'); if (em.querySelector('h1')) return; const link = em.querySelector('a'); const msg = (em.firstChild && em.firstChild.nodeType === 3 ? em.firstChild.textContent : em.textContent).trim(); const box = document.createElement('div'); box.className = em.className; box.id = em.id; box.innerHTML = '<h1 class="dx-empty-h"></h1>'; box.firstChild.textContent = msg; if (link) box.appendChild(link); em.replaceWith(box); })(); document.title = t('هذا المسار غير موجود.') + ' — ' + t('صعيد مصر'); };
   /* the slug is checked against a whitelist and never written into the page; a draft path counts as missing */
   const raw = q.get('slug'); const p = raw && /^[a-z0-9-]{1,80}$/.test(raw) ? pathBySlug(raw) : null;
   if (!p || p.draft) { notFound(); return; }

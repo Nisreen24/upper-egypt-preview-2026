@@ -10,7 +10,7 @@ window.ENTRY = (() => {
   function init(cfg) {
     const { t, esc, crumb, pic } = EX;
     const e = cfg.entry;
-    if (!e) { document.querySelectorAll('#dx > *:not(#dxEmpty)').forEach(x => x.hidden = true); if ($('dxHero')) $('dxHero').hidden = true; $('dxEmpty').hidden = false; return; }
+    if (!e) { document.querySelectorAll('#dx > *:not(#dxEmpty)').forEach(x => x.hidden = true); if ($('dxHero')) $('dxHero').hidden = true; const em = $('dxEmpty'); if (!em.querySelector('h1')) { const link = em.querySelector('a'); const msg = (em.firstChild && em.firstChild.nodeType === 3 ? em.firstChild.textContent : em.textContent).trim(); const box = document.createElement('div'); box.className = em.className; box.id = em.id; box.innerHTML = '<h1 class="dx-empty-h"></h1>'; box.firstChild.textContent = msg; if (link) box.appendChild(link); em.replaceWith(box); document.title = msg + ' — ' + t('صعيد مصر'); } $('dxEmpty').hidden = false; return; }
     hero(); let map = null;
     function render() {
       const v = cfg.view(e);

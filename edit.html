@@ -711,7 +711,7 @@ html[dir="rtl"] .sk-list{order:2}
   const STATES = { invalid: ['هذا الرابط غير صالح.', 'تأكد من نسخ الرابط كاملًا من رسالة البريد.'], expired: ['انتهت صلاحية هذا الرابط.', 'الرابط صالح 24 ساعة فقط. اطلب رابطًا جديدًا بالطريقة نفسها.'], used: ['استُخدم هذا الرابط من قبل.', 'كل رابط يُستخدم مرة واحدة. اطلب رابطًا جديدًا إن أردت تعديلًا آخر.'] };
   function render() {
     head([['الرئيسية', 'index.html'], ['تحديث الملف']], 'تحديث الملف');
-    if (st !== 'ok') { $('editBody').hidden = true; $('editState').innerHTML = '<header class="pg-head"><span class="sec-eyebrow">' + esc(t('تحديث البيانات')) + '</span><h1 class="pg-title display">' + esc(t(STATES[st][0])) + '</h1><p class="pg-lede">' + esc(t(STATES[st][1])) + '</p></header><a class="dx-cta" style="display:inline-flex;width:auto;padding-inline:24px" href="update-request.html"><span>' + esc(t('طلب رابط جديد')) + '</span></a>'; return; }
+    if (st !== 'ok') { $('editBody').hidden = true; $('editState').innerHTML = '<header class="pg-head"><span class="sec-eyebrow">' + esc(t('تحديث البيانات')) + '</span><h2 class="pg-title display">' + esc(t(STATES[st][0])) + '</h2><p class="pg-lede">' + esc(t(STATES[st][1])) + '</p></header><a class="dx-cta" style="display:inline-flex;width:auto;padding-inline:24px" href="update-request.html"><span>' + esc(t('طلب رابط جديد')) + '</span></a>'; return; }
     $('editBody').hidden = false; $('editState').innerHTML = '';
     const isEnt = tok.kind === 'entrepreneur'; $('entFields').hidden = !isEnt; $('orgFields').hidden = isEnt; $('fCancel').href = (isEnt ? 'entrepreneur.html?slug=' : 'organisation.html?slug=') + tok.slug;
     $('tokExp').textContent = new Date(tok.issued + 24 * 3600e3).toLocaleString(EX.lang() === 'ar' ? 'ar-EG' : EX.lang());

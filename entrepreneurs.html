@@ -642,7 +642,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   const hay = e => [e.name, e.biz, e.sum, ACT[e.act], P[e.p], t(e.name), t(e.biz), t(e.sum), t(ACT[e.act])].join(' ').toLowerCase();
   const match = e => (F.city === 'all' || e.city === F.city) && (!F.q || hay(e).includes(F.q.toLowerCase())) && (!F.act.size || F.act.has(e.act)) && (!F.p.size || F.p.has(e.p));
   const countText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' entrepreneur' : ' entrepreneurs') : l === 'es' ? n + (n === 1 ? ' emprendedor' : ' emprendedores') : n + ' ' + (n === 1 ? 'رائد أعمال' : n === 2 ? 'رائدا أعمال' : n <= 10 ? 'رواد أعمال' : 'رائد أعمال'); };
-  function url() { const u = new URLSearchParams(); if (F.city !== 'all') u.set('city', F.city); if (F.q) u.set('q', F.q); if (F.act.size) u.set('act', [...F.act].join(',')); if (F.p.size) u.set('p', [...F.p].join(',')); history.replaceState(null, '', u.toString() ? '?' + u.toString() : location.pathname); }
+  function url() { const u = new URLSearchParams(); if (F.city !== 'all') u.set('city', F.city); if (F.q) u.set('q', F.q); if (F.act.size) u.set('act', [...F.act].join(',')); if (F.p.size) u.set('p', [...F.p].join(',')); history.replaceState(null, '', location.pathname + (u.toString() ? '?' + u.toString() : '')); }
   function head() { $('exCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['رواد الأعمال']]); document.title = t('رواد الأعمال') + ' — ' + t('صعيد مصر'); }
   function render() {
     const shown = DATA.filter(match);

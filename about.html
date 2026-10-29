@@ -281,14 +281,14 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .ab-stripe{position:absolute;inset-inline:0;bottom:0;height:12px;z-index:2;background:repeating-linear-gradient(-45deg,#b4451c 0 10px,#f4e7d3 10px 20px);pointer-events:none}
   html[dir="ltr"] .ab-stripe{background:repeating-linear-gradient(45deg,#b4451c 0 10px,#f4e7d3 10px 20px)}
   /* hero: one framed photo, crumb + eyebrow + title + lede at the start corner */
-  .ab-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;--xw:min(1550px,95vw);width:var(--xw);height:var(--xh-h,560px);max-height:85vh;margin:0 calc((100% - var(--xw)) / 2) var(--s-7);border-radius:var(--radius-card);background:var(--clay-light);color:#fff}
+  .ab-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;--xw:min(1550px,95vw);width:var(--xw);height:var(--xh-h,560px);max-height:85vh;margin:0 calc((100% - var(--xw)) / 2) var(--s-7);border-radius:var(--radius-card);background:var(--viewer-dark);color:#fff}
   .ab-hero picture,.ab-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
   .ab-hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%),rgba(0,0,0,.22);pointer-events:none}
   .ab-hero-band{position:absolute;inset-inline:0;bottom:0;height:16px;z-index:2;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none}
   @media (min-width:768px){.ab-hero-band{height:20px}}
   .ab-hero-body{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:min(100%,960px);padding:24px 24px 44px}
   @media (min-width:768px){.ab-hero-body{padding:48px 56px 68px}}
-  .ab-crumb ol,.ab-crumb a,.ab-crumb [aria-current]{color:#fff;font-size:15px;font-weight:700} .ab-crumb a:hover{color:var(--kicker-on-dark)} .ab-crumb a:focus-visible{outline-color:#fff}
+  .ab-hero .ab-crumb ol,.ab-hero .ab-crumb a,.ab-hero .ab-crumb [aria-current]{color:#fff;font-size:15px;font-weight:700} .ab-crumb a:hover{color:var(--kicker-on-dark)} .ab-crumb a:focus-visible{outline-color:#fff}
   .ab-crumb li + li::before{opacity:.9}
   .ab-eyebrow{display:inline-flex;align-items:center;height:30px;margin-top:var(--s-2);padding-inline:12px;border-radius:var(--radius-full);background:var(--pill-clay-soft);color:var(--rust-deep);font-size:13px;font-weight:700}
   .ab-title{margin:var(--s-2) 0 0;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}

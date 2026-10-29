@@ -84,10 +84,10 @@
   function renderDetail() {
     const q = FORMS.queue.all().find(x => x.id === sel); if (!q) { $('detail').innerHTML = '<p class="ad-empty">اختر طلبًا لعرضه.</p>'; return; }
     const payload = Object.entries(q.payload).filter(([k]) => !/^c_/.test(k));
-    const changes = q.type === 'update' && q.payload.changes ? '<label>التغييرات المقترحة (حقل بحقل)</label>' + Object.entries(q.payload.changes).filter(([k]) => !/^c_/.test(k)).map(([k, v]) => '<label class="ad-note" style="display:flex;gap:8px;align-items:flex-start;font-weight:500"><input type="checkbox" data-field="' + esc(k) + '" checked style="width:auto"> <span><b>' + esc(k) + ':</b> ' + esc(v) + '</span></label>').join('') : '';
+    const changes = q.type === 'update' && q.payload.changes ? '<label>التغييرات المقترحة (حقل بحقل)</label>' + Object.entries(q.payload.changes).filter(([k]) => !/^c_/.test(k)).map(([k, v]) => '<label class="ad-note" style="display:flex; const demo = q.type === 'update' && q.payload.demoToken ? '<p class="ad-demo"><a href="edit.html?token=' + esc(q.payload.demoToken) + '" target="_blank" rel="noopener">نموذج: افتح رابط التحديث الذي أُرسل إلى صاحب المدخل</a></p>' : '';gap:8px;align-items:flex-start;font-weight:500"><input type="checkbox" data-field="' + esc(k) + '" checked style="width:auto"> <span><b>' + esc(k) + ':</b> ' + esc(v) + '</span></label>').join('') : '';
     const dirLog = '';
     $('detail').innerHTML = '<h2>' + esc(TYPE[q.type]) + ' <span class="pill ' + q.status + '">' + esc(STATUS[q.status]) + '</span></h2><p class="ad-note">' + q.id + ' · أُنشئ ' + fmt(q.created) + ' · موعد الرد <span' + (overdue(q) ? ' class="overdue"' : '') + '>' + fmt(q.due) + '</span> · اللغة ' + q.lang + '</p>'
-      + '<dl>' + payload.map(([k, v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</dd>').join('') + '</dl>' + changes + dirLog
+      + '<dl>' + payload.map(([k, v]) => '<dt>' + esc(k) + '</dt><dd>' + esc(typeof v === 'object' ? JSON.stringify(v) : v) + '</dd>').join('') + '</dl>' + changes + demo + dirLog
       + '<label>سجل الموافقة</label><p class="ad-note">' + (q.consent && q.consent.text.length ? q.consent.text.map(esc).join('<br>') : '—') + ' <br>' + (q.consent ? fmt(q.consent.at) : '') + '</p>'
       + '<label for="asg">المكلّف</label><input id="asg" value="' + esc(q.assignee || '') + '" placeholder="اسم المنسّق">'
       + '<label for="note">ملاحظة داخلية <span class="ad-note">(لا تُرسل للزائر أبدًا)</span></label><textarea id="note">' + esc(q.note || '') + '</textarea>'
