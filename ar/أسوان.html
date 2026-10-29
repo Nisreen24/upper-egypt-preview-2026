@@ -1797,13 +1797,13 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
   const tag = d => '<span class="mp-tag" style="--c:' + CATS[d.c].c + '">' + ICON(CATS[d.c].p, 14) + '<span>' + esc(t(CATS[d.c].n)) + '</span></span>';
   const ALIAS = { 'تجربة الحرف النوبية': 'nubian-silver-workshop' };
   const exHrefFor = d => { if (ALIAS[d.n]) return 'experience.html?city=' + CITY + '&slug=' + ALIAS[d.n]; if (d.c === 'land' && window.DESTINATIONS) { const p = DESTINATIONS.byName(CITY, d.n); if (p) return DESTINATIONS.href(p); } if (d.c === 'biz' && window.ENTREPRENEURS) { const en = ENTREPRENEURS.published().find(x => x.name === d.n); if (en) return ENTREPRENEURS.href(en); } const x = (window.EXPERIENCES ? EXPERIENCES.list : []).find(e => e.city === CITY && (e.n === d.n || (d.c === 'biz' && e.ent && e.ent.name === d.n))); return x ? 'experience.html?city=' + x.city + '&slug=' + x.slug : ''; };
-  const card = d => '<div class="mp-card">' + thumb(d) + '<div class="mp-info">' + tag(d) + '<strong class="mp-name">' + esc(t(d.n)) + '</strong><p class="mp-sum">' + esc(t(d.s)) + '</p><a class="mp-more" href="ar/أسوان.html#" data-id="' + d.id + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>';
+  const card = d => '<div class="mp-card">' + thumb(d) + '<div class="mp-info">' + tag(d) + '<strong class="mp-name">' + esc(t(d.n)) + '</strong><p class="mp-sum">' + esc(t(d.s)) + '</p>' + (exHrefFor(d) ? '<a class="mp-more" href="' + exHrefFor(d) + '" data-id="' + d.id + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a>' : '') + '</div></div>';
   const marks = new Map();
   DATA.forEach(d => {
     const m = L.marker(d.ll, { keyboard: true, title: t(d.n), alt: t(CATS[d.c].n) + ': ' + t(d.n),
       icon: L.divIcon({ className: 'mp-pin', iconSize: [38, 38], iconAnchor: [19, 19], popupAnchor: [0, -20], html: '<span style="--c:' + CATS[d.c].c + '">' + ICON(CATS[d.c].p, 20) + '</span>' }) });
     m.bindPopup(() => card(d), { className: 'mp-pop', closeButton: true, autoPanPadding: [24, 90] });
-    m.on('popupopen', e => { mark(d.id, true); const a = e.popup.getElement().querySelector('.mp-more'); if (a && a.getAttribute('href') === '#') a.addEventListener('click', ev => { ev.preventDefault(); toast(t('هذه الصفحة قيد الإعداد')); }); });
+    m.on('popupopen', e => { mark(d.id, true); });
     m.on('popupclose', () => mark(d.id, false));
     marks.set(d.id, m);
   });
@@ -1823,7 +1823,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
     $('mpItems').innerHTML = shown.map(d => '<li class="mp-item" data-id="' + d.id + '">' + thumb(d) + '<div class="mp-info">' + tag(d) +
       '<button type="button" class="mp-name">' + esc(t(d.n)) + '</button><p class="mp-sum">' + esc(t(d.s)) + '</p>' +
       ((d.pr || (d.a && d.a.length)) ? '<p class="mp-meta">' + (d.pr ? '<span>' + esc(t(PR[d.pr])) + '</span>' : '') + (d.a || []).map(k => '<span>' + ICON('check', 16) + esc(t(AC[k])) + '</span>').join('') + '</p>' : '') +
-      '<a class="mp-more" href="' + (exHrefFor(d) || '#') + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></li>').join('');
+      (exHrefFor(d) ? '<a class="mp-more" href="' + exHrefFor(d) + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a>' : '') + '</div></li>').join('');
     const n = F.p.size + F.pr.size + F.a.size; $('mpAdvN').hidden = !n; $('mpAdvN').textContent = n;
     marks.forEach((m, id) => { const d = DATA[id] || DATA.find(x => x.id === id); m.options.title = t(d.n); m.options.alt = t(CATS[d.c].n) + ': ' + t(d.n); });
   }
@@ -1831,7 +1831,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
   function select(id) { const m = marks.get(id); sheet(false); map.closePopup(); group.zoomToShowLayer(m, () => { map.panTo(m.getLatLng(), { animate: !rm.matches }); m.openPopup(); }); }
 
   $('mpItems').addEventListener('click', e => { const li = e.target.closest('.mp-item'); if (!li) return; const id = +li.dataset.id;
-    if (e.target.closest('.mp-more')) { if (e.target.closest('.mp-more').getAttribute('href') === '#') { e.preventDefault(); toast(t('هذه الصفحة قيد الإعداد')); } e.stopPropagation(); return; } select(id); });
+    if (e.target.closest('.mp-more')) { e.stopPropagation(); return; } select(id); });
   $('mpItems').addEventListener('pointerover', e => { const li = e.target.closest('.mp-item'); if (li) hot(+li.dataset.id, true); });
   $('mpItems').addEventListener('pointerout', e => { const li = e.target.closest('.mp-item'); if (li && !li.contains(e.relatedTarget)) hot(+li.dataset.id, false); });
   $('mpItems').addEventListener('focusin', e => { const li = e.target.closest('.mp-item'); if (li) hot(+li.dataset.id, true); });

@@ -772,7 +772,7 @@ html[dir="rtl"] .sk-list{order:2}
     crumb: () => [['الرئيسية', 'index.html'], ['الخريطة']], title: () => t('الخريطة'),
     count: n => { const l = EX.lang(); return l === 'en' ? n + ' on the map' : l === 'es' ? n + ' en el mapa' : n + ' ' + t('على الخريطة'); },
     card: x => gemCard({ href: x.href, img: x.img, pos: x.pos, badge: '<span>' + esc(t(KIND[x.kind])) + '</span>', cat: x.badge, title: t(x.n), biz: x.biz ? t(x.biz) : '', desc: t(x.s), meta: '<span>' + PIN + esc(cityName(x.city)) + '</span>', cta: t('عرض التفاصيل') }),
-    onRender: shown => { group.clearLayers(); shown.forEach(x => L.marker(x.ll, { icon: EX.icon(x.pin), title: t(x.n) }).bindPopup('<div class="mp-card"><div class="mp-info"><strong class="mp-name">' + esc(t(x.n)) + '</strong><p class="mp-sum">' + esc(t(x.s)) + '</p><a class="mp-more" href="' + x.href + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a></div></div>', { className: 'mp-pop' }).addTo(group)); if (shown.length) map.fitBounds(L.latLngBounds(shown.map(x => x.ll)).pad(0.15), { maxZoom: 13, animate: false }); setTimeout(() => map.invalidateSize(), 150); } });
+    onRender: shown => { group.clearLayers(); shown.forEach(x => L.marker(x.ll, { icon: EX.icon(x.pin), title: t(x.n) }).bindPopup('<div class="mp-card"><div class="mp-info"><strong class="mp-name">' + esc(t(x.n)) + '</strong><p class="mp-sum">' + esc(t(x.s)) + '</p>' + (x.href ? '<a class="mp-more" href="' + x.href + '"><span>' + esc(t('عرض التفاصيل')) + '</span>' + ARW + '</a>' : '') + '</div></div>', { className: 'mp-pop' }).addTo(group)); if (shown.length) map.fitBounds(L.latLngBounds(shown.map(x => x.ll)).pad(0.15), { maxZoom: 13, animate: false }); setTimeout(() => map.invalidateSize(), 150); } });
 })();
 </script>
 </body>
