@@ -355,6 +355,7 @@ html[dir="rtl"] .sk-list{order:2}
   .gem-meta span{display:inline-flex;align-items:center;gap:6px}
   .gem-pil{font-size:var(--fs-label);color:var(--muted);margin-top:-2px}
   #exMap,#dxMap{position:absolute;inset:0;z-index:0}
+  #skMap{position:absolute;inset:0;z-index:0}
   #exMap .maplibregl-canvas,#dxMap .maplibregl-canvas{filter:sepia(.28) saturate(.9)}
   .mp-empty{padding:var(--s-6) var(--s-4);text-align:center;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:var(--s-3)}
   /* detail */
@@ -509,6 +510,7 @@ html[dir="rtl"] .sk-list{order:2}
         <h2 class="sr-only" id="exResultsH">النتائج</h2>
         <ul class="ex-grid" id="exGrid" role="list"></ul>
         <div class="mp-empty" id="exEmpty" hidden><p>لا توجد نتائج مطابقة على الخريطة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
+        <nav class="ex-pager" id="exPager" aria-label="ترقيم الصفحات" hidden></nav>
       </div><aside class="sk-map" aria-label="الخريطة"><div class="mp-map"><div id="skMap" role="region" aria-label="خريطة النتائج"></div></div></aside></div>
     </div>
   </section>
@@ -721,7 +723,7 @@ html[dir="rtl"] .sk-list{order:2}
     ENTREPRENEURS.published().filter(en => ENTREPRENEURS.coords(en)).map(en => ({ kind: 'entrepreneur', city: en.city, c: 'product', p: en.p, ll: ENTREPRENEURS.coords(en), n: en.name, s: en.sum, biz: en.biz, img: en.img, pos: en.pos, href: ENTREPRENEURS.href(en), badge: t(ENTREPRENEURS.ACT[en.act]), pin: 'product' })));
   const map = L.map('skMap', { center: [24.9, 32.76], zoom: 7, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); const group = L.layerGroup().addTo(map);
   const KIND = { destination: 'مكان', experience: 'تجربة', entrepreneur: 'رائد أعمال' };
-  LISTING.init({ chipParam: 'type', chips: ['destination', 'experience', 'entrepreneur'], groups: ['city', 'c', 'p', 'pr', 'a'], items, chipOf: x => x.kind, groupOf: (x, g) => g === 'a' ? (x.a || []) : [String(x[g] || '')], hay: x => [x.n, x.s, t(x.n), t(x.s), x.biz || ''].join(' '),
+  LISTING.init({ pageSize: 6, chipParam: 'type', chips: ['destination', 'experience', 'entrepreneur'], groups: ['city', 'c', 'p', 'pr', 'a'], items, chipOf: x => x.kind, groupOf: (x, g) => g === 'a' ? (x.a || []) : [String(x[g] || '')], hay: x => [x.n, x.s, t(x.n), t(x.s), x.biz || ''].join(' '),
     crumb: () => [['الرئيسية', 'index.html'], ['الخريطة']], title: () => t('الخريطة'),
     count: n => { const l = EX.lang(); return l === 'en' ? n + ' on the map' : l === 'es' ? n + ' en el mapa' : n + ' ' + t('على الخريطة'); },
     card: x => gemCard({ href: x.href, img: x.img, pos: x.pos, badge: '<span>' + esc(t(KIND[x.kind])) + '</span>', cat: x.badge, title: t(x.n), biz: x.biz ? t(x.biz) : '', desc: t(x.s), meta: '<span>' + PIN + esc(cityName(x.city)) + '</span>', cta: t('عرض التفاصيل') }),

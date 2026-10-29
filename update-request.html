@@ -235,6 +235,25 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .f-field select{appearance:none;-webkit-appearance:none;padding-inline-end:44px;background-color:#fff;background-image:none;cursor:pointer}
   .f-field .f-select{position:relative}
   .f-field .f-select::after{content:"";position:absolute;top:50%;inset-inline-end:16px;width:18px;height:18px;transform:translateY(-50%);pointer-events:none;background:var(--ink);-webkit-mask:url("icons/ui/caret-down.svg") center/contain no-repeat;mask:url("icons/ui/caret-down.svg") center/contain no-repeat}
+  /* entry-type dropdown: the same control as the listing filters; the native select stays underneath for the form */
+  .f-dd{position:relative}
+  .f-dd>select{position:absolute;inset:0;width:100%;height:100%;min-height:0;opacity:0;pointer-events:none}
+  .f-dd .stl-dd{position:relative}
+  .f-dd .stl-dd summary{list-style:none;display:flex;align-items:center;gap:8px;min-height:48px;padding:10px 14px;border:1.5px solid var(--muted);border-radius:var(--radius-btn);background:#fff;font:inherit;font-size:var(--fs-body);color:var(--ink);cursor:pointer;transition:background-color .25s ease,border-color .2s ease}
+  .f-dd .stl-dd summary::-webkit-details-marker{display:none}
+  .f-dd .stl-dd summary:hover{background:rgba(165,62,26,.06);border-color:var(--rust)}
+  .f-dd .stl-dd summary:active{transform:scale(.995)}
+  .f-dd .stl-dd summary:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff;border-color:var(--rust)}
+  .f-dd .stl-dd[open] summary{border-color:var(--rust)}
+  .f-dd #kindLabel.is-ph{color:var(--muted)}
+  .f-dd .stl-dd-caret{margin-inline-start:auto;width:18px;height:18px;flex:none;background:var(--ink);-webkit-mask:url("icons/ui/caret-down.svg") center/contain no-repeat;mask:url("icons/ui/caret-down.svg") center/contain no-repeat;transition:transform .25s}
+  .f-dd .stl-dd[open] .stl-dd-caret{transform:rotate(180deg)}
+  .f-dd ul{position:absolute;z-index:5;inset-inline:0;top:calc(100% + 8px);display:grid;gap:4px;margin:0;padding:6px;list-style:none;background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
+  .f-dd li button{display:flex;width:100%;align-items:center;gap:10px;min-height:44px;padding:0 12px;border:0;border-radius:9px;background:none;font:inherit;font-size:var(--fs-body);color:var(--nav-ink);text-align:start;cursor:pointer;transition:background-color .15s ease,color .15s ease}
+  .f-dd li button:hover,.f-dd li button:focus-visible{background:rgba(165,62,26,.08);color:var(--rust-deep)}
+  .f-dd li button:focus-visible{outline:3px solid var(--ink);outline-offset:-3px}
+  .f-dd li button[aria-selected="true"]{color:var(--rust);font-weight:700}
+  .f-field.is-invalid .f-dd summary{border-color:#a52a1a}
   .f-field input:focus-visible,.f-field select:focus-visible,.f-field textarea:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff;border-color:var(--rust)}
   .f-field.is-invalid input,.f-field.is-invalid select,.f-field.is-invalid textarea{border-color:#a52a1a}
   .f-err{margin:0;font-size:13px;font-weight:700;color:#a52a1a}
@@ -509,7 +528,7 @@ html[dir="rtl"] .sk-list{order:2}
         <form class="f-form" id="frm" novalidate>
           <fieldset><legend>البريد المسجّل</legend>
             <div class="f-field"><label for="f-email">البريد الإلكتروني المسجّل</label><input id="f-email" name="email" type="email" required autocomplete="email"></div>
-            <div class="f-field"><label for="f-kind">نوع المدخل</label><div class="f-select"><select id="f-kind" name="kind" required><option value="">اختر</option><option value="entrepreneur">ملف رائد أعمال</option><option value="organisation">صفحة جهة سياحية</option></select></div></div>
+            <div class="f-field"><label for="f-kind" id="f-kind-label">نوع المدخل</label><div class="f-dd"><select id="f-kind" name="kind" required tabindex="-1" aria-hidden="true"><option value="">اختر</option><option value="entrepreneur">ملف رائد أعمال</option><option value="organisation">صفحة جهة سياحية</option></select><details class="stl-dd" id="kindDd"><summary aria-haspopup="listbox" aria-controls="kindList" aria-labelledby="f-kind-label kindLabel"><span id="kindLabel" class="is-ph">اختر</span><span class="stl-dd-caret" aria-hidden="true"></span></summary><ul id="kindList" role="listbox" aria-labelledby="f-kind-label"><li><button type="button" role="option" data-v="entrepreneur" aria-selected="false">ملف رائد أعمال</button></li><li><button type="button" role="option" data-v="organisation" aria-selected="false">صفحة جهة سياحية</button></li></ul></details></div></div>
           </fieldset>
           <fieldset><legend>الموافقة</legend><div class="f-field"><label class="f-check"><input type="checkbox" name="c_contact" required><span class="f-consent">أوافق على استخدام بريدي للتحقق من ملكية الملف وإرسال رابط التحديث.</span></label></div></fieldset>
           <div class="f-turnstile" aria-label="التحقق من أنك لست روبوتًا"><button type="button"><svg class="ic" width="20" height="20" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M208,40H48A16,16,0,0,0,32,56v56c0,52.72,25.52,84.67,46.93,102.19,23.06,18.86,46,25.26,47,25.53a8,8,0,0,0,4.2,0c1-.27,23.91-6.67,47-25.53C198.48,196.67,224,164.72,224,112V56A16,16,0,0,0,208,40Zm0,72c0,37.07-13.66,67.16-40.6,89.42A129.3,129.3,0,0,1,128,223.62a128.25,128.25,0,0,1-38.92-21.81C61.82,179.51,48,149.3,48,112l0-56,160,0ZM82.34,141.66a8,8,0,0,1,11.32-11.32L112,148.69l50.34-50.35a8,8,0,0,1,11.32,11.32l-56,56a8,8,0,0,1-11.32,0Z"/></svg><span>أنا لست روبوتًا</span></button><small>Cloudflare Turnstile (نموذج تجريبي)</small></div>
@@ -717,6 +736,12 @@ html[dir="rtl"] .sk-list{order:2}
   const { t, esc, crumb } = EX; const $ = id => document.getElementById(id);
   const head = (items, title) => { $('exCrumb').innerHTML = crumb(items).replace(/^<nav[^>]*>|<\/nav>$/g, ''); document.title = t(title) + ' — ' + t('صعيد مصر'); };
   const q = new URLSearchParams(location.search); if (q.get('kind')) $('f-kind').value = q.get('kind');
+  (() => { const sel = $('f-kind'), dd = $('kindDd'), lab = $('kindLabel'), opts = [...dd.querySelectorAll('[role="option"]')]; const tt = k => (window.I18N ? I18N.t(k) : k);
+    const sync = () => { const o = opts.find(b => b.dataset.v === sel.value); opts.forEach(b => b.setAttribute('aria-selected', String(b === o))); lab.textContent = o ? o.textContent : tt('اختر'); lab.classList.toggle('is-ph', !o); };
+    opts.forEach(b => b.addEventListener('click', () => { sel.value = b.dataset.v; sel.dispatchEvent(new Event('input', { bubbles: true })); sel.dispatchEvent(new Event('change', { bubbles: true })); dd.open = false; dd.querySelector('summary').focus(); sync(); }));
+    document.addEventListener('click', e => { if (!e.target.closest('#kindDd')) dd.open = false; });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') dd.open = false; });
+    sel.addEventListener('change', sync); document.addEventListener('i18n:change', sync); sync(); })();
   head([['الرئيسية', 'index.html'], ['طلب تحديث الملف']], 'طلب تحديث الملف');
   /* the same answer whether or not the address matches an entry; a non-matching address still reaches the queue */
   FORMS.wire($('frm'), { type: 'update', onSubmit: (d) => { const match = d.kind === 'entrepreneur' ? ENTREPRENEURS.published().find(e => e.contactEmail === d.email) : null; const slugs = { entrepreneur: ['fatma-boghdady', 'zainab-gamal', 'manal-awadallah', 'nubian-silver-workshop'], organisation: CONTENT.organisations.map(o => o.slug) }; const demoSlug = (q.get('slug') && slugs[d.kind].includes(q.get('slug'))) ? q.get('slug') : (match ? match.slug : null); const tok = demoSlug ? FORMS.tokens.issue(d.kind, demoSlug) : null; const item = FORMS.queue.add('update', { email: d.email, kind: d.kind, matched: !!demoSlug, entry: demoSlug || null, note: demoSlug ? '' : 'لا يطابق البريد أي مدخل، للمتابعة من فريق التنسيق' }, { text: [], at: new Date().toISOString() }); return { item, tok }; },

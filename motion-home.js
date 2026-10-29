@@ -202,7 +202,7 @@
       .from('#destinations .journey-btn', { y: 20, autoAlpha: 0, duration: 0.6, stagger: 0.1 }, 0.5), '#destinations'));
     tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#gems', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
       .from('#gems .gems-head > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
-      .from('#gems .gem', { y: 36, autoAlpha: 0, duration: 0.8, stagger: 0.14, clearProps: 'transform' }, 0.25), '#gems'));
+      , '#gems'));
     tls.push(reg(gsap.timeline({ scrollTrigger: { trigger: '#business', start: 'top 70%', once: true }, defaults: { ease: 'power3.out' } })
       .from('#business .st-head > *', { y: 24, autoAlpha: 0, duration: 0.8, stagger: 0.12 })
       .from('#business .st-feature', { y: 40, autoAlpha: 0, duration: 0.9 }, 0.2)

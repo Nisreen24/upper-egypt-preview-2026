@@ -909,7 +909,7 @@ body.has-xpbar .snd{bottom:calc(var(--s-4) + 76px)}
   const STAY = { 'villa-nile': 'بيت ضيافة', 'nubian-guesthouses': 'بيت ضيافة', 'island-stays': 'إقامة على جزيرة' };
   const isStay = e.c === 'stay'; let lead = 0;
   const WHEEL = svg('<circle cx="12" cy="12" r="8.5"/><path d="M12 7v.01M12 11v5"/>', 16), BED = ICON('bed', 16), PINI = ICON('map-pin', 16), CLK = ICON('clock', 16), COINI = ICON('coins', 16), TAGI = ICON('tag', 16), EXTI = ICON('arrow-square-out', 18), TRI = ICON('translate', 16), CHK = ICON('check', 16), MAILI = ICON('envelope-simple', 18), MAPI = ICON('map-trifold', 18), INFOI = ICON('info', 18), CATI = () => ICON(CATS[e.c].p, 16);
-  function paintLead() { const im = e.imgs[lead]; $('xpLead').innerHTML = pic(im, '(min-width:1024px) 60vw, 95vw') + (e.imgs.length > 1 && e.c !== 'food' ? '<span class="xp-count">' + ICON('images', 16) + (lead + 1) + ' / ' + e.imgs.length + '</span>' : ''); [...$('xpThumbs').children].forEach((b, i) => b.setAttribute('aria-current', String(i === lead))); }
+  function paintLead() { const im = e.imgs[lead]; $('xpLead').innerHTML = pic(im, '(min-width:1024px) 60vw, 95vw').replace('<img ', '<img style="object-position:' + (im.pos || '50% 50%') + '" ') + (e.imgs.length > 1 && e.c !== 'food' ? '<span class="xp-count">' + ICON('images', 16) + (lead + 1) + ' / ' + e.imgs.length + '</span>' : ''); [...$('xpThumbs').children].forEach((b, i) => b.setAttribute('aria-current', String(i === lead))); }
   function render() {
     const cn = cityName();
     $('dxCrumb').innerHTML = crumb([['الرئيسية', 'index.html'], ['الأنشطة والتجارب', listHref(city)], [CITIES[city].ar, city + '.html'], [e.n]]).replace(/^<nav[^>]*>|<\/nav>$/g, '');

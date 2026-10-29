@@ -1256,3 +1256,36 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
 @media (min-width:1024px){.ph .xh-band{height:20px}}
 /* listing search: the field's own rust ring is the focus state; no second white box */
 .mp-search input:focus-visible{outline:0;box-shadow:none}
+
+/* ===== one experience card everywhere (home "ما وراء المألوف" is the reference): motif texture beside the text, no lift or zoom on hover; related strips keep their arrows without dots ===== */
+.gem-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/24px auto repeat-y;opacity:.28;pointer-events:none}
+.gem,.gem:hover,.ex-grid .gem:hover{transform:none}
+.gem:hover .gem-img{transform:none}
+.ex-strip-dots{display:none}
+
+/* listing heroes: the subtitle stays lighter and smaller than the title */
+.xh-cap .xh-cap-sub{font-size:clamp(15px,1.25vw,19px);font-weight:500}
+/* listing grids share the home card width (three 368px cards) */
+#exList .ex-grid{max-width:1168px;margin-inline:auto;column-gap:var(--s-5)}
+
+/* ===== pager under paged listings ===== */
+.ex-pager{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:8px;margin-top:var(--s-5)}
+.ex-pager[hidden]{display:none}
+.ex-page{display:inline-grid;place-items:center;min-width:44px;height:44px;padding-inline:12px;border-radius:999px;background:#fff;border:1px solid rgba(43,29,14,.14);color:var(--ink);font-size:15px;font-weight:700;box-shadow:0 1px 2px rgba(43,29,14,.08);transition:background-color .25s ease,color .25s ease,transform .3s cubic-bezier(.2,.8,.2,1),opacity .2s ease}
+.ex-page:hover{background:rgba(43,29,14,.06)} .ex-page:active{transform:scale(.96)} .ex-page:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
+.ex-page[aria-current="page"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.ex-page[disabled]{opacity:.35;pointer-events:none}
+.ex-page--next svg{transform:scaleX(-1)} html[dir="ltr"] .ex-page--prev svg{transform:scaleX(-1)} html[dir="ltr"] .ex-page--next svg{transform:none}
+/* ===== decorative side strips beside a detail page's content (same motif as the home sections) ===== */
+.dx-strips{position:relative}
+.dx-strips::before,.dx-strips::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
+.dx-strips::before{inset-inline-start:calc(50% - 50vw + var(--s-4))} .dx-strips::after{inset-inline-end:calc(50% - 50vw + var(--s-4))}
+@media (min-width:1360px){.dx-strips::before,.dx-strips::after{display:block}}
+/* ===== destinations: hand-drawn motifs behind the list ===== */
+.ds-sec{position:relative}
+.ds-deco{position:absolute;z-index:0;pointer-events:none;user-select:none;opacity:.5;mix-blend-mode:multiply;display:none}
+.ds-deco--palms{width:220px;bottom:-24px;inset-inline-start:calc(50% - 50vw + 8px)}
+.ds-deco--birds{width:200px;top:-10px;inset-inline-end:calc(50% - 50vw + 24px);opacity:.6}
+html[dir="rtl"] .ds-deco--palms{transform:scaleX(-1)}
+.ds-sec>.ds-head,.ds-sec>.ds-grid{position:relative;z-index:1}
+@media (min-width:1024px){.ds-deco{display:block}}

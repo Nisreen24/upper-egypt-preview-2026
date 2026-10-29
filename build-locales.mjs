@@ -55,13 +55,13 @@ function pictures(html) {
       const img = inner.match(/<img [^>]*srcset="([^"]*)"[^>]*>/); if (img) { const sizes = (img[0].match(/sizes="([^"]*)"/) || [])[1]; out = out.replace(/(<img )/, '<source type="image/avif" srcset="' + toAvif(img[1]) + '"' + (sizes ? ' sizes="' + sizes + '"' : '') + '>$1'); }
       return '<picture>' + out + '</picture>';
     })
-    /* standalone eager <img> with a WebP src */
-    .replace(/<img ([^>]*)>/g, (m, attrs) => {
+    /* standalone eager <img> with a WebP src; an <img> already inside a <picture> is left alone (a nested <picture> hid the mobile sources) */
+    .split(/(<picture>[\s\S]*?<\/picture>)/).map((seg, k) => k % 2 ? seg : seg.replace(/<img ([^>]*)>/g, (m, attrs) => {
       if (/data-src=|class="[^"]*\blz\b/.test(attrs)) return m;
       const src = (attrs.match(/\ssrc="(ASSETS\/[^"]*\.webp)"/) || [])[1]; if (!src || !hasAvif(src)) return m;
       const srcset = (attrs.match(/srcset="([^"]*)"/) || [])[1]; const sizes = (attrs.match(/sizes="([^"]*)"/) || [])[1];
       return '<picture><source type="image/avif" srcset="' + toAvif(srcset || src) + '"' + (sizes ? ' sizes="' + sizes + '"' : '') + '><img ' + attrs + '></picture>';
-    }));
+    })).join(''));
   }
   /* picture wrapping must not touch script-generated markup inside <script> blocks */
 function picturesOutsideScripts(html) { return html.split(/(<script[\s\S]*?<\/script>)/).map((p, i) => i % 2 ? p : pictures(p)).join(''); }

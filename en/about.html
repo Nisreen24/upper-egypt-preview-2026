@@ -275,36 +275,85 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 .pg-frame-ico{width:52px;height:52px}
 .pg-frame-ico svg{width:26px;height:26px}
 }
-  .pg-paper{position:relative;isolation:isolate;overflow:hidden;background:#f3e3c9}
-  .pg-paper::before{content:"";position:absolute;inset:0 0 auto 0;z-index:-1;aspect-ratio:1672/1111;pointer-events:none;opacity:.3;background:image-set(url("ASSETS/motifs/papyrus-form-1672.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-1672.webp") type("image/webp")) center top/100% auto no-repeat;-webkit-mask:linear-gradient(#000 62%,transparent 100%);mask:linear-gradient(#000 62%,transparent 100%)}
-  @media (max-width:767px){.pg-paper::before{background-image:image-set(url("ASSETS/motifs/papyrus-form-960.avif") type("image/avif"),url("ASSETS/motifs/papyrus-form-960.webp") type("image/webp"))}
-}
-
-  .pg-card--prose{padding:var(--s-5) var(--s-4)}
-  @media (min-width:768px){.pg-card--prose{padding:var(--s-6)}}
-  .pg-card--prose .prose{max-width:72ch}
-  .pg-title{margin:var(--s-2) 0 0;font-size:clamp(32px,3.6vw,52px);line-height:1.15;font-weight:700;color:var(--ink)}
-  .pg-lede{margin:var(--s-3) 0 0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--muted)}
-  .pg-grid{display:grid;gap:var(--s-5);align-items:start}
-  @media (min-width:1024px){.pg-grid{grid-template-columns:minmax(0,1fr) 360px}
-}
-  .prose{max-width:72ch;font-size:var(--fs-body-lg);line-height:1.85;color:var(--body)}
-  .prose h2{margin:var(--s-6) 0 var(--s-2);font-size:var(--fs-h3-lg);line-height:1.3;color:var(--ink);font-weight:700}
-  .prose h2:first-child{margin-top:0}
-  .prose p{margin:0 0 var(--s-3)} .prose ul{margin:0 0 var(--s-3);padding-inline-start:1.3em} .prose li{margin-bottom:6px}
-  .pg-card{padding:var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
-  .pg-card h2{margin:0 0 var(--s-2);font-size:var(--fs-small);font-weight:800;color:var(--ink)}
-  .pg-card dl{margin:0} .pg-card dt{font-size:13px;color:var(--muted)} .pg-card dd{margin:0 0 var(--s-2);font-weight:700;color:var(--ink)}
-  .ab-blocks{counter-reset:ab;display:grid;gap:var(--s-5)}
-  .ab-block{display:grid;gap:var(--s-3);padding:var(--s-5) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
-  @media (min-width:1024px){.ab-block{grid-template-columns:220px minmax(0,1fr);padding:var(--s-6)}
-}
-  .ab-num{counter-increment:ab;display:grid;align-content:start;gap:6px} .ab-num::before{content:"0" counter(ab);font-family:"Thmanyah Serif Display",serif;font-size:clamp(40px,4vw,64px);line-height:1;color:var(--rust)}
+  .ab>.wrap{max-width:min(1550px,95vw);padding-inline:0}
+  /* the hero keeps the Luxor hero width; the sections below sit on the standard 1168px column */
+  .ab-blocks{max-width:1168px;margin-inline:auto}
+  .ab{padding-top:calc(var(--tb-top,100px) + var(--s-3));background:var(--paper)}
+  .ab-stripe{position:absolute;inset-inline:0;bottom:0;height:12px;z-index:2;background:repeating-linear-gradient(-45deg,#b4451c 0 10px,#f4e7d3 10px 20px);pointer-events:none}
+  html[dir="ltr"] .ab-stripe{background:repeating-linear-gradient(45deg,#b4451c 0 10px,#f4e7d3 10px 20px)}
+  /* hero: one framed photo, crumb + eyebrow + title + lede at the start corner */
+  .ab-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;--xw:min(1550px,95vw);width:var(--xw);height:var(--xh-h,560px);max-height:85vh;margin:0 calc((100% - var(--xw)) / 2) var(--s-7);border-radius:var(--radius-card);background:var(--clay-light);color:#fff}
+  .ab-hero picture,.ab-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 40%;z-index:-2}
+  .ab-hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%),rgba(0,0,0,.22);pointer-events:none}
+  .ab-hero-band{position:absolute;inset-inline:0;bottom:0;height:16px;z-index:2;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none}
+  @media (min-width:768px){.ab-hero-band{height:20px}}
+  .ab-hero-body{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;width:100%;max-width:min(100%,960px);padding:24px 24px 44px}
+  @media (min-width:768px){.ab-hero-body{padding:48px 56px 68px}}
+  .ab-crumb ol,.ab-crumb a,.ab-crumb [aria-current]{color:#fff;font-size:15px;font-weight:700} .ab-crumb a:hover{color:var(--kicker-on-dark)} .ab-crumb a:focus-visible{outline-color:#fff}
+  .ab-crumb li + li::before{opacity:.9}
+  .ab-eyebrow{display:inline-flex;align-items:center;height:30px;margin-top:var(--s-2);padding-inline:12px;border-radius:var(--radius-full);background:var(--pill-clay-soft);color:var(--rust-deep);font-size:13px;font-weight:700}
+  .ab-title{margin:var(--s-2) 0 0;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}
+  html.lang-latin .ab-title{line-height:1.02}
+  .ab-lede{margin:var(--s-3) 0 0;font-size:clamp(17px,1.5vw,22px);line-height:1.7;font-weight:600;color:#fff}
+  /* numbered blocks */
+  .ab-blocks{counter-reset:ab;display:grid;gap:var(--s-8)}
+  .ab-block{display:grid;gap:var(--s-5)}
+  .ab-num{counter-increment:ab;display:flex;align-items:baseline;gap:var(--s-2)}
+  .ab-num::before{content:"0" counter(ab);font-family:"Thmanyah Serif Display",serif;font-size:clamp(36px,3.6vw,54px);line-height:1;font-weight:700;color:var(--rust)}
   html.lang-latin .ab-num::before{font-family:"IBM Plex Serif",Georgia,serif}
-  .ab-num h2{margin:0;font-size:var(--fs-h3-lg);line-height:1.25;color:var(--ink);font-weight:700}
+  .ab-num h2{margin:0;font-size:var(--fs-h2);line-height:1.15;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  /* 01 identity: a dark photo panel and a facts card */
+  .ab-id{display:grid;gap:var(--s-4);align-items:stretch}
+  @media (min-width:1024px){.ab-id{grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:var(--s-5)}}
+  .ab-id-art{position:relative;display:flex;align-items:flex-end;min-height:360px;margin:0;border-radius:var(--radius-card-lg);overflow:hidden;isolation:isolate;background:var(--nile-deep);color:#fff}
+  .ab-id-art picture,.ab-id-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:70% 50%;z-index:-3;filter:saturate(.6)}
+  .ab-id-art::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--nile-deep);mix-blend-mode:multiply;opacity:.85}
+  .ab-id-art::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,24,34,.75),rgba(11,24,34,.15) 60%)}
+  .ab-id-art figcaption{position:relative;padding:var(--s-5)} .ab-id-art p{margin:0;font-size:var(--fs-h3-lg);line-height:1.5;font-weight:700}
+  .ab-facts{display:grid;align-content:start;margin:0;padding:var(--s-3) var(--s-5);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card-lg)}
+  .ab-facts>div{padding:var(--s-4) 0;border-bottom:1px solid rgba(43,29,14,.12)} .ab-facts>div:last-child{border-bottom:0}
+  .ab-facts dt{font-size:var(--fs-small);font-weight:600;color:var(--muted)} .ab-facts dd{margin:6px 0 0;font-size:var(--fs-body-lg);font-weight:700;color:var(--ink)}
+  .ab-facts dd[dir="ltr"]{text-align:start;font-size:var(--fs-h3)}
   .ab-partners{display:flex;flex-wrap:wrap;gap:var(--s-2);margin:var(--s-2) 0 0;padding:0;list-style:none}
-  .ab-partners li{display:inline-flex;flex-direction:column;gap:2px;padding:10px 14px;border-radius:var(--radius-md);background:rgba(165,62,26,.06)} .ab-partners b{color:var(--ink)} .ab-partners small{font-size:12px;color:var(--muted)}
-  .ab-quote{margin:0;padding:var(--s-4);border-inline-start:3px solid var(--rust);background:rgba(165,62,26,.05);border-radius:var(--radius-md)} .ab-quote p{margin:0;font-size:var(--fs-body-lg);line-height:1.7;color:var(--ink)} .ab-quote footer{margin-top:8px;font-size:var(--fs-small);color:var(--muted)}
+  .ab-partners li{display:inline-flex;flex-direction:column;align-items:center;gap:4px;min-width:84px;padding:14px 18px;border-radius:12px;background:#f5f0e6;border:1px solid rgba(43,29,14,.12)} .ab-partners b{color:var(--ink);font-size:var(--fs-body)} .ab-partners small{font-size:12px;color:var(--muted)}
+  /* 02 context: photo on the start side, text on the end side */
+  @media (min-width:1024px){.ab-block--ctx{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:var(--s-7)}}
+  .ab-art{position:relative;margin:0;aspect-ratio:4/3;border-radius:var(--radius-card-lg);overflow:hidden;isolation:isolate;background:var(--thumb-surface)}
+  .ab-art img{width:100%;height:100%;object-fit:cover}
+  .ab-text{display:grid;gap:var(--s-4)}
+  .ab-prose p{margin:0 0 var(--s-4);font-size:var(--fs-body-lg);line-height:1.8;color:var(--body)} .ab-prose p:last-child{margin-bottom:0}
+  /* 03 done: numbered cards */
+  .ab-done{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:640px){.ab-done{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.ab-done{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}}
+  .ab-card{--tint:var(--pill-clay-soft);--tint-ink:var(--rust-deep);position:relative;display:grid;align-content:start;gap:var(--s-2);min-height:300px;padding:var(--s-5) var(--s-5) var(--s-5);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card-lg);box-shadow:0 1px 2px rgba(43,29,14,.04),0 20px 40px -32px rgba(43,29,14,.45)}
+  .ab-card--ink{--tint:var(--pill-ink-tint);--tint-ink:var(--pill-ink-deep)} .ab-card--olive{--tint:var(--pill-olive-tint);--tint-ink:#2f4118}
+  .ab-badge{display:inline-grid;place-items:center;width:52px;height:52px;margin-bottom:var(--s-3);border-radius:var(--radius-full);background:var(--journey-surface);border:1px solid rgba(43,29,14,.1);color:var(--ink);font-size:var(--fs-h3);font-weight:700}
+  .ab-stat{position:absolute;top:var(--s-5);inset-inline-end:var(--s-5);display:grid;gap:2px;margin:0;text-align:start;color:var(--rust)}
+  .ab-stat b{font-size:clamp(44px,3.6vw,56px);line-height:1;font-weight:700} .ab-stat small{font-size:var(--fs-small);color:var(--muted)}
+  .ab-card h3{margin:0;font-size:var(--fs-h3);line-height:1.35;font-weight:700;color:var(--ink)}
+  .ab-card p:not(.ab-stat){margin:0;font-size:var(--fs-body);line-height:1.75;color:var(--muted)}
+  /* 04 next: a deep ink panel with two overlapping photos */
+  .ab-next{position:relative;isolation:isolate;overflow:hidden;gap:var(--s-5);padding:var(--s-5) var(--s-4);border-radius:28px;background:#f6ecdc;color:var(--ink);border:1px solid rgba(43,29,14,.1)}
+  .ab-next::before{content:"";position:absolute;inset:0;z-index:-1;background:image-set(url("ASSETS/motifs/pharaoh-frieze-1920.avif") type("image/avif"),url("ASSETS/motifs/pharaoh-frieze-1920.webp") type("image/webp")) center/cover no-repeat;opacity:.45;pointer-events:none}
+  @media (max-width:767px){.ab-next::before{background-image:image-set(url("ASSETS/motifs/pharaoh-frieze-960.avif") type("image/avif"),url("ASSETS/motifs/pharaoh-frieze-960.webp") type("image/webp"))}}
+  @media (min-width:1024px){.ab-next{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:var(--s-7);padding:var(--s-6) var(--s-7)}}
+  .ab-next .ab-num h2{color:var(--ink)}
+  .ab-next-p{margin:0;font-size:var(--fs-body-lg);line-height:1.9;color:var(--ink)}
+  .ab-duo{position:relative;aspect-ratio:3/2;min-height:220px;max-height:380px}
+  .ab-duo picture{position:absolute;display:block;border-radius:var(--radius-card-lg);overflow:hidden;box-shadow:0 1px 2px rgba(43,29,14,.1),0 24px 50px -24px rgba(43,29,14,.55)} .ab-duo img{width:100%;height:100%;object-fit:cover}
+  .ab-duo-a{top:0;inset-inline-start:0;width:72%;height:78%}
+  .ab-duo-b{bottom:0;inset-inline-end:0;width:62%;height:60%;z-index:1;border:4px solid #fbf7ef}
+  /* story cards */
+  .ab-quotes{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:768px){.ab-quotes{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}}
+  .ab-quote{--c:var(--rust);display:flex;flex-direction:column;min-height:380px;padding:var(--s-5);border-radius:var(--radius-card-lg);background:var(--c);color:#fff}
+  .ab-quote--ink{--c:var(--nile-deep)} .ab-quote--olive{--c:#5c6b43}
+  .ab-quote-mark{font-family:"Thmanyah Serif Display",serif;font-size:96px;line-height:.6;height:48px;color:rgba(255,255,255,.35)}
+  .ab-quote blockquote{margin:auto 0;padding:var(--s-4) 0} .ab-quote p{margin:0;font-size:var(--fs-h3);line-height:1.6;font-weight:700}
+  .ab-quote footer{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-top:auto;font-size:var(--fs-body)} .ab-quote footer b{font-weight:700}
+  .ab-quote footer a{display:inline-flex;align-items:center;gap:8px;min-height:44px;color:#fff;font-weight:700;text-decoration:underline;text-underline-offset:4px;border-radius:var(--radius-xs);transition:opacity .2s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
+  .ab-quote footer a:hover{opacity:.85} .ab-quote footer a:active{transform:scale(.98)} .ab-quote footer a:focus-visible{outline:3px solid #fff;outline-offset:3px}
   /* ===== stories lead ===== */
   .st-lead{position:relative;display:grid;min-height:420px;overflow:hidden;border-radius:var(--radius-card-lg);background:var(--viewer-dark);color:#fff;isolation:isolate;margin-bottom:var(--s-5)}
   .st-lead img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2}
@@ -507,32 +556,47 @@ html[dir="rtl"] .sk-list{order:2}
 </header>
 
 <main id="main">
-  <section class="ex pg pg-paper" aria-label="عن المشروع">
+  <section class="ex pg ab" aria-label="عن المشروع">
     <div class="wrap">
-      <nav class="ex-crumb ep-crumb" id="exCrumb" aria-label="مسار التنقل"></nav>
-      <header class="pg-head pg-frame"><div class="pg-frame-edge" aria-hidden="true"></div><div class="pg-frame-body"><div class="pg-frame-row"><span class="pg-frame-ico" aria-hidden="true"><svg class="ic" width="32" height="32" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,24A104,104,0,1,0,232,128,104.11,104.11,0,0,0,128,24Zm0,192a88,88,0,1,1,88-88A88.1,88.1,0,0,1,128,216Zm16-40a8,8,0,0,1-8,8,16,16,0,0,1-16-16V128a8,8,0,0,1,0-16,16,16,0,0,1,16,16v40A8,8,0,0,1,144,176ZM112,84a12,12,0,1,1,12,12A12,12,0,0,1,112,84Z"/></svg></span><div><span class="sec-eyebrow">البرنامج</span><h1 class="pg-title display">عن المشروع</h1></div></div><p class="pg-lede">منصة "اكتشف صعيد مصر" جزء من برنامج لتعزيز البدائل الاقتصادية والاجتماعية المستدامة القائمة على السياحة في الأقصر وأسوان، مع تركيز خاص على النساء والشباب.</p></div></header>
+      <header class="ab-hero"><picture><source type="image/avif" srcset="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-480.avif 480w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.avif 960w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-1448.avif 1448w" sizes="(min-width:1232px) 1200px, 96vw"><source type="image/avif" srcset="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-480.avif 480w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.avif 960w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-1448.avif 1448w" sizes="(min-width:1232px) 1200px, 96vw"><img src="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.webp" srcset="ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-480.webp 480w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-960.webp 960w, ASSETS/%D8%B1%D8%AD%D9%84%D8%A9%20%D8%A7%D9%84%D9%85%D9%86%D8%B7%D8%A7%D8%AF-1448.webp 1448w" sizes="(min-width:1232px) 1200px, 96vw" alt="" width="1448" height="966" decoding="async" fetchpriority="high"></picture><span class="ab-hero-shade" aria-hidden="true"></span><span class="ab-hero-band" aria-hidden="true"></span>
+        <div class="ab-hero-body"><nav class="ex-crumb ab-crumb" id="exCrumb" aria-label="مسار التنقل"></nav><span class="ab-eyebrow">البرنامج</span><h1 class="pg-title display ab-title">عن المشروع</h1><p class="ab-lede">منصة "اكتشف صعيد مصر" جزء من برنامج لتعزيز البدائل الاقتصادية والاجتماعية المستدامة القائمة على السياحة في الأقصر وأسوان، مع تركيز خاص على النساء والشباب.</p></div>
+      </header>
       <div class="ab-blocks" id="abBlocks">
-        <section class="ab-block" aria-labelledby="ab1"><div class="ab-num"><h2 id="ab1">هوية البرنامج</h2></div><div class="prose">
-          <p id="abProgramme"></p>
-          <dl class="pg-card" style="padding:var(--s-3) var(--s-4)"><dt>كود النشاط</dt><dd id="abCode"></dd><dt>الجهة الممولة</dt><dd id="abFunder"></dd><dt>الشركاء المنفذون</dt><dd><ul class="ab-partners" id="abPartners"></ul></dd></dl>
-        </div></section>
-        <section class="ab-block" aria-labelledby="ab2"><div class="ab-num"><h2 id="ab2">السياق المحلي</h2></div><div class="prose">
-          <p>تستقبل الأقصر وأسوان ملايين الزوار سنويًا، لكن معظم الإنفاق السياحي يمرّ عبر سلاسل كبيرة لا تصل عوائدها إلى المجتمعات المحلية، فيما تبقى حرف وتجارب وأماكن كثيرة خارج المسارات المعتادة.</p>
-          <p>يواجه الشباب والنساء في المحافظتين فرص عمل محدودة رغم امتلاكهم مهارات وتراثًا يمكن أن يتحوّل إلى مشروعات صغيرة مستدامة، لو توفّر التدريب والربط بالسوق والظهور أمام الزائر.</p>
-        </div></section>
-        <section class="ab-block" aria-labelledby="ab3"><div class="ab-num"><h2 id="ab3">ما أُنجز حتى الآن</h2></div><div class="prose">
-          <ul>
-            <li><b>دراسات سلاسل القيمة:</b> رصد ست سلاسل سياحية (الإقامة، الطعام والشراب، الحرف اليدوية، الإرشاد، النقل، تنظيم الرحلات) وفرص الدخل للمشروعات الصغيرة فيها.</li>
-            <li><b>تحديد الكنوز المخفية:</b> توثيق أماكن وتجارب أقل شهرة في الأقصر وأسوان مع شباب المحافظتين.</li>
-            <li><b>برنامج حلمك لحضانة رواد الأعمال:</b> تدريب أكثر من سبعين شابًا وسيدة على التخطيط والتسويق وإدارة المشروع.</li>
-            <li><b>التحالفات العامة والخاصة:</b> شراكات مع الجهات الحكومية والجامعات ومشغّلي القطاع الخاص في المحافظتين.</li>
-            <li><b>الحملات التسويقية:</b> حملات تعرّف بتجارب رواد الأعمال وتربطها بالزائر، وهذه المنصة واحدة منها.</li>
-          </ul>
-        </div></section>
-        <section class="ab-block" aria-labelledby="ab4"><div class="ab-num"><h2 id="ab4">ما القادم</h2></div><div class="prose">
-          <p>تتوسع المنصة لتضم مزيدًا من رواد الأعمال والجهات، ويفتح برنامج حلمك دفعته الثالثة، وتستمر الفعاليات والتدريبات في المحافظتين. والأهم أن تصل زيارة كل سائح إلى من يصنع التجربة فعلًا.</p>
-          <div id="abQuotes" style="display:grid;gap:var(--s-3);margin-top:var(--s-4)"></div>
-        </div></section>
+        <section class="ab-block" aria-labelledby="ab1">
+          <div class="ab-num"><h2 class="display" id="ab1">هوية البرنامج</h2></div>
+          <div class="ab-id">
+            <figure class="ab-id-art"><picture><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w" sizes="(min-width:1024px) 600px, 96vw"><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w" sizes="(min-width:1024px) 600px, 96vw"><img src="ASSETS/hero-nile-sunset-768.webp" srcset="ASSETS/hero-nile-sunset-768.webp 768w, ASSETS/hero-nile-sunset-1280.webp 1280w" sizes="(min-width:1024px) 600px, 96vw" alt="" width="1280" height="480" loading="lazy" decoding="async"></picture><figcaption><p id="abProgramme"></p></figcaption></figure>
+            <dl class="ab-facts"><div><dt>كود النشاط</dt><dd id="abCode" dir="ltr"></dd></div><div><dt>الجهة الممولة</dt><dd id="abFunder"></dd></div><div><dt>الشركاء المنفذون</dt><dd><ul class="ab-partners" id="abPartners"></ul></dd></div></dl>
+          </div>
+        </section>
+        <section class="ab-block ab-block--ctx" aria-labelledby="ab2">
+          <figure class="ab-art"><picture><source type="image/avif" srcset="ASSETS/asw-nubian2-480.avif 480w, ASSETS/asw-nubian2-960.avif 960w, ASSETS/asw-nubian2-1280.avif 1280w" sizes="(min-width:1024px) 600px, 96vw"><source type="image/avif" srcset="ASSETS/asw-nubian2-480.avif 480w, ASSETS/asw-nubian2-960.avif 960w, ASSETS/asw-nubian2-1280.avif 1280w" sizes="(min-width:1024px) 600px, 96vw"><img src="ASSETS/asw-nubian2-960.webp" srcset="ASSETS/asw-nubian2-480.webp 480w, ASSETS/asw-nubian2-960.webp 960w, ASSETS/asw-nubian2-1280.webp 1280w" sizes="(min-width:1024px) 600px, 96vw" alt="شارع ملوّن في القرية النوبية بأسوان" width="1280" height="853" loading="lazy" decoding="async"></picture><span class="ab-hero-band" aria-hidden="true"></span></figure>
+          <div class="ab-text">
+            <div class="ab-num"><h2 class="display" id="ab2">السياق المحلي</h2></div>
+            <div class="prose ab-prose">
+              <p>تستقبل الأقصر وأسوان ملايين الزوار سنويًا، لكن معظم الإنفاق السياحي يمرّ عبر سلاسل كبيرة لا تصل عوائدها إلى المجتمعات المحلية، فيما تبقى حرف وتجارب وأماكن كثيرة خارج المسارات المعتادة.</p>
+              <p>يواجه الشباب والنساء في المحافظتين فرص عمل محدودة رغم امتلاكهم مهارات وتراثًا يمكن أن يتحوّل إلى مشروعات صغيرة مستدامة، لو توفّر التدريب والربط بالسوق والظهور أمام الزائر.</p>
+            </div>
+          </div>
+        </section>
+        <section class="ab-block" aria-labelledby="ab3">
+          <div class="ab-num"><h2 class="display" id="ab3">ما أُنجز حتى الآن</h2></div>
+          <ol class="ab-done" role="list">
+            <li class="ab-card"><span class="ab-badge" aria-hidden="true">1</span><p class="ab-stat"><b class="display">6</b><small>سلاسل سياحية</small></p><h3>دراسات سلاسل القيمة</h3><p>رصد ست سلاسل سياحية (الإقامة، الطعام والشراب، الحرف اليدوية، الإرشاد، النقل، تنظيم الرحلات) وفرص الدخل للمشروعات الصغيرة فيها.</p></li>
+            <li class="ab-card"><span class="ab-badge" aria-hidden="true">2</span><h3>تحديد الكنوز المخفية</h3><p>توثيق أماكن وتجارب أقل شهرة في الأقصر وأسوان مع شباب المحافظتين.</p></li>
+            <li class="ab-card"><span class="ab-badge" aria-hidden="true">3</span><p class="ab-stat"><b class="display">70+</b><small>شابًا وسيدة</small></p><h3>برنامج حلمك لحضانة رواد الأعمال</h3><p>تدريب أكثر من سبعين شابًا وسيدة على التخطيط والتسويق وإدارة المشروع.</p></li>
+            <li class="ab-card"><span class="ab-badge" aria-hidden="true">4</span><h3>التحالفات العامة والخاصة</h3><p>شراكات مع الجهات الحكومية والجامعات ومشغّلي القطاع الخاص في المحافظتين.</p></li>
+            <li class="ab-card"><span class="ab-badge" aria-hidden="true">5</span><h3>الحملات التسويقية</h3><p>حملات تعرّف بتجارب رواد الأعمال وتربطها بالزائر، وهذه المنصة واحدة منها.</p></li>
+          </ol>
+        </section>
+        <section class="ab-block ab-next" aria-labelledby="ab4">
+          <div class="ab-text">
+            <div class="ab-num"><h2 class="display" id="ab4">ما القادم</h2></div>
+            <p class="ab-next-p">تتوسع المنصة لتضم مزيدًا من رواد الأعمال والجهات، ويفتح برنامج حلمك دفعته الثالثة، وتستمر الفعاليات والتدريبات في المحافظتين. والأهم أن تصل زيارة كل سائح إلى من يصنع التجربة فعلًا.</p>
+          </div>
+          <div class="ab-duo" aria-hidden="true"><picture class="ab-duo-a"><source type="image/avif" srcset="ASSETS/%D9%85%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%83%D8%B1%D9%86%D9%83%202.avif"><img src="ASSETS/%D9%85%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%83%D8%B1%D9%86%D9%83%202.webp" alt="" loading="lazy" decoding="async"></picture><picture class="ab-duo-b"><source type="image/avif" srcset="ASSETS/%D9%85%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%83%D8%B1%D9%86%D9%83.avif"><img src="ASSETS/%D9%85%D8%B9%D8%A8%D8%AF%20%D8%A7%D9%84%D9%83%D8%B1%D9%86%D9%83.webp" alt="" loading="lazy" decoding="async"></picture></div>
+        </section>
+        <ul class="ab-quotes" id="abQuotes" role="list" aria-label="قصص النجاح"></ul>
       </div>
     </div>
   </section>
@@ -540,8 +604,8 @@ html[dir="rtl"] .sk-list{order:2}
 
 <footer class="footer" aria-label="تذييل الصفحة">
   <div class="footer-main">
-  <picture><source type="image/avif" srcset="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.avif"><img class="footer-lotus footer-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 2.webp" alt="" aria-hidden="true" loading="lazy" width="383" height="383"></picture>
-  <picture><source type="image/avif" srcset="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 3.avif"><img class="footer-lotus footer-lotus--end" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033 3.webp" alt="" aria-hidden="true" loading="lazy" width="345" height="345"></picture>
+  <picture><source type="image/avif" srcset="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033%202.avif"><img class="footer-lotus footer-lotus--start" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033%202.webp" alt="" aria-hidden="true" loading="lazy" width="383" height="383"></picture>
+  <picture><source type="image/avif" srcset="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033%203.avif"><img class="footer-lotus footer-lotus--end" src="ASSETS/afac9786-8bbe-4e89-ad1d-41ba80867033%203.webp" alt="" aria-hidden="true" loading="lazy" width="345" height="345"></picture>
   <div class="wrap">
     <div class="footer-grid">
       <div class="footer-col footer-col--brand">
@@ -564,7 +628,7 @@ html[dir="rtl"] .sk-list{order:2}
     </div>
   </div>
   </div><!-- /footer-main -->
-  <picture><source type="image/avif" srcset="ASSETS/Group 23.avif"><img class="footer-strip" src="ASSETS/Group 23.webp" alt="" aria-hidden="true" width="1440" height="79" loading="lazy"></picture>
+  <picture><source type="image/avif" srcset="ASSETS/Group%2023.avif"><img class="footer-strip" src="ASSETS/Group%2023.webp" alt="" aria-hidden="true" width="1440" height="79" loading="lazy"></picture>
 </footer>
 
 <div id="a11yLayer" class="layer" hidden>
@@ -728,12 +792,13 @@ html[dir="rtl"] .sk-list{order:2}
 
   const { t, esc, crumb } = EX; const $ = id => document.getElementById(id);
   const head = (items, title) => { $('exCrumb').innerHTML = crumb(items).replace(/^<nav[^>]*>|<\/nav>$/g, ''); document.title = t(title) + ' — ' + t('صعيد مصر'); };
+  (() => { const nav = document.querySelector('.nav-bar'), hero = document.querySelector('.ab-hero'); const size = () => { const vh = innerHeight, navB = nav ? nav.getBoundingClientRect().bottom : 0; hero.style.setProperty('--xh-h', Math.max(300, Math.min(800, vh * 0.85, vh - navB - 100)) + 'px'); }; size(); addEventListener('resize', size); addEventListener('load', size); })();
   function render() {
     head([['الرئيسية', 'index.html'], ['عن المشروع']], 'عن المشروع');
     const a = CONTENT.site.about; $('abProgramme').textContent = t(a.programme); $('abCode').textContent = a.code; $('abFunder').textContent = t(a.funder);
     $('abPartners').innerHTML = a.partners.map(([n, r]) => '<li><b>' + esc(n) + '</b>' + (r ? '<small>' + esc(t(r)) + '</small>' : '') + '</li>').join('');
     /* testimonials drawn from Story entries */
-    $('abQuotes').innerHTML = CONTENT.stories.filter(s => s.home).slice(0, 3).map(s => '<blockquote class="ab-quote"><p>' + esc(t(s.s)) + '</p><footer>' + esc(t(s.person)) + ' · <a href="' + CONTENT.storyHref(s) + '" style="color:var(--rust);font-weight:700">' + esc(t('اقرأ القصة')) + '</a></footer></blockquote>').join('');
+    $('abQuotes').innerHTML = CONTENT.stories.filter(s => s.home).slice(0, 3).map((s, i) => '<li class="ab-quote ab-quote--' + ['clay', 'ink', 'olive'][i % 3] + '"><span class="ab-quote-mark" aria-hidden="true">\u201C</span><blockquote><p>' + esc(t(s.s)) + '</p></blockquote><footer><b>' + esc(t(s.person)) + '</b><a href="' + CONTENT.storyHref(s) + '"><span>' + esc(t('اقرأ القصة')) + '</span>' + ICON('arrow-left', 16, 'fwd') + '</a></footer></li>').join('');
   }
   document.addEventListener('i18n:change', render); render();
 })();

@@ -200,14 +200,16 @@ html.lang-latin .sec-eyebrow{font-size:13px;letter-spacing:.2em;text-transform:u
 @media (min-width:1024px){.gems-head{margin-bottom:var(--s-7)}}
 html.lang-latin .gems-eyebrow{font-size:13px;letter-spacing:.2em;text-transform:uppercase}
 html[dir="ltr"] :is(.gems-cta,.gem-cta):hover .fwd{transform:scaleX(-1) translateX(-4px)}
-.gems-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 3 * var(--grid-gap)) / 4);gap:var(--s-5);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-block:12px 48px;margin-block:-12px -48px;scrollbar-width:none}
+.gems-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 2 * var(--grid-gap)) / 3);gap:var(--s-5);overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding-block:12px 48px;margin-block:-12px -48px;scrollbar-width:none}
 @media (max-width:1023px){.gems-track{grid-auto-columns:min(78%,420px);gap:var(--s-4);scroll-padding-inline:var(--s-4);padding-inline:var(--s-4)}.gems-nav--prev{inset-inline-start:-4px}.gems-nav--next{inset-inline-end:-4px}}
 @media (max-width:639px){.gems-track{grid-auto-columns:88%}}
 .gem-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:center top/24px auto repeat-y;opacity:.28;pointer-events:none}
 html.lang-latin .gem-cat{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase}
 html[dir="ltr"] .gems-nav--next svg{transform:scaleX(-1)}
 html[dir="ltr"] .gems-nav--prev svg{transform:none}
-@media (min-width:1024px){.gems-nav,.gems-dots{display:none}.gems-track{overflow:visible;padding-block:0;margin-block:0}}
+@media (min-width:1024px){.gems-track{padding-block:12px 24px;margin-block:-12px -24px}.gems-nav{display:grid;width:52px;height:52px;top:calc(50% - 26px)}.gems-nav--prev{inset-inline-start:-72px}.gems-nav--next{inset-inline-end:-72px}}
+.gems-dots{display:none!important}
+#gems .gem,#gems .gem:hover{transform:none} #gems .gem:hover .gem-img{transform:none}
 @media (min-width:1024px){.exp{padding-block:calc(var(--s-8) + var(--s-4)) calc(var(--s-8) + var(--s-4))}}
 .exp::before,.exp::after{content:"";position:absolute;top:0;bottom:0;width:48px;background:center top/48px auto repeat-y;opacity:.85;pointer-events:none;display:none}
 .exp.is-near::before,.exp.is-near::after,.gems.is-near .gem-body::after,.stories.is-near .st-panel::before,.stories.is-near::before,.stories.is-near::after,.rv.is-near::before,.rv.is-near::after{background-image:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp"))}
@@ -753,7 +755,7 @@ html[dir="rtl"] .st-panel{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmln
         </div>
       </article>
     </div>
-    <div class="ev-foot" style="justify-content:center"><a class="ev-all" href="experiences.html?city=luxor"><span>عرض كل التجارب والمنتجات</span><i><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></i></a></div>
+    <div class="ev-foot" style="justify-content:center"><a class="gems-cta" href="experiences.html?city=luxor"><span>عرض كل التجارب والمنتجات</span><svg class="ic fwd" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M224,128a8,8,0,0,1-8,8H59.31l58.35,58.34a8,8,0,0,1-11.32,11.32l-72-72a8,8,0,0,1,0-11.32l72-72a8,8,0,0,1,11.32,11.32L59.31,120H216A8,8,0,0,1,224,128Z"/></svg></a></div>
   </div>
 </section>
 
@@ -823,7 +825,7 @@ html[dir="rtl"] .st-panel{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmln
     <div class="rv-stage">
       <div class="ss-grid">
       <article class="ss-card ss-card--clay ss-card--tex">
-        <img class="ss-img lz" data-src="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp" data-srcset="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-480.webp 480w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-960.webp 960w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1440.webp 1440w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp 1448w" data-sizes="(max-width:899px) 100vw, 33vw" alt="حرفية نوبية تنسج سلة من الخوص أمام النيل في أسوان" loading="lazy"  style="object-position:50% 25%">
+        <img class="ss-img lz" style="object-position:50% 12%" data-src="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp" data-srcset="ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-480.webp 480w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-960.webp 960w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1440.webp 1440w, ASSETS/0d44a1ae-46d7-43b6-aaff-ab31c749553a-1448.webp 1448w" data-sizes="(max-width:899px) 100vw, 33vw" alt="حرفية نوبية تنسج سلة من الخوص أمام النيل في أسوان" loading="lazy"  style="object-position:50% 25%">
         <span class="ss-tint" aria-hidden="true"></span><span class="ss-shade" aria-hidden="true"></span>
         <span class="ss-loc"><svg class="ic" width="16" height="16" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M128,64a40,40,0,1,0,40,40A40,40,0,0,0,128,64Zm0,64a24,24,0,1,1,24-24A24,24,0,0,1,128,128Zm0-112a88.1,88.1,0,0,0-88,88c0,31.4,14.51,64.68,42,96.25a254.19,254.19,0,0,0,41.45,38.3,8,8,0,0,0,9.18,0A254.19,254.19,0,0,0,174,200.25c27.45-31.57,42-64.85,42-96.25A88.1,88.1,0,0,0,128,16Zm0,206c-16.53-13-72-60.75-72-118a72,72,0,0,1,144,0C200,161.23,144.53,209,128,222Z"/></svg><span>أسوان</span></span>
         <div class="ss-media" aria-hidden="true"></div>

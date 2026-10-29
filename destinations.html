@@ -306,26 +306,28 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .ds{padding-top:calc(var(--tb-top,100px) + 24px);padding-bottom:var(--s-8);background:var(--paper)}
   .ds-wrap{width:min(1400px,100% - 2 * var(--s-3));margin-inline:auto}
   .ds-crumb{margin-bottom:22px;font-size:14px;color:var(--muted)} .ds-crumb a{color:var(--muted)} .ds-crumb a:hover{color:var(--ink)} .ds-crumb .ex-crumb{margin:0}
-  .ds-hero{position:relative;width:100%;overflow:hidden;border-radius:20px;aspect-ratio:1400/540;min-height:320px;max-height:540px;background:var(--clay-light);isolation:isolate}
+  .ds-hero{position:relative;width:var(--xh-w,min(1550px,95vw));margin-inline:auto;height:var(--xh-h,704px);max-height:85vh;overflow:hidden;border-radius:var(--radius-card);background:var(--clay-light);isolation:isolate}
   .ds-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center}
   .ds-hero-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(18,11,6,.55),rgba(18,11,6,0) 55%);pointer-events:none}
   .ds-hero-title{position:absolute;inset-inline-start:48px;bottom:80px;margin:0;font-size:clamp(40px,5vw,80px);line-height:1.1;font-weight:700;color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.25)}
   .ds-band{height:18px}
-  @media (max-width:767px){.ds-hero{aspect-ratio:4/3;min-height:0}
+  @media (max-width:767px){.ds-hero{min-height:0}
 .ds-hero-title{inset-inline-start:20px;bottom:44px}
 .ds-band{height:14px}
 }
-  .ds-sec{margin-top:120px}
-  @media (max-width:1023px){.ds-sec{margin-top:72px}
+  .ds-sec{margin-top:var(--s-7)}
+  @media (max-width:1023px){.ds-sec{margin-top:var(--s-6)}
 }
   .ds-head{display:flex;align-items:center;justify-content:space-between;gap:var(--s-3);margin-bottom:40px}
   .ds-h{margin:0;font-size:clamp(30px,3.3vw,48px);line-height:1.25;font-weight:700;color:var(--ink)}
   .ds-link{display:inline-flex;align-items:center;min-height:44px;font-size:14px;font-weight:700;color:var(--rust);white-space:nowrap} .ds-link:hover{color:var(--rust-deep);text-decoration:underline;text-underline-offset:4px} .ds-link:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff;border-radius:6px}
-  .ds-card{display:block;color:inherit}
-  .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:16px;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)} .ds-card:hover .ds-card-media img{transform:scale(1.04)}
-  .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:24px 0 0;font-size:14px;line-height:1.4;color:var(--body)} .ds-side .ds-card-meta{margin-top:20px;font-size:13.5px}
+  .ds-card{display:flex;flex-direction:column;color:inherit;background:#fff;border:1px solid rgba(43,29,14,.1);border-radius:var(--radius-card);overflow:hidden;isolation:isolate}
+  .ds-card-body{position:relative;padding:var(--s-3) var(--s-4) var(--s-4)}
+  .ds-card-body::after{content:"";position:absolute;inset-block:var(--s-3);inset-inline-end:8px;width:24px;background:image-set(url("ASSETS/Group 6.avif") type("image/avif"),url("ASSETS/Group 6.webp") type("image/webp")) center top/24px auto repeat-y;opacity:.28;pointer-events:none}
+  .ds-card-media{position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:0;background:#dcc9a8} .ds-card-media img{display:block;width:100%;height:100%;object-fit:cover;transition:transform .7s cubic-bezier(.2,.8,.2,1)} .ds-card:hover .ds-card-media img{transform:scale(1.04)}
+  .ds-card-meta{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:0;padding-inline-end:28px;font-size:14px;line-height:1.4;color:var(--body)} .ds-side .ds-card-meta{margin-top:20px;font-size:13.5px}
   .ds-card-meta>span:first-child{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-  .ds-card-t{margin:8px 0 0;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
+  .ds-card-t{margin:8px 0 0;padding-inline-end:28px;font-size:20px;line-height:1.4;font-weight:700;color:var(--ink)} .ds-card:hover .ds-card-t{color:var(--rust)}
   .ds-card:focus-visible{outline:3px solid var(--ink);outline-offset:4px;box-shadow:0 0 0 4px #fff;border-radius:16px}
   .ds-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:44px 36px;margin:0;padding:0;list-style:none}
   .ds-note{margin:56px 0 0;font-size:12.5px;color:var(--muted)}
@@ -433,7 +435,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <main id="main" class="ds">
   <div class="ds-wrap">
     <div class="ds-crumb" id="exCrumb"></div>
-    <section class="ds-hero" aria-labelledby="ex-h">
+    <section class="ds-hero" id="xh" aria-labelledby="ex-h">
       <img id="dsHeroImg" src="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp" srcset="ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-960.webp 960w, ASSETS/92ceaae3-c7f0-4e2b-a86c-ab490f6e9ff2-1448.webp 1448w" sizes="(min-width:1440px) 1400px, 92vw" alt="أعمدة ونقوش في معبد بالأقصر" fetchpriority="high" decoding="async">
       <div class="ds-hero-shade" aria-hidden="true"></div>
       <h1 class="ds-hero-title display" id="ex-h">الوجهات</h1>
@@ -451,6 +453,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
     </div>
     <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
     <section class="ds-sec" aria-labelledby="ds-h2">
+      <img class="ds-deco ds-deco--palms" src="ASSETS/motifs/palms.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="421" height="515"><img class="ds-deco ds-deco--birds" src="ASSETS/motifs/birds.webp" alt="" aria-hidden="true" loading="lazy" decoding="async" width="372" height="159">
       <header class="ds-head"><h2 class="display ds-h" id="ds-h2">كل الوجهات</h2></header>
       <ul class="ds-grid" id="exGrid" role="list"></ul>
       <div class="mp-empty" id="exEmpty" hidden><p>لا توجد نتائج مطابقة. جرّب فئة أخرى أو امسح الفلاتر.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
@@ -646,7 +649,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   const $ = id => document.getElementById(id);
   const cityName = c => CITIES[c][EX.lang()] || CITIES[c].ar;
   const meta = x => esc(t(CAT[x.c])) + (x.area ? '، ' + esc(t(x.area)) : '') + ' · ' + esc(cityName(x.city));
-  const card = x => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><p class="ds-card-meta"><span>' + meta(x) + '</span></p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></a></li>';
+  const card = x => '<li><a class="ds-card" href="' + href(x) + '" data-slug="' + x.slug + '"><div class="ds-card-media">' + pic(x.imgs[0], '(min-width:1024px) 440px, (min-width:640px) 45vw, 92vw').replace('<img ', '<img style="object-position:' + (x.pos || '50% 50%') + '" ') + '</div><div class="ds-card-body"><p class="ds-card-meta"><span>' + meta(x) + '</span></p><h3 class="ds-card-t">' + esc(t(x.n)) + '</h3></div></a></li>';
   const countText = n => { const l = EX.lang(); return l === 'ar' ? n + ' ' + (n === 1 ? 'وجهة' : n <= 10 ? 'وجهات' : 'وجهة') : n + ' ' + t(n === 1 ? 'وجهة' : 'وجهات'); };
   /* filter state lives in the URL (Figure 13); price band and accessibility hide themselves while no destination carries them */
   const KEY = { category: 'c', p: 'p', pr: 'pr', a: 'a' };

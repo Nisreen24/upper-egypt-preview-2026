@@ -211,6 +211,7 @@ html[dir="rtl"] .st-panel{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmln
 
   /* ---------- HERO ---------- */
   .xh{position:relative;min-height:100vh;min-height:100dvh;width:100%;overflow:hidden;background:var(--paper);isolation:isolate}
+  .xh{margin-bottom:var(--s-4)}
   .xh-bg{position:absolute;inset:0;z-index:0;will-change:opacity,transform}
   .xh-bg img{width:100%;height:100%;object-fit:cover;object-position:center}
   .xh-bg::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.38)}
@@ -231,7 +232,7 @@ html[dir="rtl"] .st-panel{-webkit-mask-image:url("data:image/svg+xml,%3Csvg xmln
   .xh-cap p{margin:0}
   .xh-cap .xh-cap-title{font-weight:700;font-size:clamp(44px,6vw,92px);line-height:1.15;color:#fff}
   html.lang-latin .xh-cap .xh-cap-title{line-height:1.02}
-  .xh-cap .xh-cap-sub{margin-top:10px;font-size:clamp(17px,1.7vw,26px);font-weight:700;line-height:1.5}
+  .xh-cap .xh-cap-sub{margin-top:10px;font-size:clamp(15px,1.25vw,19px);font-weight:500;line-height:1.5}
   .xh-cap .xh-cap-loc{margin-top:28px;display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:700;line-height:1.4}
   @media (max-width:767px){.xh-cap .xh-cap-loc{margin-top:18px}
 }
@@ -320,6 +321,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
 /* activities */
   .ac-head{display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-3);margin-bottom:var(--s-4)}
   .ac-h{font-size:var(--fs-h2);line-height:1.2;color:var(--ink);font-weight:700}
+  @media (min-width:1024px){.ac-h{white-space:nowrap}}
   html.lang-latin .ac-h{line-height:1.08}
   /* activities: side pattern rails, same treatment as the home "picked for you" section */
   .ac{position:relative}
@@ -556,6 +558,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
   .ci-title{margin:0;font-size:clamp(40px,3.6vw,54px);line-height:1.15;font-weight:700;color:var(--ink)}
   .ci-desc{margin:var(--s-5) 0 0;max-width:660px;font-size:clamp(17px,1.2vw,18px);line-height:1.9;color:var(--body)}
   .ci-desc.is-clamped{display:-webkit-box;-webkit-line-clamp:6;-webkit-box-orient:vertical;overflow:hidden}
+  @media (min-width:1024px){.ci-desc.is-long:not(.is-clamped){max-width:none;column-count:2;column-gap:var(--s-6);text-align:start}}
   .ci-readmore{display:inline-flex;align-items:center;min-height:36px;margin-top:var(--s-3);background:none;border:0;padding:0;font:inherit;font-size:var(--fs-small);font-weight:700;color:var(--rust);cursor:pointer;border-radius:var(--radius-xs)}
   .ci-readmore:hover{color:var(--rust-deep)} .ci-readmore:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
   .ci-cta{display:none}
@@ -1014,7 +1017,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
             <li><strong>تجارب أكثر قربًا من المكان</strong> استكشف أسوان من خلال أنشطة وتجارب مسؤولة تمنحك فهمًا أعمق لثقافتها وطبيعتها وحياة أهلها.</li>
           </ul>
         </div>
-        <div class="sus-art"><img src="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.webp" srcset="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-480.webp 480w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.webp 960w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-1122.webp 1122w" sizes="(min-width:1024px) 620px, 100vw" alt="حرفية نوبية تعرض أعمالها اليدوية أمام النيل في أسوان" loading="lazy" decoding="async"><button class="sus-zoom" type="button" aria-label="عرض الصورة بحجم أكبر"><svg width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-50.34,50.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM106.34,138.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l50.35-50.34a8,8,0,0,0-11.32-11.32Z"/></svg></button></div>
+        <div class="sus-art"><picture><source type="image/avif" srcset="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-480.avif 480w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.avif 960w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-1122.avif 1122w" sizes="(min-width:1024px) 620px, 100vw"><img style="object-position:50% 18%" src="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.webp" srcset="ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-480.webp 480w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-960.webp 960w, ASSETS/ff27f1a1-650b-47f8-8250-2a0d5d7e8292-1122.webp 1122w" sizes="(min-width:1024px) 620px, 100vw" alt="حرفية نوبية تعرض أعمالها اليدوية أمام النيل في أسوان" loading="lazy" decoding="async"></picture><button class="sus-zoom" type="button" aria-label="عرض الصورة بحجم أكبر"><svg width="18" height="18" viewBox="0 0 256 256" aria-hidden="true" focusable="false" fill="currentColor"><path d="M216,48V96a8,8,0,0,1-16,0V67.31l-50.34,50.35a8,8,0,0,1-11.32-11.32L188.69,56H160a8,8,0,0,1,0-16h48A8,8,0,0,1,216,48ZM106.34,138.34,56,188.69V160a8,8,0,0,0-16,0v48a8,8,0,0,0,8,8H96a8,8,0,0,0,0-16H67.31l50.35-50.34a8,8,0,0,0-11.32-11.32Z"/></svg></button></div>
       </div>
     </section>
     <dialog class="sus-dlg" id="susDlg" aria-label="عرض الصورة بحجم أكبر">
@@ -1093,7 +1096,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
         <header class="ac-head">
           <div>
             <span class="sec-eyebrow">أنشطة وتجارب</span>
-            <h2 class="display ac-h" id="lx-act">أهم الأنشطة<br>في أسوان</h2>
+            <h2 class="display ac-h" id="lx-act">أهم الأنشطة في أسوان</h2>
           </div>
           <a class="ac-all" href="en/experiences.html?city=aswan&category=tour"><span class="ac-all-t">عرض كل الأنشطة</span></a>
         </header>
@@ -1875,7 +1878,7 @@ html[dir="ltr"] .lx-art--wide{-webkit-mask-image:linear-gradient(to right,transp
     $('ciBestNote').textContent = t(D.bestNote);
     $('ciBest').innerHTML = D.seasons.map(s => '<li><div class="ci-best-head"><b>' + ICO[s.k] + esc(t(s.n)) + '</b></div><small>' + esc(t(s.months)) + '</small></li>').join('');
     $('ciMove').innerHTML = Object.entries(MOVE).map(([k, [title, keys]]) => { const items = keys.map(key => D.transport.find(m => m.k === key)).filter(Boolean); if (!items.length) return ''; return '<li><span class="ci-move-ico">' + ICO[items[0].k] + '</span><div><b>' + esc(t(title)) + '</b><p>' + items.map(m => esc(t(m.n))).join(' · ') + '</p></div></li>'; }).join('');
-    (() => { const d = $('ciDesc'), b = $('ciReadMore'); d.classList.add('is-clamped'); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
+    (() => { const d = $('ciDesc'), b = $('ciReadMore'); d.classList.add('is-clamped'); d.classList.toggle('is-long', d.textContent.trim().length > 650); b.setAttribute('aria-expanded', 'false'); b.textContent = t('اقرأ المزيد'); requestAnimationFrame(() => { b.hidden = d.scrollHeight <= d.clientHeight + 4; }); if (!b.dataset.wired) { b.dataset.wired = '1'; b.addEventListener('click', () => { const open = d.classList.toggle('is-clamped') === false; b.setAttribute('aria-expanded', String(open)); b.textContent = t(open ? 'عرض أقل' : 'اقرأ المزيد'); }); } })();
   }
   /* tabs: click, arrow keys, Home/End (WAI-ARIA tabs) */
   const tabs = [...root.querySelectorAll('.ci-tab')];

@@ -338,17 +338,19 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .st-lead h2{margin:var(--s-3) 0 0;font-size:clamp(28px,3.2vw,46px);line-height:1.2;font-weight:700;text-shadow:0 2px 14px rgba(0,0,0,.35)}
   .st-lead p{margin:var(--s-2) 0 0;font-size:var(--fs-body-lg);line-height:1.6;color:rgba(255,255,255,.9)}
   .st-lead .gem-cta{display:inline-flex;width:auto;margin-top:var(--s-4);padding-inline:20px}
-  /* ===== stakeholder split: list beside map, same result set ===== */
-  .sk-split{display:grid;gap:var(--s-4);align-items:start}
-  @media (min-width:1024px){.sk-split{grid-template-columns:minmax(0,1fr) 420px}
-html[dir="rtl"] .sk-split{grid-template-columns:420px minmax(0,1fr)}
-html[dir="rtl"] .sk-map{order:1}
-html[dir="rtl"] .sk-list{order:2}
-}
-  .sk-map{position:sticky;top:calc(var(--tb-top,100px) + 16px)} .sk-map .mp-map{height:min(72vh,680px)}
-  @media (max-width:1023px){.sk-map{position:relative;top:auto}
-.sk-map .mp-map{height:380px}
-}
+  /* ===== stakeholders: card grid under the filters, the map at the end of the page ===== */
+  .sk-grid{display:grid;gap:var(--s-4);margin:var(--s-4) 0 0;padding:0;list-style:none}
+  @media (min-width:640px){.sk-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.ex .sk-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5);max-width:1168px;margin-inline:auto}}
+  .sk-grid .gem.is-on{border-color:var(--rust);box-shadow:0 0 0 3px rgba(165,62,26,.18)}
+  .sk-grid .gem-loc{--pill:var(--pill-ink-deep)}
+  /* the map closes the page on the same frond background as the home sections */
+  .sk-map{position:relative;isolation:isolate;overflow:hidden;width:100vw;margin:var(--s-7) calc(50% - 50vw) calc(-1 * var(--s-8));padding:var(--s-7) var(--s-4) var(--s-8);background:#f7f1e6}
+  .sk-map-in{max-width:1168px;margin-inline:auto}
+  .sk-map .gems-fronds{z-index:-1}
+  .sk-map .mp-map{height:min(60vh,520px);background:var(--map-surface)}
+  .sk-map-h{margin:0 0 var(--s-4);font-size:var(--fs-h2);line-height:1.15;font-weight:700;color:var(--ink)}
+  @media (max-width:1023px){.sk-map .mp-map{height:380px}}
   .sk-ctas{display:flex;flex-wrap:wrap;gap:var(--s-3);margin:var(--s-4) 0 0}
   .org-row{display:grid;grid-template-columns:48px minmax(0,1fr);gap:var(--s-3);padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);cursor:pointer;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
   .org-row:hover,.org-row.is-on{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)} .org-row.is-on{border-color:var(--rust)}
@@ -554,11 +556,12 @@ html[dir="rtl"] .sk-list{order:2}
       </div>
       <div class="mp-adv" id="exAdv" hidden><fieldset data-g="type"><legend>نوع الجهة</legend><label><input type="checkbox" data-f="type" value="gov"><span>جهة حكومية</span></label><label><input type="checkbox" data-f="type" value="ngo"><span>منظمة أهلية</span></label><label><input type="checkbox" data-f="type" value="uni"><span>جامعة</span></label><label><input type="checkbox" data-f="type" value="private"><span>مشغّل قطاع خاص</span></label></fieldset><fieldset data-g="vc"><legend>سلسلة القيمة</legend><label><input type="checkbox" data-f="vc" value="stay"><span>الإقامة</span></label><label><input type="checkbox" data-f="vc" value="food"><span>الطعام والشراب</span></label><label><input type="checkbox" data-f="vc" value="crafts"><span>إنتاج الحرف اليدوية</span></label><label><input type="checkbox" data-f="vc" value="guiding"><span>الإرشاد والتفسير</span></label><label><input type="checkbox" data-f="vc" value="transport"><span>النقل</span></label><label><input type="checkbox" data-f="vc" value="tours"><span>تنظيم الرحلات</span></label></fieldset></div>
       <p class="ex-count" id="exCount" role="status" aria-live="polite"></p>
-      <div class="sk-split"><div class="sk-list">
+      <div class="sk-list">
         <h2 class="sr-only" id="exResultsH">النتائج</h2>
-        <ul class="evl" id="exGrid" role="list"></ul>
+        <ul class="ex-grid sk-grid" id="exGrid" role="list"></ul>
         <div class="mp-empty" id="exEmpty" hidden><p>لا توجد جهات مطابقة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
-      </div><aside class="sk-map" aria-label="خريطة الجهات"><div class="mp-map"><div id="skMap" role="region" aria-label="خريطة الجهات"></div></div></aside></div>
+      </div>
+      <aside class="sk-map" aria-labelledby="skMapH"><img class="gems-fronds" src="ASSETS/Group 21.webp" alt="" aria-hidden="true" loading="lazy" decoding="async"><div class="sk-map-in"><h2 class="sk-map-h display" id="skMapH">الجهات على الخريطة</h2><div class="mp-map"><div id="skMap" role="region" aria-label="خريطة الجهات"></div></div></div></aside>
     </div>
   </section>
 </main>
@@ -765,14 +768,15 @@ html[dir="rtl"] .sk-list{order:2}
   const entBlock = en => en ? '<figure><img src="' + en.img.src + '" srcset="' + en.img.srcset + '" sizes="120px" alt="' + esc(t(en.img.alt)) + '" style="object-position:' + (en.pos || '50% 50%') + '" loading="lazy"></figure><div><h2 class="dx-h" id="dxEntH">' + esc(t('رائد الأعمال وراء القصة')) + '</h2><p class="st-name" style="margin-top:12px">' + esc(t(en.name)) + '</p><p class="st-biz">' + esc(t(en.biz)) + '</p><p>' + esc(t(en.sum)) + '</p><a class="st-link" href="' + ENTREPRENEURS.href(en) + '"><span>' + esc(t('عرض الملف الشخصي')) + '</span>' + ARW + '</a></div>' : '';
 
   const map = L.map('skMap', { center: [24.9, 32.76], zoom: 7, zoomControl: true, scrollWheelZoom: false }); L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', { maxZoom: 18, attribution: '&copy; OpenStreetMap' }).addTo(map); const group = L.layerGroup().addTo(map); const marks = new Map();
-  const row = o => '<li><article class="org-row" data-href="' + CONTENT.orgHref(o) + '" data-slug="' + o.slug + '"><span class="org-ico">' + ORG + '</span><div><span class="evl-kind">' + esc(t(CONTENT.ORG_TYPE[o.type])) + '</span><h3 class="org-t">' + esc(t(o.n)) + '</h3><p class="org-s">' + esc(t(o.d)) + '</p><div class="org-tags">' + o.vc.map(v => '<span class="org-tag">' + esc(t(CONTENT.VALUE_CHAIN[v])) + '</span>').join('') + '<span class="org-tag" style="background:rgba(52,92,112,.1);color:#345c70">' + esc(cityName(o.city)) + '</span></div><a class="gem-cta" href="' + CONTENT.orgHref(o) + '"><span>' + esc(t('عرض الجهة')) + '</span>' + ARW + '</a></div></article></li>';
+  const CITY_IMG = { luxor: { src: 'ASSETS/place-karnak-736.webp', srcset: 'ASSETS/place-karnak-480.webp 480w, ASSETS/place-karnak-736.webp 736w', alt: '' }, aswan: { src: 'ASSETS/asw-philae-960.webp', srcset: 'ASSETS/asw-philae-480.webp 480w, ASSETS/asw-philae-960.webp 960w', alt: '' } };
+  const row = o => '<li><article class="gem org-card" data-href="' + CONTENT.orgHref(o) + '" data-slug="' + o.slug + '"><div class="gem-media">' + pic(CITY_IMG[o.city] || CITY_IMG.luxor, '(min-width:1024px) 400px, (min-width:640px) 50vw, 96vw', 'gem-img') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + ORG + '<span>' + esc(t(CONTENT.ORG_TYPE[o.type])) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + esc(cityName(o.city)) + '</span><h3 class="gem-title">' + esc(t(o.n)) + '</h3><p class="gem-desc">' + esc(t(o.d)) + '</p><p class="gem-meta">' + o.vc.map(v => '<span>' + esc(t(CONTENT.VALUE_CHAIN[v])) + '</span>').join('') + '</p><a class="gem-cta" href="' + CONTENT.orgHref(o) + '"><span>' + esc(t('عرض الجهة')) + '</span>' + ARW + '</a></div></article></li>';
   LISTING.init({ chipParam: 'city', chips: ['luxor', 'aswan'], groups: ['type', 'vc'], items: () => CONTENT.organisations, chipOf: o => o.city, groupOf: (o, g) => g === 'vc' ? o.vc : [o[g]], hay: o => [o.n, o.d, t(o.n), t(o.d), CONTENT.ORG_TYPE[o.type]].join(' '),
     crumb: () => [['الرئيسية', 'index.html'], ['الجهات السياحية']], title: () => t('الجهات السياحية'),
     count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' organisation' : ' organisations') : l === 'es' ? n + (n === 1 ? ' organización' : ' organizaciones') : n + ' ' + (n === 1 ? 'جهة' : n === 2 ? 'جهتان' : n <= 10 ? 'جهات' : 'جهة'); },
     card: row,
-    onRender: shown => { group.clearLayers(); marks.clear(); shown.forEach(o => { const m = L.marker(o.ll, { icon: EX.icon('workshop'), title: t(o.n) }).bindPopup('<div class="mp-card"><div class="mp-info"><strong class="mp-name">' + esc(t(o.n)) + '</strong><p class="mp-sum">' + esc(t(CONTENT.ORG_TYPE[o.type])) + '</p><a class="mp-more" href="' + CONTENT.orgHref(o) + '"><span>' + esc(t('عرض الجهة')) + '</span>' + ARW + '</a></div></div>', { className: 'mp-pop' }).addTo(group); m.on('popupopen', () => { document.querySelectorAll('.org-row').forEach(r => r.classList.toggle('is-on', r.dataset.slug === o.slug)); }); marks.set(o.slug, m); }); if (shown.length) map.fitBounds(L.latLngBounds(shown.map(o => o.ll)).pad(0.2), { maxZoom: 13, animate: false }); setTimeout(() => map.invalidateSize(), 150); } });
-  $('exGrid').addEventListener('pointerover', e => { const r = e.target.closest('.org-row'); if (!r) return; const m = marks.get(r.dataset.slug); const el = m && m.getElement(); if (el) el.classList.add('is-hot'); });
-  $('exGrid').addEventListener('pointerout', e => { const r = e.target.closest('.org-row'); if (!r) return; const m = marks.get(r.dataset.slug); const el = m && m.getElement(); if (el) el.classList.remove('is-hot'); });
+    onRender: shown => { group.clearLayers(); marks.clear(); shown.forEach(o => { const m = L.marker(o.ll, { icon: EX.icon('workshop'), title: t(o.n) }).bindPopup('<div class="mp-card"><div class="mp-info"><strong class="mp-name">' + esc(t(o.n)) + '</strong><p class="mp-sum">' + esc(t(CONTENT.ORG_TYPE[o.type])) + '</p><a class="mp-more" href="' + CONTENT.orgHref(o) + '"><span>' + esc(t('عرض الجهة')) + '</span>' + ARW + '</a></div></div>', { className: 'mp-pop' }).addTo(group); m.on('popupopen', () => { document.querySelectorAll('.org-card').forEach(r => r.classList.toggle('is-on', r.dataset.slug === o.slug)); }); marks.set(o.slug, m); }); if (shown.length) map.fitBounds(L.latLngBounds(shown.map(o => o.ll)).pad(0.2), { maxZoom: 13, animate: false }); setTimeout(() => map.invalidateSize(), 150); } });
+  $('exGrid').addEventListener('pointerover', e => { const r = e.target.closest('.org-card'); if (!r) return; const m = marks.get(r.dataset.slug); const el = m && m.getElement(); if (el) el.classList.add('is-hot'); });
+  $('exGrid').addEventListener('pointerout', e => { const r = e.target.closest('.org-card'); if (!r) return; const m = marks.get(r.dataset.slug); const el = m && m.getElement(); if (el) el.classList.remove('is-hot'); });
 })();
 </script>
 </body>

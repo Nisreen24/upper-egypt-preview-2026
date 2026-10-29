@@ -43,3 +43,6 @@
     e.preventDefault(); location.href = L + '/' + localize(raw, L);
   }, true);
 })();
+
+/* every static page hero (#xh) takes the Luxor and Aswan hero size: 95vw up to 1550px wide, at most 800px, 85vh and the room under the nav */
+(() => { const xhSize = () => { const xh = document.getElementById('xh'); if (!xh) return; const nav = document.querySelector('.nav-bar'); const size = () => { const mobile = innerWidth < 768, vh = innerHeight; const navB = nav ? nav.getBoundingClientRect().bottom : 0; const w = Math.min(mobile ? 950 : 1550, innerWidth * 0.95); const h = Math.min(mobile ? 600 : 800, vh * 0.85, vh - navB - 100); const top = Math.max((vh - h) / 2, navB + 80); xh.style.setProperty('--xh-w', w + 'px'); xh.style.setProperty('--xh-h', h + 'px'); xh.style.setProperty('--xh-top', top + 'px'); }; size(); addEventListener('resize', size); addEventListener('load', size); }; if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', xhSize); else xhSize(); })();

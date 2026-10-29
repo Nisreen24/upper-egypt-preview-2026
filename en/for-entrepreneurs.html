@@ -269,16 +269,8 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .rs-player{grid-column:1/-1;position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:var(--radius-md);background:#000}
   .rs-player video{width:100%;height:100%;display:block}.rs-player iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
   .rs-player[hidden]{display:none}
-  .fe-evl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin:0;padding:0;list-style:none}
-  .evl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
   @media (min-width:768px){.evl-row{grid-template-columns:72px minmax(0,1fr) auto}
 }
-  .evl-date{display:grid;place-items:center;width:72px;height:72px;border-radius:var(--radius-md);background:var(--rust);color:#fff;line-height:1}
-  .evl-date b{font-size:26px;font-weight:800} .evl-date small{font-size:12px;font-weight:700;margin-top:4px}
-  .evl-kind{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--rust)}
-  .evl-t{margin:4px 0 0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .evl-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
-  @media (max-width:767px){.evl-row .ev-cta{grid-column:1/-1;justify-content:center}
 }
   .lpd-steps{counter-reset:step;display:grid;gap:0;margin:0;padding:0;list-style:none;position:relative}
   .lpd-step{position:relative;display:grid;grid-template-columns:44px minmax(0,1fr);gap:var(--s-3);padding:var(--s-4) 0}
@@ -430,63 +422,89 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 
 <style>
   /* ---------- FOR ENTREPRENEURS: Wireframe 7 — centred title, learning paths, resources with topic / format / pillar filters, upcoming events ---------- */
-  .fe{padding-top:calc(var(--tb-top,100px) + var(--s-4))}
-  .fe-title{margin:0 0 var(--s-5);text-align:center;font-size:clamp(26px,2.7vw,38px);line-height:1.2;font-weight:700;color:var(--ink)}
-  .fe-own{margin:calc(var(--s-5) * -1) 0 var(--s-5);text-align:center;font-size:var(--fs-body);color:var(--muted)} .fe-own a{color:var(--rust);font-weight:700}
-  .fe-sec{margin-top:var(--s-6)} .fe-sec:first-of-type{margin-top:0}
-  .fe-k{margin:0 0 var(--s-3);text-align:center;font-size:var(--fs-body);font-weight:700;color:var(--ink)}
-  .fe-paths{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
-  @media (min-width:768px){.fe-paths{grid-template-columns:repeat(3,minmax(0,1fr))}}
-  .fe-path{display:grid;place-items:center;gap:6px;min-height:84px;padding:var(--s-4);border-radius:var(--radius-card);background:var(--cream);border:1px solid rgba(43,29,14,.12);color:var(--ink);text-decoration:none;text-align:center;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-  .fe-path:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
-  .fe-path:active{transform:translateY(0) scale(.98)}
+  #exList.fe>.wrap{max-width:min(1550px,95vw);padding-inline:0}
+  .fe-sec{max-width:1168px;margin-inline:auto}
+  .fe{padding-top:calc(var(--tb-top,100px) + var(--s-3))}
+  .fe-hero{position:relative;overflow:hidden;isolation:isolate;display:flex;align-items:flex-end;--xw:min(1550px,95vw);width:var(--xw);height:var(--fe-h,560px);max-height:85vh;margin:0 calc((100% - var(--xw)) / 2) var(--s-7);border-radius:var(--radius-card);background:var(--clay-light);color:#fff}
+  .fe-hero picture,.fe-hero img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 62%;z-index:-2}
+  .fe-hero-shade{position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(11,9,6,.78) 0%,rgba(11,9,6,.38) 38%,rgba(11,9,6,0) 68%),rgba(0,0,0,.22);pointer-events:none}
+  .fe-hero-band{position:absolute;inset-inline:0;bottom:0;height:16px;z-index:2;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none}
+  @media (min-width:768px){.fe-hero-band{height:20px}}
+  .fe-hero-body{position:relative;z-index:1;display:flex;flex-direction:column;align-items:flex-start;gap:var(--s-3);padding:24px 24px 44px;width:100%}
+  @media (min-width:768px){.fe-hero-body{padding:48px 56px 68px}}
+  .fe-title{margin:0;font-size:clamp(44px,6vw,92px);line-height:1.15;font-weight:700;color:#fff}
+  html.lang-latin .fe-title{line-height:1.02}
+  .fe-own{display:inline-flex;align-items:center;gap:var(--s-2);height:var(--btn-h);padding-inline:var(--s-4);border-radius:var(--radius-btn);background:var(--rust);color:#fff;font-size:var(--fs-btn);font-weight:700;white-space:nowrap;box-shadow:0 1px 2px rgba(138,50,19,.25),0 10px 24px -8px rgba(138,50,19,.65);transition:background-color .3s ease,transform .45s cubic-bezier(.2,.8,.2,1)}
+  .fe-own:hover{background:var(--rust-deep);transform:translateY(-2px)} .fe-own:active{transform:translateY(0) scale(.98)} .fe-own:focus-visible{outline:3px solid #fff;outline-offset:3px}
+  .fe-own-ic{display:inline-flex} .fe-own-ic svg{width:18px;height:18px} html[dir="ltr"] .fe-own-ic svg{transform:scaleX(-1)}
+  .fe-sec{margin-top:var(--s-7)} .fe-sec:first-of-type{margin-top:0}
+  .fe-head{display:flex;align-items:flex-end;justify-content:space-between;gap:var(--s-3);margin-bottom:var(--s-5)}
+  .fe-k{margin:0 0 var(--s-5);text-align:start;font-size:var(--fs-h2);line-height:1.15;font-weight:700;color:var(--ink);letter-spacing:-.01em}
+  .fe-head .fe-k{margin:0}
+  .fe-n{margin:0 0 10px;font-size:var(--fs-small);font-weight:600;color:var(--muted);white-space:nowrap}
+  .fe-paths{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:640px){.fe-paths{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.fe-paths{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}}
+  .fe-path{--c:var(--rust);position:relative;display:flex;flex-direction:column;justify-content:space-between;aspect-ratio:10/9;min-height:300px;padding:var(--s-5);border-radius:24px;overflow:hidden;isolation:isolate;background:var(--c);color:#fff;text-decoration:none;box-shadow:0 1px 2px rgba(43,29,14,.08),0 24px 48px -28px rgba(43,29,14,.55);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+  .fe-path--olive{--c:#5c6b43} .fe-path--nile{--c:#2b4d60} .fe-path--rust{--c:#b4451c}
+  .fe-path>picture{position:absolute;inset:0;z-index:-3} .fe-path img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-3;filter:saturate(.7);transition:transform .9s cubic-bezier(.2,.8,.2,1)}
+  .fe-path::before{content:"";position:absolute;inset:0;z-index:-2;background:var(--c);mix-blend-mode:multiply;opacity:.78}
+  .fe-path::after{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(to top,rgba(18,11,6,.35),rgba(18,11,6,0) 55%),var(--c);opacity:.38}
+  .fe-path:hover{transform:translateY(-4px);box-shadow:0 1px 2px rgba(43,29,14,.08),0 34px 60px -28px rgba(43,29,14,.6)} .fe-path:hover img{transform:scale(1.05)}
+  .fe-path:active{transform:translateY(-1px) scale(.99)}
   .fe-path:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
-  .fe-path b{font-size:var(--fs-h3);line-height:1.3;font-weight:700}
-  .fe-path small{font-size:var(--fs-small);color:var(--muted)}
-  .stl-filters-btn{width:100%;justify-content:center;gap:8px}
-  .stl-filters-btn .stl-dd-caret{transition:transform .25s}
-  .stl-filters-btn[aria-expanded="true"] .stl-dd-caret{transform:rotate(180deg)}
-  .stl-filters{display:grid;gap:var(--s-2);margin-top:var(--s-3)}
-  .stl-filters[hidden]{display:none}
-  @media (min-width:768px){.stl-filters-btn{display:none} .stl-filters,.stl-filters[hidden]{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-3);margin-top:0}}
-  .stl-dd{position:relative}
-  .stl-dd summary{list-style:none;display:flex;align-items:center;gap:8px;height:var(--btn-h);padding-inline:var(--s-3);border-radius:var(--radius-sm);background:#fff;border:1px solid rgba(43,29,14,.16);color:var(--ink);font-size:var(--fs-body);font-weight:600;cursor:pointer;transition:background-color .25s ease}
+  .fe-path-n{display:flex;align-items:baseline;gap:10px;line-height:1}
+  .fe-path-n b{font-size:clamp(56px,6vw,88px);font-weight:500;line-height:1}
+  .fe-path-n small{font-size:var(--fs-small);font-weight:600;opacity:.92}
+  .fe-path-t{display:block;margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700}
+  .fe-bar{display:flex;flex-wrap:wrap;align-items:center;gap:var(--s-2) var(--s-3);padding:var(--s-3);margin-bottom:var(--s-5);border-radius:20px;background:#fbf7ef;border:1px solid rgba(43,29,14,.12);box-shadow:0 1px 2px rgba(43,29,14,.04),0 16px 32px -24px rgba(43,29,14,.35)}
+  .fe-bar-l{display:inline-flex;align-items:center;gap:8px;font-size:var(--fs-body);font-weight:700;color:var(--ink);padding-inline-end:4px} .fe-bar-l svg{color:var(--ink)}
+  .fe-chips{display:flex;flex-wrap:wrap;gap:8px}
+  .fe-bar .mp-chip{height:56px;padding-inline:var(--s-3);border-radius:12px;font-size:var(--fs-body);font-weight:600;gap:4px}
+  .fe-bar .mp-chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+  .fe-bar .mp-chip:hover{background:rgba(43,29,14,.06)} .fe-bar .mp-chip[aria-pressed="true"]:hover{background:#061822}
+  .fe-bar .mp-chip:active{transform:scale(.97)} .fe-bar .mp-chip:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
+  .fe-bar-div{width:1px;height:40px;background:rgba(43,29,14,.18);display:none}
+  @media (min-width:1024px){.fe-bar-div{display:block}}
+  .stl-dd{position:relative;flex:1 1 180px;max-width:100%}
+  @media (min-width:1024px){.stl-dd{flex:0 0 min(265px,100%)}}
+  .stl-dd summary{list-style:none;display:flex;align-items:center;gap:8px;height:56px;padding-inline:var(--s-4);border-radius:12px;background:#fff;border:1px solid rgba(43,29,14,.16);color:var(--ink);font-size:var(--fs-body);font-weight:600;cursor:pointer;transition:background-color .25s ease,transform .3s cubic-bezier(.2,.8,.2,1)}
   .stl-dd summary::-webkit-details-marker{display:none}
   .stl-dd summary:hover{background:rgba(43,29,14,.06)}
   .stl-dd summary:active{transform:scale(.98)}
   .stl-dd summary:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
-  .stl-dd summary>svg:first-child{color:var(--rust)}
-  .stl-dd-caret{margin-inline-start:auto;transition:transform .25s}
+  .stl-dd-caret{margin-inline-start:auto;display:inline-flex;transition:transform .25s}
   .stl-dd[open] .stl-dd-caret{transform:rotate(180deg)}
   .stl-dd-n{display:inline-grid;place-items:center;min-width:22px;height:22px;padding-inline:6px;border-radius:var(--radius-full);background:var(--rust);color:#fff;font-size:12px;font-weight:700}
   .stl-dd-n:empty{display:none}
-  .stl-dd fieldset{display:grid;gap:4px;margin:var(--s-1) 0 0;padding:6px;border:0;min-width:0;background:#fff;border-radius:14px;border:1px solid rgba(43,29,14,.12)}
-  @media (min-width:768px){.stl-dd fieldset{position:absolute;z-index:5;inset-inline:0;top:calc(100% + 8px);margin:0;border:0;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}}
+  .stl-dd fieldset{position:absolute;z-index:5;inset-inline:0;top:calc(100% + 8px);display:grid;gap:4px;margin:0;padding:6px;border:0;min-width:0;background:#fff;border-radius:14px;box-shadow:0 1px 2px rgba(43,29,14,.06),0 12px 32px -10px rgba(43,29,14,.35),0 0 0 1px rgba(43,29,14,.05)}
   .stl-dd legend{float:inline-start;width:100%}
   .stl-dd label{display:flex;align-items:center;gap:10px;min-height:40px;padding:0 10px;border-radius:9px;font-size:14px;color:var(--nav-ink);cursor:pointer}
   .stl-dd label[hidden]{display:none}
   .stl-dd label:hover{background:rgba(43,29,14,.06)}
   .stl-dd input{accent-color:var(--rust);width:16px;height:16px;margin:0}
-  .fe .stl-filters{margin-bottom:var(--s-3)}
-  .fe-list{display:grid;gap:var(--s-2);margin:0;padding:0;list-style:none}
-  .fe-row{display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:6px 8px;min-height:56px;padding:var(--s-3) var(--s-4);border-radius:var(--radius-card);background:#fff;border:1px solid rgba(43,29,14,.12);color:var(--ink);text-decoration:none;text-align:center;font-size:var(--fs-body-lg);line-height:1.4;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-  .fe-row:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
-  .fe-row:active{transform:translateY(0) scale(.98)}
+  .fe-clear{display:inline-flex;align-items:center;min-height:44px;padding-inline:8px;margin-inline-start:auto;border-radius:var(--radius-xs);color:var(--rust);font-size:var(--fs-body);font-weight:700;text-decoration:underline;text-underline-offset:4px;transition:color .2s ease}
+  .fe-clear[hidden]{display:none} .fe-clear:hover{color:var(--rust-deep)} .fe-clear:focus-visible{outline:3px solid var(--ink);outline-offset:2px;box-shadow:0 0 0 2px #fff}
+  .fe-evl{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:640px){.fe-evl{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.fe .fe-evl{grid-template-columns:repeat(3,minmax(0,1fr));gap:var(--s-5)}}
+  .ev-gem{cursor:pointer}
+  .fe-list{display:grid;gap:var(--s-4);margin:0;padding:0;list-style:none}
+  @media (min-width:640px){.fe-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
+  @media (min-width:1024px){.fe-list{grid-template-columns:repeat(3,minmax(0,1fr))}}
+  .fe-row{--tint:var(--pill-clay-soft);--tint-ink:var(--rust);display:flex;align-items:flex-start;gap:var(--s-3);min-height:180px;padding:var(--s-4);border-radius:22px;background:#fff;border:1px solid rgba(43,29,14,.12);color:var(--ink);text-decoration:none;text-align:start;box-shadow:0 1px 2px rgba(43,29,14,.04),0 16px 32px -26px rgba(43,29,14,.4);transition:transform .45s cubic-bezier(.2,.8,.2,1),box-shadow .45s ease}
+  @media (min-width:1024px){.fe-row{padding:var(--s-4) var(--s-4) var(--s-4) var(--s-5)}}
+  .fe-row--video{--tint:var(--pill-ink-tint);--tint-ink:var(--pill-ink-deep)} .fe-row--link{--tint:var(--pill-olive-tint);--tint-ink:#2f4118}
+  .fe-row:hover{transform:translateY(-3px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 24px 44px -24px rgba(43,29,14,.5)}
+  .fe-row:active{transform:translateY(0) scale(.99)}
   .fe-row:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
-  .fe-row b{font-weight:700}
+  .fe-ico{flex:none;display:inline-grid;place-items:center;width:52px;height:52px;border-radius:12px;background:var(--tint);color:var(--tint-ink)}
+  .fe-ico svg{width:22px;height:22px}
+  .fe-row-body{display:grid;gap:6px;min-width:0}
+  .fe-fmt{font-size:var(--fs-small);font-weight:700;color:var(--rust)}
+  .fe-row b{font-size:var(--fs-h3);line-height:1.35;font-weight:700;color:var(--ink)}
   .fe-row small{font-size:var(--fs-small);color:var(--muted)}
-  .fe-fmt{display:inline-flex;align-items:center;gap:6px;color:var(--rust);font-weight:700}
-  /* upcoming events: the event row of the event page (date tile · kind · title · summary · meta · details button) */
-  .fe-evl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin:0;padding:0;list-style:none}
-  .evl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-  .evl-row:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
   @media (min-width:640px){.evl-row{grid-template-columns:72px minmax(0,1fr) auto}}
-  .evl-date{display:grid;place-items:center;width:72px;height:72px;border-radius:var(--radius-md);background:var(--rust);color:#fff;line-height:1}
-  .evl-date b{font-size:26px;font-weight:800}
-  .evl-date small{font-size:12px;font-weight:700;margin-top:4px}
-  .evl-kind{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--rust)}
-  .evl-t{margin:4px 0 0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
-  .evl-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
   .rs-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:13px;color:var(--muted)} .rs-meta span{display:inline-flex;align-items:center;gap:5px}
   @media (max-width:639px){.evl-row .ev-cta{grid-column:1/-1;justify-content:center}}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
@@ -578,28 +596,36 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <main id="main">
   <section class="ex fe" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
-<div class="ph" aria-hidden="true"><picture><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><img src="ASSETS/hero-nile-sunset-1280.webp" srcset="ASSETS/hero-nile-sunset-768.webp 768w, ASSETS/hero-nile-sunset-1280.webp 1280w, ASSETS/hero-nile-sunset-2048.webp 2048w" sizes="(min-width:1232px) 1200px, 96vw" alt="" width="2048" height="768" decoding="async" fetchpriority="high"></picture><span class="ph-shade"></span><span class="xh-band"></span></div>
-      <h1 class="display fe-title" id="ex-h">لرواد الأعمال</h1>
-      <p class="fe-own">لديك ملف على المنصة؟ <a href="en/update-request.html?kind=entrepreneur">اطلب رابط تحديث بياناتك</a></p>
+<div class="fe-hero"><picture><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><img src="ASSETS/hero-nile-sunset-1280.webp" srcset="ASSETS/hero-nile-sunset-768.webp 768w, ASSETS/hero-nile-sunset-1280.webp 1280w, ASSETS/hero-nile-sunset-2048.webp 2048w" sizes="(min-width:1232px) 1200px, 96vw" alt="" width="2048" height="768" decoding="async" fetchpriority="high"></picture><span class="fe-hero-shade" aria-hidden="true"></span><span class="fe-hero-band" aria-hidden="true"></span>
+        <div class="fe-hero-body"><h1 class="display fe-title" id="ex-h">رواد الأعمال</h1><a class="fe-own" href="en/update-request.html?kind=entrepreneur"><span>اطلب رابط تحديث بياناتك</span><span class="fe-own-ic" data-ic="arrow-left"></span></a></div>
+      </div>
       <section class="fe-sec" id="paths" aria-labelledby="lpH">
-        <h2 class="fe-k" id="lpH">مسارات التعلم</h2>
+        <h2 class="display fe-k" id="lpH">مسارات التعلم</h2>
         <ul class="fe-paths" id="lpGrid" role="list"></ul>
       </section>
       <section class="fe-sec" id="resources" aria-labelledby="rsH">
-        <h2 class="fe-k" id="rsH">الموارد</h2>
-        <button type="button" class="mp-adv-btn stl-filters-btn" id="exAdvBtn" aria-expanded="false" aria-controls="exAdv"><span>الفلاتر</span><b class="stl-dd-n" id="exAdvN"></b><span class="stl-dd-caret"></span></button>
-        <div class="stl-filters" id="exAdv" hidden>
+        <div class="fe-head"><h2 class="display fe-k" id="rsH">الموارد</h2><p class="fe-n" id="exN" aria-hidden="true"></p></div>
+        <div class="stl-filters fe-bar" id="exAdv">
+          <span class="fe-bar-l"><span class="stl-dd-ic" data-ic="sliders-horizontal"></span><span>الفلاتر</span></span>
+          <div class="fe-chips" role="group" aria-label="الصيغة">
+            <button type="button" class="mp-chip" data-cat="all" aria-pressed="true"><span>الكل</span> <span class="fe-chip-n" data-fmt="all"></span></button>
+            <button type="button" class="mp-chip" data-cat="video" aria-pressed="false"><span>فيديو</span> <span class="fe-chip-n" data-fmt="video"></span></button>
+            <button type="button" class="mp-chip" data-cat="document" aria-pressed="false"><span>مستند</span> <span class="fe-chip-n" data-fmt="document"></span></button>
+            <button type="button" class="mp-chip" data-cat="link" aria-pressed="false"><span>رابط</span> <span class="fe-chip-n" data-fmt="link"></span></button>
+            <button type="button" class="mp-chip" data-cat="webinar" aria-pressed="false"><span>تسجيل ويبينار</span> <span class="fe-chip-n" data-fmt="webinar"></span></button>
+          </div>
+          <span class="fe-bar-div" aria-hidden="true"></span>
           <details class="stl-dd" id="ddTopic"><summary><span>الموضوع</span><b class="stl-dd-n" data-n="topic"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="topic"><legend class="sr-only">الموضوع</legend><label><input type="checkbox" data-f="topic" value="start"><span>بدء المشروع</span></label><label><input type="checkbox" data-f="topic" value="finance"><span>التمويل والميزانية</span></label><label><input type="checkbox" data-f="topic" value="marketing"><span>التسويق</span></label><label><input type="checkbox" data-f="topic" value="product"><span>تطوير المنتج</span></label><label><input type="checkbox" data-f="topic" value="leadership"><span>القيادة</span></label><label><input type="checkbox" data-f="topic" value="tourism"><span>السياحة المستدامة</span></label></fieldset></details>
-          <details class="stl-dd" id="ddFmt"><summary><span>الصيغة</span><b class="stl-dd-n" data-n="fmt"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="fmt"><legend class="sr-only">الصيغة</legend><label><input type="checkbox" data-f="fmt" value="document"><span>مستند</span></label><label><input type="checkbox" data-f="fmt" value="video"><span>فيديو</span></label><label><input type="checkbox" data-f="fmt" value="webinar"><span>تسجيل ويبينار</span></label><label><input type="checkbox" data-f="fmt" value="link"><span>رابط</span></label></fieldset></details>
           <details class="stl-dd" id="ddPil"><summary><span>محور المحتوى</span><b class="stl-dd-n" data-n="p"></b><span class="stl-dd-caret"></span></summary><fieldset data-g="p"><legend class="sr-only">محور المحتوى</legend><label><input type="checkbox" data-f="p" value="gems"><span>كنوز مخفية</span></label><label><input type="checkbox" data-f="p" value="culture"><span>ثقافة وطقوس</span></label><label><input type="checkbox" data-f="p" value="food"><span>مذاقات</span></label><label><input type="checkbox" data-f="p" value="crafts"><span>حرف يدوية</span></label><label><input type="checkbox" data-f="p" value="folk"><span>فلكلور وروحانيات</span></label><label><input type="checkbox" data-f="p" value="products"><span>منتجات رواد الأعمال</span></label></fieldset></details>
+          <button type="button" class="fe-clear" id="exClearTop" hidden>مسح الفلاتر</button>
         </div>
         <p class="sr-only" id="exCount" role="status" aria-live="polite"></p>
         <ul class="fe-list" id="exGrid" role="list"></ul>
         <div class="mp-empty" id="exEmpty" hidden><p>لا توجد موارد مطابقة.</p><button type="button" class="mp-clear" id="exClear">مسح الفلاتر</button></div>
       </section>
       <section class="fe-sec" id="events" aria-labelledby="evH" hidden>
-        <h2 class="fe-k" id="evH">الفعاليات القادمة</h2>
-        <ul class="fe-evl" id="evList" role="list"></ul>
+        <h2 class="display fe-k" id="evH">الفعاليات القادمة</h2>
+        <ul class="ex-grid fe-evl" id="evList" role="list"></ul>
       </section>
     </div>
   </section>
@@ -793,23 +819,29 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   const { P, t, esc } = EX, { FMT, TOPIC, list, paths, pathSteps, pathHref, upcoming } = RESOURCES;
   const $ = id => document.getElementById(id);
   const CARET = ICON('caret-down', 16), FICO = { document: 'file-text', link: 'link', video: 'video', webinar: 'video' };
-  document.querySelectorAll('.stl-dd-ic').forEach(x => { x.outerHTML = ICON(x.dataset.ic, 18); });
+  document.querySelectorAll('.stl-dd-ic,.fe-own-ic').forEach(x => { x.innerHTML = ICON(x.dataset.ic, x.classList.contains('fe-own-ic') ? 18 : 20); });
   document.querySelectorAll('.stl-dd-caret').forEach(x => { x.innerHTML = CARET; });
   const stepsText = n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' step' : ' steps') : l === 'es' ? n + (n === 1 ? ' paso' : ' pasos') : n + ' ' + t(n === 1 ? 'خطوة' : n === 2 ? 'خطوتان' : 'خطوات'); };
-  const pathCard = p => { const n = p.plan ? p.plan.length : pathSteps(p).length; return '<li><a class="fe-path" href="' + pathHref(p) + '"><b class="display">' + esc(t(p.n)) + '</b><small>' + esc(stepsText(n)) + '</small></a></li>'; };
-  /* one row per resource: format · title · what it is (pages, minutes or external); documents and links open their file, video and webinar rows go to the resources page player */
+  const stepsWord = n => { const l = EX.lang(); return l === 'en' ? (n === 1 ? 'step' : 'steps') : l === 'es' ? (n === 1 ? 'paso' : 'pasos') : t(n === 1 ? 'خطوة' : n === 2 ? 'خطوتان' : 'خطوات'); };
+  /* learning-path tiles (Fig 5): a place photo under a colour wash, the step count, the title and one bar per step */
+  const pathCard = p => { const n = p.plan ? p.plan.length : pathSteps(p).length; const im = p.tile || p.img; return '<li><a class="fe-path fe-path--' + (p.tone || 'rust') + '" href="' + pathHref(p) + '" aria-label="' + esc(t(p.n)) + '، ' + esc(stepsText(n)) + '">' + EX.pic(im, '(min-width:1024px) 400px, (min-width:640px) 50vw, 96vw', 'fe-path-img') + '<span class="fe-path-n" aria-hidden="true"><b class="display">' + n + '</b><small>' + esc(stepsWord(n)) + '</small></span><span class="fe-path-t">' + esc(t(p.n)) + '</span></a></li>'; };
+  /* one card per resource: icon tile · format · title · what it is (pages, minutes or external); documents and links open their file, video and webinar cards go to the resources page player */
   const detail = r => r.fmt === 'document' && r.pages ? r.pages + ' ' + t('صفحة') : (r.fmt === 'video' || r.fmt === 'webinar') && r.dur ? t(r.dur) : r.fmt === 'link' ? t('رابط خارجي') : '';
-  const ext = r => /^https?:\/\//.test(r.href || '');
-  const resRow = r => { const file = r.fmt === 'document' || r.fmt === 'link'; const href = file ? r.href : 'resources.html?q=' + encodeURIComponent(r.n); return '<li><a class="fe-row" href="' + esc(href) + '"' + (file ? ' target="_blank" rel="noopener"' : '') + '><span class="fe-fmt">' + ICON(FICO[r.fmt], 16) + esc(t(FMT[r.fmt])) + '</span><span aria-hidden="true">·</span><b>' + esc(t(r.n)) + '</b>' + (detail(r) ? '<small>· ' + esc(detail(r)) + '</small>' : '') + '</a></li>'; };
+  const resRow = r => { const file = r.fmt === 'document' || r.fmt === 'link'; const href = file ? r.href : 'resources.html?q=' + encodeURIComponent(r.n); const tone = r.fmt === 'link' ? ' fe-row--link' : r.fmt === 'document' ? '' : ' fe-row--video'; return '<li><a class="fe-row' + tone + '" href="' + esc(href) + '"' + (file ? ' target="_blank" rel="noopener"' : '') + '><span class="fe-ico" aria-hidden="true">' + ICON(FICO[r.fmt], 22) + '</span><span class="fe-row-body"><span class="fe-fmt">' + esc(t(FMT[r.fmt])) + '</span><b>' + esc(t(r.n)) + '</b>' + (detail(r) ? '<small>' + esc(detail(r)) + '</small>' : '') + '</span></a></li>'; };
+  /* format chips carry the number of published resources of each kind; a chip with none is hidden */
+  const fmtCounts = () => { const c = { all: list.length }; list.forEach(r => { c[r.fmt] = (c[r.fmt] || 0) + 1; }); document.querySelectorAll('.fe-chip-n').forEach(x => { const n = c[x.dataset.fmt] || 0; x.textContent = '(' + n + ')'; x.closest('.mp-chip').hidden = !n; }); };
   const MONTHS = { ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] };
   const CAL = ICON('calendar-blank', 16), CLK = ICON('clock', 16), PIN = ICON('map-pin', 16), USERS = ICON('users', 16), TAG = ICON('tag', 16), ARW = ICON('arrow-left', 16, 'fwd');
   const AUD = { entrepreneurs: 'رواد الأعمال', organisations: 'الجهات السياحية', both: 'رواد الأعمال والجهات السياحية' };
-  const evCard = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug; return '<li><article class="evl-row" data-href="' + href + '"><span class="evl-date"><b>' + d.getDate() + '</b><small>' + esc(m) + '</small></span><div><span class="evl-kind">' + CAL + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta">' + (e.time ? '<span>' + CLK + esc(t(e.time)) + '</span>' : '') + '<span>' + PIN + esc(t(e.loc)) + '</span>' + (e.aud ? '<span>' + USERS + esc(t(AUD[e.aud])) + '</span>' : '') + (e.p ? '<span>' + TAG + esc(t(P[e.p])) + '</span>' : '') + '</p></div><a class="ev-cta" href="' + href + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></article></li>'; };
-  LISTING.init({ hero: false, groups: ['topic', 'fmt', 'p'], items: () => list, chipOf: r => r.aud, groupOf: (r, g) => [r[g]], hay: r => [r.n, r.s, t(r.n), t(r.s)].join(' '),
+  const evCard = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug; const kindIc = { 'تدريب': 'hand', 'منتدى': 'users', 'لقاء': 'users' }[e.kind] || 'calendar-blank'; return '<li><article class="gem ev-gem" data-href="' + href + '"><div class="gem-media">' + EX.pic(e.img, '(min-width:1024px) 400px, (min-width:640px) 50vw, 96vw', 'gem-img') + '<span class="gem-tint" aria-hidden="true"></span><span class="gem-shade" aria-hidden="true"></span><span class="gem-loc">' + ICON(kindIc, 14) + '<span>' + esc(t(e.kind)) + '</span></span></div><div class="gem-body"><span class="gem-cat">' + d.getDate() + ' ' + esc(m) + (e.time ? ' · ' + esc(t(e.time)) : '') + '</span><h3 class="gem-title">' + esc(t(e.n)) + '</h3><p class="gem-desc">' + esc(t(e.s)) + '</p><p class="gem-meta"><span>' + PIN + esc(t(e.loc)) + '</span>' + (e.aud ? '<span>' + USERS + esc(t(AUD[e.aud])) + '</span>' : '') + '</p><a class="gem-cta" href="' + href + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></div></article></li>'; };
+  (() => { const nav = document.querySelector('.nav-bar'), hero = document.querySelector('.fe-hero'); const size = () => { const vh = innerHeight, navB = nav ? nav.getBoundingClientRect().bottom : 0; hero.style.setProperty('--fe-h', Math.max(300, Math.min(800, vh * 0.85, vh - navB - 100)) + 'px'); }; size(); addEventListener('resize', size); addEventListener('load', size); })();
+  fmtCounts();
+  const L = LISTING.init({ hero: false, chips: ['video', 'document', 'link', 'webinar'], chipParam: 'fmt', groups: ['topic', 'p'], items: () => list, chipOf: r => r.fmt, groupOf: (r, g) => [r[g]], hay: r => [r.n, r.s, t(r.n), t(r.s)].join(' '),
     title: () => t('لرواد الأعمال'),
     onHead: () => { $('lpGrid').innerHTML = paths.map(pathCard).join(''); const ev = upcoming().slice(0, 2); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evCard).join(''); },
     count: n => { const l = EX.lang(); return l === 'en' ? n + (n === 1 ? ' resource' : ' resources') : l === 'es' ? n + (n === 1 ? ' recurso' : ' recursos') : n + ' ' + t(n === 1 ? 'مورد' : n === 2 ? 'موردان' : 'موارد'); },
-    card: resRow, onRender: () => { document.querySelectorAll('.stl-dd').forEach(d => { const n = d.querySelectorAll('input:checked').length; d.querySelector('[data-n]').textContent = n || ''; }); } });
+    card: resRow, onRender: shown => { document.querySelectorAll('.stl-dd').forEach(d => { const n = d.querySelectorAll('input:checked').length; d.querySelector('[data-n]').textContent = n || ''; }); $('exN').textContent = $('exCount').textContent; const on = new URLSearchParams(location.search); $('exClearTop').hidden = !(on.get('fmt') || on.get('topic') || on.get('p') || on.get('q')); } });
+  $('exClearTop').addEventListener('click', () => $('exClear').click());
   document.querySelectorAll('.stl-dd').forEach(d => d.addEventListener('toggle', () => { if (d.open) document.querySelectorAll('.stl-dd[open]').forEach(o => { if (o !== d) o.open = false; }); }));
   document.addEventListener('click', e => { if (!e.target.closest('.stl-dd')) document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
   document.addEventListener('keydown', e => { if (e.key === 'Escape') document.querySelectorAll('.stl-dd[open]').forEach(o => { o.open = false; }); });
