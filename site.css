@@ -1245,3 +1245,12 @@ box-shadow:0 1px 2px rgba(138,50,19,.18),0 8px 18px -8px rgba(138,50,19,.65);tra
   .ex-strip-dot:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
 /* below-the-fold blocks render when they approach the viewport */
 .dx-rel,#dxGal,.dxg,footer.footer{content-visibility:auto;contain-intrinsic-size:auto 640px}
+
+/* ---------- PAGE HERO BAND: the Nile scene above the title on pages that carry no photograph of their own ---------- */
+.ph{position:relative;overflow:hidden;height:clamp(170px,24vw,320px);margin:0 0 var(--s-5);border-radius:var(--radius-card-lg);background:#2b1d0e;isolation:isolate}
+.ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 60%}
+.ph-shade{position:absolute;inset:0;background:linear-gradient(to top,rgba(43,29,14,.28),rgba(43,29,14,0) 55%);pointer-events:none}
+.ph .xh-band{position:absolute;inset-inline:0;bottom:0;height:16px;background:url("ASSETS/motifs/band-luxor.png") center/auto 100% repeat-x;pointer-events:none;z-index:2}
+@media (min-width:1024px){.ph .xh-band{height:20px}}
+/* listing search: the field's own rust ring is the focus state; no second white box */
+.mp-search input:focus-visible{outline:0;box-shadow:none}

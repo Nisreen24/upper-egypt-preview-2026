@@ -269,7 +269,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .rs-player{grid-column:1/-1;position:relative;aspect-ratio:16/9;overflow:hidden;border-radius:var(--radius-md);background:#000}
   .rs-player video{width:100%;height:100%;display:block}.rs-player iframe{width:100%;aspect-ratio:16/9;border:0;display:block}
   .rs-player[hidden]{display:none}
-  .evl{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
+  .fe-evl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin:0;padding:0;list-style:none}
   .evl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card)}
   @media (min-width:768px){.evl-row{grid-template-columns:72px minmax(0,1fr) auto}
 }
@@ -432,6 +432,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   /* ---------- FOR ENTREPRENEURS: Wireframe 7 — centred title, learning paths, resources with topic / format / pillar filters, upcoming events ---------- */
   .fe{padding-top:calc(var(--tb-top,100px) + var(--s-4))}
   .fe-title{margin:0 0 var(--s-5);text-align:center;font-size:clamp(26px,2.7vw,38px);line-height:1.2;font-weight:700;color:var(--ink)}
+  .fe-own{margin:calc(var(--s-5) * -1) 0 var(--s-5);text-align:center;font-size:var(--fs-body);color:var(--muted)} .fe-own a{color:var(--rust);font-weight:700}
   .fe-sec{margin-top:var(--s-6)} .fe-sec:first-of-type{margin-top:0}
   .fe-k{margin:0 0 var(--s-3);text-align:center;font-size:var(--fs-body);font-weight:700;color:var(--ink)}
   .fe-paths{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
@@ -475,16 +476,19 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   .fe-row b{font-weight:700}
   .fe-row small{font-size:var(--fs-small);color:var(--muted)}
   .fe-fmt{display:inline-flex;align-items:center;gap:6px;color:var(--rust);font-weight:700}
-  .fe-events{display:grid;gap:var(--s-3);margin:0;padding:0;list-style:none}
-  @media (min-width:768px){.fe-events{grid-template-columns:repeat(2,minmax(0,1fr))}}
-  .fe-ev{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;min-height:120px;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);color:var(--ink);text-decoration:none;transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
-  .fe-ev:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
-  .fe-ev:active{transform:translateY(0) scale(.98)}
-  .fe-ev:focus-visible{outline:3px solid var(--ink);outline-offset:3px;box-shadow:0 0 0 3px #fff}
-  .fe-ev-date{display:grid;place-items:center;align-content:center;height:72px;border-radius:var(--radius-md);background:rgba(165,62,26,.08);color:var(--rust);font-weight:800;line-height:1;font-variant-numeric:tabular-nums}
-  .fe-ev-date b{font-size:26px} .fe-ev-date small{font-size:12px;font-weight:700}
-  .fe-ev-t{display:block;margin:0;font-size:var(--fs-h3);line-height:1.3;font-weight:700}
-  .fe-ev-m{display:block;margin:4px 0 0;font-size:var(--fs-small);color:var(--muted)}
+  /* upcoming events: the event row of the event page (date tile · kind · title · summary · meta · details button) */
+  .fe-evl{display:grid;grid-template-columns:minmax(0,1fr);gap:var(--s-3);margin:0;padding:0;list-style:none}
+  .evl-row{display:grid;grid-template-columns:72px minmax(0,1fr);gap:var(--s-3);align-items:center;padding:var(--s-3) var(--s-4);background:#fff;border:1px solid rgba(43,29,14,.12);border-radius:var(--radius-card);transition:transform .35s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease}
+  .evl-row:hover{transform:translateY(-2px);box-shadow:0 1px 2px rgba(43,29,14,.06),0 18px 40px -24px rgba(43,29,14,.4)}
+  @media (min-width:640px){.evl-row{grid-template-columns:72px minmax(0,1fr) auto}}
+  .evl-date{display:grid;place-items:center;width:72px;height:72px;border-radius:var(--radius-md);background:var(--rust);color:#fff;line-height:1}
+  .evl-date b{font-size:26px;font-weight:800}
+  .evl-date small{font-size:12px;font-weight:700;margin-top:4px}
+  .evl-kind{display:inline-flex;align-items:center;gap:6px;font-size:12.5px;font-weight:700;color:var(--rust)}
+  .evl-t{margin:4px 0 0;font-size:var(--fs-h3);line-height:1.3;font-weight:700;color:var(--ink)}
+  .evl-s{margin:4px 0 0;font-size:var(--fs-small);line-height:1.6;color:var(--muted)}
+  .rs-meta{display:flex;flex-wrap:wrap;gap:6px 14px;margin:8px 0 0;font-size:13px;color:var(--muted)} .rs-meta span{display:inline-flex;align-items:center;gap:5px}
+  @media (max-width:639px){.evl-row .ev-cta{grid-column:1/-1;justify-content:center}}
   .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
@@ -574,7 +578,9 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
 <main id="main">
   <section class="ex fe" id="exList" aria-labelledby="ex-h">
     <div class="wrap">
+<div class="ph" aria-hidden="true"><picture><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><source type="image/avif" srcset="ASSETS/hero-nile-sunset-768.avif 768w, ASSETS/hero-nile-sunset-1280.avif 1280w, ASSETS/hero-nile-sunset-2048.avif 2048w" sizes="(min-width:1232px) 1200px, 96vw"><img src="ASSETS/hero-nile-sunset-1280.webp" srcset="ASSETS/hero-nile-sunset-768.webp 768w, ASSETS/hero-nile-sunset-1280.webp 1280w, ASSETS/hero-nile-sunset-2048.webp 2048w" sizes="(min-width:1232px) 1200px, 96vw" alt="" width="2048" height="768" decoding="async" fetchpriority="high"></picture><span class="ph-shade"></span><span class="xh-band"></span></div>
       <h1 class="display fe-title" id="ex-h">لرواد الأعمال</h1>
+      <p class="fe-own">لديك ملف على المنصة؟ <a href="es/solicitud-de-actualizacion.html?kind=entrepreneur">اطلب رابط تحديث بياناتك</a></p>
       <section class="fe-sec" id="paths" aria-labelledby="lpH">
         <h2 class="fe-k" id="lpH">مسارات التعلم</h2>
         <ul class="fe-paths" id="lpGrid" role="list"></ul>
@@ -593,7 +599,7 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
       </section>
       <section class="fe-sec" id="events" aria-labelledby="evH" hidden>
         <h2 class="fe-k" id="evH">الفعاليات القادمة</h2>
-        <ul class="fe-events" id="evList" role="list"></ul>
+        <ul class="fe-evl" id="evList" role="list"></ul>
       </section>
     </div>
   </section>
@@ -843,7 +849,9 @@ html[dir="ltr"] .mp-open{transform:translateX(-50%)}
   const ext = r => /^https?:\/\//.test(r.href || '');
   const resRow = r => { const file = r.fmt === 'document' || r.fmt === 'link'; const href = file ? r.href : 'resources.html?q=' + encodeURIComponent(r.n); return '<li><a class="fe-row" href="' + esc(href) + '"' + (file ? ' target="_blank" rel="noopener"' : '') + '><span class="fe-fmt">' + ICON(FICO[r.fmt], 16) + esc(t(FMT[r.fmt])) + '</span><span aria-hidden="true">·</span><b>' + esc(t(r.n)) + '</b>' + (detail(r) ? '<small>· ' + esc(detail(r)) + '</small>' : '') + '</a></li>'; };
   const MONTHS = { ar: ['يناير', 'فبراير', 'مارس', 'أبريل', 'مايو', 'يونيو', 'يوليو', 'أغسطس', 'سبتمبر', 'أكتوبر', 'نوفمبر', 'ديسمبر'], en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'], es: ['ene', 'feb', 'mar', 'abr', 'may', 'jun', 'jul', 'ago', 'sep', 'oct', 'nov', 'dic'] };
-  const evCard = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; return '<li><a class="fe-ev" href="es/evento.html?slug=' + e.slug + '"><span class="fe-ev-date"><b>' + d.getDate() + '</b><small>' + esc(m) + '</small></span><span><span class="fe-ev-t display">' + esc(t(e.n)) + '</span><span class="fe-ev-m">' + esc([t(e.kind), t(e.loc), t(e.time)].filter(Boolean).join(' · ')) + '</span></span></a></li>'; };
+  const CAL = ICON('calendar-blank', 16), CLK = ICON('clock', 16), PIN = ICON('map-pin', 16), USERS = ICON('users', 16), TAG = ICON('tag', 16), ARW = ICON('arrow-left', 16, 'fwd');
+  const AUD = { entrepreneurs: 'رواد الأعمال', organisations: 'الجهات السياحية', both: 'رواد الأعمال والجهات السياحية' };
+  const evCard = e => { const d = new Date(e.date + 'T00:00:00'); const m = (MONTHS[EX.lang()] || MONTHS.ar)[d.getMonth()]; const href = 'event.html?slug=' + e.slug; return '<li><article class="evl-row" data-href="' + href + '"><span class="evl-date"><b>' + d.getDate() + '</b><small>' + esc(m) + '</small></span><div><span class="evl-kind">' + CAL + esc(t(e.kind)) + '</span><h3 class="evl-t">' + esc(t(e.n)) + '</h3><p class="evl-s">' + esc(t(e.s)) + '</p><p class="rs-meta">' + (e.time ? '<span>' + CLK + esc(t(e.time)) + '</span>' : '') + '<span>' + PIN + esc(t(e.loc)) + '</span>' + (e.aud ? '<span>' + USERS + esc(t(AUD[e.aud])) + '</span>' : '') + (e.p ? '<span>' + TAG + esc(t(P[e.p])) + '</span>' : '') + '</p></div><a class="ev-cta" href="' + href + '"><span>' + esc(t('تفاصيل الفعالية')) + '</span>' + ARW + '</a></article></li>'; };
   LISTING.init({ hero: false, groups: ['topic', 'fmt', 'p'], items: () => list, chipOf: r => r.aud, groupOf: (r, g) => [r[g]], hay: r => [r.n, r.s, t(r.n), t(r.s)].join(' '),
     title: () => t('لرواد الأعمال'),
     onHead: () => { $('lpGrid').innerHTML = paths.map(pathCard).join(''); const ev = upcoming().slice(0, 2); $('events').hidden = !ev.length; $('evList').innerHTML = ev.map(evCard).join(''); },
